@@ -1,4 +1,4 @@
-package com.project.gym.domain;
+package com.project.gymcarry.dao;
 
 import java.text.DateFormat;
 import java.util.Date;

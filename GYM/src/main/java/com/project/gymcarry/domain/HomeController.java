@@ -1,4 +1,4 @@
-package com.project.gym.controller;
+package com.project.gymcarry.domain;
 
 import java.text.DateFormat;
 import java.util.Date;

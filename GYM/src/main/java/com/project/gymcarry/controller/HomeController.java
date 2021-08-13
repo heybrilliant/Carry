@@ -1,4 +1,4 @@
-package com.project.gym.jdbc;
+package com.project.gymcarry.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
