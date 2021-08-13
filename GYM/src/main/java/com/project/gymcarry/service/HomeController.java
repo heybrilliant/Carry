@@ -1,4 +1,4 @@
-package com.project.gym;
+package com.project.gymcarry.service;
 
 import java.text.DateFormat;
 import java.util.Date;
