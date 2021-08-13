@@ -369,3 +369,5 @@ hs_err_pid*
 #
 Servers/ 
 
+GYM/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+GYM/target/m2e-wtp/web-resources/META-INF/maven/com.project/gym/pom.properties
