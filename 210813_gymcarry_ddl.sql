@@ -15,6 +15,63 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+DROP TABLE IF EXISTS `MEMBER`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `MEMBER` (
+  `MEMIDX` int NOT NULL AUTO_INCREMENT COMMENT '회원번호',
+  `MEMEMAIL` varchar(40) NOT NULL COMMENT '이메일',
+  `MEMPW` varchar(30) NOT NULL COMMENT '비밀번호',
+  `MEMNAME` varchar(50) NOT NULL COMMENT '이름',
+  `MEMNICK` varchar(50) NOT NULL COMMENT '닉네임',
+  `MEMPHONE` int NOT NULL COMMENT '핸드폰번호',
+  `MEMBIRTH` int NOT NULL COMMENT '생년월일',
+  `MEMGENDER` varchar(5) NOT NULL COMMENT '성별',
+  `MEMPHOTO` mediumblob COMMENT '회원사진',
+  PRIMARY KEY (`MEMIDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='회원';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MEMBER`
+--
+
+LOCK TABLES `MEMBER` WRITE;
+/*!40000 ALTER TABLE `MEMBER` DISABLE KEYS */;
+/*!40000 ALTER TABLE `MEMBER` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `MEMBERBODYINFO`
+--
+
+DROP TABLE IF EXISTS `MEMBERBODYINFO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `MEMBERBODYINFO` (
+  `MEMO` mediumtext COMMENT '타입',
+  `MEMDATE` timestamp NULL DEFAULT NULL COMMENT '날짜',
+  `MEMIDX` int NOT NULL COMMENT '회원번호',
+  KEY `FK_MEMBER_TO_MEMBERBODYINFO` (`MEMIDX`),
+  CONSTRAINT `FK_MEMBER_TO_MEMBERBODYINFO` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='회원바디기록';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `MEMBERBODYINFO`
+--
+
+LOCK TABLES `MEMBERBODYINFO` WRITE;
+/*!40000 ALTER TABLE `MEMBERBODYINFO` DISABLE KEYS */;
+/*!40000 ALTER TABLE `MEMBERBODYINFO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `PAYMENT`
+--
+
+
 --
 -- Table structure for table `BOARD`
 --
@@ -75,6 +132,32 @@ LOCK TABLES `BOARDCOMMENT` WRITE;
 /*!40000 ALTER TABLE `BOARDCOMMENT` DISABLE KEYS */;
 /*!40000 ALTER TABLE `BOARDCOMMENT` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+--
+-- Table structure for table `PLACE`
+--
+
+DROP TABLE IF EXISTS `PLACE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `PLACE` (
+  `PLACEIDX` int NOT NULL AUTO_INCREMENT COMMENT '플레이스IDX',
+  `PLACENAME` varchar(50) NOT NULL COMMENT '플레이스이름',
+  `OPENHOUR` mediumtext NOT NULL COMMENT '운영시간',
+  `PARKING` mediumtext NOT NULL COMMENT '주차시설',
+  `PLACEADDRESS` mediumtext NOT NULL COMMENT '플레이스주소',
+  `PLACEPHONE` mediumtext NOT NULL COMMENT '플레이스번호',
+  PRIMARY KEY (`PLACEIDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='플레이스';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `PLACE`
+--
+
+
+
 
 --
 -- Table structure for table `CARRY`
@@ -237,60 +320,7 @@ UNLOCK TABLES;
 -- Table structure for table `MEMBER`
 --
 
-DROP TABLE IF EXISTS `MEMBER`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `MEMBER` (
-  `MEMIDX` int NOT NULL AUTO_INCREMENT COMMENT '회원번호',
-  `MEMEMAIL` varchar(40) NOT NULL COMMENT '이메일',
-  `MEMPW` varchar(30) NOT NULL COMMENT '비밀번호',
-  `MEMNAME` varchar(50) NOT NULL COMMENT '이름',
-  `MEMNICK` varchar(50) NOT NULL COMMENT '닉네임',
-  `MEMPHONE` int NOT NULL COMMENT '핸드폰번호',
-  `MEMBIRTH` int NOT NULL COMMENT '생년월일',
-  `MEMGENDER` varchar(5) NOT NULL COMMENT '성별',
-  `MEMPHOTO` mediumblob COMMENT '회원사진',
-  PRIMARY KEY (`MEMIDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='회원';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `MEMBER`
---
-
-LOCK TABLES `MEMBER` WRITE;
-/*!40000 ALTER TABLE `MEMBER` DISABLE KEYS */;
-/*!40000 ALTER TABLE `MEMBER` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `MEMBERBODYINFO`
---
-
-DROP TABLE IF EXISTS `MEMBERBODYINFO`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `MEMBERBODYINFO` (
-  `MEMO` mediumtext COMMENT '타입',
-  `MEMDATE` timestamp NULL DEFAULT NULL COMMENT '날짜',
-  `MEMIDX` int NOT NULL COMMENT '회원번호',
-  KEY `FK_MEMBER_TO_MEMBERBODYINFO` (`MEMIDX`),
-  CONSTRAINT `FK_MEMBER_TO_MEMBERBODYINFO` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='회원바디기록';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `MEMBERBODYINFO`
---
-
-LOCK TABLES `MEMBERBODYINFO` WRITE;
-/*!40000 ALTER TABLE `MEMBERBODYINFO` DISABLE KEYS */;
-/*!40000 ALTER TABLE `MEMBERBODYINFO` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `PAYMENT`
---
 
 DROP TABLE IF EXISTS `PAYMENT`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -310,41 +340,6 @@ CREATE TABLE `PAYMENT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='결제';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `PAYMENT`
---
-
-LOCK TABLES `PAYMENT` WRITE;
-/*!40000 ALTER TABLE `PAYMENT` DISABLE KEYS */;
-/*!40000 ALTER TABLE `PAYMENT` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `PLACE`
---
-
-DROP TABLE IF EXISTS `PLACE`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `PLACE` (
-  `PLACEIDX` int NOT NULL AUTO_INCREMENT COMMENT '플레이스IDX',
-  `PLACENAME` varchar(50) NOT NULL COMMENT '플레이스이름',
-  `OPENHOUR` mediumtext NOT NULL COMMENT '운영시간',
-  `PARKING` mediumtext NOT NULL COMMENT '주차시설',
-  `PLACEADDRESS` mediumtext NOT NULL COMMENT '플레이스주소',
-  `PLACEPHONE` mediumtext NOT NULL COMMENT '플레이스번호',
-  PRIMARY KEY (`PLACEIDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='플레이스';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `PLACE`
---
-
-LOCK TABLES `PLACE` WRITE;
-/*!40000 ALTER TABLE `PLACE` DISABLE KEYS */;
-/*!40000 ALTER TABLE `PLACE` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `PROGRAMINFO`
@@ -370,6 +365,27 @@ CREATE TABLE `PROGRAMINFO` (
 --
 -- Dumping data for table `PROGRAMINFO`
 --
+
+
+
+
+--
+-- Dumping data for table `PAYMENT`
+--
+
+LOCK TABLES `PAYMENT` WRITE;
+/*!40000 ALTER TABLE `PAYMENT` DISABLE KEYS */;
+/*!40000 ALTER TABLE `PAYMENT` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+LOCK TABLES `PLACE` WRITE;
+/*!40000 ALTER TABLE `PLACE` DISABLE KEYS */;
+/*!40000 ALTER TABLE `PLACE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 
 LOCK TABLES `PROGRAMINFO` WRITE;
 /*!40000 ALTER TABLE `PROGRAMINFO` DISABLE KEYS */;
