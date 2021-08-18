@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/community.css">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="js/index.js"></script>
+
+  <title>GymCarry</title>
+  <script src="/js/includeHTML.js"></script>
+  <script src="/js/includeRouter.js"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header include-html="header.html"></header>
+  <!-- Header End -->
+  <!-- Contents -->
+
+  <div class="content">
+    <h1 class="title">COMMUNITY</h1>
+    <nav class="community_nav">
+      <ul>
+        <li>
+          <a class="menulink" href="#">전체 </a>
+        </li>
+        <li>
+          <a class="menulink" href="#">소통</a>
+        </li>
+        <li>
+          <a class="menulink" href="#">질문답변</a>
+        </li>
+
+        <button class="board_write" type="button" onclick=""><img class="write_icon" src="image/icon/edit.png"></button>
+        <button class="board_write2" type="button" onclick=""><img class="write_icon"
+            src="image/icon/edit.png"></button>
+      </ul>
+    </nav>
+    <div class="card">
+      <div class="board_sidebar">
+        <img class="profile_image" src="image/icon/profile.png" />
+        <ul class="board_writer">
+          <li><a href="#"></a>닉네임</li>
+        </ul>
+      </div>
+      <div class="board_main">
+        <button class="title_btn" type="button" onclick="">소통</button>
+        <h2 class="board_title">글제목입니다.</h2>
+        <p class="board_post"> 신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요.신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요.
+          신촌 헬스장 추천해주세요. </p>
+        <div class="board_bottom">
+          <p class="board_date">2021.08.11 17:18:23 PM</p>
+          <ul class="board_btn">
+            <li><a href="#"><img class="board_icon" src="image/icon/heart.png">2</a></li>
+            <li>
+              <a href="#"><img class="board_icon" src="image/icon/speech-bubble.png">15</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+  </div>
+
+
+  <!-- Contents end -->
+  <!-- Footer -->
+  <header include-html="footer.html"></header>
+  </footer>
+  </div>
+  <script>
+
+    function getDirection() {
+      var windowWidth = window.innerWidth;
+      var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+      return direction;
+
+
+    }
+    includeHTML(function () {
+      includeRouter(function () {
+        // do something in the future
+      });
+    });
+  </script>
+</body>
+
+</html>
