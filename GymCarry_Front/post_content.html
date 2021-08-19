@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/community.css">
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script src="js/index.js"></script>
+
+  <title>글목록</title>
+  <script src="/js/includeHTML.js"></script>
+  <script src="/js/includeRouter.js"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header include-html="header.html"></header>
+  <!-- Header End -->
+
+  <!-- Contents -->
+  <div class="content_main">
+    <div class="content">
+      <nav>
+        <ul>
+          <li>글목록</li>
+        </ul>
+      </nav>
+      <h1 class="title"><a href="#">COMMUNITY</h1></a>
+
+    </div>
+  </div>
+
+  <!-- Contents end -->
+  <!-- Footer -->
+  <header include-html="footer.html"></header>
+  </footer>
+  </div>
+  <script>
+
+    function getDirection() {
+      var windowWidth = window.innerWidth;
+      var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+      return direction;
+
+
+    }
+    includeHTML(function () {
+      includeRouter(function () {
+        // do something in the future
+      });
+    });
+  </script>
+</body>
+
+</html>
