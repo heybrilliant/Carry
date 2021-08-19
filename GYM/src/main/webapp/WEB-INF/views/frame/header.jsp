@@ -8,12 +8,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/swiper.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="../css/swiper.css">
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script src="js/index.js"></script>
+  <script src="../js/index.js"></script>
   <!-- Initialize Swiper -->
 
   <title>GymCarry</title>
@@ -26,7 +26,10 @@
       <div class="logo">
         <a href="#">GymCarry</a>
       </div>
-      <nav class="nav">
+      <nav class="nav"> 
+      <nav>
+		
+	</nav>
         <ul>
           <li>
             <a href="#">ABOUT</a>
@@ -41,13 +44,13 @@
             <a href="#">커뮤니티</a>
           </li>
           <li>
-            <a href="#">마이페이지</a>
+           	<a href="<c:url value='/mypage/mypage '/>">마이페이지</a>
           </li>
         </ul>
       </nav>
       <div class="sub_nav">
         <div class="chatting">
-          <img src="image/icon/chatting_icon.png" alt="chatting">
+          <img src="../image/icon/chatting_icon.png" alt="chatting">
         </div>
         <a href="#" class="login">
           로그인
