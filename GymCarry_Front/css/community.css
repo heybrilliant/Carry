@@ -7,7 +7,7 @@ body {
   place-items: center;
 }
 
-.content {
+.contents {
   width: 50%;
   margin: 3rem auto;
   margin-top: 140px;
@@ -44,9 +44,9 @@ body {
   border-left: none;
 }
 
-.community_nav .menulink {
+.community_nav .menulink1,.menulink2,.menulink3 {
   text-decoration: none;
-  color: rgb(94, 94, 94);
+  color:  rgb(94, 94, 94);
   display: block;
   font-size: 15px;
   font-family: "AppleSDGothicNeo";
