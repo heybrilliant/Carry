@@ -8,6 +8,9 @@
 .header.on {
   background: #fff;
 }
+.header.scroll_on {
+  background:#fff;
+}
 .container {
   margin: 0;
 }

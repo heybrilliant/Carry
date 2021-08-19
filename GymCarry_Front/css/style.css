@@ -1,32 +1,6 @@
 /* 폰트 설정 */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
-@font-face {
-  font-family: "AppleSDGothicNeo";
-  font-weight: 300;
-  src: url("/font/AppleSDGothicNeoL.eot");
-  src: local(※), url("/font/AppleSDGothicNeoL.woff") format("woff");
-}
-@font-face {
-  font-family: "AppleSDGothicNeo";
-  font-weight: 400;
-  src: url("/font/AppleSDGothicNeoR.eot");
-  src: local(※), url("/font/AppleSDGothicNeoR.woff") format("woff");
-}
-@font-face {
-  font-family: "AppleSDGothicNeo";
-  font-weight: 500;
-  src: url("/font/AppleSDGothicNeoM.eot");
-  src: local(※), url("/font/AppleSDGothicNeoM.woff") format("woff");
-}
-@font-face {
-  font-family: "AppleSDGothicNeo";
-  font-weight: 600;
-  src: url("/font/AppleSDGothicNeoB.eot");
-  src: local(※), url("/font/AppleSDGothicNeoB.woff") format("woff");
-}
 
 /* 기본 설정 */
 * {
@@ -55,6 +29,11 @@ a {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+.page_title {
+  margin:200px 0 150px;
+  text-align:center;
 }
 
 /* Header */
