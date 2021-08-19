@@ -1,16 +1,30 @@
 package com.project.gymcarry;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+/**
+ * Handles requests for the application home page.
+ */
 @Controller
 public class IndexController {
-	
-	// 메인화면시작
+
 	@RequestMapping("/index")
-	public String index() {
-		System.out.println("메인화면 진입");
-		return "index";	
+	public void index() {
 	}
-	
+
+	@RequestMapping("/")
+	public String index1() {
+		System.out.println("/ 진입");
+		return "redirect:/index";
+	}
+
 }

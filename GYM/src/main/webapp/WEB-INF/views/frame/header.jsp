@@ -11,7 +11,7 @@
 			<li><a href="#">1:1MATCHING</a></li>
 			<li><a href="#">PLACE</a></li>
 			<li><a href="#">COMMUNITY</a></li>
-			<li><a href="#">MY BODY</a></li>
+			<li><a href="<c:url value="mypage/mypage"/>">MY BODY</a></li>
 		</ul>
 	</nav>
 	<div class="sub_nav">
