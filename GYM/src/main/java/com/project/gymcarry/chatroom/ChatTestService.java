@@ -15,9 +15,9 @@ public class ChatTestService {
 	private SqlSessionTemplate template;
 	private ChatDao dao;
 	
-	public List<Chat> getChatList(){
+	public List<ChatDto> getChatList(){
 		dao = template.getMapper(ChatDao.class);
-		return dao.selectList();
+		return dao.selectRoomList();
 	}
 	
 }
