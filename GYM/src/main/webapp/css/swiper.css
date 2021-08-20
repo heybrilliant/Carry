@@ -18,7 +18,7 @@
   font-style: normal;
 }
 :root {
-  --swiper-theme-color: #007aff;
+  --swiper-theme-color: #111;
 }
 .swiper-container {
   margin-left: auto;
@@ -249,12 +249,12 @@
   transform: scale(0.33);
 }
 .swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   display: inline-block;
   border-radius: 100%;
   background: #000;
-  opacity: 0.2;
+  opacity: 0.4;
 }
 button.swiper-pagination-bullet {
   border: none;
@@ -298,7 +298,7 @@ button.swiper-pagination-bullet {
 .swiper-container-horizontal
   > .swiper-pagination-bullets
   .swiper-pagination-bullet {
-  margin: 0 4px;
+  margin: 0 8px;
 }
 .swiper-container-horizontal
   > .swiper-pagination-bullets.swiper-pagination-bullets-dynamic {

@@ -12,8 +12,8 @@
 				<li><a href="#">공지사항</a></li>
 			</ul>
 			<div class="sns"> 
-				<a href="#" class="insta"> <img src="<c:url value="/images/insta.png"/>" alt="">
-				</a> <a href="#" class="facebook"> <img src="<c:url value="/images/facebook.png"/>" alt="">
+				<a href="#" class="insta"> <img src="<c:url value="/images/icon/insta.png"/>" alt="">
+				</a> <a href="#" class="facebook"> <img src="<c:url value="/images/icon/facebook.png"/>" alt="">
 				</a>
 			</div>
 		</div>
