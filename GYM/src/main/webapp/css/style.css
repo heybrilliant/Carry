@@ -18,14 +18,24 @@ a {
   text-decoration: none;
   color: #333;
 }
-
-.container {
-  margin-top: 80px;
+.wrap {
+  position: relative;
+  background: #fff;
 }
+
 .container_fix {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+}
+
+.container {
+  margin-top: 80px;
+}
+
+.page_title {
+  margin:200px 0 150px;
+  text-align:center;
 }
 
 /* Header */
