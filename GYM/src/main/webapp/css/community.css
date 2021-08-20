@@ -22,57 +22,6 @@ body {
   text-align: center;
 }
 
-/* Nav 영역 */
-.community_nav {
-  list-style-type: none;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.community_nav ul {
-  padding-top: 5px;
-}
-
-.community_nav ul li {
-  border-left: 2px solid rgb(94, 94, 94);
-  display: inline-block;
-  padding: 0px 20px 0px 20px;
-  margin: 30px 0px 30px 0px;
-}
-.community_nav ul li:first-child {
-  border-left: none;
-}
-
-.community_nav .menulink {
-  text-decoration: none;
-  color: rgb(94, 94, 94);
-  display: block;
-  font-size: 15px;
-  font-family: "AppleSDGothicNeo";
-}
-
-.board_write {
-  background-color: transparent; /* make the button transparent */
-  border: none; /* assuming we don't want any borders */
-  float: right;
-  margin: 30px 0px 30px 0px;
-}
-.board_write2 {
-  background-color: transparent; /* make the button transparent */
-  border: none; /* assuming we don't want any borders */
-  float: left;
-  visibility: hidden;
-  margin: 30px 0px 30px 0px;
-}
-
-.write_icon {
-  width: 25px;
-  height: 25px;
-  margin-right: 5px;
-}
-
-/* Card 영역 */
 .card {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   width: 100%;
