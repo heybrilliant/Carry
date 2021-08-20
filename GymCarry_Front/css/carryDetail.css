@@ -11,7 +11,11 @@
     padding : 7px 10px;
 }
 
-
+hr {
+    border:0px;
+    height:0.1mm;
+    background-color: rgb(194, 194, 194);
+}
 
 
 
