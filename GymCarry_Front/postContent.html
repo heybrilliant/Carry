@@ -26,81 +26,84 @@
 
       <!-- Nav -->
       <div class="post_back">
-        <ul>
-          <a href="#">
-            <img src="image/icon/arrow.png">
-            <li>글 목록</li>
-          </a>
-        </ul>
+        <a class="post_back_link" href="#">
+          <img class="arrow_img" src="image/icon/arrow.png"> 글 목록
+        </a>
+
       </div>
+
       <!-- Profile -->
       <div class="space_between">
-        <div>
+        <div class="btn_right">
+          <button class="title_btn" type="button" onclick="">소통</button>
+          <h2 class="board_title"><a href="#">서강대 칼만두 맛집 추천 합니다 !! </h2></a>
+        </div>
+        <div class="profile">
           <div class="profile_img">
             <img alt="" src="image/icon/profile.png">
           </div>
           <div class="profile_left">
             <div id="nickname">닉네임</div>
             <div id="write_date"> 2021.08.11 17:18:23 PM </div>
+            <div class="content_right">
+              <ul>
+                <li>
+                  <a class="con_edit" href="#">수정 </a>
+                </li>
+                <li>
+                  <a class="con_delete" href="#">삭제</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <h2 class="board_title"><a href="#">서강대 칼만두 맛집 추천 합니다 !! </h2></a>
+
+
         </div>
+
       </div>
-      <hr>
       <!-- /Profile -->
       <!-- /Nav-->
 
       <!-- Content -->
       <div class="content_wrap">
-        <div class="content_left">
-          <button class="title_btn" type="button" onclick="">소통</button>
-        </div>
 
-        <div class="content_right">
-          <ul>
-            <li>
-              <a class="con_edit" href="#">수정 </a>
-            </li>
-            <li>
-              <a class="com_delete" href="#">삭제</a>
-            </li>
-        </div>
 
         <div class="post_content">
           <p class="post">제가 오늘 서강대 건너편 옥정이라는 평양식 만두국집 다녀왔는데요, 너무 맛있네요. 밥도 무료로 주세요. 대신 점심 장사라 2시까지만 합니다. 웨이팅도 있는데 금방
             빠져요. 인생
             칼만두집을 찾았네요. 이열치열 지대로 느끼고 싶으신 분들 다녀오세요. 입 힐링합니다^^</p>
         </div>
-        <hr>
-        <div>
-          <ul class="post_btn">
-            <li><a href="#"><img class="post_icon" src="image/icon/heart.png">2</a></li>
-            <li>
-              <a href="#"><img class="post_icon" src="image/icon/speech-bubble.png">15</a>
-            </li>
+      </div>
+      <div class="postbtn_wrap">
+        <div class="post_btn">
+          <a href="#"><img class="post_icon" src="image/icon/heart.png">2</a>
+          <a href="#"><img class="post_icon" src="image/icon/speech-bubble.png">15</a>
         </div>
-        <!-- /Content -->
-        <hr>
+      </div>
+      <!-- /Content -->
 
-        <!-- Comment -->
-        <div class="comment_wrap">
-          <div class="comment_profile">
+      <!-- Comment -->
+      <div class="comment_wrap">
+        <div class="profile">
+          <div class="profile_img">
             <img alt="" src="image/icon/profile2.png">
           </div>
-          <div class="comment_nickname">
-            <a href="#">입맛천재</a>
+          <div class="profile_left">
+            <div id="nickname">입맛고급</div>
+            <div id="write_date"> 2021.08.11 17:18:23 PM </div>
           </div>
-          <div class="comment_date">
-            <p>2021.08.12 17:18:23 PM</p>
+          <div class="text_wrap">
+            <div class="comment_text">
+              <p>오우 맛집 찾아 여기까지 왔네요ㅎ 감사합니다.</p>
+            </div>
           </div>
-          <div class="comment_text">
-            오우 맛집 찾아 여기까지 왔네요ㅎ 감사합니다.
-          </div>
-          <hr>
-        </div>
-        <!-- /Comment -->
 
-        <!-- Comment Input -->
+        </div>
+      </div>
+      <!-- /Comment -->
+
+      <!-- Comment Input -->
+      <div class="comment_input_wrap">
         <div class="search_wrap search_wrap_6">
           <div class="search_box">
             <input type="text" class="input" placeholder="댓글을 작성해주세요.">
@@ -109,17 +112,18 @@
             </div>
           </div>
         </div>
-        <!-- /Comment Input -->
-
       </div>
-      <!-- /Contents -->
+      <!-- /Comment Input -->
 
     </div>
     <!-- /Contents -->
 
-    <!-- Footer -->
-    <header include-html="footer.html"></header>
-    <!-- Footer end-->
+  </div>
+  <!-- /Contents -->
+
+  <!-- Footer -->
+  <header include-html="footer.html"></header>
+  <!-- Footer end-->
   </div>
   <script>
 
