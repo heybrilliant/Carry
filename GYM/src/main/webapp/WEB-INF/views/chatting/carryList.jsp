@@ -30,7 +30,7 @@
       <div class="card_main">
         <div class="card">
           <div class="board_sidebar">
-            <img class="profile_image" src="<c:url value="/images/profile.png"/>" />
+            <img class="profile_image" src="<c:url value="/images/icon/profile.png"/>" />
             <div class="nickname">캐리사진</div>
 
           </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="btnflex">
               <div class="board_post">
-                <span class="pt_nopt">경력사항</span><span class="pt_nopt2"><img src="<c:url value="/images/movie.png"/>">비대면 PT 가능</span>
+                <span class="pt_nopt">경력사항</span><span class="pt_nopt2"><img src="<c:url value="/images/icon/movie.png"/>">비대면 PT 가능</span>
                 <ul>
                   <li>어쩌고</li>
                   <li>저쩌고</li>
