@@ -36,7 +36,7 @@
                     </div>
                     <div class="content">
                         <span class="left">내용</span>
-                        <span>
+                        <span class="editor">
                             <textarea class="form-control" name="contents" id="contents"></textarea>
                         </span>
                     </div>
