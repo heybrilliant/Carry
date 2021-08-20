@@ -26,7 +26,7 @@
 	width: 33%; 
 	height : 100%;
 	float: left;
-	background-color: gray;
+	background-color: white;
 	height: 100%;
 }
 
@@ -35,34 +35,42 @@
 	height : 100%;
 	margin-left: 10px;
 	float: left;
-	background-color: gray;
+	background-color: white;
 }
 
 .col-right-left {
 	width: 49%;
 	float: left;
-	background-color: green;
+	background-color: white;
+	margin-bottom: 17px;
+	box-shadow: 0 0 20px rgb(0 0 0 / 20%);
 }
 
 .col-right-right {
 	width: 49%;
 	margin-left: 17px;
 	float: left;
-	background-color: purple;
+	background-color: white;
+	margin-bottom: 17px;
+	box-shadow: 0 0 20px rgb(0 0 0 / 20%);
 }
 
 .col-right-top {
 	width: 100%;
 	background-color: white;
+	margin-bottom: 17px;
+	box-shadow: 0 0 20px rgb(0 0 0 / 20%);
 }
 
 .my-info {
-	background-color: yellow;
+	background-color: white;
+	box-shadow: 0 0 20px rgb(0 0 0 / 20%);
 }
 
 .my-info-develope {
-	background-color: blue;
+	background-color: white;
 	margin-top: 10px;
+	box-shadow: 0 0 20px rgb(0 0 0 / 20%);
 }
 
 .col-name {
