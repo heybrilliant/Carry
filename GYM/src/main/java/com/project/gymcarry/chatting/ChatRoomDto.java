@@ -1,8 +1,8 @@
-package com.project.gymcarry.chatroom;
+package com.project.gymcarry.chatting;
 
 import com.google.protobuf.Timestamp;
 
-public class ChatDto {
+public class ChatRoomDto {
 	
 	private int messageidx; 		//메세지번호
 	private int chatidx;			//채팅방번호
@@ -10,9 +10,11 @@ public class ChatDto {
 	private Timestamp chatdate;		//대화시간
 	private int cridx;				//캐리번호
 	private int memidx;				//회원번호
-	public ChatDto() {
+	private CarryDtoTest carryDto;
+	
+	public ChatRoomDto() {
 	}
-	public ChatDto(int messageidx, int chatidx, String chatcontent, Timestamp chatdate, int cridx, int memidx) {
+	public ChatRoomDto(int messageidx, int chatidx, String chatcontent, Timestamp chatdate, int cridx, int memidx) {
 		this.messageidx = messageidx;
 		this.chatidx = chatidx;
 		this.chatcontent = chatcontent;
@@ -20,6 +22,7 @@ public class ChatDto {
 		this.cridx = cridx;
 		this.memidx = memidx;
 	}
+	
 	public int getMessageidx() {
 		return messageidx;
 	}
@@ -56,11 +59,16 @@ public class ChatDto {
 	public void setMemidx(int memidx) {
 		this.memidx = memidx;
 	}
+	public CarryDtoTest getCarryDto() {
+		return carryDto;
+	}
+	public void setCarryDto(CarryDtoTest carryDto) {
+		this.carryDto = carryDto;
+	}
+	
 	@Override
 	public String toString() {
 		return "ChatDto [messageidx=" + messageidx + ", chatidx=" + chatidx + ", chatcontent=" + chatcontent
 				+ ", chatdate=" + chatdate + ", cridx=" + cridx + ", memidx=" + memidx + "]";
-	}
-	
-	
+	}	
 }

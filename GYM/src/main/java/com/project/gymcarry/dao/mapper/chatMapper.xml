@@ -6,8 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.gymcarry.dao.ChatDao">
 
 	<!-- test -->
-	<select id="selectList" resultType="com.project.gymcarry.chatroom.Chat">
-		select * from chat
+	<!-- <select id="selectList" resultType="com.project.gymcarry.chatroom.ChatDto"> 
+		select * from chat </select> -->
+
+	<select id="selectChatList"
+		resultType="com.project.gymcarry.chatting.ChatListDto">
+		select c.crnick, c.centername, m.chatcontent
+		from carry c, chatroom m, chatlist l
+		where c.cridx=m.cridx and m.chatidx=l.chatidx;
 	</select>
-	
+
+
 </mapper>

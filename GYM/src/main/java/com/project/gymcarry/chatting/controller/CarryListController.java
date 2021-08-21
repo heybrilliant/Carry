@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CarryListController {
 
 	@GetMapping
-	public String carryList() {
+	public String chatRoomList(
+			) {
 		return "chatting/carryList";
 	}
+	
 }

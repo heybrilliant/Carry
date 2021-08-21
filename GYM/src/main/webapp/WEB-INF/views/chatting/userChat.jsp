@@ -19,60 +19,36 @@
             </ul>
         </nav>
 
-
         <div id="chatlist_wrap">
             <!-- 채팅방 리스트 시작 -->
 
+			<c:forEach items="${chatList}" var="list">
             <div class="chatlist">
                 <a href="#">
                     <div class="float_left">
-                        <img src="<c:url value="/images/프로필사진.png"/>">
+                        <img src="<c:url value="/images/icon/프로필사진.png"/>">
                     </div>
                     <div class="float_left chat_name">
-                        <h3>김자바</h3>
+                        <h3>${list.crnick}</h3>
                     </div>
                     <div class="chat_title">
-                        <span>핏블리짐</span>
+                        <span>${list.centername}</span>
                     </div>
                     <div class="chat_content">
-                        <span>네 안녕하세요. pt문의좀 하려는데요</span>
+                        <span>${list.chatcontent}</span>
                     </div>
                     <div class="chat_date">
                         <span>10:56AM</span>
                     </div>
                 </a>
-
             </div>
-
+			</c:forEach>
             <!-- 채팅방 리스트 끝 -->
-
-            <!-- 임의로 하나더 만듬! 나중에필요없음! -->
-            <div class="chatlist">
-                <a href="#">
-                    <div class="float_left">
-                        <img src="<c:url value="/images/프로필사진.png"/>">
-                    </div>
-                    <div class="float_left chat_name">
-                        <h3>홍길동</h3>
-                    </div>
-                    <div class="chat_title">
-                        <span>라이프휘트니스</span>
-                    </div>
-                    <div class="chat_content">
-                        <span>저기요~ 문의좀요</span>
-                    </div>
-                    <div class="chat_date">
-                        <span>12:46PM</span>
-                    </div>
-                </a>
-            </div>
-
-
         </div>
 
         <div id="chatcontent_warp">
             <div class="not_message">
-                <img src="<c:url value="/images/chatting_icon.png"/>" style="width: 80px;">
+                <img src="<c:url value="/images/icon/chat.png"/>" style="width: 80px;">
                 <h3>채팅할 상대를 선택해주세요</h3>
             </div>
         </div>

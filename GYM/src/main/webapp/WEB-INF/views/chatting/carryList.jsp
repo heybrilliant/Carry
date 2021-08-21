@@ -55,7 +55,7 @@
               </div>
               <div class="board_bottom">
                 <ul class="board_btn">
-                  <li><input type="button" value="1:1문의" class="inquiry_btn" onclick="location.href='<c:url value="/chatting/chat"/>'"></li>
+                  <li><input type="button" value="1:1문의" name="cridx" class="inquiry_btn" onclick="location.href='<c:url value="/chatting/chat"/>'"></li>
                   <li>
                     <input type="button" value="더 알아보기" class="details_btn">
                   </li>
