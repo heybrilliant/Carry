@@ -23,7 +23,6 @@ public class UserChatController {
 			ChatListDto chatListDto,
 			Model model
 			) {
-		System.out.println(chatListDto);
 		List<ChatListDto> list = chatListService.getChatList();
 		model.addAttribute("chatList", list);
 		return "chatting/userChat";
