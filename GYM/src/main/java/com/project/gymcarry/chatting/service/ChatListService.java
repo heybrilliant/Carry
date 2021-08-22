@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.chatting.ChatListDto;
+import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.dao.ChatDao;
 
 @Service
@@ -21,4 +22,9 @@ public class ChatListService {
 		return dao.selectChatList();
 	}
 	
-}
+	public List<ChatRoomDto> getChatIdx(int chatidx) {
+		dao = template.getMapper(ChatDao.class);
+		return dao.selectChattingList(chatidx);
+	}
+	
+}	

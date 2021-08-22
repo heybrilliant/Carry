@@ -1,6 +1,8 @@
 package com.project.gymcarry.chatting;
 
-import com.google.protobuf.Timestamp;
+
+import java.sql.Timestamp;
+
 
 public class ChatRoomDto {
 	
@@ -65,7 +67,6 @@ public class ChatRoomDto {
 	public void setCarryDto(CarryDtoTest carryDto) {
 		this.carryDto = carryDto;
 	}
-	
 	@Override
 	public String toString() {
 		return "ChatDto [messageidx=" + messageidx + ", chatidx=" + chatidx + ", chatcontent=" + chatcontent

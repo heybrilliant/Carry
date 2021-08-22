@@ -1,11 +1,17 @@
 package com.project.gymcarry.chatting;
 
+
+import java.sql.Timestamp;
+import java.util.Date;
+
+
 public class ChatListDto {
 	
 	private int chatidx;
 	private String crnick;
 	private String centername;
 	private String chatcontent;
+	private Timestamp chatdate;
 	public int getChatidx() {
 		return chatidx;
 	}
@@ -30,9 +36,14 @@ public class ChatListDto {
 	public void setChatcontent(String chatcontent) {
 		this.chatcontent = chatcontent;
 	}
-	@Override
-	public String toString() {
-		return "ChatListDto [chatidx=" + chatidx + ", crnick=" + crnick + ", centername=" + centername
-				+ ", chatcontent=" + chatcontent + "]";
+	public Timestamp getChatdate() {
+		return chatdate;
 	}
+	public void setChatdate(Timestamp chatdate) {
+		this.chatdate = chatdate;
+	}
+	public Date getDate() {
+		return new Date(getChatdate().getTime());
+	}	
+
 }

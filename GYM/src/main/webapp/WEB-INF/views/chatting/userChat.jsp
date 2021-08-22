@@ -15,16 +15,15 @@
                 <h3>접속자 아이디</h3>
             </div>
             <ul>
-                <li><span  style="margin-left: 350px; font-size: 30px;">GymCarry</span></li>
+                <li><span style="margin-left: 350px; font-size: 30px;">GymCarry</span></li>
             </ul>
         </nav>
-
+		
         <div id="chatlist_wrap">
             <!-- 채팅방 리스트 시작 -->
-
 			<c:forEach items="${chatList}" var="list">
             <div class="chatlist">
-                <a href="#">
+                <a href="javascript:chatList(${list.chatidx})">
                     <div class="float_left">
                         <img src="<c:url value="/images/icon/프로필사진.png"/>">
                     </div>
@@ -38,7 +37,7 @@
                         <span>${list.chatcontent}</span>
                     </div>
                     <div class="chat_date">
-                        <span>10:56AM</span>
+                        <span>${list.chatdate}</span>
                     </div>
                 </a>
             </div>
@@ -56,3 +55,25 @@
 	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	
+	
+<script>
+		function chatList(num){
+			$.ajax({
+				type : 'GET',
+				url : '/chatting/chat',
+				dataType: 'json',
+				contentType : 'application/json',
+				data : {
+					chatidx : num
+				},
+				success : function (data) {
+					console.log(data);
+				}
+			})
+		}
+</script>
+	
+	
+	
+	
