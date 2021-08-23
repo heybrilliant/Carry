@@ -9,7 +9,7 @@
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
-	
+	53233
 	
   <!-- Contents -->
   <div class="contents_wrap">
@@ -18,7 +18,7 @@
       <!-- Nav -->
       <div class="post_back">
         <a class="post_back_link" href="#">
-          <img class="arrow_img" src="image/icon/arrow.png"> 글 목록
+          <img class="arrow_img" src="/gym/images/icon/arrow.png"> 글 목록
         </a>
 
       </div>
@@ -27,11 +27,11 @@
       <div class="space_between">
         <div class="btn_right">
           <button class="title_btn" type="button" onclick="">소통</button>
-          <h2 class="board_title"><a href="#">서강대 칼만두 맛집 추천 합니다 !! </h2></a>
+          <h2 class="board_title"><a href="#">서강대 칼만두 맛집 추천 합니다 !! </a></h2>
         </div>
         <div class="profile">
           <div class="profile_img">
-            <img alt="" src="image/icon/profile.png">
+            <img alt="" src="/gym/images/icon/profile.png">
           </div>
           <div class="profile_left">
             <div id="nickname">닉네임</div>
@@ -67,8 +67,8 @@
       </div>
       <div class="postbtn_wrap">
         <div class="post_btn">
-          <a href="#"><img class="post_icon" src="image/icon/heart.png">2</a>
-          <a href="#"><img class="post_icon" src="image/icon/speech-bubble.png">15</a>
+          <a href="#"><img class="post_icon" src="/gym/images/icon/heart.png">2</a>
+          <a href="#"><img class="post_icon" src="/gym/images/icon/speech-bubble.png">15</a>
         </div>
       </div>
       <!-- /Content -->
@@ -77,7 +77,7 @@
       <div class="comment_wrap">
         <div class="profile">
           <div class="profile_img">
-            <img alt="" src="image/icon/profile2.png">
+            <img alt="" src="/gym/images/icon/profile2.png">
           </div>
           <div class="profile_left">
             <div id="nickname">입맛고급</div>

@@ -13,7 +13,7 @@ body {
   margin-top: 140px;
   padding: 2em;
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
-  background:white;
+  background: white;
 }
 
 .title {
@@ -44,9 +44,9 @@ body {
   border-left: none;
 }
 
-.community_nav .menulink1,.menulink2,.menulink3 {
+.community_nav .menulink {
   text-decoration: none;
-  color:  rgb(94, 94, 94);
+  color: rgb(94, 94, 94);
   display: block;
   font-size: 15px;
   font-family: "AppleSDGothicNeo";
@@ -88,7 +88,7 @@ body {
 
 .board_sidebar {
   width: 25%;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   padding-top: 20px;
   
 }
@@ -150,7 +150,10 @@ body {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
+  height: 50px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  -w
 }
 
 /* 날짜 아이콘 영역 */
@@ -191,4 +194,4 @@ body {
     text-align: left;
     margin-left: 2em;
   }
-}
+} ;

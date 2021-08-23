@@ -13,7 +13,7 @@
 	<!-- Contents -->
   <div class="contents_main">
     <div class="contents">
-      <h1 class="title"><a href="#">COMMUNITY</a></h1>
+      <h1 class="title"><a href="<c:url value="/community/community"/>">COMMUNITY</a></h1>
       <nav class="community_nav">
         <ul>
           <li>
@@ -26,7 +26,7 @@
             <a class="menulink3" href="#">질문답변</a>
           </li>
 
-          <a class="board_write" href="#"><img class="write_icon" src="/gym/images/icon/edit.png"></a>
+          <a class="board_write" href="<c:url value="/community/write"/>"><img class="write_icon" src="/gym/images/icon/edit.png"></a>
 
           <!-- 정렬을 위해 왼쪽에 버튼 숨겨놓은 것 -->
           <button class="board_write2" type="button" onclick=""><img class="write_icon"
@@ -42,8 +42,10 @@
           </div>
           <div class="board_main">
             <button class="title_btn" type="button" onclick="">소통</button>
-            <h2 class="board_title"><a href="#">글제목입니다.</a></h2>
-            <p class="board_post"><a href="#">  신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요.  신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요.  </a></p>
+            <h2 class="board_title"><a href="<c:url value="/community/postContent"/>">서강대 칼만두 맛집 추천 합니다 !!</a></h2>
+            <p class="board_post"><a href="<c:url value="/community/postContent"/>">제가 오늘 서강대 건너편 옥정이라는 평양식 만두국집 다녀왔는데요, 너무 맛있네요. 밥도 무료로 주세요. 대신 점심 장사라 2시까지만 합니다. 웨이팅도 있는데 금방
+            빠져요. 인생
+            칼만두집을 찾았네요. 이열치열 지대로 느끼고 싶으신 분들 다녀오세요. 입 힐링합니다^^</a></p>
             <div class="board_bottom">
               <div class="write_date">2021.08.11 17:18:23 PM</div>
               <ul class="board_btn">

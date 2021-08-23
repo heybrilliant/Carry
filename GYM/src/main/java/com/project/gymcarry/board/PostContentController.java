@@ -10,7 +10,7 @@ public class PostContentController {
 	
 	@GetMapping
 	public String matching() {
-		System.out.println("커뮤니티 진입");
+		System.out.println("글목록 진입");
 		return "community/postContent";
 	}
 	
