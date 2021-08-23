@@ -380,3 +380,9 @@ Servers/
 *.iml
 out
 gen
+
+#제외
+.progect
+.classpath
+.settings
+*/taget/*
