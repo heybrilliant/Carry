@@ -387,3 +387,5 @@ gen
 .settings
 */target/*
 !/GYM/target/
+*.MF
+*.properties
