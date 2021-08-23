@@ -10,7 +10,7 @@ public class CommunityController {
 	
 	@GetMapping
 	public String matching() {
-		System.out.println("글쓰기 진입");
+		System.out.println("커뮤니티 진입");
 		return "community/community";
 	}
 	
