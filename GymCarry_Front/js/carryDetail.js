@@ -2,7 +2,7 @@
 $(document).ready(function(e) {
 	
     // 사이드 윙 스크립트
-    var default_h = $(".header").height() + $(".carry_image").height() - 50;
+    var default_h = $(".header").height() + $(".carry_image").height() + 450;
 
     $(window).scroll(function(){
         var scroll_Top = $(this).scrollTop();
