@@ -112,7 +112,7 @@
 
 					</div>
 
-						<div class = "review_write display_none">
+						<div id = "review_write" class ="review_write display_none">
 							<input type = "text" class="review_input" placeholder="캐리 리뷰를 작성해주세요.">
 							<input type = "submit" value="작성" class="write_btn">
 						</div>

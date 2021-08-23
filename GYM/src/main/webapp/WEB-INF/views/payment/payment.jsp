@@ -12,7 +12,7 @@
 
 	<!-- Contents -->
         <div class="container_fix container payment_wrap">
-            <h2>결제하기</h3>
+            <h2>결제하기</h2>
                 <div>
                     <h3>주문 정보</h3>
                     <div class="order_info">
@@ -54,9 +54,6 @@
                 <div class = "pay_btn">
                 <input type="submit" value="결제하기" onClick="<c:url value = "payment/complete"/>">
                 </div>
-      
-      
-      
       
       
             </div>
