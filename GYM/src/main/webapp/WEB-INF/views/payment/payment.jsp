@@ -52,7 +52,7 @@
 
 
                 <div class = "pay_btn">
-                <input type="submit" value="결제하기" onclick='location.href="/gym/payment/complete"'>
+                <input type="submit" value="결제하기" onclick="location.href='<c:url value = "/payment/complete"/>'">
                 </div>
       
       

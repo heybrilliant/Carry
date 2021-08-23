@@ -106,15 +106,22 @@
 
 						<div class="review_content">
 							<span class="review_name">박회원</span> <span class="review_date">2021.08.20</span>
-							<br> <span>어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고</span>
+							<br> <span>어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
+							어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고쩌고어쩌고저쩌고
+							어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고쩌고
+							어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
+							어쩌고저쩌고어쩌고저쩌고어쩌고쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고
+							저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고</span>
 						</div>
 
 					</div>
 
-						<div id = "review_write" class ="review_write display_none">
-							<input type = "text" class="review_input" placeholder="캐리 리뷰를 작성해주세요.">
-							<input type = "submit" value="작성" class="write_btn">
-						</div>
+					<div id="review_write" class="review_write display_none">
+						<form>
+							<input type="text" class="review_input" placeholder="캐리 리뷰를 작성해주세요.">
+							<input type="submit" value="작성" class="write_btn">
+						</form>
+					</div>
 
 				</div>
 				<!-- carry review section all wrap END -->
@@ -181,8 +188,8 @@
 							<h4>460,000원</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button" onclick='location.href="/gym/payment/payment"'>
-						</div>
+							<input type="button" value="구매하기" class="button" onclick="location.href='<c:url value = "/payment/payment"/>'">
+						</div> 
 					</div>
 
 					<div class="program">
