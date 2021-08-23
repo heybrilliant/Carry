@@ -168,11 +168,11 @@ DROP TABLE IF EXISTS `CARRY`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `CARRY` (
   `CRIDX` int NOT NULL AUTO_INCREMENT COMMENT '캐리IDX',
-  `CRID` int NOT NULL COMMENT '캐리아이디',
+  `CRID` varchar(30) NOT NULL COMMENT '캐리아이디',
   `CRPW` varchar(30) NOT NULL COMMENT '비밀번호',
   `CRNAME` varchar(50) NOT NULL COMMENT '캐리실명',
   `CRNICK` varchar(50) NOT NULL COMMENT '캐리닉네임',
-  `CRPHONE` varchar(30) NOT NULL COMMENT '핸드폰번호',
+  `CRPHONE` int NOT NULL COMMENT '핸드폰번호',
   `CRBIRTH` int NOT NULL COMMENT '생년월일',
   `CRGENDER` varchar(5) NOT NULL COMMENT '성별',
   `CREMAIL` varchar(40) NOT NULL COMMENT '이메일',
