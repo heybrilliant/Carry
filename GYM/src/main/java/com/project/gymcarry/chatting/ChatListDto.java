@@ -4,6 +4,8 @@ package com.project.gymcarry.chatting;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 public class ChatListDto {
 	
@@ -11,6 +13,7 @@ public class ChatListDto {
 	private String crnick;
 	private String centername;
 	private String chatcontent;
+	@DateTimeFormat(pattern = "HH:mm a")
 	private Timestamp chatdate;
 	public int getChatidx() {
 		return chatidx;

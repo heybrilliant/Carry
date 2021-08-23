@@ -3,17 +3,18 @@ package com.project.gymcarry.chatting;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 public class ChatRoomDto {
 	
 	private int messageidx; 		//메세지번호
 	private int chatidx;			//채팅방번호
 	private String chatcontent;		//대화내용
+	@JsonFormat(pattern = "HH:mm a")
 	private Timestamp chatdate;		//대화시간
 	private int cridx;				//캐리번호
 	private int memidx;				//회원번호
-	private CarryDtoTest carryDto;
-	
 	public ChatRoomDto() {
 	}
 	public ChatRoomDto(int messageidx, int chatidx, String chatcontent, Timestamp chatdate, int cridx, int memidx) {
@@ -60,12 +61,6 @@ public class ChatRoomDto {
 	}
 	public void setMemidx(int memidx) {
 		this.memidx = memidx;
-	}
-	public CarryDtoTest getCarryDto() {
-		return carryDto;
-	}
-	public void setCarryDto(CarryDtoTest carryDto) {
-		this.carryDto = carryDto;
 	}
 	@Override
 	public String toString() {

@@ -160,6 +160,9 @@
     float: left;
     padding: 20px;
 }
+.carry_line img{
+    width: 60px;
+}
 
 .carry_chat{
     position: relative;
@@ -174,7 +177,7 @@
     position: absolute;
     bottom: 20px;
     right: 0;
-    margin-right: 45px;
+    margin-right: 25px;
 }
 .time_line span{
     color: rgb(109, 108, 108);
@@ -189,10 +192,12 @@
     height: auto;
     background:#333333;
     border-radius: 10px;
-    color: white;
     padding: 20px;
     word-wrap: break-word;
     display: inline-block;
+}
+.message_color span{
+	color: white;
 }
 
 .message:after {
@@ -219,7 +224,7 @@
     position:relative;
     margin: 20px;
     width: 80%;
-    height: 100%;
+    height: auto;
     background:#ced6e0;
     border-radius: 10px;
     color: black;
@@ -243,7 +248,7 @@
 .time_line2{
     position: absolute;
     bottom: 20px;
-    left: -47px;
+    left: -60px;
 }
 
 .user_chat{
@@ -257,6 +262,7 @@
     height: 65px;
     border-top: 2px solid #000;
 }
+		
 .chatting_write img{
     width: 40px;
     height: 40px;

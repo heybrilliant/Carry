@@ -8,9 +8,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectChattingList"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		select m.chatcontent, m.chatdate
+		<!-- select m.chatcontent, m.chatdate
 		from project.chatroom m, project.chatlist l
-		where l.chatidx=#{chatidx} and m.chatidx=l.chatidx;
+		where l.chatidx=#{chatidx} and m.chatidx=l.chatidx; -->
+		select * from chatroom where chatidx=#{chatidx};
 	</select>
 
 	<select id="selectChatList"

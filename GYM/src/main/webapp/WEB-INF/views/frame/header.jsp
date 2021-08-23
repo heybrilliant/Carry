@@ -20,6 +20,11 @@
 			<img src="<c:url value="/images/icon/chatting_icon.png"/>" alt="chatting">
 			</a>
 		</div>
-		<a href="#" class="login"> LOGIN </a>
+		<c:if test="${id eq null}">
+		<a href="<c:url value="/member/login"/>" class="login"> LOGIN </a>
+		</c:if>
+		<c:if test="${id ne null}">
+		<a href="<c:url value="/member/logOut"/>" class="login"> LOGOUT </a>
+		</c:if>
 	</div>
 </header>

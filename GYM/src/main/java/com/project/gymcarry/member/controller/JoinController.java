@@ -1,0 +1,35 @@
+package com.project.gymcarry.member.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.project.gymcarry.member.MemberDto;
+import com.project.gymcarry.member.service.JoinService;
+
+@Controller
+@RequestMapping("member/join")
+public class JoinController {
+	
+	@Autowired
+	JoinService joinservice;
+	
+	@GetMapping
+	public String memberJoinForm() {
+		return "member/joinForm";
+	}
+	
+	@PostMapping
+	public String memberJoin(MemberDto memberDto, Model model) {
+		System.out.println(memberDto);
+		int result = joinservice.memberJoin(memberDto);
+		if(result == 1) {
+			System.out.println("멤버회원가입성공");
+		}
+		return "index";
+	}
+	
+}
