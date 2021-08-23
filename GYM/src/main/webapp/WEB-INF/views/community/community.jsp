@@ -1,54 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/community/commWrite.css">
-<script src="/gym/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<link rel="stylesheet" href="/css/community/community.css">
 </head>
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
-	
-	<!-- Contents -->
-    <div class="community_write container container_fix">
-        <h1 class="page_title">
-            COMMUNITY
-        </h1>
-        <div class="board_write">
-            <form>
-                <div class="write_form">
-                    <div class="category">
-                        <span class="left">분류</span>
-                        <select class="category_info">
-                            <option value="소통">소통</option>
-                            <option value="질문/답변">질문/답변</option>
-                        </select>
-                    </div>
-                    <div class="name">
-                        <span class="left">작성자</span>
-                        <span class="name_info"><input type="text" name="name" value=""></span>
-                    </div>
-                    <div class="title">
-                        <span class="left">제목</span>
-                        <span><input type="text" name="title"></span>
-                    </div>
-                    <div class="content">
-                        <span class="left">내용</span>
-                        <span class="editor">
-                            <textarea class="form-control" name="contents" id="contents"></textarea>
-                        </span>
-                    </div>
-                </div>
-                <div class="btn">
-                    <input type="submit" value="작성 완료">
-                    <a href="#">취소</a>
-                </div>
-            </form>
 
+    <!-- Contents -->
+    <div class="contents_main">
+        <div class="contents">
+            <h1 class="title"><a href="#">COMMUNITY</h1></a>
+            <nav class="community_nav">
+                <ul>
+                    <li>
+                        <a class="menulink1" href="#">전체 </a>
+                    </li>
+                    <li>
+                        <a class="menulink2" href="#">소통</a>
+                    </li>
+                    <li>
+                        <a class="menulink3" href="#">질문답변</a>
+                    </li>
+
+                    <a class="board_write" href="#"><img class="write_icon" src="/images/icon/edit.png"></a>
+
+                    <!-- 정렬을 위해 왼쪽에 버튼 숨겨놓은 것 -->
+                    <button class="board_write2" type="button" onclick=""><img class="write_icon"
+                                                                               src="/images/icon/edit.png"></button>
+                </ul>
+            </nav>
+            <div class="card_main">
+                <div class="card">
+                    <div class="board_sidebar">
+                        <img class="profile_image" src="/images/icon/profile.png" />
+                        <div class="nickname">닉네임</div>
+
+                    </div>
+                    <div class="board_main">
+                        <button class="title_btn" type="button" onclick="">소통</button>
+                        <h2 class="board_title"><a href="#">글제목입니다.</h2></a>
+                        <p class="board_post"><a href="#"> 신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요. 신촌 헬스장 추천해주세요.신촌 헬스장 추천해주세요.
+                            신촌 헬스장
+                            추천해주세요.
+                            신촌 헬스장 추천해주세요. </p></a>
+                        <div class="board_bottom">
+                            <div class="write_date">2021.08.11 17:18:23 PM</div>
+                            <ul class="board_btn">
+                                <li><a href="#"><img class="board_icon" src="/images/icon/heart.png">2</a></li>
+                                <li>
+                                    <a href="#"><img class="board_icon" src="/images/icon/speech-bubble.png">15</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
         </div>
     </div>
-	
+    </div>
+
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	
