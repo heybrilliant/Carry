@@ -8,7 +8,7 @@
 <title>Servey</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/grid.css">
-<link rel="stylesheet" href="/gym/css/community.css">
+
 </head>
 <body>
 	<!-- header -->
@@ -22,7 +22,9 @@
 					왼쪽 섹션
 					<div class="my-info">
 						내 정보
-						<div class="col-profile">프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필
+						<div class="col-profile">
+						<img id="loadingimg" class="display_none"
+						src="<c:url value="/images/icon/user.png"/>">프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필
 							섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필
 							섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필
 							섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션프로필 섹션</div>
