@@ -386,3 +386,4 @@ gen
 .classpath
 .settings
 */taget/*
+!/GYM/target/
