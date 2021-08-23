@@ -7,11 +7,11 @@ body {
   place-items: center;
 }
 
-.content {
-  width: 70vw;
+.contents {
+  width: 50%;
   margin: 3rem auto;
-  margin-top: 100px;
-  padding: 3em;
+  margin-top: 140px;
+  padding: 2em;
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
   background: white;
 }
@@ -22,37 +22,99 @@ body {
   text-align: center;
 }
 
+/* Nav 영역 */
+.community_nav {
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.community_nav ul {
+  padding-top: 5px;
+}
+
+.community_nav ul li {
+  border-left: 2px solid rgb(94, 94, 94);
+  display: inline-block;
+  padding: 0px 20px 0px 20px;
+  margin: 30px 0px 30px 0px;
+}
+.community_nav ul li:first-child {
+  border-left: none;
+}
+
+.community_nav .menulink {
+  text-decoration: none;
+  color: rgb(94, 94, 94);
+  display: block;
+  font-size: 15px;
+  font-family: "AppleSDGothicNeo";
+}
+
+.board_write {
+  background-color: transparent; /* make the button transparent */
+  border: none; /* assuming we don't want any borders */
+  float: right;
+  margin: 30px 0px 30px 0px;
+}
+.board_write2 {
+  background-color: transparent; /* make the button transparent */
+  border: none; /* assuming we don't want any borders */
+  float: left;
+  visibility: hidden;
+  margin: 30px 0px 30px 0px;
+}
+
+.write_icon {
+  width: 23px;
+  height: 23px;
+  margin-right: 5px;
+}
+
+/* Card 영역 */
 .card {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   width: 100%;
+  height: 200px;
   max-width: none;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 2em;
+  padding: 1em;
 }
 
-.board_writer {
+/* 프로필 영역(왼쪽) */
+
+.board_sidebar {
+  width: 25%;
+  margin: 0 auto;
+  padding-top: 20px;
+  
+}
+.profile_image {
+  border-radius: 50%;
+  width: 90px;
+}
+
+.nickname {
   display: flex;
   justify-content: center;
   list-style: none;
   justify-content: center;
-  width: 150px;
+  width: 100%;
   margin: 0 auto;
   font-weight: bold;
+  font-size: 14px;
 }
 
-.profile_image {
-  border-radius: 50%;
-  width: 150px;
-}
-
+/* 오른쪽 영역 */
 .title_btn {
   margin: 0;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.7rem;
 
   font-family: "AppleSDGothicNeo";
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
   text-align: center;
   text-decoration: none;
@@ -62,7 +124,7 @@ body {
   width: auto;
 
   border: none;
-  border-radius: 20px;
+  border-radius: 18px;
 
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -72,32 +134,42 @@ body {
   transition: 0.5s;
 }
 
+/* 글제목 내용 영역 */
 .board_title {
-  font-size: 2rem;
+  font-size: 20px;
   letter-spacing: 1px;
   margin: 10px 0px 5px 0px;
 }
 
-.board_title::after {
-  content: "";
-  display: block;
-  height: 1px;
-  width: 2em;
-  background-color: ;
+.board_main {
+  position: relative;
 }
 
 .board_post {
   margin: 0;
   text-transform: uppercase;
-  font-size: 0.875rem;
+  font-size: 12px;
   letter-spacing: 1px;
+  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -w
 }
 
-.board_date {
+/* 날짜 아이콘 영역 */
+.board_bottom {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  
+}
+
+.write_date {
   margin: 0;
   text-transform: uppercase;
-  font-size: 0.875rem;
+  font-size: 11px;
   display: inline-block;
+  color: rgb(93, 93, 93);
 }
 
 .board_btn {
@@ -105,12 +177,12 @@ body {
   float: right;
   justify-content: space-around;
   width: 100px;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .board_icon {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   margin-right: 5px;
 }
 

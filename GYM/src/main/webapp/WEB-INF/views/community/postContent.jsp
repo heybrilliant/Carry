@@ -1,25 +1,16 @@
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/post_content.css">
-  <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <script src="js/index.js"></script>
-
-  <title>글목록</title>
-  <script src="/js/includeHTML.js"></script>
-  <script src="/js/includeRouter.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<title>Community</title>
+<%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+<link rel="stylesheet" href="/gym/css/community/postContent.css">
+<script src="/gym/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
-
 <body>
-  <!-- Header -->
-  <header include-html="header.html"></header>
-  <!-- Header End -->
-
+	<!-- header -->
+	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
+	53233
+	
   <!-- Contents -->
   <div class="contents_wrap">
     <div class="contents">
@@ -27,7 +18,7 @@
       <!-- Nav -->
       <div class="post_back">
         <a class="post_back_link" href="#">
-          <img class="arrow_img" src="image/icon/arrow.png"> 글 목록
+          <img class="arrow_img" src="/gym/images/icon/arrow.png"> 글 목록
         </a>
 
       </div>
@@ -36,11 +27,11 @@
       <div class="space_between">
         <div class="btn_right">
           <button class="title_btn" type="button" onclick="">소통</button>
-          <h2 class="board_title"><a href="#">서강대 칼만두 맛집 추천 합니다 !! </h2></a>
+          <h2 class="board_title"><a href="#">서강대 칼만두 맛집 추천 합니다 !! </a></h2>
         </div>
         <div class="profile">
           <div class="profile_img">
-            <img alt="" src="image/icon/profile.png">
+            <img alt="" src="/gym/images/icon/profile.png">
           </div>
           <div class="profile_left">
             <div id="nickname">닉네임</div>
@@ -76,8 +67,8 @@
       </div>
       <div class="postbtn_wrap">
         <div class="post_btn">
-          <a href="#"><img class="post_icon" src="image/icon/heart.png">2</a>
-          <a href="#"><img class="post_icon" src="image/icon/speech-bubble.png">15</a>
+          <a href="#"><img class="post_icon" src="/gym/images/icon/heart.png">2</a>
+          <a href="#"><img class="post_icon" src="/gym/images/icon/speech-bubble.png">15</a>
         </div>
       </div>
       <!-- /Content -->
@@ -86,7 +77,7 @@
       <div class="comment_wrap">
         <div class="profile">
           <div class="profile_img">
-            <img alt="" src="image/icon/profile2.png">
+            <img alt="" src="/gym/images/icon/profile2.png">
           </div>
           <div class="profile_left">
             <div id="nickname">입맛고급</div>
@@ -120,27 +111,8 @@
 
   </div>
   <!-- /Contents -->
+	
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	
 
-  <!-- Footer -->
-  <header include-html="footer.html"></header>
-  <!-- Footer end-->
-  </div>
-  <script>
-
-    function getDirection() {
-      var windowWidth = window.innerWidth;
-      var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
-
-      return direction;
-
-
-    }
-    includeHTML(function () {
-      includeRouter(function () {
-        // do something in the future
-      });
-    });
-  </script>
-</body>
-
-</html>
