@@ -385,5 +385,5 @@ gen
 .progect
 .classpath
 .settings
-*/taget/*
+*/target/*
 !/GYM/target/
