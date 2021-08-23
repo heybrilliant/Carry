@@ -13,7 +13,7 @@ body {
   margin-top: 140px;
   padding: 2em;
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
-  background:b;
+  background:white;
 }
 
 .title {
@@ -88,7 +88,7 @@ body {
 
 .board_sidebar {
   width: 25%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding-top: 20px;
   
 }
@@ -150,8 +150,8 @@ body {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: 1px;
-  height: 100px;
   overflow: hidden;
+  height : 20%
 }
 
 /* 날짜 아이콘 영역 */
