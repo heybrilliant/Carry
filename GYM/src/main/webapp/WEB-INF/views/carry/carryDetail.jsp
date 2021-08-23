@@ -5,6 +5,7 @@
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/carry/carryDetail.css">
 <script src="/gym/js/carryDetail.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -31,13 +32,11 @@
 		<div class="quickmenu_section">
 			<nav class="quickmenu">
 				<ul>
-					<li><a href="#">소개</a></li>
-					<li><a href="#">후기</a></li>
-					<li><a href="#">전문분야</a></li>
-					<li><a href="#">소속 플레이스</a></li>
-					<li><a href="#">위치</a></li>
-					<li><a href="#">자격/경력</a></li>
-					<li><a href="#">이용가격</a></li>
+					<li><a href="#introduce" id="introducte_btn">소개</a></li>
+					<li><a href="#review">후기</a></li>
+					<li><a href="#place">소속 플레이스</a></li>
+					<li><a href="#location">위치</a></li>
+					<li><a href="#" id="carrer_btn">자격/경력</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -56,7 +55,7 @@
 
 					<div id="c1"></div>
 
-					<table class="carry_info_message">
+					<table class="carry_info_message" id="introduce">
 						<tr>
 							<td><span class="carry_name">김자바</span></td>
 						</tr>
@@ -79,7 +78,7 @@
 				<!-- carry info section END -->
 
 
-				<div class="carry_carrer">
+				<div class="carry_carrer" id="carrer">
 					<h3>자격 및 경력</h3>
 					<ul>
 						<li>어쩌고저쩌고</li>
@@ -94,7 +93,7 @@
 
 
 				<!-- carry review section all wrap START -->
-				<div class="carry_review_wrap">
+				<div class="carry_review_wrap" id="review">
 					<div class="carry_review_title">
 						<h2>캐리 후기</h2>
 						<input type="button" value="후기작성" id="write_review_btn">
@@ -123,7 +122,7 @@
 
 
 				<!-- 소속 플레이스 section all wrap START -->
-				<div class="carry_place_title">
+				<div class="carry_place_title" id="place">
 					<h2>소속 플레이스</h2>
 					<div class="carry_place_content">
 						<img src="http://placehold.it/570x380"> <span><a
@@ -134,7 +133,7 @@
 
 
 
-				<div class="place_map">
+				<div class="place_map" id="location">
 					<h3>지도</h3>
 					<div class="place_address">
 						<p>경기 안산시 단원구 선부광장1로 72 4층</p>

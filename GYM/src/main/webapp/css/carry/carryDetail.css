@@ -143,6 +143,7 @@ table {
 .carry_review_wrap {
 	margin: 80px 0;
 	border-bottom: 1px solid #BBB;
+	padding-bottom : 50px;
 }
 
 .carry_review_title {
@@ -175,7 +176,7 @@ table {
 }
 
 .review_write {
-	margin: 20px 0 20px 0;
+	margin: 30px 0 10px 0;
 	text-align: center;
 }
 
