@@ -18,51 +18,114 @@
 	padding: 0.5em;
 }
 
+[class*="col-"] h3 {
+	margin: 1%
+}
+
 .col {
 	display: flex;
 }
 
 .col-left {
-	width: 33%; 
-	height : 100%;
+	width: 33%;
+	height: 100%;
 	float: left;
-	background-color: gray;
+	background-color: white;
 	height: 100%;
 }
 
 .col-right {
 	width: 66%;
-	height : 100%;
+	height: 100%;
 	margin-left: 10px;
 	float: left;
-	background-color: gray;
+	background-color: white;
 }
 
 .col-right-left {
 	width: 49%;
+	height: 620px;
 	float: left;
-	background-color: green;
+	background-color: white;
+	margin-bottom: 17px;
+	box-shadow: 0 0 20px rgb(0 0 0/ 20%);
 }
 
 .col-right-right {
 	width: 49%;
+	height: 200px;
 	margin-left: 17px;
 	float: left;
-	background-color: purple;
+	background-color: white;
+	margin-bottom: 17px;
+	box-shadow: 0 0 20px rgb(0 0 0/ 20%);
+}
+
+.col-right-right2 {
+	width: 49%;
+	height: 400px;
+	margin-left: 17px;
+	float: left;
+	background-color: white;
+	margin-bottom: 17px;
+	box-shadow: 0 0 20px rgb(0 0 0/ 20%);
 }
 
 .col-right-top {
 	width: 100%;
 	background-color: white;
+	margin-bottom: 17px;
+	box-shadow: 0 0 20px rgb(0 0 0/ 20%);
+	text-align: center;
 }
 
+.col-right-top-memo {
+	width: 100%;
+	background-color: white;
+	margin-bottom: 17px;
+	box-shadow: 0 0 20px rgb(0 0 0/ 20%);
+	text-align: left;
+	height: 300px;
+}
+
+
+
+
 .my-info {
-	background-color: yellow;
+	background-color: white;
+	box-shadow: 0 0 20px rgb(0 0 0/ 20%);
+}
+
+.title {
+	font-weight: 900;
+	line-height: 0.8;
+	text-align: center;
+}
+
+.display_none {
+	width: 70%;
+	display: block;
+	margin: auto;
+}
+
+.info_title {
+	padding: 2% 2% 2% 3% ;
+}
+
+.info_contents {
+	padding: 0% 2% 2% 5% ;
+	list-style: none;
+}
+
+.info_list  {
+	padding: 1%;
+	list-style: none; 
 }
 
 .my-info-develope {
-	background-color: blue;
+	background-color: white;
 	margin-top: 10px;
+	box-shadow: 0 0 20px rgb(0 0 0/ 20%);
 }
 
 .col-name {
