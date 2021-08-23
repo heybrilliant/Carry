@@ -63,7 +63,6 @@
             </div>
         </div>
     </div>
-    </div>
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>

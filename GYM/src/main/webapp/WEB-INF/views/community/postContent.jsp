@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/css/postContent.css">
+<link rel="stylesheet" href="/css/community/postContent.css">
 </head>
 <body>
 	<!-- header -->
