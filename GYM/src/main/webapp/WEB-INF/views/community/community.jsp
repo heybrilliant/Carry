@@ -12,7 +12,7 @@
     <!-- Contents -->
     <div class="contents_main">
         <div class="contents">
-            <h1 class="title"><a href="#">COMMUNITY</h1></a>
+            <h1 class="title"><a href="#">COMMUNITY</a></h1>
             <nav class="community_nav">
                 <ul>
                     <li>
@@ -68,13 +68,4 @@
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	
-	<script>
-        var oEditors = [];
 
-        nhn.husky.EZCreator.createInIFrame({
-            oAppRef: oEditors,
-            elPlaceHolder: "contents",
-            sSkinURI: "/gym/smarteditor2/SmartEditor2Skin.html",
-            fCreator: "createSEditor2"
-        });
-    </script>
