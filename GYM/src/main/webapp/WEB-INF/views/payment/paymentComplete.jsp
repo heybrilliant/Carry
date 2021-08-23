@@ -20,7 +20,7 @@
 
 		<div class="btn">
 			<input type="submit" value="결제 내역"> <input type="button"
-				value="홈으로" onClick="<c:url value="/index"/>">
+				value="홈으로" onclick='location.href="/gym/index"'>
 		</div> 
 
 	</div>

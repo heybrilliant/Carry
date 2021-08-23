@@ -31,7 +31,7 @@
 		<section class="review_section container_fix swiper-container">
 			<h1 class="title">Carry Review</h1>
 			<div class="review_contaier swiper-wrapper">
-				<div class="review_content swiper-slide">
+				<div class="review_content swiper-slide" onclick='location.href="/gym/carry/detail"'>
 					<div class="review_img">
 						<img src="<c:url value="/images/review1.jpg"/>" alt="img">
 					</div>

@@ -182,7 +182,7 @@
 							<h4>460,000원</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button">
+							<input type="button" value="구매하기" class="button" onclick='location.href="/gym/payment/payment"'>
 						</div>
 					</div>
 
