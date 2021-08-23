@@ -56,18 +56,35 @@
 
 
 					<div class="col-right-top">
-						<h3>2021-08-23</h3>
+						<h2>2021-08-23</h2>
 					</div>
 					<div class="col-right-top-memo">
 						<h3>일일 메모</h3>
+
+
+						<a href="#"><img class="edit_text"
+							src="<c:url value="/images/icon/edit.png"/>"></a>
+
 					</div>
 
 
-					<div class="col-right-left"><h3>눈 바디</h3></div>
+					<div class="col-right-left">
+						<h3>눈 바디</h3>
+						<a href="#"><img class="edit_text"
+							src="<c:url value="/images/icon/edit.png"/>"></a>
+					</div>
 
-					<div class="col-right-right"><h3>몸무게</h3></div>
+					<div class="col-right-right">
+						<h3>몸무게</h3>
+						<a href="#"><img class="edit_text"
+							src="<c:url value="/images/icon/edit.png"/>"></a>
+					</div>
 
-					<div class="col-right-right2"><h3>식단</h3></div>
+					<div class="col-right-right2">
+						<h3>식단</h3>
+						<a href="#"><img class="edit_text"
+							src="<c:url value="/images/icon/edit.png"/>"></a>
+					</div>
 
 				</div>
 			</div>
