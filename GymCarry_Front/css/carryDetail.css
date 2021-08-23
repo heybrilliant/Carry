@@ -9,6 +9,7 @@
     color:white;
     background-color: black;
     padding : 7px 10px;
+    cursor: pointer;
 }
 
 hr {
@@ -134,7 +135,7 @@ table {
 }
 
 .carry_introduce {
-    font-size : 18px;
+    font-size : 17px;
 
 }
 
@@ -163,9 +164,10 @@ table {
 .write_review_btn:hover { 
     float:right;
     border:1px solid #CCC;
-    background-color: #CCC;
-    color : white;
+    background-color: white;
+    color : black;
     padding : 7px 10px;
+    cursor: pointer;
 }
 
 .write_review_btn { 
