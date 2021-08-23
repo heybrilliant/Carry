@@ -22,10 +22,11 @@ public class CarryJoinController {
 	
 	@PostMapping
 	public String carryJoin(CarryDto carryDto) {
+		System.out.println(carryDto);
 		int result = joinservice.carryJoin(carryDto);
 		if(result == 1) {
 			System.out.println("캐리회원가입성공");
 		}
-		return "member/login";
+		return "redirect:/member/login";
 	}
 }

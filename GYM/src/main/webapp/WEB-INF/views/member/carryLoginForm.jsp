@@ -21,18 +21,18 @@
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 	<!-- 임의로 만든 로그인 -->
 	<div class="center">
-		<h1>멤버로그인</h1>
-		<form action="<c:url value="/member/memberLogin"/>" method="post">
 
+		<form action="<c:url value="/carry/carryLogin"/>" method="post">
+			<h1>캐리로그인</h1>
 			<table border="1">
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name=mememail size="20"></td>
+					<td><input type="text" name=crid size="20"></td>
 				</tr>
 
 				<tr>
 					<td>패스워드</td>
-					<td><input type="password" name="mempw" size="20"></td>
+					<td><input type="password" name="crpw" size="20"></td>
 				</tr>
 
 				<tr>
@@ -41,7 +41,7 @@
 			</table>
 		</form>
 
-		<a href="<c:url value="/carry/login"/>">캐리로그인</a>
+		<a href="<c:url value="/member/login"/>">멤버로그인</a>
 		<a href="<c:url value="/member/join"/>">멤버회원가입</a>
 		<a href="<c:url value="/carry/join"/>">캐리회원가입</a>
 	</div>

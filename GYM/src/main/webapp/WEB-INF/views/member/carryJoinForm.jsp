@@ -52,7 +52,6 @@
 					<td><input type="text" name="placename" size="20"></td>
 				</tr>
 				
-
 				<tr>
 					<td colspan="2"><input type="submit" value="회원가입"></td>
 				</tr>

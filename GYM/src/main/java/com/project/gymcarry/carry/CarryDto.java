@@ -2,13 +2,14 @@ package com.project.gymcarry.carry;
 
 public class CarryDto {
 	private int cridx;
-	private int crid;
+	private String crid;
 	private String crpw;
 	private String crname;
 	private String crnick;
 	private String placename;
-	public CarryDto(int cridx, int crid, String crpw, String crname, String crnick, String placename) {
-		super();
+	public CarryDto() {
+	}
+	public CarryDto(int cridx, String crid, String crpw, String crname, String crnick, String placename) {
 		this.cridx = cridx;
 		this.crid = crid;
 		this.crpw = crpw;
@@ -22,10 +23,10 @@ public class CarryDto {
 	public void setCridx(int cridx) {
 		this.cridx = cridx;
 	}
-	public int getCrid() {
+	public String getCrid() {
 		return crid;
 	}
-	public void setCrid(int crid) {
+	public void setCrid(String crid) {
 		this.crid = crid;
 	}
 	public String getCrpw() {

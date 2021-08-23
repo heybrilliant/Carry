@@ -12,7 +12,7 @@
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
-	
+
 	<!-- Contents -->
   <div class="content_main">
     <div class="content">
@@ -20,7 +20,7 @@
       <nav class="community_nav">
         <ul>
           <li>
-            <input type="button" value="지금 바로 1:1 매치하러가기" onclick="location.href='<c:url value="/member/servey"/>'">
+            <input type="button" value="지금 바로 1:1 매치하러가기" onclick="location.href='<c:url value="/survey/servey"/>'">
           </li>
         </ul>
         <div class="caary_navfont">
@@ -28,6 +28,8 @@
         </div>
       </nav>
       <div class="card_main">
+      
+      <c:forEach items="${carryList}" var="list">
         <div class="card">
           <div class="board_sidebar">
             <img class="profile_image" src="<c:url value="/images/icon/profile.png"/>" />
@@ -35,14 +37,14 @@
 
           </div>
           <div class="board_main">
-            <button class="title_btn" type="button" onclick="">김자바<span>Carry</span></button>
+            <button class="title_btn" type="button" onclick="">${list.crnick}<span>Carry</span></button>
             <div class="carry_price">
               <span>1회 코칭 가격</span>
               <h3>50,000원</h3>
             </div>
             <div class="board_title">
-              <span>핏블리짐</span>
-              <span class="address_font">서울특별시 마포구 어쩌구동</span>
+              <span>${list.placename}</span>
+              <span class="address_font">서울특별시 마포구</span>
             </div>
             <div class="btnflex">
               <div class="board_post">
@@ -64,11 +66,11 @@
             </div>
           </div>
         </div>
+		</c:forEach>	
 
       </div>
     </div>
   </div>
-
   <!-- Contents end -->
 	
 	

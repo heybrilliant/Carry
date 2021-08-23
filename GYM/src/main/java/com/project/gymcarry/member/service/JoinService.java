@@ -13,6 +13,7 @@ public class JoinService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
+	
 	private MemberDao dao;
 	
 	public int memberJoin(MemberDto memberDto) {

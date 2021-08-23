@@ -2,7 +2,6 @@ package com.project.gymcarry.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +22,13 @@ public class JoinController {
 	}
 	
 	@PostMapping
-	public String memberJoin(MemberDto memberDto, Model model) {
+	public String memberJoin(MemberDto memberDto) {
 		System.out.println(memberDto);
 		int result = joinservice.memberJoin(memberDto);
 		if(result == 1) {
 			System.out.println("멤버회원가입성공");
 		}
-		return "index";
+		return "redirect:/member/login";
 	}
 	
 }

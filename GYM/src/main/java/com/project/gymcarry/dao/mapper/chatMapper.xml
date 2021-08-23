@@ -3,9 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.project.gymcarry.dao.ChatDao">
+<mapper namespace="com.project.gymcarry.dao.MatchingDao">
 
-
+	<!-- 대화방 리스트 -->
 	<select id="selectChattingList"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
 		<!-- select m.chatcontent, m.chatdate
@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from chatroom where chatidx=#{chatidx};
 	</select>
 
+	<!-- 채팅룸 리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
 		select c.crnick, c.centername, m.chatcontent, m.chatdate,l.chatidx
@@ -21,7 +22,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where c.cridx=m.cridx and
 		m.chatidx=l.chatidx;
 	</select>
-
+	
+	<!-- 매칭캐리리스트 -->
+	<select id="selectCarryList"
+		resultType="com.project.gymcarry.carry.CarryDto">
+		select * from carry
+	</select>
 
 
 </mapper>

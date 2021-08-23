@@ -4,7 +4,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.gymcarry.dao.MemberDao">
-
+	
+	<!-- member -->
 	<select id="login"
 		resultType="com.project.gymcarry.member.MemberDto"
 	>
@@ -20,14 +21,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into member(mememail, mempw, memname, memnick) 
 		values (#{mememail},#{mempw},#{memname},#{memnick})
 	</insert>
-
+	
+	<!-- carry -->
+	<select id="carryLogin"
+		resultType="com.project.gymcarry.carry.CarryDto"
+	>
+		select * from carry where crid=#{param1} and crpw=#{param2}
+	</select>
+	
+	
 	<insert id="insertCarry"
 		parameterType="com.project.gymcarry.carry.CarryDto"
 		useGeneratedKeys="true"
 		keyProperty="cridx"
 		>
 		insert into carry(crid, crpw, crname, crnick, placename) 
-		values(#{crid},#{crpw},#{crname},#{crnick},#{placename})
+		values (#{crid},#{crpw},#{crname},#{crnick},#{placename})
 		
 	</insert>
 

@@ -25,7 +25,7 @@
 			<div class="survey">
 				<h3>혼자 하는 운동이 막막하고 어려우신가요?</h3>
 				<h2>당신의 맞춤 전문 코치를 찾아드릴게요 !</h2>
-				<a href="<c:url value='/member/servey'/>" class="btn">시작</a>
+				<a href="<c:url value='/survey/servey'/>" class="btn">시작</a>
 			</div>
 		</section>
 		<section class="review_section container_fix swiper-container">
