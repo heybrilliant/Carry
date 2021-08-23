@@ -16,7 +16,7 @@
 					<div class="survey_h1">
 						<div class="survey_page">
 							<p>
-								<span>01</span> / 05
+								<span>05</span> / 05
 							</p>
 						</div>
 						<h1>PT목적은 무엇인가요?</h1>
@@ -24,22 +24,22 @@
 					<div class="servey_ul">
 						<ul>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>다이어트</span></label>
+									type="hidden" name="cp_item" checked="checked"> <span></span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>근력강화</span></label>
+									type="hidden" name="cp_item" checked="checked"> <span></span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>체형교정</span></label>
+									type="radio" name="cp_item" checked="checked"> <span>남자</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>대회준비</span></label>
+									type="radio" name="cp_item" checked="checked"> <span>여자</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>체중증가</span></label>
+									type="hidden" name="cp_item" checked="checked"> <span></span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>바디프로필</span></label>
+									type="hidden" name="cp_item" checked="checked"> <span></span></label>
 							</li>
 						</ul>
 						<div class="next_btn">

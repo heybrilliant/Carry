@@ -25,7 +25,7 @@ CREATE TABLE `MEMBER` (
   `MEMPW` varchar(30) NOT NULL COMMENT '비밀번호',
   `MEMNAME` varchar(50) NOT NULL COMMENT '이름',
   `MEMNICK` varchar(50) NOT NULL COMMENT '닉네임',
-  `MEMPHONE` int NOT NULL COMMENT '핸드폰번호',
+  `MEMPHONE` varchar(50) NOT NULL COMMENT '핸드폰번호',
   `MEMBIRTH` int NOT NULL COMMENT '생년월일',
   `MEMGENDER` varchar(5) NOT NULL COMMENT '성별',
   `MEMPHOTO` mediumblob COMMENT '회원사진',
