@@ -4,16 +4,16 @@
 <title>결제 페이지</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/payment/payment.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-<!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+  <!-- iamport.payment.js -->
+  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 
 </head>
 <body>
-<!-- header -->
-<%@ include file="/WEB-INF/views/frame/header.jsp" %>
+	<!-- header -->
+	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
 
 	<!-- Contents -->
@@ -75,6 +75,7 @@
 
 
 	<script>
+	
 		var IMP = window.IMP; // 생략 가능
 		IMP.init("imp65837574"); // 예: imp00000000
 
@@ -83,7 +84,7 @@
 			IMP.request_pay({ // param
 				pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
 				pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
-				merchant_uid : "ORD20180131-0000011",
+				merchant_uid : "ORD20180131-0000014",
 				name : "수업 10회 이용권",
 				amount : 100,
 				buyer_email : "gildong@gmail.com",
