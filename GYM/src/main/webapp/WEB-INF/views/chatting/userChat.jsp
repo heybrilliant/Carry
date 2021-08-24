@@ -4,7 +4,7 @@
 <title>1:1Chatting</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/user_chat.css">
-
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -15,7 +15,7 @@
 	<div id="chatwarp">
         <nav class="chat_ul">
             <div class="chatid">
-                <h3>접속자 아이디</h3>
+                <h3>유저아이디</h3>
             </div>
             <div class="chatRoom_nav">
             	<c:if test=""></c:if>
@@ -44,13 +44,13 @@
                         <h3>${list.crnick}</h3>
                     </div>
                     <div class="chat_title">
-                        <span>${list.centername}</span>
+                        <span>${list.placename}</span>
                     </div>
                     <div class="chat_content">
-                        <span>${list.chatcontent}</span>
+                        <span><%-- ${list.chatcontent} --%></span>
                     </div>
                     <div class="chat_date">
-                        <span>${list.chatdate}</span>
+                        <span><%-- ${list.chatdate} --%></span>
                     </div>
                 </a>
             </div>
@@ -70,6 +70,7 @@
 	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	
 	
 <script>
 // 채팅방 대화내용 리스트
@@ -125,8 +126,6 @@ function chatList(num){
 }
 
 
-
-
 /* var html = "<ul>"
 	html += "<li class="back_button"><input type="button" value="김자바"></li>"	
 	html += "<li><a href="#"><img src="../img/heart2.png" style="width: 40px;"></a></li>"
@@ -141,3 +140,41 @@ function chatList(num){
 
 
 </script>	
+
+<script>
+	// 웹소켓 커넥션을 만들려면 new WebSocket을 호출하면되는데, 이때 ws라는 특수 프로토콜을 사용한다.
+	var socket = new SockJS("<c:url value='/echo'/>");
+	
+	// open - 커넥션이 제대로 만들어졌을 때 발생함
+	socket.onopen = function(e){
+		console.log('connection opend.')
+		socket.send("My name is m");
+	};
+	
+	// message - 데이터를 수신하였을 때 발생함
+	socket.onmessage = function(event){
+		console.log(event.data+'\n');
+	};
+	
+	// close - 커넥션이 종료되었을 때 발생함
+	socket.onclose = function(event){
+		console.log('connection closed.');
+	}
+	
+	// error - 에러가 생겼을 때 발생함
+	socket.onerror = function(error) {
+		console.log('connection Error.')
+	};
+	
+	
+	// Connection: Upgrade – 클라이언트 측에서 프로토콜을 바꾸고 싶다는 신호를 보냈다는 것을 나타냅니다.
+	// Upgrade: websocket – 클라이언트측에서 요청한 프로토콜은 'websocket’이라는걸 의미합니다.
+	// Sec-WebSocket-Key – 보안을 위해 브라우저에서 생성한 키를 나타냅니다.
+	// Sec-WebSocket-Version – 웹소켓 프로토콜 버전이 명시됩니다. 예시에서 버전은 13입니다.
+	
+	
+	
+</script>
+
+
+

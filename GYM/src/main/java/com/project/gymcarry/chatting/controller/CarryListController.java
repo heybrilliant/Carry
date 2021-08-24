@@ -1,4 +1,4 @@
-package com.project.gymcarry.carry;
+package com.project.gymcarry.chatting.controller;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.chatting.service.MatchingListService;
 
 @Controller
@@ -21,5 +22,5 @@ public class CarryListController {
 		model.addAttribute("carryList", list);
 		return "chatting/carryList";
 	}
-
+	
 }

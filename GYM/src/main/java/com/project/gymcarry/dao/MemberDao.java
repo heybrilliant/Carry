@@ -9,6 +9,8 @@ public interface MemberDao {
 	MemberDto login(String id, String pw);
 	// 멤버회원가입
 	int insertMember(MemberDto memberDto);
+	// 멤버idx값
+	MemberDto selectByMemberIdx(String id);
 	// 케리회원가입
 	int insertCarry(CarryDto carryDto);
 	// 케리로그인

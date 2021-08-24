@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.service.LoginService;
 
 @Controller
@@ -28,15 +29,14 @@ public class LoginController {
 	public String login(
 			@RequestParam("mememail") String id, 
 			@RequestParam("mempw") String pw,
-			HttpServletRequest request,
-			Model model) {
-		System.out.println(id + pw);
+			HttpServletRequest request) {
+		System.out.println(id);
 		HttpSession session = request.getSession();
-		session.setAttribute("id", id);
-
+		
 		boolean loginChk = loginService.memberLogin(id, pw);
-
 		if (loginChk == true) {
+			MemberDto memDto = loginService.getByMemIdx(id);
+			session.setAttribute("memidx", memDto);
 			return "redirect:/index";
 		} else {
 			return "member/loginForm";

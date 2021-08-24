@@ -17,10 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 채팅룸 리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select c.crnick, c.centername, m.chatcontent, m.chatdate,l.chatidx
-		from carry c, chatroom m, chatlist l
-		where c.cridx=m.cridx and
-		m.chatidx=l.chatidx;
+		select c.crnick, c.placename
+		from carry c, member m, chatlist l
+		where l.cridx=c.cridx and m.memidx=l.memidx;
 	</select>
 	
 	<!-- 매칭캐리리스트 -->
@@ -28,6 +27,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.project.gymcarry.carry.CarryDto">
 		select * from carry
 	</select>
-
+	
+	<!-- 채팅룸 생성 -->
+	<insert id="insertAddChatRoom"
+	parameterType="com.project.gymcarry.chatting.ChatListDto"
+	useGeneratedKeys="true"
+		>
+		insert into chatlist(cridx, memidx) value(#{cridx},#{memidx});
+	</insert>
+	
+	<!-- 채팅룸 중복 -->
+	<select id="selectByChatRoom"
+		resultType="com.project.gymcarry.chatting.ChatListDto">
+		select * from chatlist where cridx=#{param};
+	</select>
 
 </mapper>

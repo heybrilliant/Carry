@@ -59,5 +59,9 @@ public class CarryDto {
 				+ crnick + ", placename=" + placename + "]";
 	}
 	
+//	public ChatListDto toChatListDto() {
+//		return new ChatListDto(this.crnick, this.placename);
+//	}
+	
 	
 }

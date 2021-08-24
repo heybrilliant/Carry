@@ -36,6 +36,10 @@ public class LoginService {
 		return loginChk;
 	}
 	
+	public MemberDto getByMemIdx(String id) {
+		dao = template.getMapper(MemberDao.class);
+		return dao.selectByMemberIdx(id);
+	}
 	
 	
 }
