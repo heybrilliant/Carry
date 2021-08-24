@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <title>캐리 상세페이지</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/carry/carryDetail.css">
@@ -45,7 +48,6 @@
 
 		<hr>
 
-
 		<div class="place_info container_fix">
 
 			<div class="place_info_content">
@@ -57,18 +59,17 @@
 
 					<table class="carry_info_message" id="introduce">
 						<tr>
-							<td><span class="carry_name">김자바</span></td>
+							<td><span class="carry_name">${carryDetail.crName}</span></td>
 						</tr>
 						<tr>
-							<td><span class="carry_introduce">"캐리소갯 말입니다캐리소갯말입니다
-									캐리소갯말<br>말입니다캐리소갯말입니다 캐리소갯말입캐리소갯 말입니다캐리소갯말입니다 캐리소갯말입입니다."
+							<td><span class="carry_introduce">"${carryDetail.crIntro}"
 							</span></td>
 						</tr>
 						<tr>
 							<td>
 								<div class="carry_procategory">
-									<span style="color: #AAA">전문분야</span> <br> <span>바른
-										체형, 근력 강화, 바디 프로필</span>
+									<span style="color: #AAA">전문분야</span> <br>
+									<span>${carryDetail.crDepart}</span>
 								</div>
 
 							</td>
@@ -81,12 +82,11 @@
 				<div class="carry_carrer" id="carrer">
 					<h3>자격 및 경력</h3>
 					<ul>
-						<li>어쩌고저쩌고</li>
-						<li>어쩌고저쩌고어쩌</li>
-						<li>어쩌고어</li>
-						<li>어쩌고어쩌고저쩌고저</li>
-						<li>어쩌고어쩌고저쩌고저쩌</li>
-						<li>어쩌고어쩌고저</li>
+						<li>${carryDetail.crCerti1}</li>
+						<li>${carryDetail.crCerti2}</li>
+						<li>${carryDetail.crCerti3}</li>
+						<li>${carryDetail.crCerti4}</li>
+						<li>${carryDetail.crCerti5}</li>
 					</ul>
 				</div>
 
@@ -106,12 +106,13 @@
 
 						<div class="review_content">
 							<span class="review_name">박회원</span> <span class="review_date">2021.08.20</span>
-							<br> <span>어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
-							어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고쩌고어쩌고저쩌고
-							어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고쩌고
-							어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
-							어쩌고저쩌고어쩌고저쩌고어쩌고쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고
-							저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고</span>
+							<br> <span>어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
+									어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
+									어쩌고저쩌고어쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
+									어쩌고저쩌고어쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
+									어쩌고저쩌고어쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
+									어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고
+									어쩌고저쩌고어쩌고저쩌고</span>
 						</div>
 
 					</div>
@@ -133,7 +134,7 @@
 					<h2>소속 플레이스</h2>
 					<div class="carry_place_content">
 						<img src="http://placehold.it/570x380"> <span><a
-							href="#">어쩌고짐 신촌점</a></span>
+							href="#">${carryDetail.placeName}</a></span>
 					</div>
 				</div>
 				<!-- 소속 플레이스 section all wrap END -->
@@ -143,7 +144,7 @@
 				<div class="place_map" id="location">
 					<h3>지도</h3>
 					<div class="place_address">
-						<p>경기 안산시 단원구 선부광장1로 72 4층</p>
+						<p>${carryDetail.placeAddress}</p>
 						<p>0507-1388-6848</p>
 					</div>
 					<iframe
@@ -158,14 +159,14 @@
 			<div class="right_banner">
 			
 				<div id="c2" class="circle"></div>
-				<h2>김자바</h2>
+				<h2>${carryDetail.crName}</h2>
 				
 				<div class="program_all">
 				
 					<div class="program">
 						<div class="program_info">
 							<span>수업 1회 이용권</span> <br>
-							<h4>50,000원</h4>
+							<h4><fmt:formatNumber type="number" maxFractionDigits="3" value="${carryDetail.proPrice1}"/>원</h4>
 						</div>
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button">
@@ -175,7 +176,7 @@
 					<div class="program">
 						<div class="program_info">
 							<span>수업 5회 이용권</span> <br>
-							<h4>230,000원</h4>
+							<h4><fmt:formatNumber type="number" maxFractionDigits="3" value="${carryDetail.proPrice5}"/>원</h4>
 						</div>
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button">
@@ -185,7 +186,7 @@
 					<div class="program">
 						<div class="program_info">
 							<span>수업 10회 이용권</span> <br>
-							<h4>460,000원</h4>
+							<h4><fmt:formatNumber type="number" maxFractionDigits="3" value="${carryDetail.proPrice10}"/>원</h4>
 						</div>
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button" onclick="location.href='<c:url value = "/payment/payment"/>'">
@@ -195,7 +196,7 @@
 					<div class="program">
 						<div class="program_info">
 							<span>수업 20회 이용권</span> <br>
-							<h4>930,000원</h4>
+							<h4><fmt:formatNumber type="number" maxFractionDigits="3" value="${carryDetail.proPrice20}"/>원</h4>
 						</div>
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button">
@@ -208,8 +209,9 @@
 			<!-- 우측 배너 END -->
 
 		</div>
-	</div>
 
+	</div>
+	<!-- Contents END -->
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>

@@ -31,7 +31,7 @@
 		<section class="review_section container_fix swiper-container">
 			<h1 class="title">Carry Review</h1>
 			<div class="review_contaier swiper-wrapper">
-				<div class="review_content swiper-slide" onclick="location.href='<c:url value = "/carry/detail"/>'">
+				<div class="review_content swiper-slide" onclick="location.href='<c:url value = "/carry/detail?crIDX=1"/>'">
 					<div class="review_img">
 						<img src="<c:url value="/images/review1.jpg"/>" alt="img">
 					</div>
@@ -85,6 +85,9 @@
 			<div class="swiper-button-prev"></div>
 		</section>
 	</div>
+	<form action="#" id="go" method="post">
+		<input type="button" id="button" name="button" value="1"></input>
+	</form>
 	<!-- Contents end -->
 	
 	<!-- ------------------------------------- -->
