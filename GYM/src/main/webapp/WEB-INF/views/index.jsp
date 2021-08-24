@@ -85,9 +85,6 @@
 			<div class="swiper-button-prev"></div>
 		</section>
 	</div>
-	<form action="#" id="go" method="post">
-		<input type="button" id="button" name="button" value="1"></input>
-	</form>
 	<!-- Contents end -->
 	
 	<!-- ------------------------------------- -->
