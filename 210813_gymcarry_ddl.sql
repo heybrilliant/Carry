@@ -341,6 +341,18 @@ CREATE TABLE `PAYMENT` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 
+
+--
+-- Dumping data for table `PAYMENT`
+--
+
+LOCK TABLES `PAYMENT` WRITE;
+/*!40000 ALTER TABLE `PAYMENT` DISABLE KEYS */;
+/*!40000 ALTER TABLE `PAYMENT` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
 --
 -- Table structure for table `PROGRAMINFO`
 --
@@ -369,14 +381,7 @@ CREATE TABLE `PROGRAMINFO` (
 
 
 
---
--- Dumping data for table `PAYMENT`
---
 
-LOCK TABLES `PAYMENT` WRITE;
-/*!40000 ALTER TABLE `PAYMENT` DISABLE KEYS */;
-/*!40000 ALTER TABLE `PAYMENT` ENABLE KEYS */;
-UNLOCK TABLES;
 
 
 
