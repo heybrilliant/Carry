@@ -4,10 +4,16 @@
 <title>결제 페이지</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/payment/payment.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+
 </head>
 <body>
-	<!-- header -->
-	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
+<!-- header -->
+<%@ include file="/WEB-INF/views/frame/header.jsp" %>
 
 
 	<!-- Contents -->
@@ -52,7 +58,8 @@
 
 
                 <div class = "pay_btn">
-                <input type="submit" value="결제하기" onclick="location.href='<c:url value = "/payment/complete"/>'">
+                <input type="button" value="결제하기" onclick="requestPay();">
+                <%-- <input type="submit" value="결제하기" onclick="location.href='<c:url value = "/payment/complete"/>'"> --%>
                 </div>
       
       
@@ -68,6 +75,33 @@
 
 
 	<script>
+		var IMP = window.IMP; // 생략 가능
+		IMP.init("imp65837574"); // 예: imp00000000
+
+		function requestPay() {
+			// IMP.request_pay(param, callback) 결제창 호출
+			IMP.request_pay({ // param
+				pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
+				pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
+				merchant_uid : "ORD20180131-0000011",
+				name : "수업 10회 이용권",
+				amount : 100,
+				buyer_email : "gildong@gmail.com",
+				buyer_name : "홍길동",
+				buyer_tel : "010-4242-4242",
+				buyer_addr : "서울특별시 강남구 신사동",
+				buyer_postcode : "01181"
+			}, function(rsp) { // callback
+				if (rsp.success) {
+					// 결제 성공 시 로직,
+					location.href = "<c:url value="/payment/complete"/>";
+				} else {
+					// 결제 실패 시 로직,
+					alert('결제가 취소되었습니다.');
+				}
+			});
+		}
+
 		// place 이미지 슬라이드
 		var swiper = new Swiper(".mySwiper", {
 			spaceBetween : 0,
