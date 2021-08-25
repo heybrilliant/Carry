@@ -11,7 +11,4 @@ public interface CarryDao {
 	CarryAllDto selectCarryDetail(int cridx);
 	// 캐리 리뷰 리스트
 	List<CarryReviewDto> selectCarryReviewList(int cridx);
-	// 캐리 리뷰 작성
-	CarryReviewWrite insertCarryReview();
-	
 }
