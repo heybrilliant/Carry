@@ -98,9 +98,10 @@ hr {
 }
 
 #c1 {
-	margin-left: -30px;
+	margin-left: -10px;
+	margin-right : 20px;
 	/* 블럭의 사이즈 */
-	width: 180px;
+	width: 450px;
 	height: 180px;
 	/* 테두리 */
 	border: 1px solid #DDD;
