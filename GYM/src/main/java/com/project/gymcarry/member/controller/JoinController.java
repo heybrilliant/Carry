@@ -1,5 +1,7 @@
 package com.project.gymcarry.member.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +24,7 @@ public class JoinController {
 	}
 	
 	@PostMapping
-	public String memberJoin(MemberDto memberDto) {
-		System.out.println(memberDto);
+	public String memberJoin(MemberDto memberDto, HttpSession session) {
 		int result = joinservice.memberJoin(memberDto);
 		if(result == 1) {
 			System.out.println("멤버회원가입성공");

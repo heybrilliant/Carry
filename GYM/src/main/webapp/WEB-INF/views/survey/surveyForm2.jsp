@@ -19,7 +19,7 @@
 								<span>02</span> / 05
 							</p>
 						</div>
-						<h1>PT목적은 무엇인가요?</h1>
+						<h1>당신의 연령대는 ?</h1>
 					</div>
 					<div class="servey_ul">
 						<ul>

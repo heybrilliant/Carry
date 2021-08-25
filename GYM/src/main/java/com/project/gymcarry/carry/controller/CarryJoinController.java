@@ -1,4 +1,4 @@
-package com.project.gymcarry.carry;
+package com.project.gymcarry.carry.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.gymcarry.carry.CarryAllDto;
 import com.project.gymcarry.member.service.JoinService;
 
 @Controller
@@ -21,7 +22,7 @@ public class CarryJoinController {
 	}
 	
 	@PostMapping
-	public String carryJoin(CarryDto carryDto) {
+	public String carryJoin(CarryAllDto carryDto) {
 		System.out.println(carryDto);
 		int result = joinservice.carryJoin(carryDto);
 		if(result == 1) {

@@ -23,7 +23,6 @@
 	<div class="center">
 		<h1>멤버로그인</h1>
 		<form action="<c:url value="/member/memberLogin"/>" method="post">
-
 			<table border="1">
 				<tr>
 					<td>아이디</td>

@@ -1,6 +1,8 @@
 package com.project.gymcarry.websokethandler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -11,18 +13,23 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 public class WebSocketHandler extends TextWebSocketHandler {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(WebSocketHandler.class);
-	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>(); //실제session의 아이디정보, web소켓정보
+	// 웹 소켓 세션을 저장할 맵
+	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>();
+	// 웹 소켓 세션을 저장할 리스트
+	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
+
 	
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		
+		System.out.println(session);
 	}
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
+		
 	}
 
 	@Override

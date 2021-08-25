@@ -19,7 +19,7 @@
 								<span>03</span> / 05
 							</p>
 						</div>
-						<h1>PT목적은 무엇인가요?</h1>
+						<h1>가능한 요일과 시간대</h1>
 					</div>
 					<div class="servey_ul">
 						<ul>

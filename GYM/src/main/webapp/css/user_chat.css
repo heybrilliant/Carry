@@ -172,6 +172,9 @@
 .carry_message span{
     color: white;
 }
+.chat_null{
+	height: 89%;
+}
 
 .time_line{
     position: absolute;
