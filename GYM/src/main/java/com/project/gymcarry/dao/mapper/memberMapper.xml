@@ -24,14 +24,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- carry -->
 	<select id="carryLogin"
-		resultType="com.project.gymcarry.carry.CarryDto"
+		resultType="com.project.gymcarry.carry.CarryDtoTest"
 	>
 		select * from carry where crid=#{param1} and crpw=#{param2}
 	</select>
 	
 	
 	<insert id="insertCarry"
-		parameterType="com.project.gymcarry.carry.CarryDto"
+		parameterType="com.project.gymcarry.carry.CarryDtoTest"
 		useGeneratedKeys="true"
 		keyProperty="cridx"
 		>
