@@ -37,6 +37,8 @@ public class UserChatController {
 			@RequestParam("cridx") int cridx, 
 			@RequestParam("memidx") int memidx) {
 		// 캐리와의 중복룸이 있는지 확인하기위한 list
+		int result = matchingAddChatRoomService.getAddChatRoom(cridx, memidx);
+		System.out.println(cridx);
 		List<ChatListDto> list = matchingAddChatRoomService.getByChatRoom(cridx);
 		// 캐리닉네임으로 방이 있으면 생성하지않고 채팅으로 이동
 		for (int i = 0; i < list.size(); i++) {
@@ -45,7 +47,6 @@ public class UserChatController {
 			}
 		}
 		// 캐리와의 중복 방이없을경우 채팅방생성
-		int result = matchingAddChatRoomService.getAddChatRoom(cridx, memidx);
 		if(result == 1) {
 			System.out.println(cridx + "carry채팅방생성");
 		}

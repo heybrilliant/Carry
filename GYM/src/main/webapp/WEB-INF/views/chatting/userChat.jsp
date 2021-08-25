@@ -33,7 +33,7 @@
 		
         <div id="chatlist_wrap">
             <!-- 채팅방 리스트 시작 -->
-			<c:forEach items="${chatList}" var="list">
+		<c:forEach items="${chatList}" var="list">
             <div class="chatlist">
                 <a href="javascript:chatList(${list.chatidx})" onclick="">
                     <div class="float_left">
@@ -53,7 +53,7 @@
                     </div>
                 </a>
             </div>
-			</c:forEach>
+		</c:forEach>
             <!-- 채팅방 리스트 끝 -->
         </div>
 		

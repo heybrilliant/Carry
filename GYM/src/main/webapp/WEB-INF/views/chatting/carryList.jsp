@@ -28,9 +28,8 @@
         </div>
       </nav>
       <div class="card_main">
-      <form action="<c:url value="/chatting/chatInquire"/>" method="post">
+      <form action="<c:url value="/chatting/chatInquire?$cridx={list.cridx}"/>" method="post">
       <c:forEach items="${carryList}" var="list">
-      <input type="hidden" name=cridx value="${list.cridx}">
       <input type="hidden" name="memidx" value="${member.memidx}">
         <div class="card">
           <div class="board_sidebar">
