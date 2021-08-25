@@ -29,10 +29,8 @@ public class LoginController {
 			@RequestParam("mememail") String id, 
 			@RequestParam("mempw") String pw,
 			HttpServletRequest request) {
-		System.out.println(id);
 		HttpSession session = request.getSession();
 		MemberDto memDto = loginService.memberLogin(id, pw);
-		System.out.println(memDto);
 		if (memDto != null) {
 			session.setAttribute("member", memDto);
 			return "redirect:/index";

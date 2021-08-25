@@ -35,7 +35,8 @@
             <!-- 채팅방 리스트 시작 -->
 		<c:forEach items="${chatList}" var="list">
             <div class="chatlist">
-                <a href="javascript:chatList(${list.chatidx})" onclick="">
+            	<button type="submit" value="${list.crnick}" onclick="location.href='javascript:chatList(${list.chatidx})'" id="on_btn">
+                <%-- <a href="javascript:chatList(${list.chatidx})"> --%>
                     <div class="float_left">
                         <img src="<c:url value="/images/icon/profile2.png"/>">
                     </div>
@@ -51,12 +52,12 @@
                     <div class="chat_date">
                         <span><%-- ${list.chatdate} --%></span>
                     </div>
-                </a>
+                <!-- </a> -->
+            	</button>
             </div>
 		</c:forEach>
             <!-- 채팅방 리스트 끝 -->
         </div>
-		
         <div id="chatcontent_warp">
             <div class="not_message">
                 <img src="<c:url value="/images/icon/chat.png"/>" style="width: 80px;">
@@ -73,9 +74,10 @@
 	
 	
 <script>
+// 생각
 $(document).ready(function(){
-	$(".chatlist").click(function(){
-		$(".chatlist").css("background-color","#eee");
+	$("#on_btn").click(function(){
+		$(this).css("background-color","#eee");
 	});
 });
 
@@ -92,10 +94,10 @@ function chatList(num){
 		success : function (data) {
 			console.log(data)
 			if(data == 0){
-				var htmlNav = "<ul>"
-					<c:forEach items="${chatList}" var="list">
-					htmlNav += '<li class="back_button"><input type="button" value="${list.crnick}" onclick="history.go(0)"></li>'
-					</c:forEach>
+				var htmlNav = '<ul>';
+					htmlNav += '<li class="back_button">';
+					htmlNav += '<input type="button" value="???" onclick="history.go(0)">';
+					htmlNav += '</li>';
 					htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></a></li>'
 					htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" style="width: 40px;"></a></li>'
 					htmlNav += '<li class="order_button"><input type="button" value="결제하기"></li>'

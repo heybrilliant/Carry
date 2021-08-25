@@ -6,22 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.gymcarry.carry.CarryAllDto;
+import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.chatting.service.MatchingListService;
 
 @Controller
+@RequestMapping("chatting/carryLists")
 public class CarryListController {
-	
+
 	@Autowired
 	private MatchingListService matchingListService;
-	
-	@GetMapping("chatting/carryLists")
-	public String chatRoomList(CarryAllDto carryDto, Model model) {
-		List<CarryAllDto> list = matchingListService.getCarryList();
-		System.out.println(list);
+
+	@GetMapping
+	public String chatRoomList(Model model) {
+		List<CarryJoinDto> list = matchingListService.getCarryList();
 		model.addAttribute("carryList", list);
 		return "chatting/carryList";
 	}
-	
+
 }

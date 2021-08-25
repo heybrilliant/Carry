@@ -32,13 +32,13 @@ public class UserChatController {
 	}
 	
 	// 채팅 룸 생성 및 중복
-	@PostMapping("chatting/chatInquire")
+	@GetMapping("chatting/chatInquire")
 	public String chatInquire(
 			@RequestParam("cridx") int cridx, 
-			@RequestParam("memidx") int memidx) {
+			@RequestParam("memidx") int memidx,
+			Model model
+			) {
 		// 캐리와의 중복룸이 있는지 확인하기위한 list
-		int result = matchingAddChatRoomService.getAddChatRoom(cridx, memidx);
-		System.out.println(cridx);
 		List<ChatListDto> list = matchingAddChatRoomService.getByChatRoom(cridx);
 		// 캐리닉네임으로 방이 있으면 생성하지않고 채팅으로 이동
 		for (int i = 0; i < list.size(); i++) {
@@ -47,10 +47,11 @@ public class UserChatController {
 			}
 		}
 		// 캐리와의 중복 방이없을경우 채팅방생성
+		int result = matchingAddChatRoomService.getAddChatRoom(cridx, memidx);
 		if(result == 1) {
 			System.out.println(cridx + "carry채팅방생성");
 		}
-		return "chatting/userChat";
+		return "redirect:/chatting/chatList";
 	}
 	
 	// 채팅룸 리스트
@@ -65,9 +66,7 @@ public class UserChatController {
 	@GetMapping("chatting/dochat")
 	@ResponseBody
 	public List<ChatRoomDto> chatList(@RequestParam("chatidx") int chatidx) {
-		System.out.println(chatidx);
 		List<ChatRoomDto> chatList = matchingListService.getChatIdx(chatidx);
-		System.out.println(chatList);
 		return chatList;
 	}
 	

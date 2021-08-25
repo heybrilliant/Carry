@@ -8,6 +8,7 @@ public class CarryAllDto {
 	private String crname;
 	private String crnick;
 	private String crgender;
+	private String crphone;
 	private String crintro;
 	private String crdepart;
 	private String crfield;
@@ -27,7 +28,37 @@ public class CarryAllDto {
 	private String reviewcontent;
 	private int memidx;
 	private String memnick;
-	public CarryAllDto() {
+	public CarryAllDto(int cridx, String crid, String crpw, String crname, String crnick, String crgender,
+			String crphone, String crintro, String crdepart, String crfield, String crcerti1, String crcerti2,
+			String crcerti3, String crcerti4, String crcerti5, int proprice1, int proprice5, int proprice10,
+			int proprice20, String placename, String placeaddress, String placephone, int reviewidx,
+			String reviewcontent, int memidx, String memnick) {
+		this.cridx = cridx;
+		this.crid = crid;
+		this.crpw = crpw;
+		this.crname = crname;
+		this.crnick = crnick;
+		this.crgender = crgender;
+		this.crphone = crphone;
+		this.crintro = crintro;
+		this.crdepart = crdepart;
+		this.crfield = crfield;
+		this.crcerti1 = crcerti1;
+		this.crcerti2 = crcerti2;
+		this.crcerti3 = crcerti3;
+		this.crcerti4 = crcerti4;
+		this.crcerti5 = crcerti5;
+		this.proprice1 = proprice1;
+		this.proprice5 = proprice5;
+		this.proprice10 = proprice10;
+		this.proprice20 = proprice20;
+		this.placename = placename;
+		this.placeaddress = placeaddress;
+		this.placephone = placephone;
+		this.reviewidx = reviewidx;
+		this.reviewcontent = reviewcontent;
+		this.memidx = memidx;
+		this.memnick = memnick;
 	}
 	public int getCridx() {
 		return cridx;
@@ -64,6 +95,12 @@ public class CarryAllDto {
 	}
 	public void setCrgender(String crgender) {
 		this.crgender = crgender;
+	}
+	public String getCrphone() {
+		return crphone;
+	}
+	public void setCrphone(String crphone) {
+		this.crphone = crphone;
 	}
 	public String getCrintro() {
 		return crintro;
@@ -182,55 +219,13 @@ public class CarryAllDto {
 	@Override
 	public String toString() {
 		return "CarryAllDto [cridx=" + cridx + ", crid=" + crid + ", crpw=" + crpw + ", crname=" + crname + ", crnick="
-				+ crnick + ", crgender=" + crgender + ", crintro=" + crintro + ", crdepart=" + crdepart + ", crfield="
-				+ crfield + ", crcerti1=" + crcerti1 + ", crcerti2=" + crcerti2 + ", crcerti3=" + crcerti3
-				+ ", crcerti4=" + crcerti4 + ", crcerti5=" + crcerti5 + ", proprice1=" + proprice1 + ", proprice5="
-				+ proprice5 + ", proprice10=" + proprice10 + ", proprice20=" + proprice20 + ", placename=" + placename
-				+ ", placeaddress=" + placeaddress + ", placephone=" + placephone + ", reviewidx=" + reviewidx
-				+ ", reviewcontent=" + reviewcontent + ", memidx=" + memidx + ", memnick=" + memnick + ", getCridx()="
-				+ getCridx() + ", getCrid()=" + getCrid() + ", getCrpw()=" + getCrpw() + ", getCrname()=" + getCrname()
-				+ ", getCrnick()=" + getCrnick() + ", getCrgender()=" + getCrgender() + ", getCrintro()=" + getCrintro()
-				+ ", getCrdepart()=" + getCrdepart() + ", getCrfield()=" + getCrfield() + ", getCrcerti1()="
-				+ getCrcerti1() + ", getCrcerti2()=" + getCrcerti2() + ", getCrcerti3()=" + getCrcerti3()
-				+ ", getCrcerti4()=" + getCrcerti4() + ", getCrcerti5()=" + getCrcerti5() + ", getProprice1()="
-				+ getProprice1() + ", getProprice5()=" + getProprice5() + ", getProprice10()=" + getProprice10()
-				+ ", getProprice20()=" + getProprice20() + ", getPlacename()=" + getPlacename() + ", getPlaceaddress()="
-				+ getPlaceaddress() + ", getPlacephone()=" + getPlacephone() + ", getReviewidx()=" + getReviewidx()
-				+ ", getReviewcontent()=" + getReviewcontent() + ", getMemidx()=" + getMemidx() + ", getMemnick()="
-				+ getMemnick() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
-	}
-	public CarryAllDto(int cridx, String crid, String crpw, String crname, String crnick, String crgender,
-			String crintro, String crdepart, String crfield, String crcerti1, String crcerti2, String crcerti3,
-			String crcerti4, String crcerti5, int proprice1, int proprice5, int proprice10, int proprice20,
-			String placename, String placeaddress, String placephone, int reviewidx, String reviewcontent, int memidx,
-			String memnick) {
-		super();
-		this.cridx = cridx;
-		this.crid = crid;
-		this.crpw = crpw;
-		this.crname = crname;
-		this.crnick = crnick;
-		this.crgender = crgender;
-		this.crintro = crintro;
-		this.crdepart = crdepart;
-		this.crfield = crfield;
-		this.crcerti1 = crcerti1;
-		this.crcerti2 = crcerti2;
-		this.crcerti3 = crcerti3;
-		this.crcerti4 = crcerti4;
-		this.crcerti5 = crcerti5;
-		this.proprice1 = proprice1;
-		this.proprice5 = proprice5;
-		this.proprice10 = proprice10;
-		this.proprice20 = proprice20;
-		this.placename = placename;
-		this.placeaddress = placeaddress;
-		this.placephone = placephone;
-		this.reviewidx = reviewidx;
-		this.reviewcontent = reviewcontent;
-		this.memidx = memidx;
-		this.memnick = memnick;
+				+ crnick + ", crgender=" + crgender + ", crphone=" + crphone + ", crintro=" + crintro + ", crdepart="
+				+ crdepart + ", crfield=" + crfield + ", crcerti1=" + crcerti1 + ", crcerti2=" + crcerti2
+				+ ", crcerti3=" + crcerti3 + ", crcerti4=" + crcerti4 + ", crcerti5=" + crcerti5 + ", proprice1="
+				+ proprice1 + ", proprice5=" + proprice5 + ", proprice10=" + proprice10 + ", proprice20=" + proprice20
+				+ ", placename=" + placename + ", placeaddress=" + placeaddress + ", placephone=" + placephone
+				+ ", reviewidx=" + reviewidx + ", reviewcontent=" + reviewcontent + ", memidx=" + memidx + ", memnick="
+				+ memnick + "]";
 	}
 	
 	

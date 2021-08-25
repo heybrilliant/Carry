@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.gymcarry.carry.CarryAllDto;
+import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.member.service.JoinService;
 
 @Controller
@@ -22,8 +22,7 @@ public class CarryJoinController {
 	}
 	
 	@PostMapping
-	public String carryJoin(CarryAllDto carryDto) {
-		System.out.println(carryDto);
+	public String carryJoin(CarryJoinDto carryDto) {
 		int result = joinservice.carryJoin(carryDto);
 		if(result == 1) {
 			System.out.println("캐리회원가입성공");

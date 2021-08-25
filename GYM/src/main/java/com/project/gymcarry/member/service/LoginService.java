@@ -21,14 +21,9 @@ public class LoginService {
 		return dao.login(id, pw);
 	}
 	
-	public boolean carryLogin(String id, String pw) {
-		boolean loginChk = false;
+	public CarryAllDto carryLogin(String id, String pw) {
 		dao = template.getMapper(MemberDao.class);
-		CarryAllDto carryDto = dao.carryLogin(id, pw);
-		if(carryDto != null) {
-			loginChk = true;
-		}
-		return loginChk;
+		return dao.carryLogin(id, pw);
 	}
 	
 	

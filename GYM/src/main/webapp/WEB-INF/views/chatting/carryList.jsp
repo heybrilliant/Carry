@@ -28,9 +28,7 @@
         </div>
       </nav>
       <div class="card_main">
-      <form action="<c:url value="/chatting/chatInquire?$cridx={list.cridx}"/>" method="post">
       <c:forEach items="${carryList}" var="list">
-      <input type="hidden" name="memidx" value="${member.memidx}">
         <div class="card">
           <div class="board_sidebar">
             <img class="profile_image" src="<c:url value="/images/icon/profile.png"/>" />
@@ -58,7 +56,7 @@
               </div>
               <div class="board_bottom">
                 <ul class="board_btn">
-                  <li><input type="submit" value="1:1문의" name="cridx" class="inquiry_btn" onclick=""></li>
+                  <li><input type="button" value="1:1문의" class="inquiry_btn" onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${list.cridx}&memidx=${member.memidx}"/>'"></li>
                   <li>
                     <input type="button" value="더 알아보기" class="details_btn">
                   </li>
@@ -68,7 +66,6 @@
           </div>
         </div>
 		</c:forEach>	
-      </form>
 
       </div>
     </div>

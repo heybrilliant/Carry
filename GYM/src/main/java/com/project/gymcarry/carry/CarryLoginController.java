@@ -30,13 +30,10 @@ public class CarryLoginController {
 			@RequestParam("crpw") String pw,
 			HttpServletRequest request,
 			Model model) {
-		System.out.println(id + pw);
 		HttpSession session = request.getSession();
-		session.setAttribute("id", id);
-
-		boolean loginChk = loginService.carryLogin(id, pw);
-
-		if (loginChk == true) {
+		CarryAllDto carryAllDto = loginService.carryLogin(id, pw);
+		if (carryAllDto != null) {
+			session.setAttribute("carry", carryAllDto);
 			return "redirect:/index";
 		} else {
 			return "carry/loginForm";
