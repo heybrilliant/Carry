@@ -1,15 +1,15 @@
 package com.project.gymcarry.carry;
 
-public class CarryDto {
+public class CarryDtoTest {
 	private int cridx;
 	private String crid;
 	private String crpw;
 	private String crname;
 	private String crnick;
 	private String placename;
-	public CarryDto() {
+	public CarryDtoTest() {
 	}
-	public CarryDto(int cridx, String crid, String crpw, String crname, String crnick, String placename) {
+	public CarryDtoTest(int cridx, String crid, String crpw, String crname, String crnick, String placename) {
 		this.cridx = cridx;
 		this.crid = crid;
 		this.crpw = crpw;

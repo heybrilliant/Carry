@@ -21,7 +21,7 @@ public class CarryJoinController {
 	}
 	
 	@PostMapping
-	public String carryJoin(CarryDto carryDto) {
+	public String carryJoin(CarryDtoTest carryDto) {
 		System.out.println(carryDto);
 		int result = joinservice.carryJoin(carryDto);
 		if(result == 1) {

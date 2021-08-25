@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.project.gymcarry.carry.CarryDto;
+import com.project.gymcarry.carry.CarryDtoTest;
 import com.project.gymcarry.chatting.service.MatchingListService;
 
 @Controller
@@ -17,8 +17,8 @@ public class CarryListController {
 	private MatchingListService matchingListService;
 	
 	@GetMapping("chatting/carryLists")
-	public String chatRoomList(CarryDto carryDto, Model model) {
-		List<CarryDto> list = matchingListService.getCarryList();
+	public String chatRoomList(CarryDtoTest carryDto, Model model) {
+		List<CarryDtoTest> list = matchingListService.getCarryList();
 		model.addAttribute("carryList", list);
 		return "chatting/carryList";
 	}

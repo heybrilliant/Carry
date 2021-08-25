@@ -4,7 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.gymcarry.carry.CarryDto;
+import com.project.gymcarry.carry.CarryDtoTest;
 import com.project.gymcarry.dao.MemberDao;
 import com.project.gymcarry.member.MemberDto;
 
@@ -24,7 +24,7 @@ public class LoginService {
 	public boolean carryLogin(String id, String pw) {
 		boolean loginChk = false;
 		dao = template.getMapper(MemberDao.class);
-		CarryDto carryDto = dao.carryLogin(id, pw);
+		CarryDtoTest carryDto = dao.carryLogin(id, pw);
 		if(carryDto != null) {
 			loginChk = true;
 		}
