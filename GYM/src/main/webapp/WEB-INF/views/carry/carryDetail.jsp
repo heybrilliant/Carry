@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <title>캐리 상세페이지</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/carry/carryDetail.css">
@@ -16,12 +19,18 @@
 	<div class="container">
 		<div class="carry_image swiper-container mySwiper">
 			<ul class="swiper-wrapper">
-				<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
-				<li class="swiper-slide"><img src="<c:url value="/images/review2.jpg"/>"></li>
-				<li class="swiper-slide"><img src="<c:url value="/images/review3.jpg"/>"></li>
-				<li class="swiper-slide"><img src="<c:url value="/images/review4.jpg"/>"></li>
-				<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
-				<li class="swiper-slide"><img src="<c:url value="/images/review2.jpg"/>"></li>
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review1.jpg"/>"></li>
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review2.jpg"/>"></li>
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review3.jpg"/>"></li>
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review4.jpg"/>"></li>
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review1.jpg"/>"></li>
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review2.jpg"/>"></li>
 			</ul>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -45,7 +54,6 @@
 
 		<hr>
 
-
 		<div class="place_info container_fix">
 
 			<div class="place_info_content">
@@ -55,24 +63,25 @@
 
 					<div id="c1"></div>
 
+
 					<table class="carry_info_message" id="introduce">
+
 						<tr>
-							<td><span class="carry_name">김자바</span></td>
+							<td><span class="carry_name">${carryDetail.crname}</span></td>
 						</tr>
+
 						<tr>
-							<td><span class="carry_introduce">"캐리소갯 말입니다캐리소갯말입니다
-									캐리소갯말<br>말입니다캐리소갯말입니다 캐리소갯말입캐리소갯 말입니다캐리소갯말입니다 캐리소갯말입입니다."
-							</span></td>
+							<td><span class="carry_introduce">"${carryDetail.crintro}"</span></td>
 						</tr>
+
 						<tr>
 							<td>
 								<div class="carry_procategory">
-									<span style="color: #AAA">전문분야</span> <br> <span>바른
-										체형, 근력 강화, 바디 프로필</span>
+									<span style="color: #AAA">전문분야</span> <br> <span>${carryDetail.crdepart}</span>
 								</div>
-
 							</td>
 						</tr>
+
 					</table>
 				</div>
 				<!-- carry info section END -->
@@ -81,12 +90,11 @@
 				<div class="carry_carrer" id="carrer">
 					<h3>자격 및 경력</h3>
 					<ul>
-						<li>어쩌고저쩌고</li>
-						<li>어쩌고저쩌고어쩌</li>
-						<li>어쩌고어</li>
-						<li>어쩌고어쩌고저쩌고저</li>
-						<li>어쩌고어쩌고저쩌고저쩌</li>
-						<li>어쩌고어쩌고저</li>
+						<li>${carryDetail.crcerti1}</li>
+						<li>${carryDetail.crcerti2}</li>
+						<li>${carryDetail.crcerti3}</li>
+						<li>${carryDetail.crcerti4}</li>
+						<li>ㅇㅀㅎ</li>
 					</ul>
 				</div>
 
@@ -98,23 +106,25 @@
 						<h2>캐리 후기</h2>
 						<input type="button" value="후기작성" id="write_review_btn">
 					</div>
-
-					<div class="review_list_section">
-						<div class="member_profile_image">
-							<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">
+						<c:forEach items="${carryReviewList}" var="carryReviewList">
+						<div class="review_list_section">
+							<div class="member_profile_image">
+								<img src="<c:url value="/images/icon/profile.png"/>"
+									style="width: 50px">
+							</div>
+							
+							<div class="review_content">
+								<span class="review_name">${carryReviewList.memnick}</span> <span
+									class="review_date">2021.08.20</span> <br> <span>${carryReviewList.reviewcontent}</span>
+							</div>
+							
 						</div>
-
-						<div class="review_content">
-							<span class="review_name">박회원</span> <span class="review_date">2021.08.20</span>
-							<br> <span>어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고어쩌고</span>
-						</div>
-
+						</c:forEach>
+						
+					<div id="review_write" class="review_write display_none">
+							<input type="text" class="review_input" placeholder="캐리 리뷰를 작성해주세요." id="review">
+							<input type="button" value="작성" class="write_btn" id="write_btn">
 					</div>
-
-						<div id = "review_write" class ="review_write display_none">
-							<input type = "text" class="review_input" placeholder="캐리 리뷰를 작성해주세요.">
-							<input type = "submit" value="작성" class="write_btn">
-						</div>
 
 				</div>
 				<!-- carry review section all wrap END -->
@@ -126,7 +136,7 @@
 					<h2>소속 플레이스</h2>
 					<div class="carry_place_content">
 						<img src="http://placehold.it/570x380"> <span><a
-							href="#">어쩌고짐 신촌점</a></span>
+							href="#">${carryDetail.placename}</a></span>
 					</div>
 				</div>
 				<!-- 소속 플레이스 section all wrap END -->
@@ -136,8 +146,8 @@
 				<div class="place_map" id="location">
 					<h3>지도</h3>
 					<div class="place_address">
-						<p>경기 안산시 단원구 선부광장1로 72 4층</p>
-						<p>0507-1388-6848</p>
+						<p>${carryDetail.placeaddress}</p>
+						<p>${carryDetail.placephone}</p>
 					</div>
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.3482559449353!2d126.98313801564814!3d37.57041633166289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e88bffbb25%3A0x47dbc264f2cc5695!2z67mE7Yq47Lqg7ZSE!5e0!3m2!1sko!2skr!4v1629288115032!5m2!1sko!2skr"
@@ -145,20 +155,24 @@
 						loading="lazy"> </iframe>
 				</div>
 			</div>
-			
-			
+
+
 			<!-- 우측 배너 START -->
 			<div class="right_banner">
-			
+
 				<div id="c2" class="circle"></div>
-				<h2>김자바</h2>
-				
+				<h2>${crname}</h2>
+
 				<div class="program_all">
-				
+
 					<div class="program">
 						<div class="program_info">
 							<span>수업 1회 이용권</span> <br>
-							<h4>50,000원</h4>
+							<h4>
+								<fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${carryDetail.proprice1}" />
+								원
+							</h4>
 						</div>
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button">
@@ -168,7 +182,11 @@
 					<div class="program">
 						<div class="program_info">
 							<span>수업 5회 이용권</span> <br>
-							<h4>230,000원</h4>
+							<h4>
+								<fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${carryDetail.proprice5}" />
+								원
+							</h4>
 						</div>
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button">
@@ -178,30 +196,41 @@
 					<div class="program">
 						<div class="program_info">
 							<span>수업 10회 이용권</span> <br>
-							<h4>460,000원</h4>
+							<h4>
+								<fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${carryDetail.proprice10}" />
+								원
+							</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button" onclick='location.href="/gym/payment/payment"'>
+							<input type="button" value="구매하기" class="button"
+								onclick="location.href='<c:url value = "/payment/payment"/>'">
 						</div>
 					</div>
 
 					<div class="program">
 						<div class="program_info">
 							<span>수업 20회 이용권</span> <br>
-							<h4>930,000원</h4>
+							<h4>
+								<fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${carryDetail.proprice20}" />
+								원
+							</h4>
 						</div>
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button">
 						</div>
-					
+
 					</div>
-				
+
 				</div>
 			</div>
 			<!-- 우측 배너 END -->
 
 		</div>
+
 	</div>
+	<!-- Contents END -->
 
 
 	<!-- footer -->
@@ -223,4 +252,26 @@
 				clickable : true,
 			},
 		});
+	</script>
+	
+	
+	<script>
+			$("#write_btn").click(function(){
+				var review = $('#review').val();
+				$.ajax({
+					type : 'GET',
+					url : '<c:url value="/carry/reviewwrite"/>',
+					data : {
+						reviewcontent : review
+					},
+					success : function(data) {
+						alert('성공');
+					}
+				
+				});	
+			});
+		$(document).ready(function(){
+			
+		});
+	
 	</script>
