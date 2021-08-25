@@ -22,7 +22,7 @@ public class LoginController {
 	public String loginForm() {
 		return "member/loginForm";
 	}
-	
+	 
 	// 로그인 세션 저장
 	@PostMapping("/member/memberLogin")
 	public String login(
