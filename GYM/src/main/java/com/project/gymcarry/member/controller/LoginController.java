@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,11 +31,10 @@ public class LoginController {
 			HttpServletRequest request) {
 		System.out.println(id);
 		HttpSession session = request.getSession();
-		
-		boolean loginChk = loginService.memberLogin(id, pw);
-		if (loginChk == true) {
-			MemberDto memDto = loginService.getByMemIdx(id);
-			session.setAttribute("memidx", memDto);
+		MemberDto memDto = loginService.memberLogin(id, pw);
+		System.out.println(memDto);
+		if (memDto != null) {
+			session.setAttribute("member", memDto);
 			return "redirect:/index";
 		} else {
 			return "member/loginForm";

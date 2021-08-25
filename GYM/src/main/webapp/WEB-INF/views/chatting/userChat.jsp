@@ -15,10 +15,9 @@
 	<div id="chatwarp">
         <nav class="chat_ul">
             <div class="chatid">
-                <h3>유저아이디</h3>
+                <h3>${member.memnick}</h3>
             </div>
             <div class="chatRoom_nav">
-            	<c:if test=""></c:if>
 	            <ul>
                		<li><span style="margin-left: 350px; font-size: 30px;">GymCarry</span></li>
             	</ul>
@@ -36,7 +35,7 @@
             <!-- 채팅방 리스트 시작 -->
 			<c:forEach items="${chatList}" var="list">
             <div class="chatlist">
-                <a href="javascript:chatList(${list.chatidx})">
+                <a href="javascript:chatList(${list.chatidx})" onclick="">
                     <div class="float_left">
                         <img src="<c:url value="/images/icon/profile2.png"/>">
                     </div>
@@ -57,12 +56,13 @@
 			</c:forEach>
             <!-- 채팅방 리스트 끝 -->
         </div>
-
+		
         <div id="chatcontent_warp">
             <div class="not_message">
                 <img src="<c:url value="/images/icon/chat.png"/>" style="width: 80px;">
                 <h3>채팅할 상대를 선택해주세요</h3>
             </div>
+        	
         </div>
         <div class="chatting_write">
         </div>
@@ -73,54 +73,85 @@
 	
 	
 <script>
+$(document).ready(function(){
+	$(".chatlist").click(function(){
+		$(".chatlist").css("background-color","#eee");
+	});
+});
+
 // 채팅방 대화내용 리스트
 function chatList(num){
 	
 	$.ajax({
 		type : 'GET',
 		url : '<c:url value="/chatting/dochat"/>',
-		datType : 'json',
+		dataType : 'json',
 		data : {
 			chatidx : num
 		},
 		success : function (data) {
 			console.log(data)
-			$.each(data, function(index, item){
-			
-			var	html = '<div class="carry_line">';
-				html += '<img src="<c:url value="/images/icon/profile2.png"/>">';
-				html += '</div>';
-				html += '<div class="carry_chat">';
-				html += '<div class="message">';
-				html += '<div class="message_color">';
-				html += '<span>안녕하세요. 김자바 캐리입니다.</span>';
-				html += '</div>';
-				html += '</div>';
-				html += '<div class="time_line">';
-				html += '<span>10:53AM</span>';
-				html += '</div>';
-				html += '</div>';
-				html += '<div class="user_message_warp">';
-				html += '<div class="user_chat">';
-				html += '<div class="user_message">';
-				html += '<div>';
-				html += '<span>'+ item.chatcontent +'</span>';
-				html += '</div>';
-				html += '</div>';
-				html += '<div class="time_line2">';
-				html += '<span>'+ item.chatdate+'</span>';
-				html += '</div>';
-				html += '</div>';
-				
-				html += '<div class="chatting_write">';
-				html += '<input type="text" placeholder="메세지 입력..">';
-				html += '<button type="submit" class="btn">';
-				html += '<img src="<c:url value="/images/icon/icoin.png"/>">';
-				html += '</button>';
-				html += '</div>';
-				
-				$('#chatcontent_warp').html(html);
-			})
+			if(data == 0){
+				var htmlNav = "<ul>"
+					<c:forEach items="${chatList}" var="list">
+					htmlNav += '<li class="back_button"><input type="button" value="${list.crnick}" onclick="history.go(0)"></li>'
+					</c:forEach>
+					htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></a></li>'
+					htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" style="width: 40px;"></a></li>'
+					htmlNav += '<li class="order_button"><input type="button" value="결제하기"></li>'
+					htmlNav += '</ul>'
+				var	htmlStr = '<form>';
+				 	htmlStr += '<div class="chat_null">';
+					htmlStr += '</div>';
+					htmlStr += '<div class="chatting_write">';
+					htmlStr += '<input type="text" placeholder="메세지 입력.." id="dd">';
+					htmlStr += '<button type="submit" class="btn" id="ss">';
+					htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">';
+					htmlStr += '</button>';
+					htmlStr += '</div>';
+					htmlStr += '</form>';
+					
+					
+					$('.chatRoom_nav').html(htmlNav);
+					$('#chatcontent_warp').html(htmlStr); 
+			} else {
+				$.each(data, function(index, item){
+				console.log(index, item);
+				var	html = '<div class="carry_line">';
+					html += '<img src="<c:url value="/images/icon/profile2.png"/>">';
+					html += '</div>';
+					html += '<div class="carry_chat">';
+					html += '<div class="message">';
+					html += '<div class="message_color">';
+					html += '<span>안녕하세요. 김자바 캐리입니다.</span>';
+					html += '</div>';
+					html += '</div>';
+					html += '<div class="time_line">';
+					html += '<span>10:53AM</span>';
+					html += '</div>';
+					html += '</div>';
+					html += '<div class="user_message_warp">';
+					html += '<div class="user_chat">';
+					html += '<div class="user_message">';
+					html += '<div>';
+					html += '<span>'+ item.chatcontent +'</span>';
+					html += '</div>';
+					html += '</div>';
+					html += '<div class="time_line2">';
+					html += '<span>'+ item.chatdate+'</span>';
+					html += '</div>';
+					html += '</div>';
+					
+					html += '<div class="chatting_write">';
+					html += '<input type="text" placeholder="메세지 입력..">';
+					html += '<button type="submit" class="btn">';
+					html += '<img src="<c:url value="/images/icon/icoin.png"/>">';
+					html += '</button>';
+					html += '</div>';
+					
+					$('#chatcontent_warp').html(html);
+				})
+			}
 		}
 	})
 }
@@ -138,7 +169,6 @@ function chatList(num){
 
 
 
-
 </script>	
 
 <script>
@@ -153,8 +183,21 @@ function chatList(num){
 	
 	// message - 데이터를 수신하였을 때 발생함
 	socket.onmessage = function(event){
-		console.log(event.data+'\n');
+		var data = event.data; 
+		console.log(data);
 	};
+	
+	$(document).ready(function(){
+		$('form').submit(function(){
+			console.log('send message....');
+			sendMessage();
+			
+			// 메시지 입력한값
+			$('#message').val('');
+			
+		})
+	});
+	
 	
 	// close - 커넥션이 종료되었을 때 발생함
 	socket.onclose = function(event){

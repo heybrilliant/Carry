@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login"
 		resultType="com.project.gymcarry.member.MemberDto"
 	>
-		select * from member where mememail=#{param1} and mempw=#{param2}
+		select memidx, memnick from member where mememail=#{param1} and mempw=#{param2}
 	</select>
 	
 	
@@ -21,13 +21,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into member(mememail, mempw, memname, memnick) 
 		values (#{mememail},#{mempw},#{memname},#{memnick})
 	</insert>
-	
-	<select id="selectByMemberIdx"
-		resultType="com.project.gymcarry.member.MemberDto"
-	>
-		select memidx from member where mememail=#{param1}
-	</select>
-	
 	
 	<!-- carry -->
 	<select id="carryLogin"

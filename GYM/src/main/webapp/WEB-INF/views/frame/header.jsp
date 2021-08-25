@@ -20,10 +20,10 @@
 			<img src="<c:url value="/images/icon/chatting_icon.png"/>" alt="chatting">
 			</a>
 		</div>
-		<c:if test="${memidx eq null}">
+		<c:if test="${member eq null}">
 		<a href="<c:url value="/member/login"/>" class="login"> LOGIN </a>
 		</c:if>
-		<c:if test="${memidx ne null}">
+		<c:if test="${member ne null}">
 		<a href="<c:url value="/member/logOut"/>" class="login"> LOGOUT </a>
 		</c:if>
 	</div>

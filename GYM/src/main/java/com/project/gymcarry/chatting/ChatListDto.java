@@ -10,7 +10,6 @@ public class ChatListDto {
 	public ChatListDto() {
 	}
 	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String placename) {
-		super();
 		this.chatidx = chatidx;
 		this.cridx = cridx;
 		this.memidx = memidx;

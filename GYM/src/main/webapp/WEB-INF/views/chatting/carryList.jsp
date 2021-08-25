@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ 	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -31,7 +31,7 @@
       <form action="<c:url value="/chatting/chatInquire"/>" method="post">
       <c:forEach items="${carryList}" var="list">
       <input type="hidden" name=cridx value="${list.cridx}">
-      <input type="hidden" name="memidx" value="${memidx.memidx}">
+      <input type="hidden" name="memidx" value="${member.memidx}">
         <div class="card">
           <div class="board_sidebar">
             <img class="profile_image" src="<c:url value="/images/icon/profile.png"/>" />
