@@ -1,11 +1,17 @@
 package com.project.gymcarry.dao;
 
-import com.project.gymcarry.carry.CarryDto;
+import java.util.List;
 
-// matching DAO
+import com.project.gymcarry.carry.CarryAllDto;
+import com.project.gymcarry.carry.CarryReviewDto;
+
 public interface CarryDao {
 	
-	// 캐리 정보
-	CarryDto selectCarryDetail(int crIDX);
+	// 캐리 전체 정보
+	CarryAllDto selectCarryDetail(int cridx);
+	// 캐리 리뷰 리스트
+	List<CarryReviewDto> selectCarryReviewList(int cridx);
+	// 캐리 리뷰 작성
+	CarryReviewWrite insertCarryReview();
 	
 }

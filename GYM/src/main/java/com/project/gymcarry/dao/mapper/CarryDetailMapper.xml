@@ -5,11 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.project.gymcarry.dao.CarryDao">
 
-	<!-- 캐리 정보 리스트 -->
+	<!-- 캐리 정보 리스트 (플레이스, 리뷰테이블 JOIN) -->
 	<select id="selectCarryDetail"
-		resultType="com.project.gymcarry.carry.CarryDto">
-		select * from carry where crIDX=#{crIDX};
+		resultType="com.project.gymcarry.carry.CarryAllDto">
+		select * from carry c, place p
+		where c.placeidx=p.placeidx and c.cridx=#{cridx}
 	</select>
 
+	<select id="selectCarryReviewList"
+		resultType="com.project.gymcarry.carry.CarryReviewDto">
+		select * from carryreview r, member m, carry c
+		where m.memidx = r.memidx and c.cridx=#{cridx}
+		
+	</select>
 
 </mapper>
