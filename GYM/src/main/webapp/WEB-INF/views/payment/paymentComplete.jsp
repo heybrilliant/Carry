@@ -19,9 +19,9 @@
 		<h2>감사합니다!</h2>
 
 		<div class="btn">
-			<input type="submit" value="결제 내역"> <input type="button"
-				value="홈으로" onclick='location.href="/gym/index"'>
-		</div> 
+			<input type="submit" value="결제 내역">
+			<input type="button" value="홈으로" onclick="location.href='<c:url value = "/index"/>'">
+		</div>  
 
 	</div>
 

@@ -111,7 +111,6 @@ hr {
 	background-size: cover;
 }
 
-table {
 	height: 120px;
 	width: 550px;
 	margin-top: 12px;
@@ -216,6 +215,7 @@ table {
 
 
 .review_list_section {
+	width : 100%;
 	margin: 40px 10px 5px 5px;
 	display: inline-flex;
 }
