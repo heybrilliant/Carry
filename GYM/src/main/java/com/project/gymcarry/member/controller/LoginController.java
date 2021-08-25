@@ -39,7 +39,7 @@ public class LoginController {
 		} else {
 			return "member/loginForm";
 		}
-	}
+	} 
 	
 	// 로그아웃 세션 삭제
 	@GetMapping("member/logOut")
