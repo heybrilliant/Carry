@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 매칭캐리리스트 -->
 	<select id="selectCarryList"
-		resultType="com.project.gymcarry.carry.CarryDto">
+		resultType="com.project.gymcarry.carry.CarryAllDto">
 		select * from carry
 	</select>
 
