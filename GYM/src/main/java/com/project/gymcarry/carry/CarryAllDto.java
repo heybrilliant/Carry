@@ -27,6 +27,8 @@ public class CarryAllDto {
 	private String reviewcontent;
 	private int memidx;
 	private String memnick;
+	public CarryAllDto() {
+	}
 	public int getCridx() {
 		return cridx;
 	}

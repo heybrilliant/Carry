@@ -19,6 +19,7 @@ public class CarryListController {
 	@GetMapping("chatting/carryLists")
 	public String chatRoomList(CarryAllDto carryDto, Model model) {
 		List<CarryAllDto> list = matchingListService.getCarryList();
+		System.out.println(list);
 		model.addAttribute("carryList", list);
 		return "chatting/carryList";
 	}
