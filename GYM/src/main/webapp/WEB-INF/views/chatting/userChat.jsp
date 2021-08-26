@@ -101,7 +101,6 @@
 		</div>
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-
 	<script>
 		//채팅룸 선택시 이벤트
 		$(document).ready(function() {
@@ -219,9 +218,10 @@
 							htmlStr += '</button>';
 							htmlStr += '</div>';
 							htmlStr += '</form>';
-
+							
 							$('#chatcontent_warp').html(htmlStr);
 							$('.message_warp').html(htmlNav);
+							
 
 							// 처음 접속시, 메세지 입력창에 focus 시킴
 							$('#msg').focus();
@@ -231,19 +231,22 @@
 						} else {
 							$.each(data, function(index, item) {
 							console.log(index, item);
+							<c:if test="${contenttype eq 1}">
 							var html = '<div class="carry_line">';
 							html += '<img src="<c:url value="/images/icon/profile2.png"/>">';
 							html += '</div>';
 							html += '<div class="carry_chat">';
 							html += '<div class="message">';
 							html += '<div class="message_color">';
-							html += '<span>안녕하세요. 김자바 캐리입니다.</span>';
+							html += '<span>'+item.chatcontent+'</span>';
 							html += '</div>';
 							html += '</div>';
 							html += '<div class="time_line">';
-							html += '<span>10:53AM</span>';
+							html += '<span>' + item.chatdate +'</span>';
 							html += '</div>';
 							html += '</div>';
+							</c:if>
+							<c:if test="${contenttype eq 0}">
 							html += '<div class="user_message_warp">';
 							html += '<div class="user_chat">';
 							html += '<div class="user_message">';
@@ -261,6 +264,7 @@
 							html += '<img src="<c:url value="/images/icon/icoin.png"/>">';
 							html += '</button>';
 							html += '</div>';
+							</c:if>
 
 							$('#chatcontent_warp').html(html);
 						})
