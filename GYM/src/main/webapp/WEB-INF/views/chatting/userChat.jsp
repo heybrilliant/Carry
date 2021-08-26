@@ -35,8 +35,7 @@
             <!-- 채팅방 리스트 시작 -->
 		<c:forEach items="${chatList}" var="list">
             <div class="chatlist">
-            	<button type="submit" value="${list.crnick}" onclick="location.href='javascript:chatList(${list.chatidx})'" id="on_btn">
-                <%-- <a href="javascript:chatList(${list.chatidx})"> --%>
+            	<button type="button" value="${list.crnick}" onclick="location.href='javascript:chatList(${list.chatidx})'" class="on_btn">
                     <div class="float_left">
                         <img src="<c:url value="/images/icon/profile2.png"/>">
                     </div>
@@ -52,7 +51,6 @@
                     <div class="chat_date">
                         <span><%-- ${list.chatdate} --%></span>
                     </div>
-                <!-- </a> -->
             	</button>
             </div>
 		</c:forEach>
@@ -76,10 +74,15 @@
 <script>
 // 생각
 $(document).ready(function(){
-	$("#on_btn").click(function(){
-		$(this).css("background-color","#eee");
+	$(".chatlist .on_btn").click(function(){
+		$(".chatlist .on_btn").removeClass('active');
+		$(this).addClass('active');
 	});
+	
 });
+
+
+
 
 // 채팅방 대화내용 리스트
 function chatList(num){
@@ -96,22 +99,23 @@ function chatList(num){
 			if(data == 0){
 				var htmlNav = '<ul>';
 					htmlNav += '<li class="back_button">';
-					htmlNav += '<input type="button" value="???" onclick="history.go(0)">';
+					htmlNav += '<input type="button" value="dd" onclick="history.go(0)">';
 					htmlNav += '</li>';
 					htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></a></li>'
 					htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" style="width: 40px;"></a></li>'
 					htmlNav += '<li class="order_button"><input type="button" value="결제하기"></li>'
 					htmlNav += '</ul>'
-				var	htmlStr = '<form>';
+					
 				 	htmlStr += '<div class="chat_null">';
 					htmlStr += '</div>';
 					htmlStr += '<div class="chatting_write">';
 					htmlStr += '<input type="text" placeholder="메세지 입력.." id="dd">';
-					htmlStr += '<button type="submit" class="btn" id="ss">';
+					htmlStr += '<button type="button" class="btn" id="ss">';
 					htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">';
 					htmlStr += '</button>';
 					htmlStr += '</div>';
-					htmlStr += '</form>';
+				/* var	htmlStr = '<form>';
+					htmlStr += '</form>'; */
 					
 					
 					$('.chatRoom_nav').html(htmlNav);
@@ -158,19 +162,6 @@ function chatList(num){
 	})
 }
 
-
-/* var html = "<ul>"
-	html += "<li class="back_button"><input type="button" value="김자바"></li>"	
-	html += "<li><a href="#"><img src="../img/heart2.png" style="width: 40px;"></a></li>"
-	html += "<li><a href="#"><img src="../img/heart2.png" style="width: 40px;"></a></li>"
-	html += "<li><a href="#"><img src="../img/heart2.png" style="width: 40px;"></a></li>"
-	html += "<li><a href="#"><img src="../img/heart2.png" style="width: 40px;"></a></li>"
-    html += "<li class="order_button"><input type="button" value="결제하기"></li>"
-    html += "</ul>"
-	$('.chatRoom_nav').html(html); */
-
-
-
 </script>	
 
 <script>
@@ -183,11 +174,6 @@ function chatList(num){
 		socket.send("My name is m");
 	};
 	
-	// message - 데이터를 수신하였을 때 발생함
-	socket.onmessage = function(event){
-		var data = event.data; 
-		console.log(data);
-	};
 	
 	$(document).ready(function(){
 		$('form').submit(function(){
@@ -196,9 +182,35 @@ function chatList(num){
 			
 			// 메시지 입력한값
 			$('#message').val('');
-			
+			$('#message').focus();
+			return false;
 		})
 	});
+	
+	
+	function sendMessage() {
+		//websocket으로 메시지를 보내기
+		
+		var msg = {
+			user : '${member.memnick}',
+			to : 'jin', // 현재 페이지 작성자의 id를 작성
+			message : $("#message").val()
+		};
+		
+		sock.send(JSON.stringify(msg));
+	}
+	
+	// message - 데이터를 수신하였을 때 발생함
+	socket.onmessage = function(event){
+		var data = event.data; 
+		
+		masgData = JSON.parse(data);
+		
+		var currentuser_session = $('#sessionuserid').val();
+		console.log('current session id: ' + currentuser_session);
+	};
+	
+	
 	
 	
 	// close - 커넥션이 종료되었을 때 발생함
