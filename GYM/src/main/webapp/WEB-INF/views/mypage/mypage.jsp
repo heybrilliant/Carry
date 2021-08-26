@@ -8,11 +8,18 @@
 <title>Servey</title>
 
 
+
+
 <link rel="stylesheet" href="/gym/css/grid.css">
 
 <!-- jQuery -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- bootstrap -->
+<link rel="stylesheet" href="/gym/css/bootstrap.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
 <!-- iamport.payment.js -->
@@ -47,8 +54,10 @@
 							<div style="text-align: left; width: 35%; padding-left: 2%">버튼</div>
 						</div>
 
-						<div class="col-profile">
-						
+						<div class="col-profile"></div>
+
+
+					</div>
 					<div class="my-info-develope">
 						<h3 class="info_title">My page</h3>
 						<ul class="info_contents">
@@ -98,130 +107,128 @@
 
 				</div>
 			</div>
-		</div>
-	</div>
-<div class="modal fade" id="registerModal1" tabindex="-1" role="dialog"
-		aria-labelledby="modal4" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
+			<div class="modal fade" id="registerModal1" tabindex="-1"
+				role="dialog" aria-labelledby="modal4" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
 
-					<h3>2021-08-23 1</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="close">
-						<span aria-hidden="true"> X </span>
-					</button>
+							<h3>2021-08-23 1</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="close">
+								<span aria-hidden="true"> X </span>
+							</button>
 
-				</div>
-				<div class="modal-body modal-mypage">
+						</div>
+						<div class="modal-body modal-mypage">
 
-					<div class="content">
-						<span class="left"></span> <span class="editor"> <textarea
-								class="form-control" name="contents" id="contents"
-								style="resize: none;"></textarea>
-						</span>
+							<div class="content">
+								<span class="left"></span> <span class="editor"> <textarea
+										class="form-control" name="contents" id="contents"
+										style="resize: none;"></textarea>
+								</span>
+							</div>
+							<div class="btn modal-submit-btn">
+								<input type="submit" value="작성 완료">
+							</div>
+						</div>
 					</div>
-					<div class="btn modal-submit-btn">
-						<input type="submit" value="작성 완료">
+				</div>
+			</div>
+
+			<div class="modal fade" id="registerModal2" tabindex="-1"
+				role="dialog" aria-labelledby="modal4" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+
+							<h3>2021-08-23 2</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="close">
+								<span aria-hidden="true"> X </span>
+							</button>
+
+						</div>
+						<div class="modal-body modal-mypage">
+
+							<div class="content">
+								<span class="left"></span> <span class="editor"> <textarea
+										class="form-control" name="contents" id="contents"
+										style="resize: none;"></textarea>
+								</span>
+							</div>
+							<div class="btn modal-submit-btn">
+								<input type="submit" value="작성 완료">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="registerModal3" tabindex="-1"
+				role="dialog" aria-labelledby="modal4" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+
+							<h3>2021-08-23 3</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="close">
+								<span aria-hidden="true"> X </span>
+							</button>
+
+						</div>
+						<div class="modal-body modal-mypage">
+
+							<div class="content">
+								<span class="left"></span> <span class="editor"> <textarea
+										class="form-control" name="contents" id="contents"
+										style="resize: none;"></textarea>
+								</span>
+							</div>
+							<div class="btn modal-submit-btn">
+								<input type="submit" value="작성 완료">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="registerModal4" tabindex="-1"
+				role="dialog" aria-labelledby="modal4" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+
+							<h3>2021-08-23 4</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="close">
+								<span aria-hidden="true"> X </span>
+							</button>
+
+						</div>
+						<div class="modal-body modal-mypage">
+
+							<div class="content">
+								<span class="left"></span> <span class="editor"> <textarea
+										class="form-control" name="contents" id="contents"
+										style="resize: none;"></textarea>
+								</span>
+							</div>
+							<div class="btn modal-submit-btn">
+								<input type="submit" value="작성 완료">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div class="modal fade" id="registerModal2" tabindex="-1" role="dialog"
-		aria-labelledby="modal4" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-
-					<h3>2021-08-23 2</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="close">
-						<span aria-hidden="true"> X </span>
-					</button>
-
-				</div>
-				<div class="modal-body modal-mypage">
-
-					<div class="content">
-						<span class="left"></span> <span class="editor"> <textarea
-								class="form-control" name="contents" id="contents"
-								style="resize: none;"></textarea>
-						</span>
-					</div>
-					<div class="btn modal-submit-btn">
-						<input type="submit" value="작성 완료">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="modal fade" id="registerModal3" tabindex="-1" role="dialog"
-		aria-labelledby="modal4" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-
-					<h3>2021-08-23 3</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="close">
-						<span aria-hidden="true"> X </span>
-					</button>
-
-				</div>
-				<div class="modal-body modal-mypage">
-
-					<div class="content">
-						<span class="left"></span> <span class="editor"> <textarea
-								class="form-control" name="contents" id="contents"
-								style="resize: none;"></textarea>
-						</span>
-					</div>
-					<div class="btn modal-submit-btn">
-						<input type="submit" value="작성 완료">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="modal fade" id="registerModal4" tabindex="-1" role="dialog"
-		aria-labelledby="modal4" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-
-					<h3>2021-08-23 4</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="close">
-						<span aria-hidden="true"> X </span>
-					</button>
-
-				</div>
-				<div class="modal-body modal-mypage">
-
-					<div class="content">
-						<span class="left"></span> <span class="editor"> <textarea
-								class="form-control" name="contents" id="contents"
-								style="resize: none;"></textarea>
-						</span>
-					</div>
-					<div class="btn modal-submit-btn">
-						<input type="submit" value="작성 완료">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- footer -->
-	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>
 
-
+<footer>
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+</footer>
 
 </html>
 
