@@ -42,7 +42,6 @@ public class CarryReviewDto {
 	
 	
 	public CarryReviewDto(int reviewidx, String reviewcontent, int cridx, int memidx, String memnick) {
-		super();
 		this.reviewidx = reviewidx;
 		this.reviewcontent = reviewcontent;
 		this.cridx = cridx;

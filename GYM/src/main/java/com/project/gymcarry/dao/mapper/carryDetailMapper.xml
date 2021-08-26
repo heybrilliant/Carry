@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.gymcarry.dao.CarryDao"> 
+
+
+	<!-- 캐리 정보 출력 -->
+	<select id="selectCarryDetail"
+		resultType="com.project.gymcarry.carry.CarryDto">
+		select * from carry where cridx=#{cridx}
+	</select>
+	
+	
+	<!-- 캐리 수업 가격 정보 출력 -->
+	<select id = "selectCarryPrice"	
+		resultType="com.project.gymcarry.carry.CarryPriceDto">
+		select * from crprice where cridx=#{cridx}
+	</select>
+
+
+	<!-- 캐리 자격 및 경력 출력 -->
+	<select id = "selectCarryCerti"
+		resultType="com.project.gymcarry.carry.CarryCertiDto">
+		select * from crcertification where cridx=#{cridx}
+	</select>
+
+
+	<!-- 소속플레이스 정보 출력 (캐리 상세페이지 내)  -->
+	<select id="selectCarryPlaceDetail"
+		resultType="com.project.gymcarry.place.PlaceDto">
+		select * from place natural join carry where cridx=#{cridx};
+	</select>
+	
+	
+	<!-- 캐리 리뷰 리스트 출력 -->
+	<select id="selectCarryReviewList"
+		resultType="com.project.gymcarry.carry.CarryReviewDto">
+		select * from carryreview r, member m, carry c where m.memidx = r.memidx and c.cridx=r.cridx and c.cridx=#{cridx}
+		<!-- select * from carry c inner join carryreview r on r.cridx=c.cridx and c.cridx=#{cridx} -->
+	</select>
+	
+
+</mapper>

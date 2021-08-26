@@ -23,10 +23,10 @@
 		<div>
 			<h3>주문 정보</h3>
 			<div class="order_info">
-				<span>${payment.placename} : ${payment.crname}</span> <br>
+				<span>넣기 : 넣기</span> <br>
 				<h4>
 				10회 
-				<fmt:formatNumber type="number" maxFractionDigits="3" value="${payment.proprice10}"/>
+				<fmt:formatNumber type="number" maxFractionDigits="3" value="${carryPrice.proprice10}"/>
 				원
 				</h4>
 			</div>
@@ -38,7 +38,7 @@
 			<p>
 				이름 <span style="color: blue">*</span>
 			</p>
-			<input type="text" class="input_box" placeholder = "이름을 입력해주세요" required>
+			<input type="text" class="input_box" placeholder = "이름을 입력해주세요" name="" required>
 			<p>
 				연락처 <span style="color: blue">*</span>
 			</p>
@@ -61,7 +61,7 @@
 
 			<h3>최종 결제 금액</h3>
 			<div class="pricebox">
-				<ul>10회 강의권<li><fmt:formatNumber type="number" maxFractionDigits="3" value="${payment.proprice10}"/>원</li></ul>
+				<ul>10회 강의권<li><fmt:formatNumber type="number" maxFractionDigits="3" value="${carryPrice.proprice10}"/>원</li></ul>
 			</div>
 		</div>
 

@@ -90,11 +90,11 @@
 				<div class="carry_carrer" id="carrer">
 					<h3>자격 및 경력</h3>
 					<ul>
-						<li>${carryDetail.crcerti1}</li>
-						<li>${carryDetail.crcerti2}</li>
-						<li>${carryDetail.crcerti3}</li>
-						<li>${carryDetail.crcerti4}</li>
-						<li>${carryDetail.crcerti5}</li>
+						<li>${carryCerti.crcerti1}</li>
+						<li>${carryCerti.crcerti2}</li>
+						<li>${carryCerti.crcerti3}</li>
+						<li>${carryCerti.crcerti4}</li>
+						<li>${carryCerti.crcerti5}</li>
 					</ul>
 				</div>
 
@@ -136,7 +136,7 @@
 					<h2>소속 플레이스</h2>
 					<div class="carry_place_content">
 						<img src="http://placehold.it/570x380"> <span><a
-							href="#">${carryDetail.placename}</a></span>
+							href="#">${carryPlaceInfo.placename}</a></span>
 					</div>
 				</div>
 				<!-- 소속 플레이스 section all wrap END -->
@@ -146,8 +146,8 @@
 				<div class="place_map" id="location">
 					<h3>지도</h3>
 					<div class="place_address">
-						<p>${carryDetail.placeaddress}</p>
-						<p>${carryDetail.placephone}</p>
+						<p>${carryPlaceInfo.placeaddress}</p>
+						<p>${carryPlaceInfo.placephone}</p>
 					</div>
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.3482559449353!2d126.98313801564814!3d37.57041633166289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e88bffbb25%3A0x47dbc264f2cc5695!2z67mE7Yq47Lqg7ZSE!5e0!3m2!1sko!2skr!4v1629288115032!5m2!1sko!2skr"
@@ -170,7 +170,7 @@
 							<span>수업 1회 이용권</span> <br>
 							<h4>
 								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryDetail.proprice1}" />
+									value="${carryPrice.proprice1}" />
 								원
 							</h4>
 						</div>
@@ -184,7 +184,7 @@
 							<span>수업 5회 이용권</span> <br>
 							<h4>
 								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryDetail.proprice5}" />
+									value="${carryPrice.proprice5}"/>
 								원
 							</h4>
 						</div>
@@ -198,7 +198,7 @@
 							<span>수업 10회 이용권</span> <br>
 							<h4>
 								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryDetail.proprice10}" />
+									value="${carryPrice.proprice10}" />
 								원
 							</h4>
 						</div>
@@ -213,7 +213,7 @@
 							<span>수업 20회 이용권</span> <br>
 							<h4>
 								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryDetail.proprice20}" />
+									value="${carryPrice.proprice20}" />
 								원
 							</h4>
 						</div>

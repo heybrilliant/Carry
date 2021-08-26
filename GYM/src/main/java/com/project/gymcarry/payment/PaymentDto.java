@@ -6,54 +6,86 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class PaymentDto {
 
-	private int payIDX;
-	private int payPrice;
+	private int payidx;
 	@JsonFormat(pattern = "HH:mm a")
-	private Timestamp payDate;
-	private int proNum;
+	private Timestamp paydate;
+	private int memidx;
+	private String payname;
+	private String payphone;
+	private int cridx;
+	private int paynum;
+	private int payprice;
 	
 	
-	public int getPayIDX() {
-		return payIDX;
-	}
-	public void setPayIDX(int payIDX) {
-		this.payIDX = payIDX;
-	}
-	public int getPayPrice() {
-		return payPrice;
-	}
-	public void setPayPrice(int payPrice) {
-		this.payPrice = payPrice;
-	}
-	public Timestamp getPayDate() {
-		return payDate;
-	}
-	public void setPayDate(Timestamp payDate) {
-		this.payDate = payDate;
-	}
-	public int getProNum() {
-		return proNum;
-	}
-	public void setProNum(int proNum) {
-		this.proNum = proNum;
+	public PaymentDto(int payidx, Timestamp paydate, int memidx, String payname, String payphone, int cridx, int paynum,
+			int payprice) {
+		super();
+		this.payidx = payidx;
+		this.paydate = paydate;
+		this.memidx = memidx;
+		this.payname = payname;
+		this.payphone = payphone;
+		this.cridx = cridx;
+		this.paynum = paynum;
+		this.payprice = payprice;
 	}
 	
 	
+	public int getPayidx() {
+		return payidx;
+	}
+	public void setPayidx(int payidx) {
+		this.payidx = payidx;
+	}
+	public Timestamp getPaydate() {
+		return paydate;
+	}
+	public void setPaydate(Timestamp paydate) {
+		this.paydate = paydate;
+	}
+	public int getMemidx() {
+		return memidx;
+	}
+	public void setMemidx(int memidx) {
+		this.memidx = memidx;
+	}
+	public String getPayname() {
+		return payname;
+	}
+	public void setPayname(String payname) {
+		this.payname = payname;
+	}
+	public String getPayphone() {
+		return payphone;
+	}
+	public void setPayphone(String payphone) {
+		this.payphone = payphone;
+	}
+	public int getCridx() {
+		return cridx;
+	}
+	public void setCridx(int cridx) {
+		this.cridx = cridx;
+	}
+	public int getPaynum() {
+		return paynum;
+	}
+	public void setPaynum(int paynum) {
+		this.paynum = paynum;
+	}
+	public int getPayprice() {
+		return payprice;
+	}
+	public void setPayprice(int payprice) {
+		this.payprice = payprice;
+	}
+
+
 	@Override
 	public String toString() {
-		return "paymentDto [payIDX=" + payIDX + ", payPrice=" + payPrice + ", payDate=" + payDate + ", proNum=" + proNum
-				+ "]";
+		return "PaymentDto [payidx=" + payidx + ", paydate=" + paydate + ", memidx=" + memidx + ", payname=" + payname
+				+ ", payphone=" + payphone + ", cridx=" + cridx + ", paynum=" + paynum + ", payprice=" + payprice + "]";
 	}
-	
-	
-	public PaymentDto(int payIDX, int payPrice, Timestamp payDate, int proNum) {
-		super();
-		this.payIDX = payIDX;
-		this.payPrice = payPrice;
-		this.payDate = payDate;
-		this.proNum = proNum;
-	}
-	
 	
 	
 	
