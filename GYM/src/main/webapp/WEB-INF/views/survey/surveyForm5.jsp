@@ -19,30 +19,24 @@
 								<span>05</span> / 05
 							</p>
 						</div>
-						<h1>지역?????</h1>
+						<h1>지역을 선택해주세요</h1>
 					</div>
 					<div class="servey_ul">
-						<ul>
-							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>남자</span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>여자</span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
-							</li>
-						</ul>
 						<div class="next_btn">
+							<div class="select_op">
+								<select>
+									<option>강남구</option>
+									<option>구로구</option>
+									<option>금천구</option>
+									<option>동대문구</option>
+									<option>마포구</option>
+									<option>서대문구</option>
+									<option>성북구</option>
+									<option>서초구</option>
+									<option>송파구</option>
+									<option>은평구</option>
+								</select>
+							</div>
 							<input type="button" value="다음">
 						</div>
 					</div>

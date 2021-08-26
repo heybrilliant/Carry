@@ -2,6 +2,7 @@ package com.project.gymcarry.websokethandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import com.google.gson.Gson;
+import com.google.protobuf.Message;
 import com.project.gymcarry.member.MemberDto;
 
 public class WebSocketHandler extends TextWebSocketHandler {
@@ -36,18 +39,45 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		// 사용자닉네임과 웹소켓세션을 맵에 저장한다.
 		mapList.put(memnick, session);
 		
-		logger.info("채팅방 연결 성공 !!" + session.getId()+ " : " + memnick);
-
+		// 세션값을 불러온
+		// 0번째 중괄호에 session.getId()을 넣으라는 뜻 : 세션 닉네임 값
+		logger.info("{} 연결됨", session.getId()+ " : " + memnick);
+		
+		
 	}
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-
+		System.out.println(session + " : " + message + " : " + message.getPayload());
+		String chatMem = (String) session.getAttributes().get("memnick");	
+		System.out.println(chatMem + ":" + message.getPayload());
+		logger.info("{}로 부터 {}를 전달 받았습니다.", chatMem, message.getPayload());
+		Gson gson = new Gson();
+		Message msg = gson.fromJson(message.getPayload(), Message.class);
+		System.out.println(msg);
+		Iterator<String> itr = mapList.keySet().iterator();
+		String sessionId = "";
+		while(itr.hasNext()) {
+			sessionId = itr.next();
+			mapList.get(sessionId).sendMessage(new TextMessage("echo:" +  message.getPayload()));
+			session.sendMessage(new TextMessage("echo:" +  message.getPayload()));
+		}
 	}
 
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		System.out.println(session + ":" + status);
+		// list 삭제
+		list.remove(session);
+		
+		// map 삭제
+		mapList.remove(session.getId());
+		
+		logger.info("{}연결 끊김", session.getId());
+		
+		System.out.println("채팅방 퇴장한사람 : " + session.getPrincipal().getName());
+		
+		
 	}
 
 }
