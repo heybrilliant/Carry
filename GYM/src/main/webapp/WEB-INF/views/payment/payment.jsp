@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <title>결제 페이지</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/payment/payment.css">
@@ -22,8 +23,12 @@
 		<div>
 			<h3>주문 정보</h3>
 			<div class="order_info">
-				<span>어쩌고짐 : 김자바 캐리</span> <br>
-				<h4>10회 460,000원</h4>
+				<span>${payment.placename} : ${payment.crname}</span> <br>
+				<h4>
+				10회 
+				<fmt:formatNumber type="number" maxFractionDigits="3" value="${payment.proprice10}"/>
+				원
+				</h4>
 			</div>
 
 			<br>
@@ -56,7 +61,7 @@
 
 			<h3>최종 결제 금액</h3>
 			<div class="pricebox">
-				<ul>10회 강의권<li>460,000원</li></ul>
+				<ul>10회 강의권<li><fmt:formatNumber type="number" maxFractionDigits="3" value="${payment.proprice10}"/>원</li></ul>
 			</div>
 		</div>
 
@@ -88,7 +93,7 @@
 			IMP.request_pay({ // param
 				pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
 				pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
-				merchant_uid : "ORD20180131-0000014",
+				merchant_uid : "random.nextInt(10)",
 				name : "수업 10회 이용권",
 				amount : 100,
 				buyer_email : "gildong@gmail.com",
@@ -105,9 +110,19 @@
 					alert('결제가 취소되었습니다.');
 				}
 			});
+			/* 이니시스API 호출 END*/
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 
-		/* 이니시스API 호출 END*/
+	
 		
 		
 		

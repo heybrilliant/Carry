@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.gymcarry.carry.CarryAllDto;
+import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.dao.CarryDao;
 
@@ -18,7 +18,7 @@ public class CarryInfoService {
 	private CarryDao dao;
 	
 	// 캐리 정보
-	public CarryAllDto getCarryDetail(int cridx) {
+	public CarryDto getCarryDetail(int cridx) {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryDetail(cridx);
 	}

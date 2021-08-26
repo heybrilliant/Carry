@@ -94,7 +94,7 @@
 						<li>${carryDetail.crcerti2}</li>
 						<li>${carryDetail.crcerti3}</li>
 						<li>${carryDetail.crcerti4}</li>
-						<li>ㅇㅀㅎ</li>
+						<li>${carryDetail.crcerti5}</li>
 					</ul>
 				</div>
 
@@ -257,7 +257,9 @@
 	
 	<script>
 			$("#write_btn").click(function(){
+			
 				var review = $('#review').val();
+				
 				$.ajax({
 					type : 'GET',
 					url : '<c:url value="/carry/reviewwrite"/>',

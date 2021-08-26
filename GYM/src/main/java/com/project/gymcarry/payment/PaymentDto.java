@@ -2,13 +2,13 @@ package com.project.gymcarry.payment;
 
 import java.sql.Timestamp;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class PaymentDto {
 
 	private int payIDX;
 	private int payPrice;
-	@DateTimeFormat
+	@JsonFormat(pattern = "HH:mm a")
 	private Timestamp payDate;
 	private int proNum;
 	
