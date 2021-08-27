@@ -33,6 +33,7 @@ public class LoginController {
 		MemberDto memDto = loginService.memberLogin(id, pw);
 		if (memDto != null) {
 			session.setAttribute("member", memDto);
+			session.setAttribute("memnick", memDto.getMemnick());
 			return "redirect:/index";
 		} else {
 			return "member/loginForm";

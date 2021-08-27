@@ -48,6 +48,7 @@ public class UserChatController {
 		}
 		// 캐리와의 중복 방이없을경우 채팅방생성
 		int result = matchingAddChatRoomService.getAddChatRoom(cridx, memidx);
+		model.addAttribute("result", result);
 		if(result == 1) {
 			System.out.println(cridx + "carry채팅방생성");
 		}
@@ -59,6 +60,7 @@ public class UserChatController {
 	public String matching(ChatListDto chatListDto, Model model) {
 		List<ChatListDto> list = matchingListService.getChatList();
 		model.addAttribute("chatList", list);
+		model.addAttribute("chat", chatListDto);
 		return "chatting/userChat";
 	}	
 	
