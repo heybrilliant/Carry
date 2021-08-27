@@ -34,11 +34,11 @@
 								<span>${list.placename}</span>
 							</div>
 							<div class="chat_content">
-								<span> <%-- ${list.chatcontent} --%>
+								<span> 안녕하세요.. 문의드려요~~!
 								</span>
 							</div>
 							<div class="chat_date">
-								<span> <%-- ${list.chatdate} --%>
+								<span> 오후 10:30
 								</span>
 							</div>
 						</button>
@@ -48,37 +48,34 @@
 				<!-- 채팅방 리스트 끝 -->
 			<div id="chatcontent_warp">
 			<form onsubmit="return sendMessage();">
+				<!-- 채팅룸 nav -->
 				<div class="message_warp">
-					<ul>
-					<li class="back_button"><input type="button" value="dd" onclick="history.go(0)"></li>
-					<li><a href="#"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></a></li>
-					<li><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" style="width: 40px;"></a></li>
-					<li class="order_button"><input type="button" value="결제하기"></li>
-					</ul>
 				</div>
 				<div class="chat_null">
-					<div class="carry_line">
-						<img src="<c:url value="/images/icon/profile2.png"/>">';
-					</div>
-					<div class="carry_chat">
-						<div class="message">
-							<div class="message_color">
-								<span>안녕하세요. 김자바 캐리입니다.</span>
-							</div>
+					<div class="carry_message_warp">
+						<div class="carry_line">
+							<img src="<c:url value="/images/icon/profile2.png"/>">;
 						</div>
-						<div class="time_line">
-							<span>10:53AM</span>
+						<div class="carry_chat">
+							<div class="message">
+								<div class="message_color">
+									<span>a</span>
+								</div>
+							</div>
+							<div class="time_line">
+								<span>a</span>
+							</div>
 						</div>
 					</div>
 				<div class="user_message_warp">
 					<div class="user_chat">
 						<div class="user_message">
 							<div>
-						<span><!-- ' + item.chatcontent + ' --> 안녕하세요.</span>
+						<span>b</span>
 							</div>
 						</div>
 						<div class="time_line2">
-							<span><!-- ' + item.chatdate +' --> 10:56AM</span>
+							<span>b</span>
 						</div>
 					</div>
 				</div>
@@ -91,6 +88,7 @@
 				</div>
 				</form>
 			</div>
+			
 			<div id="chatcontent_off">
 				<div class="not_message">
 					<img src="<c:url value="/images/icon/chat.png"/>"
@@ -99,28 +97,169 @@
 				</div>
 			</div>
 		</div>
+		
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	<script>
 		//채팅룸 선택시 이벤트
 		$(document).ready(function() {
-			$('.message_warp').hide();
-			$('.chatting_write').hide();
-			$('.chat_null').hide();
-			
+			$(".chat_null").hide();
+			$(".message_warp").hide();
+			$(".chatting_write").hide();
 			$(".chatlist .on_btn").click(function() {
 				$(".chatlist .on_btn").removeClass('active');
 				$(this).addClass('active');
 				$("#chatcontent_off").hide();
 				$('#span_off').hide();
 			});
-				
-
 		});
+		function chatNav(){
+			var htmlNav = '<ul>';
+			htmlNav += '<li class="back_button"><input type="button" value="dd" onclick="history.go(0)"></li>';
+			htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></a></li>'
+			htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" style="width: 40px;"></a></li>'
+			htmlNav += '<li class="order_button"><input type="button" value="결제하기"></li>'
+			htmlNav += '</ul>'
+			$('.message_warp').html(htmlNav);
+		}
+		function chattting(){
+			// onsubmit으로 sendMessage() 메소드를 리턴 한다. 
+			var	htmlStr = '<form onsubmit="return sendMessage();">';
+				htmlStr += '<div class="message_warp"></div>'
+				htmlStr += '<div class="chat_null">';
+				htmlStr += '<div class="carry_message_warp">'
+				htmlStr += '<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+				htmlStr += '<div class="carry_chat">'
+				htmlStr += '<div class="message">'
+				htmlStr += '<div class="message_color">'
+				htmlStr += '<span></span>'
+				htmlStr += '</div>'
+				htmlStr += '</div>'
+				htmlStr += '<div class="time_line"><span></span></div>'
+				htmlStr += '</div>'
+				htmlStr += '</div>'
+				htmlStr += '<div class="user_message_warp">'
+				htmlStr += '<div class="user_chat">'
+				htmlStr += '<div class="user_message">'
+				htmlStr += '<div>'
+				htmlStr += '<span></span>'
+				htmlStr += '</div>'
+				htmlStr += '</div>'
+				htmlStr += '<div class="time_line2">'
+				htmlStr += '<span></span>'
+				htmlStr += '</div>'
+				htmlStr += '</div>'
+				htmlStr += '</div>'
+				htmlStr += '</div>'
+				htmlStr += '<div class="chatting_write">'
+				htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg">'
+				htmlStr += '<button type="submit" class="btn" id="btnSend">'
+				htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">'
+				htmlStr += '</button>'
+				htmlStr += '</div>'					
+				htmlStr += '</form>'
+			$('#chatcontent_warp').html(htmlStr);
+			// 처음 접속시, 메세지 입력창에 focus 시킴
+			$('#msg').focus();
+			// 메세지 입력창 내용 보내고 지우기.
+			$('#msg').val("");
+		}
 	</script>
 
 
 	<script>
+		var socket = new SockJS("<c:url value='/echo?chatidx=1'/>");
+
+		// open - 커넥션이 제대로 만들어졌을 때 호출
+		socket.onopen = function() {
+			// 방오픈 됫는지 확인 메세지
+			console.log('connection opend.');
+		};
+		
+		// onmessage - 커넥션이 메세지 호출
+		socket.onmessage = function(message) {
+			var data = message.data;
+			console.log(data);
+			var jsonData = JSON.parse(data);
+			console.log(jsonData);
+			
+		};
+
+		// close - 커넥션이 종료되었을 때 호출
+		socket.onclose = function(event) {
+			console.log('connection closed.');
+		};
+
+		// error - 에러가 생겼을 때 호출
+		socket.onerror = function(error) {
+			console.log('connection Error.')
+		};
+		
+	</script>
+
+	<script>
+		// 채팅방 대화내용 리스트
+		function chatList(num) {
+
+			$.ajax({
+				type : 'GET',
+				url : '<c:url value="/chatting/dochat"/>',
+				dataType : 'json',
+				data : {
+					chatidx : num
+					},
+					success : function(data) {
+						console.log(data)
+						if (data == 0) {
+							chattting();
+							chatNav();
+						} else {
+							
+							var htmlStr = '<div class="carry_chat">'
+							$.each(data, function(index, item) {
+							// onsubmit으로 sendMessage() 메소드를 리턴 한다.
+								htmlStr += '<div class="message">'
+								htmlStr += '<div class="message_color">'
+								htmlStr += '<span>'+item.chatcontent+'</span>'
+								htmlStr += '</div>'
+								htmlStr += '</div>'
+								htmlStr += '<div class="time_line"><span></span></div>'
+								htmlStr += '</div>'
+							chattting();
+							console.log(item);
+							$('.carry_message_warp').append(htmlStr);
+								chatNav();
+							// 처음 접속시, 메세지 입력창에 focus 시킴
+							$('#msg').focus();
+							// 메세지 입력창 내용 보내고 지우기.
+							$('#msg').val("");
+							
+							
+							
+							
+							
+							
+							
+							/* chattting();
+							chatNav();
+							if(item.contenttype == 1){
+								$('.message_color').append('<span>'+item.chatcontent+'</span>');
+								$('.time_line').append('<span>'+item.chatdate+'</span>');
+							} 
+							if(item.contenttype == 0){
+								$('time_line2').append('<span>' + item.chatate+'');
+								$('time_line2').append('<span>' + item.chatate+'');
+								
+							} */
+							
+						});
+					}
+				}
+			})
+		}
+	</script>
+	
+<!-- 	<script>
 		var socket = new SockJS("<c:url value='/echo'/>");
 
 		// open - 커넥션이 제대로 만들어졌을 때 호출
@@ -177,99 +316,11 @@
 				
 			}
 		}
-		
-		
-		
-	</script>
-
-	<script>
-		// 채팅방 대화내용 리스트
-		function chatList(num) {
-
-			$.ajax({
-				type : 'GET',
-				url : '<c:url value="/chatting/dochat"/>',
-				dataType : 'json',
-				data : {
-					chatidx : num
-					},
-					success : function(data) {
-						console.log(data)
-						if (data == 0) {
-						var htmlNav = '<ul>';
-							htmlNav += '<li class="back_button"><input type="button" value="dd" onclick="history.go(0)"></li>';
-							htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></a></li>'
-							htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" style="width: 40px;"></a></li>'
-							htmlNav += '<li class="order_button"><input type="button" value="결제하기"></li>'
-							htmlNav += '</ul>'
-							
-							// onsubmit으로 sendMessage() 메소드를 리턴 한다. 
-							// ajax안에 있는 함수에서 함수를 작업할수 없다
-						var htmlStr = '<form onsubmit="return sendMessage();">'
-							htmlStr += '<div class="message_warp">';
-							htmlStr += '</div>';
-							htmlStr += '<div class="chat_null">';
-							htmlStr += '<b id="ss">asdasd</b>';
-							htmlStr += '</div>';
-							htmlStr += '<div class="chatting_write">';
-							htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg">';
-							htmlStr += '<button type="submit" class="btn" id="btnSend">';
-							htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">';
-							htmlStr += '</button>';
-							htmlStr += '</div>';
-							htmlStr += '</form>';
-							
-							$('#chatcontent_warp').html(htmlStr);
-							$('.message_warp').html(htmlNav);
-							
-
-							// 처음 접속시, 메세지 입력창에 focus 시킴
-							$('#msg').focus();
-							// 메세지 입력창 내용 보내고 지우기.
-							$('#msg').val("");
-
-						} else {
-							$.each(data, function(index, item) {
-							console.log(index, item);
-							<c:if test="${contenttype eq 1}">
-							var html = '<div class="carry_line">';
-							html += '<img src="<c:url value="/images/icon/profile2.png"/>">';
-							html += '</div>';
-							html += '<div class="carry_chat">';
-							html += '<div class="message">';
-							html += '<div class="message_color">';
-							html += '<span>'+item.chatcontent+'</span>';
-							html += '</div>';
-							html += '</div>';
-							html += '<div class="time_line">';
-							html += '<span>' + item.chatdate +'</span>';
-							html += '</div>';
-							html += '</div>';
-							</c:if>
-							<c:if test="${contenttype eq 0}">
-							html += '<div class="user_message_warp">';
-							html += '<div class="user_chat">';
-							html += '<div class="user_message">';
-							html += '<div>';
-							html += '<span>' + item.chatcontent + '</span>';
-							html += '</div>';
-							html += '</div>';
-							html += '<div class="time_line2">';
-							html += '<span>' + item.chatdate +'</span>';
-							html += '</div>';
-							html += '</div>';
-							html += '<div class="chatting_write">';
-							html += '<input type="text" placeholder="메세지 입력..">';
-							html += '<button type="submit" class="btn">';
-							html += '<img src="<c:url value="/images/icon/icoin.png"/>">';
-							html += '</button>';
-							html += '</div>';
-							</c:if>
-
-							$('#chatcontent_warp').html(html);
-						})
-					}
-				}
-			})
-		}
-	</script>
+	</script> -->
+	
+	
+	
+	
+	
+	
+	
