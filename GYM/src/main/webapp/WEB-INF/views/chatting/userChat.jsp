@@ -33,15 +33,15 @@
 							<div class="chat_title">
 								<span>${list.placename}</span>
 								<div class="chat_title_img">
-									<p>${list.chatread}</p>
+									<p><%-- ${list.chatread} --%></p>
 								</div>
 							</div>
 							<div class="chat_content">
-								<span>${list.chatcontent}
+								<span><%-- ${list.chatcontent} --%>
 								</span>
 							</div>
 							<div class="chat_date">
-								<span> ${list.chatdate}
+								<span> <%-- ${list.chatdate} --%>
 								</span>
 							</div>
 						</button>
@@ -143,12 +143,23 @@
 				htmlStr += '</div>'					
 				//htmlStr += '</form>'
 			$('#chatcontent_warp').html(htmlStr);
+			
+			//$('.carry_message_warp').append(htmlStr);
+			chatNav();
+			
 			// 처음 접속시, 메세지 입력창에 focus 시킴
 			$('#msg').focus();
 			// 메세지 입력창 내용 보내고 지우기.
 			$('#msg').val("");
 			
-			
+			$('#btnSend').click(function(event){
+				event.preventDefault();
+				var msg = $('input#msg').val();
+				//sock.send(msg);
+				sendMessage();
+				});	
+			// 커넥션을 실행시키기 위한 함수.
+			connect(); 
 		}
 	</script>
 
@@ -166,10 +177,10 @@
 		// onmessage - 커넥션이 메세지 호출
 		socket.onmessage = function(message) {
 			console.log("메세지 : " , message.data);
-			/* var data = message.data;
+			var data = message.data;
 			console.log(data);
 			var jsonData = JSON.parse(data);
-			console.log(jsonData); */
+			console.log(jsonData); 
 			
 		};
 
@@ -185,23 +196,23 @@
 	}
 		
 		
-		// 객체를 json형태로 담아 보냄
-		function sendMessage() {
-			// send 되는지 확인
-			console.log('send message');
-			
-			// 메세지 입력값이 빈공간이 아니면 멤버닉네임, 캐리닉네임, 대화내용 담기
-			var msg = $('#msg').val();
-			var msg = {
-				memnick : '${memnick}',
-				crnick : 'ss',
-				message : $('#msg').val()
-			};
-			//console.log(msg);
-			
-			// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
-			socket.send(JSON.stringify(msg));
-		}; 
+	// 객체를 json형태로 담아 보냄
+	function sendMessage() {
+		// send 되는지 확인
+		console.log('send message');
+		
+		// 메세지 입력값이 빈공간이 아니면 멤버닉네임, 캐리닉네임, 대화내용 담기
+		var msg = $('#msg').val();
+		var msg = {
+			memnick : '${memnick}',
+			crnick : 'ss',
+			message : $('#msg').val()
+		};
+		
+		// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
+		sock.send(JSON.stringify(msg));
+	}; 
+		
 		
 		
 		
@@ -250,21 +261,7 @@
 									htmlStr += '	</div>'
 								}
 							chattting();
-							$('.carry_message_warp').append(htmlStr);
-								chatNav();
-							// 처음 접속시, 메세지 입력창에 focus 시킴
-							$('#msg').focus();
-							// 메세지 입력창 내용 보내고 지우기.
-							$('#msg').val("");
 							
-							$('#btnSend').click(function(event){
-								event.preventDefault();
-								var msg = $('input#msg').val();
-								sock.send(msg);
-								//sendMessage();
-							});	
-							// 커넥션을 실행시키기 위한 함수.
-							connect(); 
 						});
 					}
 				}
