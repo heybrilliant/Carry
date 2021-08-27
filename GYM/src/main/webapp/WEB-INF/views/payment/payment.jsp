@@ -7,10 +7,11 @@
 <link rel="stylesheet" href="/gym/css/payment/payment.css">
 
 <!-- jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- iamport.payment.js -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
-
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -23,7 +24,7 @@
 		<div>
 			<h3>주문 정보</h3>
 			<div class="order_info">
-				<span>넣기 : 넣기</span> <br>
+				<span>김캐리 : 10회 이용권</span> <br>
 				<h4>
 				10회 
 				<fmt:formatNumber type="number" maxFractionDigits="3" value="${carryPrice.proprice10}"/>
@@ -38,11 +39,11 @@
 			<p>
 				이름 <span style="color: blue">*</span>
 			</p>
-			<input type="text" class="input_box" placeholder = "이름을 입력해주세요" name="" required>
+			<input type="text" class="input_box" placeholder = "이름을 입력해주세요" name="payname" required>
 			<p>
 				연락처 <span style="color: blue">*</span>
 			</p>
-			<input type="text" class="input_box" placeholder = "연락처를 입력해주세요" required> <br>
+			<input type="text" class="input_box" placeholder = "연락처를 입력해주세요" name="payphone" required> <br>
 			<br>
 			<br>
 			<br>
@@ -74,7 +75,6 @@
 	</div>
 
 
-
 	<!-- Contents end -->
 
 
@@ -95,49 +95,24 @@
 				pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 				merchant_uid : "random.nextInt(10)",
 				name : "수업 10회 이용권",
-				amount : 100,
-				buyer_email : "gildong@gmail.com",
-				buyer_name : "홍길동",
-				buyer_tel : "010-4242-4242",
+				amount : "${carryPrice.proprice10}",
+				buyer_email : "${member.mememail}",
+				buyer_name : "${savePayment.payname}",
+				buyer_tel : "${savePayment.payphone}",
 				buyer_addr : "서울특별시 강남구 신사동",
 				buyer_postcode : "01181"
 			}, function(rsp) { // callback
 				if (rsp.success) {
 					// 결제 성공 시 로직,
-					location.href = "<c:url value="/payment/complete"/>";
-				} else {
-					// 결제 실패 시 로직,
-					alert('결제가 취소되었습니다.');
-				}
-			});
+					
+			      } else {
+			        alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
+			      }
+			    });
 			/* 이니시스API 호출 END*/
-			
-			
-			
-			
-			
-			
-			
 			
 			
 		}
 
-	
 		
-		
-		
-		// place 이미지 슬라이드
-		var swiper = new Swiper(".mySwiper", {
-			spaceBetween : 0,
-			slidesPerView : 4,
-			centeredSlides : false,
-			autoplay : {
-				delay : 2500,
-				disableOnInteraction : false,
-			},
-			pagination : {
-				el : ".swiper-pagination",
-				clickable : true,
-			},
-		});
 	</script>

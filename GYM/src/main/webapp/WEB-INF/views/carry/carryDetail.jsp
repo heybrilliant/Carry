@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <title>캐리 상세페이지</title>
+
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/carry/carryDetail.css">
 <script src="/gym/js/carryDetail.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -106,26 +109,29 @@
 						<h2>캐리 후기</h2>
 						<input type="button" value="후기작성" id="write_review_btn">
 					</div>
-						<c:forEach items="${carryReviewList}" var="carryReviewList">
+
+					<!-- 리뷰 작성 입력폼 -->
+					<form id="reviewForm" name="reviewForm method="post">
+						<div id="review_write" class="review_write display_none">
+							<textarea class="review_input" rows="4" cols="30" name="review" id="review"></textarea>
+								<input type="button" value="작성" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
+						</div>
+					</form>
+
+					<c:forEach items="${carryReviewList}" var="carryReviewList">
 						<div class="review_list_section">
 							<div class="member_profile_image">
 								<img src="<c:url value="/images/icon/profile.png"/>"
 									style="width: 50px">
 							</div>
-							
+
 							<div class="review_content">
 								<span class="review_name">${carryReviewList.memnick}</span> <span
 									class="review_date">2021.08.20</span> <br> <span>${carryReviewList.reviewcontent}</span>
 							</div>
-							
-						</div>
-						</c:forEach>
-						
-					<div id="review_write" class="review_write display_none">
-							<input type="text" class="review_input" placeholder="캐리 리뷰를 작성해주세요." id="review">
-							<input type="button" value="작성" class="write_btn" id="write_btn">
-					</div>
 
+						</div>
+					</c:forEach>
 				</div>
 				<!-- carry review section all wrap END -->
 
@@ -135,7 +141,7 @@
 				<div class="carry_place_title" id="place">
 					<h2>소속 플레이스</h2>
 					<div class="carry_place_content">
-						<img src="http://placehold.it/570x380"> <span><a
+						<img src="http://placehold.it/570x300"> <span><a
 							href="#">${carryPlaceInfo.placename}</a></span>
 					</div>
 				</div>
@@ -184,7 +190,7 @@
 							<span>수업 5회 이용권</span> <br>
 							<h4>
 								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice5}"/>
+									value="${carryPrice.proprice5}" />
 								원
 							</h4>
 						</div>
@@ -253,27 +259,28 @@
 			},
 		});
 	</script>
-	
-	
+
+
 	<script>
-			$("#write_btn").click(function(){
-			
-				var review = $('#review').val();
-				
-				$.ajax({
-					type : 'GET',
-					url : '<c:url value="/carry/reviewwrite"/>',
-					data : {
-						reviewcontent : review
-					},
-					success : function(data) {
-						alert('성공');
+		/*
+		 * 댓글 등록하기(Ajax)
+		 */
+		function fn_review(code) {
+
+			$.ajax({
+				type : 'POST',
+				url : "<c:url value='/carryreview/addReview'/>",
+				data : $("#reveiwForm").serialize(),
+				success : function(data) {
+					if (data == "success") {
+						// getCommentList();
+						$("#review").val("");
 					}
-				
-				});	
+				},
+				error : function(request, status, error) {
+					//alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				}
+
 			});
-		$(document).ready(function(){
-			
-		});
-	
+		}
 	</script>

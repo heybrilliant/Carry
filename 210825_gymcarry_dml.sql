@@ -72,4 +72,4 @@ insert into gymcarry.member values (null, 'cool@test.com', '1111', '박회원', 
 insert into gymcarry.carryreview values (null, '리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다.', '3', '2');
 insert into gymcarry.carryreview values (null, '리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다.', '4', '1');
 
-insert into gymcarry.payment values (null, sysdate(), '1', '황지원', '010-2315-2568', '2', '20', '952000')
+insert into gymcarry.payment values (null, sysdate(), '1', '황지원', '010-2315-2568', '2', '20', '952000', '1')
