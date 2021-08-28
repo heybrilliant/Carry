@@ -17,11 +17,13 @@ public class ChatRoomDto {
 	private int contenttype;		//유저,캐리 대화내용 비교
 	private int chatposition;		//방에서나감 안나감여부
 	private int chatread;			//읽음 안읽음 여부
-	private String crnick;			
+	private String crnick;	
+	private String memnick;
 	public ChatRoomDto() {
 	}
 	public ChatRoomDto(int messageidx, int chatidx, String chatcontent, Timestamp chatdate, int cridx, int memidx,
-			int contenttype, int chatposition, int chatread, String crnick) {
+			int contenttype, int chatposition, int chatread, String crnick, String memnick) {
+		super();
 		this.messageidx = messageidx;
 		this.chatidx = chatidx;
 		this.chatcontent = chatcontent;
@@ -32,6 +34,7 @@ public class ChatRoomDto {
 		this.chatposition = chatposition;
 		this.chatread = chatread;
 		this.crnick = crnick;
+		this.memnick = memnick;
 	}
 	public int getMessageidx() {
 		return messageidx;
@@ -93,11 +96,17 @@ public class ChatRoomDto {
 	public void setCrnick(String crnick) {
 		this.crnick = crnick;
 	}
+	public String getMemnick() {
+		return memnick;
+	}
+	public void setMemnick(String memnick) {
+		this.memnick = memnick;
+	}
 	@Override
 	public String toString() {
 		return "ChatRoomDto [messageidx=" + messageidx + ", chatidx=" + chatidx + ", chatcontent=" + chatcontent
 				+ ", chatdate=" + chatdate + ", cridx=" + cridx + ", memidx=" + memidx + ", contenttype=" + contenttype
-				+ ", chatposition=" + chatposition + ", chatread=" + chatread + ", crnick=" + crnick + "]";
+				+ ", chatposition=" + chatposition + ", chatread=" + chatread + ", crnick=" + crnick + ", memnick="
+				+ memnick + "]";
 	}
-	
 }

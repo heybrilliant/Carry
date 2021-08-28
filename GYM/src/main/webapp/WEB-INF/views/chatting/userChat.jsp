@@ -32,9 +32,9 @@
 							</div>
 							<div class="chat_title">
 								<span>${list.placename}</span>
-								<div class="chat_title_img">
+							</div>
+							<div class="chat_title_img">
 									<p><%-- ${list.chatread} --%></p>
-								</div>
 							</div>
 							<div class="chat_content">
 								<span><%-- ${list.chatcontent} --%>
@@ -149,15 +149,21 @@
 			
 			// 처음 접속시, 메세지 입력창에 focus 시킴
 			$('#msg').focus();
-			// 메세지 입력창 내용 보내고 지우기.
-			$('#msg').val("");
 			
+			
+			// 메세지 입력창
 			$('#btnSend').click(function(event){
 				event.preventDefault();
 				var msg = $('input#msg').val();
 				//sock.send(msg);
 				sendMessage();
-				});	
+				
+				// 메세지 입력창 내용 보내고 지우기.
+				$('#msg').val('');
+				
+			});	
+			
+			
 			// 커넥션을 실행시키기 위한 함수.
 			connect(); 
 		}
@@ -176,9 +182,7 @@
 		
 		// onmessage - 커넥션이 메세지 호출
 		socket.onmessage = function(message) {
-			console.log("메세지 : " , message.data);
 			var data = message.data;
-			console.log(data);
 			var jsonData = JSON.parse(data);
 			console.log(jsonData); 
 			
@@ -202,19 +206,15 @@
 		console.log('send message');
 		
 		// 메세지 입력값이 빈공간이 아니면 멤버닉네임, 캐리닉네임, 대화내용 담기
-		var msg = $('#msg').val();
 		var msg = {
-			memnick : '${memnick}',
-			crnick : 'ss',
-			message : $('#msg').val()
+			memnick : '${member.memnick}',
+			crnick : '황철순',
+			chatcontent : $('#msg').val()
 		};
 		
 		// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
 		sock.send(JSON.stringify(msg));
 	}; 
-		
-		
-		
 		
 	</script>
 
