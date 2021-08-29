@@ -22,7 +22,7 @@
 				<c:forEach items="${chatList}" var="list">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
-							onclick="location.href='javascript:chatList(${list.chatidx})'"
+							onclick="getChatidx(${list.chatidx}); location.href='javascript:chatList(${list.chatidx})'"
 							class="on_btn">
 							<div class="float_left">
 								<img src="<c:url value="/images/icon/profile2.png"/>">
@@ -34,7 +34,6 @@
 								<span>${list.placename}</span>
 							</div>
 							<div class="chat_title_img">
-									<p><%-- ${list.chatread} --%></p>
 							</div>
 							<div class="chat_content">
 								<span><%-- ${list.chatcontent} --%>
@@ -54,7 +53,7 @@
 				<!-- 채팅룸 nav -->
 				<div class="message_warp">
 				</div>
-				<div class="chat_null">
+				<div class="chat_null" id="output">
 					<div class="carry_message_warp">
 						<div class="carry_chat">
 							<div class="message">
@@ -103,6 +102,7 @@
 			$(".chat_null").hide();
 			$(".message_warp").hide();
 			$(".chatting_write").hide();
+			
 			$(".chatlist .on_btn").click(function() {
 				$(".chatlist .on_btn").removeClass('active');
 				$(this).addClass('active');
@@ -123,11 +123,9 @@
 		}
 		
 		function chattting(){
-			// onsubmit으로 sendMessage() 메소드를 리턴 한다. 
-			//var	htmlStr = '<form onsubmit="return sendMessage();">';
 			var htmlStr = '<div>'
 				htmlStr += '<div class="message_warp"></div>'
-				htmlStr += '<div class="chat_null">';
+				htmlStr += '<div class="chat_null" id="output">';
 				htmlStr += '	<div class="carry_message_warp">'
 				htmlStr += '		<div class="carry_chat">'
 				htmlStr += '		<div class="time_line"><span></span></div>'
@@ -136,12 +134,12 @@
 				htmlStr += '</div>'
 				htmlStr += '<div class="chatting_write">'
 				htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg">'
+				htmlStr += '<input type="hidden" value="${member.memnick}" id="memberId">'
 				htmlStr += '<button type="button" class="btn" id="btnSend">'
 				htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">'
 				htmlStr += '</button>'
 				htmlStr += '</div>'					
 				htmlStr += '</div>'					
-				//htmlStr += '</form>'
 			$('#chatcontent_warp').html(htmlStr);
 			
 			//$('.carry_message_warp').append(htmlStr);
@@ -150,8 +148,6 @@
 			// 처음 접속시, 메세지 입력창에 focus 시킴
 			$('#msg').focus();
 			
-			
-			// 메세지 입력창
 			$('#btnSend').click(function(event){
 				event.preventDefault();
 				var msg = $('input#msg').val();
@@ -160,61 +156,106 @@
 				
 				// 메세지 입력창 내용 보내고 지우기.
 				$('#msg').val('');
-				
+				$("#output").scrollTop($(document).height());
+			});	
+			
+			$('#msg').keypress(function(event){
+				if (event.keyCode == 13 && $('input#msg').val().trim().length >= 1) {
+					event.preventDefault();
+					var msg = $('input#msg').val();
+					//sock.send(msg);
+					sendMessage();
+					// 메세지 입력창 내용 보내고 지우기.
+					$('#msg').val('');
+					$("#output").scrollTop($(document).height());
+				}
 			});	
 			
 			
-			// 커넥션을 실행시키기 위한 함수.
-			connect(); 
 		}
 	</script>
 
 	<script>
-	var sock = null;
-	function connect(){
-		var socket = new SockJS("<c:url value='/echo'/>");
-		sock = socket;
-		// open - 커넥션이 제대로 만들어졌을 때 호출
-		socket.onopen = function() {
-			// 방오픈 됫는지 확인 메세지
-			console.log('connection opend.');
-		};
+	var socket = new SockJS("<c:url value='/echo'/>");
+	// open - 커넥션이 제대로 만들어졌을 때 호출
+	socket.onopen = function() {
+		// 방오픈 됫는지 확인 메세지
+		console.log('connection opend.');
+	};
+	
+	// onmessage - 커넥션이 메세지 호출
+	socket.onmessage = function(message) {
+		var data = message.data;
+		var jsonData = JSON.parse(data);
+		console.log(jsonData); 
 		
-		// onmessage - 커넥션이 메세지 호출
-		socket.onmessage = function(message) {
-			var data = message.data;
-			var jsonData = JSON.parse(data);
-			console.log(jsonData); 
-			
-		};
+		var currentuser_session = $('#memberId').val();
+		
+		if (jsonData.memnick == currentuser_session) {
+			var htmlStr = '<div class="carry_chat">'
+				htmlStr += '<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+				htmlStr += '<div class="message">'
+				htmlStr += '<div class="message_color">'
+				htmlStr += '<span>'+jsonData.chatcontent+'</span>'
+				htmlStr += '</div>'
+				htmlStr += '</div>'
+				htmlStr += '<div class="time_line"><span></span></div>'
+				htmlStr += '</div>'
+				htmlStr += '</div>'
+			$('.chat_null').append(htmlStr);
+				
+		} else {
+			var htmlStr = '	<div class="user_message_warp">'
+				htmlStr += '		<div class="user_chat">'
+				htmlStr += '			<div class="user_message">'
+				htmlStr += '				<div>'
+				htmlStr += '					<span>'+jsonData.chatcontent+'</span>'
+				htmlStr += '				</div>'
+				htmlStr += '			</div>'
+				htmlStr += '			<div class="time_line2">'
+				htmlStr += '				<span></span>'
+				htmlStr += '			</div>'
+				htmlStr += '		</div>'
+				htmlStr += '	</div>'
 
-		// close - 커넥션이 종료되었을 때 호출
-		socket.onclose = function(event) {
-			console.log('connection closed.');
-		};
+			$('.chat_null').append(htmlStr);
+		}
 
-		// error - 에러가 생겼을 때 호출
-		socket.onerror = function(error) {
-			console.log('connection Error.')
-		};
+		console.log('chatting data: ' + data);	
+		
+		
+	};
+
+	// close - 커넥션이 종료되었을 때 호출
+	socket.onclose = function(event) {
+		console.log('connection closed.');
+	};
+
+	// error - 에러가 생겼을 때 호출
+	socket.onerror = function(error) {
+		console.log('connection Error.')
+	};
+	
+	
+	var chatidx;
+	function getChatidx(num){
+		chatidx = num;
 	}
-		
 		
 	// 객체를 json형태로 담아 보냄
 	function sendMessage() {
-		// send 되는지 확인
-		console.log('send message');
-		
 		// 메세지 입력값이 빈공간이 아니면 멤버닉네임, 캐리닉네임, 대화내용 담기
 		var msg = {
 			memnick : '${member.memnick}',
 			crnick : '황철순',
+			chatidx : chatidx,
 			chatcontent : $('#msg').val()
 		};
-		
+		console.log(msg);
 		// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
-		sock.send(JSON.stringify(msg));
+		socket.send(JSON.stringify(msg));
 	}; 
+	
 		
 	</script>
 
@@ -237,14 +278,14 @@
 							$.each(data, function(index, item) {
 								if(item.contenttype == 1){
 									htmlStr += '<div class="carry_chat">'
-									htmlStr += '<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
-									htmlStr += '<div class="message">'
-									htmlStr += '<div class="message_color">'
-									htmlStr += '<span>'+item.chatcontent+'</span>'
-									htmlStr += '</div>'
-									htmlStr += '</div>'
-									htmlStr += '<div class="time_line"><span>'+item.chatdate+'</span></div>'
-									htmlStr += '</div>'
+									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+									htmlStr += '	<div class="message">'
+									htmlStr += '		<div class="message_color">'
+									htmlStr += '			<span>'+item.chatcontent+'</span>'
+									htmlStr += '		</div>'
+									htmlStr += '	</div>'
+									htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
+									htmlStr += '	</div>'
 									htmlStr += '</div>'
 								} else if(item.contenttype == 0){
 									htmlStr += '	<div class="user_message_warp">'
@@ -268,69 +309,5 @@
 			})
 		}
 	</script>
-	
-<!-- 	<script>
-		var socket = new SockJS("<c:url value='/echo'/>");
-
-		// open - 커넥션이 제대로 만들어졌을 때 호출
-		socket.onopen = function(e) {
-			// 방오픈 됫는지 확인 메세지
-			console.log('connection opend.')
-		};
-		
-		// onmessage - 커넥션이 메세지 호출
-		socket.onmessage = function(message) {
-			var data = message.data;
-			console.log(data);
-			var jsonData = JSON.parse(data);
-			console.log(jsonData);
-			appendMessage(jsonData.message);
-			
-		};
-
-		// close - 커넥션이 종료되었을 때 호출
-		socket.onclose = function(event) {
-			console.log('connection closed.');
-		};
-
-		// error - 에러가 생겼을 때 호출
-		socket.onerror = function(error) {
-			console.log('connection Error.')
-		};
-		
-		// 객체를 json형태로 담아 보냄
-		function sendMessage(e) {
-			// send 되는지 확인
-			e.preventDefault();
-			console.log('send message');
-			
-			// 메세지 입력값이 빈공간이 아니면 멤버닉네임, 캐리닉네임, 대화내용 담기
-			var msg = $('#msg').va();
-			var msg = {
-				memnick : '${member.memnick}',
-				crnick : 'ss',
-				message : $('#msg').val()
-			};
-			console.log(msg);
-			
-			// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
-			socket.send(JSON.stringify(msg));
-			return false;
-		}; 
-		
-		function appendMessage(msg){
-			if(msg == ''){
-				return false;
-			} else {
-				$('#ss').append('<b>'+msg+'</b>');
-				
-			}
-		}
-	</script> -->
-	
-	
-	
-	
-	
 	
 	

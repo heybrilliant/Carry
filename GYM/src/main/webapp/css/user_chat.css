@@ -79,13 +79,14 @@
 }
 
 .chat_title_img {
-	width: 28px;
-	height: 28px;
-	background-color: cornflowerblue;
-	border-radius: 50%;
-	float: right;
-	margin-right: 17px;
-	margin-top: 14px;
+    width: 11px;
+    height: 11px;
+    background-color: cornflowerblue;
+    border-radius: 50%;
+    float: right;
+    margin-right: 23px;
+    margin-top: 29px;
+
 }
 
 .chat_title_img p {
@@ -163,8 +164,6 @@
 #chatcontent_warp .chatting_content {
 	width: 100%;
 	height: 89%;
-	overflow-x: hidden;
-	overflow-y: auto;
 }
 
 .chat_ul img {
@@ -239,6 +238,8 @@
 .chat_null {
 	width: 840px;
 	height: 545px;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .message_warp {

@@ -39,6 +39,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from chatlist where cridx=#{param}
 	</select>
 
-
-
+	<!-- 채팅방 찾기 -->
+	<select id="selectChatRoom"
+		resultType="com.project.gymcarry.chatting.ChatListDto">
+		select * from chatlist where cridx=#{param}
+	</select>
+	
 </mapper>

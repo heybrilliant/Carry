@@ -10,7 +10,7 @@ import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.dao.MatchingDao;
 
 @Service
-public class MatchingAddChatRoomService {
+public class MatchingChatRoomService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
@@ -28,5 +28,10 @@ public class MatchingAddChatRoomService {
 		return dao.selectByChatRoom(crnick);
 	}
 	
+	// 채팅방 찾기
+	public ChatListDto getChatRoom(int chatidx) {
+		dao = template.getMapper(MatchingDao.class);
+		return dao.selectChatRoom(chatidx);
+	}
 	
 }

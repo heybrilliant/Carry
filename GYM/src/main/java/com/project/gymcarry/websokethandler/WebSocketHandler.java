@@ -8,16 +8,22 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
+import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
+import com.project.gymcarry.chatting.service.MatchingChatRoomService;
 import com.project.gymcarry.member.MemberDto;
 
 public class WebSocketHandler extends TextWebSocketHandler {
+
+	@Autowired
+	private MatchingChatRoomService matchingChatRoomService;
 
 	private static final Logger logger = LoggerFactory.getLogger(WebSocketHandler.class);
 	// 방법 1 : 전체 채팅
@@ -27,6 +33,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	// 방법2 : 1:1 채팅
 	// 사용자와 세션 저장할 맵
 	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>();
+
+	// 채팅룸 참여자
+	private Map<String, WebSocketSession> roomList = new HashMap<String, WebSocketSession>();
 
 	// 커넥션이 연결되었을때
 	@Override
@@ -67,37 +76,25 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		Gson gson = new Gson();
 		ChatRoomDto chatRoom = gson.fromJson(message.getPayload(), ChatRoomDto.class);
 
-		WebSocketSession ws = mapList.get(chatRoom.getCrnick());
-
-		// 전달 메시지
-		TextMessage sendMsg = new TextMessage(gson.toJson(chatRoom));
-
-//		// 상대방에게 메시지 전달
-//		ws.sendMessage(sendMsg);
-//		// 자신에게 메시지 전달
-//		session.sendMessage(sendMsg);
-
-		// 전달 메시지
-
-		for (WebSocketSession webSocketSession : list) {
-			// 상대방에게 메시지 전달
-			webSocketSession.sendMessage(sendMsg);
+		// chatRoom에 담긴 chatidx로 해당 채팅방을 찾는다.
+		ChatListDto chatListDto = matchingChatRoomService.getChatRoom(chatRoom.getChatidx());
+		if (roomList.get(chatListDto.getChatidx()) == null && chatListDto != null) {
+			
 		}
-
-//		Iterator<String> itr = mapList.keySet().iterator(); // 기존에 저장된 접속자 명단을 가져옴
-//		while (itr.hasNext()) {
-//			String nickSession = (String) itr.next();
-//			if (nickSession.equals(chatRoom.getMemnick())) {	
-//				WebSocketSession ws = mapList.get(chatRoom.getCrnick());
-//				// 전달 메세지
-//				TextMessage sendMsg = new TextMessage(gson.toJson(chatRoom));
-//
-//				// 상대방에게 메세지전달
-//				ws.sendMessage(sendMsg);
-//				// 자신에게 메세지 전달
-//				session.sendMessage(sendMsg);
-//			}
-//		}
+		Iterator<String> itr = mapList.keySet().iterator(); // 기존에 저장된 접속자 명단을 가져옴
+		while (itr.hasNext()) {
+			String nickSession = (String) itr.next();
+			WebSocketSession ws = mapList.get(nickSession);
+			
+			// 전달 메세지
+			TextMessage sendMsg = new TextMessage(gson.toJson(chatRoom));
+			
+			// 상대방에게 메세지전달
+			ws.sendMessage(sendMsg);
+			
+			// 자신에게 메세지 전달
+//			session.sendMessage(sendMsg);
+		}
 	}
 
 	// 클로즈 될때.
