@@ -27,7 +27,7 @@
 				<span>김캐리 : 10회 이용권</span> <br>
 				<h4>
 				10회 
-				<fmt:formatNumber type="number" maxFractionDigits="3" value="${carryPrice.proprice10}"/>
+				<fmt:formatNumber type="number" maxFractionDigits="3" value="300"/>
 				원
 				</h4>
 			</div>
@@ -62,7 +62,7 @@
 
 			<h3>최종 결제 금액</h3>
 			<div class="pricebox">
-				<ul>10회 강의권<li><fmt:formatNumber type="number" maxFractionDigits="3" value="${carryPrice.proprice10}"/>원</li></ul>
+				<ul>10회 강의권<li><fmt:formatNumber type="number" maxFractionDigits="3" value="300"/>원</li></ul>
 			</div>
 		</div>
 

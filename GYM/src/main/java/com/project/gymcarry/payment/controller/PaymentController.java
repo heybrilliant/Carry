@@ -17,15 +17,21 @@ public class PaymentController {
 	@Autowired
 	private CarryInfoService carryInfoService;
 
-	// 결제 페이지 정보 출력
+	// 결제 페이지 정보 출력 - 1회
+
 	@GetMapping("/payment/pay")
-	public String carryDetail(@RequestParam("cridx") int cridx, Model model) {
+	public String carryPrice(
+			@RequestParam("cridx") int cridx,
+			Model model
+			) {
+
+		CarryPriceDto carryPrice = carryInfoService.getCarryPrice1(cridx);
 		
-		CarryPriceDto carryPrice = carryInfoService.getCarryPrice(cridx);
-		System.out.println(carryPrice);
 		model.addAttribute("carryPrice", carryPrice);
 		
 		return "payment/payment";
 	}
-
+	
+	
+	
 }

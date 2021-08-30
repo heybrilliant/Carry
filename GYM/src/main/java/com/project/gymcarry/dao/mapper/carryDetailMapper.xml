@@ -38,8 +38,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCarryReviewList"
 		resultType="com.project.gymcarry.carry.CarryReviewDto">
 		select * from carryreview r, member m, carry c where m.memidx = r.memidx and c.cridx=r.cridx and c.cridx=#{cridx}
-		<!-- select * from carry c inner join carryreview r on r.cridx=c.cridx and c.cridx=#{cridx} -->
 	</select>
+	
+	
+	<!-- 캐리 리뷰 등록 -->
+	<insert id = "addCarryReview"
+		parameterType="com.project.gymcarry.carry.CarryReviewDto"
+		useGeneratedKeys="true"
+		keyProperty="reviewidx">
+		insert into carryreview (reviewcontent, cridx, memidx)
+		values (#{reviewcontent}, #{cridx}, #{memidx})
+	</insert>
+	
+	
+	<!-- 1회 캐리 수업 가격 출력(결제 페이지) -->
+	<select id="selectCarryPrice1"
+		resultType="com.project.gymcarry.carry.CarryPriceDto">
+		select proprice1 from crprice where cridx=#{cridx}
+	</select>
+
+	<!-- 5회 캐리 수업 가격 출력(결제 페이지) -->
+	<select id="selectCarryPrice5"
+		resultType="com.project.gymcarry.carry.CarryPriceDto">
+		select proprice5 from crprice where cridx=#{cridx}
+	</select>
+
+	<!-- 10회 캐리 수업 가격 출력(결제 페이지) -->
+	<select id="selectCarryPrice10"
+		resultType="com.project.gymcarry.carry.CarryPriceDto">
+		select proprice10 from crprice where cridx=#{cridx}
+	</select>
+
+	<!-- 20회 캐리 수업 가격 출력(결제 페이지) -->
+	<select id="selectCarryPrice20"
+		resultType="com.project.gymcarry.carry.CarryPriceDto">
+		select proprice20 from crprice where cridx=#{cridx}
+	</select>
+	
+	
 	
 
 </mapper>

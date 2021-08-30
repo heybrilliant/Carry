@@ -111,10 +111,12 @@
 					</div>
 
 					<!-- 리뷰 작성 입력폼 -->
-					<form id="reviewForm" name="reviewForm method="post">
+					<form id="reviewForm" name="reviewForm" method="post">
 						<div id="review_write" class="review_write display_none">
-							<textarea class="review_input" rows="4" cols="30" name="review" id="review"></textarea>
+							<textarea class="review_input" rows="4" cols="30" name="reviewcontent" id="review"></textarea>
 								<input type="button" value="작성" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
+								<input type="hidden" id="cridx" name="cridx" value="1">
+								<input type="hidden" id="memidx" name="memidx" value="1">
 						</div>
 					</form>
 
@@ -127,7 +129,7 @@
 
 							<div class="review_content">
 								<span class="review_name">${carryReviewList.memnick}</span> <span
-									class="review_date">2021.08.20</span> <br> <span>${carryReviewList.reviewcontent}</span>
+									class="review_date">${carryReviewList.reviewdate}</span> <br> <span>${carryReviewList.reviewcontent}</span>
 							</div>
 
 						</div>
@@ -181,7 +183,8 @@
 							</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button">
+							<input type="button" value="구매하기" class="button"
+									onclick="location.href='<c:url value = "/payment/pay1?cridx=${carryDetail.cridx}"/>'">
 						</div>
 					</div>
 
@@ -195,7 +198,8 @@
 							</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button">
+							<input type="button" value="구매하기" class="button"
+									onclick="location.href='<c:url value = "/payment/pay5?cridx=${carryDetail.cridx}"/>'">
 						</div>
 					</div>
 
@@ -210,7 +214,7 @@
 						</div>
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button"
-								onclick="location.href='<c:url value = "/payment/payment"/>'">
+									onclick="location.href='<c:url value = "/payment/pay10?cridx=${carryDetail.cridx}"/>'">
 						</div>
 					</div>
 
@@ -224,7 +228,8 @@
 							</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button">
+							<input type="button" value="구매하기" class="button"
+									onclick="location.href='<c:url value = "/payment/pay20?cridx=${carryDetail.cridx}"/>'">
 						</div>
 
 					</div>
@@ -262,25 +267,23 @@
 
 
 	<script>
-		/*
-		 * 댓글 등록하기(Ajax)
-		 */
+	
+		// 리뷰 등록하기(Ajax)
 		function fn_review(code) {
 
 			$.ajax({
 				type : 'POST',
-				url : "<c:url value='/carryreview/addReview'/>",
-				data : $("#reveiwForm").serialize(),
-				success : function(data) {
-					if (data == "success") {
-						// getCommentList();
-						$("#review").val("");
-					}
+				url : "<c:url value='/carry/detail'/>",
+				data : $("#reviewForm").serialize(),
+				success : function() {
+						$(".review_input").val("");
+						alert('리뷰가 정상적으로 등록되었습니다.');
 				},
 				error : function(request, status, error) {
-					//alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 				}
 
 			});
 		}
+		
 	</script>

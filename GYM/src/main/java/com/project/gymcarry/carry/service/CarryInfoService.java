@@ -49,5 +49,15 @@ public class CarryInfoService {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryPlaceDetail(cridx);
 	}
+	
+	// 캐리 리뷰 등록
+	public int addCarryReview(CarryReviewDto reviewDto) {
+		dao = template.getMapper(CarryDao.class);
+		return dao.addCarryReview(reviewDto);
+	}
+	
+	
+	
+	
 
 }

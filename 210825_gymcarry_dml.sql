@@ -5,7 +5,7 @@ ALTER TABLE test AUTO_INCREMENT=1;
 insert into gymcarry.place values (null, '핏블리짐 부천점','07:00~23:00', '주차가능', '부천시 석천로 389 굿모닝빌딩 B3F', '032-123-4567');
 insert into gymcarry.place values (null, '스타일짐 신촌점','06:00~21:30', '주차가능', '서울시 마포구 96-3 에이타운 2F', '02-3456-7890');
 
-insert into gymcarry.crcertification values ('1', '어쩌고', '어쩌고2', '어쩌고3', '어쩌고4', '어쩌고5');
+insert into gymcarry.crcertification values ('1', '자격 및 경력1', '자격 및 경력2', '자격 및 경력3', '자격 및 경력4', '자격 및 경력5');
 insert into gymcarry.crcertification values ('2', '저쩌고', '저쩌고2', '저쩌고3', '저쩌고4', '저쩌고5');
 
 insert into gymcarry.crprice values ('1', '49000', '230000', '460000', '930000');
