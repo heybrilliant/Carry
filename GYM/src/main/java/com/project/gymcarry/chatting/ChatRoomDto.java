@@ -17,12 +17,13 @@ public class ChatRoomDto {
 	private int contenttype;		//유저,캐리 대화내용 비교
 	private int chatposition;		//방에서나감 안나감여부
 	private int chatread;			//읽음 안읽음 여부
+	private int chatlike;			//0좋아요x 1좋아요o
 	private String crnick;	
 	private String memnick;
 	public ChatRoomDto() {
 	}
 	public ChatRoomDto(int messageidx, int chatidx, String chatcontent, Timestamp chatdate, int cridx, int memidx,
-			int contenttype, int chatposition, int chatread, String crnick, String memnick) {
+			int contenttype, int chatposition, int chatread, int chatlike, String crnick, String memnick) {
 		super();
 		this.messageidx = messageidx;
 		this.chatidx = chatidx;
@@ -33,6 +34,7 @@ public class ChatRoomDto {
 		this.contenttype = contenttype;
 		this.chatposition = chatposition;
 		this.chatread = chatread;
+		this.chatlike = chatlike;
 		this.crnick = crnick;
 		this.memnick = memnick;
 	}
@@ -90,6 +92,12 @@ public class ChatRoomDto {
 	public void setChatread(int chatread) {
 		this.chatread = chatread;
 	}
+	public int getChatlike() {
+		return chatlike;
+	}
+	public void setChatlike(int chatlike) {
+		this.chatlike = chatlike;
+	}
 	public String getCrnick() {
 		return crnick;
 	}
@@ -106,7 +114,8 @@ public class ChatRoomDto {
 	public String toString() {
 		return "ChatRoomDto [messageidx=" + messageidx + ", chatidx=" + chatidx + ", chatcontent=" + chatcontent
 				+ ", chatdate=" + chatdate + ", cridx=" + cridx + ", memidx=" + memidx + ", contenttype=" + contenttype
-				+ ", chatposition=" + chatposition + ", chatread=" + chatread + ", crnick=" + crnick + ", memnick="
-				+ memnick + "]";
+				+ ", chatposition=" + chatposition + ", chatread=" + chatread + ", chatlike=" + chatlike + ", crnick="
+				+ crnick + ", memnick=" + memnick + "]";
 	}
+	
 }

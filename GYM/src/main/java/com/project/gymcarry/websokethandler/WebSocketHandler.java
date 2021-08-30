@@ -9,17 +9,18 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
-import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
 import com.project.gymcarry.member.MemberDto;
 
+@Controller
 public class WebSocketHandler extends TextWebSocketHandler {
 
 	@Autowired
@@ -73,15 +74,15 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			chatNick = ((MemberDto) session.getAttributes().get("member")).getCrnick();
 			contenttype = 1;
 		}
-		System.out.println(chatNick);
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
 
 		// json객체 -> java객체
 		Gson gson = new Gson();
 		ChatRoomDto chatRoom = gson.fromJson(message.getPayload(), ChatRoomDto.class);
-		System.out.println(chatRoom);
-		// chatRoom에 담긴 chatidx로 해당 채팅방을 찾는다.
-		//ChatListDto chatListDto = matchingChatRoomService.getChatRoom(chatRoom.getChatidx());
+
+		// chatRoom에 담긴 chatidx로 해당 채팅방을 찾는다. (지우기 ㄴㄴ)
+		// ChatListDto chatListDto =
+		// matchingChatRoomService.getChatRoom(chatRoom.getChatidx());
 
 		// 전달 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(chatRoom));
@@ -92,23 +93,27 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			// 상대방에게 메세지전달
 			ws.sendMessage(sendMsg);
 		}
-		
+
 		int result = matchingChatRoomService.insertChatContent(chatRoom.getChatidx(), chatRoom.getChatcontent(),
 				chatRoom.getCridx(), chatRoom.getMemidx(), contenttype);
 		System.out.println(result + "저장");
-		
-		
-		
-//		if(chatNick.equals(chatRoom.getCrnick())) {
+
+//		if (chatNick.equals(chatRoom.getMemnick())) {
+//			String to = chatRoom.getMemnick();
+//			WebSocketSession toSession = mapList.get(to);
+//			if (toSession != null) {
+//				toSession.sendMessage(sendMsg);
+//			}
+//		}
+//		if (chatNick.equals(chatRoom.getCrnick())) {
 //			String to = chatRoom.getCrnick();
 //			WebSocketSession toSession = mapList.get(to);
-//			if(toSession != null) {
+//			if (toSession != null) {
 //				toSession.sendMessage(sendMsg);
-//				
+//
 //			}
-//		} 
-		
-		
+//		}
+
 	}
 
 	// 클로즈 될때.

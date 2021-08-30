@@ -34,6 +34,7 @@ public class MatchingChatRoomService {
 		return dao.selectChatRoom(chatidx);
 	}
 	
+	// 대화내용 저장
 	public int insertChatContent(int chatidx, String chatcontent, int cridx, int memidx, int contenttype) {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.insertChatContent(chatidx, chatcontent, cridx, memidx, contenttype);
