@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.service.LoginService;
 
 @Controller
@@ -31,9 +32,9 @@ public class CarryLoginController {
 			HttpServletRequest request,
 			Model model) {
 		HttpSession session = request.getSession();
-		CarryAllDto carryAllDto = loginService.carryLogin(id, pw);
-		if (carryAllDto != null) {
-			session.setAttribute("carry", carryAllDto);
+		MemberDto memberDto = loginService.carryLogin(id, pw);
+		if (memberDto != null) {
+			session.setAttribute("member", memberDto);
 			return "redirect:/index";
 		} else {
 			return "carry/loginForm";

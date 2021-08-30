@@ -15,6 +15,7 @@
 
 	<div id="chatwarp">
 			<div id="chatlist_wrap">
+			<c:if test="${member.memnick ne null}">
 			<div class="chatid">
 				<h3>${member.memnick}</h3>
 			</div>
@@ -22,7 +23,7 @@
 				<c:forEach items="${chatList}" var="list">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
-							onclick="getChatidx(${list.chatidx}); location.href='javascript:chatList(${list.chatidx})'"
+							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx}); location.href='javascript:chatList(${list.chatidx})'"
 							class="on_btn">
 							<div class="float_left">
 								<img src="<c:url value="/images/icon/profile2.png"/>">
@@ -46,6 +47,40 @@
 						</button>
 					</div>
 				</c:forEach>
+				</c:if>
+				
+				<c:if test="${member.crnick ne null}">
+				<div class="chatid">
+					<h3>${member.crnick}</h3>
+				</div>
+				<c:forEach items="${carryChatList}" var="list">
+					<div class="chatlist">
+						<button type="button" value="${list.crnick}"
+							onclick="getChat(${list.chatidx},${list.cridx},${list.memidx}); location.href='javascript:chatList(${list.chatidx})'"
+							class="on_btn">
+							<div class="float_left">
+								<img src="<c:url value="/images/icon/profile2.png"/>">
+							</div>
+							<div class="float_left chat_name">
+								<h3>${list.memnick}</h3>
+							</div>
+							<div class="chat_title">
+								<span></span>
+							</div>
+							<div class="chat_title_img">
+							</div>
+							<div class="chat_content">
+								<span><%-- ${list.chatcontent} --%>
+								</span>
+							</div>
+							<div class="chat_date">
+								<span> <%-- ${list.chatdate} --%>
+								</span>
+							</div>
+						</button>
+					</div>
+				</c:forEach>
+				</c:if>
 			</div>
 				<!-- 채팅방 리스트 끝 -->
 			<div id="chatcontent_warp">
@@ -135,6 +170,7 @@
 				htmlStr += '<div class="chatting_write">'
 				htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg">'
 				htmlStr += '<input type="hidden" value="${member.memnick}" id="memberId">'
+				htmlStr += '<input type="hidden" value="${member.crnick}" id="crId">'
 				htmlStr += '<button type="button" class="btn" id="btnSend">'
 				htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">'
 				htmlStr += '</button>'
@@ -171,17 +207,26 @@
 				}
 			});	
 			
-			
 		}
 	</script>
 
 	<script>
 	var socket = new SockJS("<c:url value='/echo'/>");
+	sock = socket;
 	// open - 커넥션이 제대로 만들어졌을 때 호출
 	socket.onopen = function() {
 		// 방오픈 됫는지 확인 메세지
 		console.log('connection opend.');
 	};
+	
+	var chatIdx;
+	var memidx;
+	var cridx;
+	function getChat(num, mnum, crnum){
+		chatIdx = num;
+		memidx = mnum;
+		cridx = crnum;
+	}
 	
 	// onmessage - 커넥션이 메세지 호출
 	socket.onmessage = function(message) {
@@ -189,41 +234,42 @@
 		var jsonData = JSON.parse(data);
 		console.log(jsonData); 
 		
-		var currentuser_session = $('#memberId').val();
-		
-		if (jsonData.memnick == currentuser_session) {
-			var htmlStr = '<div class="carry_chat">'
-				htmlStr += '<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
-				htmlStr += '<div class="message">'
-				htmlStr += '<div class="message_color">'
-				htmlStr += '<span>'+jsonData.chatcontent+'</span>'
-				htmlStr += '</div>'
-				htmlStr += '</div>'
-				htmlStr += '<div class="time_line"><span></span></div>'
-				htmlStr += '</div>'
-				htmlStr += '</div>'
-			$('.chat_null').append(htmlStr);
+		var currentuser_session1 = $('#memberId').val();
+		var currentuser_session2 = $('#crId').val();
+		var cidx = chatIdx;
+		if(cidx == jsonData.chatidx){
+			console.log(cidx);
+			if (jsonData.memnick == currentuser_session1) {
+				var htmlStr = '	<div class="user_message_warp">'
+					htmlStr += '		<div class="user_chat">'
+					htmlStr += '			<div class="user_message">'
+					htmlStr += '				<div>'
+					htmlStr += '					<span>'+jsonData.chatcontent+'</span>'
+					htmlStr += '				</div>'
+					htmlStr += '			</div>'
+					htmlStr += '			<div class="time_line2">'
+					htmlStr += '				<span></span>'
+					htmlStr += '			</div>'
+					htmlStr += '		</div>'
+					htmlStr += '	</div>'
+				$('.chat_null').append(htmlStr);
 				
-		} else {
-			var htmlStr = '	<div class="user_message_warp">'
-				htmlStr += '		<div class="user_chat">'
-				htmlStr += '			<div class="user_message">'
-				htmlStr += '				<div>'
-				htmlStr += '					<span>'+jsonData.chatcontent+'</span>'
-				htmlStr += '				</div>'
-				htmlStr += '			</div>'
-				htmlStr += '			<div class="time_line2">'
-				htmlStr += '				<span></span>'
-				htmlStr += '			</div>'
-				htmlStr += '		</div>'
-				htmlStr += '	</div>'
-
-			$('.chat_null').append(htmlStr);
+			} else {
+				var htmlStr = '<div class="carry_message_warp">'
+					htmlStr += '<div class="carry_chat">'
+					htmlStr += '<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+					htmlStr += '<div class="message">'
+					htmlStr += '<div class="message_color">'
+					htmlStr += '<span>'+jsonData.chatcontent+'</span>'
+					htmlStr += '</div>'
+					htmlStr += '</div>'
+					htmlStr += '<div class="time_line"><span></span></div>'
+					htmlStr += '</div>'
+					htmlStr += '</div>'
+				$('.chat_null').append(htmlStr);
+			}
 		}
-
-		console.log('chatting data: ' + data);	
-		
-		
+			
 	};
 
 	// close - 커넥션이 종료되었을 때 호출
@@ -236,22 +282,20 @@
 		console.log('connection Error.')
 	};
 	
-	
-	var chatidx;
-	function getChatidx(num){
-		chatidx = num;
-	}
-		
 	// 객체를 json형태로 담아 보냄
 	function sendMessage() {
 		// 메세지 입력값이 빈공간이 아니면 멤버닉네임, 캐리닉네임, 대화내용 담기
 		var msg = {
 			memnick : '${member.memnick}',
-			crnick : '황철순',
-			chatidx : chatidx,
+			crnick : '${member.crnick}',
+			cridx : cridx,
+			memidx : memidx,
+			chatidx : chatIdx,
 			chatcontent : $('#msg').val()
 		};
+		
 		console.log(msg);
+		
 		// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
 		socket.send(JSON.stringify(msg));
 	}; 

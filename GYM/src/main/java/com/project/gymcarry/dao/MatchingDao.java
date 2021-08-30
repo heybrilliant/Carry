@@ -13,8 +13,10 @@ public interface MatchingDao {
 	
 	// 채팅 리스트
 	List<ChatRoomDto> selectChattingList(int chatidx);
-	// 채팅방 리스트
-	List<ChatListDto> selectChatList();
+	// 유저 채팅방 리스트
+	List<ChatListDto> selectChatList(int memidx);
+	// 캐리 채팅방 리스트
+	List<ChatListDto> selectCarryChatList(int cridx);
 	// 매칭캐리리스트
 	List<CarryJoinDto> selectCarryList();
 	// 채팅방 생성
@@ -23,4 +25,6 @@ public interface MatchingDao {
 	List<ChatListDto> selectByChatRoom(int crnick);
 	// 채팅방 찾기
 	ChatListDto selectChatRoom(int chatidx);
+	// 대화내용 insert
+	int insertChatContent(int chatidx, String chatcontent, int cridx, int memidx, int contenttype);
 }

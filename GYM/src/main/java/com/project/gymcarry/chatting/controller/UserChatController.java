@@ -16,6 +16,7 @@ import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
 import com.project.gymcarry.chatting.service.MatchingListService;
+import com.project.gymcarry.member.MemberDto;
 
 @Controller
 public class UserChatController {
@@ -39,6 +40,7 @@ public class UserChatController {
 			Model model
 			) {
 		// 캐리와의 중복룸이 있는지 확인하기위한 list
+		// 수정하자
 		List<ChatListDto> list = matchingChatRoomService.getByChatRoom(cridx);
 		// 캐리닉네임으로 방이 있으면 생성하지않고 채팅으로 이동
 		for (int i = 0; i < list.size(); i++) {
@@ -57,9 +59,12 @@ public class UserChatController {
 	
 	// 채팅룸 리스트
 	@GetMapping("chatting/chatList")
-	public String matching(Model model) {
-		List<ChatListDto> list = matchingListService.getChatList();
+	public String matching(Model model,HttpSession session) {
+		MemberDto dto = (MemberDto) session.getAttribute("member");
+		List<ChatListDto> list = matchingListService.getChatList(dto.getMemidx());
 		model.addAttribute("chatList", list);
+		List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());
+		model.addAttribute("carryChatList", lists);
 		return "chatting/userChat";
 	}	
 	

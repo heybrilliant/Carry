@@ -9,10 +9,12 @@ public class MemberDto {
 	private String memphone;
 	private int membirth;
 	private String memgender;
+	private int cridx;
+	private String crnick;
 	public MemberDto() {
 	}
 	public MemberDto(int memidx, String mememail, String mempw, String memname, String memnick, String memphone,
-			int membirth, String memgender) {
+			int membirth, String memgender, int cridx, String crnick) {
 		super();
 		this.memidx = memidx;
 		this.mememail = mememail;
@@ -22,6 +24,8 @@ public class MemberDto {
 		this.memphone = memphone;
 		this.membirth = membirth;
 		this.memgender = memgender;
+		this.cridx = cridx;
+		this.crnick = crnick;
 	}
 	public int getMemidx() {
 		return memidx;
@@ -71,11 +75,23 @@ public class MemberDto {
 	public void setMemgender(String memgender) {
 		this.memgender = memgender;
 	}
+	public int getCridx() {
+		return cridx;
+	}
+	public void setCridx(int cridx) {
+		this.cridx = cridx;
+	}
+	public String getCrnick() {
+		return crnick;
+	}
+	public void setCrnick(String crnick) {
+		this.crnick = crnick;
+	}
 	@Override
 	public String toString() {
 		return "MemberDto [memidx=" + memidx + ", mememail=" + mememail + ", mempw=" + mempw + ", memname=" + memname
 				+ ", memnick=" + memnick + ", memphone=" + memphone + ", membirth=" + membirth + ", memgender="
-				+ memgender + "]";
+				+ memgender + ", cridx=" + cridx + ", crnick=" + crnick + "]";
 	}
 	
 }

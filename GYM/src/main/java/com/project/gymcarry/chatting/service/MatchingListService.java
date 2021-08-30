@@ -18,10 +18,15 @@ public class MatchingListService {
 	private SqlSessionTemplate template;
 	private MatchingDao dao;
 	
-	// 채팅방 리스트
-	public List<ChatListDto> getChatList(){
+	// 멤버 채팅방 리스트
+	public List<ChatListDto> getChatList(int memIdx){
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectChatList();
+		return dao.selectChatList(memIdx);
+	}
+	// 캐리 채팅방 리스트
+	public List<ChatListDto> getChatLists(int cridx){
+		dao = template.getMapper(MatchingDao.class);
+		return dao.selectCarryChatList(cridx);
 	}
 	
 	// 대화방 리스트

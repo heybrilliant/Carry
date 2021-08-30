@@ -8,18 +8,21 @@ public class ChatListDto {
 	private int cridx;
 	private int memidx;
 	private String crnick;
+	private String memnick;
 	private String placename;
 	private Timestamp chatdate;
 	private String chatcontent;
 	private int chatread;
 	public ChatListDto() {
 	}
-	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String placename, Timestamp chatdate,
-			String chatcontent, int chatread) {
+	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String memnick, String placename,
+			Timestamp chatdate, String chatcontent, int chatread) {
+		super();
 		this.chatidx = chatidx;
 		this.cridx = cridx;
 		this.memidx = memidx;
 		this.crnick = crnick;
+		this.memnick = memnick;
 		this.placename = placename;
 		this.chatdate = chatdate;
 		this.chatcontent = chatcontent;
@@ -49,6 +52,12 @@ public class ChatListDto {
 	public void setCrnick(String crnick) {
 		this.crnick = crnick;
 	}
+	public String getMemnick() {
+		return memnick;
+	}
+	public void setMemnick(String memnick) {
+		this.memnick = memnick;
+	}
 	public String getPlacename() {
 		return placename;
 	}
@@ -76,8 +85,8 @@ public class ChatListDto {
 	@Override
 	public String toString() {
 		return "ChatListDto [chatidx=" + chatidx + ", cridx=" + cridx + ", memidx=" + memidx + ", crnick=" + crnick
-				+ ", placename=" + placename + ", chatdate=" + chatdate + ", chatcontent=" + chatcontent + ", chatread="
-				+ chatread + "]";
+				+ ", memnick=" + memnick + ", placename=" + placename + ", chatdate=" + chatdate + ", chatcontent="
+				+ chatcontent + ", chatread=" + chatread + "]";
 	}
 	
 }
