@@ -23,54 +23,65 @@
 		<h2>결제하기</h2>
 		<div>
 			<h3>주문 정보</h3>
-			<div class="order_info">
-				<span>김캐리 : 10회 이용권</span> <br>
-				<h4>
-				10회 
-				<fmt:formatNumber type="number" maxFractionDigits="3" value="300"/>
-				원
-				</h4>
-			</div>
 
-			<br>
-			<br>
+			<form method="get">
+				<div class="order_info">
+					<span>김캐리 : 10회 이용권</span> <br>
+					<h4>
+						10회
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="500" />
+						원
+					</h4>
+				</div>
+			</form>
 
-			<h3>결제 정보</h3>
-			<p>
-				이름 <span style="color: blue">*</span>
-			</p>
-			<input type="text" class="input_box" placeholder = "이름을 입력해주세요" name="payname" required>
-			<p>
-				연락처 <span style="color: blue">*</span>
-			</p>
-			<input type="text" class="input_box" placeholder = "연락처를 입력해주세요" name="payphone" required> <br>
-			<br>
-			<br>
-			<br>
+			<br> <br>
 
 			
-				<h3>대면 / 비대면 여부</h3>
+				<div>
+				<form method="get">
+					<h3>결제 정보</h3>
+					<p>
+						이름 <span style="color: blue">*</span>
+					</p>
+					<input type="text" class="input_box" placeholder="이름을 입력해주세요"
+						name="payname" required>
+					<p>
+						연락처 <span style="color: blue">*</span>
+					</p>
+					<input type="text" class="input_box" placeholder="연락처를 입력해주세요"
+						name="payphone" required> <br> <br> <br> <br>
+					<input type ="hidden" name="cridx" value ="2">
+					<input type ="hidden" name="memidx" value="1">
+					<input type ="hidden" name="payprice" value="300">
+					<input type ="hidden" name="paynum" value="20">
+					<h3>대면 / 비대면 여부</h3>
 					<div class="faceornot_selectbox">
-						<input type="radio" name="faceornot" value="1" id="rd1" checked="checked">
-						<label for="rd1" class="label">대면</label>
-						<br>
-						<input type="radio" name="faceornot" value="2" id="rd2" checked="checked">
-						<label for="rd2" class="label">비대면</label>
+						<input type="radio" name="fonchoice" value="1" id="rd1"
+							checked="checked"> <label for="rd1" class="label">대면</label>
+						<br> <input type="radio" name="fonchoice" value="2" id="rd2"
+							checked="checked"> <label for="rd2" class="label">비대면</label>
 					</div>
-			<br>
-			<br>
+					</form>
+					<br> <br>
 
-			<h3>최종 결제 금액</h3>
-			<div class="pricebox">
-				<ul>10회 강의권<li><fmt:formatNumber type="number" maxFractionDigits="3" value="300"/>원</li></ul>
-			</div>
+					<h3>최종 결제 금액</h3>
+					<div class="pricebox">
+						<ul>
+							10회 강의권
+							<li><fmt:formatNumber type="number" maxFractionDigits="3"
+									value="300" />원</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class="pay_btn">
+					<input type="button" name="payprice" value="결제하기" onclick="location.href='<c:url value = "/payment/complete"/>'">
+				</div>
+				
 		</div>
-
-
-		<div class="pay_btn">
-			<input type="submit" value="결제하기" onclick="requestPay();">
-		</div>
-
+		
 
 	</div>
 
@@ -83,7 +94,6 @@
 
 
 	<script>
-	
 		/* 이니시스API 호출  START*/
 		var IMP = window.IMP; // 생략 가능
 		IMP.init("imp65837574"); // 예: imp00000000
@@ -104,15 +114,12 @@
 			}, function(rsp) { // callback
 				if (rsp.success) {
 					// 결제 성공 시 로직,
-					
-			      } else {
-			        alert("결제에 실패하였습니다. 에러 내용: " +  rsp.error_msg);
-			      }
-			    });
-			/* 이니시스API 호출 END*/
-			
-			
-		}
 
-		
+				} else {
+					alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+				}
+			});
+			/* 이니시스API 호출 END*/
+
+		}
 	</script>

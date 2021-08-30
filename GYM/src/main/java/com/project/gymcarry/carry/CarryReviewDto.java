@@ -11,7 +11,7 @@ public class CarryReviewDto {
 	private int cridx;
 	private int memidx;
 	private String memnick;
-	@JsonFormat(pattern = "HH:mm a")
+	@JsonFormat(pattern = "HH:mm a", timezone = "Asia/Seoul")
 	private Timestamp reviewdate;
 	
 	public CarryReviewDto() {}

@@ -55,7 +55,5 @@ public class CarryInfoService {
 		dao = template.getMapper(CarryDao.class);
 		return dao.addCarryReview(reviewDto);
 	}
-	
-	
 
 }

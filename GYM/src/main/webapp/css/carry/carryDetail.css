@@ -16,6 +16,11 @@
 	cursor: pointer;
 }
 
+.proprice {
+	width: 60px;
+	border : none;
+}
+
 
 hr {
 	border: 0px;

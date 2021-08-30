@@ -16,20 +16,44 @@ public class PaymentController {
 
 	@Autowired
 	private CarryInfoService carryInfoService;
+	
+	/*
 
-	// 결제 페이지 정보 출력 - 1회
-
-	@GetMapping("/payment/pay")
+	// 결제 페이지 정보 보내기
+	@PostMapping("/payment/pay")
 	public String carryPrice(
-			CarryPriceDto priceDto,
+			@RequestParam("cridx") int cridx,
+			@RequestParam("payprice") int payprice,
 			Model model
 			) {
-
-		CarryPriceDto carryPrice = carryInfoService.getCarryPrice(priceDto);
 		
-		model.addAttribute("carryPrice", carryPrice);
+		System.out.println(cridx);
+		PaymentDto paymentDto = paymentService.paymentPrice(cridx, payprice);
+		
+		
+		model.addAttribute("paymentDto", paymentDto);
 		
 		return "payment/payment";
 	}
+*/
+	
+	
+	@GetMapping("payment/pay")
+	public String paymentPrice(
+			@RequestParam("cridx") int cridx,
+			Model model
+			) {
+		CarryPriceDto priceDto = carryInfoService.getCarryPrice(cridx);
+		
+		System.out.println(priceDto);
+
+		model.addAttribute("priceDto", priceDto);
+		
+		return "payment/payment";
+	}
+
+	
+
+	
 	
 }

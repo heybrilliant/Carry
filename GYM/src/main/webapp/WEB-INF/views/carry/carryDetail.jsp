@@ -113,7 +113,7 @@
 					<!-- 리뷰 작성 입력폼 -->
 					<form id="reviewForm" name="reviewForm" method="post">
 						<div id="review_write" class="review_write display_none">
-							<textarea class="review_input" rows="4" cols="30" name="reviewcontent" id="review"></textarea>
+							<textarea class="review_input" rows="2" cols="30" name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
 								<input type="button" value="작성" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
 								<input type="hidden" id="cridx" name="cridx" value="1">
 								<input type="hidden" id="memidx" name="memidx" value="1">
@@ -170,23 +170,31 @@
 
 				<div id="c2" class="circle"></div>
 				<h2>${crname}</h2>
-
+				
 				<div class="program_all">
 
+					
 					<div class="program">
 						<div class="program_info">
 							<span>수업 1회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice1}" />
-								원
-							</h4>
-						</div>
+								<h4>
+									<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${carryPrice.proprice1}" />
+									원
+								</h4>
+								</div>
+								
+									
+						<form method="post">	
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button"
-									onclick="location.href='<c:url value = "/payment/pay1?cridx=${carryDetail.cridx}"/>'">
+									onclick="location.href='<c:url value = "/payment/pay?cridx=${carryDetail.cridx}"/>'">
+							<input type="hidden" name="payprice" value="${carryPrice.proprice1}">
+							<input type="hidden" name="cridx" value="1">
 						</div>
+						</form>
 					</div>
+
 
 					<div class="program">
 						<div class="program_info">
@@ -278,6 +286,7 @@
 				success : function() {
 						$(".review_input").val("");
 						alert('리뷰가 정상적으로 등록되었습니다.');
+						
 				},
 				error : function(request, status, error) {
 					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

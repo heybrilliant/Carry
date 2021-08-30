@@ -23,14 +23,5 @@ public interface CarryDao {
 	// 캐리 리뷰 작성
 	int addCarryReview(CarryReviewDto reviewDto);
 	
-	// 캐리 수업 횟수별 가격 정보 - 1회
-	CarryPriceDto selectCarryPrice1(int cridx);
-	// 캐리 수업 횟수별 가격 정보 - 5회
-	CarryPriceDto selectCarryPrice5(int cridx, int proprice);
-	// 캐리 수업 횟수별 가격 정보 - 10회
-	CarryPriceDto selectCarryPrice10(int cridx, int proprice);
-	// 캐리 수업 횟수별 가격 정보 - 20회
-	CarryPriceDto selectCarryPrice20(int cridx, int proprice);
-	
 	
 }

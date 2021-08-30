@@ -28,6 +28,7 @@ public class CarryDetailController {
 	// 캐리 상세 페이지
 	@GetMapping("/carry/detail")
 	public String carryDetail(
+				CarryPriceDto priceDto,
 				@RequestParam("cridx") int cridx,
 				Model model) {
 		
@@ -65,6 +66,20 @@ public class CarryDetailController {
 	}
 
 	
-	
+	// 결제 페이지 정보 보내기
+	@PostMapping("/payment/pay")
+	public String carryPrice(
+			@RequestParam("cridx") int cridx,
+			Model model
+			) {
+		
+		System.out.println(cridx);
+		CarryPriceDto priceDto = carryInfoService.getCarryPrice(cridx);
+		
+		model.addAttribute("paymentDto", priceDto);
+		
+		
+		return "payment/payment";
+	}
 
 }
