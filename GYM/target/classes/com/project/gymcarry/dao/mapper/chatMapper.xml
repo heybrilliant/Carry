@@ -34,7 +34,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		c.cridx=#{cridx}
 	</select>
 
-
 	<!-- 매칭캐리리스트 -->
 	<select id="selectCarryList"
 		resultType="com.project.gymcarry.carry.CarryJoinDto">
@@ -66,12 +65,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.project.gymcarry.chatting.ChatRoomDto"
 		useGeneratedKeys="true">
 		insert into chatroom (chatidx, chatcontent, cridx,
-		memidx, contenttype)
-		values(#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
+		memidx)
+		values(#{chatidx},#{chatcontent},#{cridx},#{memidx})
 	</insert>
-
-
-
-
 
 </mapper>

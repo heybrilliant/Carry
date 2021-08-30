@@ -331,7 +331,8 @@
 									htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
 									htmlStr += '	</div>'
 									htmlStr += '</div>'
-								} else if(item.contenttype == 0){
+								} 
+								if(item.contenttype == 0){
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -345,7 +346,8 @@
 									htmlStr += '		</div>'
 									htmlStr += '	</div>'
 								}
-							chattting();
+								chattting();
+								$('.carry_message_warp').html(htmlStr);
 							
 						});
 					}

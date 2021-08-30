@@ -72,8 +72,8 @@ public class UserChatController {
 	@GetMapping("chatting/dochat")
 	@ResponseBody
 	public List<ChatRoomDto> chatList(@RequestParam("chatidx") int chatidx, Model model) {
-		model.addAttribute("chatidx", chatidx);
 		List<ChatRoomDto> chatList = matchingListService.getChatIdx(chatidx);
+		model.addAttribute("chatidx", chatidx);
 		return chatList;
 	}
 	

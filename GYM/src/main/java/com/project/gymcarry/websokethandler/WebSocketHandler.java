@@ -92,11 +92,13 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			WebSocketSession ws = mapList.get(nickSession);
 			// 상대방에게 메세지전달
 			ws.sendMessage(sendMsg);
+			
 		}
-
-		int result = matchingChatRoomService.insertChatContent(chatRoom.getChatidx(), chatRoom.getChatcontent(),
-				chatRoom.getCridx(), chatRoom.getMemidx(), contenttype);
-		System.out.println(result + "저장");
+		
+		matchingChatRoomService.insertChatContent(chatRoom);
+		
+//		matchingChatRoomService.insertChatContent(chatRoom.getChatidx(), chatRoom.getChatcontent(),
+//				chatRoom.getCridx(), chatRoom.getMemidx(), contenttype);
 
 //		if (chatNick.equals(chatRoom.getMemnick())) {
 //			String to = chatRoom.getMemnick();
