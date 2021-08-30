@@ -21,11 +21,11 @@ public class PaymentController {
 
 	@GetMapping("/payment/pay")
 	public String carryPrice(
-			@RequestParam("cridx") int cridx,
+			CarryPriceDto priceDto,
 			Model model
 			) {
 
-		CarryPriceDto carryPrice = carryInfoService.getCarryPrice1(cridx);
+		CarryPriceDto carryPrice = carryInfoService.getCarryPrice(priceDto);
 		
 		model.addAttribute("carryPrice", carryPrice);
 		
