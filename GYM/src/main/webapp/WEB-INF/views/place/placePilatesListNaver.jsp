@@ -4,6 +4,10 @@
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
+<script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ql9vcy7uun&submodules=geocoder">
+</script>
+
 </head>
 <body>
 	<!-- header -->
@@ -35,12 +39,30 @@
                  <img src="<c:url value="/images/icon/search_icon.png"/>" alt="search">
              </button>
          </div>
-         <div class="map_section">
-             <iframe
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.3482559449353!2d126.98313801564814!3d37.57041633166289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e88bffbb25%3A0x47dbc264f2cc5695!2z67mE7Yq47Lqg7ZSE!5e0!3m2!1sko!2skr!4v1629288115032!5m2!1sko!2skr"
-                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-             </iframe>
-         </div>
+         
+         
+         
+         
+<!-- 지도[s] -->
+
+         <div id="map" style="width:100%;height:500px; margin-top: 50px"></div>
+
+         <script>
+             var mapOptions = {
+                 center: new naver.maps.LatLng(37.55672525952894, 126.94003199277773),
+                 zoom: 15
+             };
+
+             var map = new naver.maps.Map('map', mapOptions);
+         </script>
+
+
+    <!-- 지도[e] -->
+         
+         
+         
+         
+         
          <div class="place_list">
              <div class="place_content">
                  <div class="place_info">

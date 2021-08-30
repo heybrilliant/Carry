@@ -10,7 +10,7 @@ public class PlacePilatesListController {
 	
 	@GetMapping
 	public String matching() {
-		return "place/placePilatesList";
+		return "place/placePilatesListNaver";
 	}
 	
 	
