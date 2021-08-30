@@ -55,16 +55,7 @@
             scaleControl: false,  // 우측 하단 scale 표시
             zoom: 16
         });
-
-        // 마커 생성
-        // var markerOptions = {
-        //     position: position.destinationPoint(0, 20),
-        //     map: map,
-        //     icon: {
-        //         url: 'https://image.flaticon.com/icons/png/512/3996/3996871.png',
-        //     }
-        // };
-
+        
         var marker = new naver.maps.Marker({
             position: position,
             map: map,
