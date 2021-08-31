@@ -28,20 +28,14 @@ public class CarryDetailController {
 		model.addAttribute("carryDetail", carryDetail);
 		model.addAttribute("carryReviewList", carryReviewList);
 
-		return "carry/carryDetail";	
+		return "carry/carryDetail";
 	}
-	
-	
+
 	@GetMapping("carry/reviewwrite")
 	@ResponseBody
-	public String carryReview(
-			@RequestParam("reviewcontent") String reviewcontent
-			) {
+	public String carryReview(@RequestParam("reviewcontent") String reviewcontent) {
 		System.out.println(reviewcontent);
 		return null;
 	}
-	
-	
-	
 
 }

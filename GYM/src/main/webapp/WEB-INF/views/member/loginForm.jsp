@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <style type="text/css">
-.center{
+.center {
 	width: 60%;
 	margin: 200px auto;
 	border: 3px solid #8AC007;
@@ -40,9 +40,9 @@
 			</table>
 		</form>
 
-		<a href="<c:url value="/carry/login"/>">캐리로그인</a>
-		<a href="<c:url value="/member/join"/>">멤버회원가입</a>
-		<a href="<c:url value="/carry/join"/>">캐리회원가입</a>
+		<a href="<c:url value="/carry/login"/>">캐리로그인</a> <a
+			href="<c:url value="/member/join"/>">멤버회원가입</a> <a
+			href="<c:url value="/carry/join"/>">캐리회원가입</a>
 	</div>
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>

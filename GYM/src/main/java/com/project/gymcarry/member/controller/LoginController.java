@@ -22,12 +22,10 @@ public class LoginController {
 	public String loginForm() {
 		return "member/loginForm";
 	}
-	
+
 	// 로그인 세션 저장
 	@PostMapping("/member/memberLogin")
-	public String login(
-			@RequestParam("mememail") String id, 
-			@RequestParam("mempw") String pw,
+	public String login(@RequestParam("mememail") String id, @RequestParam("mempw") String pw,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		MemberDto memDto = loginService.memberLogin(id, pw);
@@ -37,8 +35,8 @@ public class LoginController {
 		} else {
 			return "member/loginForm";
 		}
-	} 
-	
+	}
+
 	// 로그아웃 세션 삭제
 	@GetMapping("member/logOut")
 	public String logOut(HttpServletRequest request) {
