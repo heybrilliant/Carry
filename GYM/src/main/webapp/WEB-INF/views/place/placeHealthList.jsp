@@ -16,11 +16,11 @@
              내 주변 운동시설 찾아보기
          </h1>
          <ul class="place_menu">
-             <li class="on">
+             <li>
                  <a href="<c:url value="/place/list"/>">전체</a>
              </li>
-             <li>
-                 <a href="<c:url value="/place/list?placenum=1"/>">헬스</a>
+             <li class="on">
+             	 <a href="<c:url value="/place/list?placenum=1"/>">헬스</a>
              </li>
              <li>
                  <a href="<c:url value="/place/pilates"/>">필라테스</a>
@@ -39,7 +39,7 @@
              
          </div>
          <div class="place_list">
-             <%-- <div class="place_content">
+             <div class="place_content">
                  <div class="place_info">
                      <h3>킹짐</h3>
                      <p>안산시 단원구 선부동</p>
@@ -51,27 +51,25 @@
              </div>
              <div class="place_content">
                  <div class="place_info">
-                     <h3>${placeList.placename}</h3>
-                     <p>${placeList.placeaddress}</p>
+                     <h3>어쩌고짐</h3>
+                     <p>안산시 단원구 초지동</p>
                      <a href="#">더 알아보기</a>
                  </div>
                  <div class="place_img">
                      <img src="<c:url value="/images/review2.jpg"/>">
                  </div>
-             </div> --%>
-             <c:forEach items="${placeList}" var="placeList">
+             </div>
              <div class="place_content">
                  <div class="place_info">
-                     <h3>${placeList.placename}</h3>
-                     <p>${placeList.placeaddress}</p>
+                     <h3>핏플리짐</h3>
+                     <p>안산시 단원구 원곡동</p>
                      <a href="#">더 알아보기</a>
                  </div>
                  <div class="place_img">
                      <img src="<c:url value="/images/review3.jpg"/>">
                  </div>
              </div>
-             </c:forEach>
-             <%-- <div class="place_content">
+             <div class="place_content">
                  <div class="place_info">
                      <h3>베스트휘트니스</h3>
                      <p>안산시 단원구 선부동</p>
@@ -80,7 +78,7 @@
                  <div class="place_img">
                      <img src="<c:url value="/images/review4.jpg"/>">
                  </div>
-             </div> --%>
+             </div>
          </div>
      </div>
 

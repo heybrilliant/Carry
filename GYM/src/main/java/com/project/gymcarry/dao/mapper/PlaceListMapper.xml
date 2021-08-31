@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.gymcarry.dao.PlaceDao"> 
+
+
+	<!-- 헬스 플레이스 전체 정보 출력 -->
+	<select id="selectHealthPlaceList"
+		resultType="com.project.gymcarry.place.PlaceDto">
+		select placename, placeaddress, placeimg from place where placenum = #{placenum}
+	</select>
+	
+	
+	
+
+</mapper>

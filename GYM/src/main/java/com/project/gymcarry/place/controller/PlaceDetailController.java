@@ -1,4 +1,4 @@
-package com.project.gymcarry.place;
+package com.project.gymcarry.place.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
