@@ -40,10 +40,10 @@ public class UserChatController {
 			) {
 		// 캐리와의 중복룸이 있는지 확인하기위한 list
 		// 수정하자
-		List<ChatListDto> list = matchingChatRoomService.getByChatRoom(cridx);
+		List<ChatListDto> list = matchingChatRoomService.getByChatRoom(memidx);
 		// 캐리닉네임으로 방이 있으면 생성하지않고 채팅으로 이동
 		for (int i = 0; i < list.size(); i++) {
-			if(cridx == list.get(i).getCridx()) {
+			if(memidx == list.get(i).getMemidx()) {
 				return "redirect:/chatting/chatList";
 			}
 		}

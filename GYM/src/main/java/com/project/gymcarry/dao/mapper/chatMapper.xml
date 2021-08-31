@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 채팅룸 중복 -->
 	<select id="selectByChatRoom"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select * from chatlist where cridx=#{param}
+		select * from chatlist where memidx=#{param}
 	</select>
 
 	<!-- 채팅방 찾기 -->
@@ -64,8 +64,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertChatContent"
 		parameterType="com.project.gymcarry.chatting.MessageDto"
 		useGeneratedKeys="true">
-		insert into chatroom (chatidx, chatcontent, cridx, memidx)
-		values (#{chatidx},#{chatcontent},#{cridx},#{memidx})
+		insert into chatroom (chatidx, chatcontent, cridx, memidx, contenttype)
+		values (#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
 	</insert>
 
 </mapper>

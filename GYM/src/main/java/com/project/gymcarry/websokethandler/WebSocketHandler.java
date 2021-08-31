@@ -1,5 +1,6 @@
 package com.project.gymcarry.websokethandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -69,10 +70,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
 		int contenttype = 0;
 		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
-
 		if (chatNick == null) {
 			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
-			contenttype = 1;
+			++contenttype;
 		}
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
 
@@ -80,43 +80,52 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		Gson gson = new Gson();
 		MessageDto messageDto = gson.fromJson(message.getPayload(), MessageDto.class);
 		messageDto.setContenttype(contenttype);
-		System.out.println(messageDto);
-		// chatRoom에 담긴 chatidx로 해당 채팅방을 찾는다. (지우기 ㄴㄴ)
-		// ChatListDto chatListDto =
-		// matchingChatRoomService.getChatRoom(chatRoom.getChatidx());
 
-		// 전달 메세지
+		// 메세지보낸사람의 chatidx로 해당 채팅방을 찾는다.
+		// ChatListDto chatListDto =
+		// matchingChatRoomService.getChatRoom(messageDto.getChatidx());
+
+		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
+
 		Iterator<String> itr = mapList.keySet().iterator(); // 기존에 저장된 접속자 명단을 가져옴
 		while (itr.hasNext()) {
 			String nickSession = (String) itr.next();
 			WebSocketSession ws = mapList.get(nickSession);
 			// 상대방에게 메세지전달
 			ws.sendMessage(sendMsg);
+			// 자기자신 메세지전달
+			// session.sendMessage(sendMsg);
 		}
-		
 		matchingChatRoomService.insertChatContent(messageDto);
-//		matchingChatRoomService.insertChatContent(messageDto.getChatidx(), messageDto.getChatcontent(),
-//				messageDto.getCridx(), messageDto.getMemidx(), contenttype);
-
-//		if (chatNick.equals(chatRoom.getCrnick())) {
-//			String to = chatRoom.getCrnick();
+		
+		// 전달 메세지
+//		if (chatNick == messageDto.getCridx()) {
+//			String to = messageDto.getMemnick();
 //			WebSocketSession toSession = mapList.get(to);
 //			if (toSession != null) {
 //				toSession.sendMessage(sendMsg);
-//				
+//			messageSocket(sendMsg, to);
+		// matchingChatRoomService.insertChatContent(messageDto);
+//		} else if (chatNick == messageDto.getMemidx()) {
+//			String st = messageDto.getCrnick();
+//			WebSocketSession dd = mapList.get(st);
+//			if (dd != null) {
+//				dd.sendMessage(sendMsg);
 //			}
-//		}
-//		if (chatNick.equals(chatRoom.getCrnick())) {
-//			String to = chatRoom.getCrnick();
-//			WebSocketSession toSession = mapList.get(to);
-//			if (toSession != null) {
-//				toSession.sendMessage(sendMsg);
-//
+//			messageSocket(sendMsg, to);
+//				// matchingChatRoomService.insertChatContent(messageDto);
 //			}
-//		}
-
 	}
+
+	// 중복코드 함수
+//	public void messageSocket(TextMessage sendMsg, int to) throws IOException {
+//		WebSocketSession toSession = mapList.get(to);
+//		if (toSession != null) {
+//			toSession.sendMessage(sendMsg);
+//			
+//		}
+//	}
 
 	// 클로즈 될때.
 	@Override
