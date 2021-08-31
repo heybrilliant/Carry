@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select placename, placeaddress, placeimg from place where placenum = #{placenum}
 	</select>
 	
+
 	
 	
 

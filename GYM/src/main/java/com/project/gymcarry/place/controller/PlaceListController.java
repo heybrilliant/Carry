@@ -22,12 +22,10 @@ public class PlaceListController {
 	// place 리스트
 	@GetMapping("/place/list")
 	public String placeList(
-				
 				@RequestParam("placenum") int placenum,
 				Model model
 			) {
 		List<PlaceDto> placeList = placeHealthListService.getHealthPlaceList(placenum);
-		
 		System.out.println("placenum : " + placenum);
 		
 		model.addAttribute("placeList", placeList);

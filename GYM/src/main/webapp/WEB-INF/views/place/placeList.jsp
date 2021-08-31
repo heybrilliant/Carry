@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
@@ -39,37 +40,28 @@
              
          </div>
          <div class="place_list">
-             <%-- <div class="place_content">
-                 <div class="place_info">
-                     <h3>킹짐</h3>
-                     <p>안산시 단원구 선부동</p>
-                     <a href="<c:url value="/place/detail"/>">더 알아보기</a>
-                 </div>
-                 <div class="place_img">
-                     <img src="<c:url value="/images/review1.jpg"/>">
-                 </div>
-             </div>
-             <div class="place_content">
-                 <div class="place_info">
-                     <h3>${placeList.placename}</h3>
-                     <p>${placeList.placeaddress}</p>
-                     <a href="#">더 알아보기</a>
-                 </div>
-                 <div class="place_img">
-                     <img src="<c:url value="/images/review2.jpg"/>">
-                 </div>
-             </div> --%>
-             <c:forEach items="${placeList}" var="placeList">
-             <div class="place_content">
-                 <div class="place_info">
-                     <h3>${placeList.placename}</h3>
-                     <p>${placeList.placeaddress}</p>
-                     <a href="#">더 알아보기</a>
-                 </div>
-                 <div class="place_img">
-                     <img src="<c:url value="/images/review3.jpg"/>">
-                 </div>
-             </div>
+             <c:forEach items="${placeList}" var="placeList" varStatus="status">
+             <c:set var="imgUrl" value="${placeList.placeimg}"/>
+             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
+			 <c:set var="length" value="${fn:length(imageList[0])}"/>
+			 <c:set var="img" value="${fn:substring(imageList[0], 2, length-1)}"/>
+			 
+			 
+	             <div class="place_content">
+	                 <div class="place_info">
+	                     <h3>${placeList.placename}</h3>
+	                     <p>${placeList.placeaddress}</p>
+	                     <a href="#">더 알아보기</a>
+	                 </div>
+	                 <div class="place_img">
+	                 	<c:if test="${empty img}">
+	                 		<img src="<c:url value="/images/review1.jpg"/>">
+	                 	</c:if>
+	                 	<c:if test="${!empty img}">
+	                    	<img src="<c:out value="${img}"/>">
+	                    </c:if>
+	                 </div>
+	             </div>
              </c:forEach>
              <%-- <div class="place_content">
                  <div class="place_info">

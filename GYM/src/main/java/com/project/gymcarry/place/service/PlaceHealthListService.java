@@ -22,4 +22,5 @@ public class PlaceHealthListService {
 		dao = template.getMapper(PlaceDao.class);
 		return dao.selectHealthPlaceList(placenum);
 	}
+	
 }
