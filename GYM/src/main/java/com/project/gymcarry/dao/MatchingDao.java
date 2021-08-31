@@ -26,6 +26,5 @@ public interface MatchingDao {
 	// 채팅방 찾기
 	ChatListDto selectChatRoom(int chatidx);
 	// 대화내용 insert
-//	int insertChatContent(int chatidx, String chatcontent, int cridx, int memidx, int contenttype);
 	int insertChatContent(ChatRoomDto chatRoom);
 }
