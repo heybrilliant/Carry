@@ -54,7 +54,7 @@
 					<%-- <c:out value="${now}" /> --%>
 					<input type ="hidden" name="paydate" value="${now}">
 					<input type ="hidden" name="cridx" value ="${cridx}">
-					<input type ="hidden" name="memidx" value="2">
+					<input type ="hidden" name="memidx" value="${loginSession.memidx}">
 					<input type ="hidden" name="payprice" value="${payprice}">
 					<input type ="hidden" name="paynum" value="${paynum}">
 					<h3>대면 / 비대면 여부</h3>
@@ -119,7 +119,7 @@
 				amount : "100",
 				/* amount : "${payprice}", */
 				buyer_email : "",
-				buyer_name : "${payname}",
+				buyer_name : "${loginSession.memidx}",
 				buyer_tel : "${payphone}",
 				buyer_addr : "",
 				buyer_postcode : ""
@@ -131,6 +131,7 @@
 					url : "<c:url value='/payment/complete'/>",
 					data : $("#paymentForm").serialize()
 					});	
+					location.href='/gym/payment/complete'
       			} else {
 					alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
 				}	
