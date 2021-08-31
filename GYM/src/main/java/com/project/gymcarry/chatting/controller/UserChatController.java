@@ -59,7 +59,7 @@ public class UserChatController {
 	// 채팅룸 리스트
 	@GetMapping("chatting/chatList")
 	public String matching(Model model,HttpSession session) {
-		SessionDto dto = (SessionDto) session.getAttribute("member");
+		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
 		List<ChatListDto> list = matchingListService.getChatList(dto.getMemidx());
 		model.addAttribute("chatList", list);
 		List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());

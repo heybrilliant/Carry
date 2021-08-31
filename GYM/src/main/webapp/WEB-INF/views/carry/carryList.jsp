@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>CarryList</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/carryList.css">
+<link rel="stylesheet" href="/gym/css/carry/carryList.css">
 </head>
 <body>
 	<!-- header -->
@@ -56,7 +56,7 @@
               </div>
               <div class="board_bottom">
                 <ul class="board_btn">
-                  <li><input type="button" value="1:1문의" class="inquiry_btn" onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${list.cridx}&memidx=${member.memidx}"/>'"></li>
+                  <li><input type="button" value="1:1문의" class="inquiry_btn" onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${list.cridx}&memidx=${loginSession.memidx}"/>'"></li>
                   <li>
                     <input type="button" value="더 알아보기" class="details_btn">
                   </li>

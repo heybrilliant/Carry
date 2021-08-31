@@ -22,7 +22,7 @@ public class CarryListController {
 	public String chatRoomList(Model model) {
 		List<CarryDto> list = matchingListService.getCarryList();
 		model.addAttribute("carryList", list);
-		return "chatting/carryList";
+		return "carry/carryList";
 	}
 
 }

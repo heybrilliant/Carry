@@ -41,9 +41,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("1번" + session.getId());
 
 		// 회원, 캐리 세션 정보 가져오기
-		String chatNick = ((SessionDto) session.getAttributes().get("member")).getMemnick();
+		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
 		if (chatNick == null) {
-			chatNick = ((SessionDto) session.getAttributes().get("member")).getCrnick();
+			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
 		}
 
 		// 로그인햇으면 닉네임이고 - 로그인이안되있으면 세션아이디
@@ -68,10 +68,10 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
 		//int contenttype = 0;
-		String chatNick = ((SessionDto) session.getAttributes().get("member")).getMemnick();
+		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
 
 		if (chatNick == null) {
-			chatNick = ((SessionDto) session.getAttributes().get("member")).getCrnick();
+			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
 			//contenttype = 1;
 		}
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
@@ -79,7 +79,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		// json객체 -> java객체
 		Gson gson = new Gson();
 		ChatRoomDto chatRoom = gson.fromJson(message.getPayload(), ChatRoomDto.class);
-
+		System.out.println(chatRoom);
 		// chatRoom에 담긴 chatidx로 해당 채팅방을 찾는다. (지우기 ㄴㄴ)
 		// ChatListDto chatListDto =
 		// matchingChatRoomService.getChatRoom(chatRoom.getChatidx());
@@ -92,19 +92,18 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			WebSocketSession ws = mapList.get(nickSession);
 			// 상대방에게 메세지전달
 			ws.sendMessage(sendMsg);
-			
 		}
 		
 		matchingChatRoomService.insertChatContent(chatRoom);
-		
 //		matchingChatRoomService.insertChatContent(chatRoom.getChatidx(), chatRoom.getChatcontent(),
 //				chatRoom.getCridx(), chatRoom.getMemidx(), contenttype);
 
-//		if (chatNick.equals(chatRoom.getMemnick())) {
-//			String to = chatRoom.getMemnick();
+//		if (chatNick.equals(chatRoom.getCrnick())) {
+//			String to = chatRoom.getCrnick();
 //			WebSocketSession toSession = mapList.get(to);
 //			if (toSession != null) {
 //				toSession.sendMessage(sendMsg);
+//				
 //			}
 //		}
 //		if (chatNick.equals(chatRoom.getCrnick())) {

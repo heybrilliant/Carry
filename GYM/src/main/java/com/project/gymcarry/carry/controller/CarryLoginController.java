@@ -31,8 +31,8 @@ public class CarryLoginController {
 			@RequestParam("crid") String id, 
 			@RequestParam("crpw") String pw,
 			HttpServletRequest request,
+			HttpSession session,
 			Model model) {
-		HttpSession session = request.getSession();
 		SessionDto sessionDto = loginService.carryLogin(id, pw);
 		if (sessionDto != null) {
 			session.setAttribute("loginSession", sessionDto);

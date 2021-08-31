@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>1:1Chatting</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/user_chat.css">
+<link rel="stylesheet" href="/gym/css/chat/user_chat.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 </head>
@@ -15,9 +15,9 @@
 
 	<div id="chatwarp">
 			<div id="chatlist_wrap">
-			<c:if test="${member.memnick ne null}">
+			<c:if test="${loginSession.memnick ne null}">
 			<div class="chatid">
-				<h3>${member.memnick}</h3>
+				<h3>${loginSession.memnick}</h3>
 			</div>
 				<!-- 채팅방 리스트 시작 -->
 				<c:forEach items="${chatList}" var="list">
@@ -49,9 +49,9 @@
 				</c:forEach>
 				</c:if>
 				
-				<c:if test="${member.crnick ne null}">
+				<c:if test="${loginSession.crnick ne null}">
 				<div class="chatid">
-					<h3>${member.crnick}</h3>
+					<h3>${loginSession.crnick}</h3>
 				</div>
 				<c:forEach items="${carryChatList}" var="list">
 					<div class="chatlist">
@@ -169,8 +169,8 @@
 				htmlStr += '</div>'
 				htmlStr += '<div class="chatting_write">'
 				htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg">'
-				htmlStr += '<input type="hidden" value="${member.memnick}" id="memberId">'
-				htmlStr += '<input type="hidden" value="${member.crnick}" id="crId">'
+				htmlStr += '<input type="hidden" value="${loginSession.memnick}" id="memberId">'
+				htmlStr += '<input type="hidden" value="${loginSession.crnick}" id="crId">'
 				htmlStr += '<button type="button" class="btn" id="btnSend">'
 				htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">'
 				htmlStr += '</button>'
@@ -286,8 +286,8 @@
 	function sendMessage() {
 		// 메세지 입력값이 빈공간이 아니면 멤버닉네임, 캐리닉네임, 대화내용 담기
 		var msg = {
-			memnick : '${member.memnick}',
-			crnick : '${member.crnick}',
+			memnick : '${loginSession.memnick}',
+			crnick : '${loginSession.crnick}',
 			cridx : cridx,
 			memidx : memidx,
 			chatidx : chatIdx,
