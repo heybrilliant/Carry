@@ -71,7 +71,7 @@
 					<h3>최종 결제 금액</h3>
 					<div class="pricebox">
 						<ul>
-							${paynum}회 강의권
+							${paynum}회 이용권
 							<li><fmt:formatNumber type="number" maxFractionDigits="3"
 									value="${payprice}" />원</li>
 						</ul>
@@ -119,7 +119,7 @@
 				amount : "100",
 				/* amount : "${payprice}", */
 				buyer_email : "",
-				buyer_name : "${loginSession.memidx}",
+				buyer_name : "${loginSession.memname}",
 				buyer_tel : "${payphone}",
 				buyer_addr : "",
 				buyer_postcode : ""

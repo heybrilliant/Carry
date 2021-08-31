@@ -34,7 +34,9 @@ public class PaymentController {
 		  HttpSession session = request.getSession();
 		  SessionDto sessionDto = (SessionDto) session.getAttribute("loginSession");
 		  session.setAttribute("idx", sessionDto.getMemidx());
+		  session.setAttribute("name", sessionDto.getMemname());
 		  System.out.println("세션 변수(memidx) : " + sessionDto.getMemidx());
+		  System.out.println("세션 변수(memname) : " + sessionDto.getMemname());
 		  
 		  model.addAttribute("cridx", cridx);
 		  model.addAttribute("crname", crname);
@@ -54,7 +56,6 @@ public class PaymentController {
 			}
 		  return "payment/paymentComplete";
 		}
-	  
 
 		
 }
