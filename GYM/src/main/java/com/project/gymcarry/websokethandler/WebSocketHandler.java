@@ -18,7 +18,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.google.gson.Gson;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
-import com.project.gymcarry.member.MemberDto;
+import com.project.gymcarry.member.SessionDto;
 
 @Controller
 public class WebSocketHandler extends TextWebSocketHandler {
@@ -41,9 +41,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("1번" + session.getId());
 
 		// 회원, 캐리 세션 정보 가져오기
-		String chatNick = ((MemberDto) session.getAttributes().get("member")).getMemnick();
+		String chatNick = ((SessionDto) session.getAttributes().get("member")).getMemnick();
 		if (chatNick == null) {
-			chatNick = ((MemberDto) session.getAttributes().get("member")).getCrnick();
+			chatNick = ((SessionDto) session.getAttributes().get("member")).getCrnick();
 		}
 
 		// 로그인햇으면 닉네임이고 - 로그인이안되있으면 세션아이디
@@ -67,12 +67,12 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("2번 " + session + " : " + message + " : " + message.getPayload());
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
-		int contenttype = 0;
-		String chatNick = ((MemberDto) session.getAttributes().get("member")).getMemnick();
+		//int contenttype = 0;
+		String chatNick = ((SessionDto) session.getAttributes().get("member")).getMemnick();
 
 		if (chatNick == null) {
-			chatNick = ((MemberDto) session.getAttributes().get("member")).getCrnick();
-			contenttype = 1;
+			chatNick = ((SessionDto) session.getAttributes().get("member")).getCrnick();
+			//contenttype = 1;
 		}
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
 
