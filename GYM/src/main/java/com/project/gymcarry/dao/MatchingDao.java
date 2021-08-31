@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
+import com.project.gymcarry.chatting.MessageDto;
 
 // matching DAO
 public interface MatchingDao {
@@ -26,5 +27,5 @@ public interface MatchingDao {
 	// 채팅방 찾기
 	ChatListDto selectChatRoom(int chatidx);
 	// 대화내용 insert
-	int insertChatContent(ChatRoomDto chatRoom);
+	int insertChatContent(MessageDto messageDto);
 }

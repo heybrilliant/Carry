@@ -170,7 +170,7 @@
 				htmlStr += '<div class="chatting_write">'
 				htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg">'
 				htmlStr += '<input type="hidden" value="${loginSession.memnick}" id="memberId">'
-				htmlStr += '<input type="hidden" value="${loginSession.crnick}" id="crId">'
+				//htmlStr += '<input type="hidden" value="${loginSession.crnick}" id="crId">'
 				htmlStr += '<button type="button" class="btn" id="btnSend">'
 				htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">'
 				htmlStr += '</button>'
@@ -235,7 +235,7 @@
 		console.log(jsonData); 
 		
 		var currentuser_session1 = $('#memberId').val();
-		var currentuser_session2 = $('#crId').val();
+		//var currentuser_session2 = $('#crId').val();
 		var cidx = chatIdx;
 		if(cidx == jsonData.chatidx){
 			console.log(cidx);

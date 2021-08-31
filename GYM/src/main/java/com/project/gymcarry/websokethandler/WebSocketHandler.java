@@ -16,7 +16,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
-import com.project.gymcarry.chatting.ChatRoomDto;
+import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
 import com.project.gymcarry.member.SessionDto;
 
@@ -67,25 +67,26 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("2번 " + session + " : " + message + " : " + message.getPayload());
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
-		//int contenttype = 0;
+		int contenttype = 0;
 		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
 
 		if (chatNick == null) {
 			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
-			//contenttype = 1;
+			contenttype = 1;
 		}
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
 
 		// json객체 -> java객체
 		Gson gson = new Gson();
-		ChatRoomDto chatRoom = gson.fromJson(message.getPayload(), ChatRoomDto.class);
-		System.out.println(chatRoom);
+		MessageDto messageDto = gson.fromJson(message.getPayload(), MessageDto.class);
+		messageDto.setContenttype(contenttype);
+		System.out.println(messageDto);
 		// chatRoom에 담긴 chatidx로 해당 채팅방을 찾는다. (지우기 ㄴㄴ)
 		// ChatListDto chatListDto =
 		// matchingChatRoomService.getChatRoom(chatRoom.getChatidx());
 
 		// 전달 메세지
-		TextMessage sendMsg = new TextMessage(gson.toJson(chatRoom));
+		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 		Iterator<String> itr = mapList.keySet().iterator(); // 기존에 저장된 접속자 명단을 가져옴
 		while (itr.hasNext()) {
 			String nickSession = (String) itr.next();
@@ -94,9 +95,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			ws.sendMessage(sendMsg);
 		}
 		
-		matchingChatRoomService.insertChatContent(chatRoom);
-//		matchingChatRoomService.insertChatContent(chatRoom.getChatidx(), chatRoom.getChatcontent(),
-//				chatRoom.getCridx(), chatRoom.getMemidx(), contenttype);
+		matchingChatRoomService.insertChatContent(messageDto);
+//		matchingChatRoomService.insertChatContent(messageDto.getChatidx(), messageDto.getChatcontent(),
+//				messageDto.getCridx(), messageDto.getMemidx(), contenttype);
 
 //		if (chatNick.equals(chatRoom.getCrnick())) {
 //			String to = chatRoom.getCrnick();

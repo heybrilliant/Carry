@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.chatting.ChatListDto;
-import com.project.gymcarry.chatting.ChatRoomDto;
+import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.dao.MatchingDao;
 
 @Service
@@ -38,9 +38,9 @@ public class MatchingChatRoomService {
 	}
 	
 	// 대화내용 저장
-	public int insertChatContent(ChatRoomDto chatRoom) {
+	public int insertChatContent(MessageDto messageDto) {
 		dao = template.getMapper(MatchingDao.class);
-		return dao.insertChatContent(chatRoom);
+		return dao.insertChatContent(messageDto);
 	}
 	
 }

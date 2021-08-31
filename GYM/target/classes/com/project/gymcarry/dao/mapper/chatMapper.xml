@@ -62,11 +62,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 대화내용 저장 -->
 	<insert id="insertChatContent"
-		parameterType="com.project.gymcarry.chatting.ChatRoomDto"
+		parameterType="com.project.gymcarry.chatting.MessageDto"
 		useGeneratedKeys="true">
-		insert into chatroom (chatidx, chatcontent, cridx,
-		memidx)
-		values(#{chatidx},#{chatcontent},#{cridx},#{memidx})
+		insert into chatroom (chatidx, chatcontent, cridx, memidx)
+		values (#{chatidx},#{chatcontent},#{cridx},#{memidx})
 	</insert>
 
 </mapper>
