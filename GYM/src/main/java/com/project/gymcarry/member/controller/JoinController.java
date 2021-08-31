@@ -12,22 +12,22 @@ import com.project.gymcarry.member.service.JoinService;
 @Controller
 @RequestMapping("member/join")
 public class JoinController {
-	
+
 	@Autowired
 	JoinService joinservice;
-	
+
 	@GetMapping
 	public String memberJoinForm() {
 		return "member/joinForm";
 	}
-	
+
 	@PostMapping
 	public String memberJoin(MemberDto memberDto) {
 		int result = joinservice.memberJoin(memberDto);
-		if(result == 1) {
+		if (result == 1) {
 			System.out.println("멤버회원가입성공");
 		}
 		return "redirect:/member/login";
 	}
-	
+
 }

@@ -35,6 +35,11 @@
 }
 
 
+[class*="col-right"], .edit_text2 {
+	width: 1.5em;
+	
+}
+
 
 .col {
 	display: flex;
