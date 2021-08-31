@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <title>캐리 상세페이지</title>
 
@@ -115,10 +116,13 @@
 						<div id="review_write" class="review_write display_none">
 							<textarea class="review_input" rows="2" cols="30"
 								name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
-							<input type="button" value="등록" class="write_btn" id="write_btn"
-								onClick="fn_review('${result.code}')"> <input
-								type="hidden" id="cridx" name="cridx" value="1"> <input
-								type="hidden" id="memidx" name="memidx" value="1">
+							<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
+						
+						
+							<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
+							<input type ="hidden" name="reviewdate" value="${now}">
+							<input type="hidden" id="cridx" name="cridx" value="${carryDetail.cridx}">
+							<input type="hidden" id="memidx" name="memidx" value="${loginSession.memidx}">
 						</div>
 					</form>
 
@@ -130,8 +134,9 @@
 							</div>
 
 							<div class="review_content">
-								<span class="review_name">${carryReviewList.memnick}</span> <span
-									class="review_date">${carryReviewList.reviewdate}</span> <br>
+								<span class="review_name">${carryReviewList.memnick}</span>
+								<span class="review_date">${carryReviewList.reviewdate}</span>
+								<br>
 								<span>${carryReviewList.reviewcontent}</span>
 							</div>
 
@@ -272,10 +277,13 @@
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-
-
+	
 	<script>
-		// place 이미지 슬라이드
+	  document.getElementById('currentDatetime').value= new Date().toISOString().slice(0, 18);
+	</script>
+	
+	<script>
+	  // place 이미지 슬라이드
 		var swiper = new Swiper(".mySwiper", {
 			spaceBetween : 0,
 			slidesPerView : 4,

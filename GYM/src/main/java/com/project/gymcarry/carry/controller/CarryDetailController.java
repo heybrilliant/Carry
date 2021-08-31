@@ -2,6 +2,9 @@ package com.project.gymcarry.carry.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,7 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.carry.service.CarryInfoService;
+import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.place.PlaceDto;
 
 @Controller
@@ -30,7 +34,13 @@ public class CarryDetailController {
 	public String carryDetail(
 				CarryPriceDto priceDto,
 				@RequestParam("cridx") int cridx,
+				HttpServletRequest request,
 				Model model) {
+		
+		HttpSession session = request.getSession();
+		SessionDto sessionDto = (SessionDto) session.getAttribute("loginSession");
+		session.setAttribute("idx", sessionDto.getMemidx());
+		System.out.println("세션 변수(memidx) : " + sessionDto.getMemidx());
 		
 		CarryDto carryDetail = carryInfoService.getCarryDetail(cridx);
 		List<CarryReviewDto> carryReviewList = carryInfoService.getCarryReviewList(cridx);
