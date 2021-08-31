@@ -208,6 +208,7 @@ hr {
 	border: 1px solid #CCC;
 	background-color: white;
 	cursor : pointer;
+	margin-top : -40px;
 }
 
 .write_btn:hover {
@@ -354,7 +355,7 @@ hr {
 .right_banner {
 	width: 330px;
 	padding: 25px;
-	height: 630px;
+	height: 600px;
 	border-radius: 10px;
 	box-shadow: 1px 4px 16px 5px rgb(18 32 41/ 22%);
 	position: absolute;
@@ -403,6 +404,10 @@ hr {
 #purchase_btn {
 	float: right;
 	padding: 10px 0px;
+}
+
+.program_all {
+	margin-top : 30px;
 }
 
 #program_all input {

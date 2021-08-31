@@ -30,7 +30,7 @@
 					<h4>
 						10회
 						<fmt:formatNumber type="number" maxFractionDigits="3"
-										value="500" />
+										value="${paymentPrice.payprice}" />
 						원
 					</h4>
 				</div>

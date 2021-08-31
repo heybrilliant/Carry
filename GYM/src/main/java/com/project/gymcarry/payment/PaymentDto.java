@@ -18,6 +18,11 @@ public class PaymentDto {
 	private int fonchoice;
 	
 	public PaymentDto() {}
+	
+	public PaymentDto(int cridx, int payprice) {
+		this.cridx = cridx;
+		this.payprice = payprice;
+	}
 
 	public int getPayidx() {
 		return payidx;

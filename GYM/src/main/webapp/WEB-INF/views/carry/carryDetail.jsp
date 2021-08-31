@@ -114,7 +114,7 @@
 					<form id="reviewForm" name="reviewForm" method="post">
 						<div id="review_write" class="review_write display_none">
 							<textarea class="review_input" rows="2" cols="30" name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
-								<input type="button" value="작성" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
+								<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
 								<input type="hidden" id="cridx" name="cridx" value="1">
 								<input type="hidden" id="memidx" name="memidx" value="1">
 						</div>
@@ -185,16 +185,15 @@
 								</div>
 								
 									
-						<form method="post">	
 						<div id="purchase_btn">
 							<input type="button" value="구매하기" class="button"
 									onclick="location.href='<c:url value = "/payment/pay?cridx=${carryDetail.cridx}"/>'">
-							<input type="hidden" name="payprice" value="${carryPrice.proprice1}">
-							<input type="hidden" name="cridx" value="1">
 						</div>
-						</form>
 					</div>
-
+						<form method="post">
+							<input type="hidden" name="payprice" value="${carryPrice.proprice1}">
+							<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+						</form>
 
 					<div class="program">
 						<div class="program_info">

@@ -13,18 +13,17 @@ public class PaymentService {
 	@Autowired
 	private SqlSessionTemplate template;
 	private PaymentDao dao;
-	
+
 	// 결제 정보 출력
-	public PaymentDto paymentPrice(int cridx) {
+	public PaymentDto getPaymentPrice(int cridx, int payprice) {
 		dao = template.getMapper(PaymentDao.class);
-		return dao.paymentPrice(cridx);
+		return dao.paymentPrice(cridx, payprice);
 	}
-	
+
 	// 결제 정보 저장
 	public int SavePayment(PaymentDto paymentDto) {
 		dao = template.getMapper(PaymentDao.class);
 		return dao.savePayment(paymentDto);
 	}
-	
-	
+
 }

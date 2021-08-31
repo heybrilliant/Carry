@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.service.CarryInfoService;
+import com.project.gymcarry.payment.PaymentDto;
+import com.project.gymcarry.payment.service.PaymentService;
 
 @Controller
 @RequestMapping
 public class PaymentController {
 
 	@Autowired
-	private CarryInfoService carryInfoService;
+	private PaymentService paymentService;
 	
 	/*
 
@@ -38,20 +40,20 @@ public class PaymentController {
 */
 	
 	
-	@GetMapping("payment/pay")
-	public String paymentPrice(
-			@RequestParam("cridx") int cridx,
-			Model model
-			) {
-		CarryPriceDto priceDto = carryInfoService.getCarryPrice(cridx);
-		
-		System.out.println(priceDto);
-
-		model.addAttribute("priceDto", priceDto);
-		
-		return "payment/payment";
-	}
-
+	/*
+	 * @GetMapping("payment/pay") public String paymentPrice(
+	 * 
+	 * @RequestParam("cridx") int cridx,
+	 * 
+	 * @RequestParam("payprice") int payprice, Model model ) { PaymentDto
+	 * paymentPrice = paymentService.getPaymentPrice(cridx, payprice);
+	 * 
+	 * System.out.println(paymentPrice);
+	 * 
+	 * model.addAttribute("payment", paymentPrice);
+	 * 
+	 * return "payment/payment"; }
+	 */
 	
 
 	

@@ -16,6 +16,7 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.carry.service.CarryInfoService;
+import com.project.gymcarry.payment.PaymentDto;
 import com.project.gymcarry.place.PlaceDto;
 
 @Controller
@@ -70,14 +71,30 @@ public class CarryDetailController {
 	@PostMapping("/payment/pay")
 	public String carryPrice(
 			@RequestParam("cridx") int cridx,
+			@RequestParam("payprice") int payprice,
 			Model model
 			) {
 		
 		System.out.println(cridx);
-		CarryPriceDto priceDto = carryInfoService.getCarryPrice(cridx);
+		PaymentDto paymentPrice = carryInfoService.paymentPrice(cridx, payprice);
 		
-		model.addAttribute("paymentDto", priceDto);
+		model.addAttribute("paymentDto", paymentPrice);
 		
+		
+		return "payment/payment";
+	}
+	
+	@GetMapping("payment/pay")
+	public String paymentPrice(
+			@RequestParam("cridx") int cridx,
+			@RequestParam("payprice") int payprice,
+			Model model
+			) {
+		PaymentDto paymentPrice = carryInfoService.paymentPrice(cridx, payprice);
+		
+		System.out.println(paymentPrice);
+
+		model.addAttribute("payment", paymentPrice);
 		
 		return "payment/payment";
 	}
