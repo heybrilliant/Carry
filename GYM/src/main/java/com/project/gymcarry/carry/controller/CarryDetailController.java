@@ -16,7 +16,6 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.carry.service.CarryInfoService;
-import com.project.gymcarry.payment.PaymentDto;
 import com.project.gymcarry.place.PlaceDto;
 
 @Controller
@@ -54,7 +53,8 @@ public class CarryDetailController {
 		return "carry/carryDetail";	
 	} 
 	
-
+	
+	// 캐리 리뷰 등록
 	@PostMapping("/carry/detail")
 	@ResponseBody
 	public String addCarryReview(CarryReviewDto reviewDto) {
@@ -64,39 +64,6 @@ public class CarryDetailController {
 			System.out.println("리뷰 등록 성공");
 		}
 		return "carry/carryDetail";
-	}
-
-	
-	// 결제 페이지 정보 보내기
-	@PostMapping("/payment/pay")
-	public String carryPrice(
-			@RequestParam("cridx") int cridx,
-			@RequestParam("payprice") int payprice,
-			Model model
-			) {
-		
-		System.out.println(cridx);
-		PaymentDto paymentPrice = carryInfoService.paymentPrice(cridx, payprice);
-		
-		model.addAttribute("paymentDto", paymentPrice);
-		
-		
-		return "payment/payment";
-	}
-	
-	@GetMapping("payment/pay")
-	public String paymentPrice(
-			@RequestParam("cridx") int cridx,
-			@RequestParam("payprice") int payprice,
-			Model model
-			) {
-		PaymentDto paymentPrice = carryInfoService.paymentPrice(cridx, payprice);
-		
-		System.out.println(paymentPrice);
-
-		model.addAttribute("payment", paymentPrice);
-		
-		return "payment/payment";
 	}
 
 }

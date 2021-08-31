@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
 <title>결제 페이지</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/payment/payment.css">
@@ -23,24 +24,21 @@
 		<h2>결제하기</h2>
 		<div>
 			<h3>주문 정보</h3>
-
-			<form method="get">
 				<div class="order_info">
-					<span>김캐리 : 10회 이용권</span> <br>
+					<span>${crname} : ${paynum}회 이용권</span> <br>
 					<h4>
-						10회
+						${paynum}회
 						<fmt:formatNumber type="number" maxFractionDigits="3"
-										value="${paymentPrice.payprice}" />
+										value="${payprice}" />
 						원
 					</h4>
 				</div>
-			</form>
 
 			<br> <br>
-
 			
+				<%-- <form action="<c:url value='/payment/complete'/>" method="post"> --%>
+				<form action="<c:url value='/payment/complete'/>" id="paymentForm" name="paymentForm" method="post">
 				<div>
-				<form method="get">
 					<h3>결제 정보</h3>
 					<p>
 						이름 <span style="color: blue">*</span>
@@ -52,32 +50,37 @@
 					</p>
 					<input type="text" class="input_box" placeholder="연락처를 입력해주세요"
 						name="payphone" required> <br> <br> <br> <br>
-					<input type ="hidden" name="cridx" value ="2">
-					<input type ="hidden" name="memidx" value="1">
-					<input type ="hidden" name="payprice" value="300">
-					<input type ="hidden" name="paynum" value="20">
+					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
+					<%-- <c:out value="${now}" /> --%>
+					<input type ="hidden" name="paydate" value="${now}">
+					<input type ="hidden" name="cridx" value ="${cridx}">
+					<input type ="hidden" name="memidx" value="2">
+					<input type ="hidden" name="payprice" value="${payprice}">
+					<input type ="hidden" name="paynum" value="${paynum}">
 					<h3>대면 / 비대면 여부</h3>
 					<div class="faceornot_selectbox">
-						<input type="radio" name="fonchoice" value="1" id="rd1"
-							checked="checked"> <label for="rd1" class="label">대면</label>
-						<br> <input type="radio" name="fonchoice" value="2" id="rd2"
-							checked="checked"> <label for="rd2" class="label">비대면</label>
+						<input type="radio" name="fonchoice" value="1" id="rd1" checked="checked">
+						<label for="rd1" class="label">대면</label>
+						<br>
+						<input type="radio" name="fonchoice" value="2" id="rd2" checked="checked">
+						<label for="rd2" class="label">비대면</label>
 					</div>
-					</form>
+					
 					<br> <br>
 
 					<h3>최종 결제 금액</h3>
 					<div class="pricebox">
 						<ul>
-							10회 강의권
+							${paynum}회 강의권
 							<li><fmt:formatNumber type="number" maxFractionDigits="3"
-									value="300" />원</li>
+									value="${payprice}" />원</li>
 						</ul>
 					</div>
 				</div>
+				</form>
 				
 				<div class="pay_btn">
-					<input type="button" name="payprice" value="결제하기" onclick="location.href='<c:url value = "/payment/complete"/>'">
+					<input type="button" value="결제하기" onclick="requestPay();">
 				</div>
 				
 		</div>
@@ -93,7 +96,15 @@
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 
 
+
 	<script>
+	  document.getElementById('currentDatetime').value= new Date().toISOString().slice(0, 18);
+	</script>
+
+
+
+	<script>
+	
 		/* 이니시스API 호출  START*/
 		var IMP = window.IMP; // 생략 가능
 		IMP.init("imp65837574"); // 예: imp00000000
@@ -103,21 +114,26 @@
 			IMP.request_pay({ // param
 				pg : 'html5_inicis', //ActiveX 결제창은 inicis를 사용
 				pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
-				merchant_uid : "random.nextInt(10)",
-				name : "수업 10회 이용권",
-				amount : "${carryPrice.proprice10}",
-				buyer_email : "${member.mememail}",
-				buyer_name : "${savePayment.payname}",
-				buyer_tel : "${savePayment.payphone}",
-				buyer_addr : "서울특별시 강남구 신사동",
-				buyer_postcode : "01181"
+				merchant_uid : "${payidx}",
+				name : "수업${paynum}회 이용권",
+				amount : "100",
+				/* amount : "${payprice}", */
+				buyer_email : "",
+				buyer_name : "${payname}",
+				buyer_tel : "${payphone}",
+				buyer_addr : "",
+				buyer_postcode : ""
 			}, function(rsp) { // callback
 				if (rsp.success) {
 					// 결제 성공 시 로직,
-
-				} else {
+            		$.ajax({
+					type : 'POST',
+					url : "<c:url value='/payment/complete'/>",
+					data : $("#paymentForm").serialize()
+					});	
+      			} else {
 					alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
-				}
+				}	
 			});
 			/* 이니시스API 호출 END*/
 

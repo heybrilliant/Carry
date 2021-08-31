@@ -113,10 +113,12 @@
 					<!-- 리뷰 작성 입력폼 -->
 					<form id="reviewForm" name="reviewForm" method="post">
 						<div id="review_write" class="review_write display_none">
-							<textarea class="review_input" rows="2" cols="30" name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
-								<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
-								<input type="hidden" id="cridx" name="cridx" value="1">
-								<input type="hidden" id="memidx" name="memidx" value="1">
+							<textarea class="review_input" rows="2" cols="30"
+								name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
+							<input type="button" value="등록" class="write_btn" id="write_btn"
+								onClick="fn_review('${result.code}')"> <input
+								type="hidden" id="cridx" name="cridx" value="1"> <input
+								type="hidden" id="memidx" name="memidx" value="1">
 						</div>
 					</form>
 
@@ -129,7 +131,8 @@
 
 							<div class="review_content">
 								<span class="review_name">${carryReviewList.memnick}</span> <span
-									class="review_date">${carryReviewList.reviewdate}</span> <br> <span>${carryReviewList.reviewcontent}</span>
+									class="review_date">${carryReviewList.reviewdate}</span> <br>
+								<span>${carryReviewList.reviewcontent}</span>
 							</div>
 
 						</div>
@@ -170,31 +173,32 @@
 
 				<div id="c2" class="circle"></div>
 				<h2>${crname}</h2>
-				
+
 				<div class="program_all">
 
-					
-					<div class="program">
-						<div class="program_info">
-							<span>수업 1회 이용권</span> <br>
+					<form action="<c:url value='/payment/pay'/>" method="post">
+						<div class="program">
+							<div class="program_info">
+								<span>수업 1회 이용권</span> <br>
 								<h4>
 									<fmt:formatNumber type="number" maxFractionDigits="3"
 										value="${carryPrice.proprice1}" />
 									원
 								</h4>
-								</div>
-								
-									
-						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button"
-									onclick="location.href='<c:url value = "/payment/pay?cridx=${carryDetail.cridx}"/>'">
-						</div>
-					</div>
-						<form method="post">
-							<input type="hidden" name="payprice" value="${carryPrice.proprice1}">
-							<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-						</form>
+							</div>
 
+							<div id="purchase_btn">
+								<input type="submit" value="구매하기" class="button">
+							</div>
+						</div>
+					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+					<input type="hidden" name="crname" value="${carryDetail.crname}">
+					<input type="hidden" name="paynum" value="1">
+					<input type="hidden" name="payprice" value="${carryPrice.proprice1}">
+					</form>
+
+
+					<form action="<c:url value='/payment/pay'/>" method="post">
 					<div class="program">
 						<div class="program_info">
 							<span>수업 5회 이용권</span> <br>
@@ -205,11 +209,17 @@
 							</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button"
-									onclick="location.href='<c:url value = "/payment/pay5?cridx=${carryDetail.cridx}"/>'">
+							<input type="submit" value="구매하기" class="button">
 						</div>
 					</div>
+					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+					<input type="hidden" name="crname" value="${carryDetail.crname}">
+					<input type="hidden" name="paynum" value="5">
+					<input type="hidden" name="payprice" value="${carryPrice.proprice5}">
+					</form>
 
+
+					<form action="<c:url value='/payment/pay'/>" method="post">
 					<div class="program">
 						<div class="program_info">
 							<span>수업 10회 이용권</span> <br>
@@ -220,11 +230,17 @@
 							</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button"
-									onclick="location.href='<c:url value = "/payment/pay10?cridx=${carryDetail.cridx}"/>'">
+							<input type="submit" value="구매하기" class="button">
 						</div>
 					</div>
-
+					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+					<input type="hidden" name="crname" value="${carryDetail.crname}">
+					<input type="hidden" name="paynum" value="10">
+					<input type="hidden" name="payprice" value="${carryPrice.proprice10}">
+					</form>
+					
+					
+					<form action="<c:url value='/payment/pay'/>" method="post">
 					<div class="program">
 						<div class="program_info">
 							<span>수업 20회 이용권</span> <br>
@@ -235,12 +251,15 @@
 							</h4>
 						</div>
 						<div id="purchase_btn">
-							<input type="button" value="구매하기" class="button"
-									onclick="location.href='<c:url value = "/payment/pay20?cridx=${carryDetail.cridx}"/>'">
+							<input type="submit" value="구매하기" class="button">
 						</div>
-
 					</div>
-
+					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+					<input type="hidden" name="crname" value="${carryDetail.crname}">
+					<input type="hidden" name="paynum" value="20">
+					<input type="hidden" name="payprice" value="${carryPrice.proprice20}">
+					</form>
+					
 				</div>
 			</div>
 			<!-- 우측 배너 END -->
@@ -274,7 +293,6 @@
 
 
 	<script>
-	
 		// 리뷰 등록하기(Ajax)
 		function fn_review(code) {
 
@@ -283,15 +301,15 @@
 				url : "<c:url value='/carry/detail'/>",
 				data : $("#reviewForm").serialize(),
 				success : function() {
-						$(".review_input").val("");
-						alert('리뷰가 정상적으로 등록되었습니다.');
-						
+					$(".review_input").val("");
+					alert('리뷰가 정상적으로 등록되었습니다.');
+
 				},
 				error : function(request, status, error) {
-					alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:" + error);
 				}
 
 			});
 		}
-		
 	</script>

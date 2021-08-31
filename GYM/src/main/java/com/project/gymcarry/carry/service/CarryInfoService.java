@@ -11,8 +11,6 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.dao.CarryDao;
-import com.project.gymcarry.dao.PaymentDao;
-import com.project.gymcarry.payment.PaymentDto;
 import com.project.gymcarry.place.PlaceDto;
 
 @Service
@@ -21,7 +19,6 @@ public class CarryInfoService {
 	@Autowired
 	private SqlSessionTemplate template;
 	private CarryDao dao;
-	private PaymentDao pdao;
 
 	// 캐리 정보
 	public CarryDto getCarryDetail(int cridx) {
@@ -59,10 +56,5 @@ public class CarryInfoService {
 		return dao.addCarryReview(reviewDto);
 	}
 
-	// 결제 정보 출력
-	public PaymentDto paymentPrice(int cridx, int payprice) {
-		pdao = template.getMapper(PaymentDao.class);
-		return pdao.paymentPrice(cridx, payprice);
-	}
-
+	
 }

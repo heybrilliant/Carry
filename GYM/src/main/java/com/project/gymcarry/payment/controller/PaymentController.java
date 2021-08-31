@@ -3,12 +3,10 @@ package com.project.gymcarry.payment.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.gymcarry.carry.CarryPriceDto;
-import com.project.gymcarry.carry.service.CarryInfoService;
 import com.project.gymcarry.payment.PaymentDto;
 import com.project.gymcarry.payment.service.PaymentService;
 
@@ -19,43 +17,33 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
-	/*
-
-	// 결제 페이지 정보 보내기
-	@PostMapping("/payment/pay")
-	public String carryPrice(
-			@RequestParam("cridx") int cridx,
-			@RequestParam("payprice") int payprice,
-			Model model
-			) {
+	  @PostMapping("payment/pay")
+	  public String paymentPrice(
+			  @RequestParam("cridx") int cridx,
+			  @RequestParam("crname") String crname,
+			  @RequestParam("paynum") int paynum,
+			  @RequestParam("payprice") int payprice,
+			  Model model
+			  ) {
 		
-		System.out.println(cridx);
-		PaymentDto paymentDto = paymentService.paymentPrice(cridx, payprice);
-		
-		
-		model.addAttribute("paymentDto", paymentDto);
-		
-		return "payment/payment";
-	}
-*/
+		  model.addAttribute("cridx", cridx);
+		  model.addAttribute("crname", crname);
+		  model.addAttribute("paynum", paynum);
+		  model.addAttribute("payprice", payprice);
+	  
+		  return "payment/payment";
+		  
+	  }
 	
-	
-	/*
-	 * @GetMapping("payment/pay") public String paymentPrice(
-	 * 
-	 * @RequestParam("cridx") int cridx,
-	 * 
-	 * @RequestParam("payprice") int payprice, Model model ) { PaymentDto
-	 * paymentPrice = paymentService.getPaymentPrice(cridx, payprice);
-	 * 
-	 * System.out.println(paymentPrice);
-	 * 
-	 * model.addAttribute("payment", paymentPrice);
-	 * 
-	 * return "payment/payment"; }
-	 */
-	
-
-	
-	
+	  
+	  @PostMapping("payment/complete")
+	  public String savePayment(PaymentDto paymentDto) {
+		  int result = paymentService.savePayment(paymentDto);
+		  if(result == 1) {
+			  	System.out.println(paymentDto + "결제 정보 저장 성공");
+			}
+		  return "payment/paymentComplete";
+		}
+	  
 }
+

@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class PaymentDto {
 
 	private int payidx;
-	@JsonFormat(pattern = "HH:mm a")
-	private Timestamp paydate;
+//	@JsonFormat(pattern = "HH:mm a")
+	private String paydate;
 	private int memidx;
 	private String payname;
 	private String payphone;
@@ -18,11 +18,7 @@ public class PaymentDto {
 	private int fonchoice;
 	
 	public PaymentDto() {}
-	
-	public PaymentDto(int cridx, int payprice) {
-		this.cridx = cridx;
-		this.payprice = payprice;
-	}
+
 
 	public int getPayidx() {
 		return payidx;
@@ -32,11 +28,11 @@ public class PaymentDto {
 		this.payidx = payidx;
 	}
 
-	public Timestamp getPaydate() {
+	public String getPaydate() {
 		return paydate;
 	}
 
-	public void setPaydate(Timestamp paydate) {
+	public void setPaydate(String paydate) {
 		this.paydate = paydate;
 	}
 
@@ -103,7 +99,7 @@ public class PaymentDto {
 				+ ", fonchoice=" + fonchoice + "]";
 	}
 
-	public PaymentDto(int payidx, Timestamp paydate, int memidx, String payname, String payphone, int cridx, int paynum,
+	public PaymentDto(int payidx, String paydate, int memidx, String payname, String payphone, int cridx, int paynum,
 			int payprice, int fonchoice) {
 		super();
 		this.payidx = payidx;
