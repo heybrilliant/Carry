@@ -9,14 +9,102 @@ public class MemberDto {
 	private String memphone;
 	private int membirth;
 	private String memgender;
-	private int cridx;
-	private String crnick;
+
 
 	public MemberDto() {
 	}
 
+
+	public int getMemidx() {
+		return memidx;
+	}
+
+
+	public void setMemidx(int memidx) {
+		this.memidx = memidx;
+	}
+
+
+	public String getMememail() {
+		return mememail;
+	}
+
+
+	public void setMememail(String mememail) {
+		this.mememail = mememail;
+	}
+
+
+	public String getMempw() {
+		return mempw;
+	}
+
+
+	public void setMempw(String mempw) {
+		this.mempw = mempw;
+	}
+
+
+	public String getMemname() {
+		return memname;
+	}
+
+
+	public void setMemname(String memname) {
+		this.memname = memname;
+	}
+
+
+	public String getMemnick() {
+		return memnick;
+	}
+
+
+	public void setMemnick(String memnick) {
+		this.memnick = memnick;
+	}
+
+
+	public String getMemphone() {
+		return memphone;
+	}
+
+
+	public void setMemphone(String memphone) {
+		this.memphone = memphone;
+	}
+
+
+	public int getMembirth() {
+		return membirth;
+	}
+
+
+	public void setMembirth(int membirth) {
+		this.membirth = membirth;
+	}
+
+
+	public String getMemgender() {
+		return memgender;
+	}
+
+
+	public void setMemgender(String memgender) {
+		this.memgender = memgender;
+	}
+
+
+	@Override
+	public String toString() {
+		return "MemberDto [memidx=" + memidx + ", mememail=" + mememail + ", mempw=" + mempw + ", memname=" + memname
+				+ ", memnick=" + memnick + ", memphone=" + memphone + ", membirth=" + membirth + ", memgender="
+				+ memgender + "]";
+	}
+
+
 	public MemberDto(int memidx, String mememail, String mempw, String memname, String memnick, String memphone,
-			int membirth, String memgender, int cridx, String crnick) {
+			int membirth, String memgender) {
 		super();
 		this.memidx = memidx;
 		this.mememail = mememail;
@@ -26,95 +114,8 @@ public class MemberDto {
 		this.memphone = memphone;
 		this.membirth = membirth;
 		this.memgender = memgender;
-		this.cridx = cridx;
-		this.crnick = crnick;
 	}
 
-	public int getMemidx() {
-		return memidx;
-	}
-
-	public void setMemidx(int memidx) {
-		this.memidx = memidx;
-	}
-
-	public String getMememail() {
-		return mememail;
-	}
-
-	public void setMememail(String mememail) {
-		this.mememail = mememail;
-	}
-
-	public String getMempw() {
-		return mempw;
-	}
-
-	public void setMempw(String mempw) {
-		this.mempw = mempw;
-	}
-
-	public String getMemname() {
-		return memname;
-	}
-
-	public void setMemname(String memname) {
-		this.memname = memname;
-	}
-
-	public String getMemnick() {
-		return memnick;
-	}
-
-	public void setMemnick(String memnick) {
-		this.memnick = memnick;
-	}
-
-	public String getMemphone() {
-		return memphone;
-	}
-
-	public void setMemphone(String memphone) {
-		this.memphone = memphone;
-	}
-
-	public int getMembirth() {
-		return membirth;
-	}
-
-	public void setMembirth(int membirth) {
-		this.membirth = membirth;
-	}
-
-	public String getMemgender() {
-		return memgender;
-	}
-
-	public void setMemgender(String memgender) {
-		this.memgender = memgender;
-	}
-
-	public int getCridx() {
-		return cridx;
-	}
-
-	public void setCridx(int cridx) {
-		this.cridx = cridx;
-	}
-
-	public String getCrnick() {
-		return crnick;
-	}
-
-	public void setCrnick(String crnick) {
-		this.crnick = crnick;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberDto [memidx=" + memidx + ", mememail=" + mememail + ", mempw=" + mempw + ", memname=" + memname
-				+ ", memnick=" + memnick + ", memphone=" + memphone + ", membirth=" + membirth + ", memgender="
-				+ memgender + ", cridx=" + cridx + ", crnick=" + crnick + "]";
-	}
+	
 
 }

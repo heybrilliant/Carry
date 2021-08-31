@@ -4,9 +4,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.dao.MemberDao;
-import com.project.gymcarry.member.MemberDto;
+import com.project.gymcarry.member.SessionDto;
 
 @Service
 public class LoginService {
@@ -16,12 +15,12 @@ public class LoginService {
 	
 	private MemberDao dao;
 	
-	public MemberDto memberLogin(String id, String pw) {
+	public SessionDto memberLogin(String id, String pw) {
 		dao = template.getMapper(MemberDao.class);
-		return dao.login(id, pw);
+		return dao.memberLogin(id, pw);
 	}
 	
-	public MemberDto carryLogin(String id, String pw) {
+	public SessionDto carryLogin(String id, String pw) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.carryLogin(id, pw);
 	}
