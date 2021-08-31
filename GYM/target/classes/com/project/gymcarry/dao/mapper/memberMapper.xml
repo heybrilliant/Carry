@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 캐리회원가입 -->
 	<insert id="insertCarry"
-		parameterType="com.project.gymcarry.carry.CarryJoinDto"
+		parameterType="com.project.gymcarry.carry.CarryDto"
 		useGeneratedKeys="true" keyProperty="cridx">
 		insert into carry(crid,
 		crpw, crname, crnick, crgender, crphone, placename)

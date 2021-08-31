@@ -15,7 +15,7 @@ import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
 import com.project.gymcarry.chatting.service.MatchingListService;
-import com.project.gymcarry.member.MemberDto;
+import com.project.gymcarry.member.SessionDto;
 
 @Controller
 public class UserChatController {
@@ -59,7 +59,7 @@ public class UserChatController {
 	// 채팅룸 리스트
 	@GetMapping("chatting/chatList")
 	public String matching(Model model,HttpSession session) {
-		MemberDto dto = (MemberDto) session.getAttribute("member");
+		SessionDto dto = (SessionDto) session.getAttribute("member");
 		List<ChatListDto> list = matchingListService.getChatList(dto.getMemidx());
 		model.addAttribute("chatList", list);
 		List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());
