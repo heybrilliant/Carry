@@ -15,6 +15,8 @@ public class MatchingChatRoomService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
+	
+	
 	private MatchingDao dao;
 	
 	// 채팅방 생성
