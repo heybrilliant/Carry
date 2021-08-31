@@ -33,20 +33,3 @@
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 
-
-	<script>
-		// place 이미지 슬라이드
-		var swiper = new Swiper(".mySwiper", {
-			spaceBetween : 0,
-			slidesPerView : 4,
-			centeredSlides : false,
-			autoplay : {
-				delay : 2500,
-				disableOnInteraction : false,
-			},
-			pagination : {
-				el : ".swiper-pagination",
-				clickable : true,
-			},
-		});
-	</script>

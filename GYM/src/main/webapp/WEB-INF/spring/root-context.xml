@@ -4,32 +4,27 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+
 	<!-- DataSource 설정 -->
-	<bean id="datasource"
-				class="com.zaxxer.hikari.HikariDataSource"
-				p:driverClassName="com.mysql.cj.jdbc.Driver"
-				p:jdbcUrl="jdbc:mysql://localhost:3306/project?serverTimezone=UTC"
-				p:username="bit"
-				p:password="bit"
-	>
+	<bean id="datasource" class="com.zaxxer.hikari.HikariDataSource"
+		p:driverClassName="com.mysql.cj.jdbc.Driver"
+		p:jdbcUrl="jdbc:mysql://localhost:3306/gymcarry?serverTimezone=UTC"
+		p:username="gym" p:password="gym">
 	</bean>
-	
+
 	<!-- SqlSessionFactoryBean 등록 -->
 	<bean id="sqlSessionFactoryBean"
-				class="org.mybatis.spring.SqlSessionFactoryBean"
-				p:dataSource-ref="datasource"
-				p:mapperLocations="classpath:com/project/gymcarry/dao/mapper/*.xml"
-				>
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="datasource"
+		p:mapperLocations="classpath:com/project/gymcarry/dao/mapper/*.xml">
 	</bean>
-	
+
 	<!-- SqlSessionTemplate 등록 -->
 	<bean id="sqlSessionTemplate"
-				class="org.mybatis.spring.SqlSessionTemplate"
-	>
-		<constructor-arg ref="sqlSessionFactoryBean"/>
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean" />
 	</bean>
-	
+
 </beans>

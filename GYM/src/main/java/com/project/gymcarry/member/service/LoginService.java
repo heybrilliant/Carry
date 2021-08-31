@@ -16,14 +16,9 @@ public class LoginService {
 	
 	private MemberDao dao;
 	
-	public boolean memberLogin(String id, String pw) {
-		boolean loginChk = false;
+	public MemberDto memberLogin(String id, String pw) {
 		dao = template.getMapper(MemberDao.class);
-		MemberDto member = dao.login(id, pw);
-		if(member != null) {
-			loginChk = true;
-		}
-		return loginChk;
+		return dao.login(id, pw);
 	}
 	
 	public boolean carryLogin(String id, String pw) {
