@@ -8,26 +8,65 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 대화방 리스트 -->
 	<select id="selectChattingList"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		<!-- select m.chatcontent, m.chatdate
-		from project.chatroom m, project.chatlist l
-		where l.chatidx=#{chatidx} and m.chatidx=l.chatidx; -->
-		select * from chatroom where chatidx=#{chatidx};
+		select * from chatroom where chatidx=#{chatidx}
 	</select>
 
-	<!-- 채팅룸 리스트 -->
+	<!-- 멤버채팅룸 생성 리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select c.crnick, c.centername, m.chatcontent, m.chatdate,l.chatidx
-		from carry c, chatroom m, chatlist l
-		where c.cridx=m.cridx and
-		m.chatidx=l.chatidx;
-	</select>
-	
-	<!-- 매칭캐리리스트 -->
-	<select id="selectCarryList"
-		resultType="com.project.gymcarry.carry.CarryDto">
-		select * from carry
+		select c.cridx, c.crnick, c.placename, l.chatidx,
+		m.memnick, m.memidx
+		from
+		carry c, member m, chatlist l
+		where
+		l.cridx=c.cridx and
+		m.memidx=l.memidx and m.memidx=#{memidx}
 	</select>
 
+	<!-- 캐리채팅룸 리스트 -->
+	<select id="selectCarryChatList"
+		resultType="com.project.gymcarry.chatting.ChatListDto">
+		select l.chatidx, m.memnick, m.memidx, c.cridx
+		from carry c,
+		member m, chatlist
+		l
+		where l.cridx=c.cridx and m.memidx=l.memidx and
+		c.cridx=#{cridx}
+	</select>
+
+	<!-- 매칭캐리리스트 -->
+	<select id="selectCarryList"
+		resultType="com.project.gymcarry.carry.CarryJoinDto">
+		select cridx, crnick, placename from carry
+	</select>
+
+	<!-- 채팅룸 생성 -->
+	<insert id="insertAddChatRoom"
+		parameterType="com.project.gymcarry.chatting.ChatListDto"
+		useGeneratedKeys="true">
+		insert into chatlist(cridx, memidx)
+		value(#{cridx},#{memidx})
+	</insert>
+
+	<!-- 채팅룸 중복 -->
+	<select id="selectByChatRoom"
+		resultType="com.project.gymcarry.chatting.ChatListDto">
+		select * from chatlist where cridx=#{param}
+	</select>
+
+	<!-- 채팅방 찾기 -->
+	<select id="selectChatRoom"
+		resultType="com.project.gymcarry.chatting.ChatListDto">
+		select * from chatlist where chatidx=#{param}
+	</select>
+
+	<!-- 대화내용 저장 -->
+	<insert id="insertChatContent"
+		parameterType="com.project.gymcarry.chatting.ChatRoomDto"
+		useGeneratedKeys="true">
+		insert into chatroom (chatidx, chatcontent, cridx,
+		memidx)
+		values(#{chatidx},#{chatcontent},#{cridx},#{memidx})
+	</insert>
 
 </mapper>

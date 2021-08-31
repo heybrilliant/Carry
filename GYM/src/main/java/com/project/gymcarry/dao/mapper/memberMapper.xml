@@ -5,40 +5,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.project.gymcarry.dao.MemberDao">
 	
-	<!-- member -->
+	<!-- 멤버로그인 -->
 	<select id="login"
 		resultType="com.project.gymcarry.member.MemberDto"
 	>
-		select * from member where mememail=#{param1} and mempw=#{param2}
+		select memidx, memnick from member where mememail=#{param1} and mempw=#{param2}
 	</select>
 	
-	
+	<!-- 멤버회원가입 -->
 	<insert id="insertMember"
 		parameterType="com.project.gymcarry.member.MemberDto"
 		useGeneratedKeys="true"
 		keyProperty="memidx"
 		>
-		insert into member(mememail, mempw, memname, memnick) 
-		values (#{mememail},#{mempw},#{memname},#{memnick})
+		insert into member(mememail, mempw, memname, memnick, memphone, membirth, memgender) 
+		values (#{mememail},#{mempw},#{memname},#{memnick},#{memphone},#{membirth},#{memgender})
 	</insert>
 	
-	<!-- carry -->
+	<!-- 캐리로그인 -->
 	<select id="carryLogin"
-		resultType="com.project.gymcarry.carry.CarryDto"
+		resultType="com.project.gymcarry.member.MemberDto"
 	>
-		select * from carry where crid=#{param1} and crpw=#{param2}
+		select cridx, crnick from carry where crid=#{param1} and crpw=#{param2}
 	</select>
 	
-	
+	<!-- 캐리회원가입 -->
 	<insert id="insertCarry"
-		parameterType="com.project.gymcarry.carry.CarryDto"
+		parameterType="com.project.gymcarry.carry.CarryJoinDto"
 		useGeneratedKeys="true"
 		keyProperty="cridx"
 		>
-		insert into carry(crid, crpw, crname, crnick, placename) 
-		values (#{crid},#{crpw},#{crname},#{crnick},#{placename})
-		
+		insert into carry(crid, crpw, crname, crnick, crgender, crphone, placename) 
+		values (#{crid},#{crpw},#{crname},#{crnick},#{crgender},#{crphone},#{placename})
 	</insert>
 
-
+	
+	
+	
 </mapper>

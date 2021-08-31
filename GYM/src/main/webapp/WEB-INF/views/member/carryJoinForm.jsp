@@ -48,6 +48,16 @@
 				</tr>
 				
 				<tr>
+					<td>성별</td>
+					<td><input type="text" name="crgender" size="20"></td>
+				</tr>
+				
+				<tr>
+					<td>캐리연락처</td>
+					<td><input type="text" name="crphone" size="20"></td>
+				</tr>
+				
+				<tr>
 					<td>소속센터</td>
 					<td><input type="text" name="placename" size="20"></td>
 				</tr>

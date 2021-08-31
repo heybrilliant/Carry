@@ -23,7 +23,6 @@ public class JoinController {
 	
 	@PostMapping
 	public String memberJoin(MemberDto memberDto) {
-		System.out.println(memberDto);
 		int result = joinservice.memberJoin(memberDto);
 		if(result == 1) {
 			System.out.println("멤버회원가입성공");

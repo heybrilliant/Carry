@@ -6,38 +6,41 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.dao.MatchingDao;
 
 @Service
-public class MatchingListService {
-
+public class MatchingChatRoomService {
+	
 	@Autowired
 	private SqlSessionTemplate template;
+	
+	
 	private MatchingDao dao;
 	
-	// 멤버 채팅방 리스트
-	public List<ChatListDto> getChatList(int memIdx){
+	// 채팅방 생성
+	public int getAddChatRoom(int cridx, int memidx) {
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectChatList(memIdx);
-	}
-	// 캐리 채팅방 리스트
-	public List<ChatListDto> getChatLists(int cridx){
-		dao = template.getMapper(MatchingDao.class);
-		return dao.selectCarryChatList(cridx);
+		return dao.insertAddChatRoom(cridx, memidx);
 	}
 	
-	// 대화방 리스트
-	public List<ChatRoomDto> getChatIdx(int chatidx) {
+	// 채팅방 중복 확인
+	public List<ChatListDto> getByChatRoom(int crnick) {
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectChattingList(chatidx);
+		return dao.selectByChatRoom(crnick);
 	}
 	
-	// 매칭 캐리리스트
-	public List<CarryJoinDto> getCarryList(){
+	// 채팅방 찾기
+	public ChatListDto getChatRoom(int chatidx) {
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectCarryList();
+		return dao.selectChatRoom(chatidx);
 	}
-}	
+	
+	// 대화내용 저장
+	public int insertChatContent(ChatRoomDto chatRoom) {
+		dao = template.getMapper(MatchingDao.class);
+		return dao.insertChatContent(chatRoom);
+	}
+	
+}

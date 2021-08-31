@@ -19,7 +19,7 @@
 								<span>04</span> / 05
 							</p>
 						</div>
-						<h1>PT목적은 무엇인가요?</h1>
+						<h1>선호하는 코치 성별</h1>
 					</div>
 					<div class="servey_ul">
 						<ul>

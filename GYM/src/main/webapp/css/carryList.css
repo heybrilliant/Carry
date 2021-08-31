@@ -82,6 +82,7 @@ body {
   flex-direction: column;
   text-align: center;
   padding: 1em;
+  margin-bottom: 30px;
 }
 
 /* 프로필 영역(왼쪽) */

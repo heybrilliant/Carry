@@ -46,6 +46,20 @@
 					<td>닉네임</td>
 					<td><input type="text" name="memnick" size="20"></td>
 				</tr>
+				
+				<tr>
+					<td>핸드폰번호</td>
+					<td><input type="text" name="memphone" size="20"></td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td><input type="text" name="membirth" size="20"></td>
+				</tr>
+				
+				<tr>
+					<td>성별</td>
+					<td><input type="text" name="memgender" size="20"></td>
+				</tr>
 
 				<tr>
 					<td colspan="2"><input type="submit" value="회원가입"></td>
