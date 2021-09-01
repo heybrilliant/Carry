@@ -28,7 +28,7 @@ public interface MatchingDao {
 	ChatListDto selectByChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
 
 	// 채팅방 중복확인 
-	Integer selectByChatIdx(int chatidx);
+	int selectByChatIdx(int chatidx);
 	
 	// 채팅방 생성
 	int insertAddChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);

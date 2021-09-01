@@ -31,7 +31,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 	// 방법2 : 1:1 채팅
 	// 사용자와 세션 저장할 맵
-	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>();
+	private Map<Integer, WebSocketSession> mapList = new HashMap<Integer, WebSocketSession>();
 
 	// 커넥션이 연결되었을때
 	@Override
@@ -39,9 +39,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("1번" + session.getId());
 
 		// 회원, 캐리 세션 정보 가져오기
-		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
-		if (chatNick == null) {
-			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
+		int chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemidx();
+		if (chatNick == 0) {
+			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCridx();
 		}
 
 		// 로그인햇으면 닉네임이고 - 로그인이안되있으면 세션아이디
@@ -66,9 +66,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
 		int contenttype = 0;
-		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
-		if (chatNick == null) {
-			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
+		int chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemidx();
+		if (chatNick == 0) {
+			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCridx();
 			++contenttype;
 		}
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
@@ -81,44 +81,31 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 
-		Iterator<String> itr = mapList.keySet().iterator(); // 기존에 저장된 접속자 명단을 가져옴
-		while (itr.hasNext()) {
-			String nickSession = (String) itr.next();
-			WebSocketSession ws = mapList.get(nickSession);
-			// 상대방에게 메세지전달
-			ws.sendMessage(sendMsg);
-			// 자기자신 메세지전달
-			// session.sendMessage(sendMsg);
-		}
-		matchingChatRoomService.insertChatContent(messageDto);
-		
 		// 전달 메세지
-//		if (chatNick == messageDto.getCridx()) {
-//			String to = messageDto.getMemnick();
-//			WebSocketSession toSession = mapList.get(to);
-//			if (toSession != null) {
-//				toSession.sendMessage(sendMsg);
-//			messageSocket(sendMsg, to);
-		// matchingChatRoomService.insertChatContent(messageDto);
-//		} else if (chatNick == messageDto.getMemidx()) {
-//			String st = messageDto.getCrnick();
-//			WebSocketSession dd = mapList.get(st);
-//			if (dd != null) {
-//				dd.sendMessage(sendMsg);
-//			}
-//			messageSocket(sendMsg, to);
-//				// matchingChatRoomService.insertChatContent(messageDto);
-//			}
+		if (chatNick == messageDto.getCridx()) {
+			int to = messageDto.getMemidx();
+			WebSocketSession toSession = mapList.get(to);
+			System.out.println(toSession);
+			if (toSession != null) {
+				toSession.sendMessage(sendMsg);
+				session.sendMessage(sendMsg);
+			} else {
+				session.sendMessage(sendMsg);
+			}
+			matchingChatRoomService.insertChatContent(messageDto);
+		} else if (chatNick == messageDto.getMemidx()) {
+			int st = messageDto.getCridx();
+			WebSocketSession toSession = mapList.get(st);
+			System.out.println(toSession);
+			if (toSession != null) {
+				toSession.sendMessage(sendMsg);
+				session.sendMessage(sendMsg);
+			} else {
+				session.sendMessage(sendMsg);
+			}
+			matchingChatRoomService.insertChatContent(messageDto);
+		}
 	}
-
-	// 중복코드 함수
-//	public void messageSocket(TextMessage sendMsg, int to) throws IOException {
-//		WebSocketSession toSession = mapList.get(to);
-//		if (toSession != null) {
-//			toSession.sendMessage(sendMsg);
-//			
-//		}
-//	}
 
 	// 클로즈 될때.
 	@Override

@@ -56,8 +56,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 채팅방 중복,찾기 -->
 	<select id="selectByChatIdx"
-		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select count(*) from chatlist where chatidx=#{chatidx}
+		resultType="int">
+		select count(*) from chatlist where chatidx=#{param}
 	</select>
 
 	<!-- 대화내용 저장 -->

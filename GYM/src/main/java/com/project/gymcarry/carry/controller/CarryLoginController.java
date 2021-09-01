@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.member.service.LoginService;
 

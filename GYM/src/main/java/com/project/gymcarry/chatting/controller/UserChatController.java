@@ -1,10 +1,7 @@
 package com.project.gymcarry.chatting.controller;
 
-import java.util.Iterator;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,12 +39,13 @@ public class UserChatController {
 			) {
 		// 방번호 가져오기
 		ChatListDto chatDto = matchingChatRoomService.getByChatRoom(cridx, memidx);
-		System.out.println(chatDto);
+		if(chatDto != null) {
+			int chatidx = matchingChatRoomService.getByChatIdx(chatDto.getChatidx());
+			if(chatidx == 1) {
+				return "redirect:/chatting/chatList";
+			} 
+		}
 		// 방이 있으면 생성하지않고 채팅으로 이동
-		int chatIdx = matchingChatRoomService.getByChatIdx(chatDto.getChatidx());
-		if(chatIdx == 1) {
-			return "redirect:/chatting/chatList";
-		} 
 		// 캐리와의 중복 방이없을경우 채팅방생성
 		matchingChatRoomService.getAddChatRoom(cridx, memidx);
 		return "redirect:/chatting/chatList";
@@ -72,9 +70,5 @@ public class UserChatController {
 		model.addAttribute("chatidx", chatidx);
 		return chatList;
 	}
-	
-
-	
-	
 	
 }
