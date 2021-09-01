@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 헬스 플레이스 전체 정보 출력 -->
 	<select id="selectHealthPlaceList"
 		resultType="com.project.gymcarry.place.PlaceDto">
-		select placename, placeaddress, placeimg from place where placenum = #{placenum}
+		select * from place where placenum = #{placenum}
 	</select>
 	
 

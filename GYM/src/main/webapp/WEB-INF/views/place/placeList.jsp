@@ -41,10 +41,11 @@
          </div>
          <div class="place_list">
              <c:forEach items="${placeList}" var="placeList" varStatus="status">
-             <c:set var="imgUrl" value="${placeList.placeimg}"/>
-             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
-			 <c:set var="length" value="${fn:length(imageList[0])}"/>
-			 <c:set var="img" value="${fn:substring(imageList[0], 2, length-1)}"/>
+             	 <!-- 대표 이미지 추출  -->
+	             <c:set var="imgUrl" value="${placeList.placeimg}"/>
+	             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
+				 <c:set var="length" value="${fn:length(imageList[0])}"/>
+				 <c:set var="img" value="${fn:substring(imageList[0], 2, length-1)}"/>
 			 
 			 
 	             <div class="place_content">
@@ -63,55 +64,34 @@
 	                 </div>
 	             </div>
              </c:forEach>
-             <%-- <div class="place_content">
-                 <div class="place_info">
-                     <h3>베스트휘트니스</h3>
-                     <p>안산시 단원구 선부동</p>
-                     <a href="#">더 알아보기</a>
-                 </div>
-                 <div class="place_img">
-                     <img src="<c:url value="/images/review4.jpg"/>">
-                 </div>
-             </div> --%>
          </div>
      </div>
 
      <!-- Contents end -->
 
-	<!-- footer -->
-	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+
 	
 	
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2791d61cfcb1bc044154adc4c6bc431"></script>
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-		    mapOption = { 
-		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
-		    };
-		
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(37.556305974393915, 126.9399847935459), // 지도의 중심좌표
+	        level: 4 // 지도의 확대 레벨
+	    };
+	
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 		 
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-		var positions = [
-		    {
-		        content: '<div>카카오</div>', 
-		        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-		    },
-		    {
-		        content: '<div>생태연못</div>', 
-		        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-		    },
-		    {
-		        content: '<div>텃밭</div>', 
-		        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-		    },
-		    {
-		        content: '<div>근린공원</div>',
-		        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-		    }
-		];
+		var positions = new Array();
 		
+		<c:forEach items="${placeList}" var="placeList" varStatus="status">
+			positions.push({content : '<div>${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
+		</c:forEach> 
+		
+		console.log(positions[0])
+		
+
 		for (var i = 0; i < positions.length; i ++) {
 		    // 마커를 생성합니다
 		    var marker = new kakao.maps.Marker({
@@ -129,6 +109,7 @@
 		    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 		    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 		    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		    kakao.maps.event.addListener(marker, 'click', makeClickListener(marker, i));
 		}
 		
 		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
@@ -144,4 +125,37 @@
 		        infowindow.close();
 		    };
 		}
+		
+		function makeClickListener(marker, i){
+			return function(){
+				var markeridx = i;
+				var window_y = window.scrollY;
+				var content_top = $('.place_list .place_content:nth-child(' + i + ')').offset().top
+				
+				window.scrollTo({
+					top: content_top - 200,
+					behavior: 'smooth'
+				});
+				
+				
+				$('.place_list .place_content:nth-child(' + i + ')').addClass('on');
+				
+				
+				$(window).scroll(function(){
+					var test = $(window).scrollTop();
+					console.log('test : ' + test);
+					console.log('window_y : ' + window_y);				
+				})
+				console.log('content : ' + content_top)
+			}
+		}
+		
+		/* $(window).scroll(function(){
+					var test1 = window.scrollY;
+		console.log('test1' + test1)
+		}); */
 	</script>
+	
+	
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
