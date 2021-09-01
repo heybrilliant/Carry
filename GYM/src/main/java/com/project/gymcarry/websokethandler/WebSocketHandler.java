@@ -1,8 +1,9 @@
 package com.project.gymcarry.websokethandler;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -72,12 +73,16 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			++contenttype;
 		}
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
+		
+		SimpleDateFormat format = new SimpleDateFormat ("HH:mm a");
+		Date time = new Date();
+		String date = format.format(time);
 
 		// json객체 -> java객체
 		Gson gson = new Gson();
 		MessageDto messageDto = gson.fromJson(message.getPayload(), MessageDto.class);
 		messageDto.setContenttype(contenttype);
-
+		messageDto.setChatdate(date);
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 

@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 멤버채팅룸 생성 리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select c.cridx, c.crnick, c.placename, l.chatidx,
+		select c.cridx, c.crnick, c.placename, l.chatidx, 
 		m.memnick, m.memidx
 		from
 		carry c, member m, chatlist l
@@ -59,7 +59,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="int">
 		select count(*) from chatlist where chatidx=#{param}
 	</select>
-
+	
+	<!-- 채팅방 리스트 대화내용 여부 -->
+	<select id="selectChatListContent"
+		resultType="com.project.gymcarry.chatting.ChatRoomDto">
+		select chatcontent, chatdate from chatroom where chatidx=1 order by chatdate desc;
+	</select>
+	
 	<!-- 대화내용 저장 -->
 	<insert id="insertChatContent"
 		parameterType="com.project.gymcarry.chatting.MessageDto"
@@ -67,5 +73,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into chatroom (chatidx, chatcontent, cridx, memidx, contenttype)
 		values (#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
 	</insert>
+	
+	
+	
+	
 
 </mapper>

@@ -239,7 +239,6 @@
 	
 	// onmessage - 커넥션이 메세지 호출
 	socket.onmessage = function(message) {
-		var time = new Date();
 		var data = message.data;
 		var jsonData = JSON.parse(data);
 		console.log(jsonData); 
@@ -255,7 +254,7 @@
 					htmlStr += '				</div>'
 					htmlStr += '			</div>'
 					htmlStr += '			<div class="time_line2">'
-					htmlStr += '				<span>'+time+'</span>'
+					htmlStr += '				<span>'+jsonData.chatdate+'</span>'
 					htmlStr += '			</div>'
 					htmlStr += '		</div>'
 					htmlStr += '	</div>'
@@ -270,7 +269,7 @@
 						htmlStr += '				</div>'
 						htmlStr += '			</div>'
 						htmlStr += '			<div class="time_line2">'
-						htmlStr += '				<span>'+time+'</span>'
+						htmlStr += '				<span>'+jsonData.chatdate+'</span>'
 						htmlStr += '			</div>'
 						htmlStr += '		</div>'
 						htmlStr += '	</div>'

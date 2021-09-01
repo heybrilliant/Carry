@@ -1,12 +1,11 @@
 package com.project.gymcarry.chatting.service;
 
-import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.chatting.ChatListDto;
+import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.dao.MatchingDao;
 
@@ -40,6 +39,12 @@ public class MatchingChatRoomService {
 	public int insertChatContent(MessageDto messageDto) {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.insertChatContent(messageDto);
+	}
+	
+	// 채팅방 리스트 마지막대화,시간 출력
+	public ChatRoomDto getByChatContent(int chatidx) {
+		dao = template.getMapper(MatchingDao.class);
+		return dao.selectChatListContent(chatidx);
 	}
 
 }

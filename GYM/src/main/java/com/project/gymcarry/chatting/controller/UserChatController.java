@@ -59,6 +59,7 @@ public class UserChatController {
 		model.addAttribute("chatList", list);
 		List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());
 		model.addAttribute("carryChatList", lists);
+		
 		return "chatting/userChat";
 	}	
 	
