@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>CarryList</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/carryList.css">
+<link rel="stylesheet" href="/gym/css/carry/carryList.css">
 </head>
 <body>
 	<!-- header -->
@@ -33,13 +33,14 @@
           <div class="board_sidebar">
             <img class="profile_image" src="<c:url value="/images/icon/profile.png"/>" />
             <div class="nickname">캐리사진</div>
-
+			<input type="hidden" value="${sv1}" name="sv1">
+			<input type="hidden" value="${sv4}" name="sv4">
           </div>
           <div class="board_main">
             <button class="title_btn" type="button" onclick="">${list.crnick}<span>Carry</span></button>
             <div class="carry_price">
               <span>1회 코칭 가격</span>
-              <h3>50,000원</h3>
+              <h3>${list.proprice1}원</h3>
             </div>
             <div class="board_title">
               <span>${list.placename}</span>

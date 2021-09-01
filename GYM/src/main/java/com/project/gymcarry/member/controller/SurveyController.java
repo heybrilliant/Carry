@@ -21,7 +21,7 @@ public class SurveyController {
 	// 설문조사 2번 문항
 	@PostMapping("survey/survey2")
 	public String survey2(
-			@RequestParam("sv1") int sv1,
+			@RequestParam("sv1") String sv1,
 			Model model
 			) {
 		model.addAttribute("sv1", sv1);
@@ -32,7 +32,7 @@ public class SurveyController {
 	// 설문조사 3번 문항
 	@PostMapping("survey/survey3")
 	public String survey3(
-			@RequestParam("sv1") int sv1,
+			@RequestParam("sv1") String sv1,
 			Model model
 			) {
 		model.addAttribute("sv1", sv1);
@@ -43,7 +43,7 @@ public class SurveyController {
 	// 설문조사 4번 문항
 	@PostMapping("survey/survey4")
 	public String survey4(
-			@RequestParam("sv1") int sv1,
+			@RequestParam("sv1") String sv1,
 			Model model
 			) {
 		model.addAttribute("sv1", sv1);
@@ -54,19 +54,20 @@ public class SurveyController {
 	// 설문조사 5번 문항
 	@PostMapping("survey/survey5")
 	public String survey5(
-			@RequestParam("sv1") int sv1,
-			@RequestParam("sv4") int sv4,
-			Model model) {
+			@RequestParam("sv1") String sv1,
+			@RequestParam("sv4") String sv4,
+			Model model
+			) {
 		model.addAttribute("sv1", sv1);
 		model.addAttribute("sv4", sv4);
 		
-		if (sv4 == 1) {
-			System.out.println("선호하는 캐리의 성별 : 남자");
+		if (sv4.equals("여자")) {
+			System.out.println("-선호하는 캐리의 성별 : 여자");
 		} else {
-			System.out.println("선호하는 캐리의 성별 : 여자");
+			System.out.println("-선호하는 캐리의 성별 : 남자");
 		}
 		
-		System.out.println("survey1의 답변 : " + sv1);
+		System.out.println("-목적 : " + sv1);
 		return "survey/surveyForm5";
 	}
 

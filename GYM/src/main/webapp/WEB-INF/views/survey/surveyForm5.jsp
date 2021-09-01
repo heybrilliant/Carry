@@ -23,7 +23,7 @@
 						<h1>지역을 선택해주세요</h1>
 					</div>
 					<%-- <form action="<c:url value='/survey/survey2'/>" method="post"> --%>
-					<form action="#" method="post">
+					<form action="<c:url value='/carry/carryLists'/>" method="get">
 					<div class="survey_ul">
 						<div class="next_btn">
 							<div class="select_op">
@@ -40,7 +40,7 @@
 									<option>은평구</option>
 								</select>
 							</div>
-							<input type="button" value="결과 보기">
+							<input type="submit" value="결과 보기">
 						</div>
 						<input type="hidden" value="${sv1}" name="sv1">
 						<input type="hidden" value="${sv4}" name="sv4">

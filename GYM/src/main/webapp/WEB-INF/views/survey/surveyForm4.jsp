@@ -32,10 +32,10 @@
 									type="hidden" name="cp_item" checked="checked"> <span></span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="sv4" value = "1" checked="checked"> <span>남자</span></label>
+									type="radio" name="sv4" value = "남자" checked="checked"> <span>남자</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="sv4" value = "2" checked="checked"> <span>여자</span></label>
+									type="radio" name="sv4" value = "여자" checked="checked"> <span>여자</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
 									type="hidden" name="cp_item" checked="checked"> <span></span></label>

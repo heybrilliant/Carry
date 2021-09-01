@@ -17,8 +17,10 @@ public interface MatchingDao {
 	List<ChatListDto> selectChatList(int memidx);
 	// 캐리 채팅방 리스트
 	List<ChatListDto> selectCarryChatList(int cridx);
-	// 매칭캐리리스트
-	List<CarryDto> selectCarryList();
+	// 매칭 캐리 리스트 - 여자
+	List<CarryDto> selectCarryListF();
+	// 매칭 캐리 리스트 - 남자
+	List<CarryDto> selectCarryListM();
 	// 채팅방 생성
 	int insertAddChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
 	// 채팅방 중복확인

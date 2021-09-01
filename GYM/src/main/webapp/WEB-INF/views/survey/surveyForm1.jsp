@@ -29,43 +29,43 @@
 						<ul>
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="1" id="rd1" checked="checked">
+								<input type="radio" name="sv1" value="다이어트" id="rd1" checked="checked">
 								<span>다이어트</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="2" id="rd2" checked="checked">
+								<input type="radio" name="sv1" value="근력강화" id="rd2" checked="checked">
 								<span>근력강화</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="3" id="rd3" checked="checked">
+								<input type="radio" name="sv1" value="체중증가" id="rd3" checked="checked">
 								<span>체중증가</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="4" id="rd4" checked="checked">
+								<input type="radio" name="sv1" value="체형교정" id="rd4" checked="checked">
 								<span>체형교정</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="5" id="rd5" checked="checked">
+								<input type="radio" name="sv1" value="재활/통증 케어" id="rd5" checked="checked">
 								<span>재활/통증 케어</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="6" id="rd6" checked="checked">
+								<input type="radio" name="sv1" value="바디프로필" id="rd6" checked="checked">
 								<span>바디프로필</span></label>
 							</li>
 						
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="7" id="rd7" checked="checked">
+								<input type="radio" name="sv1" value="대회준비" id="rd7" checked="checked">
 								<span>대회준비</span></label>
 							</li>
 						

@@ -35,9 +35,15 @@ public class MatchingListService {
 		return dao.selectChattingList(chatidx);
 	}
 	
-	// 매칭 캐리리스트
-	public List<CarryDto> getCarryList(){
+	// 매칭 캐리리스트 - 여자
+	public List<CarryDto> getCarryListF(){
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectCarryList();
+		return dao.selectCarryListF();
+	}
+	
+	// 매칭 캐리리스트 - 남자
+	public List<CarryDto> getCarryListM(){
+		dao = template.getMapper(MatchingDao.class);
+		return dao.selectCarryListM();
 	}
 }	
