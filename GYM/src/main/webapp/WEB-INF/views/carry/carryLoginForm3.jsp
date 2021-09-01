@@ -41,7 +41,7 @@
 			</table>
 		</form>
 
-		<a href="<c:url value="/member/login"/>">멤버로그인</a>
+		<a href="<c:url value="/member/loginForm"/>">멤버로그인</a>
 		<a href="<c:url value="/member/join"/>">멤버회원가입</a>
 		<a href="<c:url value="/carry/join"/>">캐리회원가입</a>
 	</div>

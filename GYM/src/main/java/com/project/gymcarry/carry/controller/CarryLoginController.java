@@ -22,7 +22,7 @@ public class CarryLoginController {
 	
 	@GetMapping("/carry/login")
 	public String carryLoginForm() {
-		return "member/carryLoginForm";
+		return "carry/carryLoginForm";
 	}
 	
 	// 로그인 세션 저장
@@ -31,7 +31,8 @@ public class CarryLoginController {
 			@RequestParam("crid") String id, 
 			@RequestParam("crpw") String pw,
 			HttpServletRequest request,
-			Model model) {
+			Model model
+			) {
 		HttpSession session = request.getSession();
 		SessionDto sessionDto = loginService.carryLogin(id, pw);
 		if (sessionDto != null) {

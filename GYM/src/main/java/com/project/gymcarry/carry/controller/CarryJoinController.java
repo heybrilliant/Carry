@@ -18,7 +18,7 @@ public class CarryJoinController {
 	
 	@GetMapping
 	public String carryJoinForm() {
-		return "member/carryJoinForm";
+		return "carry/carryJoinForm";
 	}
 	
 	@PostMapping
@@ -27,6 +27,6 @@ public class CarryJoinController {
 		if(result == 1) {
 			System.out.println("캐리회원가입성공");
 		}
-		return "redirect:/member/login";
+		return "redirect:/carry/login";
 	}
 }
