@@ -15,6 +15,7 @@
 
 	<div id="chatwarp">
 			<div id="chatlist_wrap">
+			<!-- 유저가 보는 캐리 채팅방리스트 -->
 			<c:if test="${loginSession.memnick ne null}">
 			<div class="chatid">
 				<h3>${loginSession.memnick}</h3>
@@ -37,20 +38,22 @@
 							</div>
 							<div class="chat_title_img">
 							</div>
+							<c:if test="${list.chatidx eq chat.chatidx}">
 							<div class="chat_content">
-								<span><%-- ${list.chatcontent} --%>
+								<span>${chat.chatcontent}
 								</span>
 							</div>
 							<div class="chat_date">
-								<span> <%-- ${list.chatdate} --%>
+								<span> ${chat.chatdate}
 								</span>
 							</div>
+							</c:if>
 						</button>
 					</div>
 				</c:forEach>
 				</div>
 				</c:if>
-				
+				<!-- 캐리가 보는 유저 채팅방리스트 -->
 				<c:if test="${loginSession.crnick ne null}">
 				<div class="chatid">
 					<h3>${loginSession.crnick}</h3>
@@ -86,41 +89,6 @@
 			</div>
 				<!-- 채팅방 리스트 끝 -->
 			<div id="chatcontent_warp">
-			<!-- <form onsubmit="return sendMessage();"> -->
-				<!-- 채팅룸 nav -->
-				<%-- <div class="message_warp">
-				</div>
-				<div class="chat_null" id="output">
-					<div class="carry_message_warp">
-						<div class="carry_chat">
-							<div class="message">
-								<div class="message_color">
-								</div>
-							</div>
-							<div class="time_line">
-							</div>
-						</div>
-					</div>
-				<div class="user_message_warp">
-					<div class="user_chat">
-						<div class="user_message">
-							<div>
-								<span></span>
-							</div>
-						</div>
-						<div class="time_line2">
-							<span></span>
-						</div>
-					</div>
-				</div>
-				</div>
-				<div class="chatting_write">
-				<input type="text" placeholder="메세지 입력.." id="msg">
-				<button type="button" class="btn" id="btnSend">
-				<img src="<c:url value="/images/icon/icoin.png"/>">
-				</button>
-				</div> --%>
-				<!-- </form> -->
 				<div id="chatcontent_off">
 					<div class="not_message">
 						<img src="<c:url value="/images/icon/chat.png"/>"
@@ -136,15 +104,9 @@
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	<script>
 		$(document).ready(function() {
-			/* $(".chat_null").hide();
-			$(".message_warp").hide();
-			$(".chatting_write").hide(); */
-			
 			$(".chatlist .on_btn").click(function() {
 				$(".chatlist .on_btn").removeClass('active');
 				$(this).addClass('active');
-				/* $("#chatcontent_off").hide();
-				$('#span_off').hide(); */
 			});
 		});
 		
@@ -179,22 +141,22 @@
 				htmlStr += '</div>'					
 				htmlStr += '</div>'					
 			$('#chatcontent_warp').html(htmlStr);
-			
-			//$('.carry_message_warp').append(htmlStr);
 			chatNav();
 			
 			// 처음 접속시, 메세지 입력창에 focus 시킴
 			$('#msg').focus();
 			
 			$('#btnSend').click(function(event){
-				event.preventDefault();
-				var msg = $('input#msg').val();
-				//sock.send(msg);
-				sendMessage();
-				
-				// 메세지 입력창 내용 보내고 지우기.
-				$('#msg').val('');
-				$("#output").scrollTop($(document).height());
+				if ($('input#msg').val().trim().length >= 1) {
+					event.preventDefault();
+					var msg = $('input#msg').val();
+					//sock.send(msg);
+					sendMessage();
+					
+					// 메세지 입력창 내용 보내고 지우기.
+					$('#msg').val('');
+					$("#output").scrollTop($(document).height());
+				}
 			});	
 			
 			$('#msg').keypress(function(event){

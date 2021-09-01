@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 채팅방 리스트 대화내용 여부 -->
 	<select id="selectChatListContent"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		select chatcontent, chatdate from chatroom where chatidx=1 order by chatdate desc;
+		select chatcontent, chatdate from chatroom where chatidx=#{chatidx} order by chatdate desc limit 1
 	</select>
 	
 	<!-- 대화내용 저장 -->

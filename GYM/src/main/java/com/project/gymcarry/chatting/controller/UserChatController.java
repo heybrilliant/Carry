@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
@@ -35,13 +36,15 @@ public class UserChatController {
 	@GetMapping("chatting/chatInquire")
 	public String chatInquire(
 			@RequestParam("cridx") int cridx, 
-			@RequestParam("memidx") int memidx
+			@RequestParam("memidx") int memidx,
+			RedirectAttributes redirectAttributes
 			) {
 		// 방번호 가져오기
 		ChatListDto chatDto = matchingChatRoomService.getByChatRoom(cridx, memidx);
 		if(chatDto != null) {
 			int chatidx = matchingChatRoomService.getByChatIdx(chatDto.getChatidx());
 			if(chatidx == 1) {
+				redirectAttributes.addAttribute("chatidx", chatDto.getChatidx());
 				return "redirect:/chatting/chatList";
 			} 
 		}
@@ -53,13 +56,15 @@ public class UserChatController {
 	
 	// 채팅룸 리스트
 	@GetMapping("chatting/chatList")
-	public String matching(Model model,HttpSession session) {
+	public String matching(@RequestParam("chatidx") int chatidx,Model model,HttpSession session) {
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
 		List<ChatListDto> list = matchingListService.getChatList(dto.getMemidx());
 		model.addAttribute("chatList", list);
 		List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());
 		model.addAttribute("carryChatList", lists);
-		
+		System.out.println(chatidx);
+		ChatRoomDto chatRoomDto = matchingChatRoomService.getByChatContent(chatidx);
+		model.addAttribute("chat", chatRoomDto);
 		return "chatting/userChat";
 	}	
 	
