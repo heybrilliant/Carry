@@ -7,20 +7,46 @@
 <meta charset="UTF-8">
 <title>Mypage</title>
 
-
+<!--개인 css-->
 <link rel="stylesheet" href="/gym/css/mypage/grid.css">
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
 	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
 	crossorigin="anonymous"></script>
-<!--제이쿼리 CDN-->
 
+<!--제이쿼리 CDN-->
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<!-- 탭 ajax-->
+<script>
+	$(function() {
+		// 탭 오퍼레이터	
+		$('.list_tab').click(function() {
 
+			var activeTab = $(this).attr('data-tab');
+			$.ajax({
+				type : 'GET',
+				url : activeTab,
+				dataType : "html",
+
+				success : function(data) {
+					$('.col-right').html(data);
+
+				},
+
+				error : function() {
+
+					alert('나가 임마');
+				},
+
+			})
+		})
+		$('#default').click();
+	})
+</script>
 
 
 <!-- bootstrap -->
@@ -100,55 +126,27 @@
 							});
 						</script>
 						<div id="datepicker"></div>
-
-
 					</div>
+
 					<div class="my-info-develope">
 						<h3 class="info_title">My page</h3>
 						<ul class="info_contents">
+							<li data-tab="info" class="list_tab info_list">내 일정</li>
 
 							<li class="info_list"><a
 								href="<c:url value="/mypage/myinfo"/>">내 기본 정보 수정</a></li>
+
 							<li class="info_list"><a
 								href="<c:url value="/mypage/mycommunity"/>">내가 작성한 글</a></li>
-							<li class="info_list"><a href="#">내 결제 내역</a></li>
+
+							<li data-tab="mycash" class="list_tab info_list" id="default"><a
+								href="#">내 결제 내역</a></li>
+
 							<li class="info_list"><a href="#">내가 찜한 캐리</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class="col-right">
-
-					<div class="col-right-top">
-						<input type="text" id="alternate" size="30">
-					</div>
-					<div class="col-right-top-memo">
-						<h3>일일 메모</h3>
-
-						<a class="" data-toggle="modal" href="#registerModal1"><img
-							class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
-
-					</div>
-
-
-					<div class="col-right-left">
-						<h3>눈 바디</h3>
-						<a class="" data-toggle="modal" href="#registerModal2"><img
-							class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
-					</div>
-
-					<div class="col-right-right">
-						<h3>몸무게</h3>
-						<a class="" data-toggle="modal" href="#registerModal3"><img
-							class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
-					</div>
-
-					<div class="col-right-right2">
-						<h3>식단</h3>
-						<a class="" data-toggle="modal" href="#registerModal4"><img
-							class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
-					</div>
-
-				</div>
+				<div class="col-right"></div>
 			</div>
 		</div>
 	</div>
