@@ -34,10 +34,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		c.cridx=#{cridx}
 	</select>
 
+	<!-- @author: 지원 -->
 	<!-- 매칭캐리리스트 -->
 	<select id="selectCarryList"
 		resultType="com.project.gymcarry.carry.CarryDto">
-		select cridx, crnick, placename from carry
+		select cridx, crnick, placename from carry where crgender=1
 	</select>
 
 	<!-- 채팅룸 생성 -->
