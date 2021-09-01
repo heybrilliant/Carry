@@ -48,8 +48,8 @@
 					<li><a href="#introduce" id="introducte_btn">소개</a></li>
 					<li><a href="#review">후기</a></li>
 					<li><a href="#place">소속 플레이스</a></li>
-					<li><a href="#location">위치</a></li>
-					<li><a href="#" id="carrer_btn">자격/경력</a></li>
+					<li><a href="#location">지도</a></li>
+					<li><a href="#certi">자격/경력</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -69,9 +69,8 @@
 
 
 					<table class="carry_info_message" id="introduce">
-
 						<tr>
-							<td><span class="carry_name">${carryDetail.crname}</span></td>
+							<td><span class="carry_name">${carryDetail.crname}</span><span class="carry_nick">${carryDetail.crnick}</span></td>
 						</tr>
 
 						<tr>
@@ -85,13 +84,12 @@
 								</div>
 							</td>
 						</tr>
-
 					</table>
 				</div>
 				<!-- carry info section END -->
 
 
-				<div class="carry_carrer" id="carrer">
+				<div class="carry_carrer" id="certi">
 					<h3>자격 및 경력</h3>
 					<ul>
 						<li>${carryCerti.crcerti1}</li>
@@ -146,7 +144,6 @@
 				<!-- carry review section all wrap END -->
 
 
-
 				<!-- 소속 플레이스 section all wrap START -->
 				<div class="carry_place_title" id="place">
 					<h2>소속 플레이스</h2>
@@ -177,7 +174,7 @@
 			<div class="right_banner">
 
 				<div id="c2" class="circle"></div>
-				<h2>${crname}</h2>
+				<h2>${carryDetail.crnick}</h2>
 
 				<div class="program_all">
 
