@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.project.gymcarry.carry.CarryCertiDto;
 import com.project.gymcarry.carry.CarryDto;
+import com.project.gymcarry.carry.CarryListDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.place.PlaceDto;
@@ -22,11 +23,24 @@ public interface CarryDao {
 	PlaceDto selectCarryPlaceDetail(int cridx);
 	// 캐리 리뷰 작성
 	int addCarryReview(CarryReviewDto reviewDto);
+
 	
-	// 매칭 캐리 리스트 - 여자
-	List<CarryDto> selectCarryListF();
-	// 매칭 캐리 리스트 - 남자
-	List<CarryDto> selectCarryListM();
+	// 전체 캐리 리스트
+	List<CarryListDto> selectAllCarryList();
+	
+	// 매칭 캐리 리스트 - [여자/헬스]
+	List<CarryListDto> selectCarryListFH();
+	// 매칭 캐리 리스트 - [여자/필라테스]
+	List<CarryListDto> selectCarryListFF();
+	// 매칭 캐리 리스트 - [여자/요가]
+	List<CarryListDto> selectCarryListFY();
+	
+	// 매칭 캐리 리스트 - [남자/헬스]
+	List<CarryListDto> selectCarryListMH();
+	// 매칭 캐리 리스트 - [남자/필라테스]
+	List<CarryListDto> selectCarryListMF();
+	// 매칭 캐리 리스트 - [남자/요가]
+	List<CarryListDto> selectCarryListMY();
 
 	
 	

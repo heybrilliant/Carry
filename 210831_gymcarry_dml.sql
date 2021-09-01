@@ -7,9 +7,13 @@ insert into gymcarry.place values (null, '스타일짐 신촌점','06:00~21:30',
 
 insert into gymcarry.crcertification values ('1', '자격 및 경력1', '자격 및 경력2', '자격 및 경력3', '자격 및 경력4', '자격 및 경력5');
 insert into gymcarry.crcertification values ('2', '저쩌고', '저쩌고2', '저쩌고3', '저쩌고4', '저쩌고5');
+insert into gymcarry.crcertification values ('3', '저쩌고3', '저쩌고2', '저쩌고3', '저쩌고4', '저쩌고5');
+insert into gymcarry.crcertification values ('4', '저쩌고4', '저쩌고2', '저쩌고3', '저쩌고4', '저쩌고5');
 
 insert into gymcarry.crprice values ('1', '49000', '230000', '460000', '930000');
 insert into gymcarry.crprice values ('2', '48000', '245000', '473000', '952000');
+insert into gymcarry.crprice values ('3', '47000', '250000', '480000', '990000');
+insert into gymcarry.crprice values ('4', '50000', '260000', '490000', '916000');
 
 
 

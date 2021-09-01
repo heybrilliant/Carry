@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.carry.CarryCertiDto;
 import com.project.gymcarry.carry.CarryDto;
+import com.project.gymcarry.carry.CarryListDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.dao.CarryDao;
@@ -56,5 +57,46 @@ public class CarryInfoService {
 		return dao.addCarryReview(reviewDto);
 	}
 
+	
+	// 전체 캐리 리스트
+	public List<CarryListDto> getAllCarryList(){
+		dao = template.getMapper(CarryDao.class);
+		return dao.selectAllCarryList();
+	}
+	
+	
+	// 매칭 캐리리스트 - [여자/헬스]
+	public List<CarryListDto> getCarryListFH(){
+		dao = template.getMapper(CarryDao.class);
+		return dao.selectCarryListFH();
+	}
+	// 매칭 캐리리스트 - [여자/필라테스]
+	public List<CarryListDto> getCarryListFF(){
+		dao = template.getMapper(CarryDao.class);
+		return dao.selectCarryListFF();
+	}
+	// 매칭 캐리리스트 - [여자/요가]
+	public List<CarryListDto> getCarryListFY(){
+		dao = template.getMapper(CarryDao.class);
+		return dao.selectCarryListFY();
+	}
+	
+	
+	// 매칭 캐리리스트 - [남자/헬스]
+	public List<CarryListDto> getCarryListMH(){
+		dao = template.getMapper(CarryDao.class);
+		return dao.selectCarryListMH();
+	}
+	// 매칭 캐리리스트 - [남자/필라테스]
+	public List<CarryListDto> getCarryListMF(){
+		dao = template.getMapper(CarryDao.class);
+		return dao.selectCarryListMF();
+	}
+	// 매칭 캐리리스트 - [남자/요가]
+	public List<CarryListDto> getCarryListMY(){
+		dao = template.getMapper(CarryDao.class);
+		return dao.selectCarryListMY();
+	}
+	
 	
 }

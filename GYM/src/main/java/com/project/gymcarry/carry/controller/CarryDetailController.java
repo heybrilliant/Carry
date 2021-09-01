@@ -34,13 +34,7 @@ public class CarryDetailController {
 	public String carryDetail(
 				CarryPriceDto priceDto,
 				@RequestParam("cridx") int cridx,
-				HttpServletRequest request,
 				Model model) {
-		
-		HttpSession session = request.getSession();
-		SessionDto sessionDto = (SessionDto) session.getAttribute("loginSession");
-		session.setAttribute("idx", sessionDto.getMemidx());
-		System.out.println("세션 변수(memidx) : " + sessionDto.getMemidx());
 		
 		CarryDto carryDetail = carryInfoService.getCarryDetail(cridx);
 		List<CarryReviewDto> carryReviewList = carryInfoService.getCarryReviewList(cridx);

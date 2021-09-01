@@ -17,34 +17,40 @@
 					<div class="survey_h1">
 						<div class="survey_page">
 							<p>
-								<span>05</span> / 05
+								<span>03</span> / 05
 							</p>
 						</div>
-						<h1>지역을 선택해주세요</h1>
+						<h1>선호하는 수업 요일이 있으신가요?</h1>
 					</div>
-					<%-- <form action="<c:url value='/survey/survey2'/>" method="post"> --%>
-					<form action="<c:url value='/carry/carryLists'/>" method="get">
+					<form action="<c:url value='/carry/matchingList'/>" method="get">
 					<div class="survey_ul">
+						<ul>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>월</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>화</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>수</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>목</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>금</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>토</span></label>
+							</li>
+						</ul>
 						<div class="next_btn">
-							<div class="select_op">
-								<select>
-									<option>강남구</option>
-									<option>구로구</option>
-									<option>금천구</option>
-									<option>동대문구</option>
-									<option>마포구</option>
-									<option>서대문구</option>
-									<option>성북구</option>
-									<option>서초구</option>
-									<option>송파구</option>
-									<option>은평구</option>
-								</select>
-							</div>
-							<input type="submit" value="결과 보기">
+							<input type="submit" value="다음">
 						</div>
-						<input type="hidden" value="${sv1}" name="sv1">
-						<input type="hidden" value="${sv4}" name="sv4">
 					</div>
+					<input type="hidden" value="${sv1}" name="sv1">
+					<input type="hidden" value="${sv2}" name="sv2">
+					<input type="hidden" value="${sv3}" name="sv3">
 					</form>
 				</div>
 			</div>

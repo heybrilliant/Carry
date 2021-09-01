@@ -34,9 +34,11 @@ public class SurveyController {
 	@PostMapping("survey/survey3")
 	public String survey3(
 			@RequestParam("sv1") String sv1,
+			@RequestParam("sv2") String sv2,
 			Model model
 			) {
 		model.addAttribute("sv1", sv1);
+		model.addAttribute("sv2", sv2);
 		return "survey/surveyForm3";
 	}
 	
@@ -45,9 +47,13 @@ public class SurveyController {
 	@PostMapping("survey/survey4")
 	public String survey4(
 			@RequestParam("sv1") String sv1,
+			@RequestParam("sv2") String sv2,
+			@RequestParam("sv3") String sv3,
 			Model model
 			) {
 		model.addAttribute("sv1", sv1);
+		model.addAttribute("sv2", sv2);
+		model.addAttribute("sv3", sv3);
 		return "survey/surveyForm4";
 	}
 	
@@ -56,19 +62,22 @@ public class SurveyController {
 	@PostMapping("survey/survey5")
 	public String survey5(
 			@RequestParam("sv1") String sv1,
-			@RequestParam("sv4") String sv4,
+			@RequestParam("sv2") String sv2,
+			@RequestParam("sv3") String sv3,
 			Model model
 			) {
 		model.addAttribute("sv1", sv1);
-		model.addAttribute("sv4", sv4);
+		model.addAttribute("sv2", sv2);
+		model.addAttribute("sv3", sv3);
 		
-		if (sv4.equals("여자")) {
+		if (sv3.equals("여자")) {
 			System.out.println("-선호하는 캐리의 성별 : 여자");
 		} else {
 			System.out.println("-선호하는 캐리의 성별 : 남자");
 		}
 		
-		System.out.println("-목적 : " + sv1);
+		System.out.println("-운동 종목 : " + sv1);
+		System.out.println("-운동 목적 : " + sv2);
 		return "survey/surveyForm5";
 	}
 

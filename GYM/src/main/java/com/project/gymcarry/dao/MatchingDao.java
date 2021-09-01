@@ -20,7 +20,6 @@ public interface MatchingDao {
 	// 캐리 채팅방 리스트
 	List<ChatListDto> selectCarryChatList(int cridx);
 
-
 	// 사용자 채팅방 가져오기
 	ChatListDto selectByChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
 

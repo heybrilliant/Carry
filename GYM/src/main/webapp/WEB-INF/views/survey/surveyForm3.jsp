@@ -20,28 +20,28 @@
 								<span>03</span> / 05
 							</p>
 						</div>
-						<h1>가능한 요일과 시간대</h1>
+						<h1>선호하는 캐리 성별</h1>
 					</div>
 					<form action="<c:url value='/survey/survey4'/>" method="post">
 					<div class="survey_ul">
 						<ul>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>월</span></label>
+									type="hidden" checked="checked"> <span></span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>화</span></label>
+									type="hidden" checked="checked"> <span></span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>수</span></label>
+									type="radio" name="sv3" value = "남자" checked="checked"> <span>남자</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>목</span></label>
+									type="radio" name="sv3" value = "여자" checked="checked"> <span>여자</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>금</span></label>
+									type="hidden" checked="checked"> <span></span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>토</span></label>
+									type="hidden" checked="checked"> <span></span></label>
 							</li>
 						</ul>
 						<div class="next_btn">
@@ -49,6 +49,7 @@
 						</div>
 					</div>
 					<input type="hidden" value="${sv1}" name="sv1">
+					<input type="hidden" value="${sv2}" name="sv2">
 					</form>
 				</div>
 			</div>

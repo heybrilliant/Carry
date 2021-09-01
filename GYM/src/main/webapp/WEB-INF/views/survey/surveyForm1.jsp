@@ -20,62 +20,30 @@
 								<span>01</span> / 05
 							</p>
 						</div>
-						<h1>PT목적은 무엇인가요?</h1>
+						<h1>원하는 운동 종목이 무엇인가요?</h1>
 					</div>
-
 					<form action="<c:url value='/survey/survey2'/>" method="post">
 					<div class="survey_ul">
-					
 						<ul>
-							<li>
-								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="다이어트" id="rd1" checked="checked">
-								<span>다이어트</span></label>
+							<li><label class="box-radio-input"> <input
+									type="hidden" name="cp_item" checked="checked"> <span></span></label>
 							</li>
-							
-							<li>
-								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="근력강화" id="rd2" checked="checked">
-								<span>근력강화</span></label>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="sv1" value = "헬스" checked="checked"> <span>헬스</span></label>
 							</li>
-							
-							<li>
-								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="체중증가" id="rd3" checked="checked">
-								<span>체중증가</span></label>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="sv1" value = "필라테스" checked="checked"> <span>필라테스</span></label>
 							</li>
-							
-							<li>
-								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="체형교정" id="rd4" checked="checked">
-								<span>체형교정</span></label>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="sv1" value = "요가" checked="checked"> <span>요가</span></label>
 							</li>
-							
-							<li>
-								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="재활/통증 케어" id="rd5" checked="checked">
-								<span>재활/통증 케어</span></label>
+							<li><label class="box-radio-input"> <input
+									type="hidden" name="cp_item" checked="checked"> <span></span></label>
 							</li>
-							
-							<li>
-								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="바디프로필" id="rd6" checked="checked">
-								<span>바디프로필</span></label>
-							</li>
-						
-							<li>
-								<label class="box-radio-input">
-								<input type="radio" name="sv1" value="대회준비" id="rd7" checked="checked">
-								<span>대회준비</span></label>
-							</li>
-						
 						</ul>
-					
-						
 						<div class="next_btn">
 							<input type="submit" value="다음">
 						</div>
-						
 					</div>
 					</form>
 				</div>

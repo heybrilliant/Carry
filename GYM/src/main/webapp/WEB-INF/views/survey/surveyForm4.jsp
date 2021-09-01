@@ -20,28 +20,29 @@
 								<span>04</span> / 05
 							</p>
 						</div>
-						<h1>선호하는 코치 성별</h1>
+						<h1>당신의 연령대는?</h1>
 					</div>
+					
 					<form action="<c:url value='/survey/survey5'/>" method="post">
 					<div class="survey_ul">
 						<ul>
 							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
+									type="radio" name="cp_item" checked="checked"> <span>15~19세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
+									type="radio" name="cp_item" checked="checked"> <span>20~24세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="sv4" value = "남자" checked="checked"> <span>남자</span></label>
+									type="radio" name="cp_item" checked="checked"> <span>25~29세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="sv4" value = "여자" checked="checked"> <span>여자</span></label>
+									type="radio" name="cp_item" checked="checked"> <span>30~34세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
+									type="radio" name="cp_item" checked="checked"> <span>35~39세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
+									type="radio" name="cp_item" checked="checked"> <span>40~50세</span></label>
 							</li>
 						</ul>
 						<div class="next_btn">
@@ -49,11 +50,12 @@
 						</div>
 					</div>
 					<input type="hidden" value="${sv1}" name="sv1">
+					<input type="hidden" value="${sv2}" name="sv2">
+					<input type="hidden" value="${sv3}" name="sv3">
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
