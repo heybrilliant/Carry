@@ -15,30 +15,35 @@
 	
 	<!-- Contents -->
   <div class="content_main">
+  <div class="content_wrap">
     <div class="content">
-    <h1 class="title2">당신과 딱 맞는 캐리를 소개합니다 !</h1>
+    <h1 class="match_title">당신과 딱 맞는 캐리를 소개합니다 !</h1>
+     <nav class="top">
+  	 	<div class="sort">
+          	<span>찜순 / 가격순</span>
+     	</div>
+      </nav>
       <div class="card_main">
       <c:forEach items="${matchingList}" var="mlist">
         <div class="card">
           <div class="board_sidebar">
             <img class="profile_image" src="<c:url value="/images/icon/profile.png"/>" />
-            <div class="nickname">캐리사진</div>
 			<input type="hidden" value="${sv1}" name="sv1">
 			<input type="hidden" value="${sv4}" name="sv4">
           </div>
           <div class="board_main">
-            <button class="title_btn" type="button" onclick="">${mlist.crnick}<span>Carry</span></button>
+            <div class="place_badge">${mlist.placename}</div>
             <div class="carry_price">
-              <span>1회 코칭 가격</span>
+              <span>수업 1회 이용권</span>
               <h3>${mlist.proprice1}원</h3>
             </div>
-            <div class="board_title">
-              <span>${mlist.placename}</span>
+            <div class="nickname">
+              <span>${mlist.crnick}</span>
             </div>
             <div class="btnflex">
-              <div class="board_post">
-                <span class="pt_nopt">경력사항</span><span class="pt_nopt2">
-                <img src="<c:url value="/images/icon/movie.png"/>">비대면PT 가능</span>
+              <div class="certi">
+                <span class="certifi">경력사항</span>
+                <%-- <span class="pt_nopt2"><img src="<c:url value="/images/icon/movie.png"/>">비대면PT 가능</span> --%>
                 <ul>
                   <li>${mlist.crcerti1}</li>
                   <li>${mlist.crcerti2}</li>
@@ -47,9 +52,13 @@
               </div>
               <div class="board_bottom">
                 <ul class="board_btn">
-                  <li><input type="button" value="1:1문의" class="inquiry_btn" onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${mlist.cridx}&memidx=${loginSession.memidx}"/>'"></li>
                   <li>
-                    <input type="button" value="더 알아보기" class="details_btn" onclick="location.href='<c:url value = "/carry/detail?cridx=${mlist.cridx}"/>'">
+                  	<input type="button" value="1:1문의" class="inquiry_btn"
+                  	onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${mlist.cridx}&memidx=${loginSession.memidx}"/>'">
+                  </li>
+                  <li>
+                    <input type="button" value="더 알아보기" class="details_btn" 
+                    onclick="location.href='<c:url value = "/carry/detail?cridx=${mlist.cridx}"/>'">
                   </li>
                 </ul>
               </div>
@@ -59,6 +68,7 @@
 		</c:forEach>	
 
       </div>
+    </div>
     </div>
   </div>
   <!-- Contents end -->

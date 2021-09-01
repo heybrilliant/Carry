@@ -1,281 +1,316 @@
 /* 폰트 설정 */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
-
+@import
+	url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap")
+	;
 
 body {
-  font-family: "AppleSDGothicNeo";
-  min-height: 100vh;
-  font-size: 1.125em;
-  line-height: 1.6;
-  background: white;
-  place-items: center;
+	font-family: "AppleSDGothicNeo";
+	min-height: 100vh;
+	font-size: 1.125em;
+	line-height: 1.6;
+	background: white;
+	place-items: center;
+}
+
+.match_btn {
+	border: 1px solid #AAA;
+	background-color: white;
+	width: 330px;
+	height: 50px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 25px;
+	font-size : 19px;
+	color : #484848;
+}
+
+.match_btn:hover {
+	background-color: black;
+	color: white;
+	width: 330px;
+	height: 50px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: 25px;
+	font-size : 19px;
+	cursor: pointer;
+}
+
+.content_wrap {
+	width: 90%;
+	margin: 3rem auto;
 }
 
 .content {
-  width: 50%;
-  margin: 3rem auto;
-  margin-top: 140px;
-  padding: 2em;
-  box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
-  background: b;
+	width: 70%;
+	margin: 3rem auto;
+	margin-top: 140px;
+	padding: 80px 100px 100px 100px;
+	/* border: 0.08mm solid #AAA; */
+	box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
 }
 
-.title {
-  font-weight: 900;
-  line-height: 0.8;
-  text-align: center;
-  margin-top : 20px;
-  margin-bottom : 35px;
+.all_title {
+	font-weight: 900;
+	line-height: 0.8;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
 }
 
-.title2 {
-  font-weight: 900;
-  line-height: 0.8;
-  text-align: center;
-  margin-top : 25px;
-  margin-bottom : 43px;
+.match_title {
+	font-weight: 900;
+	line-height: 0.8;
+	text-align: center;
+	margin-top: 25px;
+	margin-bottom: 100px;
 }
-
 
 /* Nav 영역 */
-.community_nav {
-  list-style-type: none;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  margin-top : -30px;
+.top {
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	margin-top: -30px;
 }
 
-.community_nav ul {
-  padding-top: 5px;
+.top ul {
+	padding-top: 5px;
 }
 
-.community_nav ul li {
-  border-left: 2px solid rgb(94, 94, 94);
-  display: inline-block;
-  padding: 0px 20px 0px 20px;
-  margin: 30px 0px 30px 0px;
-}
-.community_nav ul li:first-child {
-  border-left: none;
+.top ul li {
+	border-left: 2px solid rgb(94, 94, 94);
+	display: inline-block;
+	padding: 0px 20px 0px 20px;
+	margin: 30px 0px 30px 0px;
 }
 
-.community_nav .menulink {
-  text-decoration: none;
-  color: rgb(94, 94, 94);
-  display: block;
-  font-size: 15px;
-  font-family: "AppleSDGothicNeo";
+.top ul li:first-child {
+	border-left: none;
+}
+
+.top .menulink {
+	text-decoration: none;
+	color: rgb(94, 94, 94);
+	display: block;
+	font-family: "AppleSDGothicNeo";
+}
+
+.sort {
+	float: left;
+	font-size: 15px;
+	margin-bottom: 10px;
 }
 
 .board_write {
-  background-color: transparent; /* make the button transparent */
-  border: none; /* assuming we don't want any borders */
-  float: right;
-  margin: 30px 0px 30px 0px;
+	background-color: transparent; /* make the button transparent */
+	border: none; /* assuming we don't want any borders */
+	float: right;
+	margin: 30px 0px 30px 0px;
 }
+
 .board_write2 {
-  background-color: transparent; /* make the button transparent */
-  border: none; /* assuming we don't want any borders */
-  float: left;
-  visibility: hidden;
-  margin: 30px 0px 30px 0px;
+	background-color: transparent; /* make the button transparent */
+	border: none; /* assuming we don't want any borders */
+	float: left;
+	visibility: hidden;
+	margin: 30px 0px 30px 0px;
 }
 
 .write_icon {
-  width: 23px;
-  height: 23px;
-  margin-right: 5px;
+	width: 23px;
+	height: 23px;
+	margin-right: 5px;
 }
 
 /* Card 영역 */
 .card {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 200px;
-  max-width: none;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 1em;
-  margin-bottom: 30px;
+	/* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
+	border: 1px solid #AAA;
+	border-radius: 6px; width : 100%;
+	height: 200px;
+	max-width: none;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	padding: 1em;
+	margin-bottom: 30px;
+	width: 100%;
 }
 
 /* 프로필 영역(왼쪽) */
-
 .board_sidebar {
-  width: 25%;
-  margin: 0 auto;
-  padding-top: 20px;
+	width: 25%;
+	margin: 0 auto;
+	padding-top: 20px;
 }
+
 .profile_image {
-  border-radius: 50%;
-  width: 90px;
+	border-radius: 50%;
+	width: 120px;
+	margin-left: 13px;
 }
 
 .nickname {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  justify-content: center;
-  width: 100%;
-  margin: 0 auto;
-  font-weight: bold;
-  font-size: 14px;
+	justify-content: center;
+	list-style: none;
+	justify-content: center;
+	width: 100%;
+	margin: 0 auto;
+	font-weight: bold;
+	font-size: 25px;
 }
 
-/* 오른쪽 영역 */
-.title_btn {
-  margin: 0;
-  padding: 0.3rem 0.7rem;
-
-  font-family: "AppleSDGothicNeo";
-  font-size: 13px;
-  font-weight: 400;
-  text-align: center;
-  text-decoration: none;
-  color: rgb(94, 94, 94);
-
-  display: inline-block;
-  width: auto;
-
-  border: none;
-  border-radius: 18px;
-
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-  cursor: pointer;
-
-  transition: 0.5s;
+.place_badge {
+	margin-left: -3px;
+	margin-bottom: 3px;
+	font-family: "AppleSDGothicNeo";
+	font-size: 13px;
+	font-weight: 400;
+	text-align: center;
+	text-decoration: none;
+	color: rgb(94, 94, 94);
+	display: inline-block;
+	width: auto;
+	border: 0.03mm solid #AAA;
+	border-radius: 10px;
+	/*  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 3px -1px rgba(0, 0, 0, 0.06); */
+	cursor: pointer;
+	transition: 0.5s;
+	padding: 0.3rem 0.9rem;
 }
 
-/* 글제목 내용 영역 */
-.board_title {
-  font-size: 20px;
-  letter-spacing: 1px;
-  margin: 10px 0px 5px 0px;
+.carry_nick {
+	font-size: 22px;
+	font-weight: bolder;
+	margin: 10px 0px 5px 0px;
 }
 
 .board_main {
-  position: relative;
-  width: 75%;
+	position: relative;
+	width: 75%;
 }
 
-.board_post {
-  width:80%;
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 12px;
-  letter-spacing: 1px;
-  height: 100p;
-  overflow: hidden;
-}
-
-/* 날짜 아이콘 영역 */
 .board_bottom {
-  right: 0;
-  width: 100%;
-  margin-top: 50px;
+	right: 0;
+	width: 100%;
+	margin-top: 50px;
 }
+
 .btnflex {
-  display: flex;
+	display: flex;
 }
 
 .write_date {
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 11px;
-  display: inline-block;
-  color: rgb(93, 93, 93);
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 11px;
+	display: inline-block;
+	color: rgb(93, 93, 93);
 }
 
 .board_btn {
-  display: flex;
-  float: right;
-  justify-content: space-around;
-  font-size: 13px;
+	display: flex;
+	float: right;
+	justify-content: space-around;
+	font-size: 13px;
 }
 
 .board_icon {
-  width: 15px;
-  height: 15px;
-  margin-right: 5px;
-}
-
-.community_nav input {
-  width: 300px;
-  height: 40px;
-  border: none;
-  font-weight: bold;
-  border-radius: 5px;
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
 }
 
 .community_nav input:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .address_font {
-  font-size: 13px;
-  color: rgb(121, 116, 116);
-}
-
-.caary_navfont {
-  float: left;
-  font-size: 15px;
-  margin-bottom: 10px;
+	font-size: 13px;
+	color: rgb(121, 116, 116);
 }
 
 .carry_price {
-  float: right;
-  background-color: #ddd;
-  width: 30%;
-  text-align: center;
-  margin-right: 20px;
-}
-.carry_price span {
-  font-size: 13px;
-}
-.pt_nopt {
-  font-size: 15px;
-}
-.pt_nopt2 {
-  font-size: 15px;
-  float: right;
+	float: right;
+	border: 1px solid #AAA;
+	width: 26%;
+	text-align: center;
+	margin-right: 20px;
 }
 
-.board_post ul li {
-  list-style: square;
-  margin-left: 20px;
+.carry_price span {
+	font-size: 13px;
+}
+
+.carry_price h3 {
+	margin-top: -4px;
+}
+
+.certi {
+	width: 80%;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 12px;
+	height: 100p;
+	overflow: hidden;
+}
+
+.certi ul li {
+	color: #555555;
+	list-style: square;
+	font-size: 14px;
+	margin-left: 20px;
+	margin-right: 30px;
+	margin-bottom: -3px;
+	margin-left: 20px;
+}
+
+.certifi {
+	font-size: 15px;
+	margin-bottom: 5px;
 }
 
 .inquiry_btn {
-  background-color: black;
-  color: white;
-  width: 100px;
-  height: 40px;
-  margin-right: 20px;
-  border-radius: 5px;
-  border: 1px solid black;
-}
-.details_btn{
-  background-color: rgb(97, 93, 93);
-  color: white;
-  width: 100px;
-  height: 40px;
-  border: 1px solid rgb(97, 93, 93);
-  border-radius: 5px;
-}
-.inquiry_btn:hover, .details_btn:hover{
-  cursor: pointer;
+	border: 1px solid #CCC;
+	background-color: white;
+	padding: 7px 10px;
+	margin-right: 8px;
 }
 
-@media (min-width: 600px) {
-  .card {
-    flex-direction: row;
-  }
-  .board_main {
-    text-align: left;
-    margin-left: 2em;
-  }
-} ;
+.inquiry_btn:hover {
+	border: 1px solid #CCC;
+	color: white;
+	background-color: black;
+	padding: 7px 10px;
+	cursor: pointer;
+}
+
+.details_btn {
+	border: 1px solid #CCC;
+	color: white;
+	background-color: black;
+	padding: 7px 10px;
+	margin-right: 20px;
+}
+
+.details_btn:hover {
+	border: 1px solid #CCC;
+	background-color: white;
+	color: gray;
+	padding: 7px 10px;
+	cursor: pointer;
+}
+
+@media ( min-width : 600px) {
+	.card {
+		flex-direction: row;
+	}
+	.board_main {
+		text-align: left;
+		margin-left: 2em;
+	}
+}
+;
