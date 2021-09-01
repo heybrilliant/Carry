@@ -281,7 +281,7 @@
 	<script>
 	  document.getElementById('currentDatetime').value= new Date().toISOString().slice(0, 18);
 	</script>
-	
+	0  
 	<script>
 	  // place 이미지 슬라이드
 		var swiper = new Swiper(".mySwiper", {
