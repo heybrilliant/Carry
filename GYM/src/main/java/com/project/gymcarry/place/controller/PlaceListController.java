@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.gymcarry.place.PlaceDto;
-import com.project.gymcarry.place.service.PlaceHealthListService;
+import com.project.gymcarry.place.service.PlaceHealthService;
 
 @Controller
 @RequestMapping
 public class PlaceListController {
 	
 	@Autowired
-	private PlaceHealthListService placeHealthListService;
+	private PlaceHealthService placeHealthService;
 	
 	// place 리스트
 	@GetMapping("/place/list")
@@ -25,7 +25,7 @@ public class PlaceListController {
 				@RequestParam("placenum") int placenum,
 				Model model
 			) {
-		List<PlaceDto> placeList = placeHealthListService.getHealthPlaceList(placenum);
+		List<PlaceDto> placeList = placeHealthService.getHealthPlaceList(placenum);
 		System.out.println("placenum : " + placenum);
 		
 		model.addAttribute("placeList", placeList);

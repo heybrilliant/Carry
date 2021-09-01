@@ -52,7 +52,7 @@
 	                 <div class="place_info">
 	                     <h3>${placeList.placename}</h3>
 	                     <p>${placeList.placeaddress}</p>
-	                     <a href="#">더 알아보기</a>
+	                     <a href="<c:url value="/place/detail?placeidx=${placeList.placeidx}"/>">더 알아보기</a>
 	                 </div>
 	                 <div class="place_img">
 	                 	<c:if test="${empty img}">
@@ -152,6 +152,8 @@
 				})
 			}
 		}
+		
+		
 	</script>
 	
 	

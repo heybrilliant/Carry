@@ -11,7 +11,7 @@ import com.project.gymcarry.place.PlaceDto;
 
 
 @Service
-public class PlaceHealthListService {
+public class PlaceHealthService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
@@ -21,6 +21,12 @@ public class PlaceHealthListService {
 	public List<PlaceDto> getHealthPlaceList(int placenum) {
 		dao = template.getMapper(PlaceDao.class);
 		return dao.selectHealthPlaceList(placenum);
+	}
+	
+	// 헬스 플레이스 상세 정보 
+	public PlaceDto getHealthPlaceInfo(int placeidx) {
+		dao = template.getMapper(PlaceDao.class);
+		return dao.selectHealthPlaceInfo(placeidx);
 	}
 	
 }

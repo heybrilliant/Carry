@@ -146,6 +146,7 @@
 .place_list .place_content.on .place_info a {
 	background:#fff;
 	color:#333;
+	border:none;
 }
 .place_list .place_content.on .place_info a:hover {
 	background:#000;
@@ -153,8 +154,26 @@
 }
 
 .map_in_place_name {
-	background:rgba(0,0,0,0.5);
+	background:rgba(0,0,0,0.7);
 	text-align:center;
 	border:none;
-	padding:15px;
+	padding:10px;
+	width:100%;
+	color:#fff;
+	display:block;
+	border-radius:5px;
+	font-size:13px;
+	white-space: pre-wrap;
+	word-break:keep-all;
+}
+#map > div > div > div:last-child > div {
+	background:transparent !important;
+	border:0 !important;
+	width:150px!important;
+}
+#map > div > div > div:last-child > div > div:first-child {
+	display:none!important;
+}
+#map > div > div > div:last-child > div > div:last-child {
+	width:100%!important;
 }

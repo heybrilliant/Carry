@@ -6,10 +6,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.gymcarry.dao.PlaceDao"> 
 
 
-	<!-- 헬스 플레이스 전체 정보 출력 -->
+	<!-- 플레이스 전체 정보 출력 -->
 	<select id="selectHealthPlaceList"
 		resultType="com.project.gymcarry.place.PlaceDto">
 		select * from place where placenum = #{placenum}
+	</select>
+	
+	<!-- 플레이스 상세 정보 출력 -->
+	<select id="selectHealthPlaceInfo"
+		resultType="com.project.gymcarry.place.PlaceDto">
+		select * from place where placeidx = #{placeidx}
 	</select>
 	
 
