@@ -23,5 +23,11 @@ public interface CarryDao {
 	// 캐리 리뷰 작성
 	int addCarryReview(CarryReviewDto reviewDto);
 	
+	// 매칭 캐리 리스트 - 여자
+	List<CarryDto> selectCarryListF();
+	// 매칭 캐리 리스트 - 남자
+	List<CarryDto> selectCarryListM();
+
+	
 	
 }

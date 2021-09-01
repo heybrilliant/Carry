@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.MessageDto;
@@ -21,8 +20,6 @@ public interface MatchingDao {
 	// 캐리 채팅방 리스트
 	List<ChatListDto> selectCarryChatList(int cridx);
 
-	// 매칭캐리리스트
-	List<CarryDto> selectCarryList();
 
 	// 사용자 채팅방 가져오기
 	ChatListDto selectByChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
