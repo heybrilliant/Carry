@@ -24,16 +24,16 @@ public class MatchingChatRoomService {
 		return dao.insertAddChatRoom(cridx, memidx);
 	}
 
-	// 채팅방 중복 확인
-	public List<ChatListDto> getByChatRoom(int memidx) {
+	// 사용자 아이디로 채팅룸 가져오기
+	public ChatListDto getByChatRoom(int cridx, int memidx) {
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectByChatRoom(memidx);
+		return dao.selectByChatRoom(cridx, memidx);
 	}
-
-	// 채팅방 찾기
-	public ChatListDto getChatRoom(int chatidx) {
+	
+	// 채팅룸 중복확인
+	public int getByChatIdx(int chatidx) {
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectChatRoom(chatidx);
+		return dao.selectByChatIdx(chatidx);
 	}
 
 	// 대화내용 저장
@@ -41,9 +41,5 @@ public class MatchingChatRoomService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.insertChatContent(messageDto);
 	}
-//	public int insertChatContent(int chatidx, String chatContent, int cridx, int memidx, int contenttype) {
-//		dao = template.getMapper(MatchingDao.class);
-//		return dao.insertChatContent(chatidx, chatContent, cridx, memidx, contenttype);
-//	}
 
 }

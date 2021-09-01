@@ -45,19 +45,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.project.gymcarry.chatting.ChatListDto"
 		useGeneratedKeys="true">
 		insert into chatlist(cridx, memidx)
-		value(#{cridx},#{memidx})
+		value(#{cridx}, #{memidx})
 	</insert>
 
-	<!-- 채팅룸 중복 -->
+	<!-- 사용자 채팅방 가져오기 -->
 	<select id="selectByChatRoom"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select * from chatlist where memidx=#{param}
+		select chatidx from chatlist where cridx=#{cridx} and memidx=#{memidx}
 	</select>
 
-	<!-- 채팅방 찾기 -->
-	<select id="selectChatRoom"
+	<!-- 채팅방 중복,찾기 -->
+	<select id="selectByChatIdx"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select * from chatlist where chatidx=#{param}
+		select count(*) from chatlist where chatidx=#{chatidx}
 	</select>
 
 	<!-- 대화내용 저장 -->

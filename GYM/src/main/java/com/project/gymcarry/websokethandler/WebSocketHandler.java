@@ -1,6 +1,5 @@
 package com.project.gymcarry.websokethandler;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,7 +9,6 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -21,7 +19,6 @@ import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
 import com.project.gymcarry.member.SessionDto;
 
-@Controller
 public class WebSocketHandler extends TextWebSocketHandler {
 
 	@Autowired
@@ -80,10 +77,6 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		Gson gson = new Gson();
 		MessageDto messageDto = gson.fromJson(message.getPayload(), MessageDto.class);
 		messageDto.setContenttype(contenttype);
-
-		// 메세지보낸사람의 chatidx로 해당 채팅방을 찾는다.
-		// ChatListDto chatListDto =
-		// matchingChatRoomService.getChatRoom(messageDto.getChatidx());
 
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));

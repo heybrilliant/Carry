@@ -20,6 +20,7 @@
 				<h3>${loginSession.memnick}</h3>
 			</div>
 				<!-- 채팅방 리스트 시작 -->
+				<div class="chatList_scr">
 				<c:forEach items="${chatList}" var="list">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
@@ -47,6 +48,7 @@
 						</button>
 					</div>
 				</c:forEach>
+				</div>
 				</c:if>
 				
 				<c:if test="${loginSession.crnick ne null}">

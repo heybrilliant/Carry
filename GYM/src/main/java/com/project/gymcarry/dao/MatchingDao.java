@@ -24,14 +24,14 @@ public interface MatchingDao {
 	// 매칭캐리리스트
 	List<CarryDto> selectCarryList();
 
+	// 사용자 채팅방 가져오기
+	ChatListDto selectByChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
+
+	// 채팅방 중복확인 
+	Integer selectByChatIdx(int chatidx);
+	
 	// 채팅방 생성
 	int insertAddChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
-
-	// 채팅방 중복확인
-	List<ChatListDto> selectByChatRoom(int memidx);
-
-	// 채팅방 찾기
-	ChatListDto selectChatRoom(int chatidx);
 
 	// 대화내용 insert
 	int insertChatContent(MessageDto messageDto);
