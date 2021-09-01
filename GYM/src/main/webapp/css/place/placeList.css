@@ -151,3 +151,10 @@
 	background:#000;
 	color:#fff;
 }
+
+.map_in_place_name {
+	background:rgba(0,0,0,0.5);
+	text-align:center;
+	border:none;
+	padding:15px;
+}

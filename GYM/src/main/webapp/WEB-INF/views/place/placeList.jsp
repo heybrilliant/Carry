@@ -86,7 +86,7 @@
 		var positions = new Array();
 		
 		<c:forEach items="${placeList}" var="placeList" varStatus="status">
-			positions.push({content : '<div>${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
+			positions.push({content : '<div class="map_in_place_name">${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
 		</c:forEach> 
 		
 		console.log(positions[0])
@@ -126,11 +126,12 @@
 		    };
 		}
 		
+		// 마커 클릭시 해당하는 place list로 스크롤 이동
 		function makeClickListener(marker, i){
 			return function(){
-				var markeridx = i;
+				var idx = i + 1;
 				var window_y = window.scrollY;
-				var content_top = $('.place_list .place_content:nth-child(' + i + ')').offset().top
+				var content_top = $('.place_list .place_content:nth-child(' + idx + ')').offset().top
 				
 				window.scrollTo({
 					top: content_top - 200,
@@ -138,22 +139,19 @@
 				});
 				
 				
-				$('.place_list .place_content:nth-child(' + i + ')').addClass('on');
+				$('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
 				
 				
 				$(window).scroll(function(){
-					var test = $(window).scrollTop();
-					console.log('test : ' + test);
-					console.log('window_y : ' + window_y);				
+					var window_top = $(window).scrollTop() + 500;
+					if(window_top > content_top) {
+						$('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
+					} else {
+						$('.place_list .place_content:nth-child(' + idx + ')').removeClass('on');
+					}		
 				})
-				console.log('content : ' + content_top)
 			}
 		}
-		
-		/* $(window).scroll(function(){
-					var test1 = window.scrollY;
-		console.log('test1' + test1)
-		}); */
 	</script>
 	
 	
