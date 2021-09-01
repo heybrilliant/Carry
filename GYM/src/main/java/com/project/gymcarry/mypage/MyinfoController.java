@@ -7,11 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.SessionDto;
 
 @Controller
-@RequestMapping("/mypage/mypage")
-public class MypageController {
+@RequestMapping("/mypage/myinfo")
+public class MyinfoController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String regForm(HttpServletRequest request) throws Exception {
@@ -20,14 +21,12 @@ public class MypageController {
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 
 		System.out.println("세션 변수" + sdt.getMemidx());
-		System.out.println("세션 변수" + sdt.getMemname());
-		System.out.println("세션 변수" + sdt.getMemnick());
-
-		 session.setAttribute("name",sdt.getMemname());
 		
-		System.out.println("마이페이지 진입");
+		 session.setAttribute("idx",sdt.getMemidx());
+		
+		System.out.println("인포수정 페이지 진입");
 
-		return "/mypage/mypage";
+		return "/mypage/myinfo";
 	}
 
 }

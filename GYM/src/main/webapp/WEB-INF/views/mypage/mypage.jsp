@@ -5,16 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Servey</title>
+<title>Mypage</title>
 
 
-<link rel="stylesheet" href="/gym/css/grid.css">
+<link rel="stylesheet" href="/gym/css/mypage/grid.css">
 
 <!-- jQuery -->
- <script
-          src="https://code.jquery.com/jquery-3.5.1.min.js"
-          integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-          crossorigin="anonymous"></script> <!--제이쿼리 CDN-->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+	crossorigin="anonymous"></script>
+<!--제이쿼리 CDN-->
 
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -24,7 +24,7 @@
 
 
 <!-- bootstrap -->
-<link rel="stylesheet" href="/gym/css/bootstrap.css">
+<link rel="stylesheet" href="/gym/css/mypage/bootstrap.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
@@ -107,17 +107,16 @@
 						<h3 class="info_title">My page</h3>
 						<ul class="info_contents">
 
-							<li class="info_list"><a href="#">내 기본 정보 수정</a></li>
-							<li class="info_list"><a href="#">내가 작성한 글</a></li>
+							<li class="info_list"><a
+								href="<c:url value="/mypage/myinfo"/>">내 기본 정보 수정</a></li>
+							<li class="info_list"><a
+								href="<c:url value="/mypage/mycommunity"/>">내가 작성한 글</a></li>
 							<li class="info_list"><a href="#">내 결제 내역</a></li>
 							<li class="info_list"><a href="#">내가 찜한 캐리</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-right">
-
-
-
 
 					<div class="col-right-top">
 						<input type="text" id="alternate" size="30">
@@ -177,7 +176,7 @@
 								</span>
 							</div>
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button" id="reg_submit"> 확인 </button>
+								<button class="btn" type="button" id="reg_submit">확인</button>
 							</div>
 						</div>
 					</form>
@@ -208,7 +207,7 @@
 								</span>
 							</div>
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button" id=""> 확인 </button>
+								<button class="btn" type="button" id="">확인</button>
 							</div>
 						</div>
 					</form>
@@ -245,7 +244,7 @@
 							</div>
 
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button" "> 확인 </button>
+								<button class="btn" type="button"">확인</button>
 							</div>
 						</div>
 					</form>
@@ -276,7 +275,7 @@
 								</span>
 							</div>
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button" "> 확인 </button>
+								<button class="btn" type="button"">확인</button>
 							</div>
 
 						</div>

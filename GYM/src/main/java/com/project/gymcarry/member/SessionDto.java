@@ -7,71 +7,57 @@ public class SessionDto {
 	private int cridx;
 	private String crname;
 	private String crnick;
-	
 
 	public SessionDto() {
 	}
-
 
 	public int getMemidx() {
 		return memidx;
 	}
 
-
 	public void setMemidx(int memidx) {
 		this.memidx = memidx;
 	}
-
 
 	public String getMemname() {
 		return memname;
 	}
 
-
 	public void setMemname(String memname) {
 		this.memname = memname;
 	}
-
 
 	public String getMemnick() {
 		return memnick;
 	}
 
-
 	public void setMemnick(String memnick) {
 		this.memnick = memnick;
 	}
-
 
 	public int getCridx() {
 		return cridx;
 	}
 
-
 	public void setCridx(int cridx) {
 		this.cridx = cridx;
 	}
-
 
 	public String getCrname() {
 		return crname;
 	}
 
-
 	public void setCrname(String crname) {
 		this.crname = crname;
 	}
-
 
 	public String getCrnick() {
 		return crnick;
 	}
 
-
 	public void setCrnick(String crnick) {
 		this.crnick = crnick;
 	}
-
 
 	public SessionDto(int memidx, String memname, String memnick, int cridx, String crname, String crnick) {
 		super();
@@ -83,13 +69,10 @@ public class SessionDto {
 		this.crnick = crnick;
 	}
 
-
 	@Override
 	public String toString() {
 		return "SessionDto [memidx=" + memidx + ", memname=" + memname + ", memnick=" + memnick + ", cridx=" + cridx
 				+ ", crname=" + crname + ", crnick=" + crnick + "]";
 	}
-
-	
 
 }

@@ -16,22 +16,19 @@ import com.project.gymcarry.member.service.LoginService;
 
 @Controller
 public class CarryLoginController {
-	
+
 	@Autowired
 	private LoginService loginService;
-	
+
 	@GetMapping("/carry/login")
 	public String carryLoginForm() {
 		return "member/carryLoginForm";
 	}
-	
+
 	// 로그인 세션 저장
 	@PostMapping("/carry/carryLogin")
-	public String carryLogin(
-			@RequestParam("crid") String id, 
-			@RequestParam("crpw") String pw,
-			HttpServletRequest request,
-			Model model) {
+	public String carryLogin(@RequestParam("crid") String id, @RequestParam("crpw") String pw,
+			HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		SessionDto sessionDto = loginService.carryLogin(id, pw);
 		if (sessionDto != null) {
@@ -41,7 +38,7 @@ public class CarryLoginController {
 			return "carry/loginForm";
 		}
 	}
-	
+
 	// 로그아웃 세션 삭제
 	@GetMapping("carry/logOut")
 	public String carryLogOut(HttpServletRequest request) {
