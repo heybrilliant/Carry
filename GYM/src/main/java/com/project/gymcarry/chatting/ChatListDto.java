@@ -1,7 +1,5 @@
 package com.project.gymcarry.chatting;
 
-import java.sql.Timestamp;
-
 public class ChatListDto {
 	
 	private int chatidx;
@@ -10,13 +8,13 @@ public class ChatListDto {
 	private String crnick;
 	private String memnick;
 	private String placename;
-	private Timestamp chatdate;
+	private String chatdate;
 	private String chatcontent;
 	private int chatread;
 	public ChatListDto() {
 	}
 	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String memnick, String placename,
-			Timestamp chatdate, String chatcontent, int chatread) {
+			String chatdate, String chatcontent, int chatread) {
 		super();
 		this.chatidx = chatidx;
 		this.cridx = cridx;
@@ -64,10 +62,10 @@ public class ChatListDto {
 	public void setPlacename(String placename) {
 		this.placename = placename;
 	}
-	public Timestamp getChatdate() {
+	public String getChatdate() {
 		return chatdate;
 	}
-	public void setChatdate(Timestamp chatdate) {
+	public void setChatdate(String chatdate) {
 		this.chatdate = chatdate;
 	}
 	public String getChatcontent() {
@@ -88,5 +86,4 @@ public class ChatListDto {
 				+ ", memnick=" + memnick + ", placename=" + placename + ", chatdate=" + chatdate + ", chatcontent="
 				+ chatcontent + ", chatread=" + chatread + "]";
 	}
-	
 }

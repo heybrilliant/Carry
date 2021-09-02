@@ -14,13 +14,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 멤버채팅룸 생성 리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select c.cridx, c.crnick, c.placename, l.chatidx, 
-		m.memnick, m.memidx
-		from
-		carry c, member m, chatlist l
-		where
-		l.cridx=c.cridx and
-		m.memidx=l.memidx and m.memidx=#{memidx}
+		select *
+		from chatroom r, chatlist l, carry c, member m
+		where l.cridx=c.cridx and m.memidx=l.memidx and r.messageidx = (SELECT
+		MAX(r.MESSAGEIDX) from chatroom r where r.chatidx = l.chatidx and
+		m.memidx=#{memidx}) group by r.chatidx;
 	</select>
 
 	<!-- 캐리채팅룸 리스트 -->
@@ -45,37 +43,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.project.gymcarry.chatting.ChatListDto"
 		useGeneratedKeys="true">
 		insert into chatlist(cridx, memidx)
-		value(#{cridx}, #{memidx})
+		value(#{cridx},
+		#{memidx})
 	</insert>
 
 	<!-- 사용자 채팅방 가져오기 -->
 	<select id="selectByChatRoom"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select chatidx from chatlist where cridx=#{cridx} and memidx=#{memidx}
+		select chatidx from chatlist where cridx=#{cridx} and
+		memidx=#{memidx}
 	</select>
 
 	<!-- 채팅방 중복,찾기 -->
-	<select id="selectByChatIdx"
-		resultType="int">
-		select count(*) from chatlist where chatidx=#{param}
+	<select id="selectByChatIdx" resultType="int">
+		select count(*) from
+		chatlist where chatidx=#{param}
 	</select>
-	
+
 	<!-- 채팅방 리스트 대화내용 여부 -->
 	<select id="selectChatListContent"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		select chatcontent, chatdate from chatroom where chatidx=#{chatidx} order by chatdate desc limit 1
+		select chatcontent, chatdate from chatroom where
+		chatidx=#{chatidx} order by chatdate desc limit 1
 	</select>
-	
+
 	<!-- 대화내용 저장 -->
 	<insert id="insertChatContent"
 		parameterType="com.project.gymcarry.chatting.MessageDto"
 		useGeneratedKeys="true">
-		insert into chatroom (chatidx, chatcontent, cridx, memidx, contenttype)
-		values (#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
+		insert into chatroom (chatidx, chatcontent, cridx,
+		memidx, contenttype)
+		values
+		(#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
 	</insert>
-	
-	
-	
-	
+
+
+
+
 
 </mapper>

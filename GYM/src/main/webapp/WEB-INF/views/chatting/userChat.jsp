@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <title>1:1Chatting</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/chat/user_chat.css">
@@ -39,10 +40,11 @@
 							<div class="chat_title_img">
 							</div>
 							<div class="chat_content">
-								<span></span>
+								<span>${list.chatcontent}</span>
 							</div>
+							<fmt:formatDate value="${now}" pattern="HH:mm a" var="now" />
 							<div class="chat_date">
-								<span></span>
+								<span>${now}</span>
 							</div>
 						</button>
 					</div>
