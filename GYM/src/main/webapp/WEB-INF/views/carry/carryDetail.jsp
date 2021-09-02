@@ -23,18 +23,29 @@
 	<div class="container">
 		<div class="carry_image swiper-container mySwiper">
 			<ul class="swiper-wrapper">
+				<li class="swiper-slide">
+					<img src="<c:url value="/images/review1.jpg"/>">
+				</li>
+				
+				<li class="swiper-slide">
+					<img src="<c:url value="/images/review2.jpg"/>">
+				</li>
 				<li class="swiper-slide"><img
-					src="<c:url value="/images/review1.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review2.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review3.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review4.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review1.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review2.jpg"/>"></li>
+					src="<c:url value="/images/review3.jpg"/>">
+				</li>
+				
+				<li class="swiper-slide">
+					<img src="<c:url value="/images/review4.jpg"/>">
+				</li>
+				
+				<li class="swiper-slide">
+					<img src="<c:url value="/images/review1.jpg"/>">
+				</li>
+				
+				<li class="swiper-slide">
+				<img
+					src="<c:url value="/images/review2.jpg"/>">
+				</li>
 			</ul>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -124,6 +135,8 @@
 						</div>
 					</form>
 
+
+					<!-- 작성된 캐리 리뷰 리스트 -->
 					<c:forEach items="${carryReviewList}" var="carryReviewList">
 						<div class="review_list_section">
 							<div class="member_profile_image">
@@ -317,4 +330,35 @@
 
 			});
 		}
+		
+		function getReviewList() {
+			
+			$.ajax({
+				url : "<c:url value='/carry/reivew'/>",
+				type : 'POST',
+				dataType : 'json',
+				success : function(result) {
+					var reviews = "";
+					if(result.length < 1) {
+						reviews = "등록된 리뷰가 없습니다.";
+					} else {
+						$(result).each(function(){
+							reviews += <
+							
+						});
+					}
+					
+					
+				}
+				
+				
+				
+			});
+			
+			
+		};
+		
+		
+		
+		
 	</script>
