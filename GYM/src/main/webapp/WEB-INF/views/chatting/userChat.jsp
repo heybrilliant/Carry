@@ -42,7 +42,7 @@
 							<div class="chat_content">
 								<span>${list.chatcontent}</span>
 							</div>
-							<fmt:formatDate value="${now}" pattern="HH:mm a" var="now" />
+							<fmt:formatDate value="${now}" pattern="HH:mm" var="now" />
 							<div class="chat_date">
 								<span>${now}</span>
 							</div>
