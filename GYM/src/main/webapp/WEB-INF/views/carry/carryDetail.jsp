@@ -115,27 +115,27 @@
 
 				<!-- carry review section all wrap START -->
 				<div class="carry_review_all_wrap">
-				<div class="review_write_wrap" id="review">
-					<div class="carry_review_title">
-						<h2>캐리 후기</h2>
-						<input type="button" value="후기작성" id="write_review_btn">
-					</div>
-
-					<!-- 리뷰 작성 입력폼 -->
-					<form id="reviewForm" name="reviewForm" method="post">
-						<div id="review_write" class="review_write display_none">
-							<textarea class="review_input" rows="2" cols="30"
-								name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
-							<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
-						
-						
-							<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
-							<input type ="hidden" name="reviewdate" value="${now}">
-							<input type="hidden" id="cridx" name="cridx" value="${carryDetail.cridx}">
-							<input type="hidden" id="memidx" name="memidx" value="${loginSession.memidx}">
+					<div class="review_write_wrap" id="review">
+						<div class="carry_review_title">
+							<h2>캐리 후기</h2>
+							<input type="button" value="후기작성" id="write_review_btn">
 						</div>
-					</form>
-				</div>
+
+						<!-- 리뷰 작성 입력폼 -->
+						<form id="reviewForm" name="reviewForm" method="post">
+							<div id="review_write" class="review_write display_none">
+								<textarea class="review_input" rows="2" cols="30"
+									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
+								<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
+						
+						
+								<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
+								<input type ="hidden" name="reviewdate" value="${now}">
+								<input type="hidden" id="cridx" name="cridx" value="${carryDetail.cridx}">
+								<input type="hidden" id="memidx" name="memidx" value="${loginSession.memidx}">
+							</div>
+						</form>
+					</div>
 
 				
 					<!-- 작성된 캐리 리뷰 리스트 -->
@@ -145,17 +145,23 @@
 							<div class="member_profile_image">
 								<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">
 							</div>
-
+							<!--
 							<div class="review_content">
 								<span class="review_name">${carryReviewList.memnick}</span>
 								<span class="review_date">${carryReviewList.reviewdate}</span>
 								<br>
 								<span>${carryReviewList.reviewcontent}</span>
 							</div>
+							-->
+							<div class="review_content">
+								<span class="review_name"></span>
+								<span class="review_date"></span>
+								<br>
+								<span></span>
+							</div>
 						</div>
 					</div>
-				
-				
+
 				</div>
 				<!-- carry review section all wrap END -->
 
@@ -283,20 +289,6 @@
 			<!-- 우측 배너 END -->
 
 		</div>
-<!-- 
-
-		<div id="reviewlistbtn"
-			style="margin-top: 100px; cursor: pointer; background-color: #ddd; width: 100px;">
-			리뷰 리스트</div>
-		<div id="review_list" style="padding-top: 20px;">
-			<table id="review_tb">
-				<tr>
-					<th>닉네임</th>
-					<th>리뷰 내용</th>
-					<th>작성일자</th>
-				</tr>
-			</table>
-		</div> -->
 
 	</div>
 	<!-- Contents END -->
@@ -310,7 +302,7 @@
 	<script>
 	
 	
-	// 리뷰리스트 버튼 클릭시 이벤트 발생
+	// 페이지 진입시 이벤트 발생
 	$(document).ready(function(){
 		
 			reviewList();

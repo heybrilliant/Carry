@@ -2,6 +2,7 @@ package com.project.gymcarry.carry.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,8 @@ import com.project.gymcarry.carry.CarryCertiDto;
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
+import com.project.gymcarry.carry.Criteria;
+import com.project.gymcarry.carry.Paging;
 import com.project.gymcarry.carry.service.CarryInfoService;
 import com.project.gymcarry.place.PlaceDto;
 
@@ -70,7 +73,7 @@ public class CarryDetailController {
 		return "carry/carryDetail";
 	}
 
-	
+
 	// 캐리 리뷰 리스트 출력
 	@PostMapping("/carry/list")
 	@ResponseBody
@@ -108,5 +111,33 @@ public class CarryDetailController {
 	}
 	
 	
-	
+/*
+		// 캐리 리뷰 리스트 출력  (페이징처리)
+		@PostMapping("/carry/list2")
+		@ResponseBody
+		public String reviewList2(
+				Criteria cri,
+				Model model, 
+				@RequestParam("cridx") int cridx
+				) {
+
+			// 전체 게시글 개수
+			int ReviewCnt = carryInfoService.reviewCnt();
+			
+			// 페이징 객체
+			Paging paging = new Paging();
+			paging.setCri(cri);
+			paging.setTotalCount(ReviewCnt);
+			// TotalCount에 SQL count(*)문을 통해 얻은 리뷰의 개수를 세팅
+			
+			List<Map<String, Object>> pagingReviewList = carryInfoService.pagingReviewList(cri);
+			
+			model.addAttribute("pagingReviewList", pagingReviewList);
+			model.addAttribute("paging", paging);
+			
+			return "reviewList";
+		}
+		
+*/
+		
 }
