@@ -38,16 +38,12 @@
 							</div>
 							<div class="chat_title_img">
 							</div>
-							<c:if test="${list.chatidx eq chat.chatidx}">
 							<div class="chat_content">
-								<span>${chat.chatcontent}
-								</span>
+								<span></span>
 							</div>
 							<div class="chat_date">
-								<span> ${chat.chatdate}
-								</span>
+								<span></span>
 							</div>
-							</c:if>
 						</button>
 					</div>
 				</c:forEach>
@@ -147,12 +143,11 @@
 			$('#msg').focus();
 			
 			$('#btnSend').click(function(event){
+				
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
 					var msg = $('input#msg').val();
-					//sock.send(msg);
 					sendMessage();
-					
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
 					$("#output").scrollTop($(document).height());
@@ -288,6 +283,20 @@
 	</script>
 
 	<script>
+	
+		$.ajax({
+			type : 'GET',
+			url : '<c:url value="/chatting/message"/>'
+			dataType : 'json',
+			data : {
+				message : $('#msg').val();
+			},
+			success : function(data){
+				alert('성공', data);
+			}
+		});
+	
+	
 		// 채팅방 대화내용 리스트
 		function chatList(num) {
 			$.ajax({

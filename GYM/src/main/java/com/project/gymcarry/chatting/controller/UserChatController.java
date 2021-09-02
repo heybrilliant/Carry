@@ -62,7 +62,6 @@ public class UserChatController {
 		model.addAttribute("chatList", list);
 		List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());
 		model.addAttribute("carryChatList", lists);
-		System.out.println(chatidx);
 		ChatRoomDto chatRoomDto = matchingChatRoomService.getByChatContent(chatidx);
 		model.addAttribute("chat", chatRoomDto);
 		return "chatting/userChat";
