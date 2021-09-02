@@ -284,7 +284,7 @@
 
 	<script>
 	
-		$.ajax({
+/* 		$.ajax({
 			type : 'GET',
 			url : '<c:url value="/chatting/message"/>'
 			dataType : 'json',
@@ -294,7 +294,7 @@
 			success : function(data){
 				alert('성공', data);
 			}
-		});
+		}); */
 	
 	
 		// 채팅방 대화내용 리스트
