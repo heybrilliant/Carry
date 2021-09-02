@@ -79,11 +79,11 @@
       </div>
     </div>
   </div>
-  <!-- Contents end -->u
-	
-	
+  <!-- Contents end -->
+
 	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	
 </body>
 </html>

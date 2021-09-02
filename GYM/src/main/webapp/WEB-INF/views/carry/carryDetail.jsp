@@ -114,7 +114,8 @@
 
 
 				<!-- carry review section all wrap START -->
-				<div class="carry_review_wrap" id="review">
+				<div class="carry_review_all_wrap">
+				<div class="review_write_wrap" id="review">
 					<div class="carry_review_title">
 						<h2>캐리 후기</h2>
 						<input type="button" value="후기작성" id="write_review_btn">
@@ -134,14 +135,15 @@
 							<input type="hidden" id="memidx" name="memidx" value="${loginSession.memidx}">
 						</div>
 					</form>
+				</div>
 
-
+				
 					<!-- 작성된 캐리 리뷰 리스트 -->
-					<c:forEach items="${carryReviewList}" var="carryReviewList">
+					<%-- <c:forEach items="${carryReviewList}" var="carryReviewList"> --%>
+					<div class="review_list_wrap" id="review_sec">	
 						<div class="review_list_section">
 							<div class="member_profile_image">
-								<img src="<c:url value="/images/icon/profile.png"/>"
-									style="width: 50px">
+								<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">
 							</div>
 
 							<div class="review_content">
@@ -150,9 +152,10 @@
 								<br>
 								<span>${carryReviewList.reviewcontent}</span>
 							</div>
-
 						</div>
-					</c:forEach>
+					</div>
+				
+				
 				</div>
 				<!-- carry review section all wrap END -->
 
@@ -280,20 +283,108 @@
 			<!-- 우측 배너 END -->
 
 		</div>
+<!-- 
+
+		<div id="reviewlistbtn"
+			style="margin-top: 100px; cursor: pointer; background-color: #ddd; width: 100px;">
+			리뷰 리스트</div>
+		<div id="review_list" style="padding-top: 20px;">
+			<table id="review_tb">
+				<tr>
+					<th>닉네임</th>
+					<th>리뷰 내용</th>
+					<th>작성일자</th>
+				</tr>
+			</table>
+		</div> -->
 
 	</div>
 	<!-- Contents END -->
+
+
 
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	
 	<script>
-	  document.getElementById('currentDatetime').value= new Date().toISOString().slice(0, 18);
-	</script>
-	0  
-	<script>
-	  // place 이미지 슬라이드
+	
+	
+	// 리뷰리스트 버튼 클릭시 이벤트 발생
+	$(document).ready(function(){
+		
+			reviewList();
+		
+	});
+
+	
+	// 리뷰리스트 출력 ajax
+	function reviewList() {
+		
+		$.ajax({
+			url : '<c:url value="/carry/list"/>',
+			type : 'POST',
+			datatype : 'json',
+			data : { 
+				cridx:$("#cridx").val()
+		},
+		success : function(data) {
+			if(data.Code == 0){
+				for (i = 0; i < data.data.length; i++) {
+					var tag = '<div class="review_list_section">' +
+								'<div class="member_profile_image">' +
+									'<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">' +
+							    '</div>' + 
+									'<div class="review_content">' + 
+										'<span class="review_name">' + data.data[i].memnick + '</span>' +
+										'<span class="review_date">' + data.data[i].reviewdate + '</span>' +
+										'<br>' +
+										'<span>' + data.data[i].reviewcontent + '</span>' +
+									'</div>'
+								  
+						$('#review_sec').append(tag);
+											
+					}
+				
+				} else {
+					alert(data.Msg);
+				}
+						
+			},
+				error : function() {
+					alert("error");
+					
+				}
+				});
+				
+			}
+	
+	
+	
+	
+		// 리뷰 등록하기(Ajax)
+		function fn_review(code) {
+
+			$.ajax({
+				type : 'POST',
+				url : "<c:url value='/carry/add'/>",
+				data : $("#reviewForm").serialize(),
+				success : function() {
+					$(".review_input").val("");
+					alert('리뷰가 정상적으로 등록되었습니다.');
+					reviewList();
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:" + error);
+				}
+
+			});
+		}
+		
+
+		
+		 // place 이미지 슬라이드
 		var swiper = new Swiper(".mySwiper", {
 			spaceBetween : 0,
 			slidesPerView : 4,
@@ -307,58 +398,6 @@
 				clickable : true,
 			},
 		});
-	</script>
 
-
-	<script>
-		// 리뷰 등록하기(Ajax)
-		function fn_review(code) {
-
-			$.ajax({
-				type : 'POST',
-				url : "<c:url value='/carry/detail'/>",
-				data : $("#reviewForm").serialize(),
-				success : function() {
-					$(".review_input").val("");
-					alert('리뷰가 정상적으로 등록되었습니다.');
-
-				},
-				error : function(request, status, error) {
-					alert("code:" + request.status + "\n" + "message:"
-							+ request.responseText + "\n" + "error:" + error);
-				}
-
-			});
-		}
-		
-		function getReviewList() {
-			
-			$.ajax({
-				url : "<c:url value='/carry/reivew'/>",
-				type : 'POST',
-				dataType : 'json',
-				success : function(result) {
-					var reviews = "";
-					if(result.length < 1) {
-						reviews = "등록된 리뷰가 없습니다.";
-					} else {
-						$(result).each(function(){
-							reviews += <
-							
-						});
-					}
-					
-					
-				}
-				
-				
-				
-			});
-			
-			
-		};
-		
-		
-		
-		
-	</script>
+		 
+</script>
