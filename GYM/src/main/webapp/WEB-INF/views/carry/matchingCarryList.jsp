@@ -18,11 +18,14 @@
   <div class="content_wrap">
     <div class="content">
     <h1 class="match_title">당신과 함께할 캐리를 소개합니다 !</h1>
-     <nav class="top">
+    <div class="re_survey">
+    	<a href="<c:url value="/survey/survey"/>">다른 매칭을 원하신다면?</a>
+    </div>
+<!--      <nav class="top">
   	 	<div class="sort">
           	<span>인기순 / 가격순</span>
      	</div>
-      </nav>
+      </nav> -->
       <div class="card_main">
       <c:forEach items="${matchingList}" var="mlist">
         <div class="card">
@@ -32,7 +35,7 @@
 			<input type="hidden" value="${sv4}" name="sv4">
           </div>
           <div class="board_main">
-            <div class="place_badge">${mlist.placename}</div>
+            <div class="place_badge" onclick="location.href='<c:url value="/place/detail"/>'">${mlist.placename}</div>
             <div class="carry_price">
               <span>수업 1회 이용권</span>
               <h3>${mlist.proprice1}원</h3>

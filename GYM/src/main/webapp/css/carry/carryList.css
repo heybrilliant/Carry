@@ -24,6 +24,24 @@ body {
 	margin: 3rem auto;
 }
 
+.re_survey{
+	text-align: center;
+	float: center;
+	font-size: 20px;
+	margin-top: 20px;
+	margin-bottom: 110px;
+}
+
+.re_survey a {
+	color: #AAA;
+	text-decoration:underline;
+}
+
+.re_survey a:hover {
+	cursor: pointer;
+	color: #CCC;
+}
+
 .match_btn {
 	border: 1px solid #AAA;
 	background-color: white;
@@ -62,8 +80,8 @@ body {
 	font-weight: 900;
 	line-height: 0.8;
 	text-align: center;
-	margin-top: 25px;
-	margin-bottom: 100px;
+	margin-top: 60px;
+	margin-bottom: 10px;
 }
 
 /* Nav 영역 */

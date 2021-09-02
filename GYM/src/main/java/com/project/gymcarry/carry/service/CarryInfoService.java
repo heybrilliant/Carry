@@ -63,6 +63,11 @@ public class CarryInfoService {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectAllCarryList();
 	}
+	// 전체 캐리 리스트 - 가격순
+	public List<CarryListDto> getAllCarryListP() {
+		dao = template.getMapper(CarryDao.class);
+		return dao.selectAllCarryListP();
+	}
 	
 	
 	// 매칭 캐리리스트 - [여자/헬스]

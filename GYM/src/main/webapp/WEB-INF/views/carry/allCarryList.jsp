@@ -28,7 +28,7 @@
           </li>
         </ul>
         <div class="sort">
-          <span>인기순 / 가격순</span>
+          <span><a href='<c:url value="/carry/allListP"/>'>가격순</a> / <a href="#">인기순</a></span>
         </div>
       </nav>
       <div class="card_main">
@@ -40,7 +40,7 @@
 			<input type="hidden" value="${sv4}" name="sv4">
           </div>
           <div class="board_main">
-            <div class="place_badge">${alist.placename}</div>
+            <div class="place_badge" onclick="location.href='<c:url value="/place/detail"/>'">${alist.placename}</div>
             <div class="carry_price">
               <span>수업 1회 이용권</span>
               <h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${alist.proprice1}"/>원</h3>

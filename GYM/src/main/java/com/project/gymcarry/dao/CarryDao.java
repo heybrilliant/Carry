@@ -27,6 +27,8 @@ public interface CarryDao {
 	
 	// 전체 캐리 리스트
 	List<CarryListDto> selectAllCarryList();
+	// 전체 캐리 리스트 - 가격순
+	List<CarryListDto> selectAllCarryListP();
 	
 	// 매칭 캐리 리스트 - [여자/헬스]
 	List<CarryListDto> selectCarryListFH();

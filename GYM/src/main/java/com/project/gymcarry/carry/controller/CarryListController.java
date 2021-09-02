@@ -30,6 +30,17 @@ public class CarryListController {
 		return "carry/allCarryList";
 	}
 	
+	// 전체 캐리 리스트 출력 (nav - 1:1 MATCHING 클릭시 이동)
+	@GetMapping("carry/allListP")
+	public String allCarryListP(Model model) {
+		List<CarryListDto> alist = carryInfoService.getAllCarryListP();
+		model.addAttribute("allList", alist);
+		
+		System.out.println("전체 캐리 리스트 출력");
+		
+		return "carry/allCarryList";
+	}
+	
 	
 	// 매칭된 캐리 리스트 출력 (설문 조사 후 출력되는 리스트)
 	@GetMapping("carry/matchingList")
