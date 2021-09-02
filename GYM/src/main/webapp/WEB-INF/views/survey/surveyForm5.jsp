@@ -17,7 +17,7 @@
 					<div class="survey_h1">
 						<div class="survey_page">
 							<p>
-								<span>03</span> / 05
+								<span>05</span> / 05
 							</p>
 						</div>
 						<h1>선호하는 수업 요일이 있으신가요?</h1>
@@ -45,7 +45,7 @@
 							</li>
 						</ul>
 						<div class="next_btn">
-							<input type="submit" value="다음">
+							<input type="submit" value="결과보기">
 						</div>
 					</div>
 					<input type="hidden" value="${sv1}" name="sv1">

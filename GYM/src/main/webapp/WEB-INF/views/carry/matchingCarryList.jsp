@@ -17,10 +17,10 @@
   <div class="content_main">
   <div class="content_wrap">
     <div class="content">
-    <h1 class="match_title">당신과 딱 맞는 캐리를 소개합니다 !</h1>
+    <h1 class="match_title">당신과 함께할 캐리를 소개합니다 !</h1>
      <nav class="top">
   	 	<div class="sort">
-          	<span>찜순 / 가격순</span>
+          	<span>인기순 / 가격순</span>
      	</div>
       </nav>
       <div class="card_main">
@@ -50,7 +50,7 @@
                   <li>${mlist.crcerti3}</li>
                 </ul>
               </div>
-              <div class="board_bottom">
+              <div class="bottom_btn">
                 <ul class="board_btn">
                   <li>
                   	<input type="button" value="1:1문의" class="inquiry_btn"

@@ -17,6 +17,9 @@ insert into crprice values ('1', '49000', '230000', '460000', '930000');
 insert into crprice values ('2', '48000', '245000', '473000', '952000');
 insert into crprice values ('3', '47000', '250000', '480000', '990000');
 insert into crprice values ('4', '50000', '260000', '490000', '916000');
+insert into crprice values ('5', '42300', '255000', '470000', '932000');
+insert into crprice values ('6', '50000', '260000', '490000', '954000');
+insert into crprice values ('7', '50000', '280000', '433000', '971000');
 
 
 

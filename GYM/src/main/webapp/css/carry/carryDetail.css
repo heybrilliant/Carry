@@ -136,7 +136,7 @@ hr {
 
 .carry_nick {
 	margin-left: 12px;
-	font-size: 20px;
+	font-size: 21px;
 	color: gray;
 }
 
@@ -371,7 +371,8 @@ hr {
 
 .right_banner h2 {
 	text-align: center;
-	margin-bottom: 20px;
+	font-size: 27px;
+	margin-bottom: 17px;
 }
 
 .right_banner span {
@@ -382,11 +383,12 @@ hr {
 	font-size: 20px;
 }
 
+
 #c2 {
 	/* 블럭의 사이즈 */
 	width: 180px;
 	height: 180px;
-	margin: 20px 50px;
+	margin: 16px 50px 10px 50px;
 	/* 테두리 */
 	border: 1px solid #DDD;
 	/* 네모 박스를 -> 원으로 만들기 */
@@ -396,25 +398,26 @@ hr {
 	background-size: cover;
 }
 
-.program_info {
-	float: left;
+
+.program_all {
+	margin-top : 20px;
 }
 
 .program {
-	margin-bottom: 8px;
+	margin-bottom: 12px;
 	height: 70px;
 	border: 1px solid #DDD;
 	border-radius: 10px;
 	padding: 13px 20px;
 }
 
+.program_info {
+	float: left;
+}
+
 #purchase_btn {
 	float: right;
 	padding: 10px 0px;
-}
-
-.program_all {
-	margin-top : 30px;
 }
 
 #program_all input {

@@ -20,15 +20,15 @@
   <div class="content_main">
     <div class="content_wrap">
     <div class="content">
-	<h1 class="all_title">당신과 어울리는 캐리는 ?</h1>
+	<h1 class="all_title">함께할 캐리를 찾고 싶으신가요?</h1>
 	 <nav class="top">
         <ul>
           <li>
-            <input type="button" class="match_btn" value="지금 바로 1:1 매치하러가기" onclick="location.href='<c:url value="/survey/survey"/>'">
+            <input type="button" class="match_btn" value="지금 바로 1:1 매칭하러가기" onclick="location.href='<c:url value="/survey/survey"/>'">
           </li>
         </ul>
         <div class="sort">
-          <span>찜순 / 가격순</span>
+          <span>인기순 / 가격순</span>
         </div>
       </nav>
       <div class="card_main">
@@ -58,7 +58,7 @@
                   <li>${alist.crcerti3}</li>
                 </ul>
               </div>
-              <div class="board_bottom">
+              <div class="bottom_btn">
                 <ul class="board_btn">
                   <li>
                   	<input type="button" value="1:1문의" class="inquiry_btn"

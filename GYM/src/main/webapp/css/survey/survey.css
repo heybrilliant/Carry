@@ -47,6 +47,10 @@
     margin: 0px auto;
 }
 
+.survey_ul ul li{
+    margin: 0px auto;
+}
+
 .box-radio-input input[type="radio"]{
 	display:none;
 }
@@ -78,7 +82,9 @@
     width: 15%;
     height: 50px;
     font-size: 15px;
+    transition: 0.2s;
 }
+
 .next_btn:hover input{
     cursor: pointer;
 }
