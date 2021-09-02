@@ -18,17 +18,64 @@
         <div class="place_image swiper-container mySwiper">
             <ul class="swiper-wrapper">
            		<c:set var="imageLists" value="${placeDetail.placeimg}"/>
-             	<c:set var="length" value="${fn:length(imageLists)}"/>
-				<c:set var="img" value="${fn:substring(imageLists, 0, length-1)}"/>
-				<c:set var="imageurl" value="${fn:split(img, ',')}"/>
-				
-				<c:forEach items="${imageurl}" var="image" varStatus="status">
-            		<li class="swiper-slide">
-            			<c:set var="urlLength" value="${fn:length(image)}"/>
-            			<c:set var="Image" value="${fn:substring(image, 2, urlLength-1)}"/>
-	                    <img src="<c:out value="${Image}"/>">
-	                </li>
-                </c:forEach>
+					<c:set var="imageurl" value="${fn:split(imageLists, ', ')}"/>
+					<c:forEach items="${imageurl}" var="image" varStatus="status">
+			            <c:set var="imglen" value="${status.count}"/>
+		            
+	           			<c:if test="${!empty imageLists}">
+		            		<li class="swiper-slide">
+		            			<c:set var="urlLength" value="${fn:length(image)}"/>
+		            			<c:set var="Image" value="${fn:substring(image, 1, urlLength-1)}"/>
+			                    <img src="<c:out value="${Image}"/>">
+			                </li>
+		                </c:if>
+	                
+		            	<%-- <c:forEach items="${status.count}" var="roof" varStatus="vstatus">
+		                	<li><img src="<c:url value="/images/review${vstatus.count}.jpg"/>"></li>
+		                	<li><img src="<c:url value="/images/review2.jpg"/>"></li>
+		                	<li><img src="<c:url value="/images/review3.jpg"/>"></li>
+		                	<li><img src="<c:url value="/images/review4.jpg"/>"></li>
+		                	<li><img src="<c:url value="/images/review1.jpg"/>"></li>
+		                	<li><img src="<c:url value="/images/review2.jpg"/>"></li>
+	                	</c:forEach> --%>
+               		</c:forEach>
+
+                <c:set var="array" value="${fn:split('review1,review2,review3,review4,review1,review2', ',')}"/>
+                <c:choose>
+                	<c:when test="${empty imageLists}">
+                		<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
+                		<li class="swiper-slide"><img src="<c:url value="/images/review2.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review3.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review4.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review2.jpg"/>"></li>
+                	</c:when>
+                	<c:when test="${imglen eq 1}">
+                		<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
+                		<li class="swiper-slide"><img src="<c:url value="/images/review2.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review3.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review4.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
+                	</c:when>
+                	<c:when test="${imglen eq 2}">
+                		<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
+                		<li class="swiper-slide"><img src="<c:url value="/images/review2.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review3.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review4.jpg"/>"></li>
+                	</c:when>
+                	<c:when test="${imglen eq 3}">
+                		<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
+                		<li class="swiper-slide"><img src="<c:url value="/images/review2.jpg"/>"></li>
+	                	<li class="swiper-slide"><img src="<c:url value="/images/review3.jpg"/>"></li>
+                	</c:when>
+                	<c:when test="${imglen eq 4}">
+                		<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
+                		<li class="swiper-slide"><img src="<c:url value="/images/review2.jpg"/>"></li>
+                	</c:when>
+                	<c:when test="${imglen eq 5}">
+                		<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
+                	</c:when>
+                </c:choose>
             </ul>
             <div class="swiper-pagination"></div>
         </div>
@@ -60,18 +107,6 @@
 			                    ${opentime}
 			                </li>
 		                </c:forEach>
-                        <!-- <li>
-                            <span>평일</span> 06:00 - 24:00
-                        </li>
-                        <li>
-                            <span>토요일</span> 09:00 - 19:00
-                        </li>
-                        <li>
-                            <span>일요일</span> 휴무
-                        </li>
-                        <li>
-                            <span>공휴일</span> 12:00 - 18:00
-                        </li> -->
                     </ul>
                 </div>
                 <div class="place_parking">
@@ -80,7 +115,7 @@
                     	<c:set var="placeinfo" value="${placeDetail.placeinfo}"/>
 	            		<c:set var="infoList" value="${fn:split(placeinfo, ',')}"/>
 	            		<c:forEach items="${infoList}" var="info">
-	            			<li>${info}</li>
+		            		<li>${info}</li>
                         </c:forEach>
                     </ul>
                 </div>
@@ -91,22 +126,24 @@
             </div>
             <div class="place_banner">
             
-	            <c:set var="rightimg" value="${fn:split(imageLists, ',')}"/>
+	            <c:set var="rightimg" value="${fn:split(imageLists, ', ')}"/>
 				<c:set var="rightImglength" value="${fn:length(rightimg[0])}"/>
-				<c:set var="rightImage" value="${fn:substring(rightimg[0], 2, rightImglength-1)}"/>
+				<c:set var="rightImage" value="${fn:substring(rightimg[0], 1, rightImglength-1)}"/>
 				
-                <c:if test="${empty img}">
+                <c:if test="${empty rightImage}">
                		<img src="<c:url value="/images/review1.jpg"/>">
                	</c:if>
-               	<c:if test="${!empty img}">
+               	<c:if test="${!empty rightImage}">
                   	<img src="<c:out value="${rightImage}"/>">
                 </c:if>
                 <h4 class="place_name">
                     ${placeDetail.placename}
                 </h4>
-                <div class="place_tel">
-                    ${placeDetail.placephone}
-                </div>
+                <c:if test="${!empty placeDetail.placephone}">
+	                <div class="place_tel">
+	                    ${placeDetail.placephone}
+	                </div>
+                </c:if>
             </div>
         </div>
     </div>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.dao.PlaceDao;
 import com.project.gymcarry.place.PlaceDto;
+import com.project.gymcarry.place.PlaceSearchDto;
 
 
 @Service
@@ -28,5 +29,14 @@ public class PlaceHealthService {
 		dao = template.getMapper(PlaceDao.class);
 		return dao.selectHealthPlaceInfo(placeidx);
 	}
+	
+	// place 검색 자동 완성
+	public List<PlaceSearchDto> getPlaceSearch() {
+		dao = template.getMapper(PlaceDao.class);
+        return dao.selectHealthPlaceSearch();
+    }
+
+
+
 	
 }
