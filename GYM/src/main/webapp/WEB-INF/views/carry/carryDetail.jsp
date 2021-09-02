@@ -120,10 +120,10 @@
 							<h2>캐리 후기</h2>
 							<input type="button" value="후기작성" id="write_review_btn">
 						</div>
-
+ 
 						<!-- 리뷰 작성 입력폼 -->
-						<form id="reviewForm" name="reviewForm" method="post">
-							<div id="review_write" class="review_write display_none">
+						<form id="reviewForm" name="reviewForm" method="post" >
+							<div id="review_write" class="review_write display_none" class = "reviewForm">
 								<textarea class="review_input" rows="2" cols="30"
 									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
 								<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
@@ -145,20 +145,15 @@
 							<div class="member_profile_image">
 								<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">
 							</div>
-							<!--
+							
 							<div class="review_content">
 								<span class="review_name">${carryReviewList.memnick}</span>
 								<span class="review_date">${carryReviewList.reviewdate}</span>
 								<br>
 								<span>${carryReviewList.reviewcontent}</span>
 							</div>
-							-->
-							<div class="review_content">
-								<span class="review_name"></span>
-								<span class="review_date"></span>
-								<br>
-								<span></span>
-							</div>
+							
+							
 						</div>
 					</div>
 
@@ -321,6 +316,9 @@
 				cridx:$("#cridx").val()
 		},
 		success : function(data) {
+			
+			$("#review_sec").empty()
+			
 			if(data.Code == 0){
 				for (i = 0; i < data.data.length; i++) {
 					var tag = '<div class="review_list_section">' +
@@ -334,12 +332,16 @@
 										'<span>' + data.data[i].reviewcontent + '</span>' +
 									'</div>'
 								  
-						$('#review_sec').append(tag);
 											
+						$('#review_sec').append(tag);
 					}
 				
 				} else {
-					alert(data.Msg);
+					var tag ='<div class="no_review_msg">' +
+								'<span class = "msg_style">" 아직 작성된 리뷰가 없습니다. "</span>' +
+								'</div>'
+						
+						$('#review_sec').append(tag);
 				}
 						
 			},
@@ -347,10 +349,10 @@
 					alert("error");
 					
 				}
-				});
+				
+		});
 				
 			}
-	
 	
 	
 	

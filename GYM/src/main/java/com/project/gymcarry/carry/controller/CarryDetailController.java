@@ -2,7 +2,6 @@ package com.project.gymcarry.carry.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +16,6 @@ import com.project.gymcarry.carry.CarryCertiDto;
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
-import com.project.gymcarry.carry.Criteria;
-import com.project.gymcarry.carry.Paging;
 import com.project.gymcarry.carry.service.CarryInfoService;
 import com.project.gymcarry.place.PlaceDto;
 
@@ -65,25 +62,31 @@ public class CarryDetailController {
 	@PostMapping("/carry/add")
 	@ResponseBody
 	public String addCarryReview(CarryReviewDto reviewDto) {
+		
 		System.out.println(reviewDto);
+		
 		int result = carryInfoService.addCarryReview(reviewDto);
+		
 		if (result == 1) {
 			System.out.println("리뷰 등록 성공");
 		}
+		
 		return "carry/carryDetail";
 	}
 
 
+	
 	// 캐리 리뷰 리스트 출력
+
 	@PostMapping("/carry/list")
 	@ResponseBody
 	public HashMap<String, Object> reviewList(
-			Model model, 
+			Model model,
 			@RequestParam("cridx") int cridx
 			) {
 
 		HashMap<String, Object> result = new HashMap<String, Object>();
-		
+
 		CarryReviewDto carryReviewDto = new CarryReviewDto();
 		carryReviewDto.setCridx(cridx);
 
@@ -109,7 +112,20 @@ public class CarryDetailController {
 			return result;
 		}
 	}
-	
+	  
+//	
+//	@PostMapping("/carry/list")
+//	@ResponseBody
+//	public List<CarryReviewDto> reviewList(
+//			Model model, 
+//			@RequestParam("cridx") int cridx
+//			) {
+//
+//		List<CarryReviewDto> carryReviewList = carryInfoService.getCarryReviewList(cridx);
+//
+//		return carryReviewList;
+//	}
+//	
 	
 /*
 		// 캐리 리뷰 리스트 출력  (페이징처리)

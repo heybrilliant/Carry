@@ -19,7 +19,6 @@ public class CarryListDto {
 
 	public CarryListDto(int cridx, String crnick, String placename, int proprice1, String crcerti1, String crcerti2,
 			String crcerti3, String crcerti4, String crcerti5) {
-		super();
 		this.cridx = cridx;
 		this.crnick = crnick;
 		this.placename = placename;

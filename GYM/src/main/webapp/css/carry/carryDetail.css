@@ -1,11 +1,13 @@
-/* test */
-#review_list table td, th {
-	width:100px;
-	border: 1px solid #444444;
-    border-collapse: collapse;
+.no_review_msg {
+	text-align : center;
+	margin: 30px 0 0 0;
 }
 
-
+.msg_style {
+	float: center;
+	text-align : center;
+	font-size : 18px;
+}
 
 .display_none {
 	display: none;
@@ -197,21 +199,32 @@ hr {
 	margin-left: 20px;
 }
 
+.review_write_wrap, .reviewForm {
+	width: 100%;
+}
+
+.reviewForm {
+	margin-bottom : 20px;
+}
+
 .review_write {
 	margin: 50px 0 10px 0;
 	text-align: center;
 }
 
-.review_input {
+textarea {
 	width : 85%;
-	margin : 10px 0;
+}
+
+.review_input {
 	border-top : none;
 	border-right : none;
 	border-left : none;
 	border-bottom : 0.15mm solid #AAA;
 	padding-left : 8px;
 	padding-right : 8px;
-	margin : 0 20px 0 20px;
+	margin : 0 20px -20px 20px;
+	font-size : 15px;
 }
 
 .review_input:focus {
@@ -220,8 +233,8 @@ hr {
 
 
 .write_btn {
-	height : 28px;
-	width : 40px;
+	height : 35px;
+	width : 55px;
 	border: 1px solid #CCC;
 	background-color: white;
 	cursor : pointer;
@@ -229,8 +242,8 @@ hr {
 }
 
 .write_btn:hover {
-	height : 28px;
-	width : 40px;
+	height : 35px;
+	width : 55px;
 	border: 1px solid #CCC;
 	background-color: black;
 	color : white;
