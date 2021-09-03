@@ -55,15 +55,15 @@
 
 								<tr>
 									<th><span>비밀번호</span></th>
-									<td><input type="text" name="crpw"
+									<td><input type="password" name="crpw"
 										placeholder="비밀번호를 입력해주세요."></td>
 								</tr>
 								<tr>
 									<th><span>비밀번호 확인</span></th>
-									<td><input type="text" placeholder="비밀번호를 확인하세요"></td>
+									<td><input type="password" placeholder="비밀번호를 확인하세요"></td>
 								</tr>
 
-								<tr>
+								<!-- <tr>
 									<th><span>소속플레이스</span></th>
 									<div class="place">
 										<button type="submit">
@@ -71,9 +71,9 @@
 												alt="search"></a>
 										</button>
 										<td><input type="text" name="placename" placeholder=""></td>
-										<!-- 쿼리문 수정되면  name="placename" 추가 여부 확인 -->
+										쿼리문 수정되면  name="placename" 추가 여부 확인
 									</div>
-								</tr>
+								</tr> -->
 
 								<tr>
 									<th><span>닉네임</span></th>

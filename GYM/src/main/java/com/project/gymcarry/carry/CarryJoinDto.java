@@ -9,13 +9,12 @@ public class CarryJoinDto {
 	private String crnick;
 	private String crgender;
 	private String crphone;
-	private String placename;
+	
 	public CarryJoinDto() {
 	}
-
 	
 	public CarryJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender,
-			String crphone, String placename) {
+			String crphone) {
 		super();
 		this.cridx = cridx;
 		this.cremail = cremail;
@@ -24,9 +23,7 @@ public class CarryJoinDto {
 		this.crnick = crnick;
 		this.crgender = crgender;
 		this.crphone = crphone;
-		this.placename = placename;
 	}
-
 	public int getCridx() {
 		return cridx;
 	}
@@ -69,18 +66,11 @@ public class CarryJoinDto {
 	public void setCrphone(String crphone) {
 		this.crphone = crphone;
 	}
-	
-	public String getPlacename() {
-		return placename;
-	}
-	public void setPlacename(String placename) {
-		this.placename = placename;
-	}
-
 	@Override
 	public String toString() {
-		return "CarryJoinDto [cridx=" + cridx + ", cremail=" + cremail + ", crpw=" + crpw + ", crname=" + crname + ", crnick="
-				+ crnick + ", crgender=" + crgender + ", crphone=" + crphone + ", placename=" + placename + "]";
+		return "CarryJoinDto [cridx=" + cridx + ", cremail=" + cremail + ", crpw=" + crpw + ", crname=" + crname
+				+ ", crnick=" + crnick + ", crgender=" + crgender + ", crphone=" + crphone + "]";
 	}
+
 	
 }

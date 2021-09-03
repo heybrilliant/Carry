@@ -24,7 +24,7 @@ public class CarryJoinController {
 	
 	@PostMapping
 	public String carryJoin(@ModelAttribute CarryJoinDto carryDto) {
-		System.out.println("??? "+ carryDto.toString());
+		System.out.println("캐리정보 : "+ carryDto.toString());
 		int result = joinservice.carryJoin(carryDto);
 		if(result == 1) {
 			System.out.println("캐리 회원가입 성공");

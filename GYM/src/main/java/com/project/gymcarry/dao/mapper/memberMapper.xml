@@ -34,9 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.project.gymcarry.carry.CarryJoinDto"
 		useGeneratedKeys="true" keyProperty="cridx">
 		insert into carry(cremail,
-		crpw, crname, crnick, crgender, crphone, placename)
+		crpw, crname, crnick, crgender, crphone)
 		values
-		(#{cremail},#{crpw},#{crname},#{crnick},#{crgender},#{crphone},#{placename})
+		(#{cremail},#{crpw},#{crname},#{crnick},#{crgender},#{crphone})
 	</insert>
 
 </mapper>

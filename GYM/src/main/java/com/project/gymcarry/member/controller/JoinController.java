@@ -33,7 +33,7 @@ public class JoinController {
 		if (result == 1) {
 			System.out.println("멤버 회원가입 성공");
 		}
-		return "redirect:/member/login";
+		return "redirect:/index";
 	}
 
 	// 이메일 중복 체크 컨트롤러

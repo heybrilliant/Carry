@@ -52,12 +52,12 @@
 								</tr>
 								<tr>
 									<th><span>비밀번호</span></th>
-									<td><input type="text" name="mempw"
+									<td><input type="password" name="mempw"
 										placeholder="비밀번호를 입력해주세요."></td>
 								</tr>
 								<tr>
 									<th><span>비밀번호 확인</span></th>
-									<td><input type="text" placeholder="비밀번호를 확인하세요"></td>
+									<td><input type="password" placeholder="비밀번호를 확인하세요"></td>
 								</tr>
 
 								<tr>
