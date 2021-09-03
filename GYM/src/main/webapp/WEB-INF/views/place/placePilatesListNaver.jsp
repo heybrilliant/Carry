@@ -5,6 +5,7 @@
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp" %>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
+<link rel="stylesheet" href="/gym/css/place/placeList.css">
 
 <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ql9vcy7uun"></script>
@@ -23,7 +24,7 @@
     <h1 class="page_title">내 주변 운동시설 찾아보기</h1>
     <ul class="place_menu">
         <li class="on"><a href="<c:url value="/place/list"/>">전체</a></li>
-        <li><a href="<c:url value="/place/list?placenum=1"/>">헬스</a></li>
+        <li><a href="<c:url value="/place/health?placenum=1"/>">헬스</a></li>
         <li><a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
         </li>
         <li><a href="<c:url value="/place/list?placenum=3"/>">요가</a></li>

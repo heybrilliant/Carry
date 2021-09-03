@@ -1,7 +1,6 @@
 package com.project.gymcarry.place.controller;
 
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,15 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.google.gson.Gson;
 import com.project.gymcarry.place.PlaceDto;
 import com.project.gymcarry.place.PlaceSearchDto;
 import com.project.gymcarry.place.service.PlaceHealthService;
 
 @Controller
-@RequestMapping("/place/list")
+@RequestMapping("/place/health")
 public class PlaceHealthListController {
 	
 	@Autowired
@@ -37,10 +34,10 @@ public class PlaceHealthListController {
 		List<PlaceDto> placeList = placeHealthService.getHealthPlaceList(placenum);
 		System.out.println("placenum : " + placenum);
 		
-		model.addAttribute("placeList", placeList);
+		model.addAttribute("placeHealthList", placeList);
 		
 		
-		return "place/placeList";
+		return "place/placeHealthList";
 	}
 	
 	// 컨트롤러 부분

@@ -25,10 +25,10 @@
                  <a href="<c:url value="/place/list"/>">전체</a>
              </li>
              <li>
-                 <a href="<c:url value="/place/list?placenum=1"/>">헬스</a>
+                 <a href="<c:url value="/place/health?placenum=1"/>">헬스</a>
              </li>
              <li>
-                 <a href="<c:url value="/place/list?placenum=2"/>">필라테스</a>
+                 <a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
              </li>
              <li>
                  	요가
