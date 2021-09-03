@@ -39,17 +39,14 @@
 			</a>
 		</div>
 		<c:if test="${loginSession eq null}">
-<<<<<<< HEAD
 		<a href="<c:url value="/member/login"/>" class="login"> LOGIN </a>
 		</c:if>
 		<c:if test="${loginSession ne null}">
 		<a href="<c:url value="/member/logOut"/>" class="login"> LOGOUT </a>
-=======
 			<a href="<c:url value="/member/login"/>" class="login"> LOGIN </a>
 		</c:if>
 		<c:if test="${loginSession ne null}">
 			<a href="<c:url value="/member/logOut"/>" class="login"> LOGOUT </a>
->>>>>>> origin/E3
 		</c:if>
 	</div>
 </header>
