@@ -34,39 +34,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		c.cridx=#{cridx}
 	</select>
 
-	<!-- 매칭캐리리스트 -->
-	<select id="selectCarryList"
-		resultType="com.project.gymcarry.carry.CarryDto">
-		select cridx, crnick, placename from carry
-	</select>
-
 	<!-- 채팅룸 생성 -->
 	<insert id="insertAddChatRoom"
 		parameterType="com.project.gymcarry.chatting.ChatListDto"
 		useGeneratedKeys="true">
 		insert into chatlist(cridx, memidx)
-		value(#{cridx},#{memidx})
+		value(#{cridx}, #{memidx})
 	</insert>
 
-	<!-- 채팅룸 중복 -->
+	<!-- 사용자 채팅방 가져오기 -->
 	<select id="selectByChatRoom"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select * from chatlist where cridx=#{param}
+		select chatidx from chatlist where cridx=#{cridx} and memidx=#{memidx}
 	</select>
 
-	<!-- 채팅방 찾기 -->
-	<select id="selectChatRoom"
-		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select * from chatlist where chatidx=#{param}
+	<!-- 채팅방 중복,찾기 -->
+	<select id="selectByChatIdx"
+		resultType="int">
+		select count(*) from chatlist where chatidx=#{param}
 	</select>
 
 	<!-- 대화내용 저장 -->
 	<insert id="insertChatContent"
-		parameterType="com.project.gymcarry.chatting.ChatRoomDto"
+		parameterType="com.project.gymcarry.chatting.MessageDto"
 		useGeneratedKeys="true">
-		insert into chatroom (chatidx, chatcontent, cridx,
-		memidx)
-		values(#{chatidx},#{chatcontent},#{cridx},#{memidx})
+		insert into chatroom (chatidx, chatcontent, cridx, memidx, contenttype)
+		values (#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
 	</insert>
 
 </mapper>

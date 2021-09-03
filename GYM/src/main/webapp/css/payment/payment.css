@@ -38,23 +38,22 @@ p {
 }
 
 
-input[type="radio"] {
-	margin-right : 10px;
-	margin-bottom : 8px;
-}
-
-
 .faceornot_selectbox {
 	margin: 20px 0;
 	height: 10.5%;
 	border: 1px solid #DDD;
 	border-radius: 10px;
-	padding: 18px 24px 20px 20px;
+	padding: 30px 24px 20px 20px;
 	display: block;
 }
 
 .faceornot_selectbox:hover {
 	background-color: rgb(248, 248, 248);
+}
+
+input[type="radio"] {
+	margin-right : 10px;
+	margin-bottom : 10px;
 }
 
 .order_info {
@@ -112,6 +111,7 @@ input[type="radio"] {
 	background-color: black;
 	padding: 7px 10px;
 	text-align: center;
+	transition: 0.3s;
 }
 
 .pay_btn input:hover {
