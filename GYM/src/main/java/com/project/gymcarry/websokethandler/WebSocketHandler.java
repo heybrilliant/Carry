@@ -69,7 +69,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
 		int contenttype = 0;
+		// 유저가접속할때
 		int chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemidx();
+		// 캐리가 접속할때
 		if (chatNick == 0) {
 			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCridx();
 			++contenttype;

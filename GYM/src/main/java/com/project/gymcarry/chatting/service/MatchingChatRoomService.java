@@ -46,5 +46,12 @@ public class MatchingChatRoomService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.selectChatListContent(chatidx);
 	}
+	
+	// 읽음 안읽음 여부
+	public int getChatRead(int chatidx) {
+		dao = template.getMapper(MatchingDao.class);
+		return dao.updateChatRead(chatidx);
+	}
+	
 
 }

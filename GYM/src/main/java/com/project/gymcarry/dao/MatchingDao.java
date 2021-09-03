@@ -34,5 +34,6 @@ public interface MatchingDao {
 	int insertAddChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
 	// 대화내용 insert
 	int insertChatContent(MessageDto messageDto);
-	
+	// 읽음안읽음여부
+	int updateChatRead(int chatidx);
 }

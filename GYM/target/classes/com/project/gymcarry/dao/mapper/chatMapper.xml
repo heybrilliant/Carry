@@ -26,7 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select *
 		from chatlist l
 		join carry c on l.cridx=c.cridx
-		join member m on l.memidx=m.memidx and m.memidx=#{memidx};
+		join
+		member m on l.memidx=m.memidx and m.memidx=#{memidx};
 	</select>
 
 
@@ -45,7 +46,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select *
 		from chatlist l
 		join carry c on l.cridx=c.cridx
-		join member m on l.memidx=m.memidx and c.cridx=#{cridx};
+		join
+		member m on l.memidx=m.memidx and c.cridx=#{cridx};
 	</select>
 
 	<!-- 매칭캐리리스트 -->
@@ -93,7 +95,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
 	</insert>
 
-
+	<update id="updateChatRead"
+		parameterType="com.project.gymcarry.chatting.ChatRoomDto">
+		update chatroom set chatread=1 where chatidx=#{chatidx};
+	</update>
 
 
 

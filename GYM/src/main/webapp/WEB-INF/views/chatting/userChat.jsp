@@ -25,9 +25,9 @@
 				<div class="chatList_scr">
 				<c:forEach items="${chatList}" var="list">
 					<div class="chatlist">
-						<button type="button" value="${list.crnick}"
-							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); location.href='javascript:chatList(${list.chatidx})'"
-							class="on_btn">
+						<button type="button" value="${list.chatidx}"
+							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); 
+							location.href='javascript:chatList(${list.chatidx})'" class="on_btn">
 							<div class="float_left">
 								<img src="<c:url value="/images/icon/profile2.png"/>">
 							</div>
@@ -37,8 +37,9 @@
 							<div class="chat_title">
 								<span>${list.placename}</span>
 							</div>
-							<div class="chat_title_img">
-							</div>
+							<c:if test="${list.chatread == 0}">
+							<div class="chat_title_img"></div>
+							</c:if>
 							<div class="chat_content">
 								<span>${list.chatcontent}</span>
 							</div>
@@ -73,8 +74,7 @@
 							<div class="chat_title_img">
 							</div>
 							<div class="chat_content">
-								<span><%-- ${list.chatcontent} --%>
-								</span>
+								<span><%-- ${list.chatcontent} --%></span>
 							</div>
 							<div class="chat_date">
 								<span> <%-- ${list.chatdate} --%>
@@ -119,6 +119,19 @@
 			$('.message_warp').html(htmlNav);
 		}
 		
+		var chatIdx;
+		var memidx;
+		var cridx;
+		var memnicks;
+		var crnicks;
+		function getChat(num, mnum, crnum, memnick, crnick){
+			chatIdx = num;
+			memidx = mnum;
+			cridx = crnum;
+			memnicks = memnick;
+			crnicks = crnick;
+		}
+		
 		function chattting(){
 			var htmlStr = '<div>'
 				htmlStr += '<div class="message_warp"></div>'
@@ -145,7 +158,6 @@
 			$('#msg').focus();
 			
 			$('#btnSend').click(function(event){
-				
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
 					var msg = $('input#msg').val();
@@ -165,15 +177,14 @@
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
 					$("#output").scrollTop($(document).height());
-					
-					
 				}
+				
 			});	
 		}
+		
 	</script>
 
 	<script>
-	
 	
 	var socket = new SockJS("<c:url value='/echo'/>");
 	sock = socket;
@@ -183,19 +194,6 @@
 		console.log('connection opend.');
 	};
 	
-	
-	var chatIdx;
-	var memidx;
-	var cridx;
-	var memnicks;
-	var crnicks;
-	function getChat(num, mnum, crnum, memnick, crnick){
-		chatIdx = num;
-		memidx = mnum;
-		cridx = crnum;
-		memnicks = memnick;
-		crnicks = crnick;
-	}
 	var memsession = '${loginSession.memnick}';
 	var crsession = '${loginSession.crnick}';
 	
@@ -253,7 +251,11 @@
 			}
 			
 		} 
-			
+		
+		
+		//$('.chat_content').html('<span>'+ jsonData.chatcontent +'</span>');
+		
+		
 	};
 	
 	// close - 커넥션이 종료되었을 때 호출
@@ -288,11 +290,10 @@
 	</script>
 
 	<script>
-	
 	// 채팅방 대화내용 리스트
 	function chatList(num) {
 		$.ajax({
-			type : 'GET',
+			type : 'POST',
 			url : '<c:url value="/chatting/dochat"/>',
 			dataType : 'json',
 			data : {
@@ -335,7 +336,6 @@
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
 							} else if(crnicks == crsession){
-								console.log(crsession);
 								if(item.contenttype == 1){
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
@@ -366,8 +366,6 @@
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
 							}
-							
-						
 					});
 				}
 			}
