@@ -40,7 +40,7 @@
 			<input type="hidden" value="${sv4}" name="sv4">
           </div>
           <div class="board_main">
-            <div class="place_badge" onclick="location.href='<c:url value="/place/detail"/>'">${alist.placename}</div>
+            <div class="place_badge" onclick="location.href='<c:url value="/place/detail?placeidx=${alist.placeidx}"/>'">${alist.placename}</div>
             <div class="carry_price">
               <span>수업 1회 이용권</span>
               <h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${alist.proprice}"/>원</h3>

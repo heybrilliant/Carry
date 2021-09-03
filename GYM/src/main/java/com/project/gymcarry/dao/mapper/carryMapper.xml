@@ -76,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매칭 캐리 리스트 : 전체-->
 	<select id="selectAllCarryList"
 		resultType="com.project.gymcarry.carry.CarryListDto">
-		select cridx, crnick, placename, proprice, 
+		select cridx, crnick, placeidx, placename, proprice, 
 		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5  
 		from carry natural join crcertification natural join crprice natural join place 
 		where procount=1;	
@@ -84,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매칭 캐리 리스트 : 전체/가격순 -->
 	<select id="selectAllCarryListP"
 		resultType="com.project.gymcarry.carry.CarryListDto">
-		select cridx, crnick, placename, proprice, 
+		select cridx, crnick, placeidx, placename, proprice, 
 		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5  
 		from carry natural join crcertification natural join crprice natural join place
 		order by proprice1 
@@ -96,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매칭 캐리 리스트 : [여자/헬스] -->
 	<select id="selectCarryListFH"
 		resultType="com.project.gymcarry.carry.CarryListDto">
-		select cridx, crnick, placename, proprice, 
+		select cridx, crnick, placeidx, placename, proprice, 
 		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5  
 		from carry natural join crcertification natural join crprice natural join place 
 		where crgender='여자' and crfield='헬스' and procount = 1;
@@ -104,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매칭 캐리 리스트 : [여자/필라테스] -->
 	<select id="selectCarryListFF"
 		resultType="com.project.gymcarry.carry.CarryListDto">
-		select cridx, crnick, placename, proprice, 
+		select cridx, crnick, placeidx, placename, proprice, 
 		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5  
 		from carry natural join crcertification natural join crprice natural join place 
 		where crgender='여자' and crfield='필라테스' and procount = 1;
@@ -112,7 +112,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매칭 캐리 리스트 : [여자/요가] -->
 	<select id="selectCarryListFY"
 		resultType="com.project.gymcarry.carry.CarryListDto">
-		select cridx, crnick, placename, proprice, 
+		select cridx, crnick, placeidx, placename, proprice, 
 		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5  
 		from carry natural join crcertification natural join crprice natural join place 
 		where crgender='여자' and crfield='요가' and procount = 1;
@@ -123,7 +123,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매칭 캐리 리스트 : [남자/헬스]-->
 	<select id="selectCarryListMH"
 		resultType="com.project.gymcarry.carry.CarryListDto">
-		select cridx, crnick, placename, proprice, 
+		select cridx, crnick, placeidx, placename, proprice, 
 		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5 
 		from carry natural join crcertification natural join crprice natural join place 
 		where crgender='남자' and crfield='헬스' and procount = 1;
@@ -131,7 +131,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매칭 캐리 리스트 : [남자/필라테스]-->
 	<select id="selectCarryListMF"
 		resultType="com.project.gymcarry.carry.CarryListDto">
-		select cridx, crnick, placename, proprice, 
+		select cridx, crnick, placeidx, placename, proprice, 
 		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5 
 		from carry natural join crcertification natural join crprice natural join place 
 		where crgender='남자' and crfield='필라테스' and procount = 1;
@@ -139,7 +139,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 매칭 캐리 리스트 : [남자/요가]-->
 	<select id="selectCarryListMY"
 		resultType="com.project.gymcarry.carry.CarryListDto">
-		select cridx, crnick, placename, proprice, 
+		select cridx, crnick, placeidx, placename, proprice, 
 		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5 
 		from carry natural join crcertification natural join crprice natural join place 
 		where crgender='남자' and crfield='요가' and procount = 1;
