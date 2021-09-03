@@ -5,7 +5,6 @@
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp" %>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
-<link rel="stylesheet" href="/gym/css/place/placeList.css">
 
 <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ql9vcy7uun"></script>
@@ -78,8 +77,8 @@
         const areaArr = [];  // 지역을 담는 배열 ( 지역명/위도경도 )
         <c:forEach items="${placePilatesList}" var="placeList" varStatus="status">
             areaArr.push(
-                /*지역구 이름*/			               /*위도*/					/*경도*/
-                {location : '${placeList.placename}' , lat : ${placeList.latitude} , lng : ${placeList.longitude}}  // 중심좌표
+                /*업체 이름*/			               /*위도*/					/*경도*/
+                {location : '<div class="map_in_place_name">${placeList.placename}</div>' , lat : ${placeList.latitude} , lng : ${placeList.longitude}}  // 중심좌표
         );
         </c:forEach>
         console.log(areaArr[0])
@@ -107,7 +106,10 @@
             });
             /* 정보창 */
             var infoWindow = new naver.maps.InfoWindow({
-                content: '<div style="width:200px;text-align:center;padding:10px;"><b>' + areaArr[i].location + '</b></div>'
+                backgroundColor : 'none',   // 기분 말풍선 색상
+                disableAnchor : true,       // 기본 말풍선 꼬리 사용 여부
+                borderWidth : 0,            // 기본 말풍선 창 테두리 두께
+                content: areaArr[i].location
             }); // 클릭했을 때 띄워줄 정보 HTML 작성
             markers.push(marker); // 생성한 마커를 배열에 담는다.
             infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
@@ -128,6 +130,33 @@
             naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
         }
     }
+
+        // 마커 클릭시 해당하는 place list로 스크롤 이동
+        function makeClickListener(marker, i) {
+            return function () {
+                var idx = i + 1;
+                var window_y = window.scrollY;
+                var content_top = $('.place_list .place_content:nth-child(' + idx + ')').offset().top
+
+                window.scrollTo({
+                    top: content_top - 200,
+                    behavior: 'smooth'
+                });
+
+
+                $('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
+
+
+                $(window).scroll(function () {
+                    var window_top = $(window).scrollTop() + 500;
+                    if (window_top > content_top) {
+                        $('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
+                    } else {
+                        $('.place_list .place_content:nth-child(' + idx + ')').removeClass('on');
+                    }
+                })
+            }
+        }
 </script>
 
 
