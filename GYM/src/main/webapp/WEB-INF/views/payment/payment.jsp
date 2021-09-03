@@ -71,7 +71,7 @@
 					<h3>최종 결제 금액</h3>
 					<div class="pricebox">
 						<ul>
-							${paynum}회 강의권
+							${paynum}회 이용권
 							<li><fmt:formatNumber type="number" maxFractionDigits="3"
 									value="${payprice}" />원</li>
 						</ul>
@@ -116,10 +116,9 @@
 				pay_method : 'card', //card(신용카드), trans(실시간계좌이체), vbank(가상계좌), phone(휴대폰소액결제)
 				merchant_uid : "${payidx}",
 				name : "수업${paynum}회 이용권",
-				amount : "100",
-				/* amount : "${payprice}", */
+				amount : "${payprice}",
 				buyer_email : "",
-				buyer_name : "${loginSession.memidx}",
+				buyer_name : "${loginSession.memname}",
 				buyer_tel : "${payphone}",
 				buyer_addr : "",
 				buyer_postcode : ""

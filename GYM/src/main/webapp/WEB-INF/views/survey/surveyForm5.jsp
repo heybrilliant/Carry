@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<title>Servey</title>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<title>당신과 어울리는 캐리는?</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/survey.css">
+<link rel="stylesheet" href="/gym/css/survey/survey.css">
 </head>
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<div id="survey_warp">
+	<div id="survey_wrap">
 		<div class="survey_box">
-			<form action="#">
+			<div class="formstyle">
 				<div class="survey_box2">
 					<div class="survey_h1">
 						<div class="survey_page">
@@ -19,29 +20,40 @@
 								<span>05</span> / 05
 							</p>
 						</div>
-						<h1>지역을 선택해주세요</h1>
+						<h1>선호하는 수업 요일이 있으신가요?</h1>
 					</div>
-					<div class="servey_ul">
+					<form action="<c:url value='/carry/matchingList'/>" method="get">
+					<div class="survey_ul">
+						<ul>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>월</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>화</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>수</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>목</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>금</span></label>
+							</li>
+							<li><label class="box-radio-input"> <input
+									type="radio" name="cp_item" checked="checked"> <span>토</span></label>
+							</li>
+						</ul>
 						<div class="next_btn">
-							<div class="select_op">
-								<select>
-									<option>강남구</option>
-									<option>구로구</option>
-									<option>금천구</option>
-									<option>동대문구</option>
-									<option>마포구</option>
-									<option>서대문구</option>
-									<option>성북구</option>
-									<option>서초구</option>
-									<option>송파구</option>
-									<option>은평구</option>
-								</select>
-							</div>
-							<input type="button" value="다음">
+							<input type="submit" value="결과보기">
 						</div>
 					</div>
+					<input type="hidden" value="${sv1}" name="sv1">
+					<input type="hidden" value="${sv2}" name="sv2">
+					<input type="hidden" value="${sv3}" name="sv3">
+					</form>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 

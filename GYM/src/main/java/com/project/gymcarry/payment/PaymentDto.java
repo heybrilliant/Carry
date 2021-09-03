@@ -1,9 +1,5 @@
 package com.project.gymcarry.payment;
 
-import java.sql.Timestamp;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class PaymentDto {
 
 	private int payidx;

@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
 
 <title>캐리 상세페이지</title>
 
@@ -22,18 +23,29 @@
 	<div class="container">
 		<div class="carry_image swiper-container mySwiper">
 			<ul class="swiper-wrapper">
+				<li class="swiper-slide">
+					<img src="<c:url value="/images/review1.jpg"/>">
+				</li>
+				
+				<li class="swiper-slide">
+					<img src="<c:url value="/images/review2.jpg"/>">
+				</li>
 				<li class="swiper-slide"><img
-					src="<c:url value="/images/review1.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review2.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review3.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review4.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review1.jpg"/>"></li>
-				<li class="swiper-slide"><img
-					src="<c:url value="/images/review2.jpg"/>"></li>
+					src="<c:url value="/images/review3.jpg"/>">
+				</li>
+				
+				<li class="swiper-slide">
+					<img src="<c:url value="/images/review4.jpg"/>">
+				</li>
+				
+				<li class="swiper-slide">
+					<img src="<c:url value="/images/review1.jpg"/>">
+				</li>
+				
+				<li class="swiper-slide">
+				<img
+					src="<c:url value="/images/review2.jpg"/>">
+				</li>
 			</ul>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -41,21 +53,20 @@
 
 
 		<!-- quickmenu section START -->
-		<div class="quickmenu_section">
-			<nav class="quickmenu">
-				<ul>
-					<li><a href="#introduce" id="introducte_btn">소개</a></li>
-					<li><a href="#review">후기</a></li>
-					<li><a href="#place">소속 플레이스</a></li>
-					<li><a href="#location">위치</a></li>
-					<li><a href="#" id="carrer_btn">자격/경력</a></li>
-				</ul>
-			</nav>
+		<div class="quickmenu_wrap">
+			<div class="quickmenu_section">
+				<nav class="quickmenu">
+					<ul>
+						<li><a href="#introduce" id="introducte_btn">소개</a></li>
+						<li><a href="#review">후기</a></li>
+						<li><a href="#place">소속 플레이스</a></li>
+						<li><a href="#location">지도</a></li>
+						<li><a href="#certi">자격/경력</a></li>
+					</ul>
+				</nav>
+			</div>
 		</div>
-		<!-- quickmenu section END -->
 
-
-		<hr>
 
 		<div class="place_info container_fix">
 
@@ -68,9 +79,8 @@
 
 
 					<table class="carry_info_message" id="introduce">
-
 						<tr>
-							<td><span class="carry_name">${carryDetail.crname}</span></td>
+							<td><span class="carry_name">${carryDetail.crname}</span><span class="carry_nick">${carryDetail.crnick}</span></td>
 						</tr>
 
 						<tr>
@@ -84,13 +94,12 @@
 								</div>
 							</td>
 						</tr>
-
 					</table>
 				</div>
 				<!-- carry info section END -->
 
 
-				<div class="carry_carrer" id="carrer">
+				<div class="carry_carrer" id="certi">
 					<h3>자격 및 경력</h3>
 					<ul>
 						<li>${carryCerti.crcerti1}</li>
@@ -104,42 +113,49 @@
 
 
 				<!-- carry review section all wrap START -->
-				<div class="carry_review_wrap" id="review">
-					<div class="carry_review_title">
-						<h2>캐리 후기</h2>
-						<input type="button" value="후기작성" id="write_review_btn">
+				<div class="carry_review_all_wrap">
+					<div class="review_write_wrap" id="review">
+						<div class="carry_review_title">
+							<h2>캐리 후기</h2>
+							<input type="button" value="후기작성" id="write_review_btn">
+						</div>
+ 
+						<!-- 리뷰 작성 입력폼 -->
+						<form id="reviewForm" name="reviewForm" method="post" >
+							<div id="review_write" class="review_write display_none" class = "reviewForm">
+								<textarea class="review_input" rows="2" cols="30"
+									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
+								<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
+						
+						
+								<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
+								<input type ="hidden" name="reviewdate" value="${now}">
+								<input type="hidden" id="cridx" name="cridx" value="${carryDetail.cridx}">
+								<input type="hidden" id="memidx" name="memidx" value="${loginSession.memidx}">
+							</div>
+						</form>
 					</div>
 
-					<!-- 리뷰 작성 입력폼 -->
-					<form id="reviewForm" name="reviewForm" method="post">
-						<div id="review_write" class="review_write display_none">
-							<textarea class="review_input" rows="2" cols="30"
-								name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
-							<input type="button" value="등록" class="write_btn" id="write_btn"
-								onClick="fn_review('${result.code}')"> <input
-								type="hidden" id="cridx" name="cridx" value="1"> <input
-								type="hidden" id="memidx" name="memidx" value="1">
-						</div>
-					</form>
-
-					<c:forEach items="${carryReviewList}" var="carryReviewList">
-						<div class="review_list_section">
+				
+					<!-- 작성된 캐리 리뷰 리스트 -->
+					<%-- <c:forEach items="${carryReviewList}" var="carryReviewList"> --%>
+					<div class="review_list_wrap" id="review_sec">	
+				<%--	<div class="review_list_section">
 							<div class="member_profile_image">
-								<img src="<c:url value="/images/icon/profile.png"/>"
-									style="width: 50px">
+								<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">
 							</div>
-
+							
 							<div class="review_content">
-								<span class="review_name">${carryReviewList.memnick}</span> <span
-									class="review_date">${carryReviewList.reviewdate}</span> <br>
+								<span class="review_name">${carryReviewList.memnick}</span>
+								<span class="review_date">${carryReviewList.reviewdate}</span>
+								<br>
 								<span>${carryReviewList.reviewcontent}</span>
 							</div>
-
 						</div>
-					</c:forEach>
+					</div> --%>
+
 				</div>
 				<!-- carry review section all wrap END -->
-
 
 
 				<!-- 소속 플레이스 section all wrap START -->
@@ -172,17 +188,18 @@
 			<div class="right_banner">
 
 				<div id="c2" class="circle"></div>
-				<h2>${crname}</h2>
+				<h2>${carryDetail.crnick}</h2>
 
 				<div class="program_all">
 
 					<form action="<c:url value='/payment/pay'/>" method="post">
+					<c:forEach items="${price}" var="price">
 						<div class="program">
 							<div class="program_info">
-								<span>수업 1회 이용권</span> <br>
+								<span>수업 ${price.procount}회 이용권</span> <br>
 								<h4>
 									<fmt:formatNumber type="number" maxFractionDigits="3"
-										value="${carryPrice.proprice1}" />
+										value="${price.proprice}" />
 									원
 								</h4>
 							</div>
@@ -191,91 +208,155 @@
 								<input type="submit" value="구매하기" class="button">
 							</div>
 						</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+					<input type="hidden" name="cridx" value="${price.cridx}">
 					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="1">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice1}">
-					</form>
-
-
-					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 5회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice5}" />
-								원
-							</h4>
-						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="5">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice5}">
-					</form>
-
-
-					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 10회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice10}" />
-								원
-							</h4>
-						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="10">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice10}">
-					</form>
-					
-					
-					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 20회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice20}" />
-								원
-							</h4>
-						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="20">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice20}">
+					<input type="hidden" name="paynum" value="${price.procount}">
+					<input type="hidden" name="payprice" value="${price.proprice}">
+					</c:forEach>
 					</form>
 					
 				</div>
+				
 			</div>
 			<!-- 우측 배너 END -->
 
 		</div>
-
+	</div>
 	</div>
 	<!-- Contents END -->
 
 
+
+
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-
-
+	
 	<script>
-		// place 이미지 슬라이드
+	
+	
+	// 페이지 진입시 이벤트 발생
+	$(document).ready(function(){
+		
+			reviewList();
+		
+	});
+
+	
+	
+	// 리뷰 리스트 출력 ajax
+	function reviewList() {
+		
+		$.ajax({
+			url : '<c:url value="/carry/list"/>',
+			type : 'POST',
+			datatype : 'JSON',
+			data : {
+				cridx:$("#cridx").val()
+			}, 
+			success : function(data) {
+				var tag = '<div>'
+					$.each(data, function(index, item) {
+							tag+=	'<div class="review_list_section">' 
+							tag+=		'<div class="member_profile_image">' 
+							tag+=			'<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">' 
+							tag+=	    '</div>' 
+							tag+=			'<div class="review_content">' 
+							tag+=				'<span class="review_name">' + item.memnick + '</span>' 
+							tag+=				'<span class="review_date">' + item.reviewdate + '</span>' 
+							tag+=				'<br>'
+							tag+=				'<span class="review_content_span">' + item.reviewcontent + '</span>' 
+							tag+=			'</div>'	
+							tag+=	'</div>'	
+					});
+				
+							$('#review_sec').html(tag);
+		},
+
+			error : function() {
+				alert("error");
+				
+			}
+			
+	});
+			
+	
+}
+	
+/* 
+	// 리뷰리스트 출력 ajax
+	function reviewList() {
+		
+		$.ajax({
+			url : '<c:url value="/carry/list"/>',
+			type : 'POST',
+			datatype : 'json',
+			data : { 
+				cridx:$("#cridx").val()
+		},
+		success : function(data) {
+			
+			$("#review_sec").empty()
+			
+			if(data.Code == 0){
+				for (i = 0; i < data.data.length; i++) {
+					var tag = '<div class="review_list_section">' +
+								'<div class="member_profile_image">' +
+									'<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">' +
+							    '</div>' + 
+									'<div class="review_content">' + 
+										'<span class="review_name">' + data.data[i].memnick + '</span>' +
+										'<span class="review_date">' + data.data[i].reviewdate + '</span>' +
+										'<br>' +
+										'<span>' + data.data[i].reviewcontent + '</span>' +
+									'</div>'
+								  
+											
+						$('#review_sec').append(tag);
+					}
+				
+				} else {
+					var tag ='<div class="no_review_msg">' +
+								'<span class = "msg_style">" 아직 작성된 리뷰가 없습니다. "</span>' +
+								'</div>'
+						
+						$('#review_sec').append(tag);
+				}
+						
+			},
+				error : function() {
+					alert("error");
+					
+				}
+				
+		});
+				
+			}
+*/	
+	
+	
+		// 리뷰 등록하기(Ajax)
+		function fn_review(code) {
+
+			$.ajax({
+				type : 'POST',
+				url : "<c:url value='/carry/add'/>",
+				data : $("#reviewForm").serialize(),
+				success : function() {
+					$(".review_input").val("");
+					alert('리뷰가 정상적으로 등록되었습니다.');
+					reviewList();
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:" + error);
+				}
+
+			});
+		}
+		
+
+		
+		 // place 이미지 슬라이드
 		var swiper = new Swiper(".mySwiper", {
 			spaceBetween : 0,
 			slidesPerView : 4,
@@ -289,27 +370,6 @@
 				clickable : true,
 			},
 		});
-	</script>
 
-
-	<script>
-		// 리뷰 등록하기(Ajax)
-		function fn_review(code) {
-
-			$.ajax({
-				type : 'POST',
-				url : "<c:url value='/carry/detail'/>",
-				data : $("#reviewForm").serialize(),
-				success : function() {
-					$(".review_input").val("");
-					alert('리뷰가 정상적으로 등록되었습니다.');
-
-				},
-				error : function(request, status, error) {
-					alert("code:" + request.status + "\n" + "message:"
-							+ request.responseText + "\n" + "error:" + error);
-				}
-
-			});
-		}
-	</script>
+		 
+</script>

@@ -1,9 +1,5 @@
 package com.project.gymcarry.carry;
 
-import java.sql.Timestamp;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class CarryReviewDto {
 	
 	private int reviewidx;
@@ -11,8 +7,8 @@ public class CarryReviewDto {
 	private int cridx;
 	private int memidx;
 	private String memnick;
-	@JsonFormat(pattern = "HH:mm a", timezone = "Asia/Seoul")
-	private Timestamp reviewdate;
+	// @JsonFormat(pattern = "HH:mm a", timezone = "Asia/Seoul")
+	private String reviewdate;
 	
 	public CarryReviewDto() {}
 	
@@ -47,18 +43,18 @@ public class CarryReviewDto {
 		this.memnick = memnick;
 	}
 	
-	public Timestamp getReviewdate() {
+	public String getReviewdate() {
 		return reviewdate;
 	}
 
-	public void setReviewdate(Timestamp reviewdate) {
+	public void setReviewdate(String reviewdate) {
 		this.reviewdate = reviewdate;
 	}
 
 	
 	
 	public CarryReviewDto(int reviewidx, String reviewcontent, int cridx, int memidx, String memnick,
-			Timestamp reviewdate) {
+			String reviewdate) {
 		this.reviewidx = reviewidx;
 		this.reviewcontent = reviewcontent;
 		this.cridx = cridx;
@@ -73,8 +69,6 @@ public class CarryReviewDto {
 		return "CarryReviewDto [reviewidx=" + reviewidx + ", reviewcontent=" + reviewcontent + ", cridx=" + cridx
 				+ ", memidx=" + memidx + ", memnick=" + memnick + ", reviewdate=" + reviewdate + "]";
 	}
-
-	
 
 	
 	
