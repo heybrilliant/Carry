@@ -10,6 +10,7 @@
 <script src='//cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js'></script>
 </head>
 <body>
+
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 	
