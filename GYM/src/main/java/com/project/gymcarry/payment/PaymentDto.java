@@ -11,10 +11,23 @@ public class PaymentDto {
 	private int cridx;
 	private int paynum;
 	private int payprice;
-	private int fonchoice;
+	private int faceornot;
 	
 	public PaymentDto() {}
 
+	public PaymentDto(int payidx, String paydate, int memidx, String payname, String payphone, int cridx, int paynum,
+			int payprice, int faceornot) {
+		super();
+		this.payidx = payidx;
+		this.paydate = paydate;
+		this.memidx = memidx;
+		this.payname = payname;
+		this.payphone = payphone;
+		this.cridx = cridx;
+		this.paynum = paynum;
+		this.payprice = payprice;
+		this.faceornot = faceornot;
+	}
 
 	public int getPayidx() {
 		return payidx;
@@ -80,36 +93,20 @@ public class PaymentDto {
 		this.payprice = payprice;
 	}
 
-	public int getFonchoice() {
-		return fonchoice;
+	public int getFaceornot() {
+		return faceornot;
 	}
 
-	public void setFonchoice(int fonchoice) {
-		this.fonchoice = fonchoice;
+	public void setFaceornot(int faceornot) {
+		this.faceornot = faceornot;
 	}
 
-	@Override
+	@Override 
 	public String toString() {
 		return "PaymentDto [payidx=" + payidx + ", paydate=" + paydate + ", memidx=" + memidx + ", payname=" + payname
 				+ ", payphone=" + payphone + ", cridx=" + cridx + ", paynum=" + paynum + ", payprice=" + payprice
-				+ ", fonchoice=" + fonchoice + "]";
+				+ ", faceornot=" + faceornot + "]";
 	}
 
-	public PaymentDto(int payidx, String paydate, int memidx, String payname, String payphone, int cridx, int paynum,
-			int payprice, int fonchoice) {
-		super();
-		this.payidx = payidx;
-		this.paydate = paydate;
-		this.memidx = memidx;
-		this.payname = payname;
-		this.payphone = payphone;
-		this.cridx = cridx;
-		this.paynum = paynum;
-		this.payprice = payprice;
-		this.fonchoice = fonchoice;
-	}
-	
-	
-	
 	
 }

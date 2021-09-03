@@ -51,23 +51,6 @@
 		</div>
 
 
-
-		<!-- quickmenu section START -->
-		<div class="quickmenu_wrap">
-			<div class="quickmenu_section">
-				<nav class="quickmenu">
-					<ul>
-						<li><a href="#introduce" id="introducte_btn">소개</a></li>
-						<li><a href="#review">후기</a></li>
-						<li><a href="#place">소속 플레이스</a></li>
-						<li><a href="#location">지도</a></li>
-						<li><a href="#certi">자격/경력</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-
-
 		<div class="place_info container_fix">
 
 			<div class="place_info_content">
@@ -162,8 +145,8 @@
 				<div class="carry_place_title" id="place">
 					<h2>소속 플레이스</h2>
 					<div class="carry_place_content">
-						<img src="http://placehold.it/570x300"> <span><a
-							href="#">${carryPlaceInfo.placename}</a></span>
+						<img src="http://placehold.it/600x300"> <span>
+						<a href="#">${carryPlaceInfo.placename}</a></span>
 					</div>
 				</div>
 				<!-- 소속 플레이스 section all wrap END -->

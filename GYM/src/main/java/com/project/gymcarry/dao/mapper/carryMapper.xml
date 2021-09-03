@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 캐리 리뷰 리스트 출력 -->
 	<select id="selectCarryReviewList"
 		resultType="com.project.gymcarry.carry.CarryReviewDto">
-		select * from carryreview r, member m, carry c where m.memidx = r.memidx and c.cridx=r.cridx and c.cridx=#{cridx}
+		select * from review r, member m, carry c where m.memidx = r.memidx and c.cridx=r.cridx and c.cridx=#{cridx}
 		order by reviewidx desc
 	</select>
 	
@@ -47,26 +47,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.project.gymcarry.carry.CarryReviewDto"
 		useGeneratedKeys="true"
 		keyProperty="reviewidx">
-		insert into carryreview (reviewcontent, cridx, memidx)
+		insert into review (reviewcontent, cridx, memidx)
 		values (#{reviewcontent}, #{cridx}, #{memidx})
 	</insert>
-	
-	<!-- 캐리 리뷰 리스트 : 페이징 처리 -->
+
+<!-- 	
+	캐리 리뷰 리스트 : 페이징 처리
 	<select id = "pagingReviewList"
 		resultType = "hashmap"
 		parameterType="hashmap">
-		select * from carryreview r, member m, carry c where m.memidx = r.memidx and c.cridx=r.cridx and c.cridx=#{cridx}
+		select * from review r, member m, carry c where m.memidx = r.memidx and c.cridx=r.cridx and c.cridx=#{cridx}
 		order by reviewidx desc	
 		limit #{pageStart}, #{perPageNum}
 	</select>
 	
-	<!-- 전체 리뷰개수 카운트 -->
+	전체 리뷰개수 카운트
 	<select id = "ReviewCnt"
 		resultType="int">
 		select count(*)
-		from carryreview	
+		from review	
 	</select>
-	
+	 -->
 	
 
 	
