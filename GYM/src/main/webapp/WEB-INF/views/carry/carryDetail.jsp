@@ -141,7 +141,7 @@
 					<!-- 작성된 캐리 리뷰 리스트 -->
 					<%-- <c:forEach items="${carryReviewList}" var="carryReviewList"> --%>
 					<div class="review_list_wrap" id="review_sec">	
-						<div class="review_list_section">
+				<%--	<div class="review_list_section">
 							<div class="member_profile_image">
 								<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">
 							</div>
@@ -152,10 +152,8 @@
 								<br>
 								<span>${carryReviewList.reviewcontent}</span>
 							</div>
-							
-							
 						</div>
-					</div>
+					</div> --%>
 
 				</div>
 				<!-- carry review section all wrap END -->
@@ -305,6 +303,47 @@
 	});
 
 	
+	
+	// 리뷰 리스트 출력 ajax
+	function reviewList() {
+		
+		$.ajax({
+			url : '<c:url value="/carry/list"/>',
+			type : 'POST',
+			datatype : 'JSON',
+			data : {
+				cridx:$("#cridx").val()
+			}, 
+			success : function(data) {
+				var tag = '<div>'
+					$.each(data, function(index, item) {
+							tag+=	'<div class="review_list_section">' 
+							tag+=		'<div class="member_profile_image">' 
+							tag+=			'<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">' 
+							tag+=	    '</div>' 
+							tag+=			'<div class="review_content">' 
+							tag+=				'<span class="review_name">' + item.memnick + '</span>' 
+							tag+=				'<span class="review_date">' + item.reviewdate + '</span>' 
+							tag+=				'<br>'
+							tag+=				'<span class="review_content_span">' + item.reviewcontent + '</span>' 
+							tag+=			'</div>'	
+							tag+=	'</div>'	
+					});
+				
+							$('#review_sec').html(tag);
+		},
+
+			error : function() {
+				alert("error");
+				
+			}
+			
+	});
+			
+	
+}
+	
+/* 
 	// 리뷰리스트 출력 ajax
 	function reviewList() {
 		
@@ -353,7 +392,7 @@
 		});
 				
 			}
-	
+*/	
 	
 	
 		// 리뷰 등록하기(Ajax)

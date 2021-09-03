@@ -1,6 +1,5 @@
 package com.project.gymcarry.carry.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,7 +76,23 @@ public class CarryDetailController {
 
 	
 	// 캐리 리뷰 리스트 출력
+	@PostMapping("carry/list")
+	@ResponseBody
+	public List<CarryReviewDto> reviewList(
+			Model model,
+			@RequestParam("cridx") int cridx
+			
+			){
+		
+		List<CarryReviewDto> carryReviewList = carryInfoService.getCarryReviewList(cridx);
+		
+		return carryReviewList;
+	}
+	
+	
 
+/*	
+	// 캐리 리뷰 리스트 출력
 	@PostMapping("/carry/list")
 	@ResponseBody
 	public HashMap<String, Object> reviewList(
@@ -112,20 +127,9 @@ public class CarryDetailController {
 			return result;
 		}
 	}
-	  
-//	
-//	@PostMapping("/carry/list")
-//	@ResponseBody
-//	public List<CarryReviewDto> reviewList(
-//			Model model, 
-//			@RequestParam("cridx") int cridx
-//			) {
-//
-//		List<CarryReviewDto> carryReviewList = carryInfoService.getCarryReviewList(cridx);
-//
-//		return carryReviewList;
-//	}
-//	
+*/
+	
+	
 	
 /*
 		// 캐리 리뷰 리스트 출력  (페이징처리)

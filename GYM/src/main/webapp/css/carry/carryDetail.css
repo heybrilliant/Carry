@@ -199,6 +199,10 @@ hr {
 	margin-left: 20px;
 }
 
+.review_content_span {
+	font-size : 16px;
+}
+
 .review_write_wrap, .reviewForm {
 	width: 100%;
 }
@@ -213,7 +217,7 @@ hr {
 }
 
 textarea {
-	width : 85%;
+	width : 70%;
 }
 
 .review_input {
@@ -259,15 +263,17 @@ textarea {
 .member_profile_image {
 	width: 50px;
 	float: left;
+	margin-top : 10px;
 }
 
 .review_name {
 	font-weight: bold;
 	line-height: 40px;
+	font-size : 17px;
 }
 
 .review_date {
-	font-size: 14px;
+	font-size: 15px;
 	color: #888;
 	margin-left: 10px;
 }
