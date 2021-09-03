@@ -28,7 +28,7 @@ public class CarryDetailController {
 	// 캐리 상세 페이지
 	@GetMapping("/carry/detail")
 	public String carryDetail(
-			@RequestParam("cridx") int cridx, 
+			@RequestParam("cridx") int cridx,
 			Model model
 			) {
 

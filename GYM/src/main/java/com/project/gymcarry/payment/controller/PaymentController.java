@@ -1,5 +1,7 @@
 package com.project.gymcarry.payment.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.payment.PaymentDto;
 import com.project.gymcarry.payment.service.PaymentService;
@@ -37,12 +40,17 @@ public class PaymentController {
 		  session.setAttribute("name", sessionDto.getMemname());
 		  System.out.println("세션 변수(memidx) : " + sessionDto.getMemidx());
 		  System.out.println("세션 변수(memname) : " + sessionDto.getMemname());
+		
+		  System.out.println("cridx : " + cridx);
+		  System.out.println("crname : " + crname);
+		  System.out.println("paynum : " + paynum);
+		  System.out.println("payprice : " + payprice);
 		  
 		  model.addAttribute("cridx", cridx);
 		  model.addAttribute("crname", crname);
 		  model.addAttribute("paynum", paynum);
-		  model.addAttribute("payprice", payprice);
-	  
+		  model.addAttribute("payprice", payprice);	  
+		  
 		  return "payment/payment";
 		  
 	  }

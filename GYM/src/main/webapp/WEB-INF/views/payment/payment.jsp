@@ -36,7 +36,6 @@
 
 			<br> <br>
 			
-				<%-- <form action="<c:url value='/payment/complete'/>" method="post"> --%>
 				<form action="<c:url value='/payment/complete'/>" id="paymentForm" name="paymentForm" method="post">
 				<div>
 					<h3>결제 정보</h3>
