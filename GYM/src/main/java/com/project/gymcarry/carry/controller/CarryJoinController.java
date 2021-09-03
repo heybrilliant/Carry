@@ -3,6 +3,7 @@ package com.project.gymcarry.carry.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,15 +19,20 @@ public class CarryJoinController {
 	
 	@GetMapping
 	public String carryJoinForm() {
-		return "member/carryJoinForm";
+		return "carry/carryJoinForm";
 	}
 	
 	@PostMapping
+<<<<<<< HEAD
 	public String carryJoin(CarryDto carryDto) {
+=======
+	public String carryJoin(@ModelAttribute CarryJoinDto carryDto) {
+		System.out.println("??? "+ carryDto.toString());
+>>>>>>> origin/E3
 		int result = joinservice.carryJoin(carryDto);
 		if(result == 1) {
-			System.out.println("캐리회원가입성공");
+			System.out.println("캐리 회원가입 성공");
 		}
-		return "redirect:/member/login";
+		return "redirect:/carry/login";
 	}
 }

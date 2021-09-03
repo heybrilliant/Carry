@@ -6,8 +6,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.gymcarry.member.MemberDto;
+
 
 @Controller
 @RequestMapping("/mypage/mypage")
@@ -27,6 +29,10 @@ public class MypageController {
 
 		return "/mypage/mypage";
 	}
-	
+
+	// Mypage 클릭시
+	// 세션 없을 때 -> 로그인 후 이용해주세요
+	// Member세션 -> 멤버 마이페이지 이동
+	// Carry세션 -> 캐리 마이페이지 이동
 
 }
