@@ -20,7 +20,7 @@
              내 주변 운동시설 찾아보기
          </h1>
          <ul class="place_menu">
-             <li class="on">
+              <li class="on">
                  <a href="<c:url value="/place/list"/>">전체</a>
              </li>
              <li>
@@ -43,7 +43,7 @@
              
          </div>
          <div class="place_list">
-             <c:forEach items="${placeList}" var="placeList" varStatus="status">
+             <c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
              	 <!-- 대표 이미지 추출  -->
 	             <c:set var="imgUrl" value="${placeList.placeimg}"/>
 	             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
@@ -88,7 +88,7 @@
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 		var positions = new Array();
 		
-		<c:forEach items="${placeList}" var="placeList" varStatus="status">
+		<c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
 			positions.push({content : '<div class="map_in_place_name">${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
 		</c:forEach> 
 		

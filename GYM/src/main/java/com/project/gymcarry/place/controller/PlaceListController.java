@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/place/list")
+@RequestMapping
 public class PlaceListController {
 	
-	@GetMapping
+	@GetMapping("/place/list")
 	public String matching() {
 		System.out.println("place 전체 진입");
 		return "/place/placeList";
