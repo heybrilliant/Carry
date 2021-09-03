@@ -1,13 +1,13 @@
 .place_image {
     width:100%;
-    height:350px;
+    height:320px;
 }
 .place_image ul {
     height:100%;
 }
 .place_image ul li {
     height:100%;
-    width:25%!important;
+    width:16.6666%!important;
 }
 .place_image img {
     width:100%;
@@ -36,6 +36,8 @@
 
 .place_info_content p {
     line-height: 1.6;
+    word-break: keep-all;
+    white-space: pre-line;
 }
 
 

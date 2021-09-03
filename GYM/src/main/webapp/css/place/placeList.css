@@ -14,11 +14,16 @@
     cursor:pointer;
     color:#929192
 }
+
+.place_list_section .place_menu li a {
+	color:#929192;
+	font-weight:600;
+}
 .place_list_section .place_menu > li:first-child {
     border:0;
 }
 
-.place_list_section .place_menu > li.on {
+.place_list_section .place_menu > li.on a {
     font-weight:600;
     color:#333   
 }
@@ -76,6 +81,7 @@
     border-radius: 10px;
     margin-bottom:30px;
     transition: 0.2s;
+    background:#fff;
 }
 
 .place_list .place_content:hover {
@@ -128,4 +134,46 @@
 .place_list .place_content .place_img img {
     width:100%;
     height:100%;
+}
+
+.place_list .place_content.on {
+	background:#525252;
+	
+}
+.place_list .place_content.on .place_info > * {
+	color:#fff;
+}
+.place_list .place_content.on .place_info a {
+	background:#fff;
+	color:#333;
+	border:none;
+}
+.place_list .place_content.on .place_info a:hover {
+	background:#000;
+	color:#fff;
+}
+
+.map_in_place_name {
+	background:rgba(0,0,0,0.7);
+	text-align:center;
+	border:none;
+	padding:10px;
+	width:100%;
+	color:#fff;
+	display:block;
+	border-radius:5px;
+	font-size:13px;
+	white-space: pre-wrap;
+	word-break:keep-all;
+}
+#map > div > div > div:last-child > div {
+	background:transparent !important;
+	border:0 !important;
+	width:150px!important;
+}
+#map > div > div > div:last-child > div > div:first-child {
+	display:none!important;
+}
+#map > div > div > div:last-child > div > div:last-child {
+	width:100%!important;
 }

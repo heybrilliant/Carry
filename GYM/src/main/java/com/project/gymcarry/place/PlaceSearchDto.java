@@ -1,6 +1,6 @@
 package com.project.gymcarry.place;
 
-public class PlaceDto {
+public class PlaceSearchDto {
 
 	private int placenum;
 	private int placeidx;
@@ -14,11 +14,15 @@ public class PlaceDto {
 	private String openhour;
 	private String placeimg;
 	
+	// 검색 키워드
+	private String keyword;
+	
 	// 기본 생성자
-	public PlaceDto() {}
+	public PlaceSearchDto() {}
 
-	public PlaceDto(int placenum, int placeidx, String placename, String placeaddress, float latitude, float longitude,
-			String placephone, String placeinfo, String placeintro, String openhour, String placeimg) {
+	public PlaceSearchDto(int placenum, int placeidx, String placename, String placeaddress, float latitude,
+			float longitude, String placephone, String placeinfo, String placeintro, String openhour, String placeimg,
+			String keyword) {
 		super();
 		this.placenum = placenum;
 		this.placeidx = placeidx;
@@ -31,6 +35,7 @@ public class PlaceDto {
 		this.placeintro = placeintro;
 		this.openhour = openhour;
 		this.placeimg = placeimg;
+		this.keyword = keyword;
 	}
 
 	public int getPlacenum() {
@@ -121,13 +126,23 @@ public class PlaceDto {
 		this.placeimg = placeimg;
 	}
 
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	@Override
 	public String toString() {
-		return "PlaceDto [placenum=" + placenum + ", placeidx=" + placeidx + ", placename=" + placename
+		return "PlaceSearchDto [placenum=" + placenum + ", placeidx=" + placeidx + ", placename=" + placename
 				+ ", placeaddress=" + placeaddress + ", latitude=" + latitude + ", longitude=" + longitude
 				+ ", placephone=" + placephone + ", placeinfo=" + placeinfo + ", placeintro=" + placeintro
-				+ ", openhour=" + openhour + ", placeimg=" + placeimg + "]";
+				+ ", openhour=" + openhour + ", placeimg=" + placeimg + ", keyword=" + keyword + "]";
 	}
+
+	
 	
 	
 	

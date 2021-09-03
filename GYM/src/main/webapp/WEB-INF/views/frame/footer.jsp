@@ -3,6 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Footer -->
 <footer class="footer">
+	<div class="top_btn" onclick="scrollTopBtn()">
+		<img src="<c:url value="/images/icon/top_btn.png"/>" alt="top">
+	</div>
 	<div class="footer_nav">
 		<div class="container_fix">
 			<ul class="footer_menu">
@@ -42,6 +45,17 @@
 		</div>
 	</div>
 </footer>
+
+<script>
+	// Top button
+	function scrollTopBtn(){
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
+
+	}
+</script>
 	
 </body>
 </html>

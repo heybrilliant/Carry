@@ -90,7 +90,7 @@ body {
   width: 25%;
   margin: 0 auto;
   padding-top: 20px;
-  
+
 }
 .profile_image {
   border-radius: 50%;
@@ -127,7 +127,7 @@ body {
   border-radius: 18px;
 
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
   cursor: pointer;
 
@@ -153,7 +153,6 @@ body {
   height: 50px;
   overflow: hidden;
   text-overflow: ellipsis;
-  -w
 }
 
 /* 날짜 아이콘 영역 */
@@ -161,7 +160,7 @@ body {
   position: absolute;
   right: 0;
   width: 100%;
-  
+
 }
 
 .write_date {
@@ -194,4 +193,4 @@ body {
     text-align: left;
     margin-left: 2em;
   }
-} ;
+}

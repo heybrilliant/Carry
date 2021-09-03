@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.gymcarry.dao.PlaceDao"> 
+
+
+	<!-- 플레이스 전체 정보 출력 -->
+	<select id="selectHealthPlaceList"
+		resultType="com.project.gymcarry.place.PlaceDto">
+		select * from place where placenum = #{placenum}
+	</select>
+	
+	<!-- 플레이스 상세 정보 출력 -->
+	<select id="selectHealthPlaceInfo"
+		resultType="com.project.gymcarry.place.PlaceDto">
+		select placenum, placeidx, placename, placeaddress,latitude,longitude,placephone,placeinfo,placeintro,openhour,substring(placeimg, 2, length(placeimg)-2) as placeimg from place where placeidx = #{placeidx}
+	</select>
+	
+	<!-- 플레이스 검색 자동 완성 -->
+	<select id="selectHealthPlaceSearch"
+		resultType="com.project.gymcarry.place.PlaceSearchDto">
+		select placename from place where placename LIKE concat('%',${keyword},'%');
+	</select>
+	
+		<!--필라테스 플레이스 전체 정보 출력-->
+	<select id="selectPilatesPlaceList"
+			resultType="com.project.gymcarry.place.PlaceDto">
+		select * from place where placenum = #{placenum}
+	</select>
+	
+	
+
+	
+	
+
+</mapper>

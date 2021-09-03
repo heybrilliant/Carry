@@ -21,7 +21,7 @@
 	<bean id="sqlSessionFactoryBean"
 				class="org.mybatis.spring.SqlSessionFactoryBean"
 				p:dataSource-ref="datasource"
-				p:mapperLocations="classpath:com/project/gymcarry/dao/mapper/*.xml"
+		  		p:mapperLocations="classpath:com/project/gymcarry/dao/mapper/*.xml"
 				>
 	</bean>
 	
