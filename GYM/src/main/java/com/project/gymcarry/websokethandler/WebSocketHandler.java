@@ -100,6 +100,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 				session.sendMessage(sendMsg);
 			}
 			matchingChatRoomService.insertChatContent(messageDto);
+			
 		} else if (chatNick == messageDto.getMemidx()) {
 			int st = messageDto.getCridx();
 			WebSocketSession toSession = mapList.get(st);

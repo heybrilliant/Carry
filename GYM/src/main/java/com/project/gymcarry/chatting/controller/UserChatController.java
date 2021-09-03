@@ -20,53 +20,51 @@ import com.project.gymcarry.member.SessionDto;
 
 @Controller
 public class UserChatController {
-	
+
 	@Autowired
 	private MatchingListService matchingListService;
-	
+
 	@Autowired
-	private MatchingChatRoomService matchingChatRoomService; 
-	
+	private MatchingChatRoomService matchingChatRoomService;
+
 	@GetMapping("chatting/chat")
 	public String chatList() {
 		return "chatting/userChat";
 	}
-	
+
 	// 채팅 룸 생성 및 중복
 	@GetMapping("chatting/chatInquire")
-	public String chatInquire(
-			@RequestParam("cridx") int cridx, 
-			@RequestParam("memidx") int memidx,
-			RedirectAttributes redirectAttributes
-			) {
+	public String chatInquire(@RequestParam("cridx") int cridx, @RequestParam("memidx") int memidx,
+			RedirectAttributes redirectAttributes) {
 		// 방번호 가져오기
 		ChatListDto chatDto = matchingChatRoomService.getByChatRoom(cridx, memidx);
-		if(chatDto != null) {
+		if (chatDto != null) {
 			int chatidx = matchingChatRoomService.getByChatIdx(chatDto.getChatidx());
-			if(chatidx == 1) {
+			if (chatidx == 1) {
 				redirectAttributes.addAttribute("chatidx", chatDto.getChatidx());
 				return "redirect:/chatting/chatList";
-			} 
+			}
 		}
 		// 방이 있으면 생성하지않고 채팅으로 이동
 		// 캐리와의 중복 방이없을경우 채팅방생성
 		matchingChatRoomService.getAddChatRoom(cridx, memidx);
 		return "redirect:/chatting/chatList";
 	}
-	
+
 	// 채팅룸 리스트
 	@GetMapping("chatting/chatList")
-	public String matching(Model model,HttpSession session) {
+	public String matching(Model model, HttpSession session) {
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
-		List<ChatListDto> list = matchingListService.getChatList(dto.getMemidx());
-		model.addAttribute("chatList", list);
-		List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());
-		model.addAttribute("carryChatList", lists);
-//		ChatRoomDto chatRoomDto = matchingChatRoomService.getByChatContent(chatidx);
-//		model.addAttribute("chat", chatRoomDto);
+		if (dto.getMemidx() != 0) {
+			List<ChatListDto> list = matchingListService.getChatList(dto.getMemidx());
+			model.addAttribute("chatList", list);
+		} else if (dto.getCridx() != 0) {
+			List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());
+			model.addAttribute("carryChatList", lists);
+		}
 		return "chatting/userChat";
-	}	
-	
+	}
+
 	// 채팅 대화리스트
 	@GetMapping("chatting/dochat")
 	@ResponseBody
@@ -75,5 +73,5 @@ public class UserChatController {
 		model.addAttribute("chatidx", chatidx);
 		return chatList;
 	}
-	
+
 }

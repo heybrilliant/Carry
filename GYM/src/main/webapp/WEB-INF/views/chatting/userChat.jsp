@@ -286,103 +286,90 @@
 
 	<script>
 	
-/* 		$.ajax({
+	// 채팅방 대화내용 리스트
+	function chatList(num) {
+		$.ajax({
 			type : 'GET',
-			url : '<c:url value="/chatting/message"/>'
+			url : '<c:url value="/chatting/dochat"/>',
 			dataType : 'json',
 			data : {
-				message : $('#msg').val();
-			},
-			success : function(data){
-				alert('성공', data);
-			}
-		}); */
-	
-	
-		// 채팅방 대화내용 리스트
-		function chatList(num) {
-			$.ajax({
-				type : 'GET',
-				url : '<c:url value="/chatting/dochat"/>',
-				dataType : 'json',
-				data : {
-					chatidx : num
-					},
-					success : function(data) {
-						if (data == 0) {
-							chattting();
-							chatNav();
-						} else {
-							var htmlStr = '<div class="carry_message_warp">';
-							$.each(data, function(index, item) {
-								if(memidx == memsession){
-									if(item.contenttype == 1){
-										htmlStr += '<div class="carry_chat">'
-										htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
-										htmlStr += '	<div class="message">'
-										htmlStr += '		<div class="message_color">'
-										htmlStr += '			<span>'+item.chatcontent+'</span>'
-										htmlStr += '		</div>'
-										htmlStr += '	</div>'
-										htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
-										htmlStr += '	</div>'
-										htmlStr += '</div>'
-									} 
-									if(item.contenttype == 0){
-										htmlStr += '	<div class="user_message_warp">'
-										htmlStr += '		<div class="user_chat">'
-										htmlStr += '			<div class="user_message">'
-										htmlStr += '				<div>'
-										htmlStr += '					<span>'+item.chatcontent+'</span>'
-										htmlStr += '				</div>'
-										htmlStr += '			</div>'
-										htmlStr += '			<div class="time_line2">'
-										htmlStr += '				<span>'+item.chatdate+'</span>'
-										htmlStr += '			</div>'
-										htmlStr += '		</div>'
-										htmlStr += '	</div>'
-									}
-									chattting();
-									$('.carry_message_warp').html(htmlStr);
-								} else if(cridx == crsession){
-									console.log(crsession);
-									if(item.contenttype == 1){
-										htmlStr += '	<div class="user_message_warp">'
-										htmlStr += '		<div class="user_chat">'
-										htmlStr += '			<div class="user_message">'
-										htmlStr += '				<div>'
-										htmlStr += '					<span>'+item.chatcontent+'</span>'
-										htmlStr += '				</div>'
-										htmlStr += '			</div>'
-										htmlStr += '			<div class="time_line2">'
-										htmlStr += '				<span>'+item.chatdate+'</span>'
-										htmlStr += '			</div>'
-										htmlStr += '		</div>'
-										htmlStr += '	</div>'
-										
-									} 
-									if(item.contenttype == 0){
-										htmlStr += '<div class="carry_chat">'
-										htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
-										htmlStr += '	<div class="message">'
-										htmlStr += '		<div class="message_color">'
-										htmlStr += '			<span>'+item.chatcontent+'</span>'
-										htmlStr += '		</div>'
-										htmlStr += '	</div>'
-										htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
-										htmlStr += '	</div>'
-										htmlStr += '</div>'
-									}
-									chattting();
-									$('.carry_message_warp').html(htmlStr);
+				chatidx : num
+				},
+				success : function(data) {
+					if (data == 0) {
+						chattting();
+						chatNav();
+					} else {
+						var htmlStr = '<div class="carry_message_warp">';
+						$.each(data, function(index, item) {
+							if(memidx == memsession){
+								if(item.contenttype == 1){
+									htmlStr += '<div class="carry_chat">'
+									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+									htmlStr += '	<div class="message">'
+									htmlStr += '		<div class="message_color">'
+									htmlStr += '			<span>'+item.chatcontent+'</span>'
+									htmlStr += '		</div>'
+									htmlStr += '	</div>'
+									htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
+									htmlStr += '	</div>'
+									htmlStr += '</div>'
+								} 
+								if(item.contenttype == 0){
+									htmlStr += '	<div class="user_message_warp">'
+									htmlStr += '		<div class="user_chat">'
+									htmlStr += '			<div class="user_message">'
+									htmlStr += '				<div>'
+									htmlStr += '					<span>'+item.chatcontent+'</span>'
+									htmlStr += '				</div>'
+									htmlStr += '			</div>'
+									htmlStr += '			<div class="time_line2">'
+									htmlStr += '				<span>'+item.chatdate+'</span>'
+									htmlStr += '			</div>'
+									htmlStr += '		</div>'
+									htmlStr += '	</div>'
 								}
-								
+								chattting();
+								$('.carry_message_warp').html(htmlStr);
+							} else if(cridx == crsession){
+								console.log(crsession);
+								if(item.contenttype == 1){
+									htmlStr += '	<div class="user_message_warp">'
+									htmlStr += '		<div class="user_chat">'
+									htmlStr += '			<div class="user_message">'
+									htmlStr += '				<div>'
+									htmlStr += '					<span>'+item.chatcontent+'</span>'
+									htmlStr += '				</div>'
+									htmlStr += '			</div>'
+									htmlStr += '			<div class="time_line2">'
+									htmlStr += '				<span>'+item.chatdate+'</span>'
+									htmlStr += '			</div>'
+									htmlStr += '		</div>'
+									htmlStr += '	</div>'
+									
+								} 
+								if(item.contenttype == 0){
+									htmlStr += '<div class="carry_chat">'
+									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+									htmlStr += '	<div class="message">'
+									htmlStr += '		<div class="message_color">'
+									htmlStr += '			<span>'+item.chatcontent+'</span>'
+									htmlStr += '		</div>'
+									htmlStr += '	</div>'
+									htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
+									htmlStr += '	</div>'
+									htmlStr += '</div>'
+								}
+								chattting();
+								$('.carry_message_warp').html(htmlStr);
+							}
 							
-						});
-					}
+						
+					});
 				}
-			})
-		}
+			}
+		})
+	}
 	</script>
 	
 	
