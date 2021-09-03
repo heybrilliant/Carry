@@ -26,7 +26,7 @@
 				<c:forEach items="${chatList}" var="list">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
-							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx}); location.href='javascript:chatList(${list.chatidx})'"
+							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); location.href='javascript:chatList(${list.chatidx})'"
 							class="on_btn">
 							<div class="float_left">
 								<img src="<c:url value="/images/icon/profile2.png"/>">
@@ -187,20 +187,23 @@
 	var chatIdx;
 	var memidx;
 	var cridx;
-	function getChat(num, mnum, crnum){
+	var memnicks;
+	var crnicks;
+	function getChat(num, mnum, crnum, memnick, crnick){
 		chatIdx = num;
 		memidx = mnum;
 		cridx = crnum;
+		memnicks = memnick;
+		crnicks = crnick;
 	}
-	var memsession = ${loginSession.memidx};
-	var crsession = ${loginSession.cridx};
+	var memsession = '${loginSession.memnick}';
+	var crsession = '${loginSession.crnick}';
 	
 	
 	// onmessage - 커넥션이 메세지 호출
 	socket.onmessage = function(message) {
 		var data = message.data;
 		var jsonData = JSON.parse(data);
-		console.log(jsonData); 
 		var currentuser_session1 = $('#memberId').val();
 		var currentuser_session2 = $('#carryId').val();
 		if(chatIdx == jsonData.chatidx){
@@ -302,7 +305,7 @@
 					} else {
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data, function(index, item) {
-							if(memidx == memsession){
+							if(memnicks == memsession){
 								if(item.contenttype == 1){
 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
@@ -331,7 +334,7 @@
 								}
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
-							} else if(cridx == crsession){
+							} else if(crnicks == crsession){
 								console.log(crsession);
 								if(item.contenttype == 1){
 									htmlStr += '	<div class="user_message_warp">'
