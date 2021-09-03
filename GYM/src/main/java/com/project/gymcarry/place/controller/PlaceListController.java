@@ -22,26 +22,26 @@ import com.project.gymcarry.place.PlaceSearchDto;
 import com.project.gymcarry.place.service.PlaceHealthService;
 
 @Controller
-@RequestMapping("/place/list")
+@RequestMapping
 public class PlaceListController {
 	
 	@Autowired
 	private PlaceHealthService placeHealthService;
 	
 	// place 리스트
-//	@GetMapping
-//	public String placeList(
-//				@RequestParam("placenum") int placenum,
-//				Model model
-//			) {
-//		List<PlaceDto> placeList = placeHealthService.getHealthPlaceList(placenum);
-//		System.out.println("placenum : " + placenum);
-//		
-//		model.addAttribute("placeList", placeList);
-//		
-//		
-//		return "place/placeList";
-//	}
+	@GetMapping("/place")
+	public String placeList(
+				@RequestParam("placenum") int placenum,
+				Model model
+			) {
+		List<PlaceDto> placeList = placeHealthService.getHealthPlaceList(placenum);
+		System.out.println("placenum : " + placenum);
+		
+		model.addAttribute("placeList", placeList);
+		
+		
+		return "place/placeList";
+	}
 //	
 	// 컨트롤러 부분
 //	@RequestMapping(value = "/json", method = RequestMethod.GET, produces="text/plain;charset=UTF-8")

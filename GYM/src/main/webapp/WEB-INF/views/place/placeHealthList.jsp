@@ -20,18 +20,11 @@
              내 주변 운동시설 찾아보기
          </h1>
          <ul class="place_menu">
-             <li class="on">
-                 <a href="<c:url value="/place/list"/>">전체</a>
-             </li>
-             <li>
-                 <a href="<c:url value="/place/list?placenum=1"/>">헬스</a>
-             </li>
-             <li>
-                 <a href="<c:url value="/place/pilates"/>">필라테스</a>
-             </li>
-             <li>
-                 	요가
-             </li>
+            <li class="on"><a href="<c:url value="/place/list"/>">전체</a></li>
+	        <li><a href="<c:url value="/place/health?placenum=1"/>">헬스</a></li>
+	        <li><a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
+	        </li>
+	        <li><a href="<c:url value="/place/list?placenum=3"/>">요가</a></li>
          </ul>
          <div class="place_search_bar">
              <input type="text" name="search" id="search" placeholder="센터명을 검색해보세요.">

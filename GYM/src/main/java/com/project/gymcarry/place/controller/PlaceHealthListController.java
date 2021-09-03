@@ -22,14 +22,14 @@ import com.project.gymcarry.place.PlaceSearchDto;
 import com.project.gymcarry.place.service.PlaceHealthService;
 
 @Controller
-@RequestMapping("/place/list")
+@RequestMapping
 public class PlaceHealthListController {
 	
 	@Autowired
 	private PlaceHealthService placeHealthService;
 	
 	// place 리스트
-	@GetMapping
+	@GetMapping("/place/health")
 	public String placeList(
 				@RequestParam("placenum") int placenum,
 				Model model
@@ -40,7 +40,7 @@ public class PlaceHealthListController {
 		model.addAttribute("placeList", placeList);
 		
 		
-		return "place/placeList";
+		return "place/placeHealthList";
 	}
 	
 	// 컨트롤러 부분
