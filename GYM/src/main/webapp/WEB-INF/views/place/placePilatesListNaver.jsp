@@ -5,7 +5,6 @@
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp" %>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
-<link rel="stylesheet" href="/gym/css/place/placeList.css">
 
 <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ql9vcy7uun"></script>
@@ -71,63 +70,100 @@
 <div id="map" style="width: 100%; height: 500px; margin-top: 50px"></div>
 
 <script type="text/javascript">
+    var map = new naver.maps.Map('map', {
+        center: new naver.maps.LatLng(37.55528086061827, 126.93683578593966), //지도 시작 지점
+        zoom: 15
+    });
     $(function() {
         initMap();
     });
     function initMap() {
-        const areaArr = [];  // 지역을 담는 배열 ( 지역명/위도경도 )
+        const areaArr = new Array(); // 지역을 담는 배열 ( 지역명/위도경도 )
         <c:forEach items="${placePilatesList}" var="placeList" varStatus="status">
             areaArr.push(
-                /*지역구 이름*/			               /*위도*/					/*경도*/
-                {location : '${placeList.placename}' , lat : ${placeList.latitude} , lng : ${placeList.longitude}}  // 중심좌표
+                /*업체 이름*/			               /*위도*/					/*경도*/
+                {location : '<div class="map_in_place_name">${placeList.placename}</div>' , latlng : new naver.maps.LatLng(${placeList.latitude} , ${placeList.longitude})}  // 중심좌표
         );
         </c:forEach>
         console.log(areaArr[0])
-        let markers = []; // 마커 정보를 담는 배열
-        let infoWindows = []; // 정보창을 담는 배열
-        var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(37.55528086061827, 126.93683578593966), //지도 시작 지점
-            zoom: 15
-        });
+
+
         for (var i = 0; i < areaArr.length; i++) {
-            // 지역을 담은 배열의 길이만큼 for문으로 마커와 정보창을 채워주자 !
+            // 마커 생성
             var marker = new naver.maps.Marker({
                 map: map,
-                title: areaArr[i].location, // 지역구 이름
-                position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng),
+                position: areaArr[i].latlng,
                 icon: {
                     content: [
                         '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;">' +
                         '<div> <img src="/gym/images/icon/muscles.png" style="width:60px; height:60px;"></div>' +
                         '</div>'
                     ].join(''),
-                    size: new naver.maps.Size(38, 58),
-                    anchor: new naver.maps.Point(19, 58),
-                },// 지역구의 위도 경도 넣기
+                    size: new naver.maps.Size(50, 52),
+                    origin: new naver.maps.Point(0, 0),
+                    anchor: new naver.maps.Point(25, 26)
+                },
+                draggable: false
+
             });
-            /* 정보창 */
+
+           // 마커 표시 할 인포윈도우 생성
             var infoWindow = new naver.maps.InfoWindow({
-                content: '<div style="width:200px;text-align:center;padding:10px;"><b>' + areaArr[i].location + '</b></div>'
-            }); // 클릭했을 때 띄워줄 정보 HTML 작성
-            markers.push(marker); // 생성한 마커를 배열에 담는다.
-            infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
+                backgroundColor : 'none',   // 기분 말풍선 색상
+                disableAnchor : true,       // 기본 말풍선 꼬리 사용 여부
+                borderWidth : 0,            // 기본 말풍선 창 테두리 두께
+                content: areaArr[i].location
+            });
+
+            // markers.push(marker); // 생성한 마커를 배열에 담는다.
+            // infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
+
+            naver.maps.Event.addListener(marker, 'mouseover', makeOverListener(map, marker, infoWindow));
+            naver.maps.Event.addListener(marker, 'mouseout', makeOutListener(infoWindow));
+            naver.maps.Event.addListener(marker, 'click', makeClickListener(marker, i));
         }
-        function getClickHandler(seq) {
-            return function(e) {  // 마커를 클릭하는 부분
-                var marker = markers[seq], // 클릭한 마커의 시퀀스로 찾는다.
-                    infoWindow = infoWindows[seq]; // 클릭한 마커의 시퀀스로 찾는다
-                if (infoWindow.getMap()) {
-                    infoWindow.close();
-                } else {
-                    infoWindow.open(map, marker); // 표출
-                }
+        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+        function makeOverListener(map, marker, infoWindow) {
+            return function() {
+                infoWindow.open(map, marker);
+            };
+        }
+
+        // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+        function makeOutListener(infoWindow) {
+            return function() {
+                infoWindow.close();
+            };
+        }
+        // 마커 클릭시 해당하는 place list로 스크롤 이동
+        function makeClickListener(marker, i){
+            return function(){
+                var idx = i + 1;
+                var window_y = window.scrollY;
+                var content_top = $('.place_list .place_content:nth-child(' + idx + ')').offset().top
+
+                window.scrollTo({
+                    top: content_top - 200,
+                    behavior: 'smooth'
+                });
+
+
+                $('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
+
+
+                $(window).scroll(function(){
+                    var window_top = $(window).scrollTop() + 500;
+                    if(window_top > content_top) {
+                        $('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
+                    } else {
+                        $('.place_list .place_content:nth-child(' + idx + ')').removeClass('on');
+                    }
+                })
             }
         }
-        for (var i=0, ii=markers.length; i<ii; i++) {
-            console.log(markers[i] , getClickHandler(i));
-            naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
-        }
     }
+
+
 </script>
 
 

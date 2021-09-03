@@ -22,7 +22,7 @@ public class PlacePilatesListService {
         return dao.selectPilatesPlaceList(placenum);
     }
     
-	// 필라테 플레이스 상세 정보 
+	// 필라테스 플레이스 상세 정보 
 	public PlaceDto getHealthPlaceInfo(int placeidx) {
 		dao = template.getMapper(PlaceDao.class);
 		return dao.selectHealthPlaceInfo(placeidx);
