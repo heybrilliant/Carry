@@ -191,75 +191,75 @@
 								<input type="submit" value="구매하기" class="button">
 							</div>
 						</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="1">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice1}">
+						<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+						<input type="hidden" name="crname" value="${carryDetail.crname}">
+						<input type="hidden" name="paynum" value="1"> <input
+							type="hidden" name="payprice" value="${carryPrice.proprice1}">
 					</form>
 
 
 					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 5회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice5}" />
-								원
-							</h4>
+						<div class="program">
+							<div class="program_info">
+								<span>수업 5회 이용권</span> <br>
+								<h4>
+									<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${carryPrice.proprice5}" />
+									원
+								</h4>
+							</div>
+							<div id="purchase_btn">
+								<input type="submit" value="구매하기" class="button">
+							</div>
 						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="5">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice5}">
+						<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+						<input type="hidden" name="crname" value="${carryDetail.crname}">
+						<input type="hidden" name="paynum" value="5"> <input
+							type="hidden" name="payprice" value="${carryPrice.proprice5}">
 					</form>
 
 
 					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 10회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice10}" />
-								원
-							</h4>
+						<div class="program">
+							<div class="program_info">
+								<span>수업 10회 이용권</span> <br>
+								<h4>
+									<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${carryPrice.proprice10}" />
+									원
+								</h4>
+							</div>
+							<div id="purchase_btn">
+								<input type="submit" value="구매하기" class="button">
+							</div>
 						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="10">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice10}">
+						<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+						<input type="hidden" name="crname" value="${carryDetail.crname}">
+						<input type="hidden" name="paynum" value="10"> <input
+							type="hidden" name="payprice" value="${carryPrice.proprice10}">
 					</form>
-					
-					
+
+
 					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 20회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice20}" />
-								원
-							</h4>
+						<div class="program">
+							<div class="program_info">
+								<span>수업 20회 이용권</span> <br>
+								<h4>
+									<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${carryPrice.proprice20}" />
+									원
+								</h4>
+							</div>
+							<div id="purchase_btn">
+								<input type="submit" value="구매하기" class="button">
+							</div>
 						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="20">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice20}">
+						<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+						<input type="hidden" name="crname" value="${carryDetail.crname}">
+						<input type="hidden" name="paynum" value="20"> <input
+							type="hidden" name="payprice" value="${carryPrice.proprice20}">
 					</form>
-					
+
 				</div>
 			</div>
 			<!-- 우측 배너 END -->

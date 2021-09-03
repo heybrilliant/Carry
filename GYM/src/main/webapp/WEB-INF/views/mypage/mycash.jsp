@@ -10,8 +10,7 @@
 <meta charset="UTF-8">
 <title>Mypage</title>
 
-<!-- 개인 css -->
-<link rel="stylesheet" href="/gym/css/mypage/grid.css">
+
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -32,6 +31,9 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+
+<!-- 개인 css -->
+<link rel="stylesheet" href="/gym/css/mypage/grid.css">
 
 </head>
 <body>

@@ -27,7 +27,7 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 </head>
-<body>
+<body style="padding-right: 0px">
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 

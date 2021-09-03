@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Mypage</title>
-
-<!-- 개인 css -->
+<!--개인 css-->
 <link rel="stylesheet" href="/gym/css/mypage/grid.css">
 
 <!-- jQuery -->
@@ -25,45 +24,177 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+
 <!-- iamport.payment.js -->
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-
-
 </head>
 <body>
 
-	<div class="col-right-top">
-		<input type="text" id="alternate" size="30">
-	</div>
+
 	<div class="col-right-top-memo">
 		<h3>일일 메모</h3>
 
-		<a class="" data-toggle="modal" href="#registerModal1"><img
-			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
+		<a class="" data-toggle="modal" href="#registerModal1"
+			data-backdrop="static"><img class="edit_text"
+			src="<c:url value="/images/icon/edit.png"/>"></a>
 
 	</div>
 
 	<div class="col-right-left">
 		<h3>눈 바디</h3>
-		<a class="" data-toggle="modal" href="#registerModal2"><img
-			class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
+		<a class="" data-toggle="modal" href="#registerModal2"
+			data-backdrop="static"><img class="edit_text"
+			src="<c:url value="/images/icon/upload.png"/>"></a>
 	</div>
 
 	<div class="col-right-right">
 		<h3>몸무게</h3>
-		<a class="" data-toggle="modal" href="#registerModal3"><img
-			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
+		<a class="" data-toggle="modal" href="#registerModal3"
+			data-backdrop="static"> <img class="edit_text"
+			src="<c:url value="/images/icon/edit.png"/>"></a>
 	</div>
 
 	<div class="col-right-right2">
 		<h3>식단</h3>
-		<a class="" data-toggle="modal" href="#registerModal4"><img
-			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
+		<a class="" data-toggle="modal" href="#registerModal4"
+			data-backdrop="static"><img class="edit_text"
+			src="<c:url value="/images/icon/edit.png"/>"></a>
 	</div>
 
+	<section>
+		<div class="modal fade" id="registerModal1" tabindex="-1"
+			role="dialog" aria-labelledby="modal4" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
 
+						<h3>일일 메모</h3>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="close">
+							<span aria-hidden="true"> X </span>
+						</button>
+
+					</div>
+					<form class="reg_form">
+						<div class="modal-body modal-mypage">
+
+							<div class="content">
+								<span class="left"></span> <span class="editor"> <textarea
+										class="form-control" name="contents" id="contents"
+										style="resize: none;"></textarea>
+								</span>
+							</div>
+							<div class="btn modal-submit-btn">
+								<button class="btn" type="button" id="reg_submit">확인</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="registerModal2" tabindex="-1"
+			role="dialog" aria-labelledby="modal4" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+
+						<h3>일일 메모</h3>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="close">
+							<span aria-hidden="true"> X </span>
+						</button>
+
+					</div>
+					<form class="reg_form2">
+						<div class="modal-body modal-mypage">
+
+							<div class="content">
+								<span class="left"></span> <span class="editor"> <textarea
+										class="form-control" name="contents" id="contents"
+										style="resize: none;"></textarea>
+								</span>
+							</div>
+							<div class="btn modal-submit-btn">
+								<button class="btn" type="button" id="">확인</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="registerModal3" tabindex="-1"
+			role="dialog" aria-labelledby="modal4" aria-hidden="true">
+			<div class="modal-dialog modal-kg">
+				<div class="modal-content">
+					<div class="modal-header">
+
+						<h3>몸무게</h3>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="close">
+							<span aria-hidden="true"> X </span>
+						</button>
+
+					</div>
+					<form class="reg_form3">
+						<div class="modal-body modal-mypage">
+
+							<div class="content">
+								<span class="editor"> <input class="form-control"
+									name="contents" maxlength="3" id="contents">
+
+								</span>
+								<div class="modal-kg-kg">
+									<h1>kg</h1>
+								</div>
+
+
+							</div>
+
+							<div class="btn modal-submit-btn">
+								<button class="btn" type="button"">확인</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="registerModal4" tabindex="-1"
+			role="dialog" aria-labelledby="modal4" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+
+						<h3>식단</h3>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="close">
+							<span aria-hidden="true"> X </span>
+						</button>
+
+					</div>
+					<form class="reg_form4">
+						<div class="modal-body modal-mypage">
+
+							<div class="content">
+								<span class="left"></span> <span class="editor"> <textarea
+										class="form-control" name="contents" id="contents"
+										style="resize: none;"></textarea>
+								</span>
+							</div>
+							<div class="btn modal-submit-btn">
+								<button class="btn" type="button"">확인</button>
+							</div>
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 
 
