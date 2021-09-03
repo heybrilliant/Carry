@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<title>Community</title>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+<title>Community</title>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js'></script>
 </head>
 <body>
 	<!-- header -->
@@ -16,17 +20,17 @@
              내 주변 운동시설 찾아보기
          </h1>
          <ul class="place_menu">
-             <li>
+             <li class="on">
                  <a href="<c:url value="/place/list"/>">전체</a>
              </li>
-             <li class="on">
-             	 <a href="<c:url value="/place/list?placenum=1"/>">헬스</a>
+             <li>
+                 <a href="<c:url value="/place/list?placenum=1"/>">헬스</a>
              </li>
              <li>
                  <a href="<c:url value="/place/pilates"/>">필라테스</a>
              </li>
              <li>
-                 요가
+                 	요가
              </li>
          </ul>
          <div class="place_search_bar">
@@ -39,85 +43,58 @@
              
          </div>
          <div class="place_list">
-             <div class="place_content">
-                 <div class="place_info">
-                     <h3>킹짐</h3>
-                     <p>안산시 단원구 선부동</p>
-                     <a href="<c:url value="/place/detail"/>">더 알아보기</a>
-                 </div>
-                 <div class="place_img">
-                     <img src="<c:url value="/images/review1.jpg"/>">
-                 </div>
-             </div>
-             <div class="place_content">
-                 <div class="place_info">
-                     <h3>어쩌고짐</h3>
-                     <p>안산시 단원구 초지동</p>
-                     <a href="#">더 알아보기</a>
-                 </div>
-                 <div class="place_img">
-                     <img src="<c:url value="/images/review2.jpg"/>">
-                 </div>
-             </div>
-             <div class="place_content">
-                 <div class="place_info">
-                     <h3>핏플리짐</h3>
-                     <p>안산시 단원구 원곡동</p>
-                     <a href="#">더 알아보기</a>
-                 </div>
-                 <div class="place_img">
-                     <img src="<c:url value="/images/review3.jpg"/>">
-                 </div>
-             </div>
-             <div class="place_content">
-                 <div class="place_info">
-                     <h3>베스트휘트니스</h3>
-                     <p>안산시 단원구 선부동</p>
-                     <a href="#">더 알아보기</a>
-                 </div>
-                 <div class="place_img">
-                     <img src="<c:url value="/images/review4.jpg"/>">
-                 </div>
-             </div>
+             <c:forEach items="${placeList}" var="placeList" varStatus="status">
+             	 <!-- 대표 이미지 추출  -->
+	             <c:set var="imgUrl" value="${placeList.placeimg}"/>
+	             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
+				 <c:set var="length" value="${fn:length(imageList[0])}"/>
+				 <c:set var="img" value="${fn:substring(imageList[0], 2, length-1)}"/>
+			 
+			 
+	             <div class="place_content">
+	                 <div class="place_info">
+	                     <h3>${placeList.placename}</h3>
+	                     <p>${placeList.placeaddress}</p>
+	                     <a href="<c:url value="/place/detail?placeidx=${placeList.placeidx}"/>">더 알아보기</a>
+	                 </div>
+	                 <div class="place_img">
+	                 	<c:if test="${empty img}">
+	                 		<img src="<c:url value="/images/review1.jpg"/>">
+	                 	</c:if>
+	                 	<c:if test="${!empty img}">
+	                    	<img src="<c:out value="${img}"/>">
+	                    </c:if>
+	                 </div>
+	             </div>
+             </c:forEach>
          </div>
      </div>
 
      <!-- Contents end -->
 
-	<!-- footer -->
-	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+
 	
-	
+	<!-- KAKAO MAP API -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2791d61cfcb1bc044154adc4c6bc431"></script>
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-		    mapOption = { 
-		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-		        level: 3 // 지도의 확대 레벨
-		    };
-		
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(37.556305974393915, 126.9399847935459), // 지도의 중심좌표
+	        level: 4 // 지도의 확대 레벨
+	    };
+	
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 		 
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
-		var positions = [
-		    {
-		        content: '<div>카카오</div>', 
-		        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-		    },
-		    {
-		        content: '<div>생태연못</div>', 
-		        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-		    },
-		    {
-		        content: '<div>텃밭</div>', 
-		        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-		    },
-		    {
-		        content: '<div>근린공원</div>',
-		        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-		    }
-		];
+		var positions = new Array();
 		
+		<c:forEach items="${placeList}" var="placeList" varStatus="status">
+			positions.push({content : '<div class="map_in_place_name">${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
+		</c:forEach> 
+		
+		console.log(positions[0])
+		
+
 		for (var i = 0; i < positions.length; i ++) {
 		    // 마커를 생성합니다
 		    var marker = new kakao.maps.Marker({
@@ -135,6 +112,7 @@
 		    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 		    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 		    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		    kakao.maps.event.addListener(marker, 'click', makeClickListener(marker, i));
 		}
 		
 		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
@@ -150,4 +128,98 @@
 		        infowindow.close();
 		    };
 		}
+		
+		// 마커 클릭시 해당하는 place list로 스크롤 이동
+		function makeClickListener(marker, i){
+			return function(){
+				var idx = i + 1;
+				var window_y = window.scrollY;
+				var content_top = $('.place_list .place_content:nth-child(' + idx + ')').offset().top
+				
+				window.scrollTo({
+					top: content_top - 200,
+					behavior: 'smooth'
+				});
+				
+				
+				$('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
+				
+				
+				$(window).scroll(function(){
+					var window_top = $(window).scrollTop() + 500;
+					if(window_top > content_top) {
+						$('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
+					} else {
+						$('.place_list .place_content:nth-child(' + idx + ')').removeClass('on');
+					}		
+				})
+			}
+		}
+
 	</script>
+	
+	<!-- 검색 자동완성 -->
+	<script>
+	$(function() {    //화면 다 뜨면 시작
+        $("#search").autocomplete({
+            source : function( request, response ) {
+                 $.ajax({
+                        type: 'get',
+                        url: "/place/list/search",
+                        dataType: "json",
+                        //data: {"param":"param"},
+                        success: function(data) {
+                            //서버에서 json 데이터 response 후 목록에 추가
+                            response(
+                                $.map(data, function(item) {    //json[i] 번째 에 있는게 item 임.
+                                    return {
+                                        label: item+"label",    //UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
+                                        value: item,    //그냥 사용자 설정값?
+                                        
+
+                                        //[
+                     //    {"name": "하늘이", "dogType": "푸들", "age": 1, "weight": 2.14},
+                         //    {"name": "콩이", "dogType": "푸들", "age": 3, "weight": 2.5},
+                         //    {"name": "람이", "dogType": "허스키", "age": 7, "weight": 3.1}
+                         //]
+                                        // json이 다음 처럼 넘어오면
+                                        // 상황 : name으로 찾고 dogType을 넘겨야 하는 상황이면 
+                                        // label : item.dogType ,    //오토컴플릿이 되고 싶은 단어 
+                                        // value : item.family ,    //넘겨야 하는 단어
+                                        // age : item.age ,
+                                        // weight : item.weight
+                                    }
+                                })
+                            );
+                        }
+                   });
+                },    // source 는 자동 완성 대상
+            select : function(event, ui) {    //아이템 선택시
+                console.log(ui);//사용자가 오토컴플릿이 만들어준 목록에서 선택을 하면 반환되는 객체
+                console.log(ui.item.label);    //김치 볶음밥label
+                console.log(ui.item.value);    //김치 볶음밥
+                console.log(ui.item.test);    //김치 볶음밥test
+                
+            },
+            focus : function(event, ui) {    //포커스 가면
+                return false;//한글 에러 잡기용도로 사용됨
+            },
+            minLength: 1,// 최소 글자수
+            autoFocus: true, //첫번째 항목 자동 포커스 기본값 false
+            classes: {    //잘 모르겠음
+                "ui-autocomplete": "highlight"
+            },
+            delay: 500,    //검색창에 글자 써지고 나서 autocomplete 창 뜰 때 까지 딜레이 시간(ms)
+//            disabled: true, //자동완성 기능 끄기
+            position: { my : "right top", at: "right bottom" },    //잘 모르겠음
+            close : function(event){    //자동완성창 닫아질때 호출
+                console.log(event);
+            }
+        });
+        
+    });
+	</script>
+	
+	
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
