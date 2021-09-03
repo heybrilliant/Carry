@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.gymcarry.carry.CarryDto;
+import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.member.service.JoinService;
 
 @Controller
@@ -23,12 +23,8 @@ public class CarryJoinController {
 	}
 	
 	@PostMapping
-<<<<<<< HEAD
-	public String carryJoin(CarryDto carryDto) {
-=======
 	public String carryJoin(@ModelAttribute CarryJoinDto carryDto) {
 		System.out.println("??? "+ carryDto.toString());
->>>>>>> origin/E3
 		int result = joinservice.carryJoin(carryDto);
 		if(result == 1) {
 			System.out.println("캐리 회원가입 성공");

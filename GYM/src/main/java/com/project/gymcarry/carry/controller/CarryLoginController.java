@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.member.service.LoginService;
 
@@ -30,13 +31,8 @@ public class CarryLoginController {
 			@RequestParam("cremail") String id, 
 			@RequestParam("crpw") String pw,
 			HttpServletRequest request,
-<<<<<<< HEAD
-			HttpSession session,
-			Model model) {
-=======
 			HttpSession session
 			) {
->>>>>>> origin/E3
 		SessionDto sessionDto = loginService.carryLogin(id, pw);
 		if (sessionDto != null) {
 			session.setAttribute("loginSession", sessionDto);
