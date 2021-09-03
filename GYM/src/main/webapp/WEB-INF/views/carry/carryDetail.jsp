@@ -53,21 +53,20 @@
 
 
 		<!-- quickmenu section START -->
-		<div class="quickmenu_section">
-			<nav class="quickmenu">
-				<ul>
-					<li><a href="#introduce" id="introducte_btn">소개</a></li>
-					<li><a href="#review">후기</a></li>
-					<li><a href="#place">소속 플레이스</a></li>
-					<li><a href="#location">지도</a></li>
-					<li><a href="#certi">자격/경력</a></li>
-				</ul>
-			</nav>
+		<div class="quickmenu_wrap">
+			<div class="quickmenu_section">
+				<nav class="quickmenu">
+					<ul>
+						<li><a href="#introduce" id="introducte_btn">소개</a></li>
+						<li><a href="#review">후기</a></li>
+						<li><a href="#place">소속 플레이스</a></li>
+						<li><a href="#location">지도</a></li>
+						<li><a href="#certi">자격/경력</a></li>
+					</ul>
+				</nav>
+			</div>
 		</div>
-		<!-- quickmenu section END -->
 
-
-		<hr>
 
 		<div class="place_info container_fix">
 
@@ -215,76 +214,14 @@
 					<input type="hidden" name="payprice" value="${price.proprice}">
 					</c:forEach>
 					</form>
-
-<!--
-					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 5회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice5}" />
-								원
-							</h4>
-						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="5">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice5}">
-					</form>
-
-
-					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 10회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice10}" />
-								원
-							</h4>
-						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="10">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice10}">
-					</form>
 					
-					
-					<form action="<c:url value='/payment/pay'/>" method="post">
-					<div class="program">
-						<div class="program_info">
-							<span>수업 20회 이용권</span> <br>
-							<h4>
-								<fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${carryPrice.proprice20}" />
-								원
-							</h4>
-						</div>
-						<div id="purchase_btn">
-							<input type="submit" value="구매하기" class="button">
-						</div>
-					</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="20">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice20}">
-					</form>
-  -->					
 				</div>
+				
 			</div>
 			<!-- 우측 배너 END -->
 
 		</div>
-
+	</div>
 	</div>
 	<!-- Contents END -->
 
