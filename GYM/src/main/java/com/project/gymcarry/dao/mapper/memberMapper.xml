@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.gymcarry.dao.MemberDao">
 
 	<!-- 멤버로그인 -->
+	<!-- 로그인값은 멤버 캐리 상관없이 SessionDto로 받아오기  -->
 	<select id="memberLogin"
 		resultType="com.project.gymcarry.member.SessionDto">
 		select * from member where mememail=#{param1} and mempw=#{param2}</select>
@@ -20,25 +21,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values
 		(#{mememail},#{mempw},#{memname},#{memnick},#{memphone},#{membirth},#{memgender})
 	</insert>
-
+		
 	<!-- 캐리로그인 -->
 	<select id="carryLogin"
 		resultType="com.project.gymcarry.member.SessionDto">
 		select cridx,
-		crnick from carry where crid=#{param1} and crpw=#{param2}
+		crnick from carry where cremail=#{param1} and crpw=#{param2}
 	</select>
 
 	<!-- 캐리회원가입 -->
 	<insert id="insertCarry"
 		parameterType="com.project.gymcarry.carry.CarryJoinDto"
 		useGeneratedKeys="true" keyProperty="cridx">
-		insert into carry(crid,
+		insert into carry(cremail,
 		crpw, crname, crnick, crgender, crphone, placename)
 		values
-		(#{crid},#{crpw},#{crname},#{crnick},#{crgender},#{crphone},#{placename})
+		(#{cremail},#{crpw},#{crname},#{crnick},#{crgender},#{crphone},#{placename})
 	</insert>
-
-
-
 
 </mapper>

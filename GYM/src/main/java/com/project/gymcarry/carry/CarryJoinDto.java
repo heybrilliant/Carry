@@ -3,7 +3,7 @@ package com.project.gymcarry.carry;
 public class CarryJoinDto {
 	
 	private int cridx;
-	private String crid;
+	private String cremail;
 	private String crpw;
 	private String crname;
 	private String crnick;
@@ -12,12 +12,13 @@ public class CarryJoinDto {
 	private String placename;
 	public CarryJoinDto() {
 	}
+
 	
-	public CarryJoinDto(int cridx, String crid, String crpw, String crname, String crnick, String crgender,
+	public CarryJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender,
 			String crphone, String placename) {
 		super();
 		this.cridx = cridx;
-		this.crid = crid;
+		this.cremail = cremail;
 		this.crpw = crpw;
 		this.crname = crname;
 		this.crnick = crnick;
@@ -32,11 +33,11 @@ public class CarryJoinDto {
 	public void setCridx(int cridx) {
 		this.cridx = cridx;
 	}
-	public String getCrid() {
-		return crid;
+	public String getCremail() {
+		return cremail;
 	}
-	public void setCrid(String crid) {
-		this.crid = crid;
+	public void setCremail(String cremail) {
+		this.cremail = cremail;
 	}
 	public String getCrpw() {
 		return crpw;
@@ -78,7 +79,7 @@ public class CarryJoinDto {
 
 	@Override
 	public String toString() {
-		return "CarryJoinDto [cridx=" + cridx + ", crid=" + crid + ", crpw=" + crpw + ", crname=" + crname + ", crnick="
+		return "CarryJoinDto [cridx=" + cridx + ", cremail=" + cremail + ", crpw=" + crpw + ", crname=" + crname + ", crnick="
 				+ crnick + ", crgender=" + crgender + ", crphone=" + crphone + ", placename=" + placename + "]";
 	}
 	

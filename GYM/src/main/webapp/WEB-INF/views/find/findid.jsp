@@ -34,7 +34,7 @@
 					<div class="find_form">
 						<table>
 							<tr>
-								<td><input id="regid" type="text" placeholder="가입시 등록하신 이름">
+								<td><input id="regname" type="text" placeholder="가입시 등록하신 이름">
 								</td>
 							</tr>
 							<tr>
@@ -44,7 +44,11 @@
 						</table>
 						<div id="btnbox">
 							<div class="btn_wrap">
-								<a href="">찾기</a>
+								<!-- <input type="submit" id="findBtn" value="찾기"> -->
+									<a href="<c:url value="/find/findid"/>">찾기(공갈)</a>
+							</div>
+							<div class="btn_wrap2">
+								<a onclick="history.go(-1)">취소</a>
 							</div>
 						</div>
 					</div>

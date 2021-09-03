@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/joinlogin/find.css">
@@ -44,7 +44,11 @@
 						</table>
 						<div id="btnbox">
 							<div class="btn_wrap">
-								<a href="">찾기</a>
+								<!-- 	<a type="submit" id="findBtn">찾기</a> -->
+								<a href="<c:url value="/find/findpassword"/>">찾기(공갈)</a>
+							</div>
+							<div class="btn_wrap2">
+								<a onclick="history.go(-1)">취소</a>
 							</div>
 						</div>
 					</div>

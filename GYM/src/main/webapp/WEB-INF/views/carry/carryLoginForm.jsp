@@ -33,7 +33,7 @@
 						<tbody>
 							<tr>
 								<th><span>아이디</span></th>
-								<td><input type="text" name="crid"
+								<td><input type="text" name="cremail"
 									value="${cookie.reid.value}"></td>
 							</tr>
 							<tr>

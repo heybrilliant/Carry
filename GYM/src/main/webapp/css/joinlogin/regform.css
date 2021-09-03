@@ -108,11 +108,12 @@ ul{list-style:none; }
     margin: 30px 5px;
 }
 
-.btn_wrap a.wide, .btn_wrap2 a.wide{
+#joinsubmit.wide, .btn_wrap2 a.wide{
     width: 70px;
     margin: 0 15px;}
 
-.btn_wrap a{
+#joinsubmit{
+	border: 0;
     color: #fff; 
     background-color: #4380ce; 
     font-weight: bold; 
@@ -135,7 +136,7 @@ ul{list-style:none; }
     margin: 0 auto;
 }
 
-.btn_wrap a:hover{
+#joinsubmit:hover{
     background: #0094ff;
     color: #fff;
 }
@@ -189,7 +190,7 @@ ul{list-style:none; }
     float:left;
 }
 
-.join_form table #btnbox{
+.join_form #btnbox{
     display: inline-block;
 }
 

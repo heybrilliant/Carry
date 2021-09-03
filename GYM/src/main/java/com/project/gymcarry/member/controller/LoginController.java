@@ -34,6 +34,7 @@ public class LoginController {
 		SessionDto sessionDto = loginService.memberLogin(id, pw);
 		if (sessionDto != null) {
 			session.setAttribute("loginSession", sessionDto);
+			System.out.println("멤버 세션 저장");
 			return "redirect:/index";
 		} else {
 			return "member/loginForm";

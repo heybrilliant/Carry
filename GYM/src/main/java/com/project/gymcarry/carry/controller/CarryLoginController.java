@@ -28,15 +28,15 @@ public class CarryLoginController {
 	// 로그인 세션 저장
 	@PostMapping("/carry/carryLogin")
 	public String carryLogin(
-			@RequestParam("crid") String id, 
+			@RequestParam("cremail") String id, 
 			@RequestParam("crpw") String pw,
 			HttpServletRequest request,
-			Model model
+			HttpSession session
 			) {
-		HttpSession session = request.getSession();
 		SessionDto sessionDto = loginService.carryLogin(id, pw);
 		if (sessionDto != null) {
 			session.setAttribute("loginSession", sessionDto);
+			System.out.println("캐리 세션 저장");
 			return "redirect:/index";
 		} else {
 			return "carry/loginForm";
