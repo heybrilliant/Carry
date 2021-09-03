@@ -24,6 +24,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select placename from place where placename LIKE concat('%',${keyword},'%');
 	</select>
 	
+		<!--필라테스 플레이스 전체 정보 출력-->
+	<select id="selectPilatesPlaceList"
+			resultType="com.project.gymcarry.place.PlaceDto">
+		select * from place where placenum = #{placenum}
+	</select>
+	
+	
 
 	
 	

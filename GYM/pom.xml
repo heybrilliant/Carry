@@ -256,5 +256,22 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		
+		<!--인텔리제이 mybatis 맵핑 경로 잡을 수 있게 추가-->
+			<resources>
+				<resource>
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.xml</include>
+					</includes>
+				</resource>
+				<resource>
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.properties</include>
+					</includes>
+				</resource>
+			</resources>
+			
 	</build>
 </project>
