@@ -43,7 +43,7 @@
             <div class="place_badge" onclick="location.href='<c:url value="/place/detail"/>'">${alist.placename}</div>
             <div class="carry_price">
               <span>수업 1회 이용권</span>
-              <h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${alist.proprice1}"/>원</h3>
+              <h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${alist.proprice}"/>원</h3>
             </div>
             <div class="nickname">
               <span>${alist.crnick}</span>

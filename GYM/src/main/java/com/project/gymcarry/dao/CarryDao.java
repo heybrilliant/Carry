@@ -16,7 +16,7 @@ public interface CarryDao {
 	// 캐리 전체 정보
 	CarryDto selectCarryDetail(int cridx);
 	// 캐리 프로그램별 가격 정보 (전체)
-	CarryPriceDto selectCarryPrice(int cridx);
+	List<CarryPriceDto> selectCarryPriceList(int cridx);
 	// 캐리 자격 및 경력 정보
 	CarryCertiDto selectCarryCerti(int cridx);
 	// 캐리 상세페이지 내  플레이스 정보

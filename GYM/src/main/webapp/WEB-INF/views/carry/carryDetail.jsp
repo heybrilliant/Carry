@@ -194,12 +194,13 @@
 				<div class="program_all">
 
 					<form action="<c:url value='/payment/pay'/>" method="post">
+					<c:forEach items="${price}" var="price">
 						<div class="program">
 							<div class="program_info">
-								<span>수업 1회 이용권</span> <br>
+								<span>수업 ${price.procount}회 이용권</span> <br>
 								<h4>
 									<fmt:formatNumber type="number" maxFractionDigits="3"
-										value="${carryPrice.proprice1}" />
+										value="${price.proprice}" />
 									원
 								</h4>
 							</div>
@@ -208,13 +209,14 @@
 								<input type="submit" value="구매하기" class="button">
 							</div>
 						</div>
-					<input type="hidden" name="cridx" value="${carryPrice.cridx}">
+					<input type="hidden" name="cridx" value="${price.cridx}">
 					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="1">
-					<input type="hidden" name="payprice" value="${carryPrice.proprice1}">
+					<input type="hidden" name="paynum" value="${price.procount}">
+					<input type="hidden" name="payprice" value="${price.proprice}">
+					</c:forEach>
 					</form>
 
-
+<!--
 					<form action="<c:url value='/payment/pay'/>" method="post">
 					<div class="program">
 						<div class="program_info">
@@ -276,7 +278,7 @@
 					<input type="hidden" name="paynum" value="20">
 					<input type="hidden" name="payprice" value="${carryPrice.proprice20}">
 					</form>
-					
+  -->					
 				</div>
 			</div>
 			<!-- 우측 배너 END -->

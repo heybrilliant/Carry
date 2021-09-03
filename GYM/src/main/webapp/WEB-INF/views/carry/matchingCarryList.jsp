@@ -38,7 +38,7 @@
             <div class="place_badge" onclick="location.href='<c:url value="/place/detail"/>'">${mlist.placename}</div>
             <div class="carry_price">
               <span>수업 1회 이용권</span>
-              <h3>${mlist.proprice1}원</h3>
+              <h3>${mlist.proprice}원</h3>
             </div>
             <div class="nickname">
               <span>${mlist.crnick}</span>

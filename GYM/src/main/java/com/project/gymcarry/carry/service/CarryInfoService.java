@@ -30,9 +30,9 @@ public class CarryInfoService {
 	}
 
 	// 캐리 수업 가격 정보
-	public CarryPriceDto getCarryPrice(int cridx) {
+	public List<CarryPriceDto> getCarryPriceList(int cridx) {
 		dao = template.getMapper(CarryDao.class);
-		return dao.selectCarryPrice(cridx);
+		return dao.selectCarryPriceList(cridx);
 	}
 
 	// 캐리 자격 및 경력 정보

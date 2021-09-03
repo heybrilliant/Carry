@@ -34,21 +34,17 @@ public class CarryDetailController {
 			) {
 
 		CarryDto carryDetail = carryInfoService.getCarryDetail(cridx);
-		// List<CarryReviewDto> carryReviewList =
-		// carryInfoService.getCarryReviewList(cridx);
-		CarryPriceDto carryPrice = carryInfoService.getCarryPrice(cridx);
+		List<CarryPriceDto> price = carryInfoService.getCarryPriceList(cridx);
 		CarryCertiDto carryCerti = carryInfoService.getCarryCerti(cridx);
 		PlaceDto carryPlaceInfo = carryInfoService.getCarryPlaceInfo(cridx);
 
 		System.out.println("캐리IDX:" + cridx + " => 상세페이지로 진입");
-		// System.out.println(carryReviewList);
-		System.out.println(carryPrice);
+		System.out.println(price);
 		System.out.println(carryCerti);
 		System.out.println(carryPlaceInfo);
 
 		model.addAttribute("carryDetail", carryDetail);
-		// model.addAttribute("carryReviewList", carryReviewList);
-		model.addAttribute("carryPrice", carryPrice);
+		model.addAttribute("price", price);
 		model.addAttribute("carryCerti", carryCerti);
 		model.addAttribute("carryPlaceInfo", carryPlaceInfo);
 
