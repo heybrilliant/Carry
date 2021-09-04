@@ -159,14 +159,13 @@
 			$('#msg').focus();
 			
 			$('#btnSend').click(function(event){
-				//lastMessage();
+					lastMessage();
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
 					var msg = $('input#msg').val();
 					sendMessage();
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
-					$("#output").scrollTop($(document).height());
 				}
 			});	
 			
@@ -178,7 +177,6 @@
 					sendMessage();
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
-					$("#output").scrollTop($(document).height());
 				}
 				
 			});	
@@ -221,6 +219,8 @@
 					htmlStr += '		</div>'
 					htmlStr += '	</div>'
 				$('.chat_null').append(htmlStr);
+				$("#output").scrollTop($("#output")[0].scrollHeight);
+				
 			} else if(jsonData.memnick != currentuser_session1) {
 				if (jsonData.crnick == currentuser_session2) {
 					var htmlStr = '	<div class="user_message_warp">'
@@ -236,6 +236,8 @@
 						htmlStr += '		</div>'
 						htmlStr += '	</div>'
 					$('.chat_null').append(htmlStr);
+					$("#output").scrollTop($("#output")[0].scrollHeight);
+					
 				} else {
 					var htmlSt = '<div class="carry_message_warp">'
 						htmlSt += '<div class="carry_chat">'
@@ -249,12 +251,13 @@
 						htmlSt += '</div>'
 						htmlSt += '</div>'
 					$('.chat_null').append(htmlSt);
+					$("#output").scrollTop($("#output")[0].scrollHeight);
 				}
 			}
 			
 		} 
 		
-		$('.chat_content').html('<span>'+ jsonData.chatcontent +'</span>');
+		//$('.chat_content').html('<span>'+ jsonData.chatcontent +'</span>');
 	};
 	
 	// close - 커넥션이 종료되었을 때 호출
@@ -269,7 +272,6 @@
 	
 	// 객체를 json형태로 담아 보냄
 	function sendMessage() {
-		// 메세지 입력값이 빈공간이 아니면 멤버닉네임, 캐리닉네임, 대화내용 담기
 		var msg = {
 			memnick : '${loginSession.memnick}',
 			crnick : '${loginSession.crnick}',
@@ -287,7 +289,7 @@
 	</script>
 
 	<script>
-	/* function lastMessage(){
+	function lastMessage(){
 		var chat = $('.on_btn').attr('value');
 		$.ajax({
 			type : 'POST',
@@ -297,33 +299,12 @@
 			}, 
 			success : function(data){
 				console.log(data);
-				$('.chat_content').empty();
-					//var html = '<div class="chatlist">'
 				$.each(data, function(index, item){
-					/* html += '<button type="button" value="'+item.chatidx+'" onclick="getChat('+item.chatidx+','+item.memidx+','+item.cridx+','+item.memnick+','+ item.crnick+'); location.href="javascript:chatList('+item.chatidx+')"" class="on_btn">'
-					html += '<div class="float_left">'
-					html += '<img src="<c:url value="/images/icon/profile2.png"/>">'
-					html += '</div>'
-					html += '<div class="float_left chat_name">'
-					html += '<h3>${list.crnick}</h3>'
-					html += '</div>'
-					html += '<div class="chat_title">'
-					html += '<span>ㅎㅎ</span>'
-					html += '</div>'
-					html += '<div class="chat_title_img"></div>'
-					html += '<div class="chat_content">'
-					html += '<span>${list.chatcontent}</span>'
-					html += '</div>'
-					html += '</button>'
-					html += '</div>' 
-					$('.chat_content').append('<span>'+item.chatcontent+'</span>');
-					return false; 
-					
+					$('.chatlist .active .chat_content').html('<span>'+ item.chatcontent+'</span>');
 				})
-					//$('#chatList_scr').html(html);
 			}
 		});
-	}  */
+	}  
 	
 	
 	
@@ -373,7 +354,8 @@
 								}
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
-								$("#output").scrollTop($(document).height());
+								$('#output').scrollTop($('#output')[0].scrollHeight);
+								
 							} else if(crnicks == crsession){
 								if(item.contenttype == 1){
 									htmlStr += '	<div class="user_message_warp">'
@@ -404,7 +386,7 @@
 								}
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
-								
+								$('#output').scrollTop($('#output')[0].scrollHeight);
 							}
 					});
 				}
