@@ -15,43 +15,44 @@
 
 
 	<div id="chatwarp">
-			<div id="chatlist_wrap">
+		<div id="chatlist_wrap">
 			<!-- 유저가 보는 캐리 채팅방리스트 -->
 			<c:if test="${loginSession.memnick ne null}">
-			<div class="chatid">
-				<h3>${loginSession.memnick}</h3>
-			</div>
+				<div class="chatid">
+					<h3>${loginSession.memnick}</h3>
+				</div>
 				<!-- 채팅방 리스트 시작 -->
 				<div class="chatList_scr">
-				<c:forEach items="${chatList}" var="list">
-					<div class="chatlist">
-						<button type="button" value="${list.chatidx}"
-							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); 
-							location.href='javascript:chatList(${list.chatidx})'" class="on_btn">
-							<div class="float_left">
-								<img src="<c:url value="/images/icon/profile2.png"/>">
-							</div>
-							<div class="float_left chat_name">
-								<h3>${list.crnick}</h3>
-							</div>
-							<div class="chat_title">
-								<span>${list.placename}</span>
-							</div>
-							<div class="chat_title_img"></div>
-							<div class="chat_content">
-								<span class="chatMessage">${list.chatcontent}</span>
-							</div>
-							<fmt:formatDate value="${now}" pattern="HH:mm" var="now" />
-							<div class="chat_date">
-								<span>${now}</span>
-							</div>
-						</button>
-					</div>
-				</c:forEach>
+					<c:forEach items="${chatList}" var="list">
+						<div class="chatlist">
+							<button type="button" value="${list.chatidx}"
+								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); 
+							location.href='javascript:chatList(${list.chatidx})'"
+								class="on_btn">
+								<div class="float_left">
+									<img src="<c:url value="/images/icon/profile2.png"/>">
+								</div>
+								<div class="float_left chat_name">
+									<h3>${list.crnick}</h3>
+								</div>
+								<div class="chat_title">
+									<span>${list.placename}</span>
+								</div>
+								<div class="chat_title_img"></div>
+								<div class="chat_content">
+									<span class="chatMessage">${list.chatcontent}</span>
+								</div>
+								<fmt:formatDate value="${now}" pattern="HH:mm" var="now" />
+								<div class="chat_date">
+									<span>${now}</span>
+								</div>
+							</button>
+						</div>
+					</c:forEach>
 				</div>
-				</c:if>
-				<!-- 캐리가 보는 유저 채팅방리스트 -->
-				<c:if test="${loginSession.crnick ne null}">
+			</c:if>
+			<!-- 캐리가 보는 유저 채팅방리스트 -->
+			<c:if test="${loginSession.crnick ne null}">
 				<div class="chatid">
 					<h3>${loginSession.crnick}</h3>
 				</div>
@@ -70,12 +71,14 @@
 								<span></span>
 							</div>
 							<c:if test="${list.chatread == 0}">
-							<div class="read">
-								<div class="chat_title_img"></div>
-							</div>
+								<div class="read">
+									<div class="chat_title_img"></div>
+								</div>
 							</c:if>
 							<div class="chat_content">
-								<span><%-- ${list.chatcontent} --%></span>
+								<span>
+									<%-- ${list.chatcontent} --%>
+								</span>
 							</div>
 							<div class="chat_date">
 								<span> <%-- ${list.chatdate} --%>
@@ -84,21 +87,55 @@
 						</button>
 					</div>
 				</c:forEach>
-				</c:if>
+			</c:if>
+		</div>
+		<!-- 채팅방 리스트 끝 -->
+		<div id="chatcontent_warp">
+			<!-- 채팅룸 nav -->
+			<div class="message_warp">
 			</div>
-				<!-- 채팅방 리스트 끝 -->
-			<div id="chatcontent_warp">
-				<div id="chatcontent_off">
-					<div class="not_message">
-						<img src="<c:url value="/images/icon/chat.png"/>"
-							style="width: 80px;">
-						<h3>채팅할 상대를 선택해주세요</h3>
+			<div class="chat_null" id="output">
+			<div class="carry_message_warp">
+				<div class="carry_chat">
+					<div class="message">
+						<div class="message_color">
+						</div>
+					</div>
+					<div class="time_line">
 					</div>
 				</div>
 			</div>
 			
-			
+			<div class="user_message_warp">
+				<div class="user_chat">
+					<div class="user_message">
+						<div>
+							<span></span>
+						</div>
+					</div>
+					<div class="time_line2">
+						<span></span>
+					</div>
+				</div>
+			</div>
 		</div>
+		<div class="chatting_write">
+		<input type="text" placeholder="메세지 입력.." id="msg">
+		<button type="button" class="btn" id="btnSend">
+		<img src="<c:url value="/images/icon/icoin.png"/>">
+		</button>
+		</div>
+			<div id="chatcontent_off">
+				<div class="not_message">
+					<img src="<c:url value="/images/icon/chat.png"/>"
+						style="width: 80px;">
+					<h3>채팅할 상대를 선택해주세요</h3>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	<script>
@@ -136,7 +173,7 @@
 		function chattting(){
 			var htmlStr = '<div>'
 				htmlStr += '<div class="message_warp"></div>'
-				htmlStr += '<div class="chat_null" id="output">';
+				htmlStr += '<div class="chat_null" id="output">'
 				htmlStr += '	<div class="carry_message_warp">'
 				htmlStr += '		<div class="carry_chat">'
 				htmlStr += '		<div class="time_line"><span></span></div>'
@@ -151,8 +188,8 @@
 				htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">'
 				htmlStr += '</button>'
 				htmlStr += '</div>'					
-				htmlStr += '</div>'					
-			$('#chatcontent_warp').html(htmlStr);
+				htmlStr += '</div>'
+			$('#chatcontent_warp').html(htmlStr);			
 			chatNav();
 			
 			// 처음 접속시, 메세지 입력창에 focus 시킴
@@ -257,7 +294,6 @@
 			
 		} 
 		
-		//$('.chat_content').html('<span>'+ jsonData.chatcontent +'</span>');
 	};
 	
 	// close - 커넥션이 종료되었을 때 호출
@@ -394,5 +430,3 @@
 		})
 	}
 	</script>
-	
-	
