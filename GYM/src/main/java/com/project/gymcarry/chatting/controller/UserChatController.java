@@ -70,14 +70,13 @@ public class UserChatController {
 		return chatList;
 	}
 	
-	@PostMapping("chatting/message")
-	@ResponseBody
-	public List<ChatRoomDto> message(HttpSession session) {
-		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
-		List<ChatRoomDto> list = matchingChatRoomService.getByChatContent(dto.getMemidx());
-		//List<ChatRoomDto> chatRoomDto = matchingChatRoomService.getByChatContent(chatidx);
-		return list;
-	}
+	// 마지막 대화내용
+//	@PostMapping("chatting/message")
+//	@ResponseBody
+//	public ChatRoomDto message(@RequestParam("chatidx") int chatidx) {
+//		ChatRoomDto chatRoomDto = matchingChatRoomService.getByChatContent(chatidx);
+//		return chatRoomDto;
+//	}
 	
 
 }

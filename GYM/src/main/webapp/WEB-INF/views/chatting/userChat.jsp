@@ -38,7 +38,9 @@
 								<div class="chat_title">
 									<span>${list.placename}</span>
 								</div>
+								<c:if test="${list.chatread == 0}">
 								<div class="chat_title_img"></div>
+								</c:if>
 								<div class="chat_content">
 									<span class="chatMessage">${list.chatcontent}</span>
 								</div>
@@ -59,7 +61,7 @@
 				<c:forEach items="${carryChatList}" var="list">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
-							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx}); location.href='javascript:chatList(${list.chatidx})'"
+							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); location.href='javascript:chatList(${list.chatidx})'"
 							class="on_btn">
 							<div class="float_left">
 								<img src="<c:url value="/images/icon/profile2.png"/>">
@@ -71,17 +73,15 @@
 								<span></span>
 							</div>
 							<c:if test="${list.chatread == 0}">
-								<div class="read">
-									<div class="chat_title_img"></div>
-								</div>
+								<div class="chat_title_img"></div>
 							</c:if>
 							<div class="chat_content">
 								<span>
-									<%-- ${list.chatcontent} --%>
+									${list.chatcontent}
 								</span>
 							</div>
 							<div class="chat_date">
-								<span> <%-- ${list.chatdate} --%>
+								<span> ${list.chatdate}
 								</span>
 							</div>
 						</button>
@@ -91,40 +91,6 @@
 		</div>
 		<!-- 채팅방 리스트 끝 -->
 		<div id="chatcontent_warp">
-			<!-- 채팅룸 nav -->
-			<div class="message_warp">
-			</div>
-			<div class="chat_null" id="output">
-			<div class="carry_message_warp">
-				<div class="carry_chat">
-					<div class="message">
-						<div class="message_color">
-						</div>
-					</div>
-					<div class="time_line">
-					</div>
-				</div>
-			</div>
-			
-			<div class="user_message_warp">
-				<div class="user_chat">
-					<div class="user_message">
-						<div>
-							<span></span>
-						</div>
-					</div>
-					<div class="time_line2">
-						<span></span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="chatting_write">
-		<input type="text" placeholder="메세지 입력.." id="msg">
-		<button type="button" class="btn" id="btnSend">
-		<img src="<c:url value="/images/icon/icoin.png"/>">
-		</button>
-		</div>
 			<div id="chatcontent_off">
 				<div class="not_message">
 					<img src="<c:url value="/images/icon/chat.png"/>"
@@ -196,11 +162,11 @@
 			$('#msg').focus();
 			
 			$('#btnSend').click(function(event){
-					lastMessage();
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
 					var msg = $('input#msg').val();
 					sendMessage();
+					//lastMessage();
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
 				}
@@ -212,13 +178,13 @@
 					var msg = $('input#msg').val();
 					//sock.send(msg);
 					sendMessage();
+					//lastMessage();
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
 				}
 				
 			});	
 		}
-			
 	</script>
 
 	<script>
@@ -239,8 +205,10 @@
 	socket.onmessage = function(message) {
 		var data = message.data;
 		var jsonData = JSON.parse(data);
+		
 		var currentuser_session1 = $('#memberId').val();
 		var currentuser_session2 = $('#carryId').val();
+		
 		if(chatIdx == jsonData.chatidx){
 			if (jsonData.memnick == currentuser_session1) {
 				var htmlStr = '	<div class="user_message_warp">'
@@ -255,6 +223,7 @@
 					htmlStr += '			</div>'
 					htmlStr += '		</div>'
 					htmlStr += '	</div>'
+				
 				$('.chat_null').append(htmlStr);
 				$("#output").scrollTop($("#output")[0].scrollHeight);
 				
@@ -291,7 +260,7 @@
 					$("#output").scrollTop($("#output")[0].scrollHeight);
 				}
 			}
-			
+			$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
 		} 
 		
 	};
@@ -325,7 +294,8 @@
 	</script>
 
 	<script>
-	function lastMessage(){
+	// 채팅 마지막 대화
+/* 	function lastMessage(){
 		var chat = $('.on_btn').attr('value');
 		$.ajax({
 			type : 'POST',
@@ -335,15 +305,10 @@
 			}, 
 			success : function(data){
 				console.log(data);
-				$.each(data, function(index, item){
-					$('.chatlist .active .chat_content').html('<span>'+ item.chatcontent+'</span>');
-				})
+				$('.chatlist .active .chat_content').html('<span>'+ data.chatcontent+'</span>');
 			}
 		});
-	}  
-	
-	
-	
+	} */  
 	
 	// 채팅방 대화내용 리스트
 	function chatList(num) {
@@ -355,6 +320,7 @@
 				chatidx : num
 				},
 				success : function(data) {
+					$('.chatlist .active .chat_title_img').removeClass();
 					if (data == 0) {
 						chattting();
 						chatNav();
@@ -363,6 +329,7 @@
 						$.each(data, function(index, item) {
 							if(memnicks == memsession){
 								if(item.contenttype == 1){
+									console.log('1');
 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
 									htmlStr += '	<div class="message">'
@@ -375,6 +342,7 @@
 									htmlStr += '</div>'
 								} 
 								if(item.contenttype == 0){
+									console.log('2');
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -394,6 +362,7 @@
 								
 							} else if(crnicks == crsession){
 								if(item.contenttype == 1){
+									console.log('3');
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -406,9 +375,9 @@
 									htmlStr += '			</div>'
 									htmlStr += '		</div>'
 									htmlStr += '	</div>'
-									
 								} 
 								if(item.contenttype == 0){
+									console.log('4');
 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
 									htmlStr += '	<div class="message">'
@@ -420,6 +389,7 @@
 									htmlStr += '	</div>'
 									htmlStr += '</div>'
 								}
+								
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
 								$('#output').scrollTop($('#output')[0].scrollHeight);

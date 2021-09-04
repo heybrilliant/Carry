@@ -44,10 +44,10 @@ public class MatchingChatRoomService {
 	}
 	
 	// 채팅방 리스트 마지막대화,시간 출력
-	public List<ChatRoomDto> getByChatContent(int chatidx) {
-		dao = template.getMapper(MatchingDao.class);
-		return dao.selectChatListContent(chatidx);
-	}
+//	public ChatRoomDto getByChatContent(int chatidx) {
+//		dao = template.getMapper(MatchingDao.class);
+//		return dao.selectChatListContent(chatidx);
+//	}
 	
 	// 읽음 안읽음 여부
 	public int getChatRead(int chatidx) {

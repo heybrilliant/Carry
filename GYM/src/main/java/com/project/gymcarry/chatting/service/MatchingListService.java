@@ -29,10 +29,17 @@ public class MatchingListService {
 		}
 		return dao.selectNotChatList(memIdx);
 	}
+	
 	// 캐리 채팅방 리스트
 	public List<ChatListDto> getChatLists(int cridx){
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectCarryChatList(cridx);
+		List<ChatListDto> list =  dao.selectCarryChatList(cridx);
+		for (int i = 0; i < list.size(); i++) {
+			if(list.get(i).getMessageidx() != 0) {
+				return list;
+			} 
+		}
+		return dao.selectNotCarryChatList(cridx);
 	}
 	
 	// 대화방 리스트

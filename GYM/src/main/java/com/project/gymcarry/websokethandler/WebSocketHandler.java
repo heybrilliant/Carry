@@ -34,7 +34,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 	// 방법2 : 1:1 채팅
 	// 사용자와 세션 저장할 맵
-	private Map<Integer, WebSocketSession> mapList = new HashMap<Integer, WebSocketSession>();
+	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>();
 
 	// 커넥션이 연결되었을때
 	@Override
@@ -42,9 +42,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("1번" + session.getId());
 
 		// 회원, 캐리 세션 정보 가져오기
-		int chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemidx();
-		if (chatNick == 0) {
-			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCridx();
+		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
+		if (chatNick == null) {
+			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
 		}
 
 		// 로그인햇으면 닉네임이고 - 로그인이안되있으면 세션아이디
@@ -69,11 +69,10 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
 		int contenttype = 0;
-		// 유저가접속할때
-		int chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemidx();
-		// 캐리가 접속할때
-		if (chatNick == 0) {
-			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCridx();
+		// 자기가보낸 메세지 읽음 처리
+		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
+		if (chatNick == null) {
+			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
 			++contenttype;
 		}
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
@@ -81,7 +80,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		SimpleDateFormat format = new SimpleDateFormat ("HH:mm a");
 		Date time = new Date();
 		String date = format.format(time);
-
+		
 		// json객체 -> java객체
 		Gson gson = new Gson();
 		MessageDto messageDto = gson.fromJson(message.getPayload(), MessageDto.class);
@@ -91,10 +90,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 
 		// 전달 메세지
-		if (chatNick == messageDto.getCridx()) {
-			int to = messageDto.getMemidx();
+		if (chatNick.equals(messageDto.getCrnick())) {
+			String to = messageDto.getMemnick();
 			WebSocketSession toSession = mapList.get(to);
-			System.out.println(toSession);
 			if (toSession != null) {
 				toSession.sendMessage(sendMsg);
 				session.sendMessage(sendMsg);
@@ -102,11 +100,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 				session.sendMessage(sendMsg);
 			}
 			matchingChatRoomService.insertChatContent(messageDto);
-			
-		} else if (chatNick == messageDto.getMemidx()) {
-			int st = messageDto.getCridx();
+		} else if (chatNick.equals(messageDto.getMemnick())) {
+			String st = messageDto.getCrnick();
 			WebSocketSession toSession = mapList.get(st);
-			System.out.println(toSession);
 			if (toSession != null) {
 				toSession.sendMessage(sendMsg);
 				session.sendMessage(sendMsg);

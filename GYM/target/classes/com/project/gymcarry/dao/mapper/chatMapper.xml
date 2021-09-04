@@ -40,6 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		MAX(r.MESSAGEIDX) from chatroom r where r.chatidx = l.chatidx and
 		c.cridx=#{cridx}) group by r.chatidx;
 	</select>
+	
 	<!-- 메세지없는 경우 -->
 	<select id="selectNotCarryChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
@@ -79,24 +80,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 채팅방 리스트 대화내용 여부 -->
-	<select id="selectChatListContent"
+	<!-- <select id="selectChatListContent"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		select *
-		from chatroom r, chatlist l, carry c, member m
-		where l.cridx=c.cridx and m.memidx=l.memidx and r.messageidx = (SELECT
-		MAX(r.MESSAGEIDX) from chatroom r where r.chatidx = l.chatidx and
-		m.memidx=#{memidx}) group by r.chatidx;
-	</select>
+		select chatcontent, chatdate from chatroom where chatidx=#{chatidx} order by chatdate desc limit 1;
+	</select> -->
 
 	<!-- 대화내용 저장 -->
 	<insert id="insertChatContent"
 		parameterType="com.project.gymcarry.chatting.MessageDto"
 		useGeneratedKeys="true">
 		insert into chatroom (chatidx, chatcontent, cridx,
-		memidx, contenttype)
+		memidx, contenttype, chatread)
 		values
-		(#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
+		(#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype}, #{chatread})
 	</insert>
+	
 	<!-- 읽음 안읽음 -->
 	<update id="updateChatRead"
 		parameterType="com.project.gymcarry.chatting.ChatRoomDto">
