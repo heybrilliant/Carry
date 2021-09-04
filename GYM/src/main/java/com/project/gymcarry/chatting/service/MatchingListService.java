@@ -21,12 +21,11 @@ public class MatchingListService {
 	// 멤버 채팅방 리스트
 	public List<ChatListDto> getChatList(int memIdx){
 		dao = template.getMapper(MatchingDao.class);
-		
 		List<ChatListDto> list =  dao.selectChatList(memIdx);
 		for (int i = 0; i < list.size(); i++) {
 			if(list.get(i).getMessageidx() != 0) {
 				return list;
-			}
+			} 
 		}
 		return dao.selectNotChatList(memIdx);
 	}

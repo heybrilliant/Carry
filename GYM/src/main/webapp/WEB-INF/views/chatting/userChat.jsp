@@ -37,11 +37,9 @@
 							<div class="chat_title">
 								<span>${list.placename}</span>
 							</div>
-							<c:if test="${list.chatread == 0}">
 							<div class="chat_title_img"></div>
-							</c:if>
 							<div class="chat_content">
-								<span>${list.chatcontent}</span>
+								<span class="chatMessage">${list.chatcontent}</span>
 							</div>
 							<fmt:formatDate value="${now}" pattern="HH:mm" var="now" />
 							<div class="chat_date">
@@ -71,8 +69,11 @@
 							<div class="chat_title">
 								<span></span>
 							</div>
-							<div class="chat_title_img">
+							<c:if test="${list.chatread == 0}">
+							<div class="read">
+								<div class="chat_title_img"></div>
 							</div>
+							</c:if>
 							<div class="chat_content">
 								<span><%-- ${list.chatcontent} --%></span>
 							</div>
@@ -158,6 +159,7 @@
 			$('#msg').focus();
 			
 			$('#btnSend').click(function(event){
+				//lastMessage();
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
 					var msg = $('input#msg').val();
@@ -181,7 +183,7 @@
 				
 			});	
 		}
-		
+			
 	</script>
 
 	<script>
@@ -252,10 +254,7 @@
 			
 		} 
 		
-		
-		//$('.chat_content').html('<span>'+ jsonData.chatcontent +'</span>');
-		
-		
+		$('.chat_content').html('<span>'+ jsonData.chatcontent +'</span>');
 	};
 	
 	// close - 커넥션이 종료되었을 때 호출
@@ -285,11 +284,50 @@
 		// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
 		socket.send(JSON.stringify(msg));
 	}; 
-	
-		
 	</script>
 
 	<script>
+	/* function lastMessage(){
+		var chat = $('.on_btn').attr('value');
+		$.ajax({
+			type : 'POST',
+			url : '<c:url value="/chatting/message"/>',
+			data : {
+				chatidx : chat
+			}, 
+			success : function(data){
+				console.log(data);
+				$('.chat_content').empty();
+					//var html = '<div class="chatlist">'
+				$.each(data, function(index, item){
+					/* html += '<button type="button" value="'+item.chatidx+'" onclick="getChat('+item.chatidx+','+item.memidx+','+item.cridx+','+item.memnick+','+ item.crnick+'); location.href="javascript:chatList('+item.chatidx+')"" class="on_btn">'
+					html += '<div class="float_left">'
+					html += '<img src="<c:url value="/images/icon/profile2.png"/>">'
+					html += '</div>'
+					html += '<div class="float_left chat_name">'
+					html += '<h3>${list.crnick}</h3>'
+					html += '</div>'
+					html += '<div class="chat_title">'
+					html += '<span>ㅎㅎ</span>'
+					html += '</div>'
+					html += '<div class="chat_title_img"></div>'
+					html += '<div class="chat_content">'
+					html += '<span>${list.chatcontent}</span>'
+					html += '</div>'
+					html += '</button>'
+					html += '</div>' 
+					$('.chat_content').append('<span>'+item.chatcontent+'</span>');
+					return false; 
+					
+				})
+					//$('#chatList_scr').html(html);
+			}
+		});
+	}  */
+	
+	
+	
+	
 	// 채팅방 대화내용 리스트
 	function chatList(num) {
 		$.ajax({
@@ -335,6 +373,7 @@
 								}
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
+								$("#output").scrollTop($(document).height());
 							} else if(crnicks == crsession){
 								if(item.contenttype == 1){
 									htmlStr += '	<div class="user_message_warp">'
@@ -365,6 +404,7 @@
 								}
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
+								
 							}
 					});
 				}

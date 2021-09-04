@@ -388,3 +388,21 @@
 .chatlist .on_btn.active {
 	background: #eee;
 }
+
+
+.chatlist .on_btn  .active {
+	
+}
+.chat_title_img .active{
+	width: 11px;
+	height: 11px;
+	background-color: cornflowerblue;
+	border-radius: 50%;
+	float: right;
+	margin-right: 23px;
+	margin-top: 29px;
+}
+
+
+
+

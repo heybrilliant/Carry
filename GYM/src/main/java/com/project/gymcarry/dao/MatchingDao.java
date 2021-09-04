@@ -27,7 +27,7 @@ public interface MatchingDao {
 	// 사용자 채팅방 가져오기
 	ChatListDto selectByChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
 	// 채팅방리스트 대화,시간출력
-	ChatRoomDto selectChatListContent(int chatidx);
+	List<ChatRoomDto> selectChatListContent(int chatidx);
 	// 채팅방 중복확인 
 	int selectByChatIdx(int chatidx);
 	// 채팅방 생성

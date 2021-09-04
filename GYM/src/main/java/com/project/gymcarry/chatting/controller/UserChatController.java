@@ -28,11 +28,6 @@ public class UserChatController {
 	@Autowired
 	private MatchingChatRoomService matchingChatRoomService;
 
-	@GetMapping("chatting/chat")
-	public String chatList() {
-		return "chatting/userChat";
-	}
-
 	// 채팅 룸 생성 및 중복
 	@GetMapping("chatting/chatInquire")
 	public String chatInquire(@RequestParam("cridx") int cridx, @RequestParam("memidx") int memidx,
@@ -69,19 +64,19 @@ public class UserChatController {
 	// 채팅 대화리스트
 	@PostMapping("chatting/dochat")
 	@ResponseBody
-	public List<ChatRoomDto> chatList(@RequestParam("chatidx") int chatidx, Model model) {
+	public List<ChatRoomDto> chatList(@RequestParam("chatidx") int chatidx) {
 		List<ChatRoomDto> chatList = matchingListService.getChatIdx(chatidx);
 		matchingChatRoomService.getChatRead(chatidx);
 		return chatList;
 	}
 	
-	@GetMapping("chatting/message")
+	@PostMapping("chatting/message")
 	@ResponseBody
-	public ChatRoomDto message(Model model) {
-		//ChatRoomDto chatRoomDto = matchingChatRoomService.getByChatContent(chatidx);
-		//model.addAttribute("chat", chatRoomDto);
-		ChatRoomDto chatRoomDto = new ChatRoomDto();
-		return chatRoomDto;
+	public List<ChatRoomDto> message(HttpSession session) {
+		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
+		List<ChatRoomDto> list = matchingChatRoomService.getByChatContent(dto.getMemidx());
+		//List<ChatRoomDto> chatRoomDto = matchingChatRoomService.getByChatContent(chatidx);
+		return list;
 	}
 	
 

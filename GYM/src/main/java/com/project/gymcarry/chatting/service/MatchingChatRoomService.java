@@ -1,5 +1,7 @@
 package com.project.gymcarry.chatting.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +44,7 @@ public class MatchingChatRoomService {
 	}
 	
 	// 채팅방 리스트 마지막대화,시간 출력
-	public ChatRoomDto getByChatContent(int chatidx) {
+	public List<ChatRoomDto> getByChatContent(int chatidx) {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.selectChatListContent(chatidx);
 	}

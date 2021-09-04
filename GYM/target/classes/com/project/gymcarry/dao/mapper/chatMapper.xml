@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		MAX(r.MESSAGEIDX) from chatroom r where r.chatidx = l.chatidx and
 		m.memidx=#{memidx}) group by r.chatidx;
 	</select>
+
 	<!-- 메세지가 없는 경우 -->
 	<select id="selectNotChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
@@ -29,7 +30,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		join
 		member m on l.memidx=m.memidx and m.memidx=#{memidx};
 	</select>
-
 
 	<!-- 캐리채팅룸 리스트 -->
 	<select id="selectCarryChatList"
@@ -81,8 +81,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 채팅방 리스트 대화내용 여부 -->
 	<select id="selectChatListContent"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		select chatcontent, chatdate from chatroom where
-		chatidx=#{chatidx} order by chatdate desc limit 1
+		select *
+		from chatroom r, chatlist l, carry c, member m
+		where l.cridx=c.cridx and m.memidx=l.memidx and r.messageidx = (SELECT
+		MAX(r.MESSAGEIDX) from chatroom r where r.chatidx = l.chatidx and
+		m.memidx=#{memidx}) group by r.chatidx;
 	</select>
 
 	<!-- 대화내용 저장 -->
@@ -94,7 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values
 		(#{chatidx},#{chatcontent},#{cridx},#{memidx},#{contenttype})
 	</insert>
-
+	<!-- 읽음 안읽음 -->
 	<update id="updateChatRead"
 		parameterType="com.project.gymcarry.chatting.ChatRoomDto">
 		update chatroom set chatread=1 where chatidx=#{chatidx};
