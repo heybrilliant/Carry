@@ -185,6 +185,7 @@
 			},
 			select: function(event, ui) {
 	            console.log("select : " + ui.item.value);
+	            
 	            $.ajax({
 					url : '<c:url value="/place/detail"/>',
 					type : "post",
@@ -196,6 +197,7 @@
 						alert("에러가 발생하였습니다.")
 					}
 				}); 
+	            
 	        },
 	        focus: function(event, ui) {
 	            return false;
@@ -206,7 +208,7 @@
 			
 			
 	        return $('<li>') //기본 tag가 li
-	        .append('<a href="<c:url value="/place/detail?placeidx=${placeSearchDetail}"/>">' + item.value + '</a>') // a태그 추가
+	        .append('<a href="<c:url value="/place/detail?placeidx=${placeSearchDetail.placeidx}"/>">' + item.value + '</a>') // a태그 추가
 	        .appendTo(ul);
 	    };
 	});

@@ -27,7 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 플레이스 검색 리스트 상세페이지 이동 -->
 	<select id="selectSearchDetail"
 		resultType="com.project.gymcarry.place.PlaceDto">
-		select placeidx from place where placename = #{placename};
+		select plac`
+		eidx from place where placename = #{placename};
 	</select>
 	
 	<!--필라테스 플레이스 전체 정보 출력-->

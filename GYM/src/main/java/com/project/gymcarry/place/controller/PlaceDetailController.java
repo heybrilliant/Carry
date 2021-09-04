@@ -15,29 +15,29 @@ import com.project.gymcarry.place.PlaceDto;
 import com.project.gymcarry.place.service.PlaceHealthService;
 
 @Controller
-@RequestMapping
+@RequestMapping("/place/detail")
 public class PlaceDetailController {
 	
 	@Autowired
 	private PlaceHealthService placeHealthService;
 	
-//	// 플레이스 상세 페이지
-//	@GetMapping("/place/detail")
-//	public String placeDetail(
-//				@RequestParam("placeidx") int placeidx,
-//				Model model
-//			) {
-//		PlaceDto placeDetail = placeHealthService.getHealthPlaceInfo(placeidx);
-//		System.out.println("placeidx : " + placeidx);
-//		
-//		model.addAttribute("placeDetail", placeDetail);
-//		
-//		return "place/placeDetail";
-//	}
+	// 플레이스 상세 페이지
+	@GetMapping
+	public String placeDetail(
+				@RequestParam("placeidx") int placeidx,
+				Model model
+			) {
+		PlaceDto placeDetail = placeHealthService.getHealthPlaceInfo(placeidx);
+		System.out.println("placeidx : " + placeidx);
+		
+		model.addAttribute("placeDetail", placeDetail);
+		
+		return "place/placeDetail";
+	}
 	
 	// 플레이스 검색 후 상세 페이지
 	// @RequestMapping(value = "/searchDetail", produces = "application/text; charset=UTF-8", method = RequestMethod.POST)
-	@GetMapping("/place/detail")
+	@GetMapping
 	public String placeSearchDetail(
 				@RequestParam("placename") String placename,
 				Model model
