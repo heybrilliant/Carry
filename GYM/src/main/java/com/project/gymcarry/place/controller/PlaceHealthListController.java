@@ -31,11 +31,11 @@ public class PlaceHealthListController {
 	// place 리스트
 	@GetMapping("/place/health")
 	public String placeList(
-				@RequestParam("placenum") int placenum,
+				//@RequestParam("placenum") int placenum,
 				Model model
 			) {
-		List<PlaceDto> placeList = placeHealthService.getHealthPlaceList(placenum);
-		System.out.println("placenum : " + placenum);
+		List<PlaceDto> placeList = placeHealthService.getHealthPlaceList();
+		//System.out.println("placenum : " + placenum);
 		model.addAttribute("placeHealthList", placeList);
 		
 		return "place/placeHealthList";

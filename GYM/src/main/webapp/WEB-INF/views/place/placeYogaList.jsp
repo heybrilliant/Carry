@@ -23,14 +23,14 @@
               <li>
                  <a href="<c:url value="/place/all"/>">전체</a>
              </li>
+             <li>
+                 <a href="<c:url value="/place/health"/>">헬스</a>
+             </li>
+             <li>
+                 <a href="<c:url value="/place/pilates"/>">필라테스</a>
+             </li>
              <li class="on">
-                 <a href="<c:url value="/place/health?placenum=1"/>">헬스</a>
-             </li>
-             <li>
-                 <a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
-             </li>
-             <li>
-                 <a href="<c:url value="/place/yoga?placenum=3"/>">요가</a>
+                 <a href="<c:url value="/place/yoga"/>">요가</a>
              </li>
          </ul>
          <div class="place_search_bar">
@@ -43,7 +43,7 @@
              
          </div>
          <div class="place_list">
-             <c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
+             <c:forEach items="${placeYogaList}" var="placeList" varStatus="status">
              	 <!-- 대표 이미지 추출  -->
 	             <c:set var="imgUrl" value="${placeList.placeimg}"/>
 	             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
@@ -88,8 +88,8 @@
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 		var positions = new Array();
 		
-		<c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
-			positions.push({content : '<div class="map_in_place_name">${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
+		<c:forEach items="${placeYogaList}" var="placeYogaList" varStatus="status">
+			positions.push({content : '<div class="map_in_place_name">${placeYogaList.placename}</div>', latlng : new kakao.maps.LatLng(${placeYogaList.latitude}, ${placeYogaList.longitude})});
 		</c:forEach> 
 		
 		console.log(positions[0])

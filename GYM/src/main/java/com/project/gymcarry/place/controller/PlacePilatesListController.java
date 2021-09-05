@@ -22,13 +22,13 @@ public class PlacePilatesListController {
 	// place 리스트 
 	@GetMapping("/place/pilates")
 	public String placeList (
-			@RequestParam("placenum") int placenum,
+			//@RequestParam("placenum") int placenum,
 			Model model
 			) {
 
 		// 필라테스 업체 리스트
-		List<PlaceDto> placePilatesList = PlacePilatesListService.getPilatesPlaceList(placenum);
-		System.out.println("placenum : " + placenum);
+		List<PlaceDto> placePilatesList = PlacePilatesListService.getPilatesPlaceList();
+		//System.out.println("placenum : " + placenum);
 
 		model.addAttribute("placePilatesList", placePilatesList);
 

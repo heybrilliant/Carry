@@ -17,9 +17,9 @@ public class PlacePilatesListService {
     private PlaceDao dao;
 
     // 필라테스 플레이스 리스트
-    public List<PlaceDto> getPilatesPlaceList(int placenum) {
+    public List<PlaceDto> getPilatesPlaceList() {
         dao = template.getMapper(PlaceDao.class);
-        return dao.selectPilatesPlaceList(placenum);
+        return dao.selectPilatesPlaceList();
     }
     
 	// 필라테 플레이스 상세 정보 

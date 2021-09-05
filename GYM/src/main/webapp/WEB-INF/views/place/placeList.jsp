@@ -25,13 +25,13 @@
                  <a href="<c:url value="/place/all"/>">전체</a>
              </li>
              <li>
-                 <a href="<c:url value="/place/health?placenum=1"/>">헬스</a>
+                 <a href="<c:url value="/place/health"/>">헬스</a>
              </li>
              <li>
-                 <a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
+                 <a href="<c:url value="/place/pilates"/>">필라테스</a>
              </li>
              <li>
-                  <a href="<c:url value="/place/pilates?placenum=3"/>">요가</a>
+                  <a href="<c:url value="/place/yoga"/>">요가</a>
              </li>
          </ul>
          <div class="place_search_bar">

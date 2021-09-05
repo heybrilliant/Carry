@@ -12,10 +12,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<!-- 플레이스 전체 정보 출력 -->
+	<!-- 헬스 플레이스 전체 정보 출력 -->
 	<select id="selectHealthPlaceList"
 		resultType="com.project.gymcarry.place.PlaceDto">
-		select * from place where placenum = #{placenum}
+		select * from place where placenum = 1
 	</select>
 	
 	<!-- 플레이스 상세 정보 출력 -->
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select placenum, placeidx, placename, placeaddress,latitude,longitude,placephone,placeinfo,placeintro,openhour,substring(placeimg, 2, length(placeimg)-2) as placeimg from place where placeidx = #{placeidx}
 	</select>
 	
-	<!-- 플레이스 검색 자동 완성 -->
+	<!-- 플레이스 전체 검색 자동 완성 -->
 	<select id="selectHealthPlaceSearch"
 		resultType="com.project.gymcarry.place.PlaceDto">
 		select * from place where placename LIKE concat('%',#{keyword},'%');
@@ -40,7 +40,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--필라테스 플레이스 전체 정보 출력-->
 	<select id="selectPilatesPlaceList"
 			resultType="com.project.gymcarry.place.PlaceDto">
-		select * from place where placenum = #{placenum}
+		select * from place where placenum = 2
+	</select>
+	
+	<!-- 요가 플레이스 전체 정보 출력 -->
+	<select id="selectYogaPlaceList"
+		resultType="com.project.gymcarry.place.PlaceDto">
+		select * from place where placenum = 3
 	</select>
 	
 	

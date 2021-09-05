@@ -25,11 +25,16 @@ public class PlaceHealthService {
 		return dao.selectAllPlaceList();
 	}
 	
-	
 	// 헬스 플레이스 리스트 
-	public List<PlaceDto> getHealthPlaceList(int placenum) {
+	public List<PlaceDto> getHealthPlaceList() {
 		dao = template.getMapper(PlaceDao.class);
-		return dao.selectHealthPlaceList(placenum);
+		return dao.selectHealthPlaceList();
+	}
+	
+	// 요가 플레이스 리스트 
+	public List<PlaceDto> getYogaPlaceList() {
+		dao = template.getMapper(PlaceDao.class);
+		return dao.selectYogaPlaceList();
 	}
 	
 	// 헬스 플레이스 상세 정보 
