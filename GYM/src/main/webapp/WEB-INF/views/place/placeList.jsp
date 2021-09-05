@@ -22,7 +22,7 @@
          </h1>
          <ul class="place_menu">
              <li class="on">
-                 <a href="<c:url value="/place/list"/>">전체</a>
+                 <a href="<c:url value="/place/all"/>">전체</a>
              </li>
              <li>
                  <a href="<c:url value="/place/health?placenum=1"/>">헬스</a>
@@ -31,7 +31,7 @@
                  <a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
              </li>
              <li>
-                 	요가
+                  <a href="<c:url value="/place/pilates?placenum=3"/>">요가</a>
              </li>
          </ul>
          <div class="place_search_bar">
@@ -44,9 +44,9 @@
              
          </div>
          <div class="place_list">
-             <c:forEach items="${placeList}" var="placeList" varStatus="status">
+             <c:forEach items="${placeAll}" var="placeAll" varStatus="status">
              	 <!-- 대표 이미지 추출  -->
-	             <c:set var="imgUrl" value="${placeList.placeimg}"/>
+	             <c:set var="imgUrl" value="${placeAll.placeimg}"/>
 	             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
 				 <c:set var="length" value="${fn:length(imageList[0])}"/>
 				 <c:set var="img" value="${fn:substring(imageList[0], 2, length-1)}"/>
@@ -54,9 +54,9 @@
 			 
 	             <div class="place_content">
 	                 <div class="place_info">
-	                     <h3>${placeList.placename}</h3>
-	                     <p>${placeList.placeaddress}</p>
-	                     <a href="<c:url value="/place/detail?placeidx=${placeList.placeidx}"/>">더 알아보기</a>
+	                     <h3>${placeAll.placename}</h3>
+	                     <p>${placeAll.placeaddress}</p>
+	                     <a href="<c:url value="/place/detail?placeidx=${placeAll.placeidx}"/>">더 알아보기</a>
 	                 </div>
 	                 <div class="place_img">
 	                 	<c:if test="${empty img}">
@@ -89,8 +89,8 @@
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 		var positions = new Array();
 		
-		<c:forEach items="${placeList}" var="placeList" varStatus="status">
-			positions.push({content : '<div class="map_in_place_name">${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
+		<c:forEach items="${placeAll}" var="placeAll" varStatus="status">
+			positions.push({content : '<div class="map_in_place_name">${placeAll.placename}</div>', latlng : new kakao.maps.LatLng(${placeAll.latitude}, ${placeAll.longitude})});
 		</c:forEach> 
 		
 		console.log(positions[0])

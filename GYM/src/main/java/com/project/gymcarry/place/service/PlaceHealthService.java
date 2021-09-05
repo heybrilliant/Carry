@@ -19,6 +19,13 @@ public class PlaceHealthService {
 	private SqlSessionTemplate template;
 	private PlaceDao dao;
 	
+	// 전체 플레이스 리스트 
+	public List<PlaceDto> getAllPlaceList() {
+		dao = template.getMapper(PlaceDao.class);
+		return dao.selectAllPlaceList();
+	}
+	
+	
 	// 헬스 플레이스 리스트 
 	public List<PlaceDto> getHealthPlaceList(int placenum) {
 		dao = template.getMapper(PlaceDao.class);

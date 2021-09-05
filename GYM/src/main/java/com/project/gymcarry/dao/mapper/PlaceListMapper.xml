@@ -5,6 +5,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.project.gymcarry.dao.PlaceDao"> 
 
+	<!-- 플레이스 전체보기 -->
+	<select id="selectAllPlaceList"
+		resultType="com.project.gymcarry.place.PlaceDto">
+		select * from place 
+	</select>
+
 
 	<!-- 플레이스 전체 정보 출력 -->
 	<select id="selectHealthPlaceList"

@@ -7,6 +7,9 @@ import com.project.gymcarry.place.PlaceSearchDto;
 
 public interface PlaceDao {
 	
+	// 플레이스 전체 보기
+    List<PlaceDto> selectAllPlaceList();
+	
 	// 헬스 플레이스 전체 정보
     List<PlaceDto> selectHealthPlaceList(int placenum);
 
