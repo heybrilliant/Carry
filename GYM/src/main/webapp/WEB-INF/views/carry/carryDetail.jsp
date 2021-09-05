@@ -124,7 +124,7 @@
 				
 					<!-- 작성된 캐리 리뷰 리스트 -->
 					<%-- <c:forEach items="${carryReviewList}" var="carryReviewList"> --%>
-					<div class="review_list_wrap" id="review_sec">	
+					<div class="review_list_wrap basic_scroll" id="review_sec">	
 				<%--	<div class="review_list_section">
 							<div class="member_profile_image">
 								<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">
@@ -139,6 +139,7 @@
 						</div>
 					</div> --%>
 
+				</div>
 				</div>
 				<!-- carry review section all wrap END -->
 
@@ -160,7 +161,7 @@
 								<img src="<c:url value="http://placehold.it/600x300"/>">
 							</c:if>
 							<c:if test="${!empty mainImage}">
-								<img src="<c:out value="${mainImage}"/>" class="placeimg">
+								<img src="<c:out value="${mainImage}"/>" class="place_main_img">
 							</c:if>
 
 							<p>
@@ -182,7 +183,7 @@
 					<div id="map" style="width:100%;height:300px;"></div>
 				</div>
 			
-			</div>
+			
 
 
 			<!-- 우측 배너 START -->
