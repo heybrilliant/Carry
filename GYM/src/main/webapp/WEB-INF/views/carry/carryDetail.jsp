@@ -124,7 +124,7 @@
 				
 					<!-- 작성된 캐리 리뷰 리스트 -->
 					<%-- <c:forEach items="${carryReviewList}" var="carryReviewList"> --%>
-					<div class="review_list_wrap basic_scroll" id="review_sec">	
+					<div class="review_list_wrap" id="review_sec">	
 				<%--	<div class="review_list_section">
 							<div class="member_profile_image">
 								<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">

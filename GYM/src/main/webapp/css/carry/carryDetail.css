@@ -152,8 +152,8 @@
 	overflow-x: hidden;
 	overflow-y: scroll;
 	margin-top: 10px;
-	margin-bottom : 15px;
-	padding-bottom : 50px;
+	margin-bottom : 5px;
+	padding-bottom : 20px;
 	/* border-bottom: 1px solid #BBB; */
 }
 
@@ -290,7 +290,7 @@ textarea {
 }
 
 .carry_review_all_wrap {
-	margin : 100px 0;
+	margin : 100px 0 110px 0;
 }
 
 
