@@ -9,9 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectChattingList"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
 		select *
-		from chatroom r
-		join likelist k on r.memidx=k.memidx
-		where chatidx=#{chatidx};
+		from chatlist l
+		left outer join chatroom r on
+		l.chatidx=r.chatidx
+		left outer join likelist k on k.memidx=l.memidx and
+		k.cridx=l.cridx
+		where l.chatidx=#{chatidx};
 	</select>
 
 	<!-- 멤버채팅룸 생성 리스트 -->
@@ -91,14 +94,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update chatroom set chatread=2 where chatidx=#{param1}
 	</update>
 
-	<!-- 하트버튼 -->
-	<!-- <update id="updateChatLike" parameterType="com.project.gymcarry.chatting.ChatRoomDto"> 
-		update chatroom set chatLike=#{param1} where chatidx=#{param2} </update> -->
+	<!-- 하트체크 -->
+	<select id="selectLike"
+		resultType="com.project.gymcarry.carrylike.CarryLikeDto">
+		select *
+		from likelist
+		where memidx=#{param1} and
+		cridx=#{param2}
+	</select>
 
+	<!-- 하트최초생성 -->
 	<insert id="insertLike"
 		parameterType="com.project.gymcarry.carrylike.CarryLikeDto"
 		useGeneratedKeys="true">
 		insert into likelist (memidx, cridx, likecheck)
 		values (#{memidx},#{cridx},#{likecheck})
 	</insert>
+
+	<!-- 하트생성 & 취소 -->
+	<update id="updateLike"
+		parameterType="com.project.gymcarry.carrylike.CarryLikeDto">
+		update likelist set likecheck=#{param1} where
+		memidx=#{param2} and cridx=#{param3}
+	</update>
+
+
+
 </mapper>

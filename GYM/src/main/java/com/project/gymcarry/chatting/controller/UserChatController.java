@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.project.gymcarry.carrylike.CarryLikeDto;
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
@@ -69,13 +70,23 @@ public class UserChatController {
 		matchingChatRoomService.getChatRead(chatidx);
 		return chatList;
 	}
-	
+
 	@GetMapping("chatting/like")
 	@ResponseBody
-	public int chatLike( @RequestParam("cridx") int cridx, @RequestParam("likechaeck") int likechaeck, HttpSession session) {
+	public int chatLike(@RequestParam("cridx") int cridx, HttpSession session) {
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
-		++likechaeck;
-		int result = matchingChatRoomService.getChatLike(dto.getMemidx(), cridx, likechaeck);
+		int result = 0;
+		int likecheck = 0;
+		CarryLikeDto check = matchingChatRoomService.getCheckLike(dto.getMemidx(), cridx);
+		if(check.getLikeidx() == 0) {
+			++likecheck;
+			result = matchingChatRoomService.getChatLike(dto.getMemidx(), cridx, likecheck);
+		} else if(check.getLikecheck() == 0){
+			++likecheck;
+			matchingChatRoomService.updateChatLike(likecheck, dto.getMemidx(), cridx);
+		} else if(check.getLikecheck() == 1) {
+			result = matchingChatRoomService.updateChatLike(likecheck, dto.getMemidx(), cridx);
+		}
 		return result;
 	}
 

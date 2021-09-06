@@ -118,9 +118,22 @@
 .likeBtn{
 	background-color: white;
 	border: none;
+	margin-top: 8px;
 }
+
 .likeBtn:hover{
 	cursor: pointer;
+}
+.waste{
+	width: 27px;
+    margin-top: 9px;
+}
+.dot{
+	width: 27px;
+    margin-top: 9px;
+}
+.imgButton{
+	justify-content: flex-end;
 }
 
 .chat_content span {
@@ -207,7 +220,8 @@
 }
 
 .back_button a img {
-	width: 46px;
+	width: 30px;
+	margin-top: 8px;
 	margin-left: 15px;
 	margin-right: 34px;
 }
@@ -222,7 +236,6 @@
 	display: inline-block;
 	font-size: 16px;
 	border-radius: 5px;
-	margin-left: 327px;
 }
 
 .back_button:hover input, .order_button:hover input {

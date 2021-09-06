@@ -115,12 +115,12 @@
 		function chatNav(){
 			var htmlNav = '<ul>';
 			htmlNav += '<li class="back_button"><a href="#" onclick="history.go(0)"><img src="<c:url value="/images/icon/arrow.png"/>"</a></li>';
-			htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" style="width: 40px;"></a></li>'
-			<c:if test="${loginSession.memnick ne null}">
-			htmlNav += '<li class="onlike"><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></button></li>'
-			</c:if>
-			htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/garbage.png"/>" style="width: 40px;"></a></li>'
-			htmlNav += '<li class="order_button"><input type="button" value="결제하기"></li>'
+			htmlNav += '<li class="imgButton"><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
+			if(memsession != null && crsession == ''){
+				htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 30px;" class="onlike"></button></li>'
+			}
+			htmlNav += '<li class="imgButton"><a href="#"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
+			htmlNav += '<li class="order_button imgButton"><input type="button" value="결제하기"></li>'
 			htmlNav += '</ul>'
 			$('.message_warp').html(htmlNav);
 		}
@@ -297,17 +297,21 @@
 
 	<script>
 	function chatLike(){
-		var like = $('.likeBtn').val();
+		//var like = $('.likeBtn').val();
 		$.ajax({
 			type : 'GET',
 			url : '<c:url value="/chatting/like"/>',
 			dataType : 'json',
 			data : {
-				likechaeck : like,
+				//likechaeck : like,
 				cridx : cridx
 			},
 			success : function(data){
-				$('.message_warp .onlike').html('<button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart.png"/>" style="width: 40px;"></button>');
+				if(data == 0){
+					$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+				} else {
+					$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');				
+				}
 			}
 		});
 	};	
@@ -330,7 +334,7 @@
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data, function(index, item) {
 							if(memnicks == memsession){
-								if(item.contenttype == 1){
+								if(item.contenttype == 1 && item.chatcontent != null){
 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
 									htmlStr += '	<div class="message">'
@@ -342,7 +346,7 @@
 									htmlStr += '	</div>'
 									htmlStr += '</div>'
 								} 
-								if(item.contenttype == 0){
+								if(item.contenttype == 0 && item.chatcontent != null){
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -360,11 +364,11 @@
 								$('.carry_message_warp').html(htmlStr);
 								$('#output').scrollTop($('#output')[0].scrollHeight);
 								if(item.likecheck == 1){
-									$('.message_warp .onlike').html('<button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart.png"/>" style="width: 40px;"></button>');
-								}
-								
+									$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+								} else if(item.likecheck == 0)
+									$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
 							} else if(crnicks == crsession){
-								if(item.contenttype == 1){
+								if(item.contenttype == 1 && item.chatcontent != null){
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -378,8 +382,8 @@
 									htmlStr += '		</div>'
 									htmlStr += '	</div>'
 								} 
-								if(item.contenttype == 0){
-									htmlStr += '<div class="carry_chat">'
+								if(item.contenttype == 0 && item.chatcontent != null){
+ 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
 									htmlStr += '	<div class="message">'
 									htmlStr += '		<div class="message_color">'
