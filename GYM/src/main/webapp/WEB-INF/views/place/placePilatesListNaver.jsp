@@ -44,7 +44,7 @@
             <c:set var="imgUrl" value="${placeList.placeimg}"/>
             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
             <c:set var="length" value="${fn:length(imageList[0])}"/>
-            <c:set var="img" value="${fn:substring(imageList[0], 2, length-1)}"/>
+            <c:set var="img" value="${fn:substring(imageList[0], -1, length-1)}"/>
 
             <div class="place_content">
                 <div class="place_info">
