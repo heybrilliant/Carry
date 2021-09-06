@@ -8,12 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.dao.PlaceDao;
 import com.project.gymcarry.place.PlaceDto;
-import com.project.gymcarry.place.PlaceSearchDto;
 
 
 
 @Service
-public class PlaceHealthService {
+public class PlaceService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
@@ -31,6 +30,12 @@ public class PlaceHealthService {
 		return dao.selectHealthPlaceList();
 	}
 	
+	// 필라테스 플레이스 리스트
+    public List<PlaceDto> getPilatesPlaceList() {
+        dao = template.getMapper(PlaceDao.class);
+        return dao.selectPilatesPlaceList();
+    }
+	
 	// 요가 플레이스 리스트 
 	public List<PlaceDto> getYogaPlaceList() {
 		dao = template.getMapper(PlaceDao.class);
@@ -43,24 +48,38 @@ public class PlaceHealthService {
 		return dao.selectHealthPlaceInfo(placeidx);
 	}
 	
-	// 플레이스 자동 완성 검색 리스트
+	// 전체 자동 완성 검색 리스트
+	public List<PlaceDto> getAllPlaceSearch(String keyword) {
+		dao = template.getMapper(PlaceDao.class);
+		return dao.selectAllPlaceSearch(keyword);
+	}
+	
+	// 헬스 자동 완성 검색 리스트
 	public List<PlaceDto> getHealthPlaceSearch(String keyword) {
 		dao = template.getMapper(PlaceDao.class);
 		return dao.selectHealthPlaceSearch(keyword);
 	}
 	
-	// 헬스 플레이스 검색 결과 상세 정보 페이지 이동 
-	public PlaceDto getSearchPlaceInfo(String placename) {
+	// 필라테스 자동 완성 검색 리스트
+	public List<PlaceDto> getPilatesPlaceSearch(String keyword) {
 		dao = template.getMapper(PlaceDao.class);
-		return dao.selectSearchPlaceInfo(placename);
+		return dao.selectPilatesPlaceSearch(keyword);
 	}
 	
+	// 요가 자동 완성 검색 리스트
+	public List<PlaceDto> getYogaPlaceSearch(String keyword) {
+		dao = template.getMapper(PlaceDao.class);
+		return dao.selectYogaPlaceSearch(keyword);
+	}
 	
-	// place 검색 자동 완성
-//	public List<PlaceSearchDto> getPlaceSearch() {
-//		dao = template.getMapper(PlaceDao.class);
-//        return dao.selectHealthPlaceSearch();
-//    }
+	// 헬스 플레이스 검색 결과 상세 정보 페이지 이동 
+	public PlaceDto getSearchPlaceHealth(String placename) {
+		dao = template.getMapper(PlaceDao.class);
+		return dao.selectSearchHealthDetail(placename);
+	}
+
+	
+	
 
 
 

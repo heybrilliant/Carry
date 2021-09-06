@@ -6,8 +6,8 @@
 <title>Community</title>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.26/jquery.autocomplete.min.js'></script>
 </head>
 <body>
 
@@ -47,11 +47,8 @@
              <c:forEach items="${placeAll}" var="placeAll" varStatus="status">
              	 <!-- 대표 이미지 추출  -->
 	             <c:set var="imgUrl" value="${placeAll.placeimg}"/>
-	             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
-				 <c:set var="length" value="${fn:length(imageList[0])}"/>
-				 <c:set var="img" value="${fn:substring(imageList[0], 2, length-1)}"/>
-			 
-			 
+	             <c:set var="img" value="${fn:split(imgUrl, ', ')}"/>
+
 	             <div class="place_content">
 	                 <div class="place_info">
 	                     <h3>${placeAll.placename}</h3>
@@ -59,11 +56,11 @@
 	                     <a href="<c:url value="/place/detail?placeidx=${placeAll.placeidx}"/>">더 알아보기</a>
 	                 </div>
 	                 <div class="place_img">
-	                 	<c:if test="${empty img}">
+	                 	<c:if test="${empty imgUrl}">
 	                 		<img src="<c:url value="/images/review1.jpg"/>">
 	                 	</c:if>
-	                 	<c:if test="${!empty img}">
-	                    	<img src="<c:out value="${img}"/>">
+	                 	<c:if test="${!empty imgUrl}">
+	                    	<img src="<c:out value="${img[0]}"/>">
 	                    </c:if>
 	                 </div>
 	             </div>
@@ -92,8 +89,6 @@
 		<c:forEach items="${placeAll}" var="placeAll" varStatus="status">
 			positions.push({content : '<div class="map_in_place_name">${placeAll.placename}</div>', latlng : new kakao.maps.LatLng(${placeAll.latitude}, ${placeAll.longitude})});
 		</c:forEach> 
-		
-		console.log(positions[0])
 		
 
 		for (var i = 0; i < positions.length; i ++) {
@@ -161,64 +156,67 @@
 	
 	<!-- 검색 자동완성 -->
 	<script>
-	$(function() {    //화면 다 뜨면 시작
-        $("#search").autocomplete({
-            source : function( request, response ) {
-                 $.ajax({
-                        type: 'get',
-                        url: "/place/list/search",
-                        dataType: "json",
-                        //data: {"param":"param"},
-                        success: function(data) {
-                            //서버에서 json 데이터 response 후 목록에 추가
-                            response(
-                                $.map(data, function(item) {    //json[i] 번째 에 있는게 item 임.
-                                    return {
-                                        label: item+"label",    //UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
-                                        value: item,    //그냥 사용자 설정값?
-                                        
-
-                                        //[
-                     //    {"name": "하늘이", "dogType": "푸들", "age": 1, "weight": 2.14},
-                         //    {"name": "콩이", "dogType": "푸들", "age": 3, "weight": 2.5},
-                         //    {"name": "람이", "dogType": "허스키", "age": 7, "weight": 3.1}
-                         //]
-                                        // json이 다음 처럼 넘어오면
-                                        // 상황 : name으로 찾고 dogType을 넘겨야 하는 상황이면 
-                                        // label : item.dogType ,    //오토컴플릿이 되고 싶은 단어 
-                                        // value : item.family ,    //넘겨야 하는 단어
-                                        // age : item.age ,
-                                        // weight : item.weight
-                                    }
-                                })
-                            );
-                        }
-                   });
-                },    // source 는 자동 완성 대상
-            select : function(event, ui) {    //아이템 선택시
-                console.log(ui);//사용자가 오토컴플릿이 만들어준 목록에서 선택을 하면 반환되는 객체
-                console.log(ui.item.label);    //김치 볶음밥label
-                console.log(ui.item.value);    //김치 볶음밥
-                console.log(ui.item.test);    //김치 볶음밥test
-                
-            },
-            focus : function(event, ui) {    //포커스 가면
-                return false;//한글 에러 잡기용도로 사용됨
-            },
-            minLength: 1,// 최소 글자수
-            autoFocus: true, //첫번째 항목 자동 포커스 기본값 false
-            classes: {    //잘 모르겠음
-                "ui-autocomplete": "highlight"
-            },
-            delay: 500,    //검색창에 글자 써지고 나서 autocomplete 창 뜰 때 까지 딜레이 시간(ms)
-//            disabled: true, //자동완성 기능 끄기
-            position: { my : "right top", at: "right bottom" },    //잘 모르겠음
-            close : function(event){    //자동완성창 닫아질때 호출
-                console.log(event);
-            }
-        });
-        
-    });
+	
+	$(document).ready(function() {
+		
+		$("#search").autocomplete({
+			
+			source : function(request, response) {
+				$.ajax({
+					url : '<c:url value="/autocomplete"/>',
+					type : "post",
+					dataType : "json",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+					data : { term: request.term },
+					success : function(data) {
+						response(
+							$.map(data, function(item){
+								var idx = item.placeidx;
+								console.log(idx);
+								return {
+									label:item.placename,
+									value:item.placename,
+									idx : item.placeidx
+								}
+							})
+						)
+						
+					},
+					error : function(data) {
+						alert("에러가 발생하였습니다.")
+					}
+				});
+			},
+			select: function(event, ui, item, response) {
+				var placeidx = ui.item.idx;
+				$.ajax({
+					url : '<c:url value="/place/detail"/>',
+					type : "get",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+					data : {placeidx:placeidx},
+					success : function(data) {
+						location.href = '<c:url value="/place/detail"/>?placeidx=' + placeidx;
+					},
+					error : function(data) {
+						alert("에러가 발생하였습니다.")
+					}
+				});
+	            
+	        },
+	        focus: function(event, ui) {
+	            return false;
+	        }
+		}).autocomplete('instance')._renderItem = function(ul, item) {
+			
+			<c:set var="placeSearchDetail" value="${placeSearchDetail}"/>
+			
+	        return $('<li>') //기본 tag가 li
+	        .append('<a href="gym/place/detail?placeidx="+ placeidx>' + item.value + '</a>') // a태그 추가
+	        .appendTo(ul);
+	    };   
+	});
+	
+	
 	</script>
 	
 	
