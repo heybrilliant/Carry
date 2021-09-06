@@ -38,7 +38,7 @@
 								<div class="chat_title">
 									<span>${list.placename}</span>
 								</div>
-								<c:if test="${list.chatread == 0}">
+								<c:if test="${list.chatread == 2}">
 								<div class="chat_title_img"></div>
 								</c:if>
 								<div class="chat_content">

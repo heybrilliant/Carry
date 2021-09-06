@@ -70,13 +70,6 @@ public class UserChatController {
 		return chatList;
 	}
 	
-	// 마지막 대화내용
-//	@PostMapping("chatting/message")
-//	@ResponseBody
-//	public ChatRoomDto message(@RequestParam("chatidx") int chatidx) {
-//		ChatRoomDto chatRoomDto = matchingChatRoomService.getByChatContent(chatidx);
-//		return chatRoomDto;
-//	}
 	
 
 }

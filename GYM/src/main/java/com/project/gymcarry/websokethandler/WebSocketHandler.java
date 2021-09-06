@@ -69,6 +69,8 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
 		int contenttype = 0;
+		// 유저가 보낸메세지 0, 캐리가보낸메세지 1 (읽음 안읽음 처리)
+		int chatRead = 0;
 		// 자기가보낸 메세지 읽음 처리
 		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
 		if (chatNick == null) {
@@ -86,6 +88,10 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		MessageDto messageDto = gson.fromJson(message.getPayload(), MessageDto.class);
 		messageDto.setContenttype(contenttype);
 		messageDto.setChatdate(date);
+		if(chatNick.equals(messageDto.getCrnick())) {
+			messageDto.setChatread(++chatRead);
+		}
+		
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 
