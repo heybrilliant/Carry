@@ -18,6 +18,7 @@
 .place_list_section .place_menu li a {
 	color:#929192;
 	font-weight:600;
+	display:block;
 }
 .place_list_section .place_menu > li:first-child {
     border:0;

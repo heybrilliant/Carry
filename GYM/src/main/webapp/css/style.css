@@ -38,6 +38,12 @@ a {
   text-align:center;
 }
 
+/* scroll */
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-button { width: 0;height: 0;}
+::-webkit-scrollbar-track {   background:none; }
+::-webkit-scrollbar-thumb {  background: rgba(0,0,0,0.7); border-radius: 3px; }
+
 /* Header */
 .header {
   width: 100%;

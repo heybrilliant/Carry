@@ -29,8 +29,6 @@ public class PlaceDetailController {
 				Model model
 			) {
 		PlaceDto placeDetail = placeHealthService.getHealthPlaceInfo(placeidx);
-		System.out.println("placeidx : " + placeidx);
-		
 		model.addAttribute("placeDetail", placeDetail);
 		
 		return "place/placeDetail";

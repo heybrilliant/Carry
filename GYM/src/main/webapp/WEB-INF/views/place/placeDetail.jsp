@@ -90,9 +90,7 @@
 						
 						<c:forEach items="${timearr}" var="time" varStatus="status">
 		            		<li>
-		            			<c:set var="timelength" value="${fn:length(time)}"/>
-		            			<c:set var="opentime" value="${fn:substring(time, 2, timelength)}"/>
-			                    ${opentime}
+			                    ${time}
 			                </li>
 		                </c:forEach>
                     </ul>
@@ -101,10 +99,12 @@
                     <h3>이용정보</h3>
                     <ul>
                     	<c:set var="placeinfo" value="${placeDetail.placeinfo}"/>
-	            		<c:set var="infoList" value="${fn:split(placeinfo, ',')}"/>
-	            		<c:forEach items="${infoList}" var="info">
-		            		<li>${info}</li>
-                        </c:forEach>
+                    	<c:if test="${!empty placeinfo}">
+		            		<c:set var="infoList" value="${fn:split(placeinfo, ',')}"/>
+		            		<c:forEach items="${infoList}" var="info">
+			            		<li>${info}</li>
+	                        </c:forEach>
+                        </c:if>
                     </ul>
                 </div>
                 <div class="place_map">
@@ -174,7 +174,7 @@
         slidesPerView: 6,
         centeredSlides: false,
         autoplay: {
-          delay: 2500,
+          delay: 1500,
           disableOnInteraction: false,
         },
         pagination: {

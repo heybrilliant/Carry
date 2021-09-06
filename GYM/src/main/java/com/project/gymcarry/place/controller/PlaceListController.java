@@ -36,8 +36,8 @@ public class PlaceListController {
 	public String placeHealthList(
 				Model model
 			) {
-		List<PlaceDto> placeList = placeHealthService.getHealthPlaceList();
-		model.addAttribute("placeHealthList", placeList);
+		List<PlaceDto> placeHealthList = placeHealthService.getHealthPlaceList();
+		model.addAttribute("placeHealthList", placeHealthList);
 		return "place/placeHealthList";
 	}
 	

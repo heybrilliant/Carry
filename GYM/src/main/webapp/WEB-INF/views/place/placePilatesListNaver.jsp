@@ -5,15 +5,16 @@
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp" %>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ql9vcy7uun"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -33,10 +34,10 @@
     <div class="place_search_bar">
         <input type="text" name="search" id="search"
                placeholder="센터명을 검색해보세요.">
-        <button type="submit">
+        <%-- <button type="submit">
             <img src="<c:url value="/images/icon/search_icon.png"/>"
                  alt="search">
-        </button>
+        </button> --%>
     </div>
     <div id="map" class="map_section"></div>
 
@@ -181,11 +182,9 @@ $(document).ready(function() {
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 				data : { term: request.term },
 				success : function(data) {
-					console.log(data)
 					response(
 						$.map(data, function(item){
 							var idx = item.placeidx;
-							console.log(idx);
 							return {
 								label:item.placename,
 								value:item.placename,
@@ -202,7 +201,6 @@ $(document).ready(function() {
 		},
 		select: function(event, ui, item, response) {
 			var placeidx = ui.item.idx;
-			//console.log('zzz' + idx);
 			$.ajax({
 				url : '<c:url value="/place/detail"/>',
 				type : "get",

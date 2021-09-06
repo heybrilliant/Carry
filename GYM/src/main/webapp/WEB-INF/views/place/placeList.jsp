@@ -36,9 +36,9 @@
          </ul>
          <div class="place_search_bar">
              <input type="text" name="search" id="search" placeholder="센터명을 검색해보세요.">
-             <button type="submit">
+             <%-- <button type="submit">
                  <img src="<c:url value="/images/icon/search_icon.png"/>" alt="search">
-             </button>
+             </button> --%>
          </div>
          <div id="map" class="map_section">
              

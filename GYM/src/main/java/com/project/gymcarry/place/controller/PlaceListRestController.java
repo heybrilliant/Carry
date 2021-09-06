@@ -43,13 +43,11 @@ public class PlaceListRestController {
 	@ResponseBody
 	public String AutoSearchHealth( Model model, HttpServletRequest request,
 		 HttpServletResponse resp, PlaceDto dto) throws IOException {
-		 
+		
 		 String result = request.getParameter("term");
-		 
 		 List<PlaceDto> list = placeHealthService.getHealthPlaceSearch(result);
-		 System.out.println(list);
-		 
 		 Gson gson = new Gson();
+		 
 		 return gson.toJson(list);
 	}
 	
@@ -60,11 +58,9 @@ public class PlaceListRestController {
 		 HttpServletResponse resp, PlaceDto dto) throws IOException {
 		 
 		 String result = request.getParameter("term");
-		 
 		 List<PlaceDto> list = placeHealthService.getPilatesPlaceSearch(result);
-		 System.out.println(list);
-		 
 		 Gson gson = new Gson();
+		 
 		 return gson.toJson(list);
 	}
 	
@@ -75,11 +71,9 @@ public class PlaceListRestController {
 		 HttpServletResponse resp, PlaceDto dto) throws IOException {
 		 
 		 String result = request.getParameter("term");
-		 
 		 List<PlaceDto> list = placeHealthService.getYogaPlaceSearch(result);
-		 System.out.println(list);
-		 
 		 Gson gson = new Gson();
+		 
 		 return gson.toJson(list);
 	}
 	
