@@ -26,7 +26,7 @@
 					<c:forEach items="${chatList}" var="list">
 						<div class="chatlist">
 							<button type="button" value="${list.chatidx}"
-								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); 
+								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}');
 							location.href='javascript:chatList(${list.chatidx})'"
 								class="on_btn">
 								<div class="float_left">
@@ -38,7 +38,7 @@
 								<div class="chat_title">
 									<span>${list.placename}</span>
 								</div>
-								<c:if test="${list.chatread == 2}">
+								<c:if test="${list.chatread == 1}">
 								<div class="chat_title_img"></div>
 								</c:if>
 								<div class="chat_content">
@@ -116,7 +116,9 @@
 			var htmlNav = '<ul>';
 			htmlNav += '<li class="back_button"><a href="#" onclick="history.go(0)"><img src="<c:url value="/images/icon/arrow.png"/>"</a></li>';
 			htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" style="width: 40px;"></a></li>'
-			htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></a></li>'
+			<c:if test="${loginSession.memnick ne null}">
+			htmlNav += '<li class="onlike"><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 40px;"></button></li>'
+			</c:if>
 			htmlNav += '<li><a href="#"><img src="<c:url value="/images/icon/garbage.png"/>" style="width: 40px;"></a></li>'
 			htmlNav += '<li class="order_button"><input type="button" value="결제하기"></li>'
 			htmlNav += '</ul>'
@@ -294,21 +296,21 @@
 	</script>
 
 	<script>
-	// 채팅 마지막 대화
-/* 	function lastMessage(){
-		var chat = $('.on_btn').attr('value');
+	function chatLike(){
+		var like = $('.likeBtn').val();
 		$.ajax({
-			type : 'POST',
-			url : '<c:url value="/chatting/message"/>',
+			type : 'GET',
+			url : '<c:url value="/chatting/like"/>',
+			dataType : 'json',
 			data : {
-				chatidx : chat
-			}, 
+				likechaeck : like,
+				cridx : cridx
+			},
 			success : function(data){
-				console.log(data);
-				$('.chatlist .active .chat_content').html('<span>'+ data.chatcontent+'</span>');
+				$('.message_warp .onlike').html('<button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart.png"/>" style="width: 40px;"></button>');
 			}
 		});
-	} */  
+	};	
 	
 	// 채팅방 대화내용 리스트
 	function chatList(num) {
@@ -329,7 +331,6 @@
 						$.each(data, function(index, item) {
 							if(memnicks == memsession){
 								if(item.contenttype == 1){
-									console.log('1');
 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
 									htmlStr += '	<div class="message">'
@@ -342,7 +343,6 @@
 									htmlStr += '</div>'
 								} 
 								if(item.contenttype == 0){
-									console.log('2');
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -359,10 +359,12 @@
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
 								$('#output').scrollTop($('#output')[0].scrollHeight);
+								if(item.likecheck == 1){
+									$('.message_warp .onlike').html('<button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart.png"/>" style="width: 40px;"></button>');
+								}
 								
 							} else if(crnicks == crsession){
 								if(item.contenttype == 1){
-									console.log('3');
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -377,7 +379,6 @@
 									htmlStr += '	</div>'
 								} 
 								if(item.contenttype == 0){
-									console.log('4');
 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
 									htmlStr += '	<div class="message">'

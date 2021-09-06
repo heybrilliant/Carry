@@ -30,4 +30,6 @@ public interface MatchingDao {
 	int insertChatContent(MessageDto messageDto);
 	// 읽음안읽음여부
 	int updateChatRead(int chatidx);
+	// 하트등록
+	int insertLike(@Param("memidx") int memidx, @Param("cridx") int cridx, @Param("likecheck")int likecheck);
 }

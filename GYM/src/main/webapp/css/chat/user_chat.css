@@ -115,6 +115,14 @@
 }
 
 
+.likeBtn{
+	background-color: white;
+	border: none;
+}
+.likeBtn:hover{
+	cursor: pointer;
+}
+
 .chat_content span {
 	display: inline-block;
 	width: 200px;

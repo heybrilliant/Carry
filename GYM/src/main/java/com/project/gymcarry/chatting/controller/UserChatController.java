@@ -70,6 +70,13 @@ public class UserChatController {
 		return chatList;
 	}
 	
-	
+	@GetMapping("chatting/like")
+	@ResponseBody
+	public int chatLike( @RequestParam("cridx") int cridx, @RequestParam("likechaeck") int likechaeck, HttpSession session) {
+		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
+		++likechaeck;
+		int result = matchingChatRoomService.getChatLike(dto.getMemidx(), cridx, likechaeck);
+		return result;
+	}
 
 }

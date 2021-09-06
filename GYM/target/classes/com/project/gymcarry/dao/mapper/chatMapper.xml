@@ -8,33 +8,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 대화방 리스트 -->
 	<select id="selectChattingList"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		select * from chatroom where chatidx=#{chatidx}
+		select *
+		from chatroom r
+		join likelist k on r.memidx=k.memidx
+		where chatidx=#{chatidx};
 	</select>
 
 	<!-- 멤버채팅룸 생성 리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
 		select l.chatidx, r.chatcontent, r.chatdate, c.cridx,
-		c.crnick, c.placename, m.memidx, m.memnick, r.chatread, r.contenttype
-		from chatlist l
+		c.crnick, c.placename, m.memidx, m.memnick, r.chatread
+		from member m
+		join chatlist l on l.memidx=m.memidx
 		join carry c on l.cridx=c.cridx
-		join member m on l.memidx=m.memidx
-		left outer join chatroom r on r.messageidx = (SELECT MAX(r.messageidx)
-		from chatroom r where r.chatidx = l.chatidx and m.memidx=#{memidx}) group by
-		r.chatidx;
+		and m.memidx=#{memidx}
+		left outer join chatroom r on
+		l.chatidx=r.chatidx and r.messageidx =
+		(SELECT MAX(r.MESSAGEIDX) from
+		chatroom r where r.chatidx =
+		l.chatidx);
 	</select>
 
 	<!-- 캐리채팅룸 리스트 -->
 	<select id="selectCarryChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
 		select l.chatidx, r.chatcontent, r.chatdate, c.cridx,
-		c.crnick, c.placename, m.memidx, m.memnick, r.chatread, r.contenttype
-		from chatlist l
+		c.crnick, c.placename, m.memidx, m.memnick, r.chatread
+		from member m
+		join chatlist l on l.memidx=m.memidx
 		join carry c on l.cridx=c.cridx
-		join member m on l.memidx=m.memidx
-		left outer join chatroom r on r.messageidx = (SELECT MAX(r.messageidx)
-		from chatroom r where r.chatidx = l.chatidx and c.cridx=#{cridx}) group by
-		r.chatidx;
+		and c.cridx=#{cridx}
+		left outer join chatroom r on l.chatidx=r.chatidx
+		and r.messageidx =
+		(SELECT MAX(r.MESSAGEIDX) from chatroom r where
+		r.chatidx =
+		l.chatidx);
 	</select>
 
 	<!-- 매칭캐리리스트 -->
@@ -79,9 +88,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 읽음 안읽음 -->
 	<update id="updateChatRead"
 		parameterType="com.project.gymcarry.chatting.ChatRoomDto">
-		update chatroom set chatread=1 where chatidx=#{chatidx} and contenttype=#{contenttype}
+		update chatroom set chatread=2 where chatidx=#{param1}
 	</update>
 
+	<!-- 하트버튼 -->
+	<!-- <update id="updateChatLike" parameterType="com.project.gymcarry.chatting.ChatRoomDto"> 
+		update chatroom set chatLike=#{param1} where chatidx=#{param2} </update> -->
 
-
+	<insert id="insertLike"
+		parameterType="com.project.gymcarry.carrylike.CarryLikeDto"
+		useGeneratedKeys="true">
+		insert into likelist (memidx, cridx, likecheck)
+		values (#{memidx},#{cridx},#{likecheck})
+	</insert>
 </mapper>

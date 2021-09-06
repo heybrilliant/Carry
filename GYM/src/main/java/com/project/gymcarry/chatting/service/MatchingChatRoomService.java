@@ -48,6 +48,11 @@ public class MatchingChatRoomService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.updateChatRead(chatidx);
 	}
+
+	public int getChatLike(int memidx, int cridx, int likecheck) {
+		dao = template.getMapper(MatchingDao.class);
+		return dao.insertLike(memidx, cridx, likecheck);
+	}
 	
 
 }

@@ -14,7 +14,6 @@ public class ChatListDto {
 	private int messageidx;
 	public ChatListDto() {
 	}
-	
 	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String memnick, String placename,
 			String chatdate, String chatcontent, int chatread, int messageidx) {
 		super();
@@ -29,7 +28,6 @@ public class ChatListDto {
 		this.chatread = chatread;
 		this.messageidx = messageidx;
 	}
-
 	public int getChatidx() {
 		return chatidx;
 	}
@@ -84,20 +82,17 @@ public class ChatListDto {
 	public void setChatread(int chatread) {
 		this.chatread = chatread;
 	}
-	
 	public int getMessageidx() {
 		return messageidx;
 	}
-
 	public void setMessageidx(int messageidx) {
 		this.messageidx = messageidx;
 	}
-
 	@Override
 	public String toString() {
 		return "ChatListDto [chatidx=" + chatidx + ", cridx=" + cridx + ", memidx=" + memidx + ", crnick=" + crnick
 				+ ", memnick=" + memnick + ", placename=" + placename + ", chatdate=" + chatdate + ", chatcontent="
 				+ chatcontent + ", chatread=" + chatread + ", messageidx=" + messageidx + "]";
 	}
-
+	
 }
