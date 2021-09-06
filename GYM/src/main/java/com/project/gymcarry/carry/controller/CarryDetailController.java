@@ -38,9 +38,6 @@ public class CarryDetailController {
 		PlaceDto carryPlaceInfo = carryInfoService.getCarryPlaceInfo(cridx);
 
 		System.out.println("캐리IDX:" + cridx + " => 상세페이지로 진입");
-		System.out.println(price);
-		System.out.println(carryCerti);
-		System.out.println(carryPlaceInfo);
 
 		model.addAttribute("carryDetail", carryDetail);
 		model.addAttribute("price", price);

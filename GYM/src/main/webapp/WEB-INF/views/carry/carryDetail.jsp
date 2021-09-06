@@ -193,9 +193,11 @@
 
 				<div class="program_all">
 
+					<c:forEach items="${price}" var="price" varStatus="status">
+
 					<form action="<c:url value='/payment/pay'/>" method="post">
 							
-					<c:forEach items="${price}" var="price" varStatus="status">
+					
 					<input type="hidden" name="cridx" value="${price.cridx}">
 					<input type="hidden" name="paynum" value="${price.procount}">
 					<input type="hidden" name="payprice" value="${price.proprice}">
@@ -214,9 +216,10 @@
 						</div>
 						
 				
-					</c:forEach>
+					
 					<input type="hidden" name="crname" value="${carryDetail.crname}">
 					</form>
+					</c:forEach>
 					
 				</div>
 				
