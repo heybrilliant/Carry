@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into carryreview (reviewcontent, cridx, memidx)
 		values (#{reviewcontent}, #{cridx}, #{memidx})
 	</insert>
-	
+
 	<!-- 캐리 리뷰 리스트 : 페이징 처리 -->
 	<select id = "pagingReviewList"
 		resultType = "hashmap"

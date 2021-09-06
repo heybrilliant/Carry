@@ -21,9 +21,9 @@ public class MyinfoController {
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 
 		System.out.println("세션 변수" + sdt.getMemidx());
-		
-		 session.setAttribute("idx",sdt.getMemidx());
-		
+
+		session.setAttribute("idx", sdt.getMemidx());
+
 		System.out.println("인포수정 페이지 진입");
 
 		return "/mypage/myinfo";

@@ -40,15 +40,13 @@ public class CarryInfoService {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryCerti(cridx);
 	}
-	
+
 	// 플레이스 정보(캐리 상세페이지 내)
 	public PlaceDto getCarryPlaceInfo(int cridx) {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryPlaceDetail(cridx);
 	}
 
-
-	
 	// 캐리 리뷰 리스트
 	public List<CarryReviewDto> getCarryReviewList(int cridx) {
 		dao = template.getMapper(CarryDao.class);
@@ -66,57 +64,58 @@ public class CarryInfoService {
 		dao = template.getMapper(CarryDao.class);
 		return dao.carryReviewCnt();
 	}
-	
+
 	public List<Map<String, Object>> pagingReviewList(Criteria cri) {
 		dao = template.getMapper(CarryDao.class);
 		return dao.pagingReviewList(cri);
 	}
 
-	
 	// 전체 캐리 리스트
-	public List<CarryListDto> getAllCarryList(){
+	public List<CarryListDto> getAllCarryList() {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectAllCarryList();
 	}
+
 	// 전체 캐리 리스트 - 가격순
 	public List<CarryListDto> getAllCarryListP() {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectAllCarryListP();
 	}
-	
-	
+
 	// 매칭 캐리리스트 - [여자/헬스]
-	public List<CarryListDto> getCarryListFH(){
+	public List<CarryListDto> getCarryListFH() {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryListFH();
 	}
+
 	// 매칭 캐리리스트 - [여자/필라테스]
-	public List<CarryListDto> getCarryListFF(){
+	public List<CarryListDto> getCarryListFF() {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryListFF();
 	}
+
 	// 매칭 캐리리스트 - [여자/요가]
-	public List<CarryListDto> getCarryListFY(){
+	public List<CarryListDto> getCarryListFY() {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryListFY();
 	}
-	
-	
+
 	// 매칭 캐리리스트 - [남자/헬스]
-	public List<CarryListDto> getCarryListMH(){
+	public List<CarryListDto> getCarryListMH() {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryListMH();
 	}
+
 	// 매칭 캐리리스트 - [남자/필라테스]
-	public List<CarryListDto> getCarryListMF(){
+	public List<CarryListDto> getCarryListMF() {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryListMF();
 	}
+
 	// 매칭 캐리리스트 - [남자/요가]
-	public List<CarryListDto> getCarryListMY(){
+	public List<CarryListDto> getCarryListMY() {
 		dao = template.getMapper(CarryDao.class);
 		return dao.selectCarryListMY();
 	}
-	
-	
+
 }

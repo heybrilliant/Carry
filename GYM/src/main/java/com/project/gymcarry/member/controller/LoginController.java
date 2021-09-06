@@ -22,15 +22,11 @@ public class LoginController {
 	public String loginForm() {
 		return "member/loginForm";
 	}
-	 
+
 	// 로그인 세션 저장
 	@PostMapping("/member/memberLogin")
-	public String login(
-			@RequestParam("mememail") String id, 
-			@RequestParam("mempw") String pw,
-			HttpServletRequest request,
-			HttpSession session
-			) {
+	public String login(@RequestParam("mememail") String id, @RequestParam("mempw") String pw,
+			HttpServletRequest request, HttpSession session) {
 		SessionDto sessionDto = loginService.memberLogin(id, pw);
 		if (sessionDto != null) {
 			session.setAttribute("loginSession", sessionDto);
@@ -38,14 +34,26 @@ public class LoginController {
 		} else {
 			return "member/loginForm";
 		}
-	} 
-	
+	}
+
 	// 로그아웃 세션 삭제
 	@GetMapping("member/logOut")
 	public String memberLogOut(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "redirect:/index";
+	}
+
+	@GetMapping("/mypage/info")
+	public String info() {
+		System.out.println("내 메모 진입");
+		return "/mypage/info";
+	}
+
+	@GetMapping("/mypage/mycash")
+	public String cash() {
+		System.out.println("캐쉬 진입");
+		return "/mypage/mycash";
 	}
 
 }

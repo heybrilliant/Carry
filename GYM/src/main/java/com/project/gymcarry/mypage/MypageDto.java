@@ -2,41 +2,36 @@ package com.project.gymcarry.mypage;
 
 public class MypageDto {
 
-	private int infoidx;
-	private int memidx;
-	private String infotype;
-	private String infocontens;
-	private String infodate;
-
-	@Override
-	public String toString() {
-		return "MypageDto [infoidx=" + infoidx + ", memidx=" + memidx + ", infotype=" + infotype + ", infocontens="
-				+ infocontens + ", infodate=" + infodate + "]";
-	}
-
-	public MypageDto(int infoidx, int memidx, String infotype, String infocontens, String infodate) {
-		super();
-		this.infoidx = infoidx;
-		this.memidx = memidx;
-		this.infotype = infotype;
-		this.infocontens = infocontens;
-		this.infodate = infodate;
-	}
-
-	public int getInfoidx() {
+	public String getInfoidx() {
 		return infoidx;
 	}
 
-	public void setInfoidx(int infoidx) {
+	public void setInfoidx(String infoidx) {
 		this.infoidx = infoidx;
 	}
 
-	public int getMemidx() {
+	public String getMemidx() {
 		return memidx;
 	}
 
-	public void setMemidx(int memidx) {
+	public void setMemidx(String memidx) {
 		this.memidx = memidx;
+	}
+
+	public String getInfocontent() {
+		return infocontent;
+	}
+
+	public void setInfocontent(String infocontent) {
+		this.infocontent = infocontent;
+	}
+
+	public String getInfodate() {
+		return infodate;
+	}
+
+	public void setInfodate(String infodate) {
+		this.infodate = infodate;
 	}
 
 	public String getInfotype() {
@@ -47,20 +42,25 @@ public class MypageDto {
 		this.infotype = infotype;
 	}
 
-	public String getInfocontens() {
-		return infocontens;
+	@Override
+	public String toString() {
+		return "MypageDto [infoidx=" + infoidx + ", memidx=" + memidx + ", infocontent=" + infocontent + ", infodate="
+				+ infodate + ", infotype=" + infotype + "]";
 	}
 
-	public void setInfocontens(String infocontens) {
-		this.infocontens = infocontens;
-	}
-
-	public String getInfodate() {
-		return infodate;
-	}
-
-	public void setInfodate(String infodate) {
+	public MypageDto(String infoidx, String memidx, String infocontent, String infodate, String infotype) {
+		super();
+		this.infoidx = infoidx;
+		this.memidx = memidx;
+		this.infocontent = infocontent;
 		this.infodate = infodate;
+		this.infotype = infotype;
 	}
+
+	private String infoidx;
+	private String memidx;
+	private String infocontent;
+	private String infodate;
+	private String infotype;
 
 }

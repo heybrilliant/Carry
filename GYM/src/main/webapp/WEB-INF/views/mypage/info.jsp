@@ -37,8 +37,8 @@
 		<h3>일일 메모</h3>
 
 		<a class="" data-toggle="modal" href="#registerModal1"
-			data-backdrop="static"><img class="edit_text"
-			src="<c:url value="/images/icon/edit.png"/>"></a>
+			data-backdrop="static"><img onclick="printName()"
+			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
 
 	</div>
 
@@ -77,20 +77,24 @@
 						</button>
 
 					</div>
-					<form class="reg_form">
+					<form id="memoform" name="memoform" class="reg_form" method="post">
 						<div class="modal-body modal-mypage">
-
 							<div class="content">
 								<span class="left"></span> <span class="editor"> <textarea
-										class="form-control" name="contents" id="contents"
-										style="resize: none;"></textarea>
+										class="form-control memo_input" name="infocontent"
+										id="infocontent" style="resize: none;"></textarea>
 								</span>
 							</div>
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button" id="reg_submit">확인</button>
+								<input type="submit" value="등록" class="write_btn" id="write_btn"
+									onClick="fn_review()">
 							</div>
+							<input type="text" id="infodate" name="infodate" /> <input
+								type="text" id="memidx" name="memidx" value="${memidx}" /> <input
+								type="text" name="infotype" id="infotype" value="memo" />
 						</div>
 					</form>
+
 				</div>
 			</div>
 		</div>
@@ -101,14 +105,14 @@
 				<div class="modal-content">
 					<div class="modal-header">
 
-						<h3>일일 메모</h3>
+						<h3>눈바디</h3>
 						<button type="button" class="close" data-dismiss="modal"
 							aria-label="close">
 							<span aria-hidden="true"> X </span>
 						</button>
 
 					</div>
-					<form class="reg_form2">
+					<form>
 						<div class="modal-body modal-mypage">
 
 							<div class="content">
@@ -120,6 +124,7 @@
 							<div class="btn modal-submit-btn">
 								<button class="btn" type="button" id="">확인</button>
 							</div>
+
 						</div>
 					</form>
 				</div>
@@ -155,7 +160,7 @@
 							</div>
 
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button"">확인</button>
+								<button class="btn" type="button">확인</button>
 							</div>
 						</div>
 					</form>

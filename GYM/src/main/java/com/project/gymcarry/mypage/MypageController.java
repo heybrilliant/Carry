@@ -1,46 +1,53 @@
 package com.project.gymcarry.mypage;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.member.SessionDto;
 
 @Controller
-
+@RequestMapping("/mypage/mypage")
 public class MypageController {
 
-	@RequestMapping("/mypage/mypage")
-	public String regForm(HttpServletRequest request) throws Exception {
+	@Autowired
+	private MypageService mypService;
 
-		HttpSession session = request.getSession();
+	@GetMapping
+	public String regFor(HttpSession session) {
+
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-
-		System.out.println("세션 변수" + sdt.getMemidx());
-		System.out.println("세션 변수" + sdt.getMemname());
-		System.out.println("세션 변수" + sdt.getMemnick());
-
 		session.setAttribute("name", sdt.getMemname());
+		session.setAttribute("memidx", sdt.getMemidx());
 
-		System.out.println("마이페이지 진입");
+		System.out.println("세션 -> " + sdt + "-> 마이페이지 진입");
 
 		return "/mypage/mypage";
 	}
 
-	@GetMapping("/mypage/info")
-	public String info() {
-		System.out.println("/ 진입");
-		return "/mypage/info";
-	}
+	// 메모 등록
+	@PostMapping
+	public String addMembermemo(MypageDto mypdto) {
 
-	@GetMapping("/mypage/mycash")
-	public String cash() {
-		System.out.println("/ 진입");
-		return "/mypage/mycash";
+		System.out.println(mypdto);
+
+		int result = mypService.memberMemo(mypdto);
+
+		if (result == 1) {
+			System.out.println(result);
+			System.out.println("메모 등록");
+		}
+
+		return "redirect:/member/login";
 	}
 
 }

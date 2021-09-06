@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 
 		<form method="post">
 
-			<table border="1">	
+			<table border="1">
 
 				<tr>
 					<td>이메일</td>
@@ -46,7 +46,7 @@
 					<td>닉네임</td>
 					<td><input type="text" name="memnick" size="20"></td>
 				</tr>
-				
+
 				<tr>
 					<td>핸드폰번호</td>
 					<td><input type="text" name="memphone" size="20"></td>
@@ -55,7 +55,7 @@
 					<td>생년월일</td>
 					<td><input type="text" name="membirth" size="20"></td>
 				</tr>
-				
+
 				<tr>
 					<td>성별</td>
 					<td><input type="text" name="memgender" size="20"></td>
@@ -69,7 +69,7 @@
 		<a href="<c:url value="/index"/>">Home</a>
 	</div>
 
-	
+
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>
 </html>

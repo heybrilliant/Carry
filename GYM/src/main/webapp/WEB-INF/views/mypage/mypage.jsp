@@ -20,19 +20,22 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
-
-
 <!-- bootstrap -->
 <link rel="stylesheet" href="/gym/css/mypage/bootstrap.css">
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-
 <!-- iamport.payment.js -->
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+<script>
+	function printName() {
+		const name = document.getElementById('alternate').value;
+		document.getElementById("infodate").value = name;
+	}
+</script>
+
 </head>
 <body style="padding-right: 0px">
 	<!-- header -->
@@ -43,11 +46,10 @@
 
 			<div class="col">
 
-
 				<div class="col-right-top">
 					<h2 style="float: none;">
-						<input type="text" id="alternate" class="datepick" size="30"
-							readonly>
+						<input type="text" id="alternate"
+							class="datepick" size="30">
 					</h2>
 				</div>
 				<div class="col-flex">
@@ -98,7 +100,9 @@
 					</div>
 					<div class="col-right"></div>
 				</div>
+
 			</div>
+
 		</div>
 	</div>
 </body>
