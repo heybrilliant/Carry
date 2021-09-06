@@ -22,11 +22,11 @@
 <div class="container container_fix place_list_section">
     <h1 class="page_title">내 주변 운동시설 찾아보기</h1>
     <ul class="place_menu">
-        <li class="on"><a href="<c:url value="/place/list"/>">전체</a></li>
-        <li><a href="<c:url value="/place/health?placenum=1"/>">헬스</a></li>
-        <li><a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
+        <li><a href="<c:url value="/place/all"/>">전체</a></li>
+        <li><a href="<c:url value="/place/health"/>">헬스</a></li>
+        <li class="on"><a href="<c:url value="/place/pilates"/>">필라테스</a>
         </li>
-        <li><a href="<c:url value="/place/list?placenum=3"/>">요가</a></li>
+        <li><a href="<c:url value="/place/yoga"/>">요가</a></li>
     </ul>
     <div class="place_search_bar">
         <input type="text" name="search" id="search"
@@ -96,7 +96,7 @@
                 icon: {
                     content: [
                         '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;">' +
-                        '<div> <img src="/gym/images/icon/muscles.png" style="width:60px; height:60px;"></div>' +
+                        '<div> <img src="/gym/images/icon/gym_location1.png" style="width:40px; height:55px;"></div>' +
                         '</div>'
                     ].join(''),
                     size: new naver.maps.Size(50, 52),

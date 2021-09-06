@@ -25,7 +25,7 @@
 	           			<c:if test="${!empty imageLists}">
 		            		<li class="swiper-slide">
 		            			<c:set var="urlLength" value="${fn:length(image)}"/>
-		            			<c:set var="Image" value="${fn:substring(image, 1, urlLength-1)}"/>
+		            			<c:set var="Image" value="${fn:substring(image, 0, urlLength)}"/>
 			                    <img src="<c:out value="${Image}"/>">
 			                </li>
 		                </c:if>
@@ -158,7 +158,6 @@
         center: new kakao.maps.LatLng(${placeDetail.latitude}, ${placeDetail.longitude}), // 지도의 중심좌표
         level: 2 // 지도의 확대 레벨
     };
-
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 	
 	// 마커가 표시될 위치입니다 
