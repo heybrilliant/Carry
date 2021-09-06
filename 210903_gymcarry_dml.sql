@@ -14,6 +14,8 @@ insert into crcertification values ('4', '저쩌고4', '저쩌고2', '저쩌고3
 insert into crcertification values ('5', '생활스포츠지도사 자격증 2급', '유소년스포츠지도사 2급', '라이프가드(인명구조요원)', '재활 운동처방사 수료', 'CPR 응급처치 수료');
 insert into crcertification values ('6', 'YMCA 라이프가드 자격증', '스포츠 마사지 1급', '재활 운동처방사 수료', 'I.F.S.H 퍼스널트레이너 1급', '키네시오 테이핑 2급');
 insert into crcertification values ('7', '2급 생활스포츠 지도사', '소도구 트레이닝 교육수료', '폼롤러테라피 코어트레이닝 교육이수', '웨이트 트레이닝 교육이수', '근 골격계 해부학 이수');
+insert into crcertification values ('11', '생활스포츠지도사 자격증 2급', '유소년스포츠지도사 2급', '라이프가드(인명구조요원)', '재활 운동처방사 수료', 'CPR 응급처치 수료');
+insert into crcertification values ('12', '용인대학교 졸업', '유도 4단', '2급 생활체육지도자 자격', '스포츠 마사지 1급 자격', '독일 BALLance junior EXPERT');
 
 insert into crprice (cridx, procount, proprice)
 values
@@ -46,7 +48,16 @@ values
 ('7', '1', '50000'),
 ('7', '5', '270000'),
 ('7', '10', '460000'),
-('7', '20', '930000')
+('7', '20', '930000'),
+
+('11', '1', '49000'),
+('11', '5', '240000'),
+('11', '10', '430000'),
+('11', '20', '945000'),
+('12', '1', '45000'),
+('12', '5', '247000'),
+('12', '10', '470000'),
+('12', '20', '970000')
 ;
 
 
@@ -190,5 +201,6 @@ insert into carryreview values (null, '리뷰입니다리뷰입니다리뷰입�
 insert into carryreview values (null, '리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다리뷰입니다.', '4', '1');
 
 insert into payment values (null, sysdate(), '1', '황지원', '010-2315-2568', '2', '20', '952000', '1');
+
 
 

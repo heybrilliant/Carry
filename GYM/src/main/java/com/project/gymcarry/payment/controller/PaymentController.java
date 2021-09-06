@@ -1,7 +1,5 @@
 package com.project.gymcarry.payment.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.payment.PaymentDto;
 import com.project.gymcarry.payment.service.PaymentService;

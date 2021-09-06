@@ -154,16 +154,16 @@
 						<c:set var="imageLists" value="${carryPlaceInfo.placeimg}"/>
 							
 							<c:set var="mainimg" value="${fn:split(imageLists, ', ')}" />
-							<c:set var="mainImglength" value="${fn:length(mainimg[0])}" />
-							<c:set var="mainImage" value="${fn:substring(mainimg[0], 2, mainImglength-1)}" />
+							<c:set var="mainImglength" value="${fn:length(mainimg[2])}" />
+							<c:set var="mainImage" value="${fn:substring(mainimg[2], 1, mainImglength-1)}" />
 
 							<c:if test="${empty mainImage}">
-								<img src="<c:url value="http://placehold.it/600x300"/>">
+								<img src="<c:url value="/images/nullPlaceImage.jpg"/>">
 							</c:if>
 							<c:if test="${!empty mainImage}">
 								<img src="<c:out value="${mainImage}"/>" class="place_main_img">
 							</c:if>
-
+						
 							<p>
 							<span>
 						<a href="<c:url value='/place/detail?placeidx=${carryPlaceInfo.placeidx}'/>">${carryPlaceInfo.placename}</a></span>		
@@ -183,10 +183,9 @@
 					<div id="map" style="width:100%;height:300px;"></div>
 				</div>
 			
-			
-
-
-			<!-- 우측 배너 START -->
+		</div>
+		
+		<!-- 우측 배너 START -->
 			<div class="right_banner">
 
 				<div id="c2" class="circle"></div>
@@ -223,8 +222,8 @@
 				
 			</div>
 			<!-- 우측 배너 END -->
-
-		</div>
+		
+		
 	</div>
 	</div>
 	<!-- Contents END -->
