@@ -6,7 +6,60 @@
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link href="${pageContext.request.contextPath}/css/community/community.css" rel="stylesheet" />
 
-출처: https://joohee46.tistory.com/12 [more comfortable]
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+  $(function(){
+    $.ajax({
+      type:'POST',
+      url:'<c:url value="/community/boardlist"/>',
+      success:function(result)
+      {
+        let json=JSON.parse(result);
+        let res="";
+        for(let i=0;i<json.length;i++)
+        {
+          res+="<tr>"
+                  +"<td>"
+                  +"<img src=http://www.kobis.or.kr"+json[i].thumbUrl+" width=30 height=30>"
+                  +"</td>"
+                  +"<td>"+json[i].movieNm+"</td>"
+                  +"<td>"+json[i].director+"</td>"
+                  +"<td>"+json[i].genre+"</td>"
+                  +"<td>"+json[i].watchGradeNm+"</td></tr>";
+        }
+        $('#movie_list').html(res);
+      }
+    });
+
+    $('span').click(function(){
+      let no=$(this).attr("value");
+      $.ajax({
+        type:'POST',
+        url:'movie_data.do',
+        data:{"no":no},
+        success:function(result)
+        {
+          let json=JSON.parse(result);
+          let res="";
+          for(let i=0;i<json.length;i++)
+          {
+            res+="<tr>"
+                    +"<td>"
+                    +"<img src=http://www.kobis.or.kr"+json[i].thumbUrl+" width=30 height=30>"
+                    +"</td>"
+                    +"<td>"+json[i].movieNm+"</td>"
+                    +"<td>"+json[i].director+"</td>"
+                    +"<td>"+json[i].genre+"</td>"
+                    +"<td>"+json[i].watchGradeNm+"</td></tr>";
+          }
+          $('#movie_list').html(res);
+        }
+      });
+    });
+  })
+</script>
+
 </head>
 <body>
 	<!-- header -->
@@ -58,15 +111,19 @@
               <a href="<c:url value="/community/postContent"/>">
                 ${list.postcontent}</a>
             </p>
+          <%--날짜, 조회수--%>
             <div class="board_bottom">
               <div class="write_date">
-                <%--데이터 포맷 변경--%>
+
                   <li>
                     <img class="left_board_icon" img src="<c:url value="/images/icon/time.png"/>" alt="img">
+                      <%--시간 데이터 포맷 변경--%>
                     <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.postdate}"/>
                   </li>
                   <li>
-                    <img class="left_board_icon2" img src="<c:url value="/images/icon/board.png"/>" alt="img">15
+                    <img class="left_board_icon2"
+                         img src="<c:url value="/images/icon/board.png"/>" alt="img">
+                        ${list.postview}
                   </li>
               </div>
               <ul class="board_btn">

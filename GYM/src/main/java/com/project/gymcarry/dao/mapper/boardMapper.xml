@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.gymcarry.dao.BoardDao">
 
-<!-- List All -->
-	<select id="selectBoardList" resultType="com.project.gymcarry.board.BoardDto">
+    <!-- List All -->
+    <select id="selectBoardList" resultType="com.project.gymcarry.board.BoardDto">
 		<![CDATA[
-	select *
-	from board
-	where postidx > 0
-	order by postidx desc, postdate desc
-		]]>
+        select *
+        from board
+        where postidx > 0
+        order by postidx desc, postdate desc
+        ]]>
 	</select>
+
+    <!-- 조회수 -->
+    <update id="updateViewCount" parameterType="int">
+        update board
+        set postview=postview + 1
+        where postidx = #{postidx}
+    </update>
 
 
 </mapper>

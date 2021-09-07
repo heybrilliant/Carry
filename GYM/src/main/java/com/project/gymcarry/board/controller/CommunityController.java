@@ -19,7 +19,7 @@ public class CommunityController {
 
 
 	// 게시글 전체 출력
-	@GetMapping("community/community")
+	@GetMapping("community/boardlist")
 	public String allCommunityList(Model model) {
 		List<BoardDto> boardList = communityService.getBoardList();
 		model.addAttribute("boardList", boardList);
@@ -28,6 +28,8 @@ public class CommunityController {
 
 		return "community/community";
 	}
+
+
 
 
 }

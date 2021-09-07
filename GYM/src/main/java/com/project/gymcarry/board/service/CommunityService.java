@@ -20,4 +20,10 @@ public class CommunityService {
         dao = template.getMapper(BoardDao.class);
         return dao.selectBoardList();
     }
+
+    // 조회수 증가
+    public int updateViewCount(BoardDto boardDto) {
+        dao = template.getMapper(BoardDao.class);
+        return dao.updateViewCount(boardDto);
+    }
 }
