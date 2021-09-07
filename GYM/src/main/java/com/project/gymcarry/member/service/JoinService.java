@@ -15,15 +15,27 @@ public class JoinService {
 	
 	private MemberDao dao;
 	
+	
+	// 멤버 회원가입
 	public int memberJoin(MemberDto memberDto) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.insertMember(memberDto);
-	}
+		}
 	
+	// 캐리 회원가입
 	public int carryJoin(CarryJoinDto carryDto) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.insertCarry(carryDto);
 	}
+	
+	
+	public int alterjoinkey(MemberDto memberDto) {
+		return template.update("alterjoinkey");
+	}
+	
+
+	
+	
 
 	
 }
