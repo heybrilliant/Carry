@@ -8,10 +8,13 @@ public class MessageDto {
 	private int contenttype;
 	private String crnick;
 	private String memnick;
+	private String chatdate;
+	private int chatread;
 	public MessageDto() {
+		// TODO Auto-generated constructor stub
 	}
 	public MessageDto(int chatidx, String chatcontent, int cridx, int memidx, int contenttype, String crnick,
-			String memnick) {
+			String memnick, String chatdate, int chatread) {
 		super();
 		this.chatidx = chatidx;
 		this.chatcontent = chatcontent;
@@ -20,6 +23,8 @@ public class MessageDto {
 		this.contenttype = contenttype;
 		this.crnick = crnick;
 		this.memnick = memnick;
+		this.chatdate = chatdate;
+		this.chatread = chatread;
 	}
 	public int getChatidx() {
 		return chatidx;
@@ -63,10 +68,25 @@ public class MessageDto {
 	public void setMemnick(String memnick) {
 		this.memnick = memnick;
 	}
+	public String getChatdate() {
+		return chatdate;
+	}
+	public void setChatdate(String chatdate) {
+		this.chatdate = chatdate;
+	}
+	
+	public int getChatread() {
+		return chatread;
+	}
+	public void setChatread(int chatread) {
+		this.chatread = chatread;
+	}
 	@Override
 	public String toString() {
 		return "MessageDto [chatidx=" + chatidx + ", chatcontent=" + chatcontent + ", cridx=" + cridx + ", memidx="
-				+ memidx + ", contenttype=" + contenttype + ", crnick=" + crnick + ", memnick=" + memnick + "]";
+				+ memidx + ", contenttype=" + contenttype + ", crnick=" + crnick + ", memnick=" + memnick
+				+ ", chatdate=" + chatdate + ", chatread=" + chatread + "]";
 	}
-
+	
+	
 }

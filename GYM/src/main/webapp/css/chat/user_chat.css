@@ -106,6 +106,36 @@
 	text-align: left;
 }
 
+.chat_contents{
+	padding-top: 50px;
+	color: rgb(119, 117, 117);
+	width: 213px;
+	margin-left: 98px;
+	text-align: left;
+}
+
+
+.likeBtn{
+	background-color: white;
+	border: none;
+	margin-top: 8px;
+}
+
+.likeBtn:hover{
+	cursor: pointer;
+}
+.waste{
+	width: 27px;
+    margin-top: 9px;
+}
+.dot{
+	width: 27px;
+    margin-top: 9px;
+}
+.imgButton{
+	justify-content: flex-end;
+}
+
 .chat_content span {
 	display: inline-block;
 	width: 200px;
@@ -190,7 +220,8 @@
 }
 
 .back_button a img {
-	width: 46px;
+	width: 30px;
+	margin-top: 8px;
 	margin-left: 15px;
 	margin-right: 34px;
 }
@@ -205,7 +236,6 @@
 	display: inline-block;
 	font-size: 16px;
 	border-radius: 5px;
-	margin-left: 327px;
 }
 
 .back_button:hover input, .order_button:hover input {
@@ -244,6 +274,7 @@
 	height: 545px;
 	overflow-x: hidden;
 	overflow-y: auto;
+	
 }
 
 .message_warp {
@@ -256,7 +287,7 @@
 	position: absolute;
 	bottom: 20px;
 	right: 0;
-	margin-right: 18px;
+	margin-right: 12px;
 }
 
 .time_line span {
@@ -388,3 +419,9 @@
 .chatlist .on_btn.active {
 	background: #eee;
 }
+
+
+
+
+
+

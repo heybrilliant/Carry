@@ -22,6 +22,7 @@ public class MatchingListService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.selectChatList(memIdx);
 	}
+	
 	// 캐리 채팅방 리스트
 	public List<ChatListDto> getChatLists(int cridx){
 		dao = template.getMapper(MatchingDao.class);
