@@ -1,10 +1,6 @@
 package com.project.gymcarry.member.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,21 +29,12 @@ public class LoginController {
 			@RequestParam("mememail") String id, 
 			@RequestParam("mempw") String pw,
 			HttpServletRequest request,
-			HttpServletResponse response,
 			HttpSession session
-			) throws IOException {
+			) {
 		SessionDto sessionDto = loginService.memberLogin(id, pw);
-	
+		System.out.println(sessionDto.toString());
 		if (sessionDto != null) {
-		
 			session.setAttribute("loginSession", sessionDto);
-			System.out.println("멤버 세션 저장");
-			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('로그인 완료');</script>");
-			out.flush();
-			
 			return "redirect:/index";
 		} else {
 			return "member/loginForm";
@@ -56,18 +43,9 @@ public class LoginController {
 	
 	// 로그아웃 세션 삭제
 	@GetMapping("member/logOut")
-	public String memberLogOut(
-			HttpServletRequest request,
-			HttpServletResponse response
-			) throws IOException {
+	public String memberLogOut(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
-		
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<script>alert('로그아웃 완료');</script>");
-		out.flush();
-		
 		return "redirect:/index";
 	}
 

@@ -16,27 +16,27 @@
             COMMUNITY
         </h1>
         <div class="board_write">
-            <form method="post" action="" id="writeForm">
+            <form method="post" id="writeForm">
                 <div class="write_form">
                     <div class="category">
                         <span class="left">분류</span>
-                        <select class="category_info">
+                        <select class="category_info" name="boardcategory">
                             <option value="소통">소통</option>
                             <option value="질문/답변">질문/답변</option>
                         </select>
                     </div>
                     <div class="name">
                         <span class="left">닉네임</span>
-                        <span class="name_info"><input type="text" name="name" value="${loginSession.memnick}" readonly></span>
+                        <span class="name_info"><input type="text" name="postnick" value="${loginSession.memnick}" readonly></span>
                     </div>
                     <div class="title">
                         <span class="left">제목</span>
-                        <span><input type="text" name="title" value=""></span>
+                        <span><input type="text" name="postname" value="" required></span>
                     </div>
                     <div class="content">
                         <span class="left">내용</span>
                         <span class="editor">
-                            <textarea class="form-control" name="contents" id="contents"></textarea>
+                            <textarea class="form-control" name="postcontent" id="postcontent" ></textarea>
                         </span>
                     </div>
                 </div>
@@ -44,6 +44,7 @@
                     <input type="submit" value="작성 완료" id="writeBtn">
                     <a href="javascript:window.history.back();">취소</a>
                 </div>
+                <input type="hidden" id="memidx" name="memidx" value="${loginSession.memidx}">
             </form>
 
         </div>
@@ -57,7 +58,7 @@
 
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: oEditors,
-            elPlaceHolder: "contents",
+            elPlaceHolder: "postcontent",
             sSkinURI: "/gym/smarteditor2/SmartEditor2Skin.html",
             fCreator: "createSEditor2"
         });
@@ -65,7 +66,7 @@
         // 전송 버튼 클릭 이벤트
         $("#writeBtn").click(function(){
         	// id가 contents인 textarea에 에디터에서 대입
-        	oEditors.getById["contents"].exec("UPDATE_CONTENTS_FIELD", []);
+        	oEditors.getById["postcontent"].exec("UPDATE_CONTENTS_FIELD", []);
         	
         	// form submit
         	$("#writeForm").submit();
