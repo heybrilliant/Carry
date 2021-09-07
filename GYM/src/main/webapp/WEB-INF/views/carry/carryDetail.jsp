@@ -108,7 +108,7 @@
 						<form id="reviewForm" name="reviewForm" method="post" >
 							<div id="review_write" class="review_write display_none" class = "reviewForm">
 								<textarea class="review_input" rows="2" cols="30"
-									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
+									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요." required></textarea>
 								<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
 						
 						
