@@ -1,5 +1,4 @@
 body {
-  font-family: "AppleSDGothicNeo";
   min-height: 100vh;
   font-size: 1.125em;
   line-height: 1.6;
@@ -8,10 +7,11 @@ body {
 }
 
 .contents {
-  width: 50%;
+  width: 60%;
   margin: 3rem auto;
   margin-top: 140px;
   padding: 2em;
+  padding: 80px 120px 100px 120px;
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
   background: white;
 }
@@ -72,17 +72,25 @@ body {
   margin-right: 5px;
 }
 
+
+
+
 /* Card 영역 */
 .card {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  width: 100%;
+  border: 1px solid #AAA;
+  border-radius: 30px; width : 100%;
   height: 200px;
   max-width: none;
   display: flex;
   flex-direction: column;
   text-align: center;
   padding: 1em;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: 0.2s;
+  margin-top: 10px;
 }
+
 
 /* 프로필 영역(왼쪽) */
 

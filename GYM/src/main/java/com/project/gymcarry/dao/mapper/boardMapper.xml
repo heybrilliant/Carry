@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper 
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.project.gymcarry.dao.mapper.BoardMapper">
+<mapper namespace="com.project.gymcarry.dao.BoardDao">
 
-	<!-- List All -->
-	<select id="listAll" resultType="com.project.gymcarry.board.BoardDto">
-		<![CDATA[  // SQL 내부에 연산자가 있을 경우 사용
+<!-- List All -->
+	<select id="selectBoardList" resultType="com.project.gymcarry.board.BoardDto">
+		<![CDATA[
 	select *
 	from board
 	where postidx > 0

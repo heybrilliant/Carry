@@ -1,19 +1,23 @@
 package com.project.gymcarry.board.service;
 
 import com.project.gymcarry.board.BoardDto;
-import com.project.gymcarry.dao.BoardMapper;
+import com.project.gymcarry.dao.BoardDao;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @Service
 public class CommunityService {
 
-    @Inject
-    private BoardMapper mapper;
+    @Autowired
+    private SqlSessionTemplate template;
+    private BoardDao dao;
 
-    public List<BoardDto>listAll(PageObject\ ) {
-        return mapper.listAll();
+    // 게시글 전체 출력
+    public List<BoardDto> getBoardList() {
+        dao = template.getMapper(BoardDao.class);
+        return dao.selectBoardList();
     }
 }

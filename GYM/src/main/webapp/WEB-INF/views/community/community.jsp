@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/community/community.css">
@@ -36,13 +37,14 @@
         </ul>
       </nav>
 
-      <c:forEach items="${boardListAll}" var="list">
+
       <div class="card_main">
+        <c:forEach items="${boardList}" var="list">
         <div class="card">
           <div class="board_sidebar">
 						<img class="profile_image"
                              img src="<c:url value="/images/icon/profile2.png"/>" alt="img">
-						<div class="nickname">${list.nickname}</div>
+						<div class="nickname">${list.postnick}</div>
 
           </div>
           <div class="board_main">
@@ -55,7 +57,10 @@
                 ${list.postcontent}</a>
             </p>
             <div class="board_bottom">
-              <div class="write_date">${list.postdate}</div>
+              <div class="write_date">
+                <%--데이터 포맷 변경--%>
+                <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.postdate}" />
+              </div>
               <ul class="board_btn">
                 <li>
                   <a href="#">
@@ -67,12 +72,13 @@
                 </li>
               </ul>
             </div>
+
           </div>
-          </c:forEach>
+
 
 
         </div>
-
+        </c:forEach>
       </div>
     </div>
   </div>
