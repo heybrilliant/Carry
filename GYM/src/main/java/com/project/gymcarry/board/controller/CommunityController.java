@@ -1,17 +1,17 @@
-package com.project.gymcarry.board;
+package com.project.gymcarry.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("community/postContent")
-public class PostContentController {
+@RequestMapping("community/community")
+public class CommunityController {
 	
 	@GetMapping
 	public String matching() {
-		System.out.println("글목록 진입");
-		return "community/postContent";
+		System.out.println("커뮤니티 진입");
+		return "community/community";
 	}
 	
 	

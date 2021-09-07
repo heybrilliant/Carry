@@ -30,11 +30,9 @@ public class PlaceListRestController {
 		 HttpServletResponse resp, PlaceDto dto) throws IOException {
 		 
 		 String result = request.getParameter("term");
-		 
 		 List<PlaceDto> list = placeHealthService.getAllPlaceSearch(result);
-		 System.out.println(list);
-		 
 		 Gson gson = new Gson();
+		 
 		 return gson.toJson(list);
 	}	
 	
