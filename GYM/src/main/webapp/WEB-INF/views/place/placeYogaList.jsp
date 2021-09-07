@@ -23,19 +23,19 @@
               <li>
                  <a href="<c:url value="/place/all"/>">전체</a>
              </li>
-             <li class="on">
+             <li>
                  <a href="<c:url value="/place/health"/>">헬스</a>
              </li>
              <li>
                  <a href="<c:url value="/place/pilates"/>">필라테스</a>
              </li>
-             <li>
+             <li class="on">
                  <a href="<c:url value="/place/yoga"/>">요가</a>
              </li>
          </ul>
          <div class="place_search_bar">
              <input type="text" name="search" id="search" class="search" placeholder="센터명을 검색해보세요.">
-<%--              <button type="submit">
+             <%-- <button type="submit">
                  <img src="<c:url value="/images/icon/search_icon.png"/>" alt="search">
              </button> --%>
          </div>
@@ -43,11 +43,10 @@
              
          </div>
          <div class="place_list">
-             <c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
+             <c:forEach items="${placeYogaList}" var="placeList" varStatus="status">
              	 <!-- 대표 이미지 추출  -->
-	             <c:set var="imgUrl" value="${placeList.placeimg}"/>
-	             <c:set var="img" value="${fn:split(imgUrl, ', ')}"/>
-			 
+	             <c:set var="imgUrl" value="${placeList.placeimg}"/>			 
+			 	 <c:set var="img" value="${fn:split(imgUrl, ', ')}"/>
 	             <div class="place_content">
 	                 <div class="place_info">
 	                     <h3>${placeList.placename}</h3>
@@ -85,8 +84,8 @@
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 		var positions = new Array();
 		
-		<c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
-			positions.push({content : '<div class="map_in_place_name">${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
+		<c:forEach items="${placeYogaList}" var="placeYogaList" varStatus="status">
+			positions.push({content : '<div class="map_in_place_name">${placeYogaList.placename}</div>', latlng : new kakao.maps.LatLng(${placeYogaList.latitude}, ${placeYogaList.longitude})});
 		</c:forEach> 
 		
 
@@ -140,12 +139,13 @@
 				$('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
 				
 				
-				$(window).scroll(function(){
+				$(window).scroll(function(e){
 					var window_top = $(window).scrollTop() + 500;
 					if(window_top > content_top) {
 						$('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
 					} else {
 						$('.place_list .place_content:nth-child(' + idx + ')').removeClass('on');
+						e.preventDefault();
 					}		
 				})
 			}
@@ -162,7 +162,7 @@
 			
 			source : function(request, response) {
 				$.ajax({
-					url : '<c:url value="/autocomplete/health"/>',
+					url : '<c:url value="/autocomplete/yoga"/>',
 					type : "post",
 					dataType : "json",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
@@ -171,7 +171,6 @@
 						response(
 							$.map(data, function(item){
 								var idx = item.placeidx;
-								console.log(idx);
 								return {
 									label:item.placename,
 									value:item.placename,
@@ -217,6 +216,7 @@
 	
 	
 	</script>
+
 	
 	
 	<!-- footer -->

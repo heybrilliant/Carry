@@ -6,12 +6,15 @@
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp" %>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
 
+
 <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ql9vcy7uun"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 <!-- header -->
@@ -22,19 +25,19 @@
 <div class="container container_fix place_list_section">
     <h1 class="page_title">내 주변 운동시설 찾아보기</h1>
     <ul class="place_menu">
-        <li class="on"><a href="<c:url value="/place/list"/>">전체</a></li>
-        <li><a href="<c:url value="/place/health?placenum=1"/>">헬스</a></li>
-        <li><a href="<c:url value="/place/pilates?placenum=2"/>">필라테스</a>
+        <li><a href="<c:url value="/place/all"/>">전체</a></li>
+        <li><a href="<c:url value="/place/health"/>">헬스</a></li>
+        <li class="on"><a href="<c:url value="/place/pilates"/>">필라테스</a>
         </li>
-        <li><a href="<c:url value="/place/list?placenum=3"/>">요가</a></li>
+        <li><a href="<c:url value="/place/yoga"/>">요가</a></li>
     </ul>
     <div class="place_search_bar">
         <input type="text" name="search" id="search"
                placeholder="센터명을 검색해보세요.">
-        <button type="submit">
+        <%-- <button type="submit">
             <img src="<c:url value="/images/icon/search_icon.png"/>"
                  alt="search">
-        </button>
+        </button> --%>
     </div>
     <div id="map" class="map_section"></div>
 
@@ -42,10 +45,7 @@
         <c:forEach items="${placePilatesList}" var="placeList" varStatus="status">
             <!-- 대표 이미지 추출 -->
             <c:set var="imgUrl" value="${placeList.placeimg}"/>
-            <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
-            <c:set var="length" value="${fn:length(imageList[0])}"/>
-            <c:set var="img" value="${fn:substring(imageList[0], 2, length-1)}"/>
-
+			<c:set var="img" value="${fn:split(imgUrl, ', ')}"/>
             <div class="place_content">
                 <div class="place_info">
                     <h3>${placeList.placename}</h3>
@@ -53,11 +53,11 @@
                     <a href="<c:url value="/place/detail?placeidx=${placeList.placeidx}"/>">더 알아보기</a>
                 </div>
                 <div class="place_img">
-                    <c:if test="${empty img}">
+                    <c:if test="${empty imgUrl}">
                         <img src="<c:url value="/images/review1.jpg"/>">
                     </c:if>
-                    <c:if test="${!empty img}">
-                        <img src="<c:out value="${img}"/>">
+                    <c:if test="${!empty imgUrl}">
+                        <img src="<c:out value="${img[0]}"/>">
                     </c:if>
                 </div>
             </div>
@@ -69,7 +69,7 @@
 <!-- 지도[s] -->
 <div id="map" style="width: 100%; height: 500px; margin-top: 50px"></div>
 
-<script type="text/javascript">
+<script>
     var map = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(37.55528086061827, 126.93683578593966), //지도 시작 지점
         zoom: 15
@@ -85,8 +85,6 @@
                 {location : '<div class="map_in_place_name">${placeList.placename}</div>' , latlng : new naver.maps.LatLng(${placeList.latitude} , ${placeList.longitude})}  // 중심좌표
         );
         </c:forEach>
-        console.log(areaArr[0])
-
 
         for (var i = 0; i < areaArr.length; i++) {
             // 마커 생성
@@ -96,7 +94,7 @@
                 icon: {
                     content: [
                         '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;">' +
-                        '<div> <img src="/gym/images/icon/muscles.png" style="width:60px; height:60px;"></div>' +
+                        '<div> <img src="/gym/images/icon/gym_location1.png" style="width:40px; height:55px;"></div>' +
                         '</div>'
                     ].join(''),
                     size: new naver.maps.Size(50, 52),
@@ -168,6 +166,70 @@
 
 
 <!-- 지도[e] -->
+
+<!-- 검색 자동완성 -->
+<script>
+
+$(document).ready(function() {
+	
+	$("#search").autocomplete({
+		
+		source : function(request, response) {
+			$.ajax({
+				url : '<c:url value="/autocomplete/pilates"/>',
+				type : "post",
+				dataType : "json",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+				data : { term: request.term },
+				success : function(data) {
+					response(
+						$.map(data, function(item){
+							var idx = item.placeidx;
+							return {
+								label:item.placename,
+								value:item.placename,
+								idx : item.placeidx
+							}
+						})
+					)
+					
+				},
+				error : function(data) {
+					alert("에러가 발생하였습니다.")
+				}
+			});
+		},
+		select: function(event, ui, item, response) {
+			var placeidx = ui.item.idx;
+			$.ajax({
+				url : '<c:url value="/place/detail"/>',
+				type : "get",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+				data : {placeidx:placeidx},
+				success : function(data) {
+					location.href = '<c:url value="/place/detail"/>?placeidx=' + placeidx;
+				},
+				error : function(data) {
+					alert("에러가 발생하였습니다.")
+				}
+			});
+            
+        },
+        focus: function(event, ui) {
+            return false;
+        }
+	}).autocomplete('instance')._renderItem = function(ul, item) {
+		
+		<c:set var="placeSearchDetail" value="${placeSearchDetail}"/>
+		
+        return $('<li>') //기본 tag가 li
+        .append('<a href="gym/place/detail?placeidx="+ placeidx>' + item.value + '</a>') // a태그 추가
+        .appendTo(ul);
+    };   
+});
+
+
+</script>
 
 
 <!-- footer -->

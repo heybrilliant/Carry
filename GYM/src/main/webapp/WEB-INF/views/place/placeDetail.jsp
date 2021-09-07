@@ -18,29 +18,17 @@
         <div class="place_image swiper-container mySwiper">
             <ul class="swiper-wrapper">
            		<c:set var="imageLists" value="${placeDetail.placeimg}"/>
-					<c:set var="imageurl" value="${fn:split(imageLists, ', ')}"/>
-					<c:forEach items="${imageurl}" var="image" varStatus="status">
+					<c:forEach items="${imageLists}" var="image" varStatus="status">
 			            <c:set var="imglen" value="${status.count}"/>
 		            
 	           			<c:if test="${!empty imageLists}">
 		            		<li class="swiper-slide">
-		            			<c:set var="urlLength" value="${fn:length(image)}"/>
-		            			<c:set var="Image" value="${fn:substring(image, 1, urlLength-1)}"/>
-			                    <img src="<c:out value="${Image}"/>">
+			                    <img src="<c:out value="${image}"/>">
 			                </li>
 		                </c:if>
 	                
-		            	<%-- <c:forEach items="${status.count}" var="roof" varStatus="vstatus">
-		                	<li><img src="<c:url value="/images/review${vstatus.count}.jpg"/>"></li>
-		                	<li><img src="<c:url value="/images/review2.jpg"/>"></li>
-		                	<li><img src="<c:url value="/images/review3.jpg"/>"></li>
-		                	<li><img src="<c:url value="/images/review4.jpg"/>"></li>
-		                	<li><img src="<c:url value="/images/review1.jpg"/>"></li>
-		                	<li><img src="<c:url value="/images/review2.jpg"/>"></li>
-	                	</c:forEach> --%>
                		</c:forEach>
 
-                <c:set var="array" value="${fn:split('review1,review2,review3,review4,review1,review2', ',')}"/>
                 <c:choose>
                 	<c:when test="${empty imageLists}">
                 		<li class="swiper-slide"><img src="<c:url value="/images/review1.jpg"/>"></li>
@@ -97,14 +85,12 @@
                     <ul>
                     	<c:set var="timeList" value="${placeDetail.openhour}"/>
 		             	<c:set var="timeListlength" value="${fn:length(timeList)}"/>
-						<c:set var="times" value="${fn:substring(timeList, 0, timeListlength-1)}"/>
+						<c:set var="times" value="${fn:substring(timeList, 0, timeListlength)}"/>
 						<c:set var="timearr" value="${fn:split(times, ',')}"/>
 						
 						<c:forEach items="${timearr}" var="time" varStatus="status">
 		            		<li>
-		            			<c:set var="timelength" value="${fn:length(time)}"/>
-		            			<c:set var="opentime" value="${fn:substring(time, 2, timelength-1)}"/>
-			                    ${opentime}
+			                    ${time}
 			                </li>
 		                </c:forEach>
                     </ul>
@@ -113,10 +99,12 @@
                     <h3>이용정보</h3>
                     <ul>
                     	<c:set var="placeinfo" value="${placeDetail.placeinfo}"/>
-	            		<c:set var="infoList" value="${fn:split(placeinfo, ',')}"/>
-	            		<c:forEach items="${infoList}" var="info">
-		            		<li>${info}</li>
-                        </c:forEach>
+                    	<c:if test="${!empty placeinfo}">
+		            		<c:set var="infoList" value="${fn:split(placeinfo, ',')}"/>
+		            		<c:forEach items="${infoList}" var="info">
+			            		<li>${info}</li>
+	                        </c:forEach>
+                        </c:if>
                     </ul>
                 </div>
                 <div class="place_map">
@@ -127,14 +115,15 @@
             <div class="place_banner">
             
 	            <c:set var="rightimg" value="${fn:split(imageLists, ', ')}"/>
+	             <%--
 				<c:set var="rightImglength" value="${fn:length(rightimg[0])}"/>
-				<c:set var="rightImage" value="${fn:substring(rightimg[0], 1, rightImglength-1)}"/>
+				<c:set var="rightImage" value="${fn:substring(rightimg[0], 1, rightImglength-1)}"/> --%>
 				
-                <c:if test="${empty rightImage}">
+                <c:if test="${empty imageLists}">
                		<img src="<c:url value="/images/review1.jpg"/>">
                	</c:if>
-               	<c:if test="${!empty rightImage}">
-                  	<img src="<c:out value="${rightImage}"/>">
+               	<c:if test="${!empty imageLists}">
+                  	<img src="<c:out value="${rightimg[0]}"/>">
                 </c:if>
                 <h4 class="place_name">
                     ${placeDetail.placename}
@@ -185,7 +174,7 @@
         slidesPerView: 6,
         centeredSlides: false,
         autoplay: {
-          delay: 2500,
+          delay: 1500,
           disableOnInteraction: false,
         },
         pagination: {
