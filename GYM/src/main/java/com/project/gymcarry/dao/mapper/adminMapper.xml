@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.gymcarry.dao.AdminDao"> 
+
+	
+	<!-- 관리자 로그인 -->
+	<select id = "adminLogin"
+		resultType="com.project.gymcarry.admin.AdminSessionDto">
+		select * from admin where adminid=#{param1} and adminpw=#{param2}
+	</select>
+
+
+
+	<!-- 사용자 관리 : 전체 회원 리스트 출력-->
+	<select id="selectAllMemberList"
+		resultType="com.project.gymcarry.member.MemberListDto">
+		select memidx, mememail, memnick, memname, memgender, memphone, membirth
+		from member;	
+	</select>
+	
+
+	<!-- 사용자 관리 : 전체 캐리 리스트 출력 -->
+	<select id="selectAllCarryList"
+		resultType="com.project.gymcarry.carry.CarryListDto2">
+		select cridx, cremail, crnick, crname, crgender, crphone, placename 
+		from carry natural join place;
+	</select>
+	
+	
+	
+	<!-- 회원 탈퇴 처리 : 작성한 리뷰 삭제-->
+	<delete id="deleteMemberReview">
+		delete from review where memidx=#{memidx};
+	</delete>
+	<!-- 회원 탈퇴 처리 : 진행중인 채팅리스트 삭제-->
+	<delete id="deleteMemberChatList">
+		delete from chatlist where memidx=#{memidx};
+	</delete>
+	<!-- 회원 탈퇴 처리 : 진행중인 채팅룸 삭제-->
+	<delete id="deleteMemberChatRoom">
+		delete from chatroom where memidx=#{memidx};
+	</delete>
+	<!-- 회원 탈퇴 처리 : 결제내역 삭제-->
+	<delete id="deleteMemberPayment">
+		delete from payment where memidx=#{memidx};
+	</delete>
+	<!-- 회원 탈퇴 처리 : 바디인포 삭제-->
+	<delete id="deleteMemberBodyInfo">
+		delete from memberbodyinfo where memidx=#{memidx};
+	</delete>
+	<!-- 회원 탈퇴 처리 : 좋아요리스트 삭제-->
+	<delete id="deleteMemberLikeList">
+		delete from likelist where memidx=#{memidx};
+	</delete>
+	<!-- 최종 회원 탈퇴 처리 -->
+	<delete id="deleteMember">
+		delete from member where memidx=#{memidx};
+	</delete>
+	
+	
+	
+	<!-- 캐리 탈퇴 처리 : 작성된 리뷰 삭제-->
+	<delete id="deleteCarryReview">
+		delete from review where cridx=#{cridx};
+	</delete>
+	<!-- 캐리 탈퇴 처리 : 진행중인 채팅리스트 삭제-->
+	<delete id="deleteCarryChatList">
+		delete from chatlist where cridx=#{cridx};
+	</delete>
+	<!-- 캐리 탈퇴 처리 : 진행중인 채팅룸 삭제-->
+	<delete id="deleteCarryChatRoom">
+		delete from chatroom where cridx=#{cridx};
+	</delete>
+	<!-- 캐리 탈퇴 처리 : 결제내역 삭제-->
+	<delete id="deleteCarryPayment">
+		delete from payment where cridx=#{cridx};
+	</delete>
+	<!-- 캐리 탈퇴 처리 : 자격 및 경력 삭제-->
+	<delete id="deleteCarryCerti">
+		delete from crcertification where cridx=#{cridx};
+	</delete>
+	<!-- 캐리 탈퇴 처리 : 수업 가격 삭제-->
+	<delete id="deleteCarryPrice">
+		delete from crprice where cridx=#{cridx};
+	</delete>
+	<!-- 회원 탈퇴 처리 : 좋아요리스트 삭제-->
+	<delete id="deleteCarryLikeList">
+		delete from likelist where cridx=#{cridx};
+	</delete>
+	<!-- 캐리 탈퇴 처리 -->
+	<delete id="deleteCarry">
+		delete from carry where cridx=#{cridx};
+	</delete>
+	
+	
+</mapper>

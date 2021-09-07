@@ -15,4 +15,5 @@ public interface MemberDao {
 	int insertCarry(CarryJoinDto carryDto);
 	// 케리로그인
 	SessionDto carryLogin(String id, String pw);
+	
 }

@@ -15,7 +15,6 @@
 <script src="/gym/js/carryDetail.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-</head>
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
@@ -158,7 +157,7 @@
 							<c:set var="mainImage" value="${fn:substring(mainimg[2], 1, mainImglength-1)}" />
 
 							<c:if test="${empty mainImage}">
-								<img src="<c:url value="/images/nullPlaceImage.jpg"/>">
+								<img src="<c:url value="/images/nullPlaceImg.jpg"/>">
 							</c:if>
 							<c:if test="${!empty mainImage}">
 								<img src="<c:out value="${mainImage}"/>" class="place_main_img">
@@ -194,10 +193,8 @@
 				<div class="program_all">
 
 					<c:forEach items="${price}" var="price" varStatus="status">
-
 					<form action="<c:url value='/payment/pay'/>" method="post">
 							
-					
 					<input type="hidden" name="cridx" value="${price.cridx}">
 					<input type="hidden" name="paynum" value="${price.procount}">
 					<input type="hidden" name="payprice" value="${price.proprice}">

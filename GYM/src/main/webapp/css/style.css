@@ -209,3 +209,8 @@ a {
 	width:16px;
 	height:16px;
 }
+
+.admin_page {
+	float: right;
+	text-decoration: underline;
+}

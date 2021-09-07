@@ -25,7 +25,7 @@
 		<div>
 			<h3>주문 정보</h3>
 				<div class="order_info">
-					<span>${crname} : ${paynum}회 이용권</span> <br>
+					<span>${crname} 캐리 : ${paynum}회 이용권</span> <br>
 					<h4>
 						${paynum}회
 						<fmt:formatNumber type="number" maxFractionDigits="3"
@@ -76,11 +76,12 @@
 						</ul>
 					</div>
 				</div>
-				</form>
+				
 				
 				<div class="pay_btn">
-					<input type="button" value="결제하기" onclick="requestPay();">
+					<input type="submit" value="결제하기" onclick="requestPay();">
 				</div>
+				</form>
 				
 		</div>
 		
