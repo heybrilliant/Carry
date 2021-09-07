@@ -10,12 +10,9 @@ public class MessageDto {
 	private String memnick;
 	private String chatdate;
 	private int chatread;
-	public MessageDto() {
-		// TODO Auto-generated constructor stub
-	}
+	public MessageDto() {}
 	public MessageDto(int chatidx, String chatcontent, int cridx, int memidx, int contenttype, String crnick,
 			String memnick, String chatdate, int chatread) {
-		super();
 		this.chatidx = chatidx;
 		this.chatcontent = chatcontent;
 		this.cridx = cridx;

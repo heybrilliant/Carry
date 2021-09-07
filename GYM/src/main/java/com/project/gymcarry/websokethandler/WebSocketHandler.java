@@ -17,6 +17,7 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
+import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
 import com.project.gymcarry.member.SessionDto;

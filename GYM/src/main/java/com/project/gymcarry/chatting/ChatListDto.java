@@ -1,5 +1,7 @@
 package com.project.gymcarry.chatting;
 
+import java.sql.Timestamp;
+
 public class ChatListDto {
 	
 	private int chatidx;
@@ -12,11 +14,16 @@ public class ChatListDto {
 	private String chatcontent;
 	private int chatread;
 	private int messageidx;
+	private int chatinoutidx;
+	private int memposition;
+	private int carryposition;
+	private Timestamp outdate;
 	public ChatListDto() {
 	}
+	
 	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String memnick, String placename,
-			String chatdate, String chatcontent, int chatread, int messageidx) {
-		super();
+			String chatdate, String chatcontent, int chatread, int messageidx, int chatinoutidx, int memposition,
+			int carryposition, Timestamp outdate) {
 		this.chatidx = chatidx;
 		this.cridx = cridx;
 		this.memidx = memidx;
@@ -27,7 +34,12 @@ public class ChatListDto {
 		this.chatcontent = chatcontent;
 		this.chatread = chatread;
 		this.messageidx = messageidx;
+		this.chatinoutidx = chatinoutidx;
+		this.memposition = memposition;
+		this.carryposition = carryposition;
+		this.outdate = outdate;
 	}
+
 	public int getChatidx() {
 		return chatidx;
 	}
@@ -88,11 +100,40 @@ public class ChatListDto {
 	public void setMessageidx(int messageidx) {
 		this.messageidx = messageidx;
 	}
+	public int getMemposition() {
+		return memposition;
+	}
+	public void setMemposition(int memposition) {
+		this.memposition = memposition;
+	}
+	public int getCarryposition() {
+		return carryposition;
+	}
+	public void setCarryposition(int carryposition) {
+		this.carryposition = carryposition;
+	}
+	public Timestamp getOutdate() {
+		return outdate;
+	}
+	public void setOutdate(Timestamp outdate) {
+		this.outdate = outdate;
+	}
+	
+	public int getChatinoutidx() {
+		return chatinoutidx;
+	}
+
+	public void setChatinoutidx(int chatinoutidx) {
+		this.chatinoutidx = chatinoutidx;
+	}
+
 	@Override
 	public String toString() {
 		return "ChatListDto [chatidx=" + chatidx + ", cridx=" + cridx + ", memidx=" + memidx + ", crnick=" + crnick
 				+ ", memnick=" + memnick + ", placename=" + placename + ", chatdate=" + chatdate + ", chatcontent="
-				+ chatcontent + ", chatread=" + chatread + ", messageidx=" + messageidx + "]";
+				+ chatcontent + ", chatread=" + chatread + ", messageidx=" + messageidx + ", chatinoutidx="
+				+ chatinoutidx + ", memposition=" + memposition + ", carryposition=" + carryposition + ", outdate="
+				+ outdate + "]";
 	}
 	
 }

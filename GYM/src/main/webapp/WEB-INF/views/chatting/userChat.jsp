@@ -24,6 +24,7 @@
 				<!-- 채팅방 리스트 시작 -->
 				<div class="chatList_scr">
 					<c:forEach items="${chatList}" var="list">
+					<c:if test="${list.memposition ne 1}">
 						<div class="chatlist">
 							<button type="button" value="${list.chatidx}"
 								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}');
@@ -50,6 +51,7 @@
 								</div>
 							</button>
 						</div>
+					</c:if>
 					</c:forEach>
 				</div>
 			</c:if>
@@ -59,6 +61,7 @@
 					<h3>${loginSession.crnick}</h3>
 				</div>
 				<c:forEach items="${carryChatList}" var="list">
+				<c:if test="${list.carryposition ne 1}">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
 							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); location.href='javascript:chatList(${list.chatidx})'"
@@ -86,6 +89,7 @@
 							</div>
 						</button>
 					</div>
+				</c:if>
 				</c:forEach>
 			</c:if>
 		</div>
@@ -119,7 +123,7 @@
 			if(memsession != null && crsession == ''){
 				htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 30px;" class="onlike"></button></li>'
 			}
-			htmlNav += '<li class="imgButton"><a href="#"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
+			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
 			htmlNav += '<li class="order_button imgButton"><input type="button" value="결제하기"></li>'
 			htmlNav += '</ul>'
 			$('.message_warp').html(htmlNav);
@@ -210,7 +214,7 @@
 		
 		var currentuser_session1 = $('#memberId').val();
 		var currentuser_session2 = $('#carryId').val();
-		
+		console.log(jsonData);
 		if(chatIdx == jsonData.chatidx){
 			if (jsonData.memnick == currentuser_session1) {
 				var htmlStr = '	<div class="user_message_warp">'
@@ -296,24 +300,44 @@
 	</script>
 
 	<script>
+	// 하트~ 조아요
 	function chatLike(){
-		//var like = $('.likeBtn').val();
 		$.ajax({
 			type : 'GET',
 			url : '<c:url value="/chatting/like"/>',
 			dataType : 'json',
 			data : {
-				//likechaeck : like,
 				cridx : cridx
 			},
 			success : function(data){
 				if(data == 0){
-					$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+					$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
 				} else {
-					$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');				
+					$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
 				}
 			}
 		});
+	};
+	
+	// 채팅방 나가기~
+	function chatdelete(){
+		var result = confirm('메세지가 모두 삭제 됩니다. 그래도 나가시겠습니까?');
+		if(result == true){
+			alert('채티방을 삭제하셨습니다.');
+			$.ajax({
+				type : 'GET',
+				url : '<c:url value="/chatting/delete"/>',
+				dataType : 'json',
+				data : {
+					chatidx : chatIdx
+				},
+				success : function(data){
+					location.reload(true);
+				}
+			});
+		} else {
+			return false;
+		}
 	};	
 	
 	// 채팅방 대화내용 리스트
@@ -327,9 +351,11 @@
 				},
 				success : function(data) {
 					$('.chatlist .active .chat_title_img').removeClass();
+					
 					if (data == 0) {
 						chattting();
 						chatNav();
+						
 					} else {
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data, function(index, item) {
@@ -360,13 +386,16 @@
 									htmlStr += '		</div>'
 									htmlStr += '	</div>'
 								}
+								
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
 								$('#output').scrollTop($('#output')[0].scrollHeight);
+								
 								if(item.likecheck == 1){
 									$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
 								} else if(item.likecheck == 0)
 									$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
+								
 							} else if(crnicks == crsession){
 								if(item.contenttype == 1 && item.chatcontent != null){
 									htmlStr += '	<div class="user_message_warp">'

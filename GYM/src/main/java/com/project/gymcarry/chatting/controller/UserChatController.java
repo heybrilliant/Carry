@@ -17,14 +17,10 @@ import com.project.gymcarry.carrylike.CarryLikeDto;
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
-import com.project.gymcarry.chatting.service.MatchingListService;
 import com.project.gymcarry.member.SessionDto;
 
 @Controller
 public class UserChatController {
-
-	@Autowired
-	private MatchingListService matchingListService;
 
 	@Autowired
 	private MatchingChatRoomService matchingChatRoomService;
@@ -38,6 +34,9 @@ public class UserChatController {
 		if (chatDto != null) {
 			int chatidx = matchingChatRoomService.getByChatIdx(chatDto.getChatidx());
 			if (chatidx == 1) {
+				if (chatDto.getMemposition() == 1) {
+					matchingChatRoomService.getInChatRoom(chatDto.getChatidx());
+				}
 				redirectAttributes.addAttribute("chatidx", chatDto.getChatidx());
 				return "redirect:/chatting/chatList";
 			}
@@ -52,12 +51,15 @@ public class UserChatController {
 	@GetMapping("chatting/chatList")
 	public String matching(Model model, HttpSession session) {
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
+		List<ChatListDto> list = null;
 		if (dto.getMemidx() != 0) {
-			List<ChatListDto> list = matchingListService.getChatList(dto.getMemidx());
+			// 맴버가 접속했을때 채팅방
+			list = matchingChatRoomService.getChatList(dto.getMemidx());
 			model.addAttribute("chatList", list);
 		} else if (dto.getCridx() != 0) {
-			List<ChatListDto> lists = matchingListService.getChatLists(dto.getCridx());
-			model.addAttribute("carryChatList", lists);
+			// 캐리가 접속했을때 채팅방
+			list = matchingChatRoomService.getChatLists(dto.getCridx());
+			model.addAttribute("carryChatList", list);
 		}
 		return "chatting/userChat";
 	}
@@ -66,7 +68,7 @@ public class UserChatController {
 	@PostMapping("chatting/dochat")
 	@ResponseBody
 	public List<ChatRoomDto> chatList(@RequestParam("chatidx") int chatidx) {
-		List<ChatRoomDto> chatList = matchingListService.getChatIdx(chatidx);
+		List<ChatRoomDto> chatList = matchingChatRoomService.getChatIdx(chatidx);
 		matchingChatRoomService.getChatRead(chatidx);
 		return chatList;
 	}
@@ -74,20 +76,35 @@ public class UserChatController {
 	@GetMapping("chatting/like")
 	@ResponseBody
 	public int chatLike(@RequestParam("cridx") int cridx, HttpSession session) {
+
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
 		int result = 0;
 		int likecheck = 0;
 		CarryLikeDto check = matchingChatRoomService.getCheckLike(dto.getMemidx(), cridx);
-		if(check.getLikeidx() == 0) {
+		if (check == null) {
 			++likecheck;
 			result = matchingChatRoomService.getChatLike(dto.getMemidx(), cridx, likecheck);
-		} else if(check.getLikecheck() == 0){
+		} else if (check.getLikecheck() == 0) {
 			++likecheck;
-			matchingChatRoomService.updateChatLike(likecheck, dto.getMemidx(), cridx);
-		} else if(check.getLikecheck() == 1) {
 			result = matchingChatRoomService.updateChatLike(likecheck, dto.getMemidx(), cridx);
+		} else if (check.getLikecheck() == 1) {
+			matchingChatRoomService.updateChatLike(likecheck, dto.getMemidx(), cridx);
 		}
 		return result;
 	}
 
+	@GetMapping("chatting/delete")
+	@ResponseBody
+	public int chatDelete(@RequestParam("chatidx") int chatidx, HttpSession session) {
+		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
+		int result = 0;
+		if (dto.getMemidx() != 0) {
+			result = matchingChatRoomService.getOutChatRoom(chatidx);
+		} else if (dto.getCridx() != 0) {
+			result = matchingChatRoomService.getOutCarryChatRoom(chatidx);
+		}
+		// 멤버 & 캐리 둘다 나가면 방&대화내용 삭제
+		result = matchingChatRoomService.deleteChatRoom(chatidx);
+		return result;
+	}
 }

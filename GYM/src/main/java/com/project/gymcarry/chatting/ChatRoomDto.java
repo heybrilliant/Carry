@@ -15,13 +15,14 @@ public class ChatRoomDto {
 	private int cridx;				//캐리번호
 	private int memidx;				//회원번호
 	private int contenttype;		//유저,캐리 대화내용 비교
-	private int chatposition;		//방에서나감 안나감여부
+	private int memposition;		//멤버 방나감안나감
+	private int carryposition;		//캐리 방나감안나감
 	private int chatread;			//읽음 안읽음 여부
 	private int likecheck;			//하트여부			
 	public ChatRoomDto() {
 	}
 	public ChatRoomDto(int messageidx, int chatidx, String chatcontent, Timestamp chatdate, int cridx, int memidx,
-			int contenttype, int chatposition, int chatread, int likecheck) {
+			int contenttype, int memposition, int carryposition, int chatread, int likecheck) {
 		super();
 		this.messageidx = messageidx;
 		this.chatidx = chatidx;
@@ -30,7 +31,8 @@ public class ChatRoomDto {
 		this.cridx = cridx;
 		this.memidx = memidx;
 		this.contenttype = contenttype;
-		this.chatposition = chatposition;
+		this.memposition = memposition;
+		this.carryposition = carryposition;
 		this.chatread = chatread;
 		this.likecheck = likecheck;
 	}
@@ -76,11 +78,17 @@ public class ChatRoomDto {
 	public void setContenttype(int contenttype) {
 		this.contenttype = contenttype;
 	}
-	public int getChatposition() {
-		return chatposition;
+	public int getMemposition() {
+		return memposition;
 	}
-	public void setChatposition(int chatposition) {
-		this.chatposition = chatposition;
+	public void setMemposition(int memposition) {
+		this.memposition = memposition;
+	}
+	public int getCarryposition() {
+		return carryposition;
+	}
+	public void setCarryposition(int carryposition) {
+		this.carryposition = carryposition;
 	}
 	public int getChatread() {
 		return chatread;
@@ -98,7 +106,8 @@ public class ChatRoomDto {
 	public String toString() {
 		return "ChatRoomDto [messageidx=" + messageidx + ", chatidx=" + chatidx + ", chatcontent=" + chatcontent
 				+ ", chatdate=" + chatdate + ", cridx=" + cridx + ", memidx=" + memidx + ", contenttype=" + contenttype
-				+ ", chatposition=" + chatposition + ", chatread=" + chatread + ", likecheck=" + likecheck + "]";
+				+ ", memposition=" + memposition + ", carryposition=" + carryposition + ", chatread=" + chatread
+				+ ", likecheck=" + likecheck + "]";
 	}
 	
 }
