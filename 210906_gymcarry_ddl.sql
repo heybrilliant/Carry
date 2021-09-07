@@ -23,6 +23,57 @@ SET @@SESSION.SQL_LOG_BIN= 0;
 
 SET @@GLOBAL.GTID_PURGED=/*!80000 '+'*/ '';
 
+
+DROP TABLE IF EXISTS `ADMIN`;
+CREATE TABLE `admin` (
+  `adminidx` int NOT NULL AUTO_INCREMENT,
+  `adminid` varchar(45) COLLATE utf8_bin NOT NULL,
+  `adminpw` varchar(45) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`adminidx`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+
+
+--
+-- Table structure for table `MEMBER`
+--
+
+DROP TABLE IF EXISTS `MEMBER`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `MEMBER` (
+  `MEMIDX` int NOT NULL AUTO_INCREMENT COMMENT '회원번호',
+  `JOINKEY_STATUS` varchar(10) DEFAULT 0 NULL COMMENT '인증키 여부',
+  `JOINKEY` varchar(10) DEFAULT NULL COMMENT '인증키 저장',
+  `MEMEMAIL` varchar(40) NOT NULL COMMENT '이메일',
+  `MEMPW` varchar(30) NOT NULL COMMENT '비밀번호',
+  `MEMNAME` varchar(50) NOT NULL COMMENT '이름',
+  `MEMNICK` varchar(50) NOT NULL COMMENT '닉네임',
+  `MEMPHONE` varchar(50) NOT NULL COMMENT '핸드폰번호',
+  `MEMBIRTH` int NOT NULL COMMENT '생년월일',
+  `MEMGENDER` varchar(5) NOT NULL COMMENT '성별',
+  `MEMPHOTO` varchar(30) DEFAULT NULL COMMENT '회원사진',
+  PRIMARY KEY (`MEMIDX`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='회원';
+
+--
+-- Table structure for table `MEMBERBODYINFO`
+--
+
+DROP TABLE IF EXISTS `MEMBERBODYINFO`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `MEMBERBODYINFO` (
+  `MEMO` mediumtext COMMENT '타입',
+  `MEMDATE` timestamp NULL DEFAULT NULL COMMENT '날짜',
+  `MEMIDX` int NOT NULL COMMENT '회원번호',
+  KEY `FK_MEMBER_TO_MEMBERBODYINFO` (`MEMIDX`),
+  CONSTRAINT `FK_MEMBER_TO_MEMBERBODYINFO` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='회원바디기록';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
+
 --
 -- Table structure for table `BOARD`
 --
@@ -66,133 +117,7 @@ CREATE TABLE `BOARDCOMMENT` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='게시판댓글';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Table structure for table `CHATLIST`
---
 
-DROP TABLE IF EXISTS `CHATLIST`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `CHATLIST` (
-  `CHATIDX` int NOT NULL AUTO_INCREMENT COMMENT '채팅방번호',
-  `CRIDX` int NOT NULL COMMENT '캐리번호',
-  `MEMIDX` int NOT NULL COMMENT '회원번호',
-  PRIMARY KEY (`CHATIDX`),
-  KEY `FK_CARRY_TO_CHATLIST` (`CRIDX`),
-  KEY `FK_MEMBER_TO_CHATLIST` (`MEMIDX`),
-  CONSTRAINT `FK_CARRY_TO_CHATLIST` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
-  CONSTRAINT `FK_MEMBER_TO_CHATLIST` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `CHATROOM`
---
-
-DROP TABLE IF EXISTS `CHATROOM`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `CHATROOM` (
-  `MESSAGEIDX` int NOT NULL AUTO_INCREMENT COMMENT '메세지 번호',
-  `CHATIDX` int NOT NULL COMMENT '채팅방번호',
-  `CHATCONTENT` mediumtext COLLATE utf8_bin NOT NULL COMMENT '대화내용',
-  `CHATDATE` timestamp NOT NULL COMMENT '대화시간',
-  `CRIDX` int NOT NULL COMMENT '캐리번호',
-  `MEMIDX` int NOT NULL COMMENT '회원번호',
-  `CHATPOSITION` int DEFAULT '0' COMMENT '0=방에서 안나감, 1=방에서나감',
-  `CHATREAD` int DEFAULT '0' COMMENT '0=읽지않음, 1=읽음',
-  PRIMARY KEY (`MESSAGEIDX`),
-  KEY `FK_CARRY_TO_CHATROOM` (`CRIDX`),
-  KEY `FK_MEMBER_TO_CHATROOM` (`MEMIDX`),
-  KEY `FK_CHATLIST_TO_CHATROOM` (`CHATIDX`),
-  CONSTRAINT `FK_CARRY_TO_CHATROOM` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
-  CONSTRAINT `FK_CHATLIST_TO_CHATROOM` FOREIGN KEY (`CHATIDX`) REFERENCES `CHATLIST` (`CHATIDX`),
-  CONSTRAINT `FK_MEMBER_TO_CHATROOM` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `LIKELIST`
---
-
-DROP TABLE IF EXISTS `LIKELIST`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `LIKELIST` (
-  `LIKEIDX` int NOT NULL AUTO_INCREMENT COMMENT '좋아요IDX',
-  `MEMIDX` int DEFAULT NULL COMMENT '회원번호',
-  `CRIDX` int DEFAULT NULL COMMENT '캐리IDX',
-  `LIKECHECK` tinyint(1) DEFAULT NULL COMMENT '좋아요체크',
-  PRIMARY KEY (`LIKEIDX`),
-  KEY `FK_MEMBER_TO_LIKELIST` (`MEMIDX`),
-  KEY `FK_CARRY_TO_LIKELIST` (`CRIDX`),
-  CONSTRAINT `FK_CARRY_TO_LIKELIST` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
-  CONSTRAINT `FK_MEMBER_TO_LIKELIST` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='찜한리스트';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `MEMBER`
---
-
-DROP TABLE IF EXISTS `MEMBER`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `MEMBER` (
-  `MEMIDX` int NOT NULL AUTO_INCREMENT COMMENT '회원번호',
-  `JOINKEY_STATUS` varchar(10) DEFAULT 0 NULL COMMENT '인증키 여부',
-  `JOINKEY` varchar(10) DEFAULT NULL COMMENT '인증키 저장',
-  `MEMEMAIL` varchar(40) NOT NULL COMMENT '이메일',
-  `MEMPW` varchar(30) NOT NULL COMMENT '비밀번호',
-  `MEMNAME` varchar(50) NOT NULL COMMENT '이름',
-  `MEMNICK` varchar(50) NOT NULL COMMENT '닉네임',
-  `MEMPHONE` varchar(50) NOT NULL COMMENT '핸드폰번호',
-  `MEMBIRTH` int NOT NULL COMMENT '생년월일',
-  `MEMGENDER` varchar(5) NOT NULL COMMENT '성별',
-  `MEMPHOTO` varchar(30) DEFAULT NULL COMMENT '회원사진',
-  PRIMARY KEY (`MEMIDX`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='회원';
-
---
--- Table structure for table `MEMBERBODYINFO`
---
-
-DROP TABLE IF EXISTS `MEMBERBODYINFO`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `MEMBERBODYINFO` (
-  `MEMO` mediumtext COMMENT '타입',
-  `MEMDATE` timestamp NULL DEFAULT NULL COMMENT '날짜',
-  `MEMIDX` int NOT NULL COMMENT '회원번호',
-  KEY `FK_MEMBER_TO_MEMBERBODYINFO` (`MEMIDX`),
-  CONSTRAINT `FK_MEMBER_TO_MEMBERBODYINFO` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='회원바디기록';
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `PAYMENT`
---
-
-DROP TABLE IF EXISTS `PAYMENT`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `PAYMENT` (
-  `PAYIDX` int NOT NULL AUTO_INCREMENT COMMENT '결제번호',
-  `PAYDATE` timestamp NOT NULL COMMENT '결제날짜',
-  `MEMIDX` int NOT NULL COMMENT '회원번호',
-  `PAYNAME` varchar(10) NOT NULL COMMENT '결제자명',
-  `PAYPHONE` varchar(20) NOT NULL COMMENT '결제자연락처',
-  `CRIDX` int DEFAULT NULL COMMENT '캐리IDX',
-  `PAYPRICE` int NOT NULL COMMENT '결제금액',
-  `PAYNUM` int NOT NULL COMMENT '결제한 수업횟수',
-  `FACEORNOT` tinyint(1) DEFAULT NULL COMMENT '비대면&대면',
-  PRIMARY KEY (`PAYIDX`),
-  KEY `FK_MEMBER_TO_PAYMENT` (`MEMIDX`),
-  KEY `FK_CARRY_TO_LIKELIST` (`CRIDX`),
-  CONSTRAINT `FK_CARRY_TO_PAYMENT` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
-  CONSTRAINT `FK_MEMBER_TO_PAYMENT` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='결제';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `PLACE`
@@ -216,6 +141,9 @@ CREATE TABLE `PLACE` (
   PRIMARY KEY (`PLACEIDX`)
 ) ENGINE=InnoDB AUTO_INCREMENT=390 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='플레이스';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
 --
 -- Table structure for table `carry`
 --
@@ -299,6 +227,104 @@ CREATE TABLE `REVIEW` (
   CONSTRAINT `FK_CARRY_TO_CARRYREVIEW` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
   CONSTRAINT `FK_MEMBER_TO_CARRYREVIEW` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='캐리상세페이지 리뷰댓글';
+
+
+
+
+--
+-- Table structure for table `CHATLIST`
+--
+
+DROP TABLE IF EXISTS `CHATLIST`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CHATLIST` (
+  `CHATIDX` int NOT NULL auto_increment COMMENT '채팅방번호',
+  `CRIDX` int NOT NULL COMMENT '캐리번호',
+  `MEMIDX` int NOT NULL COMMENT '회원번호',
+  `MEMPOSITION` INT DEFAULT 0 COMMENT '멤버 0=방에서 안나감, 1=방에서나감, 2=다시들어옴',
+  `CARRYPOSITION` INT DEFAULT 0 COMMENT '캐리 0=방에서 안나감, 1=방에서나감, 2=다시들어옴',
+  `OUTDATE` timestamp default current_timestamp on update current_timestamp COMMENT '방에서 나간 날짜',
+  PRIMARY KEY (`CHATIDX`),
+  KEY `FK_CARRY_TO_CHATLIST` (`CRIDX`),
+  KEY `FK_MEMBER_TO_CHATLIST` (`MEMIDX`),
+  CONSTRAINT `FK_CARRY_TO_CHATLIST` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
+  CONSTRAINT `FK_MEMBER_TO_CHATLIST` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
+);
+
+--
+-- Table structure for table `CHATROOM`
+--
+
+DROP TABLE IF EXISTS `CHATROOM`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CHATROOM` (
+  `MESSAGEIDX` int NOT NULL AUTO_INCREMENT COMMENT '메세지 번호',
+  `CHATIDX` int NOT NULL COMMENT '채팅방번호',
+  `CHATCONTENT` mediumtext NOT NULL COMMENT '대화내용',
+  `CHATDATE` timestamp default current_timestamp COMMENT '대화시간',
+  `CRIDX` int NOT NULL COMMENT '캐리번호',
+  `MEMIDX` int NOT NULL COMMENT '회원번호',
+  `CONTENTTYPE` INT DEFAULT 0 COMMENT '0=유저대화, 1=캐리대화',
+  `CHATREAD` INT DEFAULT 0 COMMENT '멤버메세지=0, 캐리메세지=1, 모두읽으면 2',
+  PRIMARY KEY (`MESSAGEIDX`),
+  KEY `FK_CARRY_TO_CHATROOM` (`CRIDX`),
+  KEY `FK_MEMBER_TO_CHATROOM` (`MEMIDX`),
+  KEY `FK_CHATLIST_TO_CHATROOM` (`CHATIDX`),
+  CONSTRAINT `FK_CARRY_TO_CHATROOM` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
+  CONSTRAINT `FK_CHATLIST_TO_CHATROOM` FOREIGN KEY (`CHATIDX`) REFERENCES `CHATLIST` (`CHATIDX`),
+  CONSTRAINT `FK_MEMBER_TO_CHATROOM` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
+);
+
+--
+-- Table structure for table `LIKELIST`
+--
+
+DROP TABLE IF EXISTS `LIKELIST`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `LIKELIST` (
+  `LIKEIDX` int NOT NULL AUTO_INCREMENT COMMENT '좋아요IDX',
+  `MEMIDX` int DEFAULT NULL COMMENT '회원번호',
+  `CRIDX` int DEFAULT NULL COMMENT '캐리IDX',
+  `LIKECHECK` tinyint(1) DEFAULT NULL COMMENT '좋아요체크',
+  PRIMARY KEY (`LIKEIDX`),
+  KEY `FK_MEMBER_TO_LIKELIST` (`MEMIDX`),
+  KEY `FK_CARRY_TO_LIKELIST` (`CRIDX`),
+  CONSTRAINT `FK_CARRY_TO_LIKELIST` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
+  CONSTRAINT `FK_MEMBER_TO_LIKELIST` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='찜한리스트';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+--
+-- Table structure for table `PAYMENT`
+--
+
+DROP TABLE IF EXISTS `PAYMENT`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `PAYMENT` (
+  `PAYIDX` int NOT NULL AUTO_INCREMENT COMMENT '결제번호',
+  `PAYDATE` timestamp NOT NULL COMMENT '결제날짜',
+  `MEMIDX` int NOT NULL COMMENT '회원번호',
+  `PAYNAME` varchar(10) NOT NULL COMMENT '결제자명',
+  `PAYPHONE` varchar(20) NOT NULL COMMENT '결제자연락처',
+  `CRIDX` int DEFAULT NULL COMMENT '캐리IDX',
+  `PAYPRICE` int NOT NULL COMMENT '결제금액',
+  `PAYNUM` int NOT NULL COMMENT '결제한 수업횟수',
+  `FACEORNOT` tinyint(1) DEFAULT NULL COMMENT '비대면&대면',
+  PRIMARY KEY (`PAYIDX`),
+  KEY `FK_MEMBER_TO_PAYMENT` (`MEMIDX`),
+  KEY `FK_CARRY_TO_LIKELIST` (`CRIDX`),
+  CONSTRAINT `FK_CARRY_TO_PAYMENT` FOREIGN KEY (`CRIDX`) REFERENCES `CARRY` (`CRIDX`),
+  CONSTRAINT `FK_MEMBER_TO_PAYMENT` FOREIGN KEY (`MEMIDX`) REFERENCES `MEMBER` (`MEMIDX`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='결제';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
