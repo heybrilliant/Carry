@@ -62,7 +62,7 @@
 								<td>${memList.memgender}</td>
 								<td>${memList.memphone}</td>
 								<td>${memList.membirth}</td>
-								<td class="setting"><a href="javascript:delMember(${memList.memidx})">삭제</a></td>
+								<td class="setting_delete"><a href="javascript:delMember(${memList.memidx})">삭제</a></td>
 								<%-- <td class="setting"><a href="deleteMember?memidx=${memList.memidx}">삭제</a></td> --%>
 							</tr>
 							</c:forEach>

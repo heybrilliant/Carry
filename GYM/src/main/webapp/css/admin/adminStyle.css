@@ -11655,6 +11655,7 @@ body {
 
 .setting_delete {
 	text-decoration-color: red;
+	text-align: center;
 }
 
 .dataTable-sorter {
