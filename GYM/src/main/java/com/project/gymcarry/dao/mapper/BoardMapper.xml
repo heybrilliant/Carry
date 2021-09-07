@@ -5,7 +5,7 @@
 
 <mapper namespace="com.project.gymcarry.dao.BoardDao">
 
-<!-- List All -->
+	<!-- List All -->
 	<select id="selectBoardList" resultType="com.project.gymcarry.board.BoardDto">
 		<![CDATA[
 	select *
@@ -14,6 +14,18 @@
 	order by postidx desc, postdate desc
 		]]>
 	</select>
+	
+	
+	<!-- 글쓰기 -->
+	<insert id="insertBoardWrite"
+	parameterType="java.util.HashMap"
+	useGeneratedKeys="true"
+	keyProperty="postidx">
+		insert into board (postname, postcontent, postnick, memidx, boardcategory)
+		values (#{postname}, #{postcontent}, #{postnick}, #{memidx}, #{boardcategory})
+	</insert>
+	
+	
 
 
 </mapper>

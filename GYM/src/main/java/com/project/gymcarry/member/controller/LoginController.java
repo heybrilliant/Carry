@@ -32,6 +32,7 @@ public class LoginController {
 			HttpSession session
 			) {
 		SessionDto sessionDto = loginService.memberLogin(id, pw);
+		System.out.println(sessionDto.toString());
 		if (sessionDto != null) {
 			session.setAttribute("loginSession", sessionDto);
 			return "redirect:/index";
