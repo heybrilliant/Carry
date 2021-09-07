@@ -4,7 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/community/community.css">
+<link href="${pageContext.request.contextPath}/css/community/community.css" rel="stylesheet" />
+
+출처: https://joohee46.tistory.com/12 [more comfortable]
 </head>
 <body>
 	<!-- header -->
@@ -59,9 +61,16 @@
             <div class="board_bottom">
               <div class="write_date">
                 <%--데이터 포맷 변경--%>
-                <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.postdate}" />
+                  <li>
+                    <img class="left_board_icon" img src="<c:url value="/images/icon/time.png"/>" alt="img">
+                    <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.postdate}"/>
+                  </li>
+                  <li>
+                    <img class="left_board_icon2" img src="<c:url value="/images/icon/board.png"/>" alt="img">15
+                  </li>
               </div>
               <ul class="board_btn">
+
                 <li>
                   <a href="#">
                     <img class="board_icon" img src="<c:url value="/images/icon/heart.png"/>" alt="img">2
