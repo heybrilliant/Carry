@@ -45,22 +45,22 @@
 	<div class="col-right-left">
 		<h3>눈 바디</h3>
 		<a class="" data-toggle="modal" href="#registerModal2"
-			data-backdrop="static"><img class="edit_text"
-			src="<c:url value="/images/icon/upload.png"/>"></a>
+			data-backdrop="static"><img onclick="printName()"
+			class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
 	</div>
 
 	<div class="col-right-right">
 		<h3>몸무게</h3>
 		<a class="" data-toggle="modal" href="#registerModal3"
-			data-backdrop="static"> <img class="edit_text"
-			src="<c:url value="/images/icon/edit.png"/>"></a>
+			data-backdrop="static"> <img onclick="printName()"
+			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
 	</div>
 
 	<div class="col-right-right2">
 		<h3>식단</h3>
 		<a class="" data-toggle="modal" href="#registerModal4"
-			data-backdrop="static"><img class="edit_text"
-			src="<c:url value="/images/icon/edit.png"/>"></a>
+			data-backdrop="static"><img onclick="printName()"
+			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
 	</div>
 
 	<section>
@@ -86,12 +86,13 @@
 								</span>
 							</div>
 							<div class="btn modal-submit-btn">
-								<input type="submit" value="등록" class="write_btn" id="write_btn"
-									onClick="fn_review()">
+
+								<button onClick="fn_review()" type="submit" class="btn"
+									type="button">확인</button>
 							</div>
-							<input type="text" id="infodate" name="infodate" /> <input
-								type="text" id="memidx" name="memidx" value="${memidx}" /> <input
-								type="text" name="infotype" id="infotype" value="memo" />
+							<input type="hidden" id="infodate" name="infodate" /> <input
+								type="hidden" id="memidx" name="memidx" value="${memidx}" /> <input
+								type="hidden" name="infotype" id="infotype" value="memo" />
 						</div>
 					</form>
 
@@ -112,18 +113,22 @@
 						</button>
 
 					</div>
-					<form>
+					<form method="post">
 						<div class="modal-body modal-mypage">
 
 							<div class="content">
 								<span class="left"></span> <span class="editor"> <textarea
-										class="form-control" name="contents" id="contents"
-										style="resize: none;"></textarea>
+										class="form-control" name="contents" name="infocontent"
+										id="infocontent" style="resize: none;"></textarea>
 								</span>
 							</div>
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button" id="">확인</button>
+								<button onClick="fn_review()" type="submit" class="btn"
+									type="button">확인</button>
 							</div>
+							<input type="hidden" id="infodate" name="infodate" /> <input
+								type="hidden" id="memidx" name="memidx" value="${memidx}" /> <input
+								type="hidden" name="infotype" id="infotype" value="memo" />
 
 						</div>
 					</form>
@@ -144,12 +149,12 @@
 						</button>
 
 					</div>
-					<form class="reg_form3">
+					<form class="reg_form3" method="post">
 						<div class="modal-body modal-mypage">
 
 							<div class="content">
 								<span class="editor"> <input class="form-control"
-									name="contents" maxlength="3" id="contents">
+									name="infocontent" id="infocontent" maxlength="3" id="contents">
 
 								</span>
 								<div class="modal-kg-kg">
@@ -160,8 +165,13 @@
 							</div>
 
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button">확인</button>
+								<button onClick="fn_review()" type="submit" class="btn"
+									type="button">확인</button>
+
 							</div>
+							<input type="hidden" id="infodate" name="infodate" /> <input
+								type="hidden" id="memidx" name="memidx" value="${memidx}" /> <input
+								type="hidden" name="infotype" id="infotype" value="kg" />
 						</div>
 					</form>
 				</div>
@@ -181,18 +191,22 @@
 						</button>
 
 					</div>
-					<form class="reg_form4">
+					<form class="reg_form4" method="post">
 						<div class="modal-body modal-mypage">
 
 							<div class="content">
 								<span class="left"></span> <span class="editor"> <textarea
-										class="form-control" name="contents" id="contents"
+										class="form-control" name="infocontent" id="infocontent"
 										style="resize: none;"></textarea>
 								</span>
 							</div>
 							<div class="btn modal-submit-btn">
-								<button class="btn" type="button"">확인</button>
+								<button onClick="fn_review()" type="submit" class="btn"
+									type="button">확인</button>
 							</div>
+							<input type="hidden" id="infodate" name="infodate" /> <input
+								type="hidden" id="memidx" name="memidx" value="${memidx}" /> <input
+								type="hidden" name="infotype" id="infotype" value="food" />
 
 						</div>
 					</form>

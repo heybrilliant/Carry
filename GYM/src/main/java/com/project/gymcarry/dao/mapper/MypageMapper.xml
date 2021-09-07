@@ -14,8 +14,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		mypage
 		(memidx,infocontent,infodate,infotype) values
 		(#{memidx},#{infocontent},#{infodate},#{infotype});
-
-
 	</insert>
+
+
+	<!-- 캐리 정보 출력 -->
+	<select id="selectCarryDetail"
+		resultType="com.project.gymcarry.carry.CarryDto">
+		select * from carry where cridx=#{cridx}
+	</select>
 
 </mapper>

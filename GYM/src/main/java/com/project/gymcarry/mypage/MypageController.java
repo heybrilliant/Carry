@@ -39,15 +39,9 @@ public class MypageController {
 	public String addMembermemo(MypageDto mypdto) {
 
 		System.out.println(mypdto);
-
 		int result = mypService.memberMemo(mypdto);
 
-		if (result == 1) {
-			System.out.println(result);
-			System.out.println("메모 등록");
-		}
-
-		return "redirect:/member/login";
+		return "redirect:/mypage/mypage";
 	}
 
 }
