@@ -22,7 +22,6 @@ import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
 import com.project.gymcarry.member.SessionDto;
 
-@Controller
 public class WebSocketHandler extends TextWebSocketHandler {
 
 	@Autowired
@@ -99,24 +98,37 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		// 전달 메세지
 		if (chatNick.equals(messageDto.getCrnick())) {
 			String to = messageDto.getMemnick();
+			System.out.println("11111 = " + to);
 			WebSocketSession toSession = mapList.get(to);
+			System.out.println("2222222 = ");
 			if (toSession != null) {
+				System.out.println("333333 = ");
 				toSession.sendMessage(sendMsg);
+				System.out.println("44444 = ");
 				session.sendMessage(sendMsg);
+				System.out.println("555555 = ");
 			} else {
+				System.out.println("66666 = ");
 				session.sendMessage(sendMsg);
+				System.out.println("7777777 = ");
 			}
-			matchingChatRoomService.insertChatContent(messageDto);
+			//matchingChatRoomService.insertChatContent(messageDto);
 		} else if (chatNick.equals(messageDto.getMemnick())) {
 			String st = messageDto.getCrnick();
+			System.out.println("88888 = " + st);
 			WebSocketSession toSession = mapList.get(st);
+			System.out.println("99999999 = " +  toSession);
 			if (toSession != null) {
+				System.out.println("10000000");
 				toSession.sendMessage(sendMsg);
+				System.out.println("1000111111110000");
 				session.sendMessage(sendMsg);
+				System.out.println("1222222220");
 			} else {
+				System.out.println("12333333333");
 				session.sendMessage(sendMsg);
 			}
-			matchingChatRoomService.insertChatContent(messageDto);
+			//matchingChatRoomService.insertChatContent(messageDto);
 		}
 	}
 

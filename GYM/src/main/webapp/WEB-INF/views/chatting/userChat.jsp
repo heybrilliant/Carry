@@ -214,7 +214,6 @@
 		
 		var currentuser_session1 = $('#memberId').val();
 		var currentuser_session2 = $('#carryId').val();
-		console.log(jsonData);
 		if(chatIdx == jsonData.chatidx){
 			if (jsonData.memnick == currentuser_session1) {
 				var htmlStr = '	<div class="user_message_warp">'
