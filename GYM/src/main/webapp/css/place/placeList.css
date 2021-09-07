@@ -18,6 +18,7 @@
 .place_list_section .place_menu li a {
 	color:#929192;
 	font-weight:600;
+	display:block;
 }
 .place_list_section .place_menu > li:first-child {
     border:0;
@@ -25,7 +26,7 @@
 
 .place_list_section .place_menu > li.on a {
     font-weight:600;
-    color:#333   
+    color:#000   
 }
 
 .place_search_bar {
@@ -176,4 +177,27 @@
 }
 #map > div > div > div:last-child > div > div:last-child {
 	width:100%!important;
+}
+
+
+#ui-id-1.ui-widget-content {
+	border-radius: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 200px;
+    width: 497px;
+}
+
+#ui-id-1.ui-widget-content a {
+	display: block;
+    padding: 10px 20px;
+    border:none;
+}
+#ui-id-1.ui-widget-content a:selected {
+	background:red;
+}
+.ui-state-hover,
+.ui-state-active,
+.ui-state-focus {
+	background:#f5f5f5;
 }
