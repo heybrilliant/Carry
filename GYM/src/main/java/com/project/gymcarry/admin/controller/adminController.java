@@ -31,6 +31,7 @@ public class adminController {
 		
 		@GetMapping("admin/adminLogin")
 		public String loginForm() {
+			System.out.println("관리자 로그인 페이지 진입");
 			return "admin/adminLogin";
 		}
 		
@@ -53,19 +54,22 @@ public class adminController {
 				
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('관리자 로그인 완료');</script>");
+				out.println("<script>alert('관리자 로그인 완료');");
+				out.println("location.href='/gym/admin/member';</script>");
 				out.close();
 				
-				return "redirect:/admin/member";
+				return "";
+				// return "redirect:/admin/member";
 				
 			} else {
 				
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.');</script>");
+				out.println("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.');");
+				out.println("location.href='/gym/admin/adminLogin';</script>");
 				out.close();
 				
-				return "redirect:/admin/adminLogin";
+				return "";
 			}
 		} 
 		
@@ -80,17 +84,28 @@ public class adminController {
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<script>alert('관리자 계정이 로그아웃 되었습니다.');</script>");
+			out.println("<script>alert('관리자 계정이 로그아웃 되었습니다.');");
+			out.println("location.href='/gym/admin/adminLogin';</script>");
 			out.close();
 			
 			System.out.println("관리자 로그아웃 완료 : 세션 소멸");
-			return "admin/adminLogin";
+			return "";
 		}
 
 		
 		// 회원 관리 : 전체 회원 리스트 출력
 		@GetMapping("admin/member")
-		public String memberSetting(Model model) {
+		public String memberSetting(
+				HttpServletRequest request,
+				HttpSession session,
+				Model model) {
+			
+			HttpSession adminSession = request.getSession();
+			AdminSessionDto adminSessionDto = (AdminSessionDto) adminSession.getAttribute("loginSession");
+			session.setAttribute("idx", adminSessionDto.getAdminid());
+			session.setAttribute("name", adminSessionDto.getAdminpw());
+			System.out.println("세션 변수(admin) : " + adminSessionDto.getAdminid());
+
 			List<MemberListDto> memList = adminService.allMemberList();
 			model.addAttribute("memList", memList);
 			
