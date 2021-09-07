@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"  %>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <title>Community</title>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
+
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 	
@@ -20,22 +21,22 @@
              내 주변 운동시설 찾아보기
          </h1>
          <ul class="place_menu">
-              <li>
+             <li class="on">
                  <a href="<c:url value="/place/all"/>">전체</a>
              </li>
-             <li class="on">
+             <li>
                  <a href="<c:url value="/place/health"/>">헬스</a>
              </li>
              <li>
                  <a href="<c:url value="/place/pilates"/>">필라테스</a>
              </li>
              <li>
-                 <a href="<c:url value="/place/yoga"/>">요가</a>
+                  <a href="<c:url value="/place/yoga"/>">요가</a>
              </li>
          </ul>
          <div class="place_search_bar">
-             <input type="text" name="search" id="search" class="search" placeholder="센터명을 검색해보세요.">
-<%--              <button type="submit">
+             <input type="text" name="search" id="search" placeholder="센터명을 검색해보세요.">
+             <%-- <button type="submit">
                  <img src="<c:url value="/images/icon/search_icon.png"/>" alt="search">
              </button> --%>
          </div>
@@ -43,16 +44,16 @@
              
          </div>
          <div class="place_list">
-             <c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
+             <c:forEach items="${placeAll}" var="placeAll" varStatus="status">
              	 <!-- 대표 이미지 추출  -->
-	             <c:set var="imgUrl" value="${placeList.placeimg}"/>
+	             <c:set var="imgUrl" value="${placeAll.placeimg}"/>
 	             <c:set var="img" value="${fn:split(imgUrl, ', ')}"/>
-			 
+
 	             <div class="place_content">
 	                 <div class="place_info">
-	                     <h3>${placeList.placename}</h3>
-	                     <p>${placeList.placeaddress}</p>
-	                     <a href="<c:url value="/place/detail?placeidx=${placeList.placeidx}"/>">더 알아보기</a>
+	                     <h3>${placeAll.placename}</h3>
+	                     <p>${placeAll.placeaddress}</p>
+	                     <a href="<c:url value="/place/detail?placeidx=${placeAll.placeidx}"/>">더 알아보기</a>
 	                 </div>
 	                 <div class="place_img">
 	                 	<c:if test="${empty imgUrl}">
@@ -85,8 +86,8 @@
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 		var positions = new Array();
 		
-		<c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
-			positions.push({content : '<div class="map_in_place_name">${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
+		<c:forEach items="${placeAll}" var="placeAll" varStatus="status">
+			positions.push({content : '<div class="map_in_place_name">${placeAll.placename}</div>', latlng : new kakao.maps.LatLng(${placeAll.latitude}, ${placeAll.longitude})});
 		</c:forEach> 
 		
 		for (var i = 0; i < positions.length; i ++) {
@@ -160,7 +161,7 @@
 			
 			source : function(request, response) {
 				$.ajax({
-					url : '<c:url value="/autocomplete/health"/>',
+					url : '<c:url value="/autocomplete"/>',
 					type : "post",
 					dataType : "json",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  

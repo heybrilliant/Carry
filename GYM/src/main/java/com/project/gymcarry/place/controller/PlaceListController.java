@@ -50,7 +50,7 @@ public class PlaceListController {
 		// 필라테스 업체 리스트
 		List<PlaceDto> placePilatesList = placeHealthService.getPilatesPlaceList();
 		model.addAttribute("placePilatesList", placePilatesList);
-		return "place/placePilatesListNaver";
+		return "place/placePilatesList";
 	}
 	
 	

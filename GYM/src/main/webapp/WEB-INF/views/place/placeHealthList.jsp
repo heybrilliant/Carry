@@ -35,9 +35,9 @@
          </ul>
          <div class="place_search_bar">
              <input type="text" name="search" id="search" class="search" placeholder="센터명을 검색해보세요.">
-             <button type="submit">
+<%--              <button type="submit">
                  <img src="<c:url value="/images/icon/search_icon.png"/>" alt="search">
-             </button>
+             </button> --%>
          </div>
          <div id="map" class="map_section">
              
@@ -46,10 +46,7 @@
              <c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
              	 <!-- 대표 이미지 추출  -->
 	             <c:set var="imgUrl" value="${placeList.placeimg}"/>
-	             <c:set var="imageList" value="${fn:split(imgUrl, ',')}"/>
-				 <c:set var="length" value="${fn:length(imageList[0])}"/>
-				 <c:set var="img" value="${fn:substring(imageList[0], -1, length-1)}"/>
-			 
+	             <c:set var="img" value="${fn:split(imgUrl, ', ')}"/>
 			 
 	             <div class="place_content">
 	                 <div class="place_info">
@@ -58,11 +55,11 @@
 	                     <a href="<c:url value="/place/detail?placeidx=${placeList.placeidx}"/>">더 알아보기</a>
 	                 </div>
 	                 <div class="place_img">
-	                 	<c:if test="${empty img}">
+	                 	<c:if test="${empty imgUrl}">
 	                 		<img src="<c:url value="/images/review1.jpg"/>">
 	                 	</c:if>
-	                 	<c:if test="${!empty img}">
-	                    	<img src="<c:out value="${img}"/>">
+	                 	<c:if test="${!empty imgUrl}">
+	                    	<img src="<c:out value="${img[0]}"/>">
 	                    </c:if>
 	                 </div>
 	             </div>
@@ -91,8 +88,6 @@
 		<c:forEach items="${placeHealthList}" var="placeList" varStatus="status">
 			positions.push({content : '<div class="map_in_place_name">${placeList.placename}</div>', latlng : new kakao.maps.LatLng(${placeList.latitude}, ${placeList.longitude})});
 		</c:forEach> 
-		
-		console.log(positions[0])
 		
 		for (var i = 0; i < positions.length; i ++) {
 		    // 마커를 생성합니다
@@ -165,38 +160,44 @@
 			
 			source : function(request, response) {
 				$.ajax({
-					url : '<c:url value="/autocomplete"/>',
+					url : '<c:url value="/autocomplete/health"/>',
 					type : "post",
 					dataType : "json",
-					// data: { value : request.term},
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
 					data : { term: request.term },
 					success : function(data) {
-						response(data);
+						response(
+							$.map(data, function(item){
+								var idx = item.placeidx;
+								console.log(idx);
+								return {
+									label:item.placename,
+									value:item.placename,
+									idx : item.placeidx
+								}
+							})
+						)
+						
 					},
 					error : function(data) {
 						alert("에러가 발생하였습니다.")
 					}
 				});
 			},
-			select: function(event, ui) {
-	            console.log("select : " + ui.item.value);
-	            
-	            
-	            
-/* 	            $.ajax({
-					url : '<c:url value="/place/detail/search"/>',
-					type : "post",
-					data : ui.item.value,
-					success : function(data){
-						response(data);
+			select: function(event, ui, item, response) {
+				var placeidx = ui.item.idx;
+				$.ajax({
+					url : '<c:url value="/place/detail"/>',
+					type : "get",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+					data : {placeidx:placeidx},
+					success : function(data) {
+						location.href = '<c:url value="/place/detail"/>?placeidx=' + placeidx;
 					},
-					error : function(data){
-						console.log(data);
-						console.log(ui.item.value);
+					error : function(data) {
 						alert("에러가 발생하였습니다.")
 					}
-				});  */
+				});
 	            
 	        },
 	        focus: function(event, ui) {
@@ -207,14 +208,13 @@
 			<c:set var="placeSearchDetail" value="${placeSearchDetail}"/>
 			
 	        return $('<li>') //기본 tag가 li
-	        .append('<a href="<c:url value="/place/detail?placeidx=${placeSearchDetail.placeidx}"/>">' + item.value + '</a>') // a태그 추가
+	        .append('<a href="gym/place/detail?placeidx="+ placeidx>' + item.value + '</a>') // a태그 추가
 	        .appendTo(ul);
 	    };   
 	});
 	
 	
 	</script>
-
 	
 	
 	<!-- footer -->
