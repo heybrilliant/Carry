@@ -154,7 +154,7 @@
 							
 							<c:set var="mainimg" value="${fn:split(imageLists, ', ')}" />
 							<c:set var="mainImglength" value="${fn:length(mainimg[2])}" />
-							<c:set var="mainImage" value="${fn:substring(mainimg[2], 1, mainImglength-1)}" />
+							<c:set var="mainImage" value="${fn:substring(mainimg[2], 0, mainImglength)}" />
 
 							<c:if test="${empty mainImage}">
 								<img src="<c:url value="/images/nullPlaceImg.jpg"/>">
