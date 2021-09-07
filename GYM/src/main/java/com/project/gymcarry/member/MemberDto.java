@@ -9,8 +9,6 @@ public class MemberDto {
 	private String memphone;
 	private int membirth;
 	private String memgender;
-	private String joinkey;
-	private String joinkey_status;
 
 
 	public MemberDto() {
@@ -97,34 +95,16 @@ public class MemberDto {
 	}
 
 
-	public String getJoinkey() {
-		return joinkey;
-	}
-
-	public void setJoinkey(String joinkey) {
-		this.joinkey = joinkey;
-	}
-
-	public String getJoinkey_status() {
-		return joinkey_status;
-	}
-
-	public void setJoinkey_status(String joinkey_status) {
-		this.joinkey_status = joinkey_status;
-	}
-
-
-
 	@Override
 	public String toString() {
 		return "MemberDto [memidx=" + memidx + ", mememail=" + mememail + ", mempw=" + mempw + ", memname=" + memname
 				+ ", memnick=" + memnick + ", memphone=" + memphone + ", membirth=" + membirth + ", memgender="
-				+ memgender + ", joinkey=" + joinkey + ", joinkey_status=" + joinkey_status + "]";
+				+ memgender + "]";
 	}
 
 
 	public MemberDto(int memidx, String mememail, String mempw, String memname, String memnick, String memphone,
-			int membirth, String memgender, String joinkey, String joinkey_Status) {
+			int membirth, String memgender) {
 		super();
 		this.memidx = memidx;
 		this.mememail = mememail;
@@ -134,8 +114,6 @@ public class MemberDto {
 		this.memphone = memphone;
 		this.membirth = membirth;
 		this.memgender = memgender;
-		this.joinkey = joinkey;
-		this.joinkey_status = joinkey_Status;
 	}
 
 	
