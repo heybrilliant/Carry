@@ -4,11 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-<<<<<<< HEAD
-=======
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carrylike.CarryLikeDto;
->>>>>>> origin/m20
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.MessageDto;
