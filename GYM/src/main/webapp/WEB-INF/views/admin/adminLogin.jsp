@@ -20,7 +20,7 @@
 	<!-- header NavBar-->
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">GymCarry</a>
+            <a class="navbar-brand ps-3" href="<c:url value="/"/>">GymCarry</a>
            
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             </form>
@@ -48,6 +48,8 @@
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header"><h3 class="text-center my-4">관리자 로그인</h3></div>
                             <div class="card-body">
+                               
+                               
                                 <form action="<c:url value="/admin/login"/>" method="post">
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="inputEmail" type="text" name="adminid" placeholder="name@example.com" />
@@ -61,6 +63,8 @@
                                         <input type="submit" class="login_btn btn btn-primary" value="로그인">
                                     </div>
                                 </form>
+                                
+                                
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,5 @@
 package com.project.gymcarry;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,11 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 	@RequestMapping("/index")
-	public void index(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		session.invalidate();
-		System.out.println("관리자 로그아웃 : 세션 강제 소멸");
+	public void index() {
 	}
 
 	@RequestMapping("/")
