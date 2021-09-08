@@ -17,21 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where l.chatidx=#{chatidx};
 	</select>
 
-	<!-- 방나갓다 다시들어 왔을 경우 새로입력한 메세지 입력한 date 이후 출력 -->
-	<select id="selectReChattingList"
-		resultType="com.project.gymcarry.chatting.ChatRoomDto">
-		select *
-		from chatlist l
-		left outer join chatroom r on l.chatidx=r.chatidx and r.chatdate >
-		l.outdate
-		left outer join likelist k on k.memidx=l.memidx and k.cridx=l.cridx
-		where l.chatidx=#{chatidx} and l.memposition=2 or l.carryposition=2;
-	</select>
-
 	<!-- 멤버 채팅방 생성 리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select l.chatidx, l.memposition, l.carryposition,
+		select l.chatidx, l.outcount,
 		l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, c.placename,
 		m.memidx, m.memnick, r.chatread
 		from member m
@@ -46,45 +35,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		l.chatidx);
 	</select>
 
-	<!-- 맴버 나갓다 다시들어온 채팅방 -->
-	<select id="selectReChatList"
-		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select l.chatidx, l.memposition, l.carryposition,
-		l.outdate,
-		r.chatcontent, r.chatdate, c.cridx, c.crnick, c.placename,
-		m.memidx,
-		m.memnick, r.chatread
-		from member m
-		join chatlist l on
-		l.memidx=m.memidx
-		join carry c on l.cridx=c.cridx and
-		m.memidx=#{memidx}
-		left outer join chatroom r on l.chatidx=r.chatidx
-		and r.messageidx =
-		(SELECT MAX(r.MESSAGEIDX) from chatroom r where
-		r.chatidx = l.chatidx
-		and r.chatdate > l.outdate);
-	</select>
-
 	<!-- 캐리 채팅방 리스트 -->
 	<select id="selectCarryChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select l.chatidx, l.memposition, l.carryposition,
-		l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, c.placename,
-		m.memidx, m.memnick, r.chatread
-		from member m
-		join chatlist l on
-		l.memidx=m.memidx
-		join carry c on l.cridx=c.cridx and c.cridx=#{cridx}
-		left outer join chatroom r on l.chatidx=r.chatidx and r.messageidx =
-		(SELECT MAX(r.MESSAGEIDX) from chatroom r where r.chatidx =
-		l.chatidx);
-	</select>
-
-	<!-- 캐리 나갓다 다시들어온 채팅방 -->
-	<select id="selectReCarryChatList"
-		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select l.chatidx, l.memposition, l.carryposition,
+		select l.chatidx, l.outcount,
 		l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, c.placename,
 		m.memidx, m.memnick, r.chatread
 		from member m
@@ -165,43 +119,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		memidx=#{param2} and cridx=#{param3}
 	</update>
 
-	<!-- 멤버 나간방 다시들어가기 -->
-	<update id="updateInChat"
-		parameterType="com.project.gymcarry.chatting.ChatListDto">
-		update chatlist set memposition=2 where
-		chatidx=#{param}
-	</update>
-
-	<!-- 캐리 나간방 사용자가 메세지입력하면 다시 들어와짐 -->
-	<update id="updateInCarryChat"
-		parameterType="com.project.gymcarry.chatting.ChatListDto">
-		update chatlist set carryposition=2 where
-		chatidx=#{param}
-	</update>
-
 	<!-- 멤버 방나가기 -->
 	<update id="updateOutChat"
 		parameterType="com.project.gymcarry.chatting.ChatListDto">
-		update chatlist set memposition=1 where
+		update chatlist set outcount=outcount -1 where
+		chatidx=#{param}
+	</update>
+	
+	<!-- 멤버 나간방 다시들어가기 -->
+	<update id="updateInChat"
+		parameterType="com.project.gymcarry.chatting.ChatListDto">
+		update chatlist set outcount=outcount +1 where
 		chatidx=#{param}
 	</update>
 
 	<!-- 캐리 방나가기 -->
 	<update id="updateCarryOutChat"
 		parameterType="com.project.gymcarry.chatting.ChatListDto">
-		update chatlist set carryposition=1 where
+		update chatlist set outcount=outcount -1 where
 		chatidx=#{param}
 	</update>
 
-	<!-- 둘다 방을 나가면 완전삭제 -->
+	<!-- 방인원수 0 되면 삭제 -->
 	<delete id="deleteChatRoom">
-		delete from r, l using chatroom r left join chatlist
-		l on r.chatidx=l.chatidx
-		where r.chatidx=#{param};
+		delete from chatlist where chatidx=#{param} and outcount=0
 	</delete>
 
-	<!-- 방포지션 가져옴 -->
-	<select id="selectRoomPosition"
+	<!-- 방count 가져옴 -->
+	<select id="selectRoomCount"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
 		select * from chatlist where chatidx=#{param}
 	</select>

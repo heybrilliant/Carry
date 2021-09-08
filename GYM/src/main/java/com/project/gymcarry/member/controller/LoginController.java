@@ -32,12 +32,10 @@ public class LoginController {
 			HttpSession session
 			) {
 		SessionDto sessionDto = loginService.memberLogin(id, pw);
-		if (sessionDto != null) {
-			session.setAttribute("loginSession", sessionDto);
-			return "redirect:/index";
-		} else {
-			return "member/loginForm";
-		}
+		String chatNick = sessionDto.getMemnick();
+		session.setAttribute("chatSession", chatNick);
+		session.setAttribute("loginSession", sessionDto);
+		return "redirect:/index";
 	} 
 	
 	// 로그아웃 세션 삭제

@@ -33,12 +33,10 @@ public class CarryLoginController {
 			HttpSession session,
 			Model model) {
 		SessionDto sessionDto = loginService.carryLogin(id, pw);
-		if (sessionDto != null) {
-			session.setAttribute("loginSession", sessionDto);
-			return "redirect:/index";
-		} else {
-			return "carry/loginForm";
-		}
+		String chatNick = sessionDto.getCrnick();
+		session.setAttribute("chatSession", chatNick);
+		session.setAttribute("loginSession", sessionDto);
+		return "redirect:/index";
 	}
 	
 	// 로그아웃 세션 삭제

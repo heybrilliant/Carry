@@ -1,5 +1,7 @@
 package com.project.gymcarry.chatting.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -34,7 +36,7 @@ public class UserChatController {
 		if (chatDto != null) {
 			int chatidx = matchingChatRoomService.getByChatIdx(chatDto.getChatidx());
 			if (chatidx == 1) {
-				if (chatDto.getMemposition() == 1) {
+				if (chatDto.getOutcount() == 1) {
 					matchingChatRoomService.getInChatRoom(chatDto.getChatidx());
 				}
 				redirectAttributes.addAttribute("chatidx", chatDto.getChatidx());
@@ -98,12 +100,12 @@ public class UserChatController {
 	public int chatDelete(@RequestParam("chatidx") int chatidx, HttpSession session) {
 		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
 		int result = 0;
-		if (dto.getMemidx() != 0) {
+		if(dto.getMemidx() != 0) {
 			result = matchingChatRoomService.getOutChatRoom(chatidx);
-		} else if (dto.getCridx() != 0) {
+		} else {
 			result = matchingChatRoomService.getOutCarryChatRoom(chatidx);
 		}
-		// 멤버 & 캐리 둘다 나가면 방&대화내용 삭제
+		// 방인원수 0 되면 삭제
 		result = matchingChatRoomService.deleteChatRoom(chatidx);
 		return result;
 	}

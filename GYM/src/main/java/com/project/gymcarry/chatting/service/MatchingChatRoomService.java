@@ -23,40 +23,19 @@ public class MatchingChatRoomService {
 	// 멤버 채팅방 리스트
 	public List<ChatListDto> getChatList(int memIdx) {
 		dao = template.getMapper(MatchingDao.class);
-		List<ChatListDto> list = dao.selectChatList(memIdx);
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getMemposition() == 2) {
-				list = dao.selectReChatList(memIdx);
-			}
-		}
-		return list;
+		return dao.selectChatList(memIdx);
 	}
 
 	// 캐리 채팅방 리스트
 	public List<ChatListDto> getChatLists(int cridx) {
 		dao = template.getMapper(MatchingDao.class);
-		List<ChatListDto> list = dao.selectCarryChatList(cridx);
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getMemposition() == 2) {
-				list = dao.selectReCarryChatList(cridx);
-			}
-		}
-		return list;
+		return dao.selectCarryChatList(cridx);
 	}
 
 	// 대화 리스트
 	public List<ChatRoomDto> getChatIdx(int chatidx) {
 		dao = template.getMapper(MatchingDao.class);
-		// 나갓다 들어온방이 아닐 경우 출력
-		List<ChatRoomDto> list = dao.selectChattingList(chatidx);
-		for (int i = 0; i < list.size(); i++) {
-			if (list.get(i).getMemposition() == 2 || list.get(i).getCarryposition() == 2) {
-				// 방나갓다 다시들어 왔을 경우 새로입력한 메세지 입력한 date 이후 출력
-				list = dao.selectReChattingList(chatidx);
-				return list;
-			}
-		}
-		return list;
+		return dao.selectChattingList(chatidx);
 	}
 
 	// 채팅방 생성
@@ -107,22 +86,16 @@ public class MatchingChatRoomService {
 		return dao.updateLike(likecheck, memidx, cridx);
 	}
 
-	// 멤버 나간방 다시 들어가기
-	public int getInChatRoom(int chatidx) {
-		dao = template.getMapper(MatchingDao.class);
-		return dao.updateInChat(chatidx);
-	}
-	
-	// 캐리 나간방 사용자가 메세지입력하면 다시 들어와짐
-	public int getInCaryChatRoom(int chatidx) {
-		dao = template.getMapper(MatchingDao.class);
-		return dao.updateInCarryChat(chatidx);
-	}
-
 	// 멤버 방나가기
 	public int getOutChatRoom(int chatidx) {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.updateOutChat(chatidx);
+	}
+	
+	// 멤버 나간방 다시 들어가기
+	public int getInChatRoom(int chatidx) {
+		dao = template.getMapper(MatchingDao.class);
+		return dao.updateInChat(chatidx);
 	}
 
 	// 캐리 방나가기
@@ -131,21 +104,21 @@ public class MatchingChatRoomService {
 		return dao.updateCarryOutChat(chatidx);
 	}
 	
-	// 멤버 & 캐리 둘다 나가면 방&대화내용 삭제
+	// 방인원수 0 되면 삭제
 	public int deleteChatRoom(int chatidx) {
 		dao = template.getMapper(MatchingDao.class);
-		ChatListDto dto = dao.selectRoomPosition(chatidx);
+		ChatListDto dto = dao.selectRoomCount(chatidx);
 		int result = 0;
-		if (chatidx == dto.getChatidx() && dto.getMemposition() == 1 && dto.getCarryposition() == 1) {
+		if (chatidx == dto.getChatidx() && dto.getOutcount() == 0) {
 			result = dao.deleteChatRoom(chatidx);
 		}
 		return result;
 	}
 	
-	// 나감안나감 확인용
-	public ChatListDto selectRoomPosition(int chatidx) {
+	// 방count 가져옴 
+	public ChatListDto selectRoomCount(int chatidx) {
 		dao = template.getMapper(MatchingDao.class);
-		return dao.selectRoomPosition(chatidx);
+		return dao.selectRoomCount(chatidx);
 	}
 	
 }

@@ -69,7 +69,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		String chatNick = (String) session.getAttributes().get("chatSession");
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
 
-		SimpleDateFormat format = new SimpleDateFormat("HH:mm a");
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss a");
 		Date time = new Date();
 		String date = format.format(time);
 
@@ -81,6 +81,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			messageDto.setContenttype(++contenttype);
 			messageDto.setChatread(++chatRead);
 		}
+		System.out.println(messageDto);
 
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));

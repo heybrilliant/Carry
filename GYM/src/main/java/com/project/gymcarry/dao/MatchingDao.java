@@ -25,12 +25,6 @@ public interface MatchingDao {
 	// 매칭캐리리스트
 	List<CarryDto> selectCarryList();
 
-	// 멤버 채팅방 나갓다 들어온 리스트
-	List<ChatListDto> selectReChatList(int memIdx);
-
-	// 캐리 채팅방 나갓다 들어온 리스트
-	List<ChatListDto> selectReCarryChatList(int cridx);
-
 	// 사용자 채팅방 가져오기
 	ChatListDto selectByChatRoom(@Param("cridx") int cridx, @Param("memidx") int memidx);
 
@@ -58,22 +52,16 @@ public interface MatchingDao {
 	// 멤버 나간방 다시들어가기
 	int updateInChat(int chatidx);
 	
-	// 캐리 나간방 사용자가 메세지입력하면 다시 들어와짐
-	int updateInCarryChat(int chatidx);
-	
 	// 멤버 방나가기
 	int updateOutChat(int chatidx);
 
 	// 캐리 방나가기
 	int updateCarryOutChat(int chatidx);
 
-	// 방나갓다 다시들어 왔을 경우 새로입력한 메세지 입력한 date 이후 출력
-	List<ChatRoomDto> selectReChattingList(int chatidx);
-
-	// 멤버 & 캐리 둘다 나가면 방&대화내용 삭제
+	// 방인원수 0 되면 삭제
 	int deleteChatRoom(int chatidx);
 
-	// position 가져오기
-	ChatListDto selectRoomPosition(int chatidx);
+	// 방count 가져옴
+	ChatListDto selectRoomCount(int chatidx);
 
 }

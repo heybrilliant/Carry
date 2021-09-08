@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <title>1:1Chatting</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/chat/user_chat.css">
@@ -24,9 +24,10 @@
 				<!-- 채팅방 리스트 시작 -->
 				<div class="chatList_scr">
 					<c:forEach items="${chatList}" var="list">
+					<c:if test="${list.outcount ne 1 }">
 						<div class="chatlist">
 							<button type="button" value="${list.chatidx}"
-								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}');
+								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}',${list.outcount});
 							location.href='javascript:chatList(${list.chatidx})'"
 								class="on_btn">
 								<div class="float_left">
@@ -41,15 +42,22 @@
 								<c:if test="${list.chatread == 1}">
 								<div class="chat_title_img"></div>
 								</c:if>
+								<c:if test="${list.chatdate > list.outdate}">
 								<div class="chat_content">
 									<span class="chatMessage">${list.chatcontent}</span>
 								</div>
-								<fmt:formatDate value="${now}" pattern="HH:mm" var="now" />
+								<fmt:parseDate var="data" value="${list.chatdate}" pattern="yyyy-MM-dd HH:MM"/>
 								<div class="chat_date">
-									<span>${now}</span>
+									<span>${data}</span>
+								</div>
+								</c:if>
+								<div class="chat_content">
+								</div>
+								<div class="chat_date">
 								</div>
 							</button>
 						</div>
+					</c:if>
 					</c:forEach>
 				</div>
 			</c:if>
@@ -61,7 +69,8 @@
 				<c:forEach items="${carryChatList}" var="list">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
-							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); location.href='javascript:chatList(${list.chatidx})'"
+							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}',${list.outcount}); 
+							location.href='javascript:chatList(${list.chatidx})'"
 							class="on_btn">
 							<div class="float_left">
 								<img src="<c:url value="/images/icon/profile2.png"/>">
@@ -118,8 +127,11 @@
 			if(memsession != null && crsession == ''){
 			htmlNav += '<li class="imgButton"><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
 			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 30px;" class="onlike"></button></li>'
-			}
 			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
+			} else if(crsession != null && outcount == 1){
+				htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>'
+			}
+			
 			if(memsession != null && crsession == ''){
 			htmlNav += '<li class="order_button imgButton"><input type="button" value="결제하기"></li>'
 			}
@@ -127,18 +139,17 @@
 			$('.message_warp').html(htmlNav);
 		}
 		
-		var chatIdx;
-		var memidx;
-		var cridx;
-		var memnicks;
-		var crnicks;
-		function getChat(num, mnum, crnum, memnick, crnick){
+		var chatIdx, memidx, cridx, memnicks, crnicks, outcount;
+		function getChat(num, mnum, crnum, memnick, crnick, count){
 			chatIdx = num;
 			memidx = mnum;
 			cridx = crnum;
 			memnicks = memnick;
 			crnicks = crnick;
+			outcount = count;
 		}
+		
+		
 		
 		function chattting(){
 			var htmlStr = '<div>'
@@ -252,7 +263,9 @@
 				$("#output").scrollTop($("#output")[0].scrollHeight);
 			}
 		}
+		
 		$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
+		$('.chatlist .active .chat_date').html('<span>'+ jsonData.chatdate+'</span>');
 	};
 	
 	// close - 커넥션이 종료되었을 때 호출
@@ -336,6 +349,7 @@
 				},
 				success : function(data) {
 					$('.chatlist .active .chat_title_img').removeClass();
+					console.log(data);
 					if (data == 0) {
 						chattting();
 						chatNav();
@@ -344,7 +358,7 @@
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data, function(index, item) {
 							if(memnicks == memsession){
-								if(item.contenttype == 1 && item.chatcontent != null){
+								if(item.contenttype == 1 && item.chatcontent != null && item.chatdate > item.outdate){
 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
 									htmlStr += '	<div class="message">'
@@ -356,8 +370,8 @@
 									htmlStr += '	</div>'
 									htmlStr += '</div>'
 									
-								} 
-								if(item.contenttype == 0 && item.chatcontent != null){
+								}  
+								if(item.contenttype == 0 && item.chatcontent != null && item.chatdate > item.outdate){
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
