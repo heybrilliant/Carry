@@ -42,7 +42,7 @@
 				<h3>고객센터</h3>
 				<p>02-1234-5678 (평일 10:00 ~ 18:00)</p>
 				<br><br>
-				<a href="<c:url value="/admin/adminLogin"/>" class="admin_page">관리자 페이지</a>
+				<a href="<c:url value="/admin/login"/>" class="admin_page">관리자 페이지</a>
 			</div>
 		</div>
 	</div>

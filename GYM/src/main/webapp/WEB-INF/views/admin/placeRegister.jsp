@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<title>회원관리 : GymCarry Admin</title>
+<title>플레이스 등록 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -20,8 +20,12 @@
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header_admin.jsp"%>
+	<!-- sidebar -->
+	<%@ include file="/WEB-INF/views/frame/sidebar_admin.jsp"%>
 
-	<!-- 컨텐츠 시작 -->
+
+
+			<!-- 컨텐츠 시작 -->
             <div id="layoutSidenav_content">
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">플레이스 등록</h1>

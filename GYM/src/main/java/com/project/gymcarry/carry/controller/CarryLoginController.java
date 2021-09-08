@@ -40,12 +40,7 @@ public class CarryLoginController {
 		if (sessionDto != null) {
 			session.setAttribute("loginSession", sessionDto);
 			System.out.println("캐리 세션 저장");
-			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('로그인 완료');</script>");
-			out.flush();
-			
+
 			return "redirect:/index";
 		} else {
 			return "carry/loginForm";

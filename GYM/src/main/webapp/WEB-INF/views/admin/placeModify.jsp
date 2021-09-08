@@ -20,6 +20,9 @@
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header_admin.jsp"%>
+	<!-- sidebar -->
+	<%@ include file="/WEB-INF/views/frame/sidebar_admin.jsp"%>
+
 
 	<!-- 컨텐츠 시작 -->
             <div id="layoutSidenav_content">

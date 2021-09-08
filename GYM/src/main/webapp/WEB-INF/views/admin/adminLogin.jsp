@@ -17,7 +17,7 @@
 
     <body class="sb-nav-fixed">
 
-	<!-- header NavBar-->
+			<!-- header NavBar-->
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="<c:url value="/"/>">GymCarry</a>
@@ -34,14 +34,22 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
+						<c:if test="${adminLoginSession eq null}">
+							<li><a class="dropdown-item"
+								href="<c:url value="/admin/login"/>" class="login">Login</a></li>
+						</c:if>
+						<c:if test="${adminLoginSession ne null}">
+							<li><a class="dropdown-item"
+								href="<c:url value="/admin/logout"/>" class="login">Logout</a></li>
+						</c:if>
+
+				</ul>
                 </li>
             </ul>
         </nav>
 
 
-        
+        	<!-- 컨텐츠 시작 -->
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
@@ -50,13 +58,14 @@
                             <div class="card-body">
                                
                                
-                                <form action="<c:url value="/admin/login"/>" method="post">
+                           <form action="<c:url value="/admin/login"/>" method="post">
+                               <!--  <form id="adminLoginForm" name="adminLoginForm" method="post"> -->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputEmail" type="text" name="adminid" placeholder="name@example.com" />
+                                        <input class="form-control" id="adminid" type="text" name="adminid" placeholder="name@example.com" />
                                         <label for="inputEmail">아이디</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="inputPassword" type="password" name="adminpw" placeholder="Password" />
+                                        <input class="form-control" id="adminpw" type="password" name="adminpw" placeholder="Password" />
                                         <label for="inputPassword">비밀번호</label>
                                     </div>
                                     <div class="login_btn">
@@ -70,6 +79,5 @@
                     </div>
                 </div>
             </div>
-
 
    

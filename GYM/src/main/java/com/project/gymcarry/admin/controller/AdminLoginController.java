@@ -1,7 +1,6 @@
 package com.project.gymcarry.admin.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +24,7 @@ public class AdminLoginController {
 		private adminService adminService;
 		
 		
-		@GetMapping("admin/adminLogin")
+		@GetMapping("admin/login")
 		public String loginForm() {
 			System.out.println("관리자 로그인 페이지 진입");
 			return "admin/adminLogin";
@@ -45,27 +44,14 @@ public class AdminLoginController {
 			AdminSessionDto adminSessionDto = adminService.adminLogin(id, pw);
 			if (adminSessionDto != null) {
 				
-				session.setAttribute("loginSession", adminSessionDto);
+				session.setAttribute("adminLoginSession", adminSessionDto);
 				System.out.println("관리자 로그인 완료 : 세션 저장");
 				
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('관리자 로그인 완료');");
-				out.println("location.href='/gym/admin/member';</script>");
-				out.close();
-				
-				return "";
-				// return "redirect:/admin/member";
+				return "admin/dashboard";
 				
 			} else {
 				
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('아이디 혹은 비밀번호가 일치하지 않습니다.');");
-				out.println("location.href='/gym/admin/adminLogin';</script>");
-				out.close();
-				
-				return "";
+				return "admin/adminLogin";
 			}
 		} 
 		
@@ -75,17 +61,13 @@ public class AdminLoginController {
 		public String adminLogout(
 				HttpServletRequest request,
 				HttpServletResponse response) throws IOException {
+			
 			HttpSession session = request.getSession();
 			session.invalidate();
 			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('관리자 계정이 로그아웃 되었습니다.');");
-			out.println("location.href='/gym/admin/adminLogin';</script>");
-			out.close();
-			
 			System.out.println("관리자 로그아웃 완료 : 세션 소멸");
-			return "";
+
+			return "admin/adminLogin";
 		}
 
 	
