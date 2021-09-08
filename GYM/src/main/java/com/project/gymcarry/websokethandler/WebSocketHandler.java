@@ -10,17 +10,14 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
-import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
-import com.project.gymcarry.member.SessionDto;
 
 public class WebSocketHandler extends TextWebSocketHandler {
 
@@ -42,10 +39,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("1번" + session.getId());
 
 		// 회원, 캐리 세션 정보 가져오기
-		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
-		if (chatNick == null) {
-			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
-		}
+		String chatNick = (String) session.getAttributes().get("chatSession");
 
 		// 로그인햇으면 닉네임이고 - 로그인이안되있으면 세션아이디
 		// chatNick:닉네임저장 - session:웹소켓세션저장
@@ -72,63 +66,42 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		// 유저가 보낸메세지 0, 캐리가보낸메세지 1 (읽음 안읽음 처리)
 		int chatRead = 0;
 		// 자기가보낸 메세지 읽음 처리
-		String chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemnick();
-		if (chatNick == null) {
-			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCrnick();
-			++contenttype;
-		}
+		String chatNick = (String) session.getAttributes().get("chatSession");
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
-		
-		SimpleDateFormat format = new SimpleDateFormat ("HH:mm a");
+
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm a");
 		Date time = new Date();
 		String date = format.format(time);
-		
+
 		// json객체 -> java객체
 		Gson gson = new Gson();
 		MessageDto messageDto = gson.fromJson(message.getPayload(), MessageDto.class);
-		messageDto.setContenttype(contenttype);
 		messageDto.setChatdate(date);
-		if(chatNick.equals(messageDto.getCrnick())) {
+		if (chatNick.equals(messageDto.getCrnick())) {
+			messageDto.setContenttype(++contenttype);
 			messageDto.setChatread(++chatRead);
 		}
-		
+
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 
-		// 전달 메세지
-		if (chatNick.equals(messageDto.getCrnick())) {
-			String to = messageDto.getMemnick();
-			System.out.println("11111 = " + to);
-			WebSocketSession toSession = mapList.get(to);
-			System.out.println("2222222 = ");
-			if (toSession != null) {
-				System.out.println("333333 = ");
-				toSession.sendMessage(sendMsg);
-				System.out.println("44444 = ");
-				session.sendMessage(sendMsg);
-				System.out.println("555555 = ");
-			} else {
-				System.out.println("66666 = ");
-				session.sendMessage(sendMsg);
-				System.out.println("7777777 = ");
+		int result = 0;
+		String to = messageDto.getTo();
+		WebSocketSession toSession = mapList.get(to);
+		if (toSession != null) {
+			toSession.sendMessage(sendMsg);
+			session.sendMessage(sendMsg);
+			result = matchingChatRoomService.insertChatContent(messageDto);
+			if (result == 1) {
+				// 방에 서로 있으면 메세지 보낼때 읽음 처리
+				matchingChatRoomService.getChatRead(messageDto.getChatidx());
 			}
-			//matchingChatRoomService.insertChatContent(messageDto);
-		} else if (chatNick.equals(messageDto.getMemnick())) {
-			String st = messageDto.getCrnick();
-			System.out.println("88888 = " + st);
-			WebSocketSession toSession = mapList.get(st);
-			System.out.println("99999999 = " +  toSession);
-			if (toSession != null) {
-				System.out.println("10000000");
-				toSession.sendMessage(sendMsg);
-				System.out.println("1000111111110000");
-				session.sendMessage(sendMsg);
-				System.out.println("1222222220");
-			} else {
-				System.out.println("12333333333");
-				session.sendMessage(sendMsg);
-			}
-			//matchingChatRoomService.insertChatContent(messageDto);
+		} else {
+			session.sendMessage(sendMsg);
+		}
+
+		if (result == 0) {
+			matchingChatRoomService.insertChatContent(messageDto);
 		}
 	}
 
