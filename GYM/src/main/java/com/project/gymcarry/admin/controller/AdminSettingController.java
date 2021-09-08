@@ -16,6 +16,7 @@ import com.project.gymcarry.admin.AdminSessionDto;
 import com.project.gymcarry.admin.service.adminService;
 import com.project.gymcarry.carry.CarryListDto2;
 import com.project.gymcarry.member.MemberListDto;
+import com.project.gymcarry.place.PlaceListDto;
 
 @Controller
 @RequestMapping
@@ -57,6 +58,21 @@ public class AdminSettingController {
 			
 			return "admin/carrySetting";
 		}
+		
+		
+		// 플레이스 관리 : 전체 플레이스 리스트 출력
+		@GetMapping("admin/place")
+		public String placeSetting(Model model) {
+			List<PlaceListDto> placeList = adminService.allPlaceList();
+			model.addAttribute("placeList", placeList);
+			
+			System.out.println("컨텐츠 관리 : 전체 플레이스 리스트 출력");
+			
+			return "admin/placeSetting";
+		}
+		
+		
+		
 		
 		
 		// 회원 탈퇴 처리

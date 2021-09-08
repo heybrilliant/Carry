@@ -63,6 +63,11 @@
   --bs-body-bg: #fff;
 }
 
+.placenum {
+	font-weight: 400;
+	font-color: red;
+}
+
 
 .login_btn{
   margin: 15px 0 10px 0;

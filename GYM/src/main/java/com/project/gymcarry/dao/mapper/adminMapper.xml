@@ -28,7 +28,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from carry natural join place;
 	</select>
 	
+	<!-- 컨텐츠 관리 : 전체 플레이스 리스트 출력 -->
+	<select id="selectAllPlaceList"
+		resultType="com.project.gymcarry.place.PlaceListDto">
+		select placeidx, placenum, placename, placeaddress, placephone
+		from place;
+	</select>	
 	
+
+
 
 	<!-- 회원 탈퇴 처리 -->
 	<delete id="deleteMember">

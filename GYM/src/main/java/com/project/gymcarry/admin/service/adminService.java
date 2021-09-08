@@ -10,6 +10,7 @@ import com.project.gymcarry.admin.AdminSessionDto;
 import com.project.gymcarry.carry.CarryListDto2;
 import com.project.gymcarry.dao.AdminDao;
 import com.project.gymcarry.member.MemberListDto;
+import com.project.gymcarry.place.PlaceListDto;
 
 @Service
 public class adminService {
@@ -37,6 +38,14 @@ public class adminService {
 		dao = template.getMapper(AdminDao.class);
 		return dao.selectAllCarryList();
 	}
+	
+	// 컨텐츠 관리  : 전체 플레이스 리스트
+	public List<PlaceListDto> allPlaceList() {
+		dao = template.getMapper(AdminDao.class);
+		return dao.selectAllPlaceList();
+	}
+	
+	
 	
 	
 	// 회원 탈퇴 처리
