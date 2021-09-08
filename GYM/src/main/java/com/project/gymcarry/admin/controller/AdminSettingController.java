@@ -1,14 +1,18 @@
 package com.project.gymcarry.admin.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,6 +20,7 @@ import com.project.gymcarry.admin.AdminSessionDto;
 import com.project.gymcarry.admin.service.adminService;
 import com.project.gymcarry.carry.CarryListDto2;
 import com.project.gymcarry.member.MemberListDto;
+import com.project.gymcarry.place.PlaceDto;
 import com.project.gymcarry.place.PlaceListDto;
 
 @Controller
@@ -71,6 +76,65 @@ public class AdminSettingController {
 			return "admin/placeSetting";
 		}
 		
+		
+		
+		// 플레이스 관리 : 플레이스 등록 폼 페이지로 이동
+		@GetMapping("admin/place/registerForm")
+		public String placeReigsterForm() {
+			return "admin/placeRegister";
+		}
+		
+		// 플레이스 관리 : 플레이스 등록
+		@PostMapping("admin/place/register")
+		public String placeRegister(
+				PlaceDto placeDto,
+				HttpServletResponse response,
+				Model model) throws IOException {
+			
+			int result = adminService.registerPlace(placeDto);
+			
+			if(result == 1) {
+				System.out.println("새로운 플레이스 등록 완료");
+			
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('플레이스 등록이 완료되었습니다.');</script>");
+				out.flush();
+			}
+			
+			return "admin/placeSetting";
+		}
+		
+		
+		
+		// 플레이스 관리 : 플레이스 수정 폼 페이지로 이동
+		@GetMapping("admin/place/modifyForm")
+		public String placeModifyForm(
+				@RequestParam("placeidx") int placeidx,
+				Model model
+				) {
+			
+			PlaceDto original = adminService.getPlaceOriginal(placeidx);
+			System.out.println("플레이스 수정 페이지 진입 - 플레이스IDX : " + placeidx);
+			model.addAttribute("original", original);
+			return "admin/placeModify";
+		}
+		
+//		
+//		// 플레이스 관리 : 플레이스 수정
+//		@GetMapping("admin/place/modify")
+//		public String placeModify(
+//				@RequestParam("placeidx") int placeidx,
+//				Model model
+//				) {
+//			
+//			PlaceDto placeDetail = adminService.updatePlace(placeidx);
+//			System.out.println("플레이스 수정 페이지 진입 - 플레이스IDX : " + placeidx);
+//			model.addAttribute("place", placeDetail);
+//	
+//			return "admin/placeModify";
+//		}
+//		
 		
 		
 		

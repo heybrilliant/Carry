@@ -1,0 +1,44 @@
+.place_registerForm h4 {
+  font-weight: 600;
+}
+
+.placenum,
+.placename,
+.placeaddress,
+.placephone,
+.placeinfo,
+.placeintro,
+.openhour {
+  margin-bottom : 40px;
+}
+
+.placenum {
+  display: inline-flex;
+  margin-top: 40px;
+}
+
+.placenum h4 {
+  margin-right : 40px;
+}
+
+.placenum input[type="radio"] {
+  margin-right: 20px;
+}
+
+.placenum input[type="radio"]+label {
+  margin-right: 40px;
+}
+
+.placeinfo span,
+.openhour span {
+  color : rgb(7, 20, 206);
+}
+
+.register_btn {
+  margin-bottom: 30px;
+  float: right;
+}
+
+.placeintro_input {
+  height: 450px;
+}

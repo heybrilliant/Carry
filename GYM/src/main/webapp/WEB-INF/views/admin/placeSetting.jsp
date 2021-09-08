@@ -28,7 +28,7 @@
                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                         <li class="breadcrumb-item active">컨텐츠 관리</li>
                         <li class="breadcrumb-item active"><a href="<c:url value="/admin/place"/>">플레이스 관리</a></li>
-                        <li class="breadcrumb-item active">플레이스 수정/삭제</li>
+                        <li class="breadcrumb-item active">수정/삭제</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
@@ -61,8 +61,8 @@
                                         <td>${placeList.placenum}</td>
                                         <td>${placeList.placename}</td>
                                         <td>${placeList.placeaddress}</td>
-                                        <td>${placeList.placephone}</td>
-                                        <td class="setting_delete"><a href="#">수정 </a> | <a href="#"> 삭제</a></td>
+                                        <td>${placeList.placephone}</td><%--  <a href="deleteMember?memidx=${memList.memidx}"> --%>
+                                        <td class="setting_delete"><a href="place/modifyForm?placeidx=${placeList.placeidx}">수정 </a> | <a href="#"> 삭제</a></td>
                                     </tr>
                                 </c:forEach>    
                                 </tbody>

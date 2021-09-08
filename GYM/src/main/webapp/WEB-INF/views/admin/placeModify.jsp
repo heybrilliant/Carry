@@ -38,13 +38,13 @@
                     </div>
                    
                 <div>
-                    <form action="<c:url value="/admin/place"/>" id="registerPlaceForm" name="registerPlaceForm" method="post">
+                    <form action="<c:url value="/admin/placeModify"/>" method="post">
                         
                         <div class="place_registerForm">
                           
                             <div class = "placenum">
                                 <h4>카테고리</h4>
-                                <select class="placenum_select" name="placenum">
+                                <select class="placenum_select" name="placenum" value="${original.placenum}">
                                     <option value="1">헬스</option>
                                     <option value="2">필라테스</option>
                                     <option value="3">요가</option>
@@ -54,7 +54,7 @@
                             <div class="placename">
                                 <h4>이름</h4>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" placeholder="placename" name="placename"/>
+                                    <input class="form-control" type="text" placeholder="placename" value="${original.placename}" name="placename"/>
                                     <label for="placename">플레이스 이름을 입력해주세요.</label>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                             <div class="placeaddress">
                                 <h4>주소</h4>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" placeholder="placeaddress" name="placeaddress"/>
+                                    <input class="form-control" type="text" placeholder="placeaddress" value="${original.placeaddress}" name="placeaddress"/>
                                     <label for="placeaddress">상세주소를 입력해주세요.</label>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@
                             <div class="placephone">
                                 <h4>전화번호</h4>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" placeholder="placephone" name="placephone"/>
+                                    <input class="form-control" type="text" placeholder="placephone" value="${original.placeaddress}" name="placephone"/>
                                     <label for="placephone">전화번호를 입력해주세요.</label>
                                 </div>
                             </div>  
@@ -78,7 +78,7 @@
                             <div class="placeinfo">
                                 <h4>정보</h4>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" placeholder="placeinfo" name="placeinfo"/>
+                                    <input class="form-control" type="text" placeholder="placeinfo" value="${original.placeinfo}" name="placeinfo"/>
                                     <span>콤마(",")로 구분해주세요.</span>
                                     <label for="placeinfo">예) 주차, 무선 인터넷, 지역화폐</label>
                                 </div>
@@ -87,7 +87,7 @@
                             <div class="openhour">
                                 <h4>영업시간</h4>
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" type="text" placeholder="openhour" name="openhour"/>
+                                    <input class="form-control" type="text" placeholder="openhour" value="${original.openhour}" name="openhour"/>
                                     <span>콤마(",")로 구분해주세요.</span>
                                     <label for="openhour">예) 주말 10:00 - 12:00, 평일 10:00 - 22:20, 토요일 10:00 - 12:00</label>
                                 </div>
@@ -96,7 +96,7 @@
                             <div class="placeintro">
                                 <h4>소개</h4>
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control placeintro_input" rows="100" cols="100" placeholder="placeintro" name="placeintro"></textarea>
+                                    <textarea class="form-control placeintro_input" rows="100" cols="100" placeholder="placeintro" name="placeintro">${original.placeintro}</textarea>
                                     <label for="placeintro">소개를 입력해주세요.</label>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                             </div>
                             
                             <div class="register_btn">
-                                <input type="submit" class="login_btn btn btn-primary" value="등록">
+                                <input type="submit" class="login_btn btn btn-primary" value="수정">
                             </div>
                        
                         </form>

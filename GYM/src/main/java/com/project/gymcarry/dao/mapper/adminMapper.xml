@@ -36,6 +36,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>	
 	
 
+	<!-- 새로운 플레이스 등록 -->
+	<insert id="registerPlace"
+		parameterType="com.project.gymcarry.place.PlaceDto"
+		useGeneratedKeys="true"
+		keyProperty="placeidx">
+		insert into place (placeidx, placenum, placename, placeaddress, placephone, placeinfo, openhour, placeintro)
+		values (#{placeidx}, #{placenum}, #{placename}, #{placeaddress}, #{placephone}, #{placeinfo}, #{openhour}, #{placeintro})		
+	</insert>
+
+
+	<!-- 기존 플레이스 정보 호출 : 수정폼 -->
+	<select id = "getPlaceOriginal"
+		resultType="com.project.gymcarry.place.PlaceDto">
+	select 
+		placenum, placename, placeaddress,
+		placephone, placeinfo, openhour, placeintro
+	from 
+		place
+	where 
+		placeidx = #{placeidx}
+	</select>
+
+
+
+	<!-- 플레이스 수정
+	<update id="updatePlace"
+		parameterType="com.project.gymcarry.place.PlaceDto">
+	update place
+	set
+		placenum = #{placenum},
+		placename = #{placename},
+		placeaddress = #{placeaddress},
+		placephone = #{placephone},
+		placeinfo = #{placeinfo},
+		openhour = #{openhour},
+		placeintro = #{placeintro}
+	where
+		placeidx = #{placeidx}
+	</update>
+	-->
 
 
 	<!-- 회원 탈퇴 처리 -->
