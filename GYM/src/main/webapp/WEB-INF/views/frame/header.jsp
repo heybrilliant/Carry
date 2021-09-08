@@ -16,7 +16,7 @@
 			<li><a href="#">ABOUT</a></li>
 			<li><a href="<c:url value="/carry/allList"/>">1:1MATCHING</a></li>
 			<li><a href="<c:url value="/place/all"/>">PLACE</a></li>
-			<li><a href="<c:url value="/community/boardlist"/>">COMMUNITY</a></li>
+			<li><a href="<c:url value="/community/boardList"/>">COMMUNITY</a></li>
 			<li><a href="<c:url value="/mypage/mypage"/>">MY BODY</a></li>
 			<%-- <c:choose>
 				<c:when test="${session eq carry}">

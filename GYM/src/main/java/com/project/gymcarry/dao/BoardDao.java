@@ -10,6 +10,8 @@ public interface BoardDao {
     // 게시판 전체 리스트
     List<BoardDto> selectBoardList(Pagination pagination) throws Exception;
 
+    public List<BoardDto> getBoardList(Pagination pagination) throws Exception;
+
     public BoardDto getBoardContent(int postidx) throws Exception;
 
     // 조회수

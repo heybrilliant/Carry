@@ -21,6 +21,12 @@ public class BoardDAOImpl implements BoardDao {
     }
 
     @Override
+    public List<BoardDto> getBoardList(Pagination pagination) throws Exception {
+        return sqlSession.selectList("com.project.gymcarry.dao.BoardDao.getBoardList", pagination);
+
+    }
+
+    @Override
     public BoardDto getBoardContent(int postidx) throws Exception {
         return sqlSession.selectOne("com.project.gymcarry.dao.BoardDao.getBoardContent",postidx);
     }
@@ -34,7 +40,7 @@ public class BoardDAOImpl implements BoardDao {
     // 총 게시글 개수 확인 (페이징)
     @Override
     public int getBoardListCnt() throws Exception {
-        return sqlSession.selectOne("com.project.gymcarry.dao.BoardDao.updateViewCnt");
+        return sqlSession.selectOne("com.project.gymcarry.dao.BoardDao.getBoardListCnt");
     }
 
 

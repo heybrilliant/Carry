@@ -15,12 +15,6 @@
         ]]>
 	</select>
 
-    <!-- 게시판 내용 출력-->
-    <select id="getBoardContent" resultType="com.project.gymcarry.board.BoardDto" parameterType="com.project.gymcarry.board.BoardDto">
-        select *
-        from board
-        where postidx = #{postidx}
-    </select>
 
     <!-- 페이징 -->
     <select id="getBoardList" resultType="com.project.gymcarry.board.BoardDto">
