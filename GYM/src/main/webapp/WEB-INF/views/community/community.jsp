@@ -69,12 +69,12 @@
   <div class="contents_main">
     <div class="contents">
       <h1 class="title">
-        <a href="<c:url value="/community/community"/>">COMMUNITY</a>
+        <a href="<c:url value="/community/boardlist"/>">COMMUNITY</a>
       </h1>
       <nav class="community_nav">
         <ul>
           <li>
-            <a href="<c:url value="/community/community"/>">전체</a>
+            <a href="<c:url value="/community/boardlist"/>">전체</a>
           </li>
           <li>
             <a class="menulink2" href="#">소통</a>
@@ -140,7 +140,6 @@
             </div>
 
           </div>
-
 
 
         </div>
