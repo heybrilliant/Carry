@@ -5,7 +5,7 @@
 
 <mapper namespace="com.project.gymcarry.dao.BoardDao">
 
-    <!-- List All -->
+    <!-- 게시판 전체 출력 -->
     <select id="selectBoardList" resultType="com.project.gymcarry.board.BoardDto">
 		<![CDATA[
         select *
@@ -15,12 +15,43 @@
         ]]>
 	</select>
 
-    <!-- 조회수 -->
-    <update id="updateViewCount" parameterType="int">
-        update board
-        set postview=postview + 1
+    <!-- 게시판 내용 출력-->
+    <select id="getBoardContent" resultType="com.project.gymcarry.board.BoardDto" parameterType="com.project.gymcarry.board.BoardDto">
+        select *
+        from board
         where postidx = #{postidx}
+    </select>
+
+    <!-- 페이징 -->
+    <select id="getBoardList" resultType="com.project.gymcarry.board.BoardDto">
+        select *
+        from board
+        LIMIT #{startList}, #{listSize}
+    </select>
+
+    <!-- 페이징 : 전체 글의 개수 읽어오기 -->
+    <select id="getBoardListCnt" resultType="int">
+
+        select count(*) as listCnt
+        from board
+    </select>
+
+    <!-- 조회수 -->
+    <update id="updateViewCnt" parameterType="com.project.gymcarry.board.BoardDto">
+        UPDATE board SET
+            postview = postview + 1
+        WHERE
+            postidx = #{postidx}
     </update>
+
+
+
+
+
+
+
+
+
 
 
 </mapper>

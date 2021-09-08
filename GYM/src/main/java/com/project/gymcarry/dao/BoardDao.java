@@ -1,15 +1,25 @@
 package com.project.gymcarry.dao;
 
 import com.project.gymcarry.board.BoardDto;
+import com.project.gymcarry.board.Pagination;
 
 import java.util.List;
 
 public interface BoardDao {
 
     // 게시판 전체 리스트
-    List<BoardDto> selectBoardList();
+    List<BoardDto> selectBoardList(Pagination pagination) throws Exception;
 
-    // 조회수 증가
-    int updateViewCount(BoardDto boardDto);
+    public BoardDto getBoardContent(int postidx) throws Exception;
+
+    // 조회수
+    public int updateViewCnt(int postidx) throws Exception;
+
+    // 총 게시글 개수 확인 (페이징)
+    public int getBoardListCnt() throws Exception;
+
+
+
+
 
 }

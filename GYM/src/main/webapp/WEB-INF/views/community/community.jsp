@@ -3,8 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <title>Community</title>
+
+
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+
 <link href="${pageContext.request.contextPath}/css/community/community.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/community/bootstrap.css" rel="stylesheet" />
 
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
@@ -118,7 +122,7 @@
                   <li>
                     <img class="left_board_icon" img src="<c:url value="/images/icon/time.png"/>" alt="img">
                       <%--시간 데이터 포맷 변경--%>
-                    <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.postdate}"/>
+                    <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.postdate}"/>
                   </li>
                   <li>
                     <img class="left_board_icon2"
@@ -145,7 +149,25 @@
         </div>
         </c:forEach>
       </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination pagination-sm justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
+
   </div>
  
 

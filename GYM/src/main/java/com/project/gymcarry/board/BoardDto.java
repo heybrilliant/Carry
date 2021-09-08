@@ -147,10 +147,10 @@ public class BoardDto {
 				+ postdate + ", postview=" + postview + ", postlike=" + postlike + ", boardcategory=" + boardcategory
 				+ "]";
 	}
-	
-	
-    
-    
+
+
+    public void setStartIndex(int startIndex) {
+    }
 }
 
 
