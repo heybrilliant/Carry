@@ -110,7 +110,7 @@
                             </div>
                             
                             <div class="register_btn">
-                                <input type="submit" class="login_btn btn btn-primary"  onClick="fn_modifyPlace('${result.code}')"value="수정">
+                                <input type="button" class="login_btn btn btn-primary"  onClick="fn_modifyPlace('${result.code}')"value="수정">
                             </div>
                        
                         </form>
