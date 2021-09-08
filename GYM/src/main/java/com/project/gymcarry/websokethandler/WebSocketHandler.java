@@ -81,8 +81,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			messageDto.setContenttype(++contenttype);
 			messageDto.setChatread(++chatRead);
 		}
-		System.out.println(messageDto);
-
+		
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 
@@ -104,6 +103,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		if (result == 0) {
 			matchingChatRoomService.insertChatContent(messageDto);
 		}
+		
 	}
 
 	// 클로즈 될때.

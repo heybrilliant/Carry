@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <title>1:1Chatting</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/chat/user_chat.css">
@@ -42,18 +41,15 @@
 								<c:if test="${list.chatread == 1}">
 								<div class="chat_title_img"></div>
 								</c:if>
+								<div class="chat_content">
 								<c:if test="${list.chatdate > list.outdate}">
-								<div class="chat_content">
 									<span class="chatMessage">${list.chatcontent}</span>
-								</div>
-								<fmt:parseDate var="data" value="${list.chatdate}" pattern="yyyy-MM-dd HH:MM"/>
-								<div class="chat_date">
-									<span>${data}</span>
-								</div>
 								</c:if>
-								<div class="chat_content">
 								</div>
 								<div class="chat_date">
+								<c:if test="${list.chatdate > list.outdate}">
+									<span>${list.chatdate}</span>
+								</c:if>
 								</div>
 							</button>
 						</div>
@@ -149,8 +145,6 @@
 			outcount = count;
 		}
 		
-		
-		
 		function chattting(){
 			var htmlStr = '<div>'
 				htmlStr += '<div class="message_warp"></div>'
@@ -230,6 +224,7 @@
 	socket.onmessage = function(message) {
 		var data = message.data;
 		var jsonData = JSON.parse(data);
+		console.log(jsonData);
 		var currentuser_session = $('#messageId').val();
 		if(chatIdx == jsonData.chatidx){
 			if (jsonData.chatNick == currentuser_session) {
@@ -290,8 +285,6 @@
 			chatcontent : $('#msg').val()
 		};
 		
-		console.log(msg);
-		
 		// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
 		socket.send(JSON.stringify(msg));
 	}; 
@@ -349,7 +342,6 @@
 				},
 				success : function(data) {
 					$('.chatlist .active .chat_title_img').removeClass();
-					console.log(data);
 					if (data == 0) {
 						chattting();
 						chatNav();

@@ -101,4 +101,5 @@ public class MessageDto {
 				+ ", chatdate=" + chatdate + ", chatread=" + chatread + ", chatNick=" + chatNick + ", to=" + to + "]";
 	}
 	
+	
 }
