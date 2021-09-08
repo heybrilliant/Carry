@@ -231,19 +231,20 @@ CREATE TABLE `REVIEW` (
 DROP TABLE IF EXISTS `CHATLIST`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `chatlist` (
-  `CHATIDX` int NOT NULL AUTO_INCREMENT COMMENT '채팅방번호',
+CREATE TABLE `CHATLIST` (
+  `CHATIDX` int NOT NULL auto_increment COMMENT '채팅방번호',
   `CRIDX` int NOT NULL COMMENT '캐리번호',
   `MEMIDX` int NOT NULL COMMENT '회원번호',
-  `MEMPOSITION` int DEFAULT '0' COMMENT '멤버 0=방에서 안나감, 1=방에서나감, 2=다시들어옴',
-  `CARRYPOSITION` int DEFAULT '0' COMMENT '캐리 0=방에서 안나감, 1=방에서나감, 2=다시들어옴',
-  `OUTDATE` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '방에서 나간 날짜',
+  `OUTCOUNT` INT DEFAULT 2 COMMENT '채팅방나감카운트',
+  `OUTDATE` timestamp default current_timestamp on update current_timestamp COMMENT '채팅방 나간시간',
   PRIMARY KEY (`CHATIDX`),
   KEY `FK_CARRY_TO_CHATLIST` (`CRIDX`),
   KEY `FK_MEMBER_TO_CHATLIST` (`MEMIDX`),
   CONSTRAINT `FK_CARRY_TO_CHATLIST` FOREIGN KEY (`CRIDX`) REFERENCES `carry` (`CRIDX`) ON DELETE CASCADE,
   CONSTRAINT `FK_MEMBER_TO_CHATLIST` FOREIGN KEY (`MEMIDX`) REFERENCES `member` (`MEMIDX`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+);
+
+
 
 --
 -- Table structure for table `CHATROOM`
@@ -252,15 +253,15 @@ CREATE TABLE `chatlist` (
 DROP TABLE IF EXISTS `CHATROOM`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `chatroom` (
+CREATE TABLE `CHATROOM` (
   `MESSAGEIDX` int NOT NULL AUTO_INCREMENT COMMENT '메세지 번호',
   `CHATIDX` int NOT NULL COMMENT '채팅방번호',
-  `CHATCONTENT` mediumtext COLLATE utf8_bin NOT NULL COMMENT '대화내용',
-  `CHATDATE` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '대화시간',
+  `CHATCONTENT` mediumtext NOT NULL COMMENT '대화내용',
+  `CHATDATE` timestamp default current_timestamp COMMENT '대화시간',
   `CRIDX` int NOT NULL COMMENT '캐리번호',
   `MEMIDX` int NOT NULL COMMENT '회원번호',
-  `CONTENTTYPE` int DEFAULT '0' COMMENT '0=유저대화, 1=캐리대화',
-  `CHATREAD` int DEFAULT '0' COMMENT '멤버메세지=0, 캐리메세지=1, 모두읽으면 2',
+  `CONTENTTYPE` INT DEFAULT 0 COMMENT '0=유저대화, 1=캐리대화',
+  `CHATREAD` INT DEFAULT 0 COMMENT '멤버메세지=0, 캐리메세지=1, 모두읽으면 2',
   PRIMARY KEY (`MESSAGEIDX`),
   KEY `FK_CARRY_TO_CHATROOM` (`CRIDX`),
   KEY `FK_MEMBER_TO_CHATROOM` (`MEMIDX`),
@@ -268,7 +269,8 @@ CREATE TABLE `chatroom` (
   CONSTRAINT `FK_CARRY_TO_CHATROOM` FOREIGN KEY (`CRIDX`) REFERENCES `carry` (`CRIDX`) ON DELETE CASCADE,
   CONSTRAINT `FK_CHATLIST_TO_CHATROOM` FOREIGN KEY (`CHATIDX`) REFERENCES `chatlist` (`CHATIDX`) ON DELETE CASCADE,
   CONSTRAINT `FK_MEMBER_TO_CHATROOM` FOREIGN KEY (`MEMIDX`) REFERENCES `member` (`MEMIDX`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+);
+
 
 --
 -- Table structure for table `LIKELIST`

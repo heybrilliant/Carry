@@ -46,4 +46,19 @@ public interface MatchingDao {
 	// 하트생성 & 취소
 	int updateLike(int likecheck, int memidx, int cridx);
 
+	// 멤버 나간방 다시들어가기
+	int updateInChat(int chatidx);
+	
+	// 멤버 방나가기
+	int updateOutChat(int chatidx);
+
+	// 캐리 방나가기
+	int updateCarryOutChat(int chatidx);
+
+	// 방인원수 0 되면 삭제
+	int deleteChatRoom(int chatidx);
+
+	// 방count 가져옴
+	ChatListDto selectRoomCount(int chatidx);
+
 }

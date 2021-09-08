@@ -12,10 +12,12 @@ public class ChatListDto {
 	private String chatcontent;
 	private int chatread;
 	private int messageidx;
+	private int outcount;
+	private String outdate;
 	public ChatListDto() {
 	}
 	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String memnick, String placename,
-			String chatdate, String chatcontent, int chatread, int messageidx) {
+			String chatdate, String chatcontent, int chatread, int messageidx, int outcount, String outdate) {
 		super();
 		this.chatidx = chatidx;
 		this.cridx = cridx;
@@ -27,6 +29,8 @@ public class ChatListDto {
 		this.chatcontent = chatcontent;
 		this.chatread = chatread;
 		this.messageidx = messageidx;
+		this.outcount = outcount;
+		this.outdate = outdate;
 	}
 	public int getChatidx() {
 		return chatidx;
@@ -88,11 +92,18 @@ public class ChatListDto {
 	public void setMessageidx(int messageidx) {
 		this.messageidx = messageidx;
 	}
-	@Override
-	public String toString() {
-		return "ChatListDto [chatidx=" + chatidx + ", cridx=" + cridx + ", memidx=" + memidx + ", crnick=" + crnick
-				+ ", memnick=" + memnick + ", placename=" + placename + ", chatdate=" + chatdate + ", chatcontent="
-				+ chatcontent + ", chatread=" + chatread + ", messageidx=" + messageidx + "]";
+	public int getOutcount() {
+		return outcount;
 	}
+	public void setOutcount(int outcount) {
+		this.outcount = outcount;
+	}
+	public String getOutdate() {
+		return outdate;
+	}
+	public void setOutdate(String outdate) {
+		this.outdate = outdate;
+	}
+	
 	
 }

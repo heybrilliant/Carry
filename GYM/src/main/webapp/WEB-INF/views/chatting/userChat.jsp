@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <title>1:1Chatting</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/chat/user_chat.css">
@@ -24,9 +23,10 @@
 				<!-- 채팅방 리스트 시작 -->
 				<div class="chatList_scr">
 					<c:forEach items="${chatList}" var="list">
+					<c:if test="${list.outcount ne 1 }">
 						<div class="chatlist">
 							<button type="button" value="${list.chatidx}"
-								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}');
+								onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}',${list.outcount});
 							location.href='javascript:chatList(${list.chatidx})'"
 								class="on_btn">
 								<div class="float_left">
@@ -42,14 +42,18 @@
 								<div class="chat_title_img"></div>
 								</c:if>
 								<div class="chat_content">
+								<c:if test="${list.chatdate > list.outdate}">
 									<span class="chatMessage">${list.chatcontent}</span>
+								</c:if>
 								</div>
-								<fmt:formatDate value="${now}" pattern="HH:mm" var="now" />
 								<div class="chat_date">
-									<span>${now}</span>
+								<c:if test="${list.chatdate > list.outdate}">
+									<span>${list.chatdate}</span>
+								</c:if>
 								</div>
 							</button>
 						</div>
+					</c:if>
 					</c:forEach>
 				</div>
 			</c:if>
@@ -61,7 +65,8 @@
 				<c:forEach items="${carryChatList}" var="list">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
-							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}'); location.href='javascript:chatList(${list.chatidx})'"
+							onclick="getChat(${list.chatidx},${list.memidx},${list.cridx},'${list.memnick}','${list.crnick}',${list.outcount}); 
+							location.href='javascript:chatList(${list.chatidx})'"
 							class="on_btn">
 							<div class="float_left">
 								<img src="<c:url value="/images/icon/profile2.png"/>">
@@ -115,27 +120,29 @@
 		function chatNav(){
 			var htmlNav = '<ul>';
 			htmlNav += '<li class="back_button"><a href="#" onclick="history.go(0)"><img src="<c:url value="/images/icon/arrow.png"/>"</a></li>';
-			htmlNav += '<li class="imgButton"><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
 			if(memsession != null && crsession == ''){
-				htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 30px;" class="onlike"></button></li>'
+			htmlNav += '<li class="imgButton"><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
+			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 30px;" class="onlike"></button></li>'
+			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
+			} else if(crsession != null && outcount == 1){
+				htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>'
 			}
-			htmlNav += '<li class="imgButton"><a href="#"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
+			
+			if(memsession != null && crsession == ''){
 			htmlNav += '<li class="order_button imgButton"><input type="button" value="결제하기"></li>'
+			}
 			htmlNav += '</ul>'
 			$('.message_warp').html(htmlNav);
 		}
 		
-		var chatIdx;
-		var memidx;
-		var cridx;
-		var memnicks;
-		var crnicks;
-		function getChat(num, mnum, crnum, memnick, crnick){
+		var chatIdx, memidx, cridx, memnicks, crnicks, outcount;
+		function getChat(num, mnum, crnum, memnick, crnick, count){
 			chatIdx = num;
 			memidx = mnum;
 			cridx = crnum;
 			memnicks = memnick;
 			crnicks = crnick;
+			outcount = count;
 		}
 		
 		function chattting(){
@@ -150,8 +157,7 @@
 				htmlStr += '</div>'
 				htmlStr += '<div class="chatting_write">'
 				htmlStr += '<input type="text" placeholder="메세지 입력.." id="msg"">'
-				htmlStr += '<input type="hidden" value="${loginSession.memnick}" id="memberId">'
-				htmlStr += '<input type="hidden" value="${loginSession.crnick}" id="carryId">'
+				htmlStr += '<input type="hidden" value="${chatSession}" id="messageId">'
 				htmlStr += '<button type="button" class="btn" id="btnSend">'
 				htmlStr += '<img src="<c:url value="/images/icon/icoin.png"/>">'
 				htmlStr += '</button>'
@@ -166,9 +172,15 @@
 			$('#btnSend').click(function(event){
 				if ($('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
+					var send = '${chatSession}';
+					if(send == memnicks){
+						send = crnicks;
+						sendMessage(send);
+					} else if(send == crnicks){
+						send = memnicks;
+						sendMessage(send);
+					}
 					var msg = $('input#msg').val();
-					sendMessage();
-					//lastMessage();
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
 				}
@@ -177,10 +189,15 @@
 			$('#msg').keypress(function(event){
 				if (event.keyCode == 13 && $('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
+					var send = '${chatSession}';
+					if(send == memnicks){
+						send = crnicks;
+						sendMessage(send);
+					} else if(send == crnicks){
+						send = memnicks;
+						sendMessage(send);
+					}
 					var msg = $('input#msg').val();
-					//sock.send(msg);
-					sendMessage();
-					//lastMessage();
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
 				}
@@ -207,12 +224,10 @@
 	socket.onmessage = function(message) {
 		var data = message.data;
 		var jsonData = JSON.parse(data);
-		
-		var currentuser_session1 = $('#memberId').val();
-		var currentuser_session2 = $('#carryId').val();
-		
+		console.log(jsonData);
+		var currentuser_session = $('#messageId').val();
 		if(chatIdx == jsonData.chatidx){
-			if (jsonData.memnick == currentuser_session1) {
+			if (jsonData.chatNick == currentuser_session) {
 				var htmlStr = '	<div class="user_message_warp">'
 					htmlStr += '		<div class="user_chat">'
 					htmlStr += '			<div class="user_message">'
@@ -225,46 +240,27 @@
 					htmlStr += '			</div>'
 					htmlStr += '		</div>'
 					htmlStr += '	</div>'
-				
 				$('.chat_null').append(htmlStr);
 				$("#output").scrollTop($("#output")[0].scrollHeight);
-				
-			} else if(jsonData.memnick != currentuser_session1) {
-				if (jsonData.crnick == currentuser_session2) {
-					var htmlStr = '	<div class="user_message_warp">'
-						htmlStr += '		<div class="user_chat">'
-						htmlStr += '			<div class="user_message">'
-						htmlStr += '				<div>'
-						htmlStr += '					<span>'+jsonData.chatcontent+'</span>'
-						htmlStr += '				</div>'
-						htmlStr += '			</div>'
-						htmlStr += '			<div class="time_line2">'
-						htmlStr += '				<span>'+jsonData.chatdate+'</span>'
-						htmlStr += '			</div>'
-						htmlStr += '		</div>'
-						htmlStr += '	</div>'
-					$('.chat_null').append(htmlStr);
-					$("#output").scrollTop($("#output")[0].scrollHeight);
-					
-				} else {
-					var htmlSt = '<div class="carry_message_warp">'
-						htmlSt += '<div class="carry_chat">'
-						htmlSt += '<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
-						htmlSt += '<div class="message">'
-						htmlSt += '<div class="message_color">'
-						htmlSt += '<span>'+jsonData.chatcontent+'</span>'
-						htmlSt += '</div>'
-						htmlSt += '</div>'
-						htmlSt += '<div class="time_line"><span></span></div>'
-						htmlSt += '</div>'
-						htmlSt += '</div>'
-					$('.chat_null').append(htmlSt);
-					$("#output").scrollTop($("#output")[0].scrollHeight);
-				}
+			} else {
+				var htmlSt = '<div class="carry_message_warp">'
+					htmlSt += '<div class="carry_chat">'
+					htmlSt += '<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+					htmlSt += '<div class="message">'
+					htmlSt += '<div class="message_color">'
+					htmlSt += '<span>'+jsonData.chatcontent+'</span>'
+					htmlSt += '</div>'
+					htmlSt += '</div>'
+					htmlSt += '<div class="time_line"><span>'+jsonData.chatdate+'</span></div>'
+					htmlSt += '</div>'
+					htmlSt += '</div>'
+				$('.chat_null').append(htmlSt);
+				$("#output").scrollTop($("#output")[0].scrollHeight);
 			}
-			$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
-		} 
+		}
 		
+		$('.chatlist .active .chat_content').html('<span>'+ jsonData.chatcontent+'</span>');
+		$('.chatlist .active .chat_date').html('<span>'+ jsonData.chatdate+'</span>');
 	};
 	
 	// close - 커넥션이 종료되었을 때 호출
@@ -278,17 +274,16 @@
 	};
 	
 	// 객체를 json형태로 담아 보냄
-	function sendMessage() {
+	function sendMessage(send) {
 		var msg = {
-			memnick : '${loginSession.memnick}',
-			crnick : '${loginSession.crnick}',
+			chatNick : '${chatSession}',
+			to : send,
 			cridx : cridx,
 			memidx : memidx,
 			chatidx : chatIdx,
+			crnick : crnicks,
 			chatcontent : $('#msg').val()
 		};
-		
-		console.log(msg);
 		
 		// 사용자닉네임, 캐리닉네임, 메세지 send 보낸다.
 		socket.send(JSON.stringify(msg));
@@ -296,24 +291,44 @@
 	</script>
 
 	<script>
+	// 하트~ 조아요
 	function chatLike(){
-		//var like = $('.likeBtn').val();
 		$.ajax({
 			type : 'GET',
 			url : '<c:url value="/chatting/like"/>',
 			dataType : 'json',
 			data : {
-				//likechaeck : like,
 				cridx : cridx
 			},
 			success : function(data){
 				if(data == 0){
-					$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+					$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
 				} else {
-					$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');				
+					$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
 				}
 			}
 		});
+	};
+	
+	// 채팅방 나가기~
+	function chatdelete(){
+		var result = confirm('메세지가 모두 삭제 됩니다. 그래도 나가시겠습니까?');
+		if(result == true){
+			alert('채티방을 삭제하셨습니다.');
+			$.ajax({
+				type : 'GET',
+				url : '<c:url value="/chatting/delete"/>',
+				dataType : 'json',
+				data : {
+					chatidx : chatIdx
+				},
+				success : function(data){
+					location.reload(true);
+				}
+			});
+		} else {
+			return false;
+		}
 	};	
 	
 	// 채팅방 대화내용 리스트
@@ -330,11 +345,12 @@
 					if (data == 0) {
 						chattting();
 						chatNav();
+						
 					} else {
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data, function(index, item) {
 							if(memnicks == memsession){
-								if(item.contenttype == 1 && item.chatcontent != null){
+								if(item.contenttype == 1 && item.chatcontent != null && item.chatdate > item.outdate){
 									htmlStr += '<div class="carry_chat">'
 									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
 									htmlStr += '	<div class="message">'
@@ -345,8 +361,9 @@
 									htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
 									htmlStr += '	</div>'
 									htmlStr += '</div>'
-								} 
-								if(item.contenttype == 0 && item.chatcontent != null){
+									
+								}  
+								if(item.contenttype == 0 && item.chatcontent != null && item.chatdate > item.outdate){
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -360,13 +377,16 @@
 									htmlStr += '		</div>'
 									htmlStr += '	</div>'
 								}
+								
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
 								$('#output').scrollTop($('#output')[0].scrollHeight);
+								
 								if(item.likecheck == 1){
 									$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
 								} else if(item.likecheck == 0)
 									$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
+								
 							} else if(crnicks == crsession){
 								if(item.contenttype == 1 && item.chatcontent != null){
 									htmlStr += '	<div class="user_message_warp">'
@@ -393,8 +413,7 @@
 									htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
 									htmlStr += '	</div>'
 									htmlStr += '</div>'
-								}
-								
+								} 
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
 								$('#output').scrollTop($('#output')[0].scrollHeight);
