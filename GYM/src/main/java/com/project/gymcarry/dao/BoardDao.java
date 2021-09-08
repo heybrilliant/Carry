@@ -13,4 +13,16 @@ public interface BoardDao {
     
     // 게시판 글쓰기
     Integer insertBoardWrite(Map<String, String> map);
+    
+    // 게시판 상세페이지
+    BoardDto selectBoardDetail(int postidx);
+    
+    // 게시물 수정 입력된 값 그대로 출력
+    BoardWriteDto selectBoardUpdate(int postidx);
+
+    // 게시물 수정
+    Integer updateBoardContent(Map<String, Object> map);
+    
+    // 게시물 삭제
+    Integer deleteBoard(int postidx);
 }

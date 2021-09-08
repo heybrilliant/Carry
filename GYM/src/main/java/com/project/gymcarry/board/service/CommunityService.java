@@ -29,5 +29,30 @@ public class CommunityService {
     	return dao.insertBoardWrite(map);
     }
     
+    // 게시글 상세 페이지 출력
+	public BoardDto getBoardDetail(int postidx) {
+		dao = template.getMapper(BoardDao.class);
+    	return dao.selectBoardDetail(postidx);
+	}
+	
+	// 게시글 수정시 입력된 값 그대로 출력
+	public BoardWriteDto getBoardUpdate(int postidx) throws Exception{
+		dao = template.getMapper(BoardDao.class);
+    	return dao.selectBoardUpdate(postidx);
+	}
+	
+	// 게시글 수정
+	public int getBoardContent(Map<String, Object> map) {
+		dao = template.getMapper(BoardDao.class);
+    	return dao.updateBoardContent(map);
+	}
+	
+	
+	// 게시글 삭제
+	public int getDeleteBoard(int postidx) {
+		dao = template.getMapper(BoardDao.class);
+    	return dao.deleteBoard(postidx);
+	}
+    
 
 }

@@ -17,7 +17,7 @@
 
       <!-- Nav -->
       <div class="post_back">
-        <a class="post_back_link" href="#">
+        <a class="post_back_link" href="<c:url value="/community/boardlist"/>">
           <img class="arrow_img" src="/gym/images/icon/arrow.png"> 글 목록
         </a>
 
@@ -26,23 +26,23 @@
       <!-- Profile -->
       <div class="space_between">
         <div class="btn_right">
-          <button class="title_btn" type="button" onclick="">소통</button>
-          <h2 class="board_title"><a href="#">서강대 칼만두 맛집 추천 합니다 !! </a></h2>
+          <button class="title_btn" type="button" onclick="">${boardDetail.boardcategory}</button>
+          <h2 class="board_title"><a href="#">${boardDetail.postname}</a></h2>
         </div>
         <div class="profile">
           <div class="profile_img">
             <img alt="" src="/gym/images/icon/profile.png">
           </div>
           <div class="profile_left">
-            <div id="nickname">닉네임</div>
-            <div id="write_date"> 2021.08.11 17:18:23 PM </div>
+            <div id="nickname">${boardDetail.postnick}</div>
+            <div id="write_date"> ${boardDetail.postdate} </div>
             <div class="content_right">
               <ul>
                 <li>
-                  <a class="con_edit" href="#">수정 </a>
+                  <a class="con_edit" href="<c:url value="/community/update?postidx=${boardDetail.postidx }"/>">수정 </a>
                 </li>
                 <li>
-                  <a class="con_delete" href="#">삭제</a>
+                  <a class="con_delete">삭제</a>
                 </li>
               </ul>
             </div>
@@ -60,9 +60,7 @@
 
 
         <div class="post_content">
-          <p class="post">제가 오늘 서강대 건너편 옥정이라는 평양식 만두국집 다녀왔는데요, 너무 맛있네요. 밥도 무료로 주세요. 대신 점심 장사라 2시까지만 합니다. 웨이팅도 있는데 금방
-            빠져요. 인생
-            칼만두집을 찾았네요. 이열치열 지대로 느끼고 싶으신 분들 다녀오세요. 입 힐링합니다^^</p>
+          ${boardDetail.postcontent}
         </div>
       </div>
       <div class="postbtn_wrap">
@@ -114,5 +112,25 @@
 	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	<script>
+		$(function(){
+			
+			var form = $("<form></form>");
+			
+			$('.con_delete').on("click", function(){
+				
+				var deletePush = confirm("해당 게시글을 삭제 하시겠습니까?\n\n삭제 후엔 복구가 불가능합니다.")
+				
+				console.log(deletePush);
+				if(deletePush){
+					/* form.attr("action", '<c:url value="community/delete?postidx=${boardDetail.postidx}"/>');
+					form.attr("method", "get");
+					form.submit(); */
+					location.href = '<c:url value="/community/delete?postidx=${boardDetail.postidx}"/>';
+				}
+				
+			});
+		})
+	</script>
 	
 

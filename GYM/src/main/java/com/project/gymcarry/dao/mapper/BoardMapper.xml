@@ -26,6 +26,34 @@
 	</insert>
 	
 	
+	<!-- 게시글 상세 페이지 -->
+	<select id="selectBoardDetail" resultType="com.project.gymcarry.board.BoardDto">
+		select * from board where postidx = #{postidx}
+	</select>
+	
+	
+	<!-- 게시물 수정시 입력된 값 그대로 출력 -->
+	<select id="selectBoardUpdate"
+	resultType="com.project.gymcarry.board.BoardWriteDto">
+		select * from board where postidx = #{postidx}
+	</select>
+	
+	
+	<!-- 게시물 수정 -->
+	<update id="updateBoardContent"
+	parameterType="java.util.HashMap"
+	useGeneratedKeys="true"
+	keyProperty="postidx">
+		update board 
+		set postname = #{postname}, postcontent = #{postcontent}, boardcategory = #{boardcategory} 
+		where postidx = #{postidx};
+	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="deleteBoard">
+		delete from board where postidx = #{postidx};
+	</delete>
+	
 
 
 </mapper>
