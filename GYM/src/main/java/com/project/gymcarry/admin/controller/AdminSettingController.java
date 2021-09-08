@@ -65,12 +65,6 @@ public class AdminSettingController {
 				@RequestParam("memidx") int memidx,
 				Model model) {
 			
-			adminService.deleteMemberReview(memidx);
-			adminService.deleteMemberChatRoom(memidx);
-			adminService.deleteMemberChatList(memidx);
-			adminService.deleteMemberPayment(memidx);
-			adminService.deleteMemberBodyInfo(memidx);
-			adminService.deleteMemberLikeList(memidx);
 			adminService.deleteMember(memidx);
 		
 			return "redirect:/admin/member";
@@ -83,13 +77,6 @@ public class AdminSettingController {
 				@RequestParam("cridx") int cridx,
 				Model model) {
 			
-			adminService.deleteCarryReview(cridx);
-			adminService.deleteCarryChatRoom(cridx);
-			adminService.deleteCarryChatList(cridx);
-			adminService.deleteCarryPayment(cridx);
-			adminService.deleteCarryCerti(cridx);
-			adminService.deleteCarryPrice(cridx);
-			adminService.deleteCarryLikeList(cridx);
 			adminService.deleteCarry(cridx);
 			
 			return "redirect:/admin/carry";

@@ -39,53 +39,11 @@ public class adminService {
 	}
 	
 	
-	
-	// 회원 관리 : 회원 탈퇴 처리
-	public void deleteMemberReview(int memidx) {
-		dao.deleteMemberReview(memidx);
-	}
-	public void deleteMemberChatList(int memidx) {
-		dao.deleteMemberReview(memidx);
-	}
-	public void deleteMemberChatRoom(int memidx) {
-		dao.deleteMemberReview(memidx);
-	}
-	public void deleteMemberPayment(int memidx) {
-		dao.deleteMemberReview(memidx);
-	}
-	public void deleteMemberBodyInfo(int memidx) {
-		dao.deleteMemberReview(memidx);
-	}
-	public void deleteMemberLikeList(int memidx) {
-		dao.deleteMemberReview(memidx);
-	}
+	// 회원 탈퇴 처리
 	public void deleteMember(int memidx) {
 		dao.deleteMember(memidx);
 	}
-	
-	
-	// 캐리 관리 : 캐리 탈퇴 처리
-	public void deleteCarryReview(int cridx) {
-		dao.deleteCarryReview(cridx);
-	}
-	public void deleteCarryChatList(int cridx) {
-		dao.deleteCarryReview(cridx);
-	}
-	public void deleteCarryChatRoom(int cridx) {
-		dao.deleteCarryReview(cridx);
-	}
-	public void deleteCarryPayment(int cridx) {
-		dao.deleteCarryReview(cridx);
-	}
-	public void deleteCarryCerti(int cridx) {
-		dao.deleteCarryReview(cridx);
-	}
-	public void deleteCarryPrice(int cridx) {
-		dao.deleteCarryReview(cridx);
-	}
-	public void deleteCarryLikeList(int cridx) {
-		dao.deleteCarryReview(cridx);
-	}
+	// 캐리 탈퇴 처리
 	public void deleteCarry(int cridx) {
 		dao.deleteCarry(cridx);
 	}
