@@ -11,9 +11,7 @@ body {
 }
 table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
     font-size:11pt; 
-    color:#666;
     text-decoration: none;
-    text-align: center;
 }
 
 .sub_tit_txt{
