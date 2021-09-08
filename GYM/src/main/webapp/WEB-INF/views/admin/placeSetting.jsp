@@ -62,7 +62,7 @@
                                         <td>${placeList.placename}</td>
                                         <td>${placeList.placeaddress}</td>
                                         <td>${placeList.placephone}</td><%--  <a href="deleteMember?memidx=${memList.memidx}"> --%>
-                                        <td class="setting_delete"><a href="place/modifyForm?placeidx=${placeList.placeidx}">수정 </a> | <a href="#"> 삭제</a></td>
+                                        <td class="setting_delete"><a href="place/modifyForm?placeidx=${placeList.placeidx}">수정 </a> | <a href="javascript:delPlace(${placeList.placeidx})"> 삭제</a></td>
                                     </tr>
                                 </c:forEach>    
                                 </tbody>
@@ -72,12 +72,18 @@
                 </div>
 
 		<script>
-		function delMember(memidx) {
-			if (confirm ('해당 회원을 탈퇴 처리 하시겠습니까?')) {
-				location.href = "deleteMember?memidx=" + memidx;
-			}
+		function delPlace(placeidx) {
+			if (confirm ('해당 플레이스를 삭제 처리 하시겠습니까?')) {
+				location.href = "deletePlace?placeidx=" + placeidx;
+				alert('삭제가 정상적으로 완료되었습니다.');
+				location.href = "place";
+			} 
 		}
 		</script>
+		
+		
+		
+		
 				
 		<!-- footer -->
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>

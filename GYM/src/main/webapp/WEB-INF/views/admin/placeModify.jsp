@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<title>회원관리 : GymCarry Admin</title>
+<title>플레이스 수정 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -24,32 +24,37 @@
 	<!-- 컨텐츠 시작 -->
             <div id="layoutSidenav_content">
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">플레이스 등록</h1>
+                    <h1 class="mt-4">플레이스 수정</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                         <li class="breadcrumb-item active">컨텐츠 관리</li>
                         <li class="breadcrumb-item active"><a href="<c:url value="/admin/place"/>">플레이스 관리</a></li>
-                        <li class="breadcrumb-item active">플레이스 등록</li>
+                        <li class="breadcrumb-item active">플레이스 수정</li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
-                           	짐캐리에 새로운 플레이스를 등록하는 페이지입니다.
+                           	짐캐리의 플레이스 정보를 수정하는 페이지입니다.
                         </div>
                     </div>
                    
                 <div>
-                    <form action="<c:url value="/admin/placeModify"/>" method="post">
+                    <%-- <form action="<c:url value="/admin/place/modify"/>" method="post"> --%>
+                    <form id="modifyPlaceForm" name="modifyPlaceForm" method="post">
                         
                         <div class="place_registerForm">
                           
-                            <div class = "placenum">
+                          	<input type="hidden" value="${original.placeidx}" name="placeidx"/>
+                          	<input type="hidden" value="${original.placenum}" name="placenum"/>
+                         
+                         <%--         
+                         <div class = "placenum">
                                 <h4>카테고리</h4>
-                                <select class="placenum_select" name="placenum" value="${original.placenum}">
+                                <select class="placenum_select" name="placenum" selected="${original.placenum}">
                                     <option value="1">헬스</option>
                                     <option value="2">필라테스</option>
                                     <option value="3">요가</option>
                                 </select>
-                            </div>
+                            </div> --%>
                           
                             <div class="placename">
                                 <h4>이름</h4>
@@ -96,15 +101,16 @@
                             <div class="placeintro">
                                 <h4>소개</h4>
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control placeintro_input" rows="100" cols="100" placeholder="placeintro" name="placeintro">${original.placeintro}</textarea>
+                                    <textarea class="form-control" rows="5" cols="40" placeholder="placeintro" name="placeintro">${original.placeintro}</textarea>
                                     <label for="placeintro">소개를 입력해주세요.</label>
                                 </div>
                             </div>
-                                
+                            
+                            
                             </div>
                             
                             <div class="register_btn">
-                                <input type="submit" class="login_btn btn btn-primary" value="수정">
+                                <input type="submit" class="login_btn btn btn-primary"  onClick="fn_modifyPlace('${result.code}')"value="수정">
                             </div>
                        
                         </form>
@@ -114,6 +120,28 @@
 
                 </div>
                 
+                <script>
+                
+                function fn_modifyPlace(code) {
+
+        			$.ajax({
+        				type : 'POST',
+        				url : "<c:url value='/admin/place/modify'/>",
+        				data : $("#modifyPlaceForm").serialize(),
+        				success : function() {
+        					alert('플레이스가 정상적으로 수정되었습니다.');
+        					location.href = "/gym/admin/place";
+        				},
+        				error : function(request, status, error) {
+        					alert("code:" + request.status + "\n" + "message:"
+        							+ request.responseText + "\n" + "error:" + error);
+        				}
+
+        			});
+        		}
+                
+                
+                </script>
                 
 		<!-- footer -->
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>

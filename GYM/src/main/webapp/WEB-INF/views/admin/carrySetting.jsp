@@ -77,6 +77,8 @@
 		function delCarry(cridx) {
 			if (confirm ('해당 캐리를 탈퇴 처리 하시겠습니까?')) {
 				location.href = "deleteCarry?cridx=" + cridx;
+				alert('삭제가 정상적으로 완료되었습니다.');
+				location.reload();
 			}
 		}
 		</script>

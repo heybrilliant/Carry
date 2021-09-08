@@ -38,7 +38,8 @@
                     </div>
                    
                 <div>
-                    <form action="<c:url value="/admin/place"/>" id="registerPlaceForm" name="registerPlaceForm" method="post">
+               		<%-- <form action="<c:url value="/admin/place/register"/>" id="registerPlaceForm" name="registerPlaceForm" method="post"> --%>
+                    <form id="registerPlaceForm" name="registerPlaceForm" method="post">
                         
                         <div class="place_registerForm">
                           
@@ -104,7 +105,7 @@
                             </div>
                             
                             <div class="register_btn">
-                                <input type="submit" class="login_btn btn btn-primary" value="등록">
+                                <input type="button" class="login_btn btn btn-primary" onClick="fn_registerPlace('${result.code}')" value="등록">
                             </div>
                        
                         </form>
@@ -114,6 +115,30 @@
 
                 </div>
                 
+                
+                <script>
+                
+                function fn_registerPlace(code) {
+
+        			$.ajax({
+        				type : 'POST',
+        				url : "<c:url value='/admin/place/register'/>",
+        				data : $("#registerPlaceForm").serialize(),
+        				success : function() {
+        					alert('플레이스가 정상적으로 등록되었습니다.');
+        					location.href = "/gym/admin/place";
+        				},
+        				error : function(request, status, error) {
+        					alert("code:" + request.status + "\n" + "message:"
+        							+ request.responseText + "\n" + "error:" + error);
+        				}
+
+        			});
+        		}
+                
+                
+                
+                </script>
                 
 		<!-- footer -->
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>

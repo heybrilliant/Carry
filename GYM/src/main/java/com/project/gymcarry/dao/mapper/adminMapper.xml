@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id = "getPlaceOriginal"
 		resultType="com.project.gymcarry.place.PlaceDto">
 	select 
-		placenum, placename, placeaddress,
+		placeidx, placenum, placename, placeaddress,
 		placephone, placeinfo, openhour, placeintro
 	from 
 		place
@@ -60,12 +60,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-	<!-- 플레이스 수정
+	<!-- 플레이스 수정 -->
 	<update id="updatePlace"
 		parameterType="com.project.gymcarry.place.PlaceDto">
-	update place
+	update
+		place
 	set
-		placenum = #{placenum},
 		placename = #{placename},
 		placeaddress = #{placeaddress},
 		placephone = #{placephone},
@@ -75,7 +75,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where
 		placeidx = #{placeidx}
 	</update>
-	-->
+	
+	<!-- 플레이스 삭제 -->
+	<delete id="deletePlace">
+		delete from place where placeidx=#{placeidx};
+	</delete>
+	
+
 
 
 	<!-- 회원 탈퇴 처리 -->

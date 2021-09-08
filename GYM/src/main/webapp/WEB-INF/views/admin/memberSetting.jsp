@@ -77,6 +77,9 @@
 		function delMember(memidx) {
 			if (confirm ('해당 회원을 탈퇴 처리 하시겠습니까?')) {
 				location.href = "deleteMember?memidx=" + memidx;
+				alert('삭제가 정상적으로 완료되었습니다.');
+				location.reload();
+				/* location.href = "member"; */
 			}
 		}
 		</script>
