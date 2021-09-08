@@ -1,7 +1,6 @@
 package com.project.gymcarry.admin.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -82,7 +81,7 @@ public class AdminPlaceController {
 		// 플레이스 수정
 		@PostMapping("admin/place/modify")
 		@ResponseBody
-		public void placeModify(
+		public String placeModify(
 				PlaceDto placedto,
 				@RequestParam("placeidx") int placeidx,
 				HttpServletResponse response,
@@ -91,6 +90,8 @@ public class AdminPlaceController {
 			
 			adminService.updatePlace(placedto);
 			System.out.println("플레이스 수정 완료.");
+			
+			return "admin/placeSetting";
 		}
 		
 		
