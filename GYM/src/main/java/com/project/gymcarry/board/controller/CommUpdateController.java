@@ -25,6 +25,7 @@ public class CommUpdateController {
 	@Autowired
 	private CommunityService communityService;
 	
+	// 게시물 수정 페이지로 이동
 	@GetMapping("community/update")
 	public String updateView (
 			@RequestParam("postidx") int postidx,
@@ -33,12 +34,11 @@ public class CommUpdateController {
 		System.out.println(postidx);
 		BoardWriteDto update = communityService.getBoardUpdate(postidx);
 		model.addAttribute("update", update);
-		System.out.println("게시글 수정");
 		
 		return "community/commUpdate";
 	}
 	
-	
+	// 게시물 수정 완료
 	@PostMapping("community/update")
 	public String BoardUpdate(
 			@RequestParam("postidx") int postidx,

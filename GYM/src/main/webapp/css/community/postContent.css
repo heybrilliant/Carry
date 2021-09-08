@@ -3,17 +3,17 @@ body {
   min-height: 100vh;
   font-size: 1.125em;
   line-height: 1.6;
-  background: white;
+  background: #f7f7f7;
   place-items: center;
 }
 
 .contents {
-  width: 50%;
   margin: 3rem auto;
   margin-top: 140px;
-  padding: 2em;
+  padding: 35px;
   box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
   background: white;
+  border-radius:12px
 }
 
 .title {
@@ -30,7 +30,7 @@ body {
   margin-top: 1px;
   padding-bottom: 15px;
   position: relative;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid #999;
 }
 
 .arrow_img {
@@ -47,60 +47,66 @@ body {
 .space_between {
   text-decoration: none;
   display: block;
-  margin-top: 10px;
-  padding-bottom: 15px;
   position: relative;
   border-bottom: 1px solid #e9ecef;
 }
 
 .btn_right {
-  display: inline-block;
+  display: flex;
+  align-items:center;
+  padding:15px 0;
+  border-bottom:1px solid #e9ecef;
 }
 
 .title_btn {
-  padding: 8px 13px;
-
-  font-size: 15px;
+  padding: 5px 12px;
+  font-size: 12px;
   text-align: center;
-  color: rgb(94, 94, 94);
-
+  color: #333;
   display: inline-block;
-
   border: none;
   border-radius: 18px;
-
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
   cursor: pointer;
-
   transition: 0.5s;
 }
 
-.profile {
-  padding-top: 14px;
-  position: relative;
+.space_between .profile {
+  padding: 15px 0;
+  align-items:center;
+  display:flex;
+  justify-content:space-between;
 }
 
-.profile_img {
-  display: inline-block;
+
+
+.space_between .profile_img {
+  position: relative;
+  display:flex;
+  align-items:center;
+  width:20%;
 }
-.profile_img img {
-  width: 45px;
-  height: 45px;
+.space_between .profile_img img {
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.profile_left {
+.space_between .profile_img div {
+	position:absolute;
+	left:55px;
+}
+
+.space_between .profile_left {
   display: inline-block;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .board_title {
   font-size: 18px;
-  display: inline-block;
-  margin: 0 auto;
+  margin-left:20px;
 }
 
 .board_title a {
@@ -112,12 +118,14 @@ body {
   color: rgb(94, 94, 94);
   display: block;
   font-size: 15px;
+  cursor:pointer;
+  padding:0 5px;
 }
 
 .content_right {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 50%;
 }
 .content_right > ul {
   display: flex;
@@ -137,10 +145,8 @@ body {
 .content_wrap {
   text-decoration: none;
   display: block;
-  margin-top: 15px;
-  padding-bottom: 15px;
+  padding:25px 0;
   position: relative;
-  border-bottom: 1px solid #e9ecef;
 }
 
 .post {
@@ -151,20 +157,27 @@ body {
 
 .postbtn_wrap {
   display: inline-block;
-  margin-top: 15px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   text-decoration: none;
   display: block;
   position: relative;
   border-bottom: 1px solid #e9ecef;
 }
-.post_btn a {
-  padding: 0px 5px 0px 5px;
-  font-size: 15px;
+.post_btn {
+	display:flex;
+}
+.post_btn > div {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.post_btn .like_btn {
+  cursor:pointer;
+  margin-right:20px;
 }
 .post_btn .post_icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 .post_icon {
   margin-right: 8px;
@@ -175,29 +188,40 @@ body {
 .comment_wrap {
   text-decoration: none;
   display: block;
-  margin-top: 10px;
-  padding-bottom: 15px;
   position: relative;
   border-bottom: 1px solid #e9ecef;
 }
 
-.comment_profile img {
-  width: 45px;
-  height: 45px;
+.comment_wrap .profile {
+  padding: 15px 0;
+  align-items:center;
+  display:flex;
+  align-items:center;
+}
+
+.comment_wrap .profile .profile_img img {
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.comment_text {
-  margin-top: 5px;
-  padding-bottom: 5px;
-  font-size: 15px;
+.comment_wrap .profile .profile_left {
+  margin-left:15px;
+  font-size:14px;
+}
+.comment_wrap .profile .profile_left #write_date {
+	font-size:12px;
 }
 
+.comment_wrap .text_wrap {
+	padding: 3px 5px 15px;
+	font-size:15px;
+}
 /* 댓글입력박스 */
 .comment_input_wrap {
   position: relative;
-  margin-top: 20px;
+  margin-top: 35px;
 }
 
 .btn_input {
@@ -206,26 +230,35 @@ body {
 
 .search_wrap .search_box {
   display: flex;
-  height: 60px;
+  height: 50px;
+  width:100%;
+  position:relative;
 }
 
 .search_wrap .search_box .input {
-  position: absolute;
   width: 100%;
-  height: 80%;
-  padding: 10px 20px;
-  border-radius: 3px;
+  height: 100%;
+  padding: 10px 60px 10px 20px;
+  border-radius: 30px;
   font-size: 15px;
 }
 
-.search_wrap .search_box .btn {
+.search_wrap .search_box label {
   position: absolute;
   width: 60px;
   height: 100%;
-  background: #0652dd;
-  z-index: 1;
-  cursor: pointer;
-  font-size: 15px;
+  top:50%;
+  right:0;
+  transform:translateY(-50%);
+  text-align:center;
+  cursor:pointer;
+}
+
+.search_wrap .search_box label .btn {
+	display:none;
+}
+.search_wrap .search_box label > img {
+	transform:translateY(50%);
 }
 
 .search_wrap .search_box .btn:hover {
@@ -233,26 +266,22 @@ body {
 }
 
 .search_wrap.search_wrap_6 .search_box .input {
-  border-radius: 50px;
-  border: 1.5px solid #ddd;
+  border-radius: 30px;
+  border: 1px solid #ddd;
 }
 
 .search_wrap.search_wrap_6 .search_box .btn {
   width: 100px;
-  height: 40px;
-  top: 4px;
-  right: 5px;
-  border-radius: 3px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  position:absolute;
+  top:0;
+  right:0;
 }
 
 .search_wrap.search_wrap_6 .search_box .btn {
   border-radius: 25px;
 }
 
-.search_wrap.search_wrap_6 .search_box .input {
-  padding-right: 145px;
+input:focus {
+	outline:none;
 }
