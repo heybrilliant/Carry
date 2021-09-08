@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script src="/gym/js/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
 
 		<!-- Footer -->
@@ -21,6 +22,3 @@
     
             </div>
         </div>
-
-</body>
-</html>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <title>DashBoard : GymCarry Admin</title>
 
@@ -14,7 +15,6 @@
         
 <%@ include file="/WEB-INF/views/frame/metaheader_admin.jsp"%>
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
-<link rel="stylesheet" href="/gym/css/admin/placeRegister.css">
 
     <body class="sb-nav-fixed">
 
@@ -50,5 +50,10 @@
                 
 		<!-- footer -->
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		
+		
+		
+</body>
+</html>
 		
 		
