@@ -19,43 +19,6 @@
 </c:url>
 
 
-
-출처: https://freehoon.tistory.com/112 [훈잇 블로그]
-<script>
-
-    //이전 버튼 이벤트
-    function fn_prev(page, range, rangeSize) {
-        var page = ((range - 2) * rangeSize) + 1;
-        var range = range - 1;
-
-        var url = "${pageContext.request.contextPath}/community/boardList";
-        url = url + "?page=" + page;
-        url = url + "&range=" + range;
-
-        location.href = url;
-    }
-
-    //페이지 번호 클릭
-    function fn_pagination(page, range, rangeSize, searchType, keyword) {
-        var url = "${pageContext.request.contextPath}/community/boardList";
-        url = url + "?page=" + page;
-        url = url + "&range=" + range;
-
-        location.href = url;
-    }
-
-    //다음 버튼 이벤트
-    function fn_next(page, range, rangeSize) {
-        var page = parseInt((range * rangeSize)) + 1;
-        var range = parseInt(range) + 1;
-
-        var url = "${pageContext.request.contextPath}/community/boardList";
-        url = url + "?page=" + page;
-        url = url + "&range=" + range;
-
-        location.href = url;
-    }
-</script>
 <body>
 <!-- header -->
 <%@ include file="/WEB-INF/views/frame/header.jsp" %>
@@ -66,6 +29,8 @@
         <h1 class="title">
             <a href="<c:url value="/community/boardList"/>">COMMUNITY</a>
         </h1>
+
+        <!-- 카테고리 영역 -->
         <nav class="community_nav">
             <ul>
                 <li>
@@ -86,10 +51,10 @@
                     <img class="write_icon" src="/gym/images/icon/edit.png"></button>
             </ul>
         </nav>
+        <!-- /카테고리 영역 -->
 
-
+        <!-- 게시판 출력 영역 -->
         <div class="card_main">
-
             <c:forEach items="${boardList}" var="list">
                 <div class="card">
                     <div class="board_sidebar">
@@ -137,17 +102,16 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
-
-
                 </div>
             </c:forEach>
         </div>
+        <!-- /게시판 출력 영역 -->
 
         <%--pagination--%>
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-sm justify-content-center">
+
                 <c:if test="${pagination.prev}">
                     <li class="page-item">
                         <a class="page-link" href="#"
@@ -167,7 +131,8 @@
                 </c:forEach>
 
                 <c:if test="${pagination.next}">
-                    <li class="page-item"><a class="page-link" href="#"
+                    <li class="page-item">
+                        <a class="page-link" href="#"
                                              onclick="fn_next('${pagination.range}','${pagination.range}','${pagination.rangeSize}')">
                         <span>&raquo;</span>
                     </a>
@@ -182,6 +147,73 @@
 
 
 <!-- Contents end -->
+
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
+<script>
+    // 카테고리 버튼
+    $(function(){
+        $("button").on('click',function(){
+            var kind = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서
+            $.ajax({
+                url : "<c:url value='/community/boardList'/>", // 이 주소로
+                type : "post", // 포스트 방식으로 보내는데
+                cache: false,
+                headers: {"cache-control":"no-cache", "pragma": "no-cache"},
+                data : {"kind" : kind}, // kind를 kind로 명명하여 보내겠다
+                success : function(data){
+                    console.log(data);
+
+                    $('body').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
+                },
+                error : function(data){
+                    alert('error');
+
+                }//error
+            })//ajax
+        });//click
+    });//ready
+
+
+
+    // 페이징 처리
+    // 이전 버튼 이벤트
+    function fn_prev(page, range, rangeSize) {
+        var page = ((range - 2) * rangeSize) + 1;
+        var range = range - 1;
+
+        var url = "${pageContext.request.contextPath}/community/boardList";
+        url = url + "?page=" + page;
+        url = url + "&range=" + range;
+
+        location.href = url;
+    }
+
+    //페이지 번호 클릭
+    function fn_pagination(page, range, rangeSize, searchType, keyword) {
+        var url = "${pageContext.request.contextPath}/community/boardList";
+        url = url + "?page=" + page;
+        url = url + "&range=" + range;
+
+        location.href = url;
+    }
+
+    //다음 버튼 이벤트
+    function fn_next(page, range, rangeSize) {
+        var page = parseInt((range * rangeSize)) + 1;
+        var range = parseInt(range) + 1;
+
+        var url = "${pageContext.request.contextPath}/community/boardList";
+        url = url + "?page=" + page;
+        url = url + "&range=" + range;
+
+        location.href = url;
+    }
+
+
+</script>
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/frame/footer.jsp" %>

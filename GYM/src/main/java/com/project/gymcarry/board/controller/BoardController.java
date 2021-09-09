@@ -16,23 +16,13 @@ public class BoardController {
     private BoardService boardService;
 
 
-    // 게시판 목록 조회
+    // 게시판 목록 조회 & 페이징 처리
     @GetMapping("community/boardList")
     public String getBoardList (Model model
                                 ,@RequestParam(required = false, defaultValue = "1")int page
                                 ,@RequestParam(required = false,defaultValue = "1")int range)
                                 throws Exception{
 
-//    selectBoardList(@ModelAttribute("boardDto")BoardDto boardDto, Model model
-//                                  ,@RequestParam(required = false, defaultValue = "1")int page
-//                                  ,@RequestParam(required = false,defaultValue = "1")int range
-//                                ) throws Exception{
-
-        // 전체 리스트 출력
-//        List<BoardDto> list = boardService.selectBoardList(boardDto);
-//        model.addAttribute("boardList",list);
-
-        //전체 게시글 개수 & 리스트 출력
         int listCnt = boardService.getBoardListCnt();
 
         // Pagination 객체 생성
