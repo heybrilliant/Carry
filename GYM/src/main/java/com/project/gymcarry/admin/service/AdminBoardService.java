@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.admin.AdminBoardDto;
-import com.project.gymcarry.admin.TermNoticeDto;
+import com.project.gymcarry.admin.ContentDto;
 import com.project.gymcarry.dao.AdminBoardDao;
 
 @Service
@@ -36,9 +36,9 @@ public class AdminBoardService {
 	/* FOOTER 연결 START */
 	
 	// 게시글 출력
-	public TermNoticeDto termNoticeView(int idx) {
+	public ContentDto contentView(int idx) {
 		dao = template.getMapper(AdminBoardDao.class);
-		return dao.termNoticeView(idx);
+		return dao.contentView(idx);
 	}
 
 	// [약관 및 정책] 카테고리 게시판 리스트 출력

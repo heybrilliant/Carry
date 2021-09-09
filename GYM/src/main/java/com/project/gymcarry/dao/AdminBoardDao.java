@@ -3,7 +3,7 @@ package com.project.gymcarry.dao;
 import java.util.List;
 
 import com.project.gymcarry.admin.AdminBoardDto;
-import com.project.gymcarry.admin.TermNoticeDto;
+import com.project.gymcarry.admin.ContentDto;
 
 public interface AdminBoardDao {
 
@@ -17,7 +17,7 @@ public interface AdminBoardDao {
 	/* footer연결 */
 	
 	// 게시글 출력
-	TermNoticeDto termNoticeView(int idx);
+	ContentDto contentView(int idx);
 	
 	// [약관 및 정책] 카테고리 게시판 리스트 출력
 	List<AdminBoardDto> selectTermBoardList();

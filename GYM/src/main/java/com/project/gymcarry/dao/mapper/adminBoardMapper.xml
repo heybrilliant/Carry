@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 관리자 게시판 리스트 출력 -->
 	<select id = "selectAllAdminBoard"
 		resultType="com.project.gymcarry.admin.AdminBoardDto">
-		select * from adminboard;
+		select * from adminboard
 	</select>
 
 
@@ -26,23 +26,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- FOOTER 연결 START -->
 
 	<!-- 게시글 출력 -->
-	<select id = "termNoticeView"
-		resultType="com.project.gymcarry.admin.TermNoticeDto">
-		select title, content, date from adminboard where idx=#{idx}
+	<select id = "contentView"
+		resultType="com.project.gymcarry.admin.ContentDto">
+		select title, content, date, category from adminboard where idx=#{idx}
 	</select>
 	
 	
 	<!-- [약관 및 정책] 카테고리 게시판 리스트 출력  -->
-	<select id = "selectTermBoardList"
+	<select id="selectTermBoardList"
 		resultType="com.project.gymcarry.admin.AdminBoardDto">
-		select * from adminboard where category=#{약관 및 정책}
+		select * from adminboard where category='약관 및 정책'
 	</select>
 	
 	
 	<!-- [공지사항] 카테고리 게시판 리스트 출력  -->
-	<select id = "selectNoticeBoardList"
+	<select id="selectNoticeBoardList"
 		resultType="com.project.gymcarry.admin.AdminBoardDto">
-		select * from adminboard where category=#{공지사항}
+		select * from adminboard where category='공지사항'
 	</select>
 	
 

@@ -18,27 +18,26 @@
 	<!-- Content 시작 -->
 	<div class="allWrap">
 		<div class="title">
-			<h1>${term.title}</h1>
-			<p>${term.date}</p>
+			<h1>${content.title}</h1>
+			<p>${content.date}</p>
 		</div>
 
 		<div class="content_textarea">
 		<span>
-			<textarea rows="40" readonly><c:out value="${term.content}" /></textarea>
+			<textarea rows="30" readonly><c:out value="${content.content}" /></textarea>
 		</span>
 		</div>
 		<div class="prevBtn">
-			<input type="button" value= "< 목록으로" onclick="location.href='<c:url value="/admin/content/termlist"/>'">
+		<c:set var="category" value="${content.category}"/>
+			<c:if test="${category eq '약관 및 정책'}">
+				<input type="button" value= "< 목록으로" onclick="location.href='<c:url value="/content/termlist"/>'">
+			</c:if>
+			<c:if test="${category eq '공지사항'}">
+				<input type="button" value= "< 목록으로" onclick="location.href='javascript:window.history.back();'">
+			</c:if>
 		</div>
 
-
-
 	</div>
-	<!-- Contents end -->
-
-
-
-
 
 
 	<!-- Content 끝 -->

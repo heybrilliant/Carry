@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>캐리 로그인</title>
+<title>GymCarry : 공지사항</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/term&notice/term&notice.css">
-
 </head>
 <body>
 
@@ -19,42 +19,37 @@
 	
 	
 	<div id="layoutSidenav_content">
-		
+		<div class="allWrap">
 			<div class="content">
 				<div class="container">
-					<h2 class="mb-5">관리자 게시판</h2>
+					<h2 class="mb-5">공지사항</h2>
 
 					<div class="table-responsive">
 
 						<table class="table table-striped custom-table">
 							<thead>
 								<tr>
-									<th scope="col">No.</th>
-									<th scope="col">카테고리</th>
-									<th scope="col">제목 / 내용</th>
-									<th scope="col">작성 날짜</th>
-									<th scope="col"></th>
+									<th scope="col" class="jb-th-1">제목</th>
+									<th>작성일</th>
 								</tr>
 							</thead>
 
 							<tbody>
-							
-							<c:forEach items="${BoardList}" var="list">
-
-								<tr scope="row">
-									<td>${list.idx}</td>
-									<td>${list.category}</a></td>
+							<c:forEach items="${noticeList}" var="list">
+								
+								<tr scope="row" onclick="location.href='<c:url value="/content?idx=${list.idx}"/>'">
 									<td>
-										<a href="#">${list.title}</a>
-										<small class="d-block text-over-cut">${list.content}</small>
+										<a>${list.title}</a>
 									</td>
-									<td>${list.date}</td>
-									<td><a href="#" class="more">Details</a></td>
-
+									
+									<c:set var="date" value="${list.date}"/>
+									<c:set var="onlydate" value="${fn:substring(date, 0, 10)}" />
+									<td class= "center">${onlydate}</td>
 								</tr>
+								
 							</c:forEach>
-
 							</tbody>
+							
 						</table>
 					</div>
 
@@ -62,15 +57,14 @@
 				</div>
 
 			</div>
+	</div>
+	
+	
 
-
-			<script src="/gym/js/adminjquery-3.3.1.min.js"></script>
+			<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
 			<script src="/gym/js/admin/popper.min.js"></script>
-			<script src="/gym/js/adminbootstrap.min.js"></script>
+			<script src="/gym/js/admin/bootstrap.min.js"></script>
 			<script src="/gym/js/admin/main.js"></script>
-	
-	
-	
 	
 	
 	

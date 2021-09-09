@@ -9,9 +9,9 @@
 	<div class="footer_nav">
 		<div class="container_fix">
 			<ul class="footer_menu">
-				<li><a href="<c:url value="/content/term?idx=2"/>">이용약관</a></li>
-				<li><a href="<c:url value="/content/term?idx=1"/>">개인정보보호정책</a></li>
-				<li><a href="<c:url value="/content/term?idx=3"/>">공지사항</a></li>
+				<li><a href="<c:url value="/content?idx=1"/>">이용약관</a></li>
+				<li><a href="<c:url value="/content?idx=2"/>">개인정보보호정책</a></li>
+				<li><a href="<c:url value="/content/noticelist"/>">공지사항</a></li>
 				<li><a href="#">고객센터</a></li>
 			</ul>
 			<div class="sns"> 

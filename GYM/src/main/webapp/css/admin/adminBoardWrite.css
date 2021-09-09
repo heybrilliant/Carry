@@ -40,6 +40,12 @@
 	border-bottom: 0.15mm solid #CCC;
 }
 
+
+.board_write .write_form span input:focus {
+	border-bottom: 0.15mm solid #fdd114;
+}
+
+
 select {
 	border-top: none;
 	border-left: none;
@@ -49,6 +55,9 @@ select {
     color: white;
 }
 
+select:focus {
+	border-bottom : 1px solid #fdd114;
+}
 
 select option {
 	background-color: transparent;
@@ -61,6 +70,8 @@ select option {
 .board_write .write_form span input:focus {
     outline:none;
 }
+
+
 .board_write .write_form > div .category_info {
     width:20%;
     padding:0 5px;
@@ -84,7 +95,22 @@ select option {
 	resize:none;
 	background-color: transparent;
     color: white;
+    outline: none;
 }
+
+
+.board_write .write_form > div.content textarea:focus {
+	width:100%;
+	padding:15px;
+	height:300px;
+	resize:none;
+	background-color: transparent;
+    color: white;
+    border : 1px solid #fdd114;
+    outline: none;
+}
+
+
 
 .board_write .btn {
 	display:flex;

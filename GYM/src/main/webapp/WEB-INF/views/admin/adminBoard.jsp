@@ -53,8 +53,8 @@
 									<th scope="col">No.</th>
 									<th scope="col">카테고리</th>
 									<th scope="col">제목 / 내용</th>
-									<th scope="col">작성 날짜</th>
-									<th scope="col"></th>
+									<th scope="col">작성일</th>
+									<th scope="col">관리</th>
 								</tr>
 							</thead>
 
@@ -64,13 +64,18 @@
 
 								<tr scope="row">
 									<td>${list.idx}</td>
-									<td>${list.category}</a></td>
+									<td>${list.category}</td>
 									<td>
-										<a href="#">${list.title}</a>
+										<a href="<c:url value="/content/term?idx=${list.idx}"/>">${list.title}</a>
 										<small class="d-block text-over-cut">${list.content}</small>
 									</td>
 									<td>${list.date}</td>
-									<td><a href="#" class="more">Details</a></td>
+									<td><a href="<c:url value="/content/term?idx=${list.idx}"/>" class="more">Details</a>
+									<br>
+									<%-- <span onclick='location.href="<c:url value="추후 추가예정"/>"'>수정</span> /  --%>
+									<span>수정</span> /
+									<span>삭제</span>
+									</td>
 
 								</tr>
 							</c:forEach>
@@ -85,9 +90,9 @@
 			</div>
 
 
-			<script src="/gym/js/adminjquery-3.3.1.min.js"></script>
+			<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
 			<script src="/gym/js/admin/popper.min.js"></script>
-			<script src="/gym/js/adminbootstrap.min.js"></script>
+			<script src="/gym/js/admin/bootstrap.min.js"></script>
 			<script src="/gym/js/admin/main.js"></script>
 
 			<!-- footer -->

@@ -3,6 +3,7 @@ body {
   background-color: #272d32;
   font-weight: 300; }
 
+
 .writeBtn{
 	float: right;
 	background-color : transparent;
@@ -16,8 +17,8 @@ body {
 }
 
 .writeBtn:hover {
-	border : 0.5mm solid white;
-	color: white;
+	border : 0.5mm solid #fdd114;
+	color: #fdd114;
 	transition: .3s all ease;
 }
 
@@ -81,6 +82,7 @@ h2 {
       font-weight: 300; }
     .custom-table tbody th a, .custom-table tbody td a {
       color: rgba(255, 255, 255, 0.3); }
+      
     .custom-table tbody th .more, .custom-table tbody td .more {
       color: rgba(255, 255, 255, 0.3);
       font-size: 11px;
@@ -95,8 +97,19 @@ h2 {
       color: #fff; }
       .custom-table tbody tr:hover td a, .custom-table tbody tr:focus td a {
         color: #fdd114; }
+        
+        .custom-table tbody tr:hover td a, .custom-table tbody tr td span:focus {
+        color: #fdd114; }
       .custom-table tbody tr:hover td .more, .custom-table tbody tr:focus td .more {
         color: #fdd114; }
+        .custom-table tbody tr td span {
+        font-size: 14px;
+        line-height: 25px;
+        align-items: top; }
+        
+       .custom-table tbody tr td span:hover {
+       color: #fdd114; 
+       cursor: pointer; }
   .custom-table .td-box-wrap {
     padding: 0; }
   .custom-table .box {
