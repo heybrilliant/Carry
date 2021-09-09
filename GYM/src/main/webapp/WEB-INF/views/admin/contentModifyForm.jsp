@@ -86,8 +86,9 @@
 							
 						</div>
 						<div class="btn">
-							<input type="button" onClick="contentModify('${result.code}')" value="수정 완료" id="writeBtn">
-							<a href="javascript:window.history.back();">수정 취소</a>
+							<input type="button" class="completeBtn" onClick="contentModify('${result.code}')" value="수정 완료" id="writeBtn">
+							<input type="button" class="cancelBtn" onClick="location.href='javascript:window.history.back();'" value="취소">
+							<!-- <a href="javascript:window.history.back();">취소</a> -->
 						</div>
 					</form>
 

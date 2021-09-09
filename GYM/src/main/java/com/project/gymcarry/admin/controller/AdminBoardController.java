@@ -43,6 +43,7 @@ public class AdminBoardController {
 		
 		// 관리자 게시판 : 게시글 작성
 		@PostMapping("admin/board/write")
+		@ResponseBody
 		public void writeAdminBoard(
 				AdminBoardDto adminBoardDto,
 				Model model

@@ -118,7 +118,9 @@ select option {
 	justify-content: center;
 }
 
-.board_write .btn input {
+
+.cancelBtn {
+	border-radius : 3px;
 	width:20%;
 	height:50px;
 	background:#000;
@@ -126,10 +128,18 @@ select option {
 	cursor:pointer;
 	font-size:16px;
 	border:0.5px solid #000;
-    
-   
+	margin-left: 50px;
 }
-.board_write .btn a {
+
+.cancelBtn:hover {
+	border : 0.5px solid #fdd114;
+	color: #fdd114;
+	transition: .3s all ease;
+}
+	
+	
+.completeBtn {
+	border-radius : 3px;
 	width:20%;
 	height:48px;
 	background: transparent;
@@ -139,7 +149,12 @@ select option {
 	line-height:50px;
 	font-size:16px;
     border:0.5px solid #ffffff;
-    margin-left: 20px;
+    margin-left: 90px;
 }
 
+.completeBtn:hover {
+	border : 0.5px solid #fdd114;
+	color: #fdd114;
+	transition: .3s all ease;
+}
 

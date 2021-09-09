@@ -7,7 +7,7 @@
 
 
 		<!-- Footer -->
-                <footer class="py-4 bg-light mt-auto">
+                <footer class="py-4 bg-dark mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; Gym Carry 2021</div>

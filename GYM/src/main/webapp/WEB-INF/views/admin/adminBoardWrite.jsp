@@ -84,9 +84,10 @@
 							
 						</div>
 						<div class="btn">
-							<input type="button" onClick="adminBoardWrite('${result.code}')" value="작성 완료" id="writeBtn">
-							<a href="javascript:window.history.back();">작성 취소</a>
+							<input type="button" class="completeBtn" onClick="adminBoardWrite('${result.code}')" value="작성 완료">
+							<input type="button" class="cancelBtn" onClick="location.href='javascript:window.history.back();'" value="취소">
 						</div>
+						
 					</form>
 
 				</div>
