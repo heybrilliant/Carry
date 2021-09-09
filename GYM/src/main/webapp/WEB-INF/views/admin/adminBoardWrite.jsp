@@ -54,8 +54,7 @@
 								<span class="left">CATEGORY</span>
 								<select class="category_info" name="category">
 									<option value="공지사항">공지사항</option>
-									<option value="F&Q">F&Q</option>
-									<option value="이용약관">이용약관</option>
+									<option value="약관 및 정책">약관 및 정책</option>
 								</select>
 							</div>
 							
@@ -76,7 +75,7 @@
 							<div class="content">
 								<span class="left">내용</span>
 								<span class="editor">
-									<textarea class="form-control" placeholder="내용을 입력하세요." name="content" id="postcontent"></textarea>
+									<textarea class="form-control" cols="20" placeholder="내용을 입력하세요." name="content" id="postcontent" wrap="hard"></textarea>
 								</span>
 							</div>
 							

@@ -52,7 +52,7 @@
 								<tr>
 									<th scope="col">No.</th>
 									<th scope="col">카테고리</th>
-									<th scope="col">내용</th>
+									<th scope="col">제목 / 내용</th>
 									<th scope="col">작성 날짜</th>
 									<th scope="col"></th>
 								</tr>

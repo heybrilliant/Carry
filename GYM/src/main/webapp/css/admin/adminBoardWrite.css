@@ -49,6 +49,15 @@ select {
     color: white;
 }
 
+
+select option {
+	background-color: transparent;
+	border: 1px solid #e4e4e4;
+	color: #000;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
 .board_write .write_form span input:focus {
     outline:none;
 }
@@ -78,11 +87,9 @@ select {
 }
 
 .board_write .btn {
-	width:100%;
-	margin:-30px 50px 50px 0;
-	padding:0 0 0 20%;
 	display:flex;
-	float: center;
+	align-items: center;
+	justify-content: center;
 }
 
 .board_write .btn input {
