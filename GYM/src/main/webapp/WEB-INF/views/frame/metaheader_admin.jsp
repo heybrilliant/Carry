@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 
 
-<link rel="stylesheet" href="gym/css/adminStyle.css">
+<link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 
 <script src="/gym/js/scripts.js"></script>
