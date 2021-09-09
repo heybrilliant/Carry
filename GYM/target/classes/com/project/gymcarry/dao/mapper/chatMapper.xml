@@ -20,34 +20,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 멤버 채팅방 생성 리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select l.chatidx, l.outcount,
-		l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, c.placename,
+		select l.chatidx, l.outcount, l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, p.placename,
 		m.memidx, m.memnick, r.chatread
 		from member m
-		join chatlist l on
-		l.memidx=m.memidx
-		join carry c on l.cridx=c.cridx and
-		m.memidx=#{memidx}
+		join chatlist l on l.memidx=m.memidx
+		join carry c on l.cridx=c.cridx
+		join place p on p.placeidx=c.placeidx and m.memidx=#{memidx}
 		left outer join chatroom r on l.chatidx=r.chatidx
-		and r.messageidx =
-		(SELECT MAX(r.MESSAGEIDX) from chatroom r where
-		r.chatidx =
-		l.chatidx);
+		and r.messageidx=(SELECT MAX(r.MESSAGEIDX) from chatroom r where r.chatidx=l.chatidx);
 	</select>
 
 	<!-- 캐리 채팅방 리스트 -->
 	<select id="selectCarryChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select l.chatidx, l.outcount,
-		l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, c.placename,
+		select l.chatidx, l.outcount, l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, p.placename,
 		m.memidx, m.memnick, r.chatread
 		from member m
-		join chatlist l on
-		l.memidx=m.memidx
-		join carry c on l.cridx=c.cridx and c.cridx=#{cridx}
-		left outer join chatroom r on l.chatidx=r.chatidx and r.messageidx =
-		(SELECT MAX(r.MESSAGEIDX) from chatroom r where r.chatidx =
-		l.chatidx);
+		join chatlist l on l.memidx=m.memidx
+		join carry c on l.cridx=c.cridx
+		join place p on p.placeidx=c.placeidx and c.cridx=#{cridx}
+		left outer join chatroom r on l.chatidx=r.chatidx 
+		and r.messageidx=(SELECT MAX(r.MESSAGEIDX) from chatroom r where r.chatidx=l.chatidx);
 	</select>
 
 	<!-- 매칭캐리리스트 -->
@@ -125,7 +118,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update chatlist set outcount=outcount -1 where
 		chatidx=#{param}
 	</update>
-	
+
 	<!-- 멤버 나간방 다시들어가기 -->
 	<update id="updateInChat"
 		parameterType="com.project.gymcarry.chatting.ChatListDto">
@@ -142,7 +135,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 방인원수 0 되면 삭제 -->
 	<delete id="deleteChatRoom">
-		delete from chatlist where chatidx=#{param} and outcount=0
+		delete from chatlist where chatidx=#{param} and
+		outcount=0
 	</delete>
 
 	<!-- 방count 가져옴 -->
