@@ -23,7 +23,6 @@
 <link rel="stylesheet" href="/gym/css/admin/adminBoardStyle.css">
 
 
-
     <body class="sb-nav-fixed">
 
 	<!-- header -->
