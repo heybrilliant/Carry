@@ -7,13 +7,10 @@
 <title>관리자 게시판 작성 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
 <script src="/gym/js/scripts.js"></script>
 <script src="/gym/js/datatables-simple-demo.js"></script>
-<script src="/gym/assets/demo/chart-area-demo.js"></script>
-<script src="/gym/assets/demo/chart-bar-demo.js"></script>
 
 <%@ include file="/WEB-INF/views/frame/metaheader_admin.jsp"%>
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
@@ -84,8 +81,8 @@
 							
 						</div>
 						<div class="btn">
-							<input type="button" class="completeBtn" onClick="adminBoardWrite('${result.code}')" value="작성 완료">
-							<input type="button" class="cancelBtn" onClick="location.href='javascript:window.history.back();'" value="취소">
+							<input type="button" class="completeBtn" onclick="adminBoardWrite('${result.code}')" value="작성 완료">
+							<input type="button" class="cancelBtn" onclick="location.href='javascript:window.history.back();'" value="취소">
 						</div>
 						
 					</form>

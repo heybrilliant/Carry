@@ -58,17 +58,37 @@
 						
 						<tbody>
 						<c:forEach items="${carryList}" var="carryList">
-							<tr>
-								<td>${carryList.cridx}</td>
-								<td>${carryList.cremail}</td>
-								<td>${carryList.crnick}</td>
-								<td>${carryList.crname}</td>
-								<td>${carryList.crgender}</td>
-								<td>${carryList.crphone}</td>
-								<td>${carryList.placename}</td>
-								<td class="setting_delete"><a href="javascript:delCarry(${carryList.cridx})">삭제</a></td>
-								<!-- <td class="setting"><a href="#">삭제</a></td> -->
-							</tr>
+							<c:set var="placename" value="${carryList.placename}" />
+
+								<c:if test="${empty placename}">
+									<tr>
+										<td>${carryList.cridx}</td>
+										<td>${carryList.cremail}</td>
+										<td>${carryList.crnick}</td>
+										<td>${carryList.crname}</td>
+										<td>${carryList.crgender}</td>
+										<td>${carryList.crphone}</td>
+										<td>소속되어있는 플레이스가 없습니다.</td>
+										<td class="setting_delete"><a
+											href="javascript:delCarry(${carryList.cridx})">삭제</a></td>
+									</tr>
+								</c:if>
+								<c:if test="${!empty placename}">
+									<tr>
+										<td>${carryList.cridx}</td>
+										<td>${carryList.cremail}</td>
+										<td>${carryList.crnick}</td>
+										<td>${carryList.crname}</td>
+										<td>${carryList.crgender}</td>
+										<td>${carryList.crphone}</td>
+										<td>${placename}</td>
+										<%-- <td>${carryList.placename}</td> --%>
+										<td class="setting_delete"><a
+											href="javascript:delCarry(${carryList.cridx})">삭제</a></td>
+										<!-- <td class="setting"><a href="#">삭제</a></td> -->
+									</tr>
+								</c:if>
+
 							</c:forEach>
 						</tbody>
 						

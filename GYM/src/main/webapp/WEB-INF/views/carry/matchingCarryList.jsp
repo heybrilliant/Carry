@@ -63,7 +63,7 @@
                   	onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${mlist.cridx}&memidx=${loginSession.memidx}"/>'">
                   </li>
                   <li>
-                    <input type="button" value="더 알아보기" class="details_btn" 
+                    <input type="button" value="더 알아보기" class="detail_btn" 
                     onclick="location.href='<c:url value = "/carry/detail?cridx=${mlist.cridx}"/>'">
                   </li>
                 </ul>

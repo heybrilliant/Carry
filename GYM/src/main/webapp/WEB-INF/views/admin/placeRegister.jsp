@@ -131,7 +131,7 @@
         				data : $("#registerPlaceForm").serialize(),
         				success : function() {
         					alert('플레이스가 정상적으로 등록되었습니다.');
-        					/* location.href = "/gym/admin/place"; */
+        					location.href = "/gym/admin/place";
         				},
         				error : function(request, status, error) {
         					alert("code:" + request.status + "\n" + "message:"

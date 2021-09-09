@@ -4,7 +4,8 @@
 	max-width: 750px;
 }
 
-h2 {
+h1 {
+	font-size: 30px;
 	margin-bottom: 40px;
 }
 
@@ -35,6 +36,7 @@ p {
 .input_box:focus {
 	outline: none;
 	border-bottom : 1px solid #000000;
+	transition: .3s all ease;
 }
 
 
@@ -49,6 +51,7 @@ p {
 
 .faceornot_selectbox:hover {
 	background-color: rgb(248, 248, 248);
+	transition: .3s all ease;
 }
 
 input[type="radio"] {
@@ -58,15 +61,20 @@ input[type="radio"] {
 
 .order_info {
 	margin: 20px 0;
-	height: 70px;
+	height: 90px;
 	border: 1px solid #DDD;
 	border-radius: 10px;
-	padding: 13px 20px;
+	padding: 20px;
 	display: block;
 }
 
 .order_info:hover {
 	background-color: rgb(248, 248, 248);
+	transition: .3s all ease;
+}
+
+input[type="text"]:hover {
+	border-bottom: 1px solid black;
 }
 
 .pricebox {
@@ -80,6 +88,7 @@ input[type="radio"] {
 
 .pricebox:hover {
 	background-color: rgb(248, 248, 248);
+	transition: .3s all ease;
 }
 
 .pricebox ul {
@@ -102,7 +111,7 @@ input[type="radio"] {
 	text-align: center;
 }
 
-.pay_btn input {
+.pay_btn input[type="submit"] {
 	background-position-x: 50%;
 	width: 120px;
 	height: 50px;
@@ -111,13 +120,42 @@ input[type="radio"] {
 	background-color: black;
 	padding: 7px 10px;
 	text-align: center;
+	font-size: 15px;
+	border-radius: 6px;
+	margin: 0 20px;
 	transition: 0.3s;
 }
 
-.pay_btn input:hover {
+.pay_btn input[type="submit"]:hover {
 	border: 1px solid #CCC;
 	background-color: white;
 	padding: 7px 10px;
 	color: black;
+	transition: .3s all ease;
+	cursor: pointer;
+}
+
+
+.pay_btn input:nth-child(2) {
+	background-position-x: 50%;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #CCC;
+	background-color: white;
+	color: black;
+	padding: 7px 10px;
+	text-align: center;
+	font-size: 15px;
+	border-radius: 6px;
+	margin: 0 20px;
+	transition: 0.3s;
+}
+
+.pay_btn input[type="button"]:hover {
+	border: 1px solid #CCC;
+	padding: 7px 10px;
+	background-color: black;
+	color: white;
+	transition: .3s all ease;
 	cursor: pointer;
 }

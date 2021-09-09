@@ -11,6 +11,7 @@
 <title>매칭 캐리 리스트</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/carry/carryList.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 </head>
 <body>
 	<!-- header -->
@@ -61,11 +62,11 @@
               <div class="bottom_btn">
                 <ul class="board_btn">
                   <li>
-                  	<input type="button" value="1:1문의" class="inquiry_btn"
+                  	<input type="button" value="1:1 문의" class="inquiry_btn"
                   	onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${alist.cridx}&memidx=${loginSession.memidx}"/>'">
                   </li>
                   <li>
-                    <input type="button" value="더 알아보기" class="details_btn"
+                    <input type="button" value="더 알아보기" class="detail_btn"
                     onclick="location.href='<c:url value = "/carry/detail?cridx=${alist.cridx}"/>'">
                   </li>
                 </ul>

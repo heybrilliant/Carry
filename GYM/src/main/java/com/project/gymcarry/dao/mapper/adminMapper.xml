@@ -24,9 +24,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 사용자 관리 : 전체 캐리 리스트 출력 -->
 	<select id="selectAllCarryList"
 		resultType="com.project.gymcarry.carry.CarryListDto2">
-		select cridx, cremail, crnick, crname, crgender, crphone, placename 
+		select cridx, cremail, crnick, crname, crgender, crphone, placename
 		from carry natural join place;
 	</select>
+	
+	
+	
 	
 	<!-- 컨텐츠 관리 : 전체 플레이스 리스트 출력 -->
 	<select id="selectAllPlaceList"

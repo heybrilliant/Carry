@@ -4,9 +4,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
 
-<title>결제 페이지</title>
+<title>GymCarry : 결제 페이지</title>
 
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/gym/css/payment/payment.css">
 
 <!-- jQuery -->
@@ -23,7 +24,7 @@
 
 	<!-- Contents -->
 	<div class="container_fix container payment_wrap">
-		<h2>결제하기</h2>
+		<h1>결제하기</h1>
 		<div>
 			<h3>주문 정보</h3>
 				<div class="order_info">
@@ -82,6 +83,7 @@
 				
 				<div class="pay_btn">
 					<input type="submit" value="결제하기" onclick="requestPay();">
+					<input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
 				</div>
 				</form>
 				
