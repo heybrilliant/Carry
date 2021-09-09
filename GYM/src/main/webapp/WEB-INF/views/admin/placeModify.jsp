@@ -52,15 +52,16 @@
                           	<input type="hidden" value="${original.placeidx}" name="placeidx"/>
                           	<input type="hidden" value="${original.placenum}" name="placenum"/>
                          
-                         <%--         
+                                 
                          <div class = "placenum">
                                 <h4>카테고리</h4>
-                                <select class="placenum_select" name="placenum" selected="${original.placenum}">
+                                <select class="placenum_select" name="placenum">
+                                    <option value="" selected disabled hidden>${original.placenum}</option>
                                     <option value="1">헬스</option>
                                     <option value="2">필라테스</option>
                                     <option value="3">요가</option>
                                 </select>
-                            </div> --%>
+                            </div>
                           
                             <div class="placename">
                                 <h4>이름</h4>

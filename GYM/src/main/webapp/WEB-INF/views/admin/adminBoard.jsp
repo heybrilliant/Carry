@@ -66,15 +66,15 @@
 									<td>${list.idx}</td>
 									<td>${list.category}</td>
 									<td>
-										<a href="<c:url value="/content/term?idx=${list.idx}"/>">${list.title}</a>
+										<a href="<c:url value="/content?idx=${list.idx}"/>">${list.title}</a>
 										<small class="d-block text-over-cut">${list.content}</small>
 									</td>
 									<td>${list.date}</td>
-									<td><a href="<c:url value="/content/term?idx=${list.idx}"/>" class="more">Details</a>
+									<td><a href="<c:url value="/content?idx=${list.idx}"/>" class="more">Details</a>
 									<br>
-									<%-- <span onclick='location.href="<c:url value="추후 추가예정"/>"'>수정</span> /  --%>
-									<span>수정</span> /
-									<span>삭제</span>
+									<span onclick='location.href="<c:url value="/admin/board/modifyForm?idx=${list.idx}"/>"'>수정</span>
+									/
+									<span onClick="contentDel('${list.idx}')">삭제</span>
 									</td>
 
 								</tr>
@@ -89,8 +89,17 @@
 
 			</div>
 
+			<script>
+			function contentDel(idx) {
+				if (confirm ('해당 게시글을 삭제 처리 하시겠습니까?')) {
+					location.href = "delete?idx=" + idx;
+					alert('삭제가 정상적으로 완료되었습니다.');
+					location.href = 'list';
+				} 
+			}
+			</script>
 
-			<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
+		<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
 			<script src="/gym/js/admin/popper.min.js"></script>
 			<script src="/gym/js/admin/bootstrap.min.js"></script>
 			<script src="/gym/js/admin/main.js"></script>

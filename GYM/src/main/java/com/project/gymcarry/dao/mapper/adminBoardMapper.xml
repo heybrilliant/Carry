@@ -17,9 +17,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.project.gymcarry.admin.AdminBoardDto"
 		useGeneratedKeys="true"
 		keyProperty="idx">
-		insert into adminBoard (idx, category, adminidx, title, content, date)
-		values (#{idx}, #{category}, #{adminidx}, #{title}, #{content}, #{date})	
+		insert into
+			adminBoard (idx, category, adminidx, title, content, date)
+		values
+			(#{idx}, #{category}, #{adminidx}, #{title}, #{content}, #{date})	
 	</insert>
+	
+	
+	<!-- 기존 게시글 호출 : 수정폼 -->
+	<select id="getContentOriginal"
+		resultType="com.project.gymcarry.admin.AdminBoardDto">
+		select idx, category, title, content from adminboard where idx=#{idx}	
+	</select>
+
+
+	<!-- 게시글 수정 -->
+	<update id="updateContent"
+		parameterType="com.project.gymcarry.admin.AdminBoardDto">
+		update
+			adminboard
+		set
+			category=#{category},
+			title=#{title},
+			content=#{content}
+		where
+			idx=#{idx}
+	</update>
+	
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteContent">
+		delete from adminboard where idx=#{idx}
+	</delete>
+	
+
 
 
 
@@ -28,7 +59,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 게시글 출력 -->
 	<select id = "contentView"
 		resultType="com.project.gymcarry.admin.ContentDto">
-		select title, content, date, category from adminboard where idx=#{idx}
+		select
+			title, content, date, category
+		from 
+			adminboard 
+		where 
+			idx=#{idx}
 	</select>
 	
 	

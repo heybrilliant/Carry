@@ -1,10 +1,11 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
 
-<title>관리자 게시판 작성 : GymCarry Admin</title>
+<title>관리자 게시판 수정 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -44,38 +45,39 @@
 
 		<div class="content">
 			<div class="container">
-				<h2 class="mb-5">관리자 게시판 : 작성</h2>
+				<h2 class="mb-5">관리자 게시판 : 수정</h2>
 
 
 				<div class="board_write">
-					<form method="post" id="adminBoardForm" name="adminBoardForm">
+					<form method="post" id="modifyForm" name="modifyForm">
 						<div class="write_form">
 							<div class="category">
 								<span class="left">CATEGORY</span>
 								<select class="category_info" name="category">
+									<option value="" selected disabled hidden name="category">${original.category}</option>
 									<option value="공지사항">공지사항</option>
 									<option value="약관 및 정책">약관 및 정책</option>
 								</select>
 							</div>
 							
+								<input type="hidden" value="${original.idx}" name="idx"></span>
 							<div class="name">
 								<span class="left">작성자</span>
 								<span class="name_info">
 								<input type="text" value="${adminLoginSession.adminid}" readonly class="admin"></span>
-								<input type="hidden" value="${adminLoginSession.adminidx}" name="adminidx">
 							</div>
 							
 							<div class="title">
 								<span class="left">제목</span>
 								<span>
-									<input type="text" name="title" placeholder="제목을 입력하세요." required>
+									<input type="text" value="${original.title}" name="title" placeholder="제목을 입력하세요." required>
 								</span>
 							</div>
 						
 							<div class="content">
 								<span class="left">내용</span>
 								<span class="editor">
-									<textarea class="form-control" cols="20" placeholder="내용을 입력하세요." name="content" id="postcontent" wrap="hard"></textarea>
+									<textarea class="form-control" cols="20" placeholder="내용을 입력하세요." name="content" id="postcontent" wrap="hard">${original.content}</textarea>
 								</span>
 							</div>
 							
@@ -84,8 +86,8 @@
 							
 						</div>
 						<div class="btn">
-							<input type="button" onClick="adminBoardWrite('${result.code}')" value="작성 완료" id="writeBtn">
-							<a href="javascript:window.history.back();">작성 취소</a>
+							<input type="button" onClick="contentModify('${result.code}')" value="수정 완료" id="writeBtn">
+							<a href="javascript:window.history.back();">수정 취소</a>
 						</div>
 					</form>
 
@@ -98,14 +100,14 @@
 		
 		<script>
 			
-			function adminBoardWrite(code) {
+			function contentModify(code) {
 
 				$.ajax({
 					type : 'POST',
-					url : "<c:url value='/admin/board/write'/>",
-					data : $("#adminBoardForm").serialize(),
+					url : "<c:url value='/admin/board/modify'/>",
+					data : $("#modifyForm").serialize(),
 					success : function() {
-						alert('관리자 게시글 작성이 완료되었습니다.');
+						alert('관리자 게시글 수정이 완료되었습니다.');
 						location.href = "/gym/admin/board/list";
 					},
 					error : function(request, status, error) {

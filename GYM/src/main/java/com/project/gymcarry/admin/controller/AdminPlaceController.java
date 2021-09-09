@@ -64,7 +64,7 @@ public class AdminPlaceController {
 		
 		
 		
-		// 플레이스 수정 폼 페이지로 이동
+		// 플레이스 수정 페이지로 이동
 		@GetMapping("admin/place/modifyForm")
 		public String placeModifyForm(
 				@RequestParam("placeidx") int placeidx,
@@ -84,12 +84,11 @@ public class AdminPlaceController {
 		public String placeModify(
 				PlaceDto placedto,
 				@RequestParam("placeidx") int placeidx,
-				HttpServletResponse response,
 				Model model
 				) throws IOException {
 			
 			adminService.updatePlace(placedto);
-			System.out.println("플레이스 수정 완료.");
+			System.out.println("플레이스 수정 완료");
 			
 			return "admin/placeSetting";
 		}

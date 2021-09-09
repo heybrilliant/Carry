@@ -30,6 +30,22 @@ public class AdminBoardService {
 		return dao.writeAdminBoard(adminBoardDto);
 	}
 	
+	// 기존 게시글 호출 - 수정폼 이동
+	public AdminBoardDto getContentOriginal(int idx) {
+		dao = template.getMapper(AdminBoardDao.class);
+		return dao.getContentOriginal(idx);
+	}
+	
+	// 관리자 게시판 게시글 수정
+	public void updateContent(AdminBoardDto adminBoardDto) {
+		dao.updateContent(adminBoardDto);
+	}
+	
+	// 관리자 게시판 게시글 삭제
+	public void deleteContent(int idx) {
+		dao.deleteContent(idx);
+	}
+	
 	
 	
 	

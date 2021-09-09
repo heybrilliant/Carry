@@ -2,8 +2,6 @@ package com.project.gymcarry.admin.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.admin.AdminBoardDto;
 import com.project.gymcarry.admin.ContentDto;
@@ -25,30 +24,27 @@ public class AdminBoardController {
 	
 	
 		// 관리자 게시판 리스트 페이지로 이동
-		@GetMapping("admin/board")
+		@GetMapping("admin/board/list")
 		public String adminBoardList(Model model) {
 			
 			List<AdminBoardDto> AdminBoardList = adminBoardService.AdminBoardList();
 			model.addAttribute("BoardList", AdminBoardList);
 			
-			System.out.println("관리자 게시판 리스트 출력");
-			
 			return "admin/adminBoard";
 		}
 		
 		
-		// 관리자 게시판 작성 페이지로 이동
+		// 관리자 게시판 : 게시글 작성 페이지로 이동
 		@GetMapping("admin/board/writeForm")
 		public String noticeBoardWrite() {
 			return "admin/adminBoardWrite";
 		}
 		
 		
-		// 관리자 게시판 작성
+		// 관리자 게시판 : 게시글 작성
 		@PostMapping("admin/board/write")
 		public void writeAdminBoard(
 				AdminBoardDto adminBoardDto,
-				HttpServletResponse reponse,
 				Model model
 				) {
 			
@@ -57,9 +53,53 @@ public class AdminBoardController {
 			if(result == 1) {
 				System.out.println("관리자 게시판 작성 완료");
 			}
-			
 		}
 		
+		
+		// 관리자 게시판 : 게시글 수정 페이지로 이동
+		@GetMapping("admin/board/modifyForm")
+		public String ContentModifyForm(
+				@RequestParam("idx") int idx,
+				Model model
+				) {
+			
+			AdminBoardDto original = adminBoardService.getContentOriginal(idx);
+			model.addAttribute("original", original);
+			
+			System.out.println("관리자 게시판 수정 페이지 진입 - 게시글 번호 " + idx);
+			
+			return "admin/contentModifyForm";
+		}
+		
+		
+		// 게시글 수정
+		@PostMapping("admin/board/modify")
+		@ResponseBody
+		public String ContentModify(
+				AdminBoardDto adminBoardDto,
+				@RequestParam("idx") int idx,
+				Model model
+				) {
+			
+			adminBoardService.updateContent(adminBoardDto);
+			System.out.println("게시글 수정 완료");
+			
+			return "admin/adminBoard";
+		}
+		
+		
+		// 게시글 삭제
+		@GetMapping("admin/board/delete")
+		public void deleteContent(
+				@RequestParam("idx") int idx,
+				Model model
+				) {
+			
+			adminBoardService.deleteContent(idx);
+			System.out.println(idx + "번 게시글 삭제 완료");
+		}
+		
+
 		
 		
 		
