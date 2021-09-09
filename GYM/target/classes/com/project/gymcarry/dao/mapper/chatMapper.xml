@@ -17,37 +17,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where l.chatidx=#{chatidx};
 	</select>
 
-	<!-- 멤버 채팅방 생성 리스트 -->
+	<!-- 멤버 채팅방  리스트 -->
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select l.chatidx, l.outcount,
-		l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, c.placename,
+		select l.chatidx, l.outcount, l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, p.placename,
 		m.memidx, m.memnick, r.chatread
 		from member m
-		join chatlist l on
-		l.memidx=m.memidx
-		join carry c on l.cridx=c.cridx and
-		m.memidx=#{memidx}
+		join chatlist l on l.memidx=m.memidx
+		join carry c on l.cridx=c.cridx
+		join place p on p.placeidx=c.placeidx and m.memidx=#{memidx}
 		left outer join chatroom r on l.chatidx=r.chatidx
-		and r.messageidx =
-		(SELECT MAX(r.MESSAGEIDX) from chatroom r where
-		r.chatidx =
-		l.chatidx);
+		and r.messageidx=(SELECT MAX(r.MESSAGEIDX) from chatroom r where r.chatidx=l.chatidx)
 	</select>
 
 	<!-- 캐리 채팅방 리스트 -->
 	<select id="selectCarryChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
-		select l.chatidx, l.outcount,
-		l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, c.placename,
+		select l.chatidx, l.outcount, l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, p.placename,
 		m.memidx, m.memnick, r.chatread
 		from member m
-		join chatlist l on
-		l.memidx=m.memidx
-		join carry c on l.cridx=c.cridx and c.cridx=#{cridx}
-		left outer join chatroom r on l.chatidx=r.chatidx and r.messageidx =
-		(SELECT MAX(r.MESSAGEIDX) from chatroom r where r.chatidx =
-		l.chatidx);
+		join chatlist l on l.memidx=m.memidx
+		join carry c on l.cridx=c.cridx
+		join place p on p.placeidx=c.placeidx and c.cridx=#{cridx}
+		left outer join chatroom r on l.chatidx=r.chatidx 
+		and r.messageidx=(SELECT MAX(r.MESSAGEIDX) from chatroom r where r.chatidx=l.chatidx)
 	</select>
 
 	<!-- 채팅룸 생성 -->

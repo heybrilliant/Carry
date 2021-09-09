@@ -57,19 +57,21 @@
                                 </nav>
                             </div>
 
-                
-
-
                             <div class="sb-sidenav-menu-heading">payment</div>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="<c:url value="/admin/allSales"/>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 	전체 매출
+                            </a>
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
                             </a>
                            <!--  <a class="nav-link" href="tables.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a> -->
                         </div>
+                        
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
