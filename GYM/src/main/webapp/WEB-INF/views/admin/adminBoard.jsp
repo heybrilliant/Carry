@@ -5,7 +5,6 @@
 <title>관리자 게시판 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
 <script src="/gym/js/scripts.js"></script>
@@ -52,7 +51,7 @@
 									<th scope="col">카테고리</th>
 									<th scope="col">제목 / 내용</th>
 									<th scope="col">작성일</th>
-									<th scope="col">관리</th>
+									<th scope="col">more</th>
 								</tr>
 							</thead>
 

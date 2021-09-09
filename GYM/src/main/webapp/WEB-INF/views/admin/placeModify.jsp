@@ -5,13 +5,10 @@
 <title>플레이스 수정 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
 <script src="/gym/js/scripts.js"></script>
 <script src="/gym/js/datatables-simple-demo.js"></script>
-<script src="/gym/assets/demo/chart-area-demo.js"></script>
-<script src="/gym/assets/demo/chart-bar-demo.js"></script>
         
 <%@ include file="/WEB-INF/views/frame/metaheader_admin.jsp"%>
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
@@ -55,8 +52,23 @@
                                  
                          <div class = "placenum">
                                 <h4>카테고리</h4>
+                                <c:set var="num" value="${original.placenum}" />
                                 <select class="placenum_select" name="placenum">
-                                    <option value="" selected disabled hidden>${original.placenum}</option>
+
+								
+								<c:choose>
+								<c:when test="${num == 1}">
+									<option value="1" selected disabled hidden>헬스</option>
+								</c:when>
+								<c:when test="${num == 2}">
+									<option value="2" selected disabled hidden>필라테스</option>
+								</c:when>
+								<c:when test="${num == 3}">
+									<option value="3" selected disabled hidden>요가</option>
+								</c:when>
+								</c:choose>
+
+								<%-- <option value="" selected disabled hidden>${original.placenum}</option> --%>
                                     <option value="1">헬스</option>
                                     <option value="2">필라테스</option>
                                     <option value="3">요가</option>
