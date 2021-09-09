@@ -14,7 +14,13 @@
         order by postidx desc, postdate desc
         ]]>
 	</select>
-
+    
+    <!-- 게시판 카테고리 출력 -->
+    <select id="getCategoryList" resultType="com.project.gymcarry.board.BoardDto">
+        select *
+        from board
+--         where boardcategory = #{boardcategory}
+    </select>
 
     <!-- 페이징 -->
     <select id="getBoardList" resultType="com.project.gymcarry.board.BoardDto">
@@ -32,6 +38,8 @@
         from board
     </select>
 
+
+
     <!-- 조회수 -->
     <update id="updateViewCnt" parameterType="com.project.gymcarry.board.BoardDto">
         UPDATE board SET
@@ -39,6 +47,8 @@
         WHERE
             postidx = #{postidx}
     </update>
+
+
 
 
 

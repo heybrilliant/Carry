@@ -13,4 +13,7 @@ public interface BoardService {
     ///총 게시글 개수 확인
     public int getBoardListCnt() throws Exception;
 
+    // 게시판 카테고리 리스트
+    public List<BoardDto> getCategoryList(String boardcategory) throws Exception;
+
 }

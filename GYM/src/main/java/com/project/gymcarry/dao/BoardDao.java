@@ -20,6 +20,9 @@ public interface BoardDao {
     // 총 게시글 개수 확인 (페이징)
     public int getBoardListCnt() throws Exception;
 
+    // 게시판 카테고리 가져오기
+    public List<BoardDto> getCategoryList(String boardcategory) throws Exception;
+
 
 
 

@@ -43,6 +43,14 @@ public class BoardDAOImpl implements BoardDao {
         return sqlSession.selectOne("com.project.gymcarry.dao.BoardDao.getBoardListCnt");
     }
 
+    @Override
+    public List<BoardDto> getCategoryList(String boardcategory) throws Exception {
+        return sqlSession.selectList("com.project.gymcarry.dao.BoardDao.getCategoryList",boardcategory);
+    }
+
+    // 카테고리 리스트 가져오기
+
+
 
     // 게시글 전체 출력
 }

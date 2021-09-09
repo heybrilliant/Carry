@@ -29,5 +29,12 @@ public class BoardServiceImpl implements BoardService {
         return dao.getBoardListCnt();
     }
 
+    // 카테고리 리스트
+    @Override
+    public List<BoardDto> getCategoryList(String boardcategory) throws Exception {
+        return dao.getCategoryList(boardcategory);
+    }
+
+
 
 }

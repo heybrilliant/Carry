@@ -108,6 +108,8 @@
         </div>
         <!-- /게시판 출력 영역 -->
 
+
+
         <%--pagination--%>
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-sm justify-content-center">
@@ -149,32 +151,18 @@
 <!-- Contents end -->
 
 
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-
-
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script>
-    // 카테고리 버튼
-    $(function(){
-        $("button").on('click',function(){
-            var kind = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서
-            $.ajax({
-                url : "<c:url value='/community/boardList'/>", // 이 주소로
-                type : "post", // 포스트 방식으로 보내는데
-                cache: false,
-                headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-                data : {"kind" : kind}, // kind를 kind로 명명하여 보내겠다
-                success : function(data){
-                    console.log(data);
-
-                    $('body').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
-                },
-                error : function(data){
-                    alert('error');
-
-                }//error
-            })//ajax
-        });//click
-    });//ready
+    $('.menulink2').click(function(){
+        $.ajax({
+            url: "<c:url value="/community/boardList"/>",
+            type : "post",
+            dataType : "json",
+            success : function(e){
+                console.log(e);
+            }
+        })
+    });
 
 
 
