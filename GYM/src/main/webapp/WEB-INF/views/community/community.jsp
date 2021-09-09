@@ -37,7 +37,7 @@
                     <a href="<c:url value="/community/boardList"/>">전체</a>
                 </li>
                 <li>
-                    <a class="menulink2" href="#">소통</a>
+                    <a class="menulink2" href="#" id="comuni">소통</a>
                 </li>
                 <li>
                     <a class="menulink3" href="#">질문답변</a>
@@ -153,15 +153,20 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script>
-    $('.menulink2').click(function(){
+
+    // 게시판 Nav 출력
+    $("#comuni").click(function(){
         $.ajax({
-            url: "<c:url value="/community/boardList"/>",
-            type : "post",
+            url : "<c:url value='/community/communication'/>",
+            type : "get",
             dataType : "json",
             success : function(e){
                 console.log(e);
+                $.each(e, function(index, key){
+                    $('.card .nickname').html(key.postnick);
+                });
             }
-        })
+        });
     });
 
 

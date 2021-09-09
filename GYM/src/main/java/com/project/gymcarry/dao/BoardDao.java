@@ -21,7 +21,7 @@ public interface BoardDao {
     public int getBoardListCnt() throws Exception;
 
     // 게시판 카테고리 가져오기
-    public List<BoardDto> getCategoryList(String boardcategory) throws Exception;
+    List<BoardDto> getListCommuni();
 
 
 

@@ -15,11 +15,11 @@
         ]]>
 	</select>
     
-    <!-- 게시판 카테고리 출력 -->
-    <select id="getCategoryList" resultType="com.project.gymcarry.board.BoardDto">
+    <!-- 게시판 소통 카테고리 출력 -->
+    <select id="getListCommuni" resultType="com.project.gymcarry.board.BoardDto">
         select *
         from board
---         where boardcategory = #{boardcategory}
+        where boardcategory = '소통'
     </select>
 
     <!-- 페이징 -->
@@ -37,7 +37,6 @@
         select count(*) as listCnt
         from board
     </select>
-
 
 
     <!-- 조회수 -->
