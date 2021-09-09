@@ -3,6 +3,24 @@ body {
   background-color: #272d32;
   font-weight: 300; }
 
+.writeBtn{
+	float: right;
+	background-color : transparent;
+	border : 0.5mm solid #c0c0c0;
+	color: #c0c0c0;
+	padding : 6px 10px;
+	margin-top: -50px;
+	margin-bottom: 50px;
+	border-radius: 5px;
+	transition: .3s all ease;
+}
+
+.writeBtn:hover {
+	border : 0.5mm solid white;
+	color: white;
+	transition: .3s all ease;
+}
+
 p {
   color: rgba(255, 255, 255, 0.5);
   font-weight: 300; }
@@ -25,6 +43,16 @@ h2 {
   font-size: 25px;
   color: #fff; }
 
+.text-over-cut {
+  display: block;
+  width: 550px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+
 .custom-table {
   min-width: 900px; }
   .custom-table thead tr, .custom-table thead th {
@@ -32,10 +60,12 @@ h2 {
     border-top: none;
     border-bottom: none !important;
     color: #fff;
-    font-size: 15px;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: .2rem; }
   .custom-table tbody th, .custom-table tbody td {
+  white-space:nowrap;
+ 	text-overflow: ellipsis;
     color: #777;
     font-weight: 400;
     padding-bottom: 20px;
@@ -46,6 +76,7 @@ h2 {
     -o-transition: .3s all ease;
     transition: .3s all ease; }
     .custom-table tbody th small, .custom-table tbody td small {
+      margin-top: 5px;
       color: rgba(255, 255, 255, 0.3);
       font-weight: 300; }
     .custom-table tbody th a, .custom-table tbody td a {

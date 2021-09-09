@@ -11,5 +11,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from adminboard;
 	</select>
 
+
+	<!-- 관리자 게시판 작성 -->
+	<insert id = "writeAdminBoard"
+		parameterType="com.project.gymcarry.admin.AdminBoardDto"
+		useGeneratedKeys="true"
+		keyProperty="idx">
+		insert into adminBoard (idx, category, adminidx, title, content, date)
+		values (#{idx}, #{category}, #{adminidx}, #{title}, #{content}, #{date})	
+	</insert>
+	
+	
+	
 	
 </mapper>

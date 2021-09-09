@@ -8,5 +8,8 @@ public interface AdminBoardDao {
 
 	// 전체 관리자 게시글 리스트
 	List<AdminBoardDto> selectAllAdminBoard();
+	
+	// 관리자 게시판 작성
+	int writeAdminBoard(AdminBoardDto adminBoardDto);
 
 }

@@ -2,7 +2,7 @@ package com.project.gymcarry.admin;
 
 public class AdminBoardDto {
 
-	private int adminidx;
+	private String adminid;
 	private String category;
 	private int idx;
 	private String title;
@@ -13,8 +13,8 @@ public class AdminBoardDto {
 	public AdminBoardDto() {}
 
 	
-	public AdminBoardDto(int adminidx, String category, int idx, String title, String content, String date) {
-		this.adminidx = adminidx;
+	public AdminBoardDto(String adminidx, String category, int idx, String title, String content, String date) {
+		this.adminid = adminidx;
 		this.category = category;
 		this.idx = idx;
 		this.title = title;
@@ -24,12 +24,12 @@ public class AdminBoardDto {
 
 	
 	
-	public int getAdminidx() {
-		return adminidx;
+	public String getAdminidx() {
+		return adminid;
 	}
 
-	public void setAdminidx(int adminidx) {
-		this.adminidx = adminidx;
+	public void setAdminidx(String adminidx) {
+		this.adminid = adminidx;
 	}
 
 	public String getCategory() {
@@ -75,7 +75,7 @@ public class AdminBoardDto {
 	
 	@Override
 	public String toString() {
-		return "AdminBoardDto [adminidx=" + adminidx + ", category=" + category + ", idx=" + idx + ", title=" + title
+		return "AdminBoardDto [adminidx=" + adminid + ", category=" + category + ", idx=" + idx + ", title=" + title
 				+ ", content=" + content + ", date=" + date + "]";
 	}
 	

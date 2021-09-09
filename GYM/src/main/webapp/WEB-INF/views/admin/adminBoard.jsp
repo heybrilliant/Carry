@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<title>공지사항 : GymCarry Admin</title>
+<title>관리자 게시판 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="/gym/css/admin/bootstrap.min.css">
 <!-- Style -->
-<link rel="stylesheet" href="/gym/css/admin/noticeBoardStyle.css">
+<link rel="stylesheet" href="/gym/css/admin/adminBoardStyle.css">
 
 
 
@@ -41,8 +41,9 @@
 		
 			<div class="content">
 				<div class="container">
-					<h2 class="mb-5">NOTICE</h2>
-
+					<h2 class="mb-5">관리자 게시판</h2>
+					
+					<input type="button" class="writeBtn" value = "작성하기" onclick="location.href='<c:url value="/admin/board/writeForm"/>'">
 
 					<div class="table-responsive">
 
@@ -52,7 +53,7 @@
 									<th scope="col">No.</th>
 									<th scope="col">카테고리</th>
 									<th scope="col">내용</th>
-									<th scope="col">날짜</th>
+									<th scope="col">작성 날짜</th>
 									<th scope="col"></th>
 								</tr>
 							</thead>
@@ -66,7 +67,7 @@
 									<td>${list.category}</a></td>
 									<td>
 										<a href="#">${list.title}</a>
-										<small class="d-block">${list.content}</small>
+										<small class="d-block text-over-cut">${list.content}</small>
 									</td>
 									<td>${list.date}</td>
 									<td><a href="#" class="more">Details</a></td>

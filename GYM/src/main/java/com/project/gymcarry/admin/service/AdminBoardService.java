@@ -22,6 +22,12 @@ public class AdminBoardService {
 		dao = template.getMapper(AdminBoardDao.class);
 		return dao.selectAllAdminBoard();
 	}
+	
+	// 관리자 게시판 작성
+	public int writeAdminBoard(AdminBoardDto adminBoardDto) {
+		dao = template.getMapper(AdminBoardDao.class);
+		return dao.writeAdminBoard(adminBoardDto);
+	}
 
 
 }

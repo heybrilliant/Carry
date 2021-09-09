@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
+
 <title>결제 페이지</title>
+
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/payment/payment.css">
 

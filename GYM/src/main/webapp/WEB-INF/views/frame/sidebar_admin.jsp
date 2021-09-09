@@ -50,9 +50,8 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">커뮤니티 관리</a>
-                                            <a class="nav-link" href="404.html">공지사항</a>
-                                            <a class="nav-link" href="500.html">문의게시판</a>
+                                            <a class="nav-link" href='<c:url value="/admin/board/"/>'>커뮤니티 관리</a>
+                                            <a class="nav-link" href='<c:url value="/admin/board/"/>'>관리자 게시판</a>
                                         </nav>
                                     </div>
                                 </nav>
