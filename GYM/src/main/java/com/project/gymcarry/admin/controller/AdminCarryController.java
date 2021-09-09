@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.gymcarry.admin.service.adminService;
+import com.project.gymcarry.admin.service.AdminService;
 import com.project.gymcarry.carry.CarryListDto2;
 
 @Controller
@@ -17,7 +17,7 @@ import com.project.gymcarry.carry.CarryListDto2;
 public class AdminCarryController {
 
 		@Autowired
-		private adminService adminService;
+		private AdminService adminService;
 		
 		// 캐리 관리 : 전체 캐리 리스트 출력
 		@GetMapping("admin/carry")

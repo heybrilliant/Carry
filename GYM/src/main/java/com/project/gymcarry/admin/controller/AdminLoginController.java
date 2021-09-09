@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.gymcarry.admin.AdminSessionDto;
-import com.project.gymcarry.admin.service.adminService;
+import com.project.gymcarry.admin.service.AdminService;
 
 @Controller
 @RequestMapping
 public class AdminLoginController {
 
 		@Autowired
-		private adminService adminService;
+		private AdminService adminService;
 		
 		
 		@GetMapping("admin/login")

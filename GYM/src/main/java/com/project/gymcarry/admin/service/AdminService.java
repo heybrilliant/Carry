@@ -14,7 +14,7 @@ import com.project.gymcarry.place.PlaceDto;
 import com.project.gymcarry.place.PlaceListDto;
 
 @Service
-public class adminService {
+public class AdminService {
 	
 	@Autowired
 	private SqlSessionTemplate template;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.gymcarry.admin.service.adminService;
+import com.project.gymcarry.admin.service.AdminService;
 import com.project.gymcarry.member.MemberListDto;
 
 @Controller
@@ -17,7 +17,7 @@ import com.project.gymcarry.member.MemberListDto;
 public class AdminMemberController {
 
 		@Autowired
-		private adminService adminService;
+		private AdminService adminService;
 		
 		
 		// 회원 관리 : 전체 회원 리스트 출력

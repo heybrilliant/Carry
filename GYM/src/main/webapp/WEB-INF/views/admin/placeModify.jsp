@@ -41,6 +41,8 @@
                         </div>
                     </div>
                    
+                   
+                   
                 <div>
                     <%-- <form action="<c:url value="/admin/place/modify"/>" method="post"> --%>
                     <form id="modifyPlaceForm" name="modifyPlaceForm" method="post">

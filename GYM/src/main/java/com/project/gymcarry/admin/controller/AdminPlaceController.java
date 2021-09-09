@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.gymcarry.admin.service.adminService;
+import com.project.gymcarry.admin.service.AdminService;
 import com.project.gymcarry.place.PlaceDto;
 import com.project.gymcarry.place.PlaceListDto;
 
@@ -23,7 +23,7 @@ import com.project.gymcarry.place.PlaceListDto;
 public class AdminPlaceController {
 
 		@Autowired
-		private adminService adminService;
+		private AdminService adminService;
 		
 		
 		// 전체 플레이스 리스트 출력
