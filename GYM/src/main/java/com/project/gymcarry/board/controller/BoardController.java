@@ -1,17 +1,13 @@
 package com.project.gymcarry.board.controller;
 
 import com.project.gymcarry.board.Pagination;
-import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.service.BoardService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.inject.Inject;
-import java.util.List;
 
 @Controller
 public class BoardController {
@@ -36,7 +32,7 @@ public class BoardController {
 //        List<BoardDto> list = boardService.selectBoardList(boardDto);
 //        model.addAttribute("boardList",list);
 
-        //전체 게시글 개수
+        //전체 게시글 개수 & 리스트 출력
         int listCnt = boardService.getBoardListCnt();
 
         // Pagination 객체 생성

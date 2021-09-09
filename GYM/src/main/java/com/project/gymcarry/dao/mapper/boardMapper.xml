@@ -20,7 +20,9 @@
     <select id="getBoardList" resultType="com.project.gymcarry.board.BoardDto">
         select *
         from board
+        order by postidx desc, postdate desc
         LIMIT #{startList}, #{listSize}
+
     </select>
 
     <!-- 페이징 : 전체 글의 개수 읽어오기 -->

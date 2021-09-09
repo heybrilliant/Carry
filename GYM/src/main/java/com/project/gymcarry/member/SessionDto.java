@@ -74,7 +74,6 @@ public class SessionDto {
 
 
 	public SessionDto(int memidx, String memname, String memnick, int cridx, String crname, String crnick) {
-		super();
 		this.memidx = memidx;
 		this.memname = memname;
 		this.memnick = memnick;
