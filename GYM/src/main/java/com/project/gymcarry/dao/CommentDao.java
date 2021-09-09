@@ -11,7 +11,9 @@ public interface CommentDao {
     List<CommentDto> selectCommList(int postidx);
     
     // 게시판 글쓰기
-    Integer insertBoardWrite(Map<String, String> map);
+    Integer insertCommList(Map<String, Object> map);
+    
+    //Integer insertCommList(CommentDto comment);
     
     
 }

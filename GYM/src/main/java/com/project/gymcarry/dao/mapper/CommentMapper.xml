@@ -7,11 +7,11 @@
 
 	<!-- 댓글조회 -->
 	<select id="selectCommList" resultType="com.project.gymcarry.board.comment.CommentDto">
-		select * from boardcomment where postidx = #{postidx};
+		select * from boardcomment where postidx = #{postidx} ORDER BY commentidx DESC;
 	</select>
 	
 	<!-- 댓글 작성 -->
-	<insert id="insertComment">
+	<insert id="insertCommList">
 		insert into boardcomment (postidx,commentnick, commentcontent)
 		values ( #{postidx}, #{commentnick}, #{commentcontent});
 	</insert>

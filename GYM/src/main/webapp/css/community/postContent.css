@@ -30,7 +30,7 @@ body {
   margin-top: 1px;
   padding-bottom: 15px;
   position: relative;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #777;
 }
 
 .arrow_img {
@@ -127,6 +127,9 @@ body {
   right: 0;
   bottom: 50%;
 }
+.content_right.off {
+	display:none;
+}
 .content_right > ul {
   display: flex;
 }
@@ -161,7 +164,7 @@ body {
   text-decoration: none;
   display: block;
   position: relative;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid #777;
 }
 .post_btn {
 	display:flex;
@@ -189,7 +192,7 @@ body {
   text-decoration: none;
   display: block;
   position: relative;
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid #bbb;
 }
 
 .comment_wrap .profile {
@@ -235,7 +238,7 @@ body {
   position:relative;
 }
 
-.search_wrap .search_box .input {
+.search_wrap .search_box .comm_input {
   width: 100%;
   height: 100%;
   padding: 10px 60px 10px 20px;
@@ -265,7 +268,7 @@ body {
   background: #ffda70;
 }
 
-.search_wrap.search_wrap_6 .search_box .input {
+.search_wrap.search_wrap_6 .search_box .comm_input {
   border-radius: 30px;
   border: 1px solid #ddd;
 }
@@ -284,4 +287,10 @@ body {
 
 input:focus {
 	outline:none;
+}
+
+.non_comm {
+	padding:20px 0;
+	text-align:center;
+	font-size:14px;
 }
