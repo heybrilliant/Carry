@@ -21,13 +21,13 @@ public class CarryLoginController {
 	
 	@GetMapping("/carry/login")
 	public String carryLoginForm() {
-		return "member/carryLoginForm";
+		return "carry/carryLoginForm";
 	}
 	
 	// 로그인 세션 저장
 	@PostMapping("/carry/carryLogin")
 	public String carryLogin(
-			@RequestParam("crid") String id, 
+			@RequestParam("cremail") String id, 
 			@RequestParam("crpw") String pw,
 			HttpServletRequest request,
 			HttpSession session,
