@@ -1,7 +1,5 @@
 package com.project.gymcarry.chatting.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -37,6 +35,7 @@ public class UserChatController {
 			int chatidx = matchingChatRoomService.getByChatIdx(chatDto.getChatidx());
 			if (chatidx == 1) {
 				if (chatDto.getOutcount() == 1) {
+					// 나간방 다시들어가기
 					matchingChatRoomService.getInChatRoom(chatDto.getChatidx());
 				}
 				redirectAttributes.addAttribute("chatidx", chatDto.getChatidx());
