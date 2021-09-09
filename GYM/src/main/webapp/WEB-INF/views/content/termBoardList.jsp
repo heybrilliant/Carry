@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>GymCarry : 약관 및 정책</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/term&notice/term&notice.css">
+<link rel="stylesheet" href="/gym/css/admin/content.css">
 </head>
 <body>
 

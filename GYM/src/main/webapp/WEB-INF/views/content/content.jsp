@@ -9,7 +9,7 @@
 <title>GymCarry : 약관 및 정책</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/term&notice/term&notice.css">
+<link rel="stylesheet" href="/gym/css/admin/content.css">
 </head>
 <body>
 
