@@ -8,6 +8,7 @@ public class SessionDto {
 	private String crname;
 	private String crnick;
 
+
 	public SessionDto() {
 	}
 
@@ -89,6 +90,6 @@ public class SessionDto {
 				+ ", crname=" + crname + ", crnick=" + crnick + "]";
 	}
 
-	
+
 
 }
