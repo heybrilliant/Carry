@@ -6,20 +6,20 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.project.gymcarry.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.gymcarry.board.service.CommunityService;
 
 @Controller
 @RequestMapping
 public class CommWriteController {
-	
+
 	@Autowired
-	private CommunityService communityService;
+	private BoardService boardService;
 	
 	@GetMapping("community/write")
 	public String writeView() {
@@ -38,7 +38,7 @@ public class CommWriteController {
 		map.put("boardcategory", request.getParameter("boardcategory"));
 		
 		System.out.println(map.toString());
-		communityService.getBoardWrite(map);
+		boardService.getBoardWrite(map);
 		
 		
 		return "redirect:/community/boardList";

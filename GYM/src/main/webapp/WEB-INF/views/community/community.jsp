@@ -43,7 +43,7 @@
                     <a class="menulink3" href="#">질문답변</a>
                 </li>
 
-                <a class="board_write" href="<c:url value="/community/write"/>">
+                <a class="board_write" onclick="test()">
                     <img class="write_icon" img src="<c:url value="/images/icon/edit.png"/>" alt="img"></a>
 
                 <!-- 정렬을 위해 왼쪽에 버튼 숨겨놓은 것 -->
@@ -69,7 +69,7 @@
                             <a href="<c:url value="/community/postContent?postidx=${list.postidx}"/>">${list.postname}</a>
                         </h2>
                         <div class="board_post">
-                            ${list.postcontent}
+                                ${list.postcontent}
                         </div>
                             <%--날짜, 조회수--%>
                         <div class="board_bottom">
@@ -108,7 +108,6 @@
         <!-- /게시판 출력 영역 -->
 
 
-
         <%--pagination--%>
         <nav aria-label="Page navigation example">
             <ul class="pagination pagination-sm justify-content-center">
@@ -134,9 +133,9 @@
                 <c:if test="${pagination.next}">
                     <li class="page-item">
                         <a class="page-link" href="#"
-                                             onclick="fn_next('${pagination.range}','${pagination.range}','${pagination.rangeSize}')">
-                        <span>&raquo;</span>
-                    </a>
+                           onclick="fn_next('${pagination.range}','${pagination.range}','${pagination.rangeSize}')">
+                            <span>&raquo;</span>
+                        </a>
                     </li>
                 </c:if>
             </ul>
@@ -150,24 +149,34 @@
 <!-- Contents end -->
 
 
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script>
 
+    // 글쓰기 로그인 검사
+    function test() {
+
+        if (${loginSession == null}) {
+            alert('로그인이 필요합니다.');
+            $(location).attr('href', '<c:url value="/member/login"/>');
+        } else {
+            $(location).attr('href', '<c:url value="/community/write"/>');
+        }
+    };
+
+
     // 게시판 Nav 출력
-    $("#comuni").click(function(){
+    $("#comuni").click(function () {
         $.ajax({
-            url : "<c:url value='/community/communication'/>",
-            type : "get",
-            dataType : "json",
-            success : function(e){
+            url: "<c:url value='/community/communication'/>",
+            type: "get",
+            dataType: "json",
+            success: function (e) {
                 console.log(e);
-                $.each(e, function(index, key){
+                $.each(e, function (index, key) {
                     $('.card .nickname').html(key.postnick);
                 });
             }
         });
     });
-
 
 
     // 페이징 처리
@@ -202,6 +211,17 @@
         url = url + "&range=" + range;
 
         location.href = url;
+    }
+
+    // 조회수
+    function fn_contentView(bid){
+
+        var url = "${pageContext.request.contextPath}/community/";
+
+        url = url + "?bid="+bid;
+
+        location.href = url;
+
     }
 
 

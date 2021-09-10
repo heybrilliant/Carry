@@ -114,6 +114,8 @@
 </script>	
 	
 <script>
+
+
 	// 댓글 등록
 	$(".btn_input .btn").on("click", function(){
     	var memberidx; // 회원 번호
