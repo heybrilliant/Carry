@@ -11,12 +11,18 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+@Controller
+@RequestMapping
 public class SmartEditorController {
 
 	// 단일 파일 업로드
-	@RequestMapping("/editor/photoUpload")
+	@RequestMapping("editor/photoUpload")
 	public String photoUpload(HttpServletRequest request, PhotoVo vo) {
 		
 		String callback = vo.getCallback();
@@ -43,19 +49,25 @@ public class SmartEditorController {
 				// ====== 서버에 파일 쓰기 =======
 				vo.getFiledata().transferTo(new File(path+realname));
 				file_result += "&bNewLine=true&sFileName="+original_name+"&sFileURL=/gym/resource/photo_upload/"+realname;
+				System.out.println("try if");
 			} else {
 				file_result += "&errstr=error";
+				System.out.println("try else");
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
+			System.out.println("catch error");
 		}
+		
+		System.out.println( callback + "?callback_func="+callback_func+file_result);
 		
 		return "redirect:" + callback + "?callback_func="+callback_func+file_result;
 	}
 	
 	
 	// 다중 파일 업로드
-	@RequestMapping("/editor/multiplePhotoUpload")
+	@RequestMapping("editor/multiplePhotoUpload")
+	@ResponseBody
 	public void multiplePhotoUpload(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			// 파일정보
