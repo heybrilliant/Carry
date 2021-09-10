@@ -263,8 +263,6 @@ target/m2e-wtp/web-resources/META-INF/maven/com.project/gymcarry/pom.properties
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,java
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,java
 
-mybatis-config.xml
-log4j.xml
 
 
 ### Eclipse ###
@@ -342,9 +340,6 @@ local.properties
 ### Java ###
 # Compiled class file
 *.class
-
-# Log file
-*.log
 
 # BlueJ files
 *.ctxt
