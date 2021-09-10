@@ -2,14 +2,12 @@ package com.project.gymcarry.member.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,12 +16,10 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.dao.MemberDao;
-import com.project.gymcarry.member.MemberDto;
 
 @Service
 public class MailSenderService {
 
-	@Autowired
 	private JavaMailSender sender;
 	@Autowired
 	private SqlSessionTemplate template;
