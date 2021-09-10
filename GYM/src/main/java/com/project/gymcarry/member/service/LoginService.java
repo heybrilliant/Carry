@@ -1,10 +1,5 @@
 package com.project.gymcarry.member.service;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +18,10 @@ public class LoginService {
 	
 	public SessionDto memberLogin(String id, String pw) {
 		dao = template.getMapper(MemberDao.class);
+		System.out.println("로그인 서비스 : "+id);
+		System.out.println("로그인 서비스 : "+pw);
+		System.out.println("로그인 서비스 : "+dao.memberLogin(id, pw));
+
 		return dao.memberLogin(id, pw);
 	}
 	
@@ -31,9 +30,13 @@ public class LoginService {
 		return dao.carryLogin(id, pw);
 	}
 	
-	public MemberDto Memberjoinkeycheck(String id, String pw, String joinkey_status) {
+	//로그인 검사 
+	public MemberDto memberjoinkeycheck(String id, String pw) {
 		dao = template.getMapper(MemberDao.class);
-		return dao.Memberjoinkeycheck(id, pw, joinkey_status);
+		System.out.println("LoginService 내부 조인키 : " + id);
+		System.out.println("LoginService 내부 조인키 : " + pw);
+		System.out.println("LoginService 내부 조인키 : " + dao.memberjoinkeycheck(id, pw));
+		return dao.memberjoinkeycheck(id, pw);
 	}
 	
 }

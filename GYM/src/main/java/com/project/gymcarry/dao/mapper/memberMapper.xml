@@ -7,16 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 멤버로그인 -->
 	<!-- 로그인값은 멤버 캐리 상관없이 SessionDto로 받아오기 -->
-	<select id="memberLogin"
+	<select id="memberLogin" parameterType="String"
 		resultType="com.project.gymcarry.member.SessionDto">
 		select * from member where mememail=#{param1} and
-		mempw=#{param2} 
+		mempw=#{param2}
 	</select>
 	
 	<!-- 로그인시 joinkey_status != 1인 경우(이메일 인증되지 않은 계정) 로그인 제한 -->
-	<select id="Memberjoinkeycheck" resultType="com.project.gymcarry.member.MemberDto">
-		select * from member where mememail = #{param1} and mempw = #{param2} and
-		joinkey_status = 1
+	<select id="memberjoinkeycheck" parameterType="String" resultType="com.project.gymcarry.member.MemberDto">
+		select * from member where mememail = #{param1} and mempw = #{param2}
 	</select>
 
 	<!-- 멤버회원가입 -->
@@ -73,9 +72,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- joinkey_status = 0 (미인증상태) / 1 (인증상태) -->
 	<update id="alterjoinkey" parameterType="Map">
 		update member set
-		joinkey_status = "1" where mememail = #{param1} and joinkey =
+		joinkey_status = '1' where mememail = #{param1} and joinkey =
 		#{param2}
 	</update>
+	
 
 	
 </mapper>
