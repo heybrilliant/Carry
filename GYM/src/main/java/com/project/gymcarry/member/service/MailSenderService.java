@@ -117,7 +117,7 @@ public class MailSenderService {
 			html += "<div style='font-size: 130%'>";
 			html += "하단의 인증 버튼 클릭시 정상적으로 회원가입이 완료됩니다.</div><br/>";
 			html += "<form method='post' " + "action='http://localhost:8080/gym/carry/join/cr_alterjoinkey'>";
-			html += "<input type='hidden' name='mememail' value='" + cremail + "'>";
+			html += "<input type='hidden' name='cremail' value='" + cremail + "'>";
 			html += "<input type='hidden' name='joinkey' value='" + joinkey + "'>";
 			html += "<input type='submit' value='인증' style= 'width:70px; height:25px; border:0px; background-color: #4380ce; color: #fff; font-weight: bold'></form><br/></div>";
 

@@ -107,6 +107,7 @@ public class CarryLoginController {
 	public String carryLogOut(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.invalidate();
+		System.out.println("로그아웃");
 		return "redirect:/index";
 	}
 	
