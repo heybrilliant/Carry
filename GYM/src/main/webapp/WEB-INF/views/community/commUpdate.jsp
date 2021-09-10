@@ -37,7 +37,7 @@
                     <div class="content">
                         <span class="left">내용</span>
                         <span class="editor">
-                            <textarea class="form-control" name="postcontent" id="postcontent" value="${update.postcontent}"></textarea>
+                            <textarea class="form-control" name="postcontent" id="postcontent"></textarea>
                         </span>
                     </div>
                 </div>

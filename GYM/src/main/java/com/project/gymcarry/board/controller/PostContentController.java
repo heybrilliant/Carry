@@ -54,7 +54,7 @@ public class PostContentController {
 
 		communityService.getDeleteBoard(postidx);
 
-		return "redirect:/community/boardlist";
+		return "redirect:/community/boardList";
 	}
 
 	// 댓글 등록

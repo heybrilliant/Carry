@@ -18,7 +18,7 @@
 
       <!-- Nav -->
       <div class="post_back">
-        <a class="post_back_link" href="<c:url value="/community/boardlist"/>">
+        <a class="post_back_link" href="<c:url value="/community/boardList"/>">
           <img class="arrow_img" src="/gym/images/icon/arrow.png"> 글 목록
         </a>
         <div class="content_right off">

@@ -41,7 +41,7 @@ public class CommWriteController {
 		communityService.getBoardWrite(map);
 		
 		
-		return "redirect:/community/boardlist";
+		return "redirect:/community/boardList";
 	}
 	
 

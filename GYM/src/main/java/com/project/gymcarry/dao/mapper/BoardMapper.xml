@@ -5,15 +5,38 @@
 
 <mapper namespace="com.project.gymcarry.dao.BoardDao">
 
-	<!-- List All -->
-	<select id="selectBoardList" resultType="com.project.gymcarry.board.BoardDto">
-		<![CDATA[
-	select *
-	from board
-	where postidx > 0
-	order by postidx desc, postdate desc
-		]]>
-	</select>
+    
+    <!-- 게시판 소통 카테고리 출력  -->
+    <select id="getListCommuni" resultType="com.project.gymcarry.board.BoardDto">
+        select *
+        from board
+        where boardcategory = '소통'
+    </select>
+
+    <!-- 페이징  -->
+    <select id="getBoardList" resultType="com.project.gymcarry.board.BoardDto">
+        select *
+        from board
+        order by postidx desc, postdate desc
+        LIMIT #{startList}, #{listSize}
+
+    </select>
+
+    <!-- 페이징 : 전체 글의 개수 읽어오기  -->
+    <select id="getBoardListCnt" resultType="int">
+
+        select count(*) as listCnt
+        from board
+    </select>
+
+
+    <!-- 조회수  -->
+    <update id="updateViewCnt" parameterType="com.project.gymcarry.board.BoardDto">
+        UPDATE board SET
+            postview = postview + 1
+        WHERE
+            postidx = #{postidx}
+    </update>
 	
 	
 	<!-- 글쓰기 -->
