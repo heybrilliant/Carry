@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import com.project.gymcarry.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,17 +13,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.board.BoardWriteDto;
-import com.project.gymcarry.board.service.CommunityService;
 
 @Controller
 @RequestMapping
 public class CommUpdateController {
-	
+
 	@Autowired
-	private CommunityService communityService;
+	private BoardService boardService;
 	
 	// 게시물 수정 페이지로 이동
 	@GetMapping("community/update")
@@ -32,7 +30,7 @@ public class CommUpdateController {
 			Model model
 			) throws Exception {
 		System.out.println(postidx);
-		BoardWriteDto update = communityService.getBoardUpdate(postidx);
+		BoardWriteDto update = boardService.getBoardUpdate(postidx);
 		model.addAttribute("update", update);
 		
 		return "community/commUpdate";
@@ -43,7 +41,7 @@ public class CommUpdateController {
 	public String BoardUpdate(
 			@RequestParam("postidx") int postidx,
 			HttpServletRequest request
-			) {
+			) throws Exception {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("postname", request.getParameter("postname"));
@@ -53,7 +51,7 @@ public class CommUpdateController {
 		
 		
 		System.out.println(map.toString());
-		communityService.getBoardContent(map);
+		boardService.getBoardContent(map);
 		
 		return "redirect:/community/postContent?postidx=" + postidx;
 		

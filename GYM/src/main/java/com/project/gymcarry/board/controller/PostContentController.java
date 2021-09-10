@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.project.gymcarry.board.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,21 +21,21 @@ import com.google.gson.GsonBuilder;
 import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.comment.CommentDto;
 import com.project.gymcarry.board.comment.service.CommentService;
-import com.project.gymcarry.board.service.CommunityService;
 
 @Controller
 @RequestMapping
 public class PostContentController {
 
 	@Autowired
-	private CommunityService communityService;
+	private BoardService boardService;
+
 	@Autowired
 	private CommentService commentService;
 
 	// 게시판 상세 페이지
 	@GetMapping("community/postContent")
-	public String boardDetail(@RequestParam("postidx") int postidx, Model model) {
-		BoardDto boardDetail = communityService.getBoardDetail(postidx);
+	public String boardDetail(@RequestParam("postidx") int postidx, Model model) throws Exception {
+		BoardDto boardDetail = boardService.getBoardDetail(postidx);
 		model.addAttribute("boardDetail", boardDetail);
 
 		
@@ -50,9 +51,9 @@ public class PostContentController {
 
 	// 게시물 삭제
 	@GetMapping("community/delete")
-	public String deleteBoard(@RequestParam("postidx") int postidx) {
+	public String deleteBoard(@RequestParam("postidx") int postidx) throws Exception {
 
-		communityService.getDeleteBoard(postidx);
+		boardService.getDeleteBoard(postidx);
 
 		return "redirect:/community/boardList";
 	}
