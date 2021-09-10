@@ -17,7 +17,7 @@
 
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/gym/fonts/icomoon/style.css">
+<!-- <link rel="stylesheet" href="/gym/fonts/icomoon/style.css"> -->
 <link rel="stylesheet" href="/gym/css/admin/owl.carousel.min.css">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="/gym/css/admin/bootstrap.min.css">

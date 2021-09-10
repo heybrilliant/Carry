@@ -87,6 +87,9 @@ public class AdminPlaceController {
 				Model model
 				) throws IOException {
 			
+			System.out.println(placedto);
+			
+			
 			adminService.updatePlace(placedto);
 			System.out.println("플레이스 수정 완료");
 			

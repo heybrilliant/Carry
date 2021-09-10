@@ -5,17 +5,15 @@
 <title>플레이스 등록 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 
 <script src="/gym/js/scripts.js"></script>
 <script src="/gym/js/datatables-simple-demo.js"></script>
-<script src="/gym/assets/demo/chart-area-demo.js"></script>
-<script src="/gym/assets/demo/chart-bar-demo.js"></script>
         
 <%@ include file="/WEB-INF/views/frame/metaheader_admin.jsp"%>
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
 <link rel="stylesheet" href="/gym/css/admin/placeRegister.css">
+
 
     <body class="sb-nav-fixed">
 
@@ -112,6 +110,7 @@
                             <div class="register_btn">
                                 <input type="button" class="login_btn btn btn-primary" onClick="fn_registerPlace('${result.code}')" value="등록">
                             </div>
+                       
                        
                         </form>
 

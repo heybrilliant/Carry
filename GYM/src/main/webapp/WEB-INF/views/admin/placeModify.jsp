@@ -47,32 +47,30 @@
                         <div class="place_registerForm">
                           
                           	<input type="hidden" value="${original.placeidx}" name="placeidx"/>
-                          	<input type="hidden" value="${original.placenum}" name="placenum"/>
                          
                                  
                          <div class = "placenum">
                                 <h4>카테고리</h4>
-                                <c:set var="num" value="${original.placenum}" />
-                                <select class="placenum_select" name="placenum">
-
+                                
+                           <select class="placenum_select" name="placenum">
+								<option value="1" ${original.placenum == 1 ? 'selected' : ''}>헬스</option>
+								<option value="2" ${original.placenum == 2 ? 'selected' : ''}>필라테스</option>
+								<option value="3" ${original.placenum == 3 ? 'selected' : ''}>요가</option>
 								
-								<c:choose>
-								<c:when test="${num == 1}">
+								<%--	<c:if test="${original.placenum == 1}">
 									<option value="1" selected hidden>헬스</option>
-								</c:when>
-								<c:when test="${num == 2}">
+								</c:if>
+								
+								<c:if test="${original.placenum == 2}">
 									<option value="2" selected hidden>필라테스</option>
-								</c:when>
-								<c:when test="${num == 3}">
+								</c:if>
+								
+								<c:if test="${original.placenum == 3}">
 									<option value="3" selected hidden>요가</option>
-								</c:when>
-								</c:choose>
-
-								<%-- <option value="" selected disabled hidden>${original.placenum}</option> --%>
-                                    <option value="1">헬스</option>
-                                    <option value="2">필라테스</option>
-                                    <option value="3">요가</option>
+								</c:if> 		--%>
+                                 	
                                 </select>
+                        
                             </div>
                           
                             <div class="placename">
@@ -120,7 +118,7 @@
                             <div class="placeintro">
                                 <h4>소개</h4>
                                 <div class="form-floating mb-3">
-                                    <textarea class="form-control" rows="5" cols="40" placeholder="placeintro" name="placeintro">${original.placeintro}</textarea>
+                                    <textarea class="form-control" rows="100" cols="100" placeholder="placeintro" name="placeintro">${original.placeintro}</textarea>
                                     <label for="placeintro">소개를 입력해주세요.</label>
                                 </div>
                             </div>
