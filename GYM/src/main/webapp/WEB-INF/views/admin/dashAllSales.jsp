@@ -96,28 +96,29 @@
         <script src="/gym/js/assets/demo/chart-pie-demo.js"></script>
         
 <script>
-	$('#select_month').change(function(){
-		var sales = [];
-		var select = $('#select_month').val();
-		console.log(select);
-			$.ajax({
-				type : 'get',
-				url : '<c:url value="/admin/allSaleMan"/>',
-				dataType : 'json',
-				data : {
-					month : select
-				},
-				success : function(data){
-					console.log(data);
-				$.each(data, function(index, item){
-					sales.push(item.payprice);
-				}); 
-				$('#sb-nav').html();
-				getPie(sales)
-				console.log(sales)
-				}
-			});
-	});
+$('#select_month').change(function(){
+    var total = [];
+    var crname = [];
+    var month = [];
+    var select = $('#select_month').val();
+       $.ajax({
+          type : 'get',
+          url : '<c:url value="/admin/allSaleMan"/>',
+          dataType : 'json',
+          data : {
+             month : select
+          },
+          success : function(data){
+          $.each(data, function(index, item){
+             total.push(item.total);
+             crname.push(item.crname);
+             month.push(item.month);
+          }); 
+          $('#sb-nav').html();
+          getPie(total, crname, month);
+          }
+       });
+ });
 	
 </script>          
         

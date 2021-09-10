@@ -3,18 +3,17 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Pie Chart Example
-function getPie(sales){
-	var ctx = document.getElementById("myPieChart");
-	var myPieChart = new Chart(ctx, {
-	  type: 'pie',
-	  data: {
-	    labels: ["Blue", "Red", "Yellow", "Green"],
-	    datasets: [{
-	      data: sales,
-	      backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
-	    }],
-	  },
-	});
+function getPie(total, crname, month){
+   var ctx = document.getElementById("myPieChart");
+   var myPieChart = new Chart(ctx, {
+     type: 'pie',
+     data: {
+       labels: crname,
+       datasets: [{
+         data: total,
+         backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+       }],
+     },
+   });
 };
-
 
