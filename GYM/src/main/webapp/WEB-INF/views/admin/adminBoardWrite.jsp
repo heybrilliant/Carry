@@ -35,7 +35,6 @@
 	<%@ include file="/WEB-INF/views/frame/sidebar_admin.jsp"%>
 
 
-
 	<!-- 컨텐츠 시작 -->
 	<div id="layoutSidenav_content">
 
@@ -120,7 +119,7 @@
 
 		<!-- footer -->
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
-		
+	
 	</div>
 		
 		<script src="/gym/js/adminjquery-3.3.1.min.js"></script>

@@ -137,6 +137,12 @@
 
                 </div>
                 
+                <!-- footer -->
+				<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		
+			</div>
+                
+                
                 <script>
                 
                 function fn_modifyPlace(code) {
@@ -160,8 +166,6 @@
                 
                 </script>
                 
-		<!-- footer -->
-		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
 		
 	</div>
 		

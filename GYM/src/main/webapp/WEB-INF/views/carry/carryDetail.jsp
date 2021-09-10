@@ -101,7 +101,7 @@
 					<div class="review_write_wrap" id="review">
 						<div class="carry_review_title">
 							<h2>캐리 후기</h2>
-							<input type="button" value="후기작성" id="write_review_btn">
+							<input type="button" value="후기작성" id="write_review_btn" onclick="loginChk();">
 						</div>
  
 						<!-- 리뷰 작성 입력폼 -->
@@ -227,6 +227,28 @@
 	</div>
 	</div>
 	<!-- Contents END -->
+
+
+
+	<script>
+
+	// 리뷰 등록 로그인 검사
+    function loginChk() {
+
+        if (${loginSession == null}) {
+            alert('로그인이 필요한 서비스입니다.');
+            $(location).attr('href', '<c:url value="/member/login"/>');
+        } else {
+        }
+    };
+	
+	</script>
+
+
+
+
+
+
 
 	<!-- kakao map api -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2791d61cfcb1bc044154adc4c6bc431"></script>

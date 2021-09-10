@@ -87,6 +87,13 @@
 				</div>
 
 			</div>
+			
+			
+			<!-- footer -->
+			<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		
+		</div>
+			
 
 			<script>
 			function communityDel(postidx) {

@@ -90,6 +90,11 @@
 			</div>
 		</div>
 
+		<!-- footer -->
+		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+
+	</div>
+
 		<script>
 			function delPlace(placeidx) {
 				if (confirm('해당 플레이스를 삭제 처리 하시겠습니까?')) {
@@ -100,10 +105,5 @@
 			}
 		</script>
 
-		<!-- footer -->
-		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
-		
-	</div>
-		
 </body>
 </html>
