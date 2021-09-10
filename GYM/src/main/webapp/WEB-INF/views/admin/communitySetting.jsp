@@ -89,13 +89,13 @@
 			</div>
 
 			<script>
-			function communityDel(postidx) {
-				if (confirm ('해당 게시글을 삭제 처리 하시겠습니까?')) {
-					location.href = "delete?postidx=" + postidx;
-					alert('삭제가 정상적으로 완료되었습니다.');
-					location.href = 'list';
-				} 
-			}
+				function communityDel(postidx) {
+					if (confirm('해당 게시글을 삭제 처리 하시겠습니까?')) {
+						location.href = "delete?postidx=" + postidx;
+						alert('삭제가 정상적으로 완료되었습니다.');
+						location.href = 'list';
+					}
+				}
 			</script>
 
 		<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
