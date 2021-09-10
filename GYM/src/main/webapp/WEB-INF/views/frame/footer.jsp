@@ -9,10 +9,10 @@
 	<div class="footer_nav">
 		<div class="container_fix">
 			<ul class="footer_menu">
-				<li><a href="#">이용약관</a></li>
-				<li><a href="#">개인정보보호정책</a></li>
+				<li><a href="<c:url value="/content?idx=1"/>">이용약관</a></li>
+				<li><a href="<c:url value="/content?idx=2"/>">개인정보보호정책</a></li>
+				<li><a href="<c:url value="/content/noticelist"/>">공지사항</a></li>
 				<li><a href="#">고객센터</a></li>
-				<li><a href="#">공지사항</a></li>
 			</ul>
 			<div class="sns"> 
 				<a href="#" class="insta"> <img src="<c:url value="/images/icon/insta.png"/>" alt="">
@@ -40,7 +40,9 @@
 			</div>
 			<div class="sevice_center">
 				<h3>고객센터</h3>
-				<p>02-1234-5678(평일 10:00 ~ 18:00)</p>
+				<p>02-1234-5678 (평일 10:00 ~ 18:00)</p>
+				<br><br>
+				<a href="<c:url value="/admin/login"/>" class="admin_page">관리자 페이지</a>
 			</div>
 		</div>
 	</div>

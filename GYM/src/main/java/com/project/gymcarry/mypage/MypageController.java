@@ -1,38 +1,61 @@
 package com.project.gymcarry.mypage;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.gymcarry.member.MemberDto;
-
+import com.project.gymcarry.carry.CarryListDto;
+import com.project.gymcarry.carry.CarryReviewDto;
+import com.project.gymcarry.member.SessionDto;
 
 @Controller
 @RequestMapping("/mypage/mypage")
 public class MypageController {
 
-	@RequestMapping(method = RequestMethod.GET)
-	public String regForm(HttpServletRequest request) throws Exception {
+	@Autowired
+	private MypageService mypService;
 
-		HttpSession session = request.getSession();
-		MemberDto memDto = (MemberDto) session.getAttribute("member");
+	@GetMapping
+	public String regFor(HttpSession session) {
 
-		System.out.println("세션 변수" + memDto.getMemname());
+		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
+		session.setAttribute("name", sdt.getMemname());
+		session.setAttribute("memidx", sdt.getMemidx());
 
-		session.setAttribute("name", memDto.getMemname());
-		session.setAttribute("idx", memDto.getMemidx());
-		System.out.println("마이페이지 진입");
+		System.out.println("세션 -> " + sdt + "-> 마이페이지 진입");
 
 		return "/mypage/mypage";
 	}
 
-	// Mypage 클릭시
-	// 세션 없을 때 -> 로그인 후 이용해주세요
-	// Member세션 -> 멤버 마이페이지 이동
-	// Carry세션 -> 캐리 마이페이지 이동
+	// 메모 등록
+	@PostMapping
+	public String addMembermemo(MypageDto mypdto) {
+
+		String arg0 = mypdto.getMemidx();
+		String arg1 = mypdto.getInfodate();
+		String arg2 = mypdto.getInfotype();
+
+		List<MypageDto> list1 = mypService.selectMemo(arg0, arg1, arg2);
+
+		if (list1.isEmpty()) {
+			mypService.memberMemo(mypdto);
+			System.out.println("인설트로 가쟈");
+		} else {
+			mypService.updateMemo(mypdto);
+			System.out.println("업데이트 가쟈");
+		}
+
+		return "mypage/mypage";
+	}
 
 }

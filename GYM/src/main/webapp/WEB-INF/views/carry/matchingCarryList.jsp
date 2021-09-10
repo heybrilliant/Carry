@@ -1,6 +1,9 @@
- 	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +41,7 @@
             <div class="place_badge" onclick="location.href='<c:url value="/place/detail?placeidx=${mlist.placeidx}"/>'">${mlist.placename}</div>
             <div class="carry_price">
               <span>수업 1회 이용권</span>
-              <h3>${mlist.proprice}원</h3>
+              <h3><fmt:formatNumber type="number" maxFractionDigits="3" value="${mlist.proprice}"/>원</h3>
             </div>
             <div class="nickname">
               <span>${mlist.crnick}</span>
@@ -60,7 +63,7 @@
                   	onclick="location.href='<c:url value="/chatting/chatInquire?cridx=${mlist.cridx}&memidx=${loginSession.memidx}"/>'">
                   </li>
                   <li>
-                    <input type="button" value="더 알아보기" class="details_btn" 
+                    <input type="button" value="더 알아보기" class="detail_btn" 
                     onclick="location.href='<c:url value = "/carry/detail?cridx=${mlist.cridx}"/>'">
                   </li>
                 </ul>

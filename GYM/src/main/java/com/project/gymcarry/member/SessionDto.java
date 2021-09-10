@@ -7,7 +7,6 @@ public class SessionDto {
 	private int cridx;
 	private String crname;
 	private String crnick;
-	
 
 	public SessionDto() {
 	}
