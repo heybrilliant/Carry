@@ -97,9 +97,10 @@
         
 <script>
 	$('#select_month').change(function(){
-		var sales = [];
+		var total = [];
+		var crname = [];
+		var month = [];
 		var select = $('#select_month').val();
-		console.log(select);
 			$.ajax({
 				type : 'get',
 				url : '<c:url value="/admin/allSaleMan"/>',
@@ -110,11 +111,12 @@
 				success : function(data){
 					console.log(data);
 				$.each(data, function(index, item){
-					sales.push(item.payprice);
+					total.push(item.total);
+					crname.push(item.crname);
+					month.push(item.month);
 				}); 
 				$('#sb-nav').html();
-				getPie(sales)
-				console.log(sales)
+				getPie(total, crname, month);
 				}
 			});
 	});
