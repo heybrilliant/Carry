@@ -85,7 +85,6 @@
                 {location : '<div class="map_in_place_name">${placeList.placename}</div>' , latlng : new naver.maps.LatLng(${placeList.latitude} , ${placeList.longitude})}  // 중심좌표
         );
         </c:forEach>
-
         for (var i = 0; i < areaArr.length; i++) {
             // 마커 생성
             var marker = new naver.maps.Marker({
@@ -102,9 +101,7 @@
                     anchor: new naver.maps.Point(25, 26)
                 },
                 draggable: false
-
             });
-
            // 마커 표시 할 인포윈도우 생성
             var infoWindow = new naver.maps.InfoWindow({
                 backgroundColor : 'none',   // 기분 말풍선 색상
@@ -112,10 +109,8 @@
                 borderWidth : 0,            // 기본 말풍선 창 테두리 두께
                 content: areaArr[i].location
             });
-
             // markers.push(marker); // 생성한 마커를 배열에 담는다.
             // infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
-
             naver.maps.Event.addListener(marker, 'mouseover', makeOverListener(map, marker, infoWindow));
             naver.maps.Event.addListener(marker, 'mouseout', makeOutListener(infoWindow));
             naver.maps.Event.addListener(marker, 'click', makeClickListener(marker, i));
@@ -126,7 +121,6 @@
                 infoWindow.open(map, marker);
             };
         }
-
         // 인포윈도우를 닫는 클로저를 만드는 함수입니다
         function makeOutListener(infoWindow) {
             return function() {
@@ -139,16 +133,11 @@
                 var idx = i + 1;
                 var window_y = window.scrollY;
                 var content_top = $('.place_list .place_content:nth-child(' + idx + ')').offset().top
-
                 window.scrollTo({
                     top: content_top - 200,
                     behavior: 'smooth'
                 });
-
-
                 $('.place_list .place_content:nth-child(' + idx + ')').addClass('on');
-
-
                 $(window).scroll(function(){
                     var window_top = $(window).scrollTop() + 500;
                     if(window_top > content_top) {
@@ -160,8 +149,6 @@
             }
         }
     }
-
-
 </script>
 
 
@@ -169,7 +156,6 @@
 
 <!-- 검색 자동완성 -->
 <script>
-
 $(document).ready(function() {
 	
 	$("#search").autocomplete({
@@ -227,8 +213,6 @@ $(document).ready(function() {
         .appendTo(ul);
     };   
 });
-
-
 </script>
 
 

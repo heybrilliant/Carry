@@ -4,6 +4,7 @@ public class CarryListDto {
 
 	private int cridx;
 	private String crnick;
+	private int placeidx;
 	private String placename;
 	private int proprice;
 	private String crcerti1;
@@ -17,10 +18,11 @@ public class CarryListDto {
 	public CarryListDto() {}
 
 
-	public CarryListDto(int cridx, String crnick, String placename, int proprice, String crcerti1, String crcerti2,
-			String crcerti3, String crcerti4, String crcerti5) {
+	public CarryListDto(int cridx, String crnick, int placeidx, String placename, int proprice, String crcerti1,
+			String crcerti2, String crcerti3, String crcerti4, String crcerti5) {
 		this.cridx = cridx;
 		this.crnick = crnick;
+		this.placeidx = placeidx;
 		this.placename = placename;
 		this.proprice = proprice;
 		this.crcerti1 = crcerti1;
@@ -48,6 +50,16 @@ public class CarryListDto {
 
 	public void setCrnick(String crnick) {
 		this.crnick = crnick;
+	}
+
+
+	public int getPlaceidx() {
+		return placeidx;
+	}
+
+
+	public void setPlaceidx(int placeidx) {
+		this.placeidx = placeidx;
 	}
 
 
@@ -123,9 +135,9 @@ public class CarryListDto {
 
 	@Override
 	public String toString() {
-		return "CarryListDto [cridx=" + cridx + ", crnick=" + crnick + ", placename=" + placename + ", proprice="
-				+ proprice + ", crcerti1=" + crcerti1 + ", crcerti2=" + crcerti2 + ", crcerti3=" + crcerti3
-				+ ", crcerti4=" + crcerti4 + ", crcerti5=" + crcerti5 + "]";
+		return "CarryListDto [cridx=" + cridx + ", crnick=" + crnick + ", placeidx=" + placeidx + ", placename="
+				+ placename + ", proprice=" + proprice + ", crcerti1=" + crcerti1 + ", crcerti2=" + crcerti2
+				+ ", crcerti3=" + crcerti3 + ", crcerti4=" + crcerti4 + ", crcerti5=" + crcerti5 + "]";
 	}
 
 

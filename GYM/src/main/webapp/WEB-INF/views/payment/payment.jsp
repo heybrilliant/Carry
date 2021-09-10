@@ -59,10 +59,10 @@
 					<input type ="hidden" name="paynum" value="${paynum}">
 					<h3>대면 / 비대면 여부</h3>
 					<div class="faceornot_selectbox">
-						<input type="radio" name="fonchoice" value="1" id="rd1" checked="checked">
+						<input type="radio" name="faceornot" value="1" id="rd1" checked="checked">
 						<label for="rd1" class="label">대면</label>
 						<br>
-						<input type="radio" name="fonchoice" value="2" id="rd2" checked="checked">
+						<input type="radio" name="faceornot" value="2" id="rd2" checked="checked">
 						<label for="rd2" class="label">비대면</label>
 					</div>
 					

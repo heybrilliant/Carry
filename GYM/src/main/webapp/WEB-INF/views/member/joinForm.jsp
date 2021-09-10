@@ -1,80 +1,120 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+		 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>regi.jsp</title>
-<%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<style type="text/css">
-.center {
-	width: 60%;
-	margin: 200px auto;
-	border: 3px solid #8AC007;
-	padding: 10px;
-}
-</style>
-
+	<title>멤버 회원가입</title>
+	<%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+	<link rel="stylesheet" href="/gym/css/joinlogin/regform.css">
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
-	<h1>회원등록</h1>
-	<p>환영합니다</p>
 
-	<div class="center">
+<!-- header -->
+<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
+<!-- 은경 -->
+
+<!-- Contents -->
+<div class="wrap wd668">
+	<div class="container">
 		<form method="post">
+			<div class="form_txtInput">
+				<h1 class="sub_tit_txt">회원 회원가입</h1>
+				<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p>
 
-			<table border="1">	
 
-				<tr>
-					<td>이메일</td>
-					<td><input type="text" name="mememail" size="20"></td>
-				</tr>
+				<div class="join_form">
+					<div class="profile_form">
+						<img src="/gym/images/icon/profile.png"><br> <a
+							href="<input type="  name="memphoto">">프로필 사진 등록</a>
+					</div>
+					<table>
+						<colgroup>
+							<col width="30%" />
+							<col width="auto" />
+						</colgroup>
+						<tbody>
+						<tr>
+							<th><span>이름</span></th>
+							<td><input type="text" name="memname" placeholder="" /></td>
+						</tr>
 
-				<tr>
-					<td>패스워드</td>
-					<td><input type="text" name="mempw" size="20"></td>
-				</tr>
+						<tr class="email">
+							<th><span>이메일</span></th>
+							<td><input type="text" class="email" name="mememail"
+									   id="mememail" placeholder="id@email.com 형식으로 입력해주세요.">
+								<!-- <a href="javascript:;" class="btn_confirm">인증메일 발송</a> -->
+							</td>
+						</tr>
+						<tr>
+							<td><div class="checkfont" id="emailcheck" sytle=float:left></div></td>
+						</tr>
+						<tr>
+							<th><span>비밀번호</span></th>
+							<td><input type="password" name="mempw"
+									   placeholder="비밀번호를 입력해주세요."></td>
+						</tr>
+						<tr>
+							<th><span>비밀번호 확인</span></th>
+							<td><input type="password" placeholder="비밀번호를 확인하세요"></td>
+						</tr>
 
-				<tr>
-					<td>이름</td>
-					<td><input type="text" name="memname" size="20"></td>
-				</tr>
+						<tr>
+							<th><span>닉네임</span></th>
+							<td><input type="text" name="memnick" placeholder=""></td>
+						</tr>
 
-				<tr>
-					<td>닉네임</td>
-					<td><input type="text" name="memnick" size="20"></td>
-				</tr>
-				
-				<tr>
-					<td>핸드폰번호</td>
-					<td><input type="text" name="memphone" size="20"></td>
-				</tr>
-				<tr>
-					<td>생년월일</td>
-					<td><input type="text" name="membirth" size="20"></td>
-				</tr>
-				
-				<tr>
-					<td>성별</td>
-					<td><input type="text" name="memgender" size="20"></td>
-				</tr>
+						<tr>
+							<th><span>휴대폰 번호</span></th>
+							<td><input type="text" name="memphone"
+									   placeholder="11자리 형식으로 '-'없이 번호만 입력해주세요."></td>
+						</tr>
 
-				<tr>
-					<td colspan="2"><input type="submit" value="회원가입"></td>
-				</tr>
-			</table>
+						<tr>
+							<th><span>생년월일</span></th>
+							<td><input type="text" name="membirth"
+									   placeholder="8자리 형식의 숫자로만 입력해주세요.ex_19901010"></td>
+						</tr>
+						<tr>
+							<th><span>성별</span></th>
+							<td>
+								<div class="selectbox">
+									<input type="radio" name="memgender" value="남자"> 남자 <input
+										type="radio" name="memgender" value="여자"> 여자
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					<div class="exform_txt">
+						<span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
+					</div>
+				</div>
+				<!-- join_form E  -->
+
+
+
+				<div id="btnbox">
+					<div class="btn_wrap">
+						<!-- 회원가입 -> DB 저장 // 취소 -> 취소되었습니다! 알림 후 index 수정하기 -->
+						<input type="submit" id="joinsubmit" value="회원가입">
+					</div>
+					<div class="btn_wrap2">
+						<a href="<c:url value="/index"/>">취소</a>
+					</div>
+				</div>
+			</div>
+			<!-- form_txtInput E -->
 		</form>
-		<a href="<c:url value="/index"/>">Home</a>
 	</div>
+	<!-- content E-->
+	</form>
+</div>
+<!-- container E -->
+</div>
 
-	
-	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+
+<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>
 </html>
-
-
-
-
-

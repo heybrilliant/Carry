@@ -9,22 +9,22 @@ import com.project.gymcarry.member.SessionDto;
 
 @Service
 public class LoginService {
-	
+
 	@Autowired
 	private SqlSessionTemplate template;
-	
+
 	private MemberDao dao;
-	
+
 	public SessionDto memberLogin(String id, String pw) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.memberLogin(id, pw);
 	}
-	
+
 	public SessionDto carryLogin(String id, String pw) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.carryLogin(id, pw);
 	}
-	
-	
-	
+
+
+
 }

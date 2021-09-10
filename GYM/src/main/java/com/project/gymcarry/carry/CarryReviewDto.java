@@ -3,12 +3,12 @@ package com.project.gymcarry.carry;
 public class CarryReviewDto {
 	
 	private int reviewidx;
+	private String reviewdate;
 	private String reviewcontent;
 	private int cridx;
 	private int memidx;
 	private String memnick;
 	// @JsonFormat(pattern = "HH:mm a", timezone = "Asia/Seoul")
-	private String reviewdate;
 	
 	public CarryReviewDto() {}
 	

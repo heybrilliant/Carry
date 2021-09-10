@@ -22,25 +22,22 @@ public class LoginController {
 	public String loginForm() {
 		return "member/loginForm";
 	}
-	 
+
 	// 로그인 세션 저장
 	@PostMapping("/member/memberLogin")
 	public String login(
-			@RequestParam("mememail") String id, 
+			@RequestParam("mememail") String id,
 			@RequestParam("mempw") String pw,
 			HttpServletRequest request,
 			HttpSession session
-			) {
+	) {
 		SessionDto sessionDto = loginService.memberLogin(id, pw);
-		System.out.println(sessionDto.toString());
-		if (sessionDto != null) {
-			session.setAttribute("loginSession", sessionDto);
-			return "redirect:/index";
-		} else {
-			return "member/loginForm";
-		}
-	} 
-	
+		String chatNick = sessionDto.getMemnick();
+		session.setAttribute("chatSession", chatNick);
+		session.setAttribute("loginSession", sessionDto);
+		return "redirect:/index";
+	}
+
 	// 로그아웃 세션 삭제
 	@GetMapping("member/logOut")
 	public String memberLogOut(HttpServletRequest request) {

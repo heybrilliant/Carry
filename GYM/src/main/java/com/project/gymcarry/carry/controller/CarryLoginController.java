@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.member.service.LoginService;
 
@@ -21,20 +22,21 @@ public class CarryLoginController {
 	
 	@GetMapping("/carry/login")
 	public String carryLoginForm() {
-		return "member/carryLoginForm";
+		return "carry/carryLoginForm";
 	}
 	
 	// 로그인 세션 저장
 	@PostMapping("/carry/carryLogin")
 	public String carryLogin(
-			@RequestParam("crid") String id, 
+			@RequestParam("cremail") String id, 
 			@RequestParam("crpw") String pw,
 			HttpServletRequest request,
-			HttpSession session,
-			Model model) {
+			HttpSession session
+			) {
 		SessionDto sessionDto = loginService.carryLogin(id, pw);
 		if (sessionDto != null) {
 			session.setAttribute("loginSession", sessionDto);
+			System.out.println("캐리 세션 저장");
 			return "redirect:/index";
 		} else {
 			return "carry/loginForm";
