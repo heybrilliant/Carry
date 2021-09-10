@@ -332,3 +332,14 @@ nav {
   }
 }
 
+.board_post * {
+	font-size : 12px !important;
+	color: #333 !important;
+	background-color: transparent !important;
+	font-weight: 400 !important;
+	display: inline !important;
+	text-decoration: none !important;
+	font-style: normal !important;
+}
+
+
