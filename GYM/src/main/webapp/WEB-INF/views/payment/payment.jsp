@@ -39,7 +39,7 @@
 
 			<br> <br>
 			
-				<form action="<c:url value='/payment/complete'/>" id="paymentForm" name="paymentForm" method="post">
+				<form id="paymentForm" name="paymentForm" method="post">
 				<div>
 					<h3>결제 정보</h3>
 					<p>
@@ -81,8 +81,8 @@
 				</div>
 				
 				
-				<div class="pay_btn">
-					<input type="submit" value="결제하기" onclick="requestPay();">
+				<div class="btn_wrap">
+					<input type="button" value="결제하기" onclick="requestPay();" class="pay_btn">
 					<input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
 				</div>
 				</form>
@@ -107,6 +107,7 @@
 
 
 
+
 	<script>
 	
 		/* 이니시스API 호출  START*/
@@ -128,7 +129,7 @@
 				buyer_postcode : ""
 			}, function(rsp) { // callback
 				if (rsp.success) {
-					// 결제 성공 시 로직,
+					// 결제 성공 시 로직
             		$.ajax({
 					type : 'POST',
 					url : "<c:url value='/payment/complete'/>",

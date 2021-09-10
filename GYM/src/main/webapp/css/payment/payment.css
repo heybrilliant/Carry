@@ -106,12 +106,12 @@ input[type="text"]:hover {
 	padding-right: 10px;
 }
 
-.pay_btn {
+.btn_wrap {
 	margin-top: 80px;
 	text-align: center;
 }
 
-.pay_btn input[type="submit"] {
+.pay_btn {
 	background-position-x: 50%;
 	width: 120px;
 	height: 50px;
@@ -126,7 +126,7 @@ input[type="text"]:hover {
 	transition: 0.3s;
 }
 
-.pay_btn input[type="submit"]:hover {
+.pay_btn:hover {
 	border: 1px solid #CCC;
 	background-color: white;
 	padding: 7px 10px;
@@ -136,7 +136,7 @@ input[type="text"]:hover {
 }
 
 
-.pay_btn input:nth-child(2) {
+.btn_wrap input:nth-child(2) {
 	background-position-x: 50%;
 	width: 120px;
 	height: 50px;
@@ -151,7 +151,7 @@ input[type="text"]:hover {
 	transition: 0.3s;
 }
 
-.pay_btn input[type="button"]:hover {
+.btn_wrap input:nth-child(2):hover {
 	border: 1px solid #CCC;
 	padding: 7px 10px;
 	background-color: black;

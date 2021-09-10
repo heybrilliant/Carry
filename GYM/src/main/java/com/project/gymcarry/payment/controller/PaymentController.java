@@ -35,12 +35,14 @@ public class PaymentController {
 		  SessionDto sessionDto = (SessionDto) session.getAttribute("loginSession");
 		  session.setAttribute("idx", sessionDto.getMemidx());
 		  session.setAttribute("name", sessionDto.getMemname());
-
+		  System.out.println("세션 변수(memidx) : " + sessionDto.getMemidx());
+		  System.out.println("세션 변수(memname) : " + sessionDto.getMemname());
+		  
 		  model.addAttribute("cridx", cridx);
 		  model.addAttribute("crname", crname);
 		  model.addAttribute("paynum", paynum);
-		  model.addAttribute("payprice", payprice);	  
-		  
+		  model.addAttribute("payprice", payprice);
+	  
 		  return "payment/payment";
 		  
 	  }
