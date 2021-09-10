@@ -29,7 +29,7 @@ public class CommWriteController {
 	
 	// 글 작성
 	@PostMapping("community/write")
-	public String boardWrite(HttpServletRequest request, HttpSession session) throws Exception {
+	public String boardWrite(HttpServletRequest request) throws Exception {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("postname", request.getParameter("postname"));
 		map.put("postcontent", request.getParameter("postcontent"));
@@ -40,7 +40,8 @@ public class CommWriteController {
 		System.out.println(map.toString());
 		communityService.getBoardWrite(map);
 		
-		return "redirect:/community/community";
+		
+		return "redirect:/community/boardList";
 	}
 	
 

@@ -9,21 +9,21 @@ import com.project.gymcarry.dao.MemberDao;
 import com.project.gymcarry.member.MemberDto;
 @Service
 public class JoinService {
-	
+
 	@Autowired
 	private SqlSessionTemplate template;
-	
+
 	private MemberDao dao;
-	
+
 	public int memberJoin(MemberDto memberDto) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.insertMember(memberDto);
 	}
-	
+
 	public int carryJoin(CarryJoinDto carryDto) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.insertCarry(carryDto);
 	}
 
-	
+
 }

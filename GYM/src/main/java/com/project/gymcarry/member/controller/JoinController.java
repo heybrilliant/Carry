@@ -47,5 +47,5 @@ public class JoinController {
 //		}
 //		return joinservice.memEmailCheck(mememail);
 //	}
-	
+
 }

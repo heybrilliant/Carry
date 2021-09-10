@@ -90,7 +90,6 @@
 			positions.push({content : '<div class="map_in_place_name">${placeAll.placename}</div>', latlng : new kakao.maps.LatLng(${placeAll.latitude}, ${placeAll.longitude})});
 		</c:forEach> 
 		
-
 		for (var i = 0; i < positions.length; i ++) {
 		    // 마커를 생성합니다
 		    var marker = new kakao.maps.Marker({
@@ -151,7 +150,6 @@
 				})
 			}
 		}
-
 	</script>
 	
 	<!-- 검색 자동완성 -->

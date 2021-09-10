@@ -1,8 +1,9 @@
 package com.project.gymcarry.board;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class BoardDto {
 
@@ -16,11 +17,14 @@ public class BoardDto {
     private int postview;
     private int postlike;
     private  String boardcategory;
-	
-    public BoardDto() {}
     
     
-    public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx,
+	public BoardDto() {
+
+	}
+    
+    
+	public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx,
 			MultipartFile uploadfile, Date postdate, int postview, int postlike, String boardcategory) {
 		super();
 		this.postidx = postidx;
@@ -134,7 +138,17 @@ public class BoardDto {
 	public void setBoardcategory(String boardcategory) {
 		this.boardcategory = boardcategory;
 	}
-    
+
+
+	@Override
+	public String toString() {
+		return "BoardDto [postidx=" + postidx + ", postname=" + postname + ", postcontent=" + postcontent
+				+ ", postnick=" + postnick + ", memidx=" + memidx + ", uploadfile=" + uploadfile + ", postdate="
+				+ postdate + ", postview=" + postview + ", postlike=" + postlike + ", boardcategory=" + boardcategory
+				+ "]";
+	}
+	
+	
     
     
 }

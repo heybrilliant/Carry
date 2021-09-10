@@ -104,7 +104,7 @@ public class MemberDto {
 
 
 	public MemberDto(int memidx, String mememail, String mempw, String memname, String memnick, String memphone,
-			int membirth, String memgender) {
+					 int membirth, String memgender) {
 		super();
 		this.memidx = memidx;
 		this.mememail = mememail;
@@ -116,6 +116,6 @@ public class MemberDto {
 		this.memgender = memgender;
 	}
 
-	
+
 
 }
