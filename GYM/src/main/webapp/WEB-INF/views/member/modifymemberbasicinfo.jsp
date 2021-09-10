@@ -33,7 +33,7 @@
 					<div class="edit_form">
 						<div class="profile_form">
 							<img src="/images/icon/profile.png"><br> <a
-								href="<input type=" file" name="carryphoto">">프로필 사진 수정</a>
+								href="<input type="  name="carryphoto">">프로필 사진 수정</a>
 						</div>
 
 						<table>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.gymcarry.dao.AdminDashBordDao">
+
+	<!-- 관리자 로그인 -->
+	<select id="selectAllSales"
+		resultType="com.project.gymcarry.admin.AllSalesDto">
+		select month(p.paydate) as month, c.crname, sum(p.payprice)
+		as total
+		from payment p
+		join carry c on c.cridx=p.cridx
+		where month(p.paydate)=#{param}
+		group by c.cridx order by sum(p.payprice) desc limit 4;
+	</select>
+</mapper>

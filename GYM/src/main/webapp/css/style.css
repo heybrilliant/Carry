@@ -84,6 +84,12 @@ a {
   font-size: 16px;
   font-weight: 600;
 }
+
+.header .nav ul li a:hover {
+	color: #8b949c;
+	transition: 0.2s;
+}
+
 .header .sub_nav {
   width: 150px;
 }
@@ -214,4 +220,9 @@ a {
 .footer .top_btn > img {
 	width:16px;
 	height:16px;
+}
+
+.admin_page {
+	float: right;
+	text-decoration: underline;
 }

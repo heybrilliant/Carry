@@ -1,14 +1,12 @@
 package com.project.gymcarry.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import com.project.gymcarry.carry.CarryCertiDto;
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryListDto;
 import com.project.gymcarry.carry.CarryPriceDto;
 import com.project.gymcarry.carry.CarryReviewDto;
-import com.project.gymcarry.carry.Criteria;
 import com.project.gymcarry.place.PlaceDto;
 
 public interface CarryDao {
@@ -25,10 +23,6 @@ public interface CarryDao {
 	List<CarryReviewDto> selectCarryReviewList(int cridx);
 	// 캐리 리뷰 작성
 	int addCarryReview(CarryReviewDto reviewDto);
-	// 캐리 리뷰 카운트
-	int carryReviewCnt();
-	// 캐리 리뷰 리스트 (페이징 처리)
-	List<Map<String, Object>> pagingReviewList(Criteria cri);
 	
 	
 	// 전체 캐리 리스트

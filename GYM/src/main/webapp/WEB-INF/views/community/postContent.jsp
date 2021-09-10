@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/community/postContent.css">
@@ -13,42 +14,40 @@
 	
   <!-- Contents -->
   <div class="contents_wrap">
-    <div class="contents">
+    <div class="contents container_fix">
 
       <!-- Nav -->
       <div class="post_back">
-        <a class="post_back_link" href="#">
+        <a class="post_back_link" href="<c:url value="/community/boardList"/>">
           <img class="arrow_img" src="/gym/images/icon/arrow.png"> 글 목록
         </a>
-
+        <div class="content_right off">
+           <ul>
+             <li>
+               <a class="con_edit" href="<c:url value="/community/update?postidx=${boardDetail.postidx }"/>">수정 </a>
+             </li>
+             <li>
+               <a class="con_delete">삭제</a>
+             </li>
+           </ul>
+         </div>
       </div>
 
       <!-- Profile -->
       <div class="space_between">
         <div class="btn_right">
-          <button class="title_btn" type="button" onclick="">소통</button>
-          <h2 class="board_title"><a href="#">서강대 칼만두 맛집 추천 합니다 !! </a></h2>
+          <button class="title_btn" type="button" onclick="">${boardDetail.boardcategory}</button>
+          <h2 class="board_title"><a href="#">${boardDetail.postname}</a></h2>
         </div>
         <div class="profile">
           <div class="profile_img">
             <img alt="" src="/gym/images/icon/profile.png">
+            <div id="nickname">${boardDetail.postnick}</div>
           </div>
           <div class="profile_left">
-            <div id="nickname">닉네임</div>
-            <div id="write_date"> 2021.08.11 17:18:23 PM </div>
-            <div class="content_right">
-              <ul>
-                <li>
-                  <a class="con_edit" href="#">수정 </a>
-                </li>
-                <li>
-                  <a class="con_delete" href="#">삭제</a>
-                </li>
-              </ul>
-            </div>
+          	<fmt:formatDate var="dateFmt" pattern="yyyy-MM-dd" value="${boardDetail.postdate}"/>
+            <div id="write_date"> <c:out value="${dateFmt}"/> </div>
           </div>
-
-
         </div>
 
       </div>
@@ -57,62 +56,199 @@
 
       <!-- Content -->
       <div class="content_wrap">
-
-
         <div class="post_content">
-          <p class="post">제가 오늘 서강대 건너편 옥정이라는 평양식 만두국집 다녀왔는데요, 너무 맛있네요. 밥도 무료로 주세요. 대신 점심 장사라 2시까지만 합니다. 웨이팅도 있는데 금방
-            빠져요. 인생
-            칼만두집을 찾았네요. 이열치열 지대로 느끼고 싶으신 분들 다녀오세요. 입 힐링합니다^^</p>
+          ${boardDetail.postcontent}
         </div>
       </div>
       <div class="postbtn_wrap">
         <div class="post_btn">
-          <a href="#"><img class="post_icon" src="/gym/images/icon/heart.png">2</a>
-          <a href="#"><img class="post_icon" src="/gym/images/icon/speech-bubble.png">15</a>
+          <div class="like_btn">
+          	<img class="post_icon" src="/gym/images/icon/heart.png">
+          	<span>2</span>
+          </div>
+          <div class="comm_length">
+          	<img class="post_icon" src="/gym/images/icon/speech-bubble.png">
+          	<span></span>
+          </div>
         </div>
       </div>
       <!-- /Content -->
 
       <!-- Comment -->
-      <div class="comment_wrap">
-        <div class="profile">
-          <div class="profile_img">
-            <img alt="" src="/gym/images/icon/profile2.png">
-          </div>
-          <div class="profile_left">
-            <div id="nickname">입맛고급</div>
-            <div id="write_date"> 2021.08.11 17:18:23 PM </div>
-          </div>
-          <div class="text_wrap">
-            <div class="comment_text">
-              <p>오우 맛집 찾아 여기까지 왔네요ㅎ 감사합니다.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <ul class="comment_section">
+	      
+	  </ul>	      
       <!-- /Comment -->
 
       <!-- Comment Input -->
       <div class="comment_input_wrap">
         <div class="search_wrap search_wrap_6">
           <div class="search_box">
-            <input type="text" class="input" placeholder="댓글을 작성해주세요.">
-            <div class="btn">
-              <p class="btn_input">입력</p>
-            </div>
+              <input type="text" class="comm_input" placeholder="댓글을 작성해주세요.">
+              <label name="btn_input" class="btn_input">
+              	<input type="submit" name="btn_input" class="btn">
+              	<img src="/gym/images/icon/input_icon.png" alt="icon">
+              </label>
           </div>
         </div>
       </div>
       <!-- /Comment Input -->
-
     </div>
     <!-- /Content -->
-
   </div>
   <!-- /Contents -->
 	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	
+<script>
+	// 수정/삭제 버튼 노출 여부
+	$(function(){
+		var memidx = ${boardDetail.memidx};
+		if(${loginSession != null}) { // 로그인 여부
+			if(${loginSession.memidx} == memidx){ // 로그인세션과 작성자 idx 일치 여부 확인
+				$(".content_right").removeClass('off');
+			} 
+		} 
+	});
+</script>	
+	
+<script>
+
+
+	// 댓글 등록
+	$(".btn_input .btn").on("click", function(){
+    	var memberidx; // 회원 번호
+        var memberNick; // 회원 닉네임
+        var postidx = "${boardDetail.postidx}"; // 글번호
+        var commContent = $(".comm_input").val(); // 댓글내용
+        
+        // 로그인 여부 검사
+        if(${loginSession == null}) {
+        	alert("로그인 후 이용해 주세요.");
+        	$(location).attr('href','<c:url value="/member/login"/>');
+        } else {
+        	// Session에서 회원 번호를 얻어옴.
+            // ""를 하지 않으면 변수명 처럼 인식됨
+            memberidx = "${loginSession.memidx}";
+            memberNick = "${loginSession.memnick}";
+            // 자바 스크립트 객체 방식으로 작성
+            
+            $.ajax({
+            	url : '<c:url value="/insertComm"/>',
+                type : "POST",
+                data : {"commContent" : commContent,
+                		"postidx" : postidx,
+                        "memberidx" : memberidx,
+                        "membernick" : memberNick},
+                success : function(result){
+                	var msg;
+                    
+                    switch(result) {
+                    case 1 :  //성공
+                    	msg = "댓글이 작성 되었습니다.";
+                        // 내용을 작성한 textarea를 다 지워줌
+                        $(".comm_input").val("");
+                        selectRlist(); // selectRlist()함수 호출
+                        break;
+                        
+                    case 0 :  //등록실패
+                    	msg = "댓글 등록 실패";
+                        break;
+                    case -1 :
+                    	msg = "댓글 등록 오류 발생";
+                        break;
+                    }
+                    
+                    alert(msg);
+                },
+                error : function(){
+                	console.log("ajax 통신 실패");
+                }
+            });
+        }
+    });
+	
+	// 댓글 목록 조회 함수
+    function selectRlist() {
+    	var postidx = "${boardDetail.postidx}";
+        
+        $.ajax({
+        	url : '<c:url value="/selectReplyList"/>',
+            type : "post",
+            data : {"postidx" : postidx},
+            dataType : "json", // javascriptObjectNation
+            success : function(commList){
+            	
+                // $붙으면 이 변수를 대상으로 jquery 메소드를 사용가능
+                // 없으면 그냥 변수임
+                var $rArea = $(".comment_section");
+                // jQuery 변수 : 변수에 jQuery 메소드를 사용할 수 있음
+                
+                var comm_count = 0;
+                // javascript는 isEmpty가 없음
+                // javascript 빈리스트 확인은 rList = []
+                // 하지만 json은 string이므로 ""(빈문자열)로 비교
+                if(commList == "") { // 조회할 댓글이 없는 경우
+                	$rArea.html('<li class="comment_wrap"><p class="non_comm">등록된 댓글이 없습니다</p></li>');
+                	$('.comm_length > span').append(comm_count);
+                } else {
+                	$rArea.html(""); // 기존 댓글 목록 삭제
+                    
+                    $.each(commList, function(i){
+                    	var html = '<li class="comment_wrap">';
+                    	html += '<div class="profile">';
+                    	html += '<div class="profile_img">';
+                    	html += '<img src="/gym/images/icon/profile2.png" alt="img">';
+                    	html += '</div>';
+                    	html += '<div class="profile_left">';
+                    	html += '<div id="nickname">' + commList[i].commentnick + '</div>';
+                    	html += '<div id="write_date">' + commList[i].commentdate + '</div>';
+                    	html += '</div>';
+                    	html += '</div>';
+                    	html += '<div class="text_wrap">';
+                    	html += '<div class="comment_text">';
+                    	html += '<p>' + commList[i].commentcontent +'</p>';
+                    	html += '</div>';
+                    	html += '</div>';
+                    	html += '</li>';
+						
+                    	$rArea.append(html);
+                    });
+                   	var comm_count = commList.length;
+                   	$('.comm_length > span').html("");
+                   	$('.comm_length > span').append(comm_count);
+                	
+                }
+            },
+            error : function(){
+            	console.log("댓글 목록 조회 ajax 통신 실패");
+            }
+        });
+    }
+	
+    $(function(){
+    	selectRlist();
+        
+        // 10초마다 댓글 갱신
+        setInterval(function(){
+        	selectRlist
+        }, 10000);
+    });
+	
+</script>
+	
+<script>
+	// 게시물 삭제
+	$(function(){
+		var form = $("<form></form>");
+		$('.con_delete').on("click", function(){
+			var deletePush = confirm("해당 게시글을 삭제 하시겠습니까?\n\n삭제 후엔 복구가 불가능합니다.")
+			if(deletePush){
+				location.href = '<c:url value="/community/delete?postidx=${boardDetail.postidx}"/>';
+			}
+		});
+	})
+</script>
 	
 

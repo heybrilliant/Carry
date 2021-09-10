@@ -4,6 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <jsp:useBean id="now" class="java.util.Date" />
 
 <title>캐리 상세페이지</title>
@@ -13,7 +15,6 @@
 <script src="/gym/js/carryDetail.js"></script>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
-</head>
 <body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
@@ -107,7 +108,7 @@
 						<form id="reviewForm" name="reviewForm" method="post" >
 							<div id="review_write" class="review_write display_none" class = "reviewForm">
 								<textarea class="review_input" rows="2" cols="30"
-									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."></textarea>
+									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요." required></textarea>
 								<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
 						
 						
@@ -138,15 +139,34 @@
 					</div> --%>
 
 				</div>
+				</div>
 				<!-- carry review section all wrap END -->
 
 
 				<!-- 소속 플레이스 section all wrap START -->
-				<div class="carry_place_title" id="place">
+				<div class="carry_place_title">
 					<h2>소속 플레이스</h2>
 					<div class="carry_place_content">
-						<img src="http://placehold.it/600x300"> <span>
-						<a href="#">${carryPlaceInfo.placename}</a></span>
+						<!-- <img src="http://placehold.it/600x300"> -->
+						
+						<%-- <c:set var="carryPlaceInfo" value="${carryPlaceInfo}"/> --%>
+						<c:set var="imageLists" value="${carryPlaceInfo.placeimg}"/>
+							
+							<c:set var="mainimg" value="${fn:split(imageLists, ', ')}" />
+							<c:set var="mainImglength" value="${fn:length(mainimg[2])}" />
+							<c:set var="mainImage" value="${fn:substring(mainimg[2], 0, mainImglength)}" />
+
+							<c:if test="${empty mainImage}">
+								<img src="<c:url value="/images/nullPlaceImg.jpg"/>">
+							</c:if>
+							<c:if test="${!empty mainImage}">
+								<img src="<c:out value="${mainImage}"/>" class="place_main_img">
+							</c:if>
+						
+							<p>
+							<span>
+						<a href="<c:url value='/place/detail?placeidx=${carryPlaceInfo.placeidx}'/>">${carryPlaceInfo.placename}</a></span>		
+					
 					</div>
 				</div>
 				<!-- 소속 플레이스 section all wrap END -->
@@ -159,15 +179,12 @@
 						<p>${carryPlaceInfo.placeaddress}</p>
 						<p>${carryPlaceInfo.placephone}</p>
 					</div>
-					<iframe
-						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.3482559449353!2d126.98313801564814!3d37.57041633166289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2e88bffbb25%3A0x47dbc264f2cc5695!2z67mE7Yq47Lqg7ZSE!5e0!3m2!1sko!2skr!4v1629288115032!5m2!1sko!2skr"
-						width="100%" height="300px" style="border: 0;" allowfullscreen=""
-						loading="lazy"> </iframe>
+					<div id="map" style="width:100%;height:300px;"></div>
 				</div>
-			</div>
-
-
-			<!-- 우측 배너 START -->
+			
+		</div>
+		
+		<!-- 우측 배너 START -->
 			<div class="right_banner">
 
 				<div id="c2" class="circle"></div>
@@ -175,15 +192,18 @@
 
 				<div class="program_all">
 
+					<c:forEach items="${price}" var="price" varStatus="status">
 					<form action="<c:url value='/payment/pay'/>" method="post">
-					<c:forEach items="${price}" var="price">
+							
+					<input type="hidden" name="cridx" value="${price.cridx}">
+					<input type="hidden" name="paynum" value="${price.procount}">
+					<input type="hidden" name="payprice" value="${price.proprice}">
 						<div class="program">
-							<div class="program_info">
+							<div class="program_info"> 
 								<span>수업 ${price.procount}회 이용권</span> <br>
 								<h4>
 									<fmt:formatNumber type="number" maxFractionDigits="3"
-										value="${price.proprice}" />
-									원
+										value="${price.proprice}"/>원
 								</h4>
 							</div>
 
@@ -191,22 +211,45 @@
 								<input type="submit" value="구매하기" class="button">
 							</div>
 						</div>
-					<input type="hidden" name="cridx" value="${price.cridx}">
+						
+				
+					
 					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					<input type="hidden" name="paynum" value="${price.procount}">
-					<input type="hidden" name="payprice" value="${price.proprice}">
-					</c:forEach>
 					</form>
+					</c:forEach>
 					
 				</div>
 				
 			</div>
 			<!-- 우측 배너 END -->
-
-		</div>
+		
+		
 	</div>
 	</div>
 	<!-- Contents END -->
+
+	<!-- kakao map api -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2791d61cfcb1bc044154adc4c6bc431"></script>
+	<script>
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(${carryPlaceInfo.latitude}, ${carryPlaceInfo.longitude}), // 지도의 중심좌표
+        level: 2 // 지도의 확대 레벨
+    };
+
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+	// 마커가 표시될 위치입니다 
+	var markerPosition  = new kakao.maps.LatLng(${carryPlaceInfo.latitude}, ${carryPlaceInfo.longitude}); 
+	
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+	    position: markerPosition
+	});
+	
+	// 마커가 지도 위에 표시되도록 설정합니다
+	marker.setMap(map);
+	</script>
 
 
 
@@ -215,8 +258,7 @@
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	
 	<script>
-	
-	
+
 	// 페이지 진입시 이벤트 발생
 	$(document).ready(function(){
 		

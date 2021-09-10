@@ -1,8 +1,9 @@
 package com.project.gymcarry.websokethandler;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,6 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import com.google.gson.Gson;
 import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
-import com.project.gymcarry.member.SessionDto;
 
 public class WebSocketHandler extends TextWebSocketHandler {
 
@@ -31,7 +31,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 	// 방법2 : 1:1 채팅
 	// 사용자와 세션 저장할 맵
-	private Map<Integer, WebSocketSession> mapList = new HashMap<Integer, WebSocketSession>();
+	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>();
 
 	// 커넥션이 연결되었을때
 	@Override
@@ -39,10 +39,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		System.out.println("1번" + session.getId());
 
 		// 회원, 캐리 세션 정보 가져오기
-		int chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemidx();
-		if (chatNick == 0) {
-			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCridx();
-		}
+		String chatNick = (String) session.getAttributes().get("chatSession");
 
 		// 로그인햇으면 닉네임이고 - 로그인이안되있으면 세션아이디
 		// chatNick:닉네임저장 - session:웹소켓세션저장
@@ -66,45 +63,47 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
 		// 누가보냇는지 메세지타입 (mem=0 , carry=1)
 		int contenttype = 0;
-		int chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getMemidx();
-		if (chatNick == 0) {
-			chatNick = ((SessionDto) session.getAttributes().get("loginSession")).getCridx();
-			++contenttype;
-		}
+		// 유저가 보낸메세지 0, 캐리가보낸메세지 1 (읽음 안읽음 처리)
+		int chatRead = 0;
+		// 자기가보낸 메세지 읽음 처리
+		String chatNick = (String) session.getAttributes().get("chatSession");
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
+
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss a");
+		Date time = new Date();
+		String date = format.format(time);
 
 		// json객체 -> java객체
 		Gson gson = new Gson();
 		MessageDto messageDto = gson.fromJson(message.getPayload(), MessageDto.class);
-		messageDto.setContenttype(contenttype);
-
+		messageDto.setChatdate(date);
+		if (chatNick.equals(messageDto.getCrnick())) {
+			messageDto.setContenttype(++contenttype);
+			messageDto.setChatread(++chatRead);
+		}
+		
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
 
-		// 전달 메세지
-		if (chatNick == messageDto.getCridx()) {
-			int to = messageDto.getMemidx();
-			WebSocketSession toSession = mapList.get(to);
-			System.out.println(toSession);
-			if (toSession != null) {
-				toSession.sendMessage(sendMsg);
-				session.sendMessage(sendMsg);
-			} else {
-				session.sendMessage(sendMsg);
+		int result = 0;
+		String to = messageDto.getTo();
+		WebSocketSession toSession = mapList.get(to);
+		if (toSession != null) {
+			toSession.sendMessage(sendMsg);
+			session.sendMessage(sendMsg);
+			result = matchingChatRoomService.insertChatContent(messageDto);
+			if (result == 1) {
+				// 방에 서로 있으면 메세지 보낼때 읽음 처리
+				matchingChatRoomService.getChatRead(messageDto.getChatidx());
 			}
-			matchingChatRoomService.insertChatContent(messageDto);
-		} else if (chatNick == messageDto.getMemidx()) {
-			int st = messageDto.getCridx();
-			WebSocketSession toSession = mapList.get(st);
-			System.out.println(toSession);
-			if (toSession != null) {
-				toSession.sendMessage(sendMsg);
-				session.sendMessage(sendMsg);
-			} else {
-				session.sendMessage(sendMsg);
-			}
+		} else {
+			session.sendMessage(sendMsg);
+		}
+
+		if (result == 0) {
 			matchingChatRoomService.insertChatContent(messageDto);
 		}
+		
 	}
 
 	// 클로즈 될때.

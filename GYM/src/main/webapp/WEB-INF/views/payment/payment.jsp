@@ -3,8 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
-<title>결제 페이지</title>
+
+<title>GymCarry : 결제 페이지</title>
+
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/gym/css/payment/payment.css">
 
 <!-- jQuery -->
@@ -21,11 +24,11 @@
 
 	<!-- Contents -->
 	<div class="container_fix container payment_wrap">
-		<h2>결제하기</h2>
+		<h1>결제하기</h1>
 		<div>
 			<h3>주문 정보</h3>
 				<div class="order_info">
-					<span>${crname} : ${paynum}회 이용권</span> <br>
+					<span>${crname} 캐리 : ${paynum}회 이용권</span> <br>
 					<h4>
 						${paynum}회
 						<fmt:formatNumber type="number" maxFractionDigits="3"
@@ -36,7 +39,6 @@
 
 			<br> <br>
 			
-				<%-- <form action="<c:url value='/payment/complete'/>" method="post"> --%>
 				<form action="<c:url value='/payment/complete'/>" id="paymentForm" name="paymentForm" method="post">
 				<div>
 					<h3>결제 정보</h3>
@@ -77,11 +79,13 @@
 						</ul>
 					</div>
 				</div>
-				</form>
+				
 				
 				<div class="pay_btn">
-					<input type="button" value="결제하기" onclick="requestPay();">
+					<input type="submit" value="결제하기" onclick="requestPay();">
+					<input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
 				</div>
+				</form>
 				
 		</div>
 		
