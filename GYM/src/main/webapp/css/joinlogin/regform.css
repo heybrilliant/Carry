@@ -9,7 +9,7 @@ html {
 body {
     height:auto;
 }
-table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
+ div, p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
     font-size:11pt; 
     text-decoration: none;
 }

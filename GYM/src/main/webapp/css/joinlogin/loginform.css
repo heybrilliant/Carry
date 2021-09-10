@@ -9,15 +9,14 @@ html {
 body {
     height:auto;
 }
-table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
+
+ p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
     font-size:11pt; 
-    /* color:#666; */
     text-decoration: none;
-    /* text-align: center; */
 }
 
 .sub_tit_txt{
-    margin:0 auto 40px; 
+    margin:0 auto 30px; 
     color: #2f2f2f; 
     font-size: 28px;
 }
@@ -49,7 +48,7 @@ h1 {
 
 .wrap.wd668{
     width: 40%;
-    min-width:40%;
+    min-width: 450px;
     text-align: center;
     justify-content : center;
     padding: 30px;
@@ -66,7 +65,7 @@ h1 {
 }
 
 .btn_wrap{
-	 text-align:center;
+	text-align:center;
     margin: 30px 5px;
 }
 
@@ -81,6 +80,7 @@ h1 {
     margin: 0 15px;}
 
 #loginbtn{
+	border: 0;
     color: #fff; 
     background-color: #4380ce; 
     font-weight: bold; 
@@ -113,34 +113,43 @@ h1 {
     color: #fff;
 }
 
-.login_form{
+.login_form .tb{
     width:100%;
 }
 
-.login_form table {
+.login_form  {
     border-spacing: 0;
     margin:0;
     padding:0; 
     border:0;
     width:100%;
 }
-
-.login_form table th{
-    text-align:left;
+#catebox{
+	margin-bottom : 15px;
 }
 
-.login_form table th span{
+.tb{
+	font-family: "Montserrat", sans-serif;
+	text-align:left;
     color:#404040;
     font-size:14px; 
     display:inline-block; 
     position:relative;
     padding:0 10px 0 0; 
-    text-indent:20px;
+    margin : 10px auto;
+    /* text-indent:20px; */
 }
 
-.login_form table td{
+.login_form #into{
     padding:6px 0;
     position: relative;
+	border:1px solid #ececec;
+    font-size:14px;
+    color:#4c4c4c; 
+    height:40px; 
+    padding:10px; 
+    width:100%; 
+    float:left;
 }
 
 .login_form table input{ 
