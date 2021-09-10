@@ -1,5 +1,7 @@
 package com.project.gymcarry.mypage;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.gymcarry.carry.CarryListDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.member.SessionDto;
 
@@ -38,10 +41,21 @@ public class MypageController {
 	@PostMapping
 	public String addMembermemo(MypageDto mypdto) {
 
-		System.out.println(mypdto);
-		int result = mypService.memberMemo(mypdto);
+		String arg0 = mypdto.getMemidx();
+		String arg1 = mypdto.getInfodate();
+		String arg2 = mypdto.getInfotype();
 
-		return "redirect:/mypage/mypage";
+		List<MypageDto> list1 = mypService.selectMemo(arg0, arg1, arg2);
+
+		if (list1.isEmpty()) {
+			mypService.memberMemo(mypdto);
+			System.out.println("인설트로 가쟈");
+		} else {
+			mypService.updateMemo(mypdto);
+			System.out.println("업데이트 가쟈");
+		}
+
+		return "mypage/mypage";
 	}
 
 }

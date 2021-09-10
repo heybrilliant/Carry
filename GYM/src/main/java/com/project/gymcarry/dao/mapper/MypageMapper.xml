@@ -16,11 +16,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{memidx},#{infocontent},#{infodate},#{infotype});
 	</insert>
 
+	<update id="updateMemo">
+		update mypage set infocontent = #{infocontent} where memidx = #{memidx} and
+		infodate = #{infodate} and infotype = #{infotype}
+	</update>
 
-	<!-- 캐리 정보 출력 -->
-	<select id="selectCarryDetail"
-		resultType="com.project.gymcarry.carry.CarryDto">
-		select * from carry where cridx=#{cridx}
+	<select id="selectMemo"
+		resultType="com.project.gymcarry.mypage.MypageDto">
+		select infocontent from mypage where memidx = #{arg0} and
+		infodate = #{arg1} and infotype = #{arg2}
 	</select>
 
 </mapper>

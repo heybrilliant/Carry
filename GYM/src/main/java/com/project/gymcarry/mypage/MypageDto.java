@@ -2,6 +2,16 @@ package com.project.gymcarry.mypage;
 
 public class MypageDto {
 
+	private String infoidx;
+	private String memidx;
+	private String infocontent;
+	private String infodate;
+	private String infotype;
+
+	public MypageDto() {
+
+	}
+
 	public String getInfoidx() {
 		return infoidx;
 	}
@@ -56,11 +66,5 @@ public class MypageDto {
 		this.infodate = infodate;
 		this.infotype = infotype;
 	}
-
-	private String infoidx;
-	private String memidx;
-	private String infocontent;
-	private String infodate;
-	private String infotype;
 
 }

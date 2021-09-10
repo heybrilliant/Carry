@@ -33,8 +33,18 @@
 	function printName() {
 		const name = document.getElementById('alternate').value;
 		document.getElementById("infodate").value = name;
+
+	}
+
+	function printName() {
+		const name = document.getElementById('alternate').value;
+		document.getElementById("infodate").value = name;
+
 	}
 </script>
+
+
+
 
 </head>
 <body style="padding-right: 0px">
@@ -48,8 +58,8 @@
 
 				<div class="col-right-top">
 					<h2 style="float: none;">
-						<input type="text" id="alternate"
-							class="datepick" size="30">
+						<input type="text" id="alternate" class="datepick" size="30"
+							readonly>
 					</h2>
 				</div>
 				<div class="col-flex">
@@ -76,7 +86,7 @@
 								</div>
 							</div>
 
-							<div id="datepicker"></div>
+							<div id="datepicker" onclick="printName()"></div>
 						</div>
 
 						<div class="my-info-develope">
@@ -160,6 +170,19 @@
 
 		});
 
+	});
+</script>
+
+<script>
+	$(function() {
+
+		$(".ui-state-default").click(function() {
+			console.log('test');
+			if ($(this).hasClass('ui-state-active')) {
+				var newValue = $("#alternate").val();
+				console.log(newValue);
+			}
+		});
 	});
 </script>
 </html>
