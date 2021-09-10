@@ -67,8 +67,6 @@ public class AdminBoardController {
 			AdminBoardDto original = adminBoardService.getContentOriginal(idx);
 			model.addAttribute("original", original);
 			
-			System.out.println("관리자 게시판 수정 페이지 진입 - 게시글 번호 " + idx);
-			
 			return "admin/contentModifyForm";
 		}
 		
@@ -83,7 +81,6 @@ public class AdminBoardController {
 				) {
 			
 			adminBoardService.updateContent(adminBoardDto);
-			System.out.println("게시글 수정 완료");
 			
 			return "admin/adminBoard";
 		}
@@ -97,7 +94,6 @@ public class AdminBoardController {
 				) {
 			
 			adminBoardService.deleteContent(idx);
-			System.out.println(idx + "번 게시글 삭제 완료");
 		}
 		
 
@@ -113,11 +109,7 @@ public class AdminBoardController {
 		public String termBoardList(Model model) {
 			
 			List<AdminBoardDto> termBoardList = adminBoardService.termBoardList();
-
 			model.addAttribute("list", termBoardList);
-			
-			
-			System.out.println("[약관 및 정책] 게시판 리스트 출력");
 			
 			return "content/termBoardList";
 		}
@@ -129,8 +121,6 @@ public class AdminBoardController {
 
 			List<AdminBoardDto> noticeBoardList = adminBoardService.noticeBoardList();
 			model.addAttribute("noticeList", noticeBoardList);
-			
-			System.out.println("[공지사항] 게시판 리스트 출력");
 
 			return "content/noticeBoardList";
 		}
@@ -145,8 +135,6 @@ public class AdminBoardController {
 			
 			ContentDto con = adminBoardService.contentView(idx);
 			model.addAttribute("content", con);
-
-			System.out.println("게시글 출력");
 			
 			return "content/content";
 		}

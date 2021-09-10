@@ -17,10 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.project.gymcarry.admin.AdminBoardDto"
 		useGeneratedKeys="true"
 		keyProperty="idx">
-		insert into
-			adminBoard (idx, category, adminidx, title, content, date)
-		values
-			(#{idx}, #{category}, #{adminidx}, #{title}, #{content}, #{date})	
+		insert into adminboard (idx, category, adminidx, title, content, date)
+		values (#{idx}, #{category}, #{adminidx}, #{title}, #{content}, #{date})	
 	</insert>
 	
 	
