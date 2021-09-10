@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<title>관리자 게시판 : GymCarry Admin</title>
+<title>커뮤니티 관리 : GymCarry Admin</title>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
@@ -31,15 +31,14 @@
 	<%@ include file="/WEB-INF/views/frame/sidebar_admin.jsp"%>
 
 
+
 	<!-- 컨텐츠 시작 -->
 	<div id="layoutSidenav_content">
 		
 			<div class="content">
 				<div class="container">
-					<h2 class="mb-5">관리자 게시판</h2>
+					<h2 class="mb-5">커뮤니티 관리</h2>
 					
-					<input type="button" class="writeBtn" value = "작성하기" onclick="location.href='<c:url value="/admin/board/writeForm"/>'">
-
 					<div class="table-responsive">
 
 						<table class="table table-striped custom-table">
@@ -47,6 +46,7 @@
 								<tr>
 									<th scope="col">No.</th>
 									<th scope="col">카테고리</th>
+									<th scope="col">작성자</th>
 									<th scope="col">제목 / 내용</th>
 									<th scope="col">작성일</th>
 									<th scope="col">more</th>
@@ -55,10 +55,10 @@
 
 							<tbody>
 							
-							<c:forEach items="${BoardList}" var="list">
+							<c:forEach items="${CommunityList}" var="list">
 
 								<tr scope="row">
-									<td>${list.idx}</td>
+									<td>${list.postidx}</td>
 									<td>${list.category}</td>
 									<td>
 										<a href="<c:url value="/content?idx=${list.idx}"/>">${list.title}</a>
@@ -83,11 +83,8 @@
 				</div>
 
 			</div>
-			
-			<!-- footer -->
-			<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
-			
-			
+	</div>
+
 			<script>
 			function contentDel(idx) {
 				if (confirm ('해당 게시글을 삭제 처리 하시겠습니까?')) {
@@ -96,14 +93,14 @@
 					location.href = 'list';
 				} 
 			}
-			
 			</script>
 
-			<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
+		<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
 			<script src="/gym/js/admin/popper.min.js"></script>
 			<script src="/gym/js/admin/bootstrap.min.js"></script>
 			<script src="/gym/js/admin/main.js"></script>
 
-			
+			<!-- footer -->
+			<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
 </body>
 </html>	

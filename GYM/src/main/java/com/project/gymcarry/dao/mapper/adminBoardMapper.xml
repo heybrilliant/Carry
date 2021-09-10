@@ -5,6 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.project.gymcarry.dao.AdminBoardDao"> 
 
+
+	<!-- 관리자 게시판 -->
+	
 	<!-- 관리자 게시판 리스트 출력 -->
 	<select id = "selectAllAdminBoard"
 		resultType="com.project.gymcarry.admin.AdminBoardDto">
@@ -43,7 +46,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from adminboard where idx=#{idx}
 	</delete>
 	
-
 
 
 

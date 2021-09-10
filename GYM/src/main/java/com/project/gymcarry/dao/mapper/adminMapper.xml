@@ -14,12 +14,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
+	<!-- 회원 관리 -->
+
+
 	<!-- 사용자 관리 : 전체 회원 리스트 출력-->
 	<select id="selectAllMemberList"
 		resultType="com.project.gymcarry.member.MemberListDto">
 		select memidx, mememail, memnick, memname, memgender, memphone, membirth
 		from member;	
 	</select>
+	
+	<!-- 회원 탈퇴 처리 -->
+	<delete id="deleteMember">
+		delete from member where memidx=#{memidx};
+	</delete>
+	
+
+	
+
+	<!-- 캐리 관리 -->
 
 	<!-- 사용자 관리 : 전체 캐리 리스트 출력 -->
 	<select id="selectAllCarryList"
@@ -28,75 +41,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from carry natural join place;
 	</select>
 	
-	
-	
-	
-	<!-- 컨텐츠 관리 : 전체 플레이스 리스트 출력 -->
-	<select id="selectAllPlaceList"
-		resultType="com.project.gymcarry.place.PlaceListDto">
-		select placeidx, placenum, placename, placeaddress, placephone
-		from place;
-	</select>	
-	
-
-	<!-- 새로운 플레이스 등록 -->
-	<insert id="registerPlace"
-		parameterType="com.project.gymcarry.place.PlaceDto"
-		useGeneratedKeys="true"
-		keyProperty="placeidx">
-		insert into place (placeidx, placenum, placename, placeaddress, placephone, placeinfo, openhour, placeintro)
-		values (#{placeidx}, #{placenum}, #{placename}, #{placeaddress}, #{placephone}, #{placeinfo}, #{openhour}, #{placeintro})		
-	</insert>
-
-
-	<!-- 기존 플레이스 정보 호출 : 수정폼 -->
-	<select id = "getPlaceOriginal"
-		resultType="com.project.gymcarry.place.PlaceDto">
-	select 
-		placeidx, placenum, placename, placeaddress,
-		placephone, placeinfo, openhour, placeintro
-	from 
-		place
-	where 
-		placeidx = #{placeidx}
-	</select>
-
-
-
-	<!-- 플레이스 수정 -->
-	<update id="updatePlace"
-		parameterType="com.project.gymcarry.place.PlaceDto">
-	update
-		place
-	set
-		placenum = #{placenum},
-		placename = #{placename},
-		placeaddress = #{placeaddress},
-		placephone = #{placephone},
-		placeinfo = #{placeinfo},
-		openhour = #{openhour},
-		placeintro = #{placeintro}
-	where
-		placeidx = #{placeidx}
-	</update>
-	
-	<!-- 플레이스 삭제 -->
-	<delete id="deletePlace">
-		delete from place where placeidx=#{placeidx};
-	</delete>
-	
-
-
-
-	<!-- 회원 탈퇴 처리 -->
-	<delete id="deleteMember">
-		delete from member where memidx=#{memidx};
-	</delete>
-	
 	<!-- 캐리 탈퇴 처리 -->
 	<delete id="deleteCarry">
 		delete from carry where cridx=#{cridx};
 	</delete>
+	
+
 	
 	
 </mapper>

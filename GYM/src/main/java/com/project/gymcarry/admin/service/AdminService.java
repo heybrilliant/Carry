@@ -10,8 +10,6 @@ import com.project.gymcarry.admin.AdminSessionDto;
 import com.project.gymcarry.carry.CarryListDto2;
 import com.project.gymcarry.dao.AdminDao;
 import com.project.gymcarry.member.MemberListDto;
-import com.project.gymcarry.place.PlaceDto;
-import com.project.gymcarry.place.PlaceListDto;
 
 @Service
 public class AdminService {
@@ -20,6 +18,7 @@ public class AdminService {
 	private SqlSessionTemplate template;
 	private AdminDao dao;
 	
+	
 	// 관리자 로그인
 	public AdminSessionDto adminLogin(String id, String pw) {
 		dao = template.getMapper(AdminDao.class);
@@ -27,57 +26,21 @@ public class AdminService {
 	}
 	
 	
-	
-	// 회원 관리 : 전체 회원 리스트
+	// 전체 회원 리스트
 	public List<MemberListDto> allMemberList() {
 		dao = template.getMapper(AdminDao.class);
 		return dao.selectAllMemberList();
 	}
-	
-	// 회원 관리 : 전체 캐리 리스트
-	public List<CarryListDto2> allCarryList() {
-		dao = template.getMapper(AdminDao.class);
-		return dao.selectAllCarryList();
-	}
-	
-	// 컨텐츠 관리  : 전체 플레이스 리스트
-	public List<PlaceListDto> allPlaceList() {
-		dao = template.getMapper(AdminDao.class);
-		return dao.selectAllPlaceList();
-	}
-
-	
-	
-	// 컨텐츠 관리 : 플레이스 등록
-	public int registerPlace(PlaceDto placeDto) {
-		dao = template.getMapper(AdminDao.class);
-		return dao.registerPlace(placeDto);
-	}
-	
-	
-	
-	// 컨텐츠 관리 : 플레이스 기본 정보 호출 - 수정페이지
-	public PlaceDto getPlaceOriginal(int placeidx) {
-		dao = template.getMapper(AdminDao.class);
-		return dao.getPlaceOriginal(placeidx);
-	}
-	
-	// 컨텐츠 관리 : 플레이스 수정
-	public void updatePlace(PlaceDto placeDto) {
-		dao.updatePlace(placeDto);
-	}
-	
-	// 컨텐츠 관리 : 플레이스 삭제
-	public void deletePlace(int placeidx) {
-		dao.deletePlace(placeidx);
-	}
-
-	
-	
-	
 	// 회원 탈퇴 처리
 	public void deleteMember(int memidx) {
 		dao.deleteMember(memidx);
+	}
+	
+	
+	// 전체 캐리 리스트
+	public List<CarryListDto2> allCarryList() {
+		dao = template.getMapper(AdminDao.class);
+		return dao.selectAllCarryList();
 	}
 	// 캐리 탈퇴 처리
 	public void deleteCarry(int cridx) {
