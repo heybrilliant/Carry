@@ -32,13 +32,42 @@
 <script>
 	function printName() {
 		const name = document.getElementById('alternate').value;
-		document.getElementById("infodate").value = name;
+		var infodate = document.getElementsByName("infodate")
 
+		infodate[0].value = name;
+		infodate[1].value = name;
+		infodate[2].value = name;
+		infodate[3].value = name;
 	}
 
-	function printName() {
-		const name = document.getElementById('alternate').value;
-		document.getElementById("infodate").value = name;
+	function reviewList() {
+
+		$
+				.ajax({
+					url : '<c:url value="/myapge/select"/>',
+					type : 'POST',
+					datatype : 'JSON',
+					data : {
+						cridx : $("# EMPTY ").val()
+					},
+					success : function(data) {
+						var tag = '<div>'
+						$
+								.each(
+										data,
+										function(index, item) {
+										
+										});
+
+						$('#TEST').html(tag);
+					},
+
+					error : function() {
+						alert("error");
+
+					}
+
+				});
 
 	}
 </script>
@@ -173,17 +202,6 @@
 	});
 </script>
 
-<script>
-	$(function() {
 
-		$(".ui-state-default").click(function() {
-			console.log('test');
-			if ($(this).hasClass('ui-state-active')) {
-				var newValue = $("#alternate").val();
-				console.log(newValue);
-			}
-		});
-	});
-</script>
 </html>
 
