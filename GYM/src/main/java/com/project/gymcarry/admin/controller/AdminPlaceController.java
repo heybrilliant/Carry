@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.gymcarry.admin.service.AdminService;
+import com.project.gymcarry.admin.service.AdminContentsService;
 import com.project.gymcarry.place.PlaceDto;
 import com.project.gymcarry.place.PlaceListDto;
 
@@ -23,13 +23,13 @@ import com.project.gymcarry.place.PlaceListDto;
 public class AdminPlaceController {
 
 		@Autowired
-		private AdminService adminService;
+		private AdminContentsService adminContentsService;
 		
 		
 		// 전체 플레이스 리스트 출력
 		@GetMapping("admin/place")
 		public String placeSetting(Model model) {
-			List<PlaceListDto> placeList = adminService.allPlaceList();
+			List<PlaceListDto> placeList = adminContentsService.allPlaceList();
 			model.addAttribute("placeList", placeList);
 			
 			System.out.println("컨텐츠 관리 : 전체 플레이스 리스트 출력");
@@ -54,7 +54,7 @@ public class AdminPlaceController {
 				HttpServletResponse response,
 				Model model) throws IOException {
 			
-			int result = adminService.registerPlace(placeDto);
+			int result = adminContentsService.registerPlace(placeDto);
 			
 			if(result == 1) {
 				System.out.println("새로운 플레이스 등록 완료");
@@ -71,7 +71,7 @@ public class AdminPlaceController {
 				Model model
 				) {
 			
-			PlaceDto original = adminService.getPlaceOriginal(placeidx);
+			PlaceDto original = adminContentsService.getPlaceOriginal(placeidx);
 			System.out.println("플레이스 수정 페이지 진입 - 플레이스IDX : " + placeidx);
 			model.addAttribute("original", original);
 			return "admin/placeModify";
@@ -90,7 +90,7 @@ public class AdminPlaceController {
 			System.out.println(placedto);
 			
 			
-			adminService.updatePlace(placedto);
+			adminContentsService.updatePlace(placedto);
 			System.out.println("플레이스 수정 완료");
 			
 			return "admin/placeSetting";
@@ -104,7 +104,7 @@ public class AdminPlaceController {
 				Model model
 				) {
 			
-			adminService.deletePlace(placeidx);
+			adminContentsService.deletePlace(placeidx);
 			System.out.println(placeidx + "번 플레이스 삭제 완료");
 			
 		}

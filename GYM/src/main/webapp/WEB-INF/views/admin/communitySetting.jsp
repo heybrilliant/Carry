@@ -61,7 +61,7 @@
 									<td>${list.postidx}</td>
 									<td>${list.category}</td>
 									<td>
-										<a href="<c:url value="/content?idx=${list.idx}"/>">${list.title}</a>
+										<a href="<c:url value="/content?idx=${list.postidx}"/>">${list.title}</a>
 										<small class="d-block text-over-cut">${list.content}</small>
 									</td>
 									<td>${list.date}</td>
