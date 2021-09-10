@@ -58,13 +58,13 @@
 								
 								<c:choose>
 								<c:when test="${num == 1}">
-									<option value="1" selected disabled hidden>헬스</option>
+									<option value="1" selected hidden>헬스</option>
 								</c:when>
 								<c:when test="${num == 2}">
-									<option value="2" selected disabled hidden>필라테스</option>
+									<option value="2" selected hidden>필라테스</option>
 								</c:when>
 								<c:when test="${num == 3}">
-									<option value="3" selected disabled hidden>요가</option>
+									<option value="3" selected hidden>요가</option>
 								</c:when>
 								</c:choose>
 

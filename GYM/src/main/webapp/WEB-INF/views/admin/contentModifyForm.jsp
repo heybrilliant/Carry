@@ -54,8 +54,8 @@
 							<div class="category">
 								<span class="left">CATEGORY</span>
 								<select class="category_info" name="category">
-									<option value="" selected disabled hidden name="category">${original.category}</option>
-									<option value="공지사항">공지사항</option>
+									<option value="${original.category}" selected hidden>${original.category}</option>
+									<option value="공지사항" >공지사항</option>
 									<option value="약관 및 정책">약관 및 정책</option>
 								</select>
 							</div>

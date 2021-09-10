@@ -34,14 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 게시글 수정 -->
 	<update id="updateContent"
 		parameterType="com.project.gymcarry.admin.AdminBoardDto">
-		update
-			adminboard
-		set
-			category=#{category},
-			title=#{title},
-			content=#{content}
-		where
-			idx=#{idx}
+		update adminboard
+		set category=#{category}, title=#{title}, content=#{content}
+		where idx=#{idx}
 	</update>
 	
 	
