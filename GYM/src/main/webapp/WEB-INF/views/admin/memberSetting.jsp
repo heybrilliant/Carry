@@ -77,6 +77,12 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		<!-- footer -->
+		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+
+	</div>
 
 		<script>
 		function delMember(memidx) {
@@ -89,8 +95,7 @@
 		}
 		</script>
 				
-		<!-- footer -->
-		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		
 		
 			
 </body>

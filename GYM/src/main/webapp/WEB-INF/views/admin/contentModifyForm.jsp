@@ -99,6 +99,13 @@
 		</div>
 
 		
+		<!-- footer -->
+		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		
+	</div>
+
+
+		
 		<script>
 			
 			function contentModify(code) {
@@ -123,14 +130,10 @@
 		</script>
 
 
-
-
 		<script src="/gym/js/adminjquery-3.3.1.min.js"></script>
 		<script src="/gym/js/admin/popper.min.js"></script>
 		<script src="/gym/js/adminbootstrap.min.js"></script>
 		<script src="/gym/js/admin/main.js"></script>
 
-		<!-- footer -->
-		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
 </body>
 </html>	
