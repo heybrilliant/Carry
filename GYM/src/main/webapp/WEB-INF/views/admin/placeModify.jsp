@@ -34,7 +34,7 @@
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
-                           	짐캐리의 플레이스 정보를 수정하는 페이지입니다.
+                           	GymCarry의 플레이스 정보를 수정하는 페이지입니다.
                         </div>
                     </div>
                    

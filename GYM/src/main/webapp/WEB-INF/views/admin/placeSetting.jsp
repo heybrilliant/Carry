@@ -38,7 +38,7 @@
 			</ol>
 			<div class="card mb-4">
 				<div class="card-body">
-					짐캐리에 등록된 플레이스를 관리하는 페이지입니다.
+					GymCarry에 등록된 플레이스를 관리하는 페이지입니다.
 				</div>
 			</div>
 			<div class="card mb-4">
