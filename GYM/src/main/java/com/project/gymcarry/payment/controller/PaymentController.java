@@ -1,6 +1,9 @@
 package com.project.gymcarry.payment.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.payment.PaymentDto;
 import com.project.gymcarry.payment.service.PaymentService;
@@ -27,11 +31,14 @@ public class PaymentController {
 			  @RequestParam("crname") String crname,
 			  @RequestParam("paynum") int paynum,
 			  @RequestParam("payprice") int payprice,
+			  MemberDto memberjoinkeycheck,
+			  SessionDto memberLogin,
+			  HttpSession session,
 			  HttpServletRequest request,
+			  HttpServletResponse response,
 			  Model model
-			  ) {
-		  
-		  HttpSession session = request.getSession();
+			  ) throws IOException {
+		 
 		  SessionDto sessionDto = (SessionDto) session.getAttribute("loginSession");
 		  session.setAttribute("idx", sessionDto.getMemidx());
 		  session.setAttribute("name", sessionDto.getMemname());
