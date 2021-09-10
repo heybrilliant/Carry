@@ -50,7 +50,7 @@
 					<p>
 						연락처 <span style="color: blue">*</span>
 					</p>
-					<input type="text" class="input_box" placeholder="연락처를 입력해주세요"
+					<input type="text" class="input_box" placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요."
 						name="payphone" required> <br> <br> <br> <br>
 					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
 					<%-- <c:out value="${now}" /> --%>
@@ -136,7 +136,7 @@
 					});	
 					location.href='/gym/payment/complete'
       			} else {
-					alert("결제에 실패하였습니다. 에러 내용: " + rsp.error_msg);
+					alert("결제에 실패하였습니다. \n에러 내용: " + rsp.error_msg);
 				}	
 			});
 			/* 이니시스API 호출 END*/
