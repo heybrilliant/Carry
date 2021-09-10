@@ -217,6 +217,7 @@
 			<version>1.1.1</version>
 		</dependency>
 
+<<<<<<< HEAD
 		<!-- 메일 설정 시작 -->
 		<!-- javax.mail/mail -->
 		<dependency>
@@ -277,6 +278,15 @@
 		</dependency>
 		
 
+=======
+
+		<!-- log4jdbc-log4j2-jdbc4 / 콘솔에 현재 실행되는 sql 문장 출력 -->
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+			<version>1.16</version>
+		</dependency>
+>>>>>>> origin/m22
 
 	</dependencies>
 	<build>
