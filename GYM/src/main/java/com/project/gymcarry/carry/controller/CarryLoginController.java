@@ -21,18 +21,18 @@ public class CarryLoginController {
 	
 	@GetMapping("/carry/login")
 	public String carryLoginForm() {
-		return "member/carryLoginForm";
+		return "carry/carryLoginForm";
 	}
 	
 	// 로그인 세션 저장
 	@PostMapping("/carry/carryLogin")
 	public String carryLogin(
-			@RequestParam("crid") String id, 
+			@RequestParam("cremail") String cremail, 
 			@RequestParam("crpw") String pw,
 			HttpServletRequest request,
 			HttpSession session,
 			Model model) {
-		SessionDto sessionDto = loginService.carryLogin(id, pw);
+		SessionDto sessionDto = loginService.carryLogin(cremail, pw);
 		String chatNick = sessionDto.getCrnick();
 		session.setAttribute("chatSession", chatNick);
 		session.setAttribute("loginSession", sessionDto);

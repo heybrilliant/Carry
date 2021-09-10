@@ -2,10 +2,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
         <!-- 좌측 사이드 네비 바 시작 -->
-        <div id="layoutSidenav">
+
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
@@ -57,8 +57,10 @@
                                 </nav>
                             </div>
 
+
+								<%-- <c:url value="/admin/allSales"/> --%>
                             <div class="sb-sidenav-menu-heading">payment</div>
-                            <a class="nav-link" href="<c:url value="/admin/allSales"/>">
+                            <a class="nav-link sales" href="<c:url value="/admin/allSales"/>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 	전체 매출
                             </a>
@@ -80,4 +82,4 @@
                 </nav>
             </div>
             <!-- 좌측 사이드 네비 바 종료 -->
-</header>
+          

@@ -8,13 +8,13 @@
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed" id="sb-nav">
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header_admin.jsp"%>
+    <div id="layoutSidenav">
 	<!-- sidebar -->
 	<%@ include file="/WEB-INF/views/frame/sidebar_admin.jsp"%>
-
 
 
 	<!-- 컨텐츠 시작 -->
@@ -28,7 +28,21 @@
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						GymCarry의 전체매출 그래프 입니다.
+						GymCarry의 전체매출 그래프 입니다. 
+						<select name="month" id="select_month">
+							<option value="1">1월</option>								
+							<option value="2">2월</option>								
+							<option value="3">3월</option>								
+							<option value="4">4월</option>								
+							<option value="5">5월</option>								
+							<option value="6">6월</option>								
+							<option value="7">7월</option>								
+							<option value="8">8월</option>								
+							<option value="9">9월</option>								
+							<option value="10">10월</option>								
+							<option value="11">11월</option>								
+							<option value="12">12월</option>								
+						</select>
 					</div>
 				</div>
 				<div class="card mb-4">
@@ -72,12 +86,42 @@
 		<!-- footer -->
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
 		</div>
+	</div>
+		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/gym/js/scripts.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="/gym/js/assets/demo/chart-area-demo.js"></script>
         <script src="/gym/js/assets/demo/chart-bar-demo.js"></script>
         <script src="/gym/js/assets/demo/chart-pie-demo.js"></script>
+        
+<script>
+	$('#select_month').change(function(){
+		var sales = [];
+		var select = $('#select_month').val();
+		console.log(select);
+			$.ajax({
+				type : 'get',
+				url : '<c:url value="/admin/allSaleMan"/>',
+				dataType : 'json',
+				data : {
+					month : select
+				},
+				success : function(data){
+					console.log(data);
+				$.each(data, function(index, item){
+					sales.push(item.payprice);
+				}); 
+				$('#sb-nav').html();
+				getPie(sales)
+				console.log(sales)
+				}
+			});
+	});
+	
+</script>          
+        
+        
 </body>
 </html>
 

@@ -34,6 +34,7 @@
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header_admin.jsp"%>
+	<div id="layoutSidenav">
 	<!-- sidebar -->
 	<%@ include file="/WEB-INF/views/frame/sidebar_admin.jsp"%>
 
@@ -120,14 +121,14 @@
 		</script>
 
 
-
-
+		<!-- footer -->
+		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		</div>
+	</div>
+		
 		<script src="/gym/js/adminjquery-3.3.1.min.js"></script>
 		<script src="/gym/js/admin/popper.min.js"></script>
 		<script src="/gym/js/adminbootstrap.min.js"></script>
 		<script src="/gym/js/admin/main.js"></script>
-
-		<!-- footer -->
-		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
 </body>
 </html>	
