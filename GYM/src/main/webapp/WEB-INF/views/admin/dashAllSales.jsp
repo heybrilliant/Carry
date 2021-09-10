@@ -6,13 +6,13 @@
 <head>
 <title>DashBoard : GymCarry Admin</title>
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed" id="sb-nav">
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header_admin.jsp"%>
-    <div id="layoutSidenav">
 	<!-- sidebar -->
 	<%@ include file="/WEB-INF/views/frame/sidebar_admin.jsp"%>
 
@@ -85,8 +85,6 @@
 		</main>
 		<!-- footer -->
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
-		</div>
-	</div>
 		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/gym/js/scripts.js"></script>
