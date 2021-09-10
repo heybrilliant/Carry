@@ -69,12 +69,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 커뮤니티 게시판 리스트 출력 -->
 	<select id="selectCommunityList"
 		resultType="com.project.gymcarry.board.BoardDto">
-	select 
-		postidx, postname, postcontent, postnick, postdate, boardcategory
-	from 
-		board;
+	select postidx, postname, postcontent, postnick, postdate, boardcategory
+	from board;
 	</select>
 	
+	
+	<!-- 커뮤니티 게시글 삭제 -->
+	<delete id="deleteCommunity">
+		delete from board where postidx=#{postidx};
+	</delete>
 	
 	
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <title>커뮤니티 관리 : GymCarry Admin</title>
 
@@ -15,7 +16,7 @@
 
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/gym/fonts/icomoon/style.css">
+<!-- <link rel="stylesheet" href="/gym/fonts/icomoon/style.css"> -->
 <link rel="stylesheet" href="/gym/css/admin/owl.carousel.min.css">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="/gym/css/admin/bootstrap.min.css">
@@ -59,17 +60,20 @@
 
 								<tr scope="row">
 									<td>${list.postidx}</td>
-									<td>${list.category}</td>
+									<td>${list.boardcategory}</td>
+									<td>${list.postnick}</td>
 									<td>
 										<a href="<c:url value="/community/postContent?postidx=${list.postidx}"/>">${list.postname}</a>
-										<small class="d-block text-over-cut">${list.postcontent}</small>
+										<small class="d-block text-over-cut content-style">${list.postcontent}</small>
 									</td>
-									<td>${list.date}</td>
-									<td><a href="<c:url value="/content?idx=${list.idx}"/>" class="more">Details</a>
+									
+									<c:set var="date" value="${list.postdate}"/>
+									<c:set var="onlydate" value="${fn:substring(date, 0, 10)}" />
+									<td>${onlydate}</td>
+									
+									<td><a href="<c:url value="/community/postContent?postidx=${list.postidx}"/>" class="more">Details</a>
 									<br>
-									<span onclick='location.href="<c:url value="/admin/board/modifyForm?idx=${list.idx}"/>"'>수정</span>
-									/
-									<span onClick="contentDel('${list.idx}')">삭제</span>
+									<span onClick="communityDel('${list.postidx}')"class="delete">삭제</span>
 									</td>
 
 								</tr>
@@ -83,12 +87,11 @@
 				</div>
 
 			</div>
-	</div>
 
 			<script>
-			function contentDel(idx) {
+			function communityDel(postidx) {
 				if (confirm ('해당 게시글을 삭제 처리 하시겠습니까?')) {
-					location.href = "delete?idx=" + idx;
+					location.href = "delete?postidx=" + postidx;
 					alert('삭제가 정상적으로 완료되었습니다.');
 					location.href = 'list';
 				} 

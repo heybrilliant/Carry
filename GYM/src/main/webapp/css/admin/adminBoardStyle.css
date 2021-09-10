@@ -22,6 +22,15 @@ body {
 	transition: .3s all ease;
 }
 
+.text-over-cut {
+  display: block;
+  width: 550px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
 p {
   color: rgba(255, 255, 255, 0.5);
   font-weight: 300; }
@@ -43,15 +52,6 @@ a {
 h2 {
   font-size: 25px;
   color: #fff; }
-
-.text-over-cut {
-  display: block;
-  width: 550px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
-}
 
 
 .custom-table {
@@ -119,3 +119,21 @@ h2 {
     margin-bottom: 15px; }
     .custom-table .box td, .custom-table .box th {
       border: none !important; }
+      
+      
+
+.content-style * {
+  	font-size : 14px !important;
+	color: rgba(255, 255, 255, 0.3) !important;
+	background-color: transparent !important;
+	font-weight: 400 !important;
+	display: inline !important;
+	text-decoration: none !important;
+	font-style: normal !important;
+}
+
+.delete {
+	line-height: 28px !important;
+	margin-left: 18px;
+}
+

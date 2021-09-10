@@ -19,11 +19,9 @@ public interface AdminContentsDao {
 	// 플레이스 삭제
 	public void deletePlace(int placeidx);
 	
-
 	// 커뮤니티 게시판 리스트 출력
 	List<BoardDto> selectCommunityList();
 	// 커뮤니티 게시글 삭제 처리
 	public void deleteCommunity(int postidx);
-	
 	
 }
