@@ -109,7 +109,6 @@
 					month : select
 				},
 				success : function(data){
-					console.log(data);
 				$.each(data, function(index, item){
 					total.push(item.total);
 					crname.push(item.crname);
