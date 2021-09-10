@@ -260,8 +260,6 @@
 		}); //End of method /*
 	
 	// 성별 
-	// <input type="radio" name="memgender" id="male" value="남자"> <label for="male" id="male_label">남자</label>
-	
 	$(document).ready(function(){
 		$('#gendercheck').focusout(function(){
 			invalidItem();
@@ -276,32 +274,8 @@
 		}
 	});
 
-		/* 
-		$("#mememail").focusout(function() {
-			$.ajax({
-				url : 'member/join',
-				type : "POST",
-				dataType : "json",
-				data : {
-					mememail : $("#mememail").val()
-				},
-				success : function(result) {
-					console.log("중복 : 1 // 미중복 : 0 >> " + result)
-					if (result == 1) {
-						$("#emailcheck").html("이미 사용 중인 이메일입니다. 다른 이메일을 사용해주세요.");
-						$("#emailcheck").css("color", "red");
-					} else {
-						$("#emailcheck").html("");
-					}
-				},
-				error : function(result) {
-					console.log('실패');
-					console.log(result);)))
-
-			}
-		})
-	}); */
-	
+		
+		
 	
 </script>
 

@@ -17,6 +17,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="memberjoinkeycheck" parameterType="String" resultType="com.project.gymcarry.member.MemberDto">
 		select * from member where mememail = #{param1} and mempw = #{param2}
 	</select>
+	
+	<!-- 로그인시 joinkey_status != 1인 경우(이메일 인증되지 않은 계정) 로그인 제한 -->
+	<select id="carryjoinkeycheck" parameterType="String" resultType="com.project.gymcarry.carry.CarryDto">
+		select * from carry where cremail = #{param1} and crpw = #{param2}
+	</select>
+	
 
 	<!-- 멤버회원가입 -->
 	<insert id="insertMember"

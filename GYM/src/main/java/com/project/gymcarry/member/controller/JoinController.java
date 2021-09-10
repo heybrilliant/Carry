@@ -1,10 +1,5 @@
 package com.project.gymcarry.member.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.crypto.EncryptedPrivateKeyInfo;
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.member.MemberDto;

@@ -48,7 +48,7 @@ public class LoginController {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		
-		System.out.println("로그인 프로세스 입장>>");
+		System.out.println("멤버 로그인 프로세스 입장>>");
 		String password = memSha256.encrypt(pw);
 		System.out.println(password);
 		MemberDto memberDto = loginService.memberjoinkeycheck(id, password);
@@ -94,7 +94,7 @@ public class LoginController {
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
-			System.out.println("이메일 미인증 상태!"); 
+			System.out.println("입력 오류 상태!"); 
 			
 		}
 		
