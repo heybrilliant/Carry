@@ -98,12 +98,15 @@
 			}
 			</script>
 
-		<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
+			<!-- footer -->
+			<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		
+		</div>
+	
+			<script src="/gym/js/admin/jquery-3.3.1.min.js"></script>
 			<script src="/gym/js/admin/popper.min.js"></script>
 			<script src="/gym/js/admin/bootstrap.min.js"></script>
 			<script src="/gym/js/admin/main.js"></script>
 
-			<!-- footer -->
-			<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
 </body>
 </html>	

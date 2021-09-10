@@ -100,9 +100,10 @@
 			}
 		</script>
 
-
-
 		<!-- footer -->
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		
+	</div>
+		
 </body>
 </html>

@@ -20,14 +20,13 @@
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header_admin.jsp"%>
-	<div id="layoutSidenav">
 	<!-- sidebar -->
 	<%@ include file="/WEB-INF/views/frame/sidebar_admin.jsp"%>
 	
 	
 	<!-- 컨텐츠 시작 -->
-	<div id="layoutSidenav_content">
-		<div class="container-fluid px-4">
+		<div id="layoutSidenav_content">
+			<div class="container-fluid px-4">
 			<h1 class="mt-4">캐리 관리</h1>
 			<ol class="breadcrumb mb-4">
 				<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
@@ -113,7 +112,6 @@
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
 		
 		</div>
-	</div>
 			
 </body>
 </html>	

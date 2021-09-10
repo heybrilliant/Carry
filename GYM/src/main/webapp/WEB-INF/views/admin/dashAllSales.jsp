@@ -84,7 +84,41 @@
 			</div>
 		</main>
 		<!-- footer -->
+		
+		
+		    
+		<script>
+		$('#select_month').change(function(){
+		    var total = [];
+		    var crname = [];
+		    var month = [];
+		    var select = $('#select_month').val();
+		       $.ajax({
+		          type : 'get',
+		          url : '<c:url value="/admin/allSaleMan"/>',
+		          dataType : 'json',
+		          data : {
+		             month : select
+		          },
+		          success : function(data){
+		          $.each(data, function(index, item){
+		             total.push(item.total);
+		             crname.push(item.crname);
+		             month.push(item.month);
+		          }); 
+		          $('#sb-nav').html();
+		          getPie(total, crname, month);
+		          }
+		       });
+		 });
+			
+		</script>          
+        
+        
 		<%@ include file="/WEB-INF/views/frame/footer_admin.jsp"%>
+		
+	</div>
+		
 		
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/gym/js/scripts.js"></script>
@@ -92,34 +126,7 @@
         <script src="/gym/js/assets/demo/chart-area-demo.js"></script>
         <script src="/gym/js/assets/demo/chart-bar-demo.js"></script>
         <script src="/gym/js/assets/demo/chart-pie-demo.js"></script>
-        
-<script>
-$('#select_month').change(function(){
-    var total = [];
-    var crname = [];
-    var month = [];
-    var select = $('#select_month').val();
-       $.ajax({
-          type : 'get',
-          url : '<c:url value="/admin/allSaleMan"/>',
-          dataType : 'json',
-          data : {
-             month : select
-          },
-          success : function(data){
-          $.each(data, function(index, item){
-             total.push(item.total);
-             crname.push(item.crname);
-             month.push(item.month);
-          }); 
-          $('#sb-nav').html();
-          getPie(total, crname, month);
-          }
-       });
- });
-	
-</script>          
-        
+    
         
 </body>
 </html>
