@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.admin.AllSalesDto;
+import com.project.gymcarry.admin.DashTableAddDto;
 import com.project.gymcarry.admin.DashTableDto;
 import com.project.gymcarry.dao.AdminDashBordDao;
 
 @Service
-public class AdminDashBoardServiceImpl {
+public class AdminDashBoardServiceImpl implements AdminDashBoardService {
 	
 	@Autowired
 	private SqlSessionTemplate template;
@@ -40,6 +41,12 @@ public class AdminDashBoardServiceImpl {
 	public List<DashTableDto> getAllDasghTable() {
 		dao = template.getMapper(AdminDashBordDao.class);
 		return dao.selectAllDashTable();
+	}
+
+	@Override
+	public List<DashTableAddDto> getDayTable(int month) {
+		dao = template.getMapper(AdminDashBordDao.class);
+		return dao.selectDayTable(month);
 	}
 	
 	

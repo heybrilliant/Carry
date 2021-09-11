@@ -1,5 +1,7 @@
 package com.project.gymcarry.admin.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.admin.AllSalesDto;
+import com.project.gymcarry.admin.DashTableAddDto;
 import com.project.gymcarry.admin.DashTableDto;
 import com.project.gymcarry.admin.service.AdminDashBoardService;
 
@@ -25,7 +28,11 @@ public class AdminDashBoardController {
 	@GetMapping("admin/dashboard")
 	public String getAllDashTable(Model model) {
 		List<DashTableDto> list = adminDashBoardService.getAllDasghTable();
-		System.out.println(list);
+		model.addAttribute("allDashTable", list);
+		SimpleDateFormat format = new SimpleDateFormat("MM");
+		Date time = new Date();
+		String date = format.format(time);
+		model.addAttribute("date", date);
 		return "admin/dashboard";
 	}
 
@@ -60,6 +67,14 @@ public class AdminDashBoardController {
 		map.put("rankDash", rankList);
 		return map;
 	}
+	
+	@GetMapping("/admin/daylist")
+	@ResponseBody
+	public List<DashTableAddDto> getDayList(@RequestParam("month") int month){
+		List<DashTableAddDto> list = adminDashBoardService.getDayTable(month);
+		return list;
+	}
+	
 
 	
 

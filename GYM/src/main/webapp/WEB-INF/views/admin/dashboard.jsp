@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>DashBoard : GymCarry Admin</title>
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -29,11 +30,11 @@
 				<div class="row">
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-primary text-white mb-4">
-							<div class="card-body">GymCarry DashBoard</div>
+							<div class="card-body">최근 요일 별 매출</div>
 							<div
 								class="card-footer d-flex align-items-center justify-content-between">
-								<a class="small text-white stretched-link" href="#">View
-									Details</a>
+								<a class="small text-white stretched-link" href="javascript:callDay(${date});">View
+									요일 별 매출</a>
 								<div class="small text-white">
 									<i class="fas fa-angle-right"></i>
 								</div>
@@ -42,11 +43,11 @@
 					</div>
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-warning text-white mb-4">
-							<div class="card-body">Warning Card</div>
+							<div class="card-body">최근 월별 총 매출</div>
 							<div
 								class="card-footer d-flex align-items-center justify-content-between">
-								<a class="small text-white stretched-link" href="#">View
-									Details</a>
+								<a class="small text-white stretched-link a_month" href="#">View
+									월별 총 매출</a>
 								<div class="small text-white">
 									<i class="fas fa-angle-right"></i>
 								</div>
@@ -55,11 +56,11 @@
 					</div>
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-success text-white mb-4">
-							<div class="card-body">Success Card</div>
+							<div class="card-body">최근 월별 캐리 매출 판매왕!</div>
 							<div
 								class="card-footer d-flex align-items-center justify-content-between">
-								<a class="small text-white stretched-link" href="#">View
-									Details</a>
+								<a class="small text-white stretched-link a_rank" href="#">View
+									월별 캐리 매출 판매왕!</a>
 								<div class="small text-white">
 									<i class="fas fa-angle-right"></i>
 								</div>
@@ -68,11 +69,11 @@
 					</div>
 					<div class="col-xl-3 col-md-6">
 						<div class="card bg-danger text-white mb-4">
-							<div class="card-body">Danger Card</div>
+							<div class="card-body">2021년 총 매출</div>
 							<div
 								class="card-footer d-flex align-items-center justify-content-between">
-								<a class="small text-white stretched-link" href="#">View
-									Details</a>
+								<a class="small text-white stretched-link a_year" href="#">View
+									2021년 총 매출</a>
 								<div class="small text-white">
 									<i class="fas fa-angle-right"></i>
 								</div>
@@ -110,34 +111,26 @@
 						<table id="datatablesSimple">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+									<th>결제자 명</th>
+									<th>결제자 연락처</th>
+									<th>결제 수업횟수</th>
+									<th>캐리 이름</th>
+									<th>결제 날짜</th>
+									<th>결제 금액</th>
 								</tr>
 							</thead>
-							<tfoot>
+							<c:forEach items="${allDashTable}" var="list">
+							<tbody class="addList">
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
-								</tr>
-							</tfoot>
-							<tbody>
-								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
-									<td>$320,800</td>
+									<td>${list.payname}</td>
+									<td>${list.payphone}</td>
+									<td>${list.paynum}</td>
+									<td>${list.crname}</td>
+									<td>${list.paydate}</td>
+									<td>₩ ${list.payprice}</td>
 								</tr>
 							</tbody>
+							</c:forEach>
 						</table>
 					</div>
 				</div>
@@ -178,6 +171,41 @@
           
           }
        });
+       
+       
+	function callDay(num){
+		$.ajax({
+			type : 'get',
+	        url : '<c:url value="/admin/daylist"/>',
+	        dataType : 'json',
+	        data : { month:num },
+	        success : function(data){
+	        	$.each(data, function(index, item){
+	        		var html = '<tbody>'
+	        		console.log(index, item);
+	        		 	html += '<tr>'
+	        		    html += '<td>'+ item.payname +'</td>'
+	        		    html += '<td>'+ item.payphone +'</td>'
+	        		    html += '<td>'+ item.paynum +'</td>'
+	        		    html += '<td>'+ item.crname +'</td>'
+	        		    html += '<td>'+ item.paydate +'</td>'
+	        		    html += '<td>₩ '+ item.payprice +'</td>'
+	        		    html += '</tr>'
+	        		    html += '</tbody>'
+	        	});
+	        			$(".addList").html(html);
+	        }
+		});
+	};
+	
+	
+	
+	
+	
+	
+	
+	
+
     </script>
     
 </body>

@@ -52,5 +52,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		join gymcarry.carry c on p.cridx=c.cridx;
 	</select>
 	
-	
+	<!-- 요일별 리스트 -->
+	<select id="selectDayTable"
+		resultType="com.project.gymcarry.admin.DashTableAddDto">
+		select *,day(p.paydate) as day, sum(p.payprice) as total
+		from gymcarry.payment p
+		join gymcarry.carry c on c.cridx=p.cridx
+		where month(p.paydate)=#{param} group by day order by day;
+	</select>
 </mapper>

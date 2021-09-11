@@ -3,6 +3,7 @@ package com.project.gymcarry.dao;
 import java.util.List;
 
 import com.project.gymcarry.admin.AllSalesDto;
+import com.project.gymcarry.admin.DashTableAddDto;
 import com.project.gymcarry.admin.DashTableDto;
 
 public interface AdminDashBordDao {
@@ -21,6 +22,9 @@ public interface AdminDashBordDao {
 	
 	// 매출테이블 전체리스트
 	List<DashTableDto> selectAllDashTable();
+	
+	// 요일별 테이블 리스트
+	List<DashTableAddDto> selectDayTable(int month);
 	
 
 }
