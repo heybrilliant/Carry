@@ -13,17 +13,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from payment p
 		join carry c on c.cridx=p.cridx
 		where month(p.paydate)=#{param}
-		group by c.cridx order by sum(p.payprice) desc limit 5;
+		group by c.cridx order by sum(p.payprice) desc limit 4;
 	</select>
 	
 	<!-- 월별 매출 -->
 	<select id="selectMonthSales"
 		resultType="com.project.gymcarry.admin.AllSalesDto">
-		select month(paydate) as month, sum(payprice) as total
-		from gymcarry.payment group by month;
+		select month(paydate) as month, sum(payprice) as total, monthname(paydate) as engmonth
+		from gymcarry.payment group by month order by month;
+	</select>
+	
+	<!-- 요일별 매출 -->
+	<select id="selectDaySales"
+		resultType="com.project.gymcarry.admin.AllSalesDto">
+		select day(paydate) as day, sum(payprice) as total
+		from gymcarry.payment
+		where month(paydate)=#{param} group by day order by day;
+	</select>
+	
+	<!-- 월별 캐리 매출 1위 -->
+	<select id="selectMonthRank"
+		resultType="com.project.gymcarry.admin.AllSalesDto">
+		select *
+		from (select month(p.paydate) as month, c.crname, sum(p.payprice) as total, 
+			  monthname(p.paydate) as engmonth
+			  from payment p 
+		      join carry c on c.cridx=p.cridx 
+			  group by c.cridx,month(p.paydate) order by sum(p.payprice) desc) as ss
+		group by month;
 	</select>
 	
 	
+	<!-- 매출 전체 리스트 -->
+	<select id="selectAllDashTable"
+		resultType="com.project.gymcarry.admin.DashTableDto">
+		select p.payname, p.payphone, p.paynum, c.crname, p.paydate, p.payprice
+		from gymcarry.payment p
+		join gymcarry.carry c on p.cridx=c.cridx;
+	</select>
 	
 	
 </mapper>

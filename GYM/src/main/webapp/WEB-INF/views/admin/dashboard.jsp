@@ -84,7 +84,7 @@
 					<div class="col-xl-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-area me-1"></i> 요일별 매출
+								<i class="fas fa-chart-area me-1"></i> 2021년 월별 총 매출
 							</div>
 							<div class="card-body">
 								<canvas id="myAreaChart" width="100%" height="40"></canvas>
@@ -94,7 +94,7 @@
 					<div class="col-xl-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-bar me-1"></i> 월간 매출
+								<i class="fas fa-chart-bar me-1"></i> 2021년 월별 판매왕!
 							</div>
 							<div class="card-body">
 								<canvas id="myBarChart" width="100%" height="40"></canvas>
@@ -162,13 +162,21 @@
           url : '<c:url value="/admin/dash"/>',
           dataType : 'json',
           success : function(data){
-          $.each(data.monthSales, function(index, item){
+          $.each(data.monthDash, function(index, item){
         	  total.push(item.total);
-        	  month.push(item.month);
+        	  month.push(item.engmonth);
           });
-          getBar(total);
-          }
+          getArea(total, month);
           
+          total = [];
+          month = [];
+          $.each(data.rankDash, function(index, item){
+        	  total.push(item.total);
+        	  month.push(item.engmonth);
+          });
+          getBar(total, month);
+          
+          }
        });
     </script>
     

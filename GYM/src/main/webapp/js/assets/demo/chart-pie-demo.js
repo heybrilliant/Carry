@@ -11,9 +11,14 @@ function getPie(total, crname, month){
        labels: crname,
        datasets: [{
          data: total,
-         backgroundColor: ['#4834d4', '#eb4d4b', '#f0932b', '#6ab04c', '#D980FA'],
+         backgroundColor: ['#FF6464',  '#FFEB46', '#B2FA5C', '#32AAFF'],
        }],
      },
    });
 };
 
+
+
+	      		
+	      		
+	      		

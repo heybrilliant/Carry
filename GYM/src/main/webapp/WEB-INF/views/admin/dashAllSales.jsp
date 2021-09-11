@@ -29,7 +29,7 @@
 				<div class="card mb-4">
 					<div class="card-body">
 						GymCarry의 전체매출 그래프 입니다. 
-						<select name="month" id="select_month">
+						<select name="month" id="select_month" class="dataTable-selector">
 							<option value="">선택</option>								
 							<option value="1">1월</option>								
 							<option value="2">2월</option>								
@@ -53,8 +53,7 @@
 					<div class="card-body">
 						<canvas id="myAreaChart" width="100%" height="30"></canvas>
 					</div>
-					<div class="card-footer small text-muted">Updated yesterday
-						at 11:59 PM</div>
+					<div class="card-footer small text-muted day-num">날짜를 선택하세요.</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-6">
@@ -65,8 +64,7 @@
 							<div class="card-body">
 								<canvas id="myBarChart" width="100%" height="50"></canvas>
 							</div>
-							<div class="card-footer small text-muted">Updated yesterday
-								at 11:59 PM</div>
+							<div class="card-footer small text-muted month-num">날짜를 선택하세요.</div>
 						</div>
 					</div>
 					<div class="col-lg-6">
@@ -77,8 +75,7 @@
 							<div class="card-body">
 								<canvas id="myPieChart" width="100%" height="50"></canvas>
 							</div>
-							<div class="card-footer small text-muted">Updated yesterday
-								at 11:59 PM</div>
+							<div class="card-footer small text-muted rank-num">날짜를 선택하세요.</div>
 						</div>
 					</div>
 				</div>
@@ -99,6 +96,7 @@ $('#select_month').change(function(){
     var total = [];
     var crname = [];
     var month = [];
+    var day = [];
     var select = $('#select_month').val();
        $.ajax({
           type : 'get',
@@ -108,20 +106,36 @@ $('#select_month').change(function(){
              month : select
           },
           success : function(data){
+          $.each(data.daySales, function(index, item){
+        	  total.push(item.total);
+        	  day.push(item.day);
+          });
+          total.unshift(0);
+          day.unshift(0);
+          getArea(total, day);
+          
+         
+          total = [];	  
           $.each(data.kingSales, function(index, item){
              total.push(item.total);
              crname.push(item.crname);
              month.push(item.month);
           });
           getPie(total, crname, month);
+          console.log(total, month);
           
           total = [];
           month = [];
           $.each(data.monthSales, function(index, item){
         	  total.push(item.total);
-        	  month.push(item.month);
+        	  month.push(item.engmonth);
           });
-          getBar(total);
+          getBar(total, month);
+          	
+          
+          $(".day-num").html(select + '월 요일 별 매출 입니다.');
+          $(".month-num").html(select + '월 월간 매출 입니다.');
+          $(".rank-num").html(select + '월  판매 왕! 입니다.');
           }
           
        });
