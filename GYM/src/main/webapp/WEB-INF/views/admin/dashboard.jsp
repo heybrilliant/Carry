@@ -6,6 +6,7 @@
 <head>
 <title>DashBoard : GymCarry Admin</title>
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -83,7 +84,7 @@
 					<div class="col-xl-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-area me-1"></i> Area Chart Example
+								<i class="fas fa-chart-area me-1"></i> 요일별 매출
 							</div>
 							<div class="card-body">
 								<canvas id="myAreaChart" width="100%" height="40"></canvas>
@@ -93,7 +94,7 @@
 					<div class="col-xl-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-bar me-1"></i> Bar Chart Example
+								<i class="fas fa-chart-bar me-1"></i> 월간 매출
 							</div>
 							<div class="card-body">
 								<canvas id="myBarChart" width="100%" height="40"></canvas>
@@ -153,6 +154,24 @@
     <script src="/gym/js/assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="/gym/js/datatables-simple-demo.js"></script>
+	<script>
+    var total = [];
+    var month = [];
+       $.ajax({
+          type : 'get',
+          url : '<c:url value="/admin/dash"/>',
+          dataType : 'json',
+          success : function(data){
+          $.each(data.monthSales, function(index, item){
+        	  total.push(item.total);
+        	  month.push(item.month);
+          });
+          getBar(total);
+          }
+          
+       });
+    </script>
+    
 </body>
 </html>
 

@@ -1,6 +1,8 @@
 package com.project.gymcarry.admin.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,12 +34,25 @@ public class AdminDashBoardController {
 	// 대쉬보드 전체매출
 	@GetMapping("/admin/allSaleMan")
 	@ResponseBody
-	public List<AllSalesDto> allSalesDash(@RequestParam("month") int month) {
+	public Map<String, Object> allSalesDash(@RequestParam("month") int month) {
 		List<AllSalesDto> list = adminDashBoardService.getAllSales(month);
-		return list;
+		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("kingSales", list);
+		map.put("monthSales", monthList);
+		return map;
 	}
 	
 	
+	@GetMapping("/admin/dash")
+	@ResponseBody
+	public Map<String, Object> getDashBoard(){
+		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("monthSales", monthList);
+		return map;
+	}
 	
 	
 	

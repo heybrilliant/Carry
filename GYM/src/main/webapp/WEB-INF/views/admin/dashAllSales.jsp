@@ -30,6 +30,7 @@
 					<div class="card-body">
 						GymCarry의 전체매출 그래프 입니다. 
 						<select name="month" id="select_month">
+							<option value="">선택</option>								
 							<option value="1">1월</option>								
 							<option value="2">2월</option>								
 							<option value="3">3월</option>								
@@ -47,7 +48,7 @@
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-chart-area me-1"></i> Area Chart Example
+						<i class="fas fa-chart-area me-1"></i> 요일별 매출
 					</div>
 					<div class="card-body">
 						<canvas id="myAreaChart" width="100%" height="30"></canvas>
@@ -59,7 +60,7 @@
 					<div class="col-lg-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-bar me-1"></i> Bar Chart Example
+								<i class="fas fa-chart-bar me-1"></i> 월간 매출
 							</div>
 							<div class="card-body">
 								<canvas id="myBarChart" width="100%" height="50"></canvas>
@@ -71,7 +72,7 @@
 					<div class="col-lg-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-pie me-1"></i> Pie Chart Example
+								<i class="fas fa-chart-pie me-1"></i> 이번달 매출 1위 ~ 5위
 							</div>
 							<div class="card-body">
 								<canvas id="myPieChart" width="100%" height="50"></canvas>
@@ -107,14 +108,22 @@ $('#select_month').change(function(){
              month : select
           },
           success : function(data){
-          $.each(data, function(index, item){
+          $.each(data.kingSales, function(index, item){
              total.push(item.total);
              crname.push(item.crname);
              month.push(item.month);
-          }); 
-          $('#sb-nav').html();
+          });
           getPie(total, crname, month);
+          
+          total = [];
+          month = [];
+          $.each(data.monthSales, function(index, item){
+        	  total.push(item.total);
+        	  month.push(item.month);
+          });
+          getBar(total);
           }
+          
        });
  });
 	

@@ -11,7 +11,7 @@ function getPie(total, crname, month){
        labels: crname,
        datasets: [{
          data: total,
-         backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745'],
+         backgroundColor: ['#4834d4', '#eb4d4b', '#f0932b', '#6ab04c', '#D980FA'],
        }],
      },
    });

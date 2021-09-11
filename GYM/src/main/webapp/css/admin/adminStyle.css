@@ -407,6 +407,10 @@ button:not(:disabled),
   border-style: none;
 }
 
+#select_month{
+	float: right;
+}
+
 textarea {
   resize: vertical;
 }

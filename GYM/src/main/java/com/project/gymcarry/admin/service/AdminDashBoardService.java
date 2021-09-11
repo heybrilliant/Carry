@@ -20,6 +20,11 @@ public class AdminDashBoardService {
 		dao = template.getMapper(AdminDashBordDao.class);
 		return dao.selectAllSales(month);
 	}
+
+	public List<AllSalesDto> getMonthSales() {
+		dao = template.getMapper(AdminDashBordDao.class);
+		return dao.selectMonthSales();
+	}
 	
 	
 }
