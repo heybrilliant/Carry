@@ -3,9 +3,18 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Area Chart Example
+
+
+var myLineChart;
 function getArea(total, day){
+
+// 기존 데이터 삭제
+if(window.myLineChart != undefined){
+	window.myLineChart.destroy();
+} 
+
 var ctx = document.getElementById("myAreaChart");
-	var myLineChart = new Chart(ctx, {
+	window.myLineChart = new Chart(ctx, {
 	  type: 'line',
 	  data: {
 	    labels: day,

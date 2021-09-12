@@ -3,9 +3,16 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
+
+var myBarChart;
 function getBar(total, month){
+
+	if(window.myBarChart != undefined){
+		window.myBarChart.destroy();
+	} 
+
 	var ctx = document.getElementById("myBarChart");
-	var myLineChart = new Chart(ctx, {
+	window.myBarChart = new Chart(ctx, {
 	  type: 'bar',
 	  data: {
 	    labels: month,

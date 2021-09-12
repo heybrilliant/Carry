@@ -113,7 +113,6 @@ $('#select_month').change(function(){
           total.unshift(0);
           day.unshift(0);
           getArea(total, day);
-          
          
           total = [];	  
           $.each(data.kingSales, function(index, item){
@@ -136,6 +135,8 @@ $('#select_month').change(function(){
           $(".day-num").html(select + '월 요일 별 매출 입니다.');
           $(".month-num").html(select + '월 월간 매출 입니다.');
           $(".rank-num").html(select + '월  판매 왕! 입니다.');
+          
+          
           }
           
        });

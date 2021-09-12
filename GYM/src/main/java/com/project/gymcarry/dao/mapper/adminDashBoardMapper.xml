@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.project.gymcarry.dao.AdminDashBordDao">
 
-	<!-- 캐리매출 1~5위 -->
+	<!-- 캐리매출 1~4위 -->
 	<select id="selectAllSales"
 		resultType="com.project.gymcarry.admin.AllSalesDto">
 		select month(p.paydate) as month, c.crname, sum(p.payprice)
@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from payment p
 		join carry c on c.cridx=p.cridx
 		where month(p.paydate)=#{param}
-		group by c.cridx order by sum(p.payprice) desc limit 4;
+		group by c.cridx order by sum(p.payprice) desc limit 4
 	</select>
 	
 	<!-- 월별 매출 -->

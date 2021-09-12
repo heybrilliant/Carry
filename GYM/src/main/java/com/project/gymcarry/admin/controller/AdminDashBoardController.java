@@ -70,9 +70,13 @@ public class AdminDashBoardController {
 	
 	@GetMapping("/admin/daylist")
 	@ResponseBody
-	public List<DashTableAddDto> getDayList(@RequestParam("month") int month){
+	public Map<String, Object> getDayList(@RequestParam("month") int month){
 		List<DashTableAddDto> list = adminDashBoardService.getDayTable(month);
-		return list;
+		List<AllSalesDto> dayList = adminDashBoardService.getDaySales(month);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("dayList", list);
+		map.put("dayDash", dayList);
+		return map;
 	}
 	
 
