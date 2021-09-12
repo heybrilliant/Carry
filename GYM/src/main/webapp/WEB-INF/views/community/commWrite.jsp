@@ -4,7 +4,22 @@
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/community/commWrite.css">
-<script src="/gym/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script src="/gym/ckeditor/ckeditor.js" charset="utf-8"></script>
+<script> 
+
+      var ckeditor_config = {
+
+      resize_enaleb : false,
+
+      enterMode : CKEDITOR.ENTER_BR,
+
+      shiftEnterMode : CKEDITOR.ENTER_P,
+
+      filebrowserUploadUrl : '${pageContext.request.contextPath}/adm/fileupload'
+
+      };
+ </script>
+
 </head>
 <body>
 	<!-- header -->
@@ -49,11 +64,16 @@
 
         </div>
     </div>
+    
+    <script>
+    	CKEDITOR.replace('postcontent', ckeditor_config);
+    </script>
+    
 	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	
-	<script>
+<!-- 	<script>
         var oEditors = [];
 
         nhn.husky.EZCreator.createInIFrame({
@@ -72,4 +92,4 @@
         	$("#writeForm").submit();
         })
         
-    </script>
+    </script> -->

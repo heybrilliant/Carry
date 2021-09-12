@@ -21,7 +21,7 @@
 	width:20%;
     font-weight:600
 }
-.board_write .write_form > div span {
+.board_write .write_form > div > span {
 	width:80%;
 	text-align:center;
 }
