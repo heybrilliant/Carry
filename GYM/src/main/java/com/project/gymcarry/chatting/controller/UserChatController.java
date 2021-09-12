@@ -32,16 +32,18 @@ public class UserChatController {
 		// 방번호 가져오기
 		ChatListDto chatDto = matchingChatRoomService.getByChatRoom(cridx, memidx);
 		if (chatDto != null) {
+			// 방이 있으면 생성하지않고 채팅으로 이동
 			int chatidx = matchingChatRoomService.getByChatIdx(chatDto.getChatidx());
 			if (chatidx == 1) {
 				if (chatDto.getOutcount() == 1) {
+					// 나간채팅방 다시들어가기
 					matchingChatRoomService.getInChatRoom(chatDto.getChatidx());
 				}
 				redirectAttributes.addAttribute("chatidx", chatDto.getChatidx());
 				return "redirect:/chatting/chatList";
 			}
 		}
-		// 방이 있으면 생성하지않고 채팅으로 이동
+		
 		// 캐리와의 중복 방이없을경우 채팅방생성
 		matchingChatRoomService.getAddChatRoom(cridx, memidx);
 		return "redirect:/chatting/chatList";
