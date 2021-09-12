@@ -39,4 +39,12 @@ public interface BoardDao {
     
     // 게시물 삭제
     Integer deleteBoard(int postidx);
+    
+    // 게시물 좋아요 on
+    Integer updateBoardLikeOn(int postidx, int memidx);
+    
+    // 게시물 좋아요 off
+    Integer updateBoardLikeOff(int postidx, int memidx);
+    
+    
 }

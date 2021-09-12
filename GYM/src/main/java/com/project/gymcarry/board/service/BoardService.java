@@ -32,6 +32,12 @@ public interface BoardService {
 
     // 게시글 삭제
     public int getDeleteBoard(int postidx) throws Exception;
+    
+    // 게시물 좋아요 on
+    public int getBoardLikeOn(int postidx, int memidx) throws Exception;
+    
+    // 게시물 좋아요 off
+    public int getBoardLikeOff(int postidx, int memidx) throws Exception;
 
 
 

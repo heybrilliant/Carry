@@ -76,6 +76,20 @@ public class BoardServiceImpl implements BoardService {
         dao = template.getMapper(BoardDao.class);
         return dao.deleteBoard(postidx);
     }
+    
+    // 게시물 좋아요 on
+	@Override
+	public int getBoardLikeOn(int postidx, int memidx) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	// 게시물 좋아요 off
+	@Override
+	public int getBoardLikeOff(int postidx, int memidx) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 
 }

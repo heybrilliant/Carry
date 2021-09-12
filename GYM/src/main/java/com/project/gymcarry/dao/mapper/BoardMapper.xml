@@ -79,6 +79,21 @@
 		delete from board where postidx = #{postidx};
 	</delete>
 	
+	
+	<!-- 게시물 좋아요 on -->
+	<update id="updateBoardLikeOn">
+		update bbslike
+		set likecheck = likecheck+1
+		where postidx = #{postidx} and memidx = #{memidx}
+	</update>
+	
+	<!-- 게시물 좋아요 on -->
+	<update id="updateBoardLikeOff">
+		update bbslike
+		set likecheck = 0
+		where postidx = #{postidx} and memidx = #{memidx}
+	</update>
+	
 
 
 </mapper>

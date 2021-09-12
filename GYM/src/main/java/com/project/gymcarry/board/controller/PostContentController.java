@@ -78,6 +78,7 @@ public class PostContentController {
 		return result;
 	}
 
+	// 댓글 리스트 ajax
 	@ResponseBody
 	@RequestMapping(value = "/selectReplyList", produces = "application/json; charset=utf-8")
 	public String selectReplyList(int postidx, Model model) {
