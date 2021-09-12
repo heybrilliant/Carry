@@ -96,5 +96,8 @@ public class PostContentController {
 
 		return gson.toJson(commList);
 	}
+	
+	// 게시물 좋아요 on
+	public
 
 }
