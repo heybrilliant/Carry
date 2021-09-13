@@ -79,7 +79,15 @@ public class AdminDashBoardController {
 		return map;
 	}
 	
-
+	
+	@GetMapping("/admin/monthlist")
+	@ResponseBody
+	public Map<String, Object> getPreference(@RequestParam("month") int month){
+		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("monthList", monthList);
+		return map;
+	}
 	
 
 }

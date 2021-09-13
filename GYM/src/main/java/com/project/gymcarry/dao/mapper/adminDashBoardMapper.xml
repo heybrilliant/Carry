@@ -8,8 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 캐리매출 1~4위 -->
 	<select id="selectAllSales"
 		resultType="com.project.gymcarry.admin.AllSalesDto">
-		select month(p.paydate) as month, c.crname, sum(p.payprice)
-		as total
+		select month(p.paydate) as month, c.crname, sum(p.payprice) as total
 		from payment p
 		join carry c on c.cridx=p.cridx
 		where month(p.paydate)=#{param}
@@ -40,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			  from payment p 
 		      join carry c on c.cridx=p.cridx 
 			  group by c.cridx,month(p.paydate) order by sum(p.payprice) desc) as ss
-		group by month;
+		group by month order by month;
 	</select>
 	
 	

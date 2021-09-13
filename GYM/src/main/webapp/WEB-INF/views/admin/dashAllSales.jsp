@@ -70,7 +70,7 @@
 					<div class="col-lg-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-pie me-1"></i> 이번달 매출 1위 ~ 5위
+								<i class="fas fa-chart-pie me-1"></i> 이번달 매출 1위 ~ 4위
 							</div>
 							<div class="card-body">
 								<canvas id="myPieChart" width="100%" height="50"></canvas>
