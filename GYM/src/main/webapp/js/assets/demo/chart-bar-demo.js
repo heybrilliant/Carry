@@ -6,7 +6,6 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 var myBarChart;
 function getBar(total, month){
-
 	if(window.myBarChart != undefined){
 		window.myBarChart.destroy();
 	} 

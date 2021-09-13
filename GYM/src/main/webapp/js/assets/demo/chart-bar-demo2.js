@@ -3,15 +3,32 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
-function getBar(total){
+
+var myBsrChart2;
+function getBaryear(total, year){
+
+	if(window.myBsrChart2 != undefined){
+		window.myBsrChart2.destroy();
+	} 
+	
 	var ctx = document.getElementById("myBarChart");
-	var myLineChart = new Chart(ctx, {
+	windowmyBsrChart2 = new Chart(ctx, {
 	  type: 'bar',
 	  data: {
-	    labels: ["January", "February", "March", "April", "May", "June", "july", "august", "september", "october", "november", "december"],
+	    labels: year,
 	    datasets: [{
 	      label: "Revenue",
-	      backgroundColor: "rgba(2,117,216,1)",
+	      backgroundColor: [
+	      		'rgba(255, 99, 132, 0.5)', 
+	      		'rgba(54, 162, 235, 0.5)', 
+	      		'rgba(255, 206, 86, 0.5)', 
+	      		'rgba(75, 192, 192, 0.5)', 
+	      		'rgba(153, 102, 255, 0.5)', 
+	      		'rgba(255, 159, 64, 0.5)',
+	      		'#FF9DFF',
+	      		'#FF8C8C',
+	      		'#CBFF75'
+	      ],
 	      borderColor: "rgba(2,117,216,1)",
 	      data: total,
 	    }],
@@ -32,7 +49,7 @@ function getBar(total){
 	      yAxes: [{
 	        ticks: {
 	          min: 0,
-	          max: 20000000,
+	          max: 40000000,
 	          maxTicksLimit: 5
 	        },
 	        gridLines: {

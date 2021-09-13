@@ -2,22 +2,24 @@ package com.project.gymcarry.admin;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class DashTableAddDto {
 	private String payname;
 	private String payphone;
 	private int paynum;
 	private String crname;
+	@JsonFormat(pattern = "YYYY-HH-dd")
 	private Timestamp paydate;
 	private int payprice;
 	private int month;
 	private int day;
 	private long total;
 	private String engmonth;
-	public DashTableAddDto() {
-	}
+	private long year;
+	public DashTableAddDto() {}
 	public DashTableAddDto(String payname, String payphone, int paynum, String crname, Timestamp paydate, int payprice,
-			int month, int day, long total, String engmonth) {
-		super();
+			int month, int day, long total, String engmonth, long year) {
 		this.payname = payname;
 		this.payphone = payphone;
 		this.paynum = paynum;
@@ -28,6 +30,7 @@ public class DashTableAddDto {
 		this.day = day;
 		this.total = total;
 		this.engmonth = engmonth;
+		this.year = year;
 	}
 	public String getPayname() {
 		return payname;
@@ -88,6 +91,12 @@ public class DashTableAddDto {
 	}
 	public void setEngmonth(String engmonth) {
 		this.engmonth = engmonth;
+	}
+	public long getYear() {
+		return year;
+	}
+	public void setYear(long year) {
+		this.year = year;
 	}
 	
 	

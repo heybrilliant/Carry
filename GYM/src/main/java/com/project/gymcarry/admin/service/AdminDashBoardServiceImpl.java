@@ -18,24 +18,24 @@ public class AdminDashBoardServiceImpl implements AdminDashBoardService {
 	private SqlSessionTemplate template;
 	private AdminDashBordDao dao;
 	
-	public List<AllSalesDto> getAllSales(int month) {
+	public List<AllSalesDto> getAllSales(int month, long year) {
 		dao = template.getMapper(AdminDashBordDao.class);
-		return dao.selectAllSales(month);
+		return dao.selectAllSales(month, year);
 	}
 
-	public List<AllSalesDto> getMonthSales() {
+	public List<AllSalesDto> getMonthSales(long year) {
 		dao = template.getMapper(AdminDashBordDao.class);
-		return dao.selectMonthSales();
+		return dao.selectMonthSales(year);
 	}
 
-	public List<AllSalesDto> getDaySales(int month) {
+	public List<AllSalesDto> getDaySales(int month, long year) {
 		dao = template.getMapper(AdminDashBordDao.class);
-		return dao.selectDaySales(month);
+		return dao.selectDaySales(month, year);
 	}
 
-	public List<AllSalesDto> getMonthRank() {
+	public List<AllSalesDto> getMonthRank(long year) {
 		dao = template.getMapper(AdminDashBordDao.class);
-		return dao.selectMonthRank();
+		return dao.selectMonthRank(year);
 	}
 
 	public List<DashTableDto> getAllDasghTable() {
@@ -47,6 +47,24 @@ public class AdminDashBoardServiceImpl implements AdminDashBoardService {
 	public List<DashTableAddDto> getDayTable(int month) {
 		dao = template.getMapper(AdminDashBordDao.class);
 		return dao.selectDayTable(month);
+	}
+
+	@Override
+	public List<DashTableAddDto> getMonthTable(long year) {
+		dao = template.getMapper(AdminDashBordDao.class);
+		return dao.selectMonthTable(year);
+	}
+
+	@Override
+	public List<AllSalesDto> getYearSales() {
+		dao = template.getMapper(AdminDashBordDao.class);
+		return dao.selectYearSales();
+	}
+
+	@Override
+	public List<AllSalesDto> getCarrySales(long year) {
+		dao = template.getMapper(AdminDashBordDao.class);
+		return dao.selectCarrySales(year);
 	}
 	
 	

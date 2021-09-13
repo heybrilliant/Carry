@@ -28,7 +28,8 @@
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						GymCarry의 전체매출 그래프 입니다. 
+						GymCarry의 전체매출 그래프 입니다. +
+						
 						<select name="month" id="select_month" class="dataTable-selector">
 							<option value="">선택</option>								
 							<option value="1">1월</option>								
@@ -44,6 +45,12 @@
 							<option value="11">11월</option>								
 							<option value="12">12월</option>								
 						</select>
+						<select name="year" id="select_year" class="dataTable-selector">
+							<option value="">선택</option>								
+							<option value="2020">2020년</option>								
+							<option value="2021">2021년</option>								
+						</select>
+						
 					</div>
 				</div>
 				<div class="card mb-4">
@@ -92,21 +99,24 @@
         <script src="/gym/js/assets/demo/chart-pie-demo.js"></script>
         
 <script>
-$('#select_month').change(function(){
+$('#select_month, #select_year').change(function(){
     var total = [];
     var crname = [];
     var month = [];
     var day = [];
-    var select = $('#select_month').val();
+    var selectYear = $('#select_year').val();
+    var selectMonth = $('#select_month').val();
        $.ajax({
           type : 'get',
           url : '<c:url value="/admin/allSaleMan"/>',
           dataType : 'json',
           data : {
-             month : select
+             month : selectMonth,
+             year : selectYear
           },
           success : function(data){
           $.each(data.daySales, function(index, item){
+        	  console.log(item);
         	  total.push(item.total);
         	  day.push(item.day);
           });
@@ -121,7 +131,6 @@ $('#select_month').change(function(){
              month.push(item.month);
           });
           getPie(total, crname, month);
-          console.log(total, month);
           
           total = [];
           month = [];
@@ -130,13 +139,9 @@ $('#select_month').change(function(){
         	  month.push(item.engmonth);
           });
           getBar(total, month);
-          	
-          
-          $(".day-num").html(select + '월 요일 별 매출 입니다.');
-          $(".month-num").html(select + '월 월간 매출 입니다.');
-          $(".rank-num").html(select + '월  판매 왕! 입니다.');
-          
-          
+          $(".day-num").html(selectMonth + '월 요일 별 매출 입니다.');
+          $(".month-num").html(selectMonth + '월 월간 매출 입니다.');
+          $(".rank-num").html(selectMonth + '월  판매 왕! 입니다.');
           }
           
        });

@@ -20,19 +20,20 @@ import com.project.gymcarry.admin.service.AdminDashBoardService;
 
 @Controller
 public class AdminDashBoardController {
-	
+
 	@Autowired
 	private AdminDashBoardService adminDashBoardService;
 
 	// 대쉬보드 페이지로 이동
 	@GetMapping("admin/dashboard")
 	public String getAllDashTable(Model model) {
-		List<DashTableDto> list = adminDashBoardService.getAllDasghTable();
-		model.addAttribute("allDashTable", list);
-		SimpleDateFormat format = new SimpleDateFormat("MM");
+		SimpleDateFormat formatDay = new SimpleDateFormat("MM");
+		SimpleDateFormat formatYear = new SimpleDateFormat("YYYY");
 		Date time = new Date();
-		String date = format.format(time);
-		model.addAttribute("date", date);
+		String day = formatDay.format(time);
+		String year = formatYear.format(time);
+		model.addAttribute("day", day);
+		model.addAttribute("year", year);
 		return "admin/dashboard";
 	}
 
@@ -45,11 +46,10 @@ public class AdminDashBoardController {
 	// 대쉬보드 전체매출
 	@GetMapping("/admin/allSaleMan")
 	@ResponseBody
-	public Map<String, Object> allSalesDash(@RequestParam("month") int month) {
-		List<AllSalesDto> list = adminDashBoardService.getAllSales(month);
-		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales();
-		List<AllSalesDto> dayList = adminDashBoardService.getDaySales(month);
-
+	public Map<String, Object> allSalesDash(@RequestParam("month") int month, @RequestParam("year") long year) {
+		List<AllSalesDto> list = adminDashBoardService.getAllSales(month, year);
+		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales(year);
+		List<AllSalesDto> dayList = adminDashBoardService.getDaySales(month, year); 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("kingSales", list);
 		map.put("monthSales", monthList);
@@ -59,35 +59,58 @@ public class AdminDashBoardController {
 
 	@GetMapping("/admin/dash")
 	@ResponseBody
-	public Map<String, Object> getDashBoard() {
-		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales();
-		List<AllSalesDto> rankList = adminDashBoardService.getMonthRank();
+	public Map<String, Object> getDashBoard(@RequestParam("year") long year) {
+		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales(year);
+		List<AllSalesDto> rankList = adminDashBoardService.getMonthRank(year);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("monthDash", monthList);
 		map.put("rankDash", rankList);
 		return map;
 	}
-	
+
 	@GetMapping("/admin/daylist")
 	@ResponseBody
-	public Map<String, Object> getDayList(@RequestParam("month") int month){
+	public Map<String, Object> getDayList(@RequestParam("month") int month, @RequestParam("year") long year) {
 		List<DashTableAddDto> list = adminDashBoardService.getDayTable(month);
-		List<AllSalesDto> dayList = adminDashBoardService.getDaySales(month);
+		List<AllSalesDto> dayList = adminDashBoardService.getDaySales(month, year);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("dayList", list);
 		map.put("dayDash", dayList);
 		return map;
 	}
-	
-	
+
 	@GetMapping("/admin/monthlist")
 	@ResponseBody
-	public Map<String, Object> getPreference(@RequestParam("month") int month){
-		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales();
+	public Map<String, Object> getMonthList(@RequestParam("year") long year) {
+		List<DashTableAddDto> list = adminDashBoardService.getMonthTable(year);
+		List<AllSalesDto> monthList = adminDashBoardService.getMonthSales(year);
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("monthList", monthList);
+		map.put("monthList", list);
+		map.put("monthDash", monthList);
+		return map;
+	}
+
+	@GetMapping("/admin/yearlist")
+	@ResponseBody
+	public Map<String, Object> getYearList() {
+		List<DashTableDto> list = adminDashBoardService.getAllDasghTable();
+		List<AllSalesDto> yearList = adminDashBoardService.getYearSales();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("yearAllList", list);
+		map.put("yearDash", yearList);
 		return map;
 	}
 	
-
+	@GetMapping("/admin/ranklist")
+	@ResponseBody
+	public Map<String, Object> getRankList(@RequestParam("year") long year) {
+		List<AllSalesDto> rankList = adminDashBoardService.getMonthRank(year);
+		List<AllSalesDto> carrySalesList = adminDashBoardService.getCarrySales(year);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rankDash", rankList);
+		map.put("carrySales", carrySalesList);
+		return map;
+	}
+	
+	
 }

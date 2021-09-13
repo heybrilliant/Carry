@@ -114,6 +114,8 @@ hr {
   opacity: 0.25;
 }
 
+
+
 hr:not([size]) {
   height: 1px;
 }
@@ -408,6 +410,10 @@ button:not(:disabled),
 }
 
 #select_month{
+	float: right;
+}
+
+#select_year{
 	float: right;
 }
 
