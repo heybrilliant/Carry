@@ -5,15 +5,9 @@
 
 <mapper namespace="com.project.gymcarry.dao.BoardDao">
 
-    
-    <!-- 게시판 소통 카테고리 출력  -->
-    <select id="getListCommuni" resultType="com.project.gymcarry.board.BoardDto">
-        select *
-        from board
-        where boardcategory = '소통'
-    </select>
 
-    <!-- 페이징  -->
+
+    <!-- 게시판 전체 리스트 출력  -->
     <select id="getBoardList" resultType="com.project.gymcarry.board.BoardDto">
         select *
         from board
@@ -22,12 +16,45 @@
 
     </select>
 
-    <!-- 페이징 : 전체 글의 개수 읽어오기  -->
-    <select id="getBoardListCnt" resultType="int">
+	<!-- 게시판 소통 리스트 출력  -->
+	<select id="getBoardComm" resultType="com.project.gymcarry.board.BoardDto">
+		select *
+		from board
+		where boardcategory = '소통'
+		order by postidx desc, postdate desc
+			LIMIT #{startList}, #{listSize}
 
+	</select>
+
+	<!-- 게시판 질문/답변 리스트 출력  -->
+	<select id="getBoardQnA" resultType="com.project.gymcarry.board.BoardDto">
+		select *
+		from board
+		where boardcategory = '질문/답변'
+		order by postidx desc, postdate desc
+			LIMIT #{startList}, #{listSize}
+
+	</select>
+
+    <!-- 페이징 : 전체 리스트 개수 읽어오기  -->
+    <select id="getBoardListCnt" resultType="int">
         select count(*) as listCnt
         from board
     </select>
+
+	<!-- 페이징 : 소통 리스트 개수 읽어오기  -->
+	<select id="getBoardCommCnt" resultType="int">
+		select count(*) as listCnt
+		from board
+		where boardcategory = '소통'
+	</select>
+
+	<!-- 페이징 : 질문/답변 리스트 개수 읽어오기  -->
+	<select id="getBoardQnAtCnt" resultType="int">
+		select count(*) as listCnt
+		from board
+		where boardcategory = '질문/답변'
+	</select>
 
 
     <!-- 조회수  -->
@@ -51,8 +78,7 @@
 	
 	<!-- 게시글 상세 페이지 -->
 	<select id="selectBoardDetail" resultType="com.project.gymcarry.board.BoardDto">
-		select postidx, postname, postcontent, postnick, memidx, uploadfile, 
-			   date_format(postdate, '%Y-%m-%d') as postdate, postview, postlike, boardcategory
+		select postidx, postname, postcontent, postnick, memidx, uploadfile, postdate, postview, postlike, boardcategory
 			   from board where postidx = #{postidx}
 	</select>
 	
