@@ -9,22 +9,28 @@ import com.project.gymcarry.board.Pagination;
 
 public interface BoardDao {
 
-	// 게시판 전체 리스트
-    List<BoardDto> selectBoardList(Pagination pagination) throws Exception;
-
+	// 게시판 전체 리스트 출력
     public List<BoardDto> getBoardList(Pagination pagination) throws Exception;
 
-    public BoardDto getBoardContent(int postidx) throws Exception;
+    // 게시판 소통 리스트 출력
+    public List<BoardDto> getBoardComm(Pagination pagination) throws Exception;
+
+    // 게시판 질문/답변 리스트 출력
+    public List<BoardDto> getBoardQnA(Pagination pagination) throws Exception;
+
+    // 게시판 전체 리스트 개수 확인 (페이징)
+    public int getBoardListCnt() throws Exception;
+
+    // 게시판 소통 리스트 개수 확인 (페이징)
+    public int getBoardCommCnt() throws Exception;
+
+    // 게시판 질문/답변 개수 확인 (페이징)
+    public int getBoardQnAtCnt() throws Exception;
 
     // 조회수
     public int updateViewCnt(int postidx) throws Exception;
 
-    // 총 게시글 개수 확인 (페이징)
-    public int getBoardListCnt() throws Exception;
 
-    // 게시판 카테고리 가져오기
-    List<BoardDto> getListCommuni();
-    
     // 게시판 글쓰기
     Integer insertBoardWrite(Map<String, String> map);
     

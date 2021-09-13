@@ -20,26 +20,49 @@ public class BoardServiceImpl implements BoardService {
     private SqlSessionTemplate template;
 
 
-    // 게시판 전체 목록 조회
+
+    // 게시판 전체 리스트 출력
     @Override
     public List<BoardDto> getBoardList(Pagination pagination) throws Exception {
         dao = template.getMapper(BoardDao.class);
         return dao.getBoardList(pagination);
     }
 
-    // 총 게시글 개수 확인
+    // 게시판 소통 리스트 출력
+    @Override
+    public List<BoardDto> getBoardComm(Pagination pagination) throws Exception {
+        dao = template.getMapper(BoardDao.class);
+        return dao.getBoardComm(pagination);
+    }
+
+    // 게시판 질문/답변 리스트 출력
+    @Override
+    public List<BoardDto> getBoardQnA(Pagination pagination) throws Exception {
+        dao = template.getMapper(BoardDao.class);
+        return dao.getBoardQnA(pagination);
+    }
+
+    // 게시판 전체 리스트 개수 확인 (페이징)
     @Override
     public int getBoardListCnt() throws Exception {
         dao = template.getMapper(BoardDao.class);
         return dao.getBoardListCnt();
     }
 
-    // 게시판 카테고리 리스트
+    // 게시판 소통 리스트 개수 확인 (페이징)
     @Override
-    public List<BoardDto> getListCommuni() {
+    public int getBoardCommCnt() throws Exception {
         dao = template.getMapper(BoardDao.class);
-        return dao.getListCommuni();
+        return dao.getBoardCommCnt();
     }
+
+    // 게시판 질문/답변 개수 확인 (페이징)
+    @Override
+    public int getBoardQnAtCnt() throws Exception {
+        dao = template.getMapper(BoardDao.class);
+        return dao.getBoardQnAtCnt();
+    }
+
 
     // 게시글 입력
     @Override

@@ -45,7 +45,7 @@
             <div id="nickname">${boardDetail.postnick}</div>
           </div>
           <div class="profile_left">
-          	<fmt:formatDate var="dateFmt" pattern="yyyy-MM-dd" value="${boardDetail.postdate}"/>
+          	<fmt:formatDate var="dateFmt" pattern="yyyy-MM-dd HH:mm" value="${boardDetail.postdate}"/>
             <div id="write_date"> <c:out value="${dateFmt}"/> </div>
           </div>
         </div>
@@ -114,6 +114,10 @@
 </script>	
 	
 <script>
+
+    // by.아름
+    // 조회수 카운트 함수
+
 
 
 	// 댓글 등록

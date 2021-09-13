@@ -41,10 +41,7 @@ public class PostContentController {
 		
 		 List<CommentDto> commList = commentService.getCommList(postidx);
 		 model.addAttribute("commList", commList); 
-		 
-		
 
-		System.out.println("게시판 상세 진입" + boardDetail.toString());
 
 		return "community/postContent";
 	}

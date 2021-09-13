@@ -9,14 +9,26 @@ import java.util.Map;
 
 public interface BoardService {
 
-    // 전체 게시물 조회
+    // 게시판 전체 리스트 출력
     public List<BoardDto> getBoardList(Pagination pagination) throws Exception;
 
-    ///총 게시글 개수 확인
+    // 게시판 소통 리스트 출력
+    public List<BoardDto> getBoardComm(Pagination pagination) throws Exception;
+
+    // 게시판 질문/답변 리스트 출력
+    public List<BoardDto> getBoardQnA(Pagination pagination) throws Exception;
+
+
+    // 게시판 전체 리스트 개수 확인 (페이징)
     public int getBoardListCnt() throws Exception;
 
-    // 게시판 카테고리 리스트
-    public List<BoardDto> getListCommuni();
+    // 게시판 소통 리스트 개수 확인 (페이징)
+    public int getBoardCommCnt() throws Exception;
+
+    // 게시판 질문/답변 개수 확인 (페이징)
+    public int getBoardQnAtCnt() throws Exception;
+
+
 
     // 게시글 입력
     public int getBoardWrite(Map<String, String> map) throws Exception;

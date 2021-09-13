@@ -12,7 +12,7 @@
 
 </head>
 
-<c:url var="getBoardList" value="/community/boardList/">
+<c:url var="getBoardQnA" value="/community/boardQnA/">
     <c:param name="page" value="${pagination.page}"/>
     <c:param name="range" value="${pagination.range}"/>
 
@@ -37,10 +37,10 @@
                     <a href="<c:url value="/community/boardList"/>">전체</a>
                 </li>
                 <li>
-                    <a class="menulink2" href="#" id="comuni">소통</a>
+                    <a href="<c:url value="/community/boardComm"/>">소통</a>
                 </li>
                 <li>
-                    <a class="menulink3" href="#">질문답변</a>
+                    <a href="<c:url value="/community/boardQnA"/>">질문답변</a>
                 </li>
 
                 <a class="board_write" onclick="test()">
@@ -185,7 +185,7 @@
         var page = ((range - 2) * rangeSize) + 1;
         var range = range - 1;
 
-        var url = "${pageContext.request.contextPath}/community/boardList";
+        var url = "${pageContext.request.contextPath}/community/boardQnA";
         url = url + "?page=" + page;
         url = url + "&range=" + range;
 
@@ -194,7 +194,7 @@
 
     //페이지 번호 클릭
     function fn_pagination(page, range, rangeSize, searchType, keyword) {
-        var url = "${pageContext.request.contextPath}/community/boardList";
+        var url = "${pageContext.request.contextPath}/community/boardQnA";
         url = url + "?page=" + page;
         url = url + "&range=" + range;
 
@@ -206,7 +206,7 @@
         var page = parseInt((range * rangeSize)) + 1;
         var range = parseInt(range) + 1;
 
-        var url = "${pageContext.request.contextPath}/community/boardList";
+        var url = "${pageContext.request.contextPath}/community/boardQnA";
         url = url + "?page=" + page;
         url = url + "&range=" + range;
 
