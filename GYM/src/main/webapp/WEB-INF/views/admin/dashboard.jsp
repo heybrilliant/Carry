@@ -271,8 +271,8 @@
 	           		html += '<th>총 매출</th>'
 	           		html += '</tr>'
 	           		html += '</thead>'
+	           		html += '<tbody class="addList">'
 	           	$.each(data.carrySales, function(index, item){
-	           		    html += '<tbody class="addList">'
 	           		    html += '<tr>'
 	           		    html += '<td>'+ item.month +'</td>'
 	           		    html += '<td>'+ item.crname +'</td>'
@@ -281,8 +281,8 @@
 	           		    html += '<td>'+ item.crgender +'</td>'
 	           		    html += '<td>₩ '+ item.total +'</td>'
 	           		    html += '</tr>'
-	           		    html += '</tbody>'
 	           	});
+	           		    html += '</tbody>'
 	         	
 	           	$("#datatablesSimple").html(html);
 	           	
