@@ -8,6 +8,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 	
+	// 로그인 필요한 곳 로그인 창으로 이동
 	@Override
 	public boolean preHandle(
 			HttpServletRequest request, 
