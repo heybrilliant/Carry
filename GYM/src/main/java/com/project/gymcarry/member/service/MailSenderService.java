@@ -20,6 +20,7 @@ import com.project.gymcarry.dao.MemberDao;
 @Service
 public class MailSenderService {
 
+	@Autowired
 	private JavaMailSender sender;
 	@Autowired
 	private SqlSessionTemplate template;
