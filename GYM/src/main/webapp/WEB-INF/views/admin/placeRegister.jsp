@@ -66,7 +66,7 @@
                             <div class="placeaddress">
                                 <h4>주소</h4>
                                 <div class="form-floating mb-3">
-                                   <!--  <input class="form-control" type="text" placeholder="placeaddress" id="placedPost" name="placeaddress"/> -->
+                                    <!--  <input class="form-control" type="text" placeholder="placeaddress" id="placedPost" name="placeaddress"/> -->
                                     <input class="form-control" id="postcode"  type="text" placeholder="postcode" readonly onclick="findAddr()">
                                     <label for="postcode">우편번호를 입력해주세요.</label>
 								</div>
