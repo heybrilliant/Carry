@@ -91,13 +91,14 @@
 
                                 <li>
                                     <a href="#">
-                                        <img class="board_icon" img src="<c:url value="/images/icon/heart.png"/>"
-                                             alt="img">2
+                                        <img class="board_icon" img src="<c:url value="/images/icon/heart.png"/>" alt="img">
+                                        ${list.postlike}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#"><img class="board_icon" img
-                                                     src="<c:url value="/images/icon/speech-bubble.png"/>" alt="img">15</a>
+                                    <a href="#"><img class="board_icon" img src="<c:url value="/images/icon/speech-bubble.png"/>" alt="img">
+                                        ${list.commentCnt}
+                                    </a>
                                 </li>
                             </ul>
                         </div>
