@@ -3,7 +3,10 @@ package com.project.gymcarry.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.project.gymcarry.board.BoardDto;
+import com.project.gymcarry.board.BoardLikeDto;
 import com.project.gymcarry.board.BoardWriteDto;
 import com.project.gymcarry.board.Pagination;
 
@@ -40,11 +43,16 @@ public interface BoardDao {
     // 게시물 삭제
     Integer deleteBoard(int postidx);
     
+    // 게시물 좋아요 여부 확인
+    BoardLikeDto selectBoardLike(@Param("postidx") int postidx, @Param("memidx") int memidx);
+    
     // 게시물 좋아요 on
-    Integer updateBoardLikeOn(int postidx, int memidx);
+    Integer insertBoardLike(Map<String, Object> map);
     
     // 게시물 좋아요 off
-    Integer updateBoardLikeOff(int postidx, int memidx);
+    Integer deleteBoardLike(Map<String, Object> map);
     
+    // 게시물 좋아요 총 갯수
+    List<BoardLikeDto> selectBoardLikeLength(int postidx);
     
 }

@@ -1,11 +1,14 @@
 package com.project.gymcarry.board.service;
 
 import com.project.gymcarry.board.BoardDto;
+import com.project.gymcarry.board.BoardLikeDto;
 import com.project.gymcarry.board.BoardWriteDto;
 import com.project.gymcarry.board.Pagination;
 
 import java.util.List;
 import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
 
 public interface BoardService {
 
@@ -33,11 +36,17 @@ public interface BoardService {
     // 게시글 삭제
     public int getDeleteBoard(int postidx) throws Exception;
     
+    // 게시물 좋아요 여부 확인
+    public BoardLikeDto getBoardLike(@Param("postidx") int postidx, @Param("memidx") int memidx) throws Exception;
+    
     // 게시물 좋아요 on
-    public int getBoardLikeOn(int postidx, int memidx) throws Exception;
+    public int getBoardLikeOn(Map<String, Object> map) throws Exception;
     
     // 게시물 좋아요 off
-    public int getBoardLikeOff(int postidx, int memidx) throws Exception;
+    public int getBoardLikeOff(Map<String, Object> map) throws Exception;
+    
+    // 게시물 좋아요 총 갯수
+    public List<BoardLikeDto> getBoardLikeLength(int postidx) throws Exception;
 
 
 

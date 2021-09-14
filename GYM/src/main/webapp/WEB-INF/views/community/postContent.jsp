@@ -62,9 +62,15 @@
       </div>
       <div class="postbtn_wrap">
         <div class="post_btn">
-          <div class="like_btn">
-          	<img class="post_icon" src="/gym/images/icon/heart.png">
-          	<span>2</span>
+          	<c:if test="${checkResult == 1}">
+	        <div class="like_btn on">
+          		<img class="post_icon" src="/gym/images/icon/heart.png">
+          	</c:if>
+          	<c:if test="${checkResult == 0}">
+          	<div class="like_btn off">
+          		<img class="post_icon" src="/gym/images/icon/heart_off.png">
+          	</c:if>
+          	<span>${likeLength}</span>
           </div>
           <div class="comm_length">
           	<img class="post_icon" src="/gym/images/icon/speech-bubble.png">
@@ -100,6 +106,83 @@
 	
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+<script>
+	// 좋아요 버튼 클릭 
+	$('.like_btn').click(function(){
+		
+		var postidx = "${boardDetail.postidx}"; // 글번호
+		var memidx = "${loginSession.memidx}"; // 회원번호
+		
+		if(${loginSession == null}) {
+        	alert("로그인 후 이용해 주세요.");
+		} else { 
+			if($(this).hasClass('on')){ // 이미 좋아요를 누른 상태(클릭하면 좋아요가 취소된다)
+				$.ajax({
+		            type : "POST",  
+		            url : '<c:url value="/likeOff"/>',       
+		            dataType : "json",   
+		            data : {"postidx" : postidx,
+		            		"memidx" : memidx},
+		            error : function(){
+		               console.log("통신 에러","error","확인");
+		            },
+		            success : function(result) {
+		            	console.log(result);
+		            	if(result == 1){
+			                $(".like_btn").removeClass("on");
+			                $(".like_btn").addClass("off");
+			                $(".like_btn > img").attr("src","/gym/images/icon/heart_off.png");
+			                
+			                likeidx()
+		            	} else {
+		            		console.log("좋아요 오류")
+		            	}
+		            }
+		        });
+				
+			} else{ // 좋아요를 누르지 않은 상태(클릭하면 좋아요된다)
+				$.ajax({
+		            type : "POST",  
+		            url : '<c:url value="/likeOn"/>',       
+		            dataType : "json",   
+		            data : {"postidx" : postidx,
+		            		"memidx" : memidx},
+		            error : function(){
+		               console.log("통신 에러","error","확인");
+		            },
+		            success : function(result) {
+		            	console.log(result);
+		            	if(result == 1){
+			                $(".like_btn").removeClass("off");
+			                $(".like_btn").addClass("on");
+			                $(".like_btn > img").attr("src","/gym/images/icon/heart.png");
+			                
+			                likeidx();
+		            	} else {
+		            		console.log("좋아요 오류")
+		            	}
+		            }
+		        });
+			}
+		}
+	});
+	
+	// 좋아요 갯수 ajax
+	function likeidx(){
+		var postidx = "${boardDetail.postidx}";
+		
+		$.ajax({
+        	url : '<c:url value="/likeIdx"/>',
+            type : "post",
+            data : {"postidx" : postidx},
+            success : function(idx){
+            	$(".like_btn > span").html("");
+                $(".like_btn > span").append(idx);
+            }
+		});
+	}
+	
+</script>
 	
 <script>
 	// 수정/삭제 버튼 노출 여부
@@ -114,8 +197,6 @@
 </script>	
 	
 <script>
-
-
 	// 댓글 등록
 	$(".btn_input .btn").on("click", function(){
     	var memberidx; // 회원 번호
