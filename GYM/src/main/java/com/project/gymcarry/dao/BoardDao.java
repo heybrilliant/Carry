@@ -30,7 +30,6 @@ public interface BoardDao {
     // 조회수
     public int updateViewCnt(int postidx) throws Exception;
 
-
     // 게시판 글쓰기
     Integer insertBoardWrite(Map<String, String> map);
     

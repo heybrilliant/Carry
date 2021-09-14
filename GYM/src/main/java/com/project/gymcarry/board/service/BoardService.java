@@ -45,6 +45,9 @@ public interface BoardService {
     // 게시글 삭제
     public int getDeleteBoard(int postidx) throws Exception;
 
+    // 조회수
+    public int updateViewCnt(int postidx) throws Exception;
+
 
 
 

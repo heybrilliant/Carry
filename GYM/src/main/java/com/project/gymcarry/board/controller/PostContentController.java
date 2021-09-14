@@ -35,13 +35,15 @@ public class PostContentController {
 	// 게시판 상세 페이지
 	@GetMapping("community/postContent")
 	public String boardDetail(@RequestParam("postidx") int postidx, Model model) throws Exception {
+
+		// 조회수 증가
+		boardService.updateViewCnt(postidx);
+
 		BoardDto boardDetail = boardService.getBoardDetail(postidx);
 		model.addAttribute("boardDetail", boardDetail);
 
-		
 		 List<CommentDto> commList = commentService.getCommList(postidx);
 		 model.addAttribute("commList", commList); 
-
 
 		return "community/postContent";
 	}

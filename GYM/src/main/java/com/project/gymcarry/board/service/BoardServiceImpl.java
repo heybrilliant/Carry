@@ -20,7 +20,6 @@ public class BoardServiceImpl implements BoardService {
     private SqlSessionTemplate template;
 
 
-
     // 게시판 전체 리스트 출력
     @Override
     public List<BoardDto> getBoardList(Pagination pagination) throws Exception {
@@ -66,7 +65,7 @@ public class BoardServiceImpl implements BoardService {
 
     // 게시글 입력
     @Override
-    public int getBoardWrite(Map<String, String> map) throws Exception{
+    public int getBoardWrite(Map<String, String> map) throws Exception {
         dao = template.getMapper(BoardDao.class);
         return dao.insertBoardWrite(map);
     }
@@ -80,7 +79,7 @@ public class BoardServiceImpl implements BoardService {
 
     // 게시글 수정시 입력된 값 그대로 출력
     @Override
-    public BoardWriteDto getBoardUpdate(int postidx) throws Exception{
+    public BoardWriteDto getBoardUpdate(int postidx) throws Exception {
         dao = template.getMapper(BoardDao.class);
         return dao.selectBoardUpdate(postidx);
     }
@@ -92,12 +91,18 @@ public class BoardServiceImpl implements BoardService {
         return dao.updateBoardContent(map);
     }
 
-
     // 게시글 삭제
     @Override
     public int getDeleteBoard(int postidx) {
         dao = template.getMapper(BoardDao.class);
         return dao.deleteBoard(postidx);
+    }
+
+    // 조회수
+    @Override
+    public int updateViewCnt(int postidx) throws Exception {
+        dao = template.getMapper(BoardDao.class);
+        return dao.updateViewCnt(postidx);
     }
 
 
