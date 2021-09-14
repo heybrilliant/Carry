@@ -59,20 +59,22 @@
 							<h2>결제일</h2>
 						</td>
 					</tr>
+					<c:forEach items="${paymentList}" var="paymentList">
 					<tr>
 						<td>
-							<h3>김철수</h3>
+							<h3>${paymentList.payname}</h3>
 						</td>
 						<td>
-							<h3>20회</h3>
+							<h3>${paymentList.paynum}</h3>
 						</td>
 						<td>
-							<h3>50000원</h3>
+							<h3>${paymentList.payprice}</h3>
 						</td>
 						<td>
-							<h3>2021-09-01</h3>
+							<h3>${paymentList.paydate}</h3>
 						</td>
 					</tr>
+					</c:forEach>
 
 
 				</table>

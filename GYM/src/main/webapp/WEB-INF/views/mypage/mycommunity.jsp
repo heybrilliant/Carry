@@ -1,94 +1,201 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Mycommunity</title>
-<link rel="stylesheet" href="/gym/css/community/community.css">
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-	crossorigin="anonymous"></script>
-<!--제이쿼리 CDN-->
-
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<!-- bootstrap -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<title>Community</title>
 
 
-<!-- iamport.payment.js -->
-<script type="text/javascript"
-	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+
+<link
+	href="${pageContext.request.contextPath}/css/community/community.css"
+	rel="stylesheet" />
+
+
 </head>
-<body style="padding-right: 0px">
+
+<c:url var="getBoardList" value="/community/boardList/">
+	<c:param name="page" value="${pagination.page}" />
+	<c:param name="range" value="${pagination.range}" />
+
+</c:url>
+
+
+<body>
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
+	<!-- Contents -->
 	<div class="contents_main">
 		<div class="contents">
-			<h1 class="title">
-				<a href="<c:url value="/mypage/mycommunity"/>">MY COMMUNITY</a>
+			<h1 style="margin-bottom: 5%;" class="title">
+				<a style="" href="<c:url value="/community/boardList"/>">MY COMMUNITY</a>
 			</h1>
-			<nav class="community_nav">
-				<ul>
-					<!-- 정렬을 위해 왼쪽에 버튼 숨겨놓은 것 -->
-					<button class="board_write2" type="button" onclick="">
-						<img class="write_icon" src="/gym/images/icon/edit.png">
-					</button>
-				</ul>
-			</nav>
-			<div class="card_main">
-				<div class="card">
-					<div class="board_sidebar">
-						<img class="profile_image" img
-							src="<c:url value="/images/icon/profile2.png"/>" alt="img">
-						<div class="nickname">닉네임</div>
 
-					</div>
-					<div class="board_main">
-						<button class="title_btn" type="button" onclick="">소통</button>
-						<h2 class="board_title">
-							<a href="<c:url value="/community/postContent"/>">서강대 칼만두 맛집
-								추천 합니다 !!</a>
-						</h2>
-						<p class="board_post">
-							<a href="<c:url value="/community/postContent"/>"> 제가 오늘 서강대
-								건너편 옥정이라는 평양식 만두국집 다녀왔는데요, 너무 맛있네요. 밥도 무료로 주세요. 대신 점심 장사라 2시까지만
-								합니다. 웨이팅도 있는데 금방 빠져요. 인생 칼만두집을 찾았네요. 이열치열 지대로 느끼고 싶으신 분들 다녀오세요.
-								입 힐링합니다^^</a>
-						</p>
-						<div class="board_bottom">
-							<div class="write_date">2021.08.11 17:18:23 PM</div>
-							<ul class="board_btn">
-								<li><a href="#"> <img class="board_icon" img
-										src="<c:url value="/images/icon/heart.png"/>" alt="img">2
-								</a></li>
-								<li><a href="#"><img class="board_icon" img
-										src="<c:url value="/images/icon/speech-bubble.png"/>"
-										alt="img">15</a></li>
-							</ul>
+
+
+			<!-- 게시판 출력 영역 -->
+			<div class="card_main">
+				<c:forEach items="${boardList}" var="list">
+					<div class="card">
+						<div class="board_sidebar">
+							<img class="profile_image" img
+								src="<c:url value="/images/icon/profile2.png"/>" alt="img">
+							<div class="nickname">${list.postnick}</div>
+
+						</div>
+						<div class="board_main">
+							<button class="title_btn" type="button" onclick="">${list.boardcategory}</button>
+							<h2 class="board_title">
+								<a
+									href="<c:url value="/community/postContent?postidx=${list.postidx}"/>">${list.postname}</a>
+							</h2>
+							<div class="board_post">${list.postcontent}</div>
+							<%--날짜, 조회수--%>
+							<div class="board_bottom">
+								<div class="write_date">
+
+									<li><img class="left_board_icon" img
+										src="<c:url value="/images/icon/time.png"/>" alt="img">
+										<%--시간 데이터 포맷 변경--%> <fmt:formatDate
+											pattern="yyyy-MM-dd HH:mm" value="${list.postdate}" /></li>
+									<li><img class="left_board_icon2" img
+										src="<c:url value="/images/icon/board.png"/>" alt="img">
+										${list.postview}</li>
+								</div>
+								<ul class="board_btn">
+
+									<li><a href="#"> <img class="board_icon" img
+											src="<c:url value="/images/icon/heart.png"/>" alt="img">2
+									</a></li>
+									<li><a href="#"><img class="board_icon" img
+											src="<c:url value="/images/icon/speech-bubble.png"/>"
+											alt="img">15</a></li>
+								</ul>
+							</div>
 						</div>
 					</div>
-
-
-				</div>
-
+				</c:forEach>
 			</div>
-		</div>
-	</div>
-</body>
+			<!-- /게시판 출력 영역 -->
 
-<footer>
+
+			<%--pagination--%>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination pagination-sm justify-content-center">
+
+					<c:if test="${pagination.prev}">
+						<li class="page-item"><a class="page-link" href="#"
+							onclick="fn_prev('${pagination.page}','${pagination.range}','${pagination.range}','${pagination.rangeSize}')">
+								<span>&laquo;</span>
+						</a></li>
+					</c:if>
+
+					<c:forEach begin="${pagination.startPage}"
+						end="${pagination.endPage}" var="idx">
+						</li>
+						<li
+							class="page-item
+            <c:out value="${pagination.page == idx ? 'active' :''}"/> ">
+							<a class="page-link" href="#"
+							onclick="fn_pagination('${idx}','${pagination.range}','${pagination.rangeSize}')">${idx}</a>
+						</li>
+					</c:forEach>
+
+					<c:if test="${pagination.next}">
+						<li class="page-item"><a class="page-link" href="#"
+							onclick="fn_next('${pagination.range}','${pagination.range}','${pagination.rangeSize}')">
+								<span>&raquo;</span>
+						</a></li>
+					</c:if>
+				</ul>
+			</nav>
+			<%-- /pagination--%>
+		</div>
+
+	</div>
+
+
+	<!-- Contents end -->
+
+
+	<script>
+
+    // 글쓰기 로그인 검사
+    function test() {
+
+        if (${loginSession == null}) {
+            alert('로그인이 필요합니다.');
+            $(location).attr('href', '<c:url value="/member/login"/>');
+        } else {
+            $(location).attr('href', '<c:url value="/community/write"/>');
+        }
+    };
+
+
+    // 게시판 Nav 출력
+    $("#comuni").click(function () {
+        $.ajax({
+            url: "<c:url value='/community/communication'/>",
+            type: "get",
+            dataType: "json",
+            success: function (e) {
+                console.log(e);
+                $.each(e, function (index, key) {
+                    $('.card .nickname').html(key.postnick);
+                });
+            }
+        });
+    });
+
+
+    // 페이징 처리
+    // 이전 버튼 이벤트
+    function fn_prev(page, range, rangeSize) {
+        var page = ((range - 2) * rangeSize) + 1;
+        var range = range - 1;
+
+        var url = "${pageContext.request.contextPath}/community/boardList";
+        url = url + "?page=" + page;
+        url = url + "&range=" + range;
+
+        location.href = url;
+    }
+
+    //페이지 번호 클릭
+    function fn_pagination(page, range, rangeSize, searchType, keyword) {
+        var url = "${pageContext.request.contextPath}/community/boardList";
+        url = url + "?page=" + page;
+        url = url + "&range=" + range;
+
+        location.href = url;
+    }
+
+    //다음 버튼 이벤트
+    function fn_next(page, range, rangeSize) {
+        var page = parseInt((range * rangeSize)) + 1;
+        var range = parseInt(range) + 1;
+
+        var url = "${pageContext.request.contextPath}/community/boardList";
+        url = url + "?page=" + page;
+        url = url + "&range=" + range;
+
+        location.href = url;
+    }
+
+    // 조회수
+    function fn_contentView(bid){
+
+        var url = "${pageContext.request.contextPath}/community/";
+
+        url = url + "?bid="+bid;
+
+        location.href = url;
+
+    }
+
+
+</script>
+
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-</footer>
-
-</html>
-

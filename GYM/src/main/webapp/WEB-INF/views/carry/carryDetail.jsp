@@ -287,7 +287,7 @@
 							tag+=	    '</div>' 
 							tag+=			'<div class="review_content">' 
 							tag+=				'<span class="review_name">' + item.memnick + '</span>' 
-							tag+=				'<span class="review_date">' + item.reviewdate + '</span>' 
+							tag+=				'<span czlass="review_date">' + item.reviewdate + '</span>' 
 							tag+=				'<br>'
 							tag+=				'<span class="review_content_span">' + item.reviewcontent + '</span>' 
 							tag+=			'</div>'	
@@ -306,80 +306,49 @@
 			
 	
 }
-	
-/* 
-	// 리뷰리스트 출력 ajax
-	function reviewList() {
-		
+	// 리뷰 등록하기(Ajax)
+	function fn_review(code) {
+
 		$.ajax({
-			url : '<c:url value="/carry/list"/>',
 			type : 'POST',
-			datatype : 'json',
-			data : { 
-				cridx:$("#cridx").val()
-		},
-		success : function(data) {
-			
-			$("#review_sec").empty()
-			
-			if(data.Code == 0){
-				for (i = 0; i < data.data.length; i++) {
-					var tag = '<div class="review_list_section">' +
-								'<div class="member_profile_image">' +
-									'<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">' +
-							    '</div>' + 
-									'<div class="review_content">' + 
-										'<span class="review_name">' + data.data[i].memnick + '</span>' +
-										'<span class="review_date">' + data.data[i].reviewdate + '</span>' +
-										'<br>' +
-										'<span>' + data.data[i].reviewcontent + '</span>' +
-									'</div>'
-								  
-											
-						$('#review_sec').append(tag);
-					}
-				
-				} else {
-					var tag ='<div class="no_review_msg">' +
-								'<span class = "msg_style">" 아직 작성된 리뷰가 없습니다. "</span>' +
-								'</div>'
-						
-						$('#review_sec').append(tag);
-				}
-						
+			url : "<c:url value='/carry/add'/>",
+			data : $("#reviewForm").serialize(),
+			success : function() {
+				$(".review_input").val("");
+				alert('리뷰가 정상적으로 등록되었습니다.');
+				reviewList();
 			},
-				error : function() {
-					alert("error");
-					
-				}
-				
-		});
-				
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
 			}
-*/	
+
+		});
+	}
 	
+
+	// 리뷰 등록하기(Ajax)
+	function fn_review(code) {
+
+		$.ajax({
+			type : 'POST',
+			url : "<c:url value='/carry/add'/>",
+			data : $("#reviewForm").serialize(),
+			success : function() {
+				$(".review_input").val("");
+				alert('리뷰가 정상적으로 등록되었습니다.');
+				reviewList();
+			},
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+
+		});
+	}
 	
-		// 리뷰 등록하기(Ajax)
-		function fn_review(code) {
 
-			$.ajax({
-				type : 'POST',
-				url : "<c:url value='/carry/add'/>",
-				data : $("#reviewForm").serialize(),
-				success : function() {
-					$(".review_input").val("");
-					alert('리뷰가 정상적으로 등록되었습니다.');
-					reviewList();
-				},
-				error : function(request, status, error) {
-					alert("code:" + request.status + "\n" + "message:"
-							+ request.responseText + "\n" + "error:" + error);
-				}
-
-			});
-		}
-		
-
+	
 		
 		 // place 이미지 슬라이드
 		var swiper = new Swiper(".mySwiper", {
