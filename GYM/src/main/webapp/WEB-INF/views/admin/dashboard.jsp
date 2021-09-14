@@ -261,26 +261,26 @@
 	        dataType : 'json',
 	        data : { year : num },
 	        success : function(data){
-	         	var html = '<thead>'
-	         		html += '<tr>'
-	           		html += '<th>월</th>'
-	           		html += '<th>캐리이름</th>'
-	           		html += '<th>총 결제 수업 횟수</th>'
-	           		html += '<th>전문 분야</th>'
-	           		html += '<th>성별</th>'
-	           		html += '<th>총 매출</th>'
-	           		html += '</tr>'
-	           		html += '</thead>'
-	           		html += '<tbody class="addList">'
+	         	var html = '<thead>';
+	         		html += '<tr>';
+	           		html += '<th>월</th>';
+	           		html += '<th>캐리이름</th>';
+	           		html += '<th>총 결제 수업 횟수</th>';
+	           		html += '<th>전문 분야</th>';
+	           		html += '<th>성별</th>';
+	           		html += '<th>총 매출</th>';
+	           		html += '</tr>';
+	           		html += '</thead>';
+	           		html += '<tbody class="addList">';
 	           	$.each(data.carrySales, function(index, item){
-	           		    html += '<tr>'
-	           		    html += '<td>'+ item.month +'</td>'
-	           		    html += '<td>'+ item.crname +'</td>'
-	           		    html += '<td>'+ item.paynum +'</td>'
-	           		    html += '<td>'+ item.crfield +'</td>'
-	           		    html += '<td>'+ item.crgender +'</td>'
-	           		    html += '<td>₩ '+ item.total +'</td>'
-	           		    html += '</tr>'
+	           		    html += '<tr>';
+	           		    html += '<td>'+ item.month +'</td>';
+	           		    html += '<td>'+ item.crname +'</td>';
+	           		    html += '<td>'+ item.paynum +'</td>';
+	           		    html += '<td>'+ item.crfield +'</td>';
+	           		    html += '<td>'+ item.crgender +'</td>';
+	           		    html += '<td>₩ '+ item.total +'</td>';
+	           		    html += '</tr>';
 	           	});
 	           		    html += '</tbody>'
 	         	
