@@ -16,139 +16,151 @@ public class BoardDto {
     private Date postdate;
     private int postview;
     private int postlike;
-    private  String boardcategory;
-    
-    
-	public BoardDto() {
-
-	}
-    
-    
-	public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx,
-			MultipartFile uploadfile, Date postdate, int postview, int postlike, String boardcategory) {
-		super();
-		this.postidx = postidx;
-		this.postname = postname;
-		this.postcontent = postcontent;
-		this.postnick = postnick;
-		this.memidx = memidx;
-		this.uploadfile = uploadfile;
-		this.postdate = postdate;
-		this.postview = postview;
-		this.postlike = postlike;
-		this.boardcategory = boardcategory;
-	}
+    private String boardcategory;
+    private int commentCnt;        //댓글 개수
 
 
-	public int getPostidx() {
-		return postidx;
-	}
+    public BoardDto() {
+
+    }
 
 
-	public void setPostidx(int postidx) {
-		this.postidx = postidx;
-	}
+    public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx, MultipartFile uploadfile, Date postdate, int postview, int postlike, String boardcategory, int commentCnt) {
+        this.postidx = postidx;
+        this.postname = postname;
+        this.postcontent = postcontent;
+        this.postnick = postnick;
+        this.memidx = memidx;
+        this.uploadfile = uploadfile;
+        this.postdate = postdate;
+        this.postview = postview;
+        this.postlike = postlike;
+        this.boardcategory = boardcategory;
+        this.commentCnt = commentCnt;
+    }
+
+    public int getPostidx() {
+        return postidx;
+    }
 
 
-	public String getPostname() {
-		return postname;
-	}
+    public void setPostidx(int postidx) {
+        this.postidx = postidx;
+    }
 
 
-	public void setPostname(String postname) {
-		this.postname = postname;
-	}
+    public String getPostname() {
+        return postname;
+    }
 
 
-	public String getPostcontent() {
-		return postcontent;
-	}
+    public void setPostname(String postname) {
+        this.postname = postname;
+    }
 
 
-	public void setPostcontent(String postcontent) {
-		this.postcontent = postcontent;
-	}
+    public String getPostcontent() {
+        return postcontent;
+    }
 
 
-	public String getPostnick() {
-		return postnick;
-	}
+    public void setPostcontent(String postcontent) {
+        this.postcontent = postcontent;
+    }
 
 
-	public void setPostnick(String postnick) {
-		this.postnick = postnick;
-	}
+    public String getPostnick() {
+        return postnick;
+    }
 
 
-	public int getMemidx() {
-		return memidx;
-	}
+    public void setPostnick(String postnick) {
+        this.postnick = postnick;
+    }
 
 
-	public void setMemidx(int memidx) {
-		this.memidx = memidx;
-	}
+    public int getMemidx() {
+        return memidx;
+    }
 
 
-	public MultipartFile getUploadfile() {
-		return uploadfile;
-	}
+    public void setMemidx(int memidx) {
+        this.memidx = memidx;
+    }
 
 
-	public void setUploadfile(MultipartFile uploadfile) {
-		this.uploadfile = uploadfile;
-	}
+    public MultipartFile getUploadfile() {
+        return uploadfile;
+    }
 
 
-	public Date getPostdate() {
-		return postdate;
-	}
+    public void setUploadfile(MultipartFile uploadfile) {
+        this.uploadfile = uploadfile;
+    }
 
 
-	public void setPostdate(Date postdate) {
-		this.postdate = postdate;
-	}
+    public Date getPostdate() {
+        return postdate;
+    }
 
 
-	public int getPostview() {
-		return postview;
-	}
+    public void setPostdate(Date postdate) {
+        this.postdate = postdate;
+    }
 
 
-	public void setPostview(int postview) {
-		this.postview = postview;
-	}
+    public int getPostview() {
+        return postview;
+    }
 
 
-	public int getPostlike() {
-		return postlike;
-	}
+    public void setPostview(int postview) {
+        this.postview = postview;
+    }
 
 
-	public void setPostlike(int postlike) {
-		this.postlike = postlike;
-	}
+    public int getPostlike() {
+        return postlike;
+    }
 
 
-	public String getBoardcategory() {
-		return boardcategory;
-	}
+    public void setPostlike(int postlike) {
+        this.postlike = postlike;
+    }
 
 
-	public void setBoardcategory(String boardcategory) {
-		this.boardcategory = boardcategory;
-	}
+    public String getBoardcategory() {
+        return boardcategory;
+    }
 
 
-	@Override
-	public String toString() {
-		return "BoardDto [postidx=" + postidx + ", postname=" + postname + ", postcontent=" + postcontent
-				+ ", postnick=" + postnick + ", memidx=" + memidx + ", uploadfile=" + uploadfile + ", postdate="
-				+ postdate + ", postview=" + postview + ", postlike=" + postlike + ", boardcategory=" + boardcategory
-				+ "]";
-	}
-	
-	
-    
-    
+    public void setBoardcategory(String boardcategory) {
+        this.boardcategory = boardcategory;
+    }
+
+
+    public int getCommentCnt() {
+        return commentCnt;
+    }
+
+    public void setCommentCnt(int commentCnt) {
+        this.commentCnt = commentCnt;
+    }
+
+    @Override
+    public String toString() {
+        return "BoardDto{" +
+                "postidx=" + postidx +
+                ", postname='" + postname + '\'' +
+                ", postcontent='" + postcontent + '\'' +
+                ", postnick='" + postnick + '\'' +
+                ", memidx=" + memidx +
+                ", uploadfile=" + uploadfile +
+                ", postdate=" + postdate +
+                ", postview=" + postview +
+                ", postlike=" + postlike +
+                ", boardcategory='" + boardcategory + '\'' +
+                ", commentCnt=" + commentCnt +
+                '}';
+    }
 }
