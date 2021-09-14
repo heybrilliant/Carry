@@ -56,7 +56,7 @@ public class AdminDashBoardController {
 		map.put("daySales", dayList);
 		return map;
 	}
-
+	
 	@GetMapping("/admin/dash")
 	@ResponseBody
 	public Map<String, Object> getDashBoard(@RequestParam("year") long year) {

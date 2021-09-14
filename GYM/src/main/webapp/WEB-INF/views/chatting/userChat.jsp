@@ -117,22 +117,27 @@
 			});
 		});
 		
-		function chatNav(){
+		
+		function chatNav(num){
+			var num = num;
 			var htmlNav = '<ul>';
 			htmlNav += '<li class="back_button"><a href="#" onclick="history.go(0)"><img src="<c:url value="/images/icon/arrow.png"/>"</a></li>';
 			if(memsession != null && crsession == ''){
-			htmlNav += '<li class="imgButton"><a href="#"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
+			htmlNav += '<li class="imgButton btn_li"><a href="<c:url value="/carry/detail?cridx='+num+'"/>"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
 			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 30px;" class="onlike"></button></li>'
 			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
 			} else if(crsession != null && outcount == 1){
-				htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>'
+				htmlNav += '<li class="imgButton waste_li2"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>'
 			}
 			
 			if(memsession != null && crsession == ''){
-			htmlNav += '<li class="order_button imgButton"><input type="button" value="결제하기"></li>'
+			htmlNav += '<li class="order_button imgButton"><input type="button" value="결제하기" id="asd"></li>'
 			}
 			htmlNav += '</ul>'
 			$('.message_warp').html(htmlNav);
+			$("#asd").click(function(){
+				 $(location).attr('href', '<c:url value="/carry/detail?cridx='+num+'"/>');
+			});
 		}
 		
 		var chatIdx, memidx, cridx, memnicks, crnicks, outcount;
@@ -145,7 +150,8 @@
 			outcount = count;
 		}
 		
-		function chattting(){
+		function chattting(num){
+			var num = num;
 			var htmlStr = '<div>'
 				htmlStr += '<div class="message_warp"></div>'
 				htmlStr += '<div class="chat_null" id="output">'
@@ -164,7 +170,7 @@
 				htmlStr += '</div>'					
 				htmlStr += '</div>'
 			$('#chatcontent_warp').html(htmlStr);			
-			chatNav();
+			chatNav(num);
 			
 			// 처음 접속시, 메세지 입력창에 focus 시킴
 			$('#msg').focus();
@@ -266,6 +272,7 @@
 	// close - 커넥션이 종료되었을 때 호출
 	socket.onclose = function(event) {
 		console.log('connection closed.');
+		socket.onmessage;
 	};
 
 	// error - 에러가 생겼을 때 호출
@@ -345,7 +352,6 @@
 					if (data == 0) {
 						chattting();
 						chatNav();
-						
 					} else {
 						var htmlStr = '<div class="carry_message_warp">';
 						$.each(data, function(index, item) {
@@ -363,7 +369,9 @@
 									htmlStr += '</div>'
 									
 								}  
+								
 								if(item.contenttype == 0 && item.chatcontent != null && item.chatdate > item.outdate){
+									console.log("나가기전" + item.chatdate + " == 나간후" + item.outdate);
 									htmlStr += '	<div class="user_message_warp">'
 									htmlStr += '		<div class="user_chat">'
 									htmlStr += '			<div class="user_message">'
@@ -377,8 +385,7 @@
 									htmlStr += '		</div>'
 									htmlStr += '	</div>'
 								}
-								
-								chattting();
+								chattting(item.cridx); 
 								$('.carry_message_warp').html(htmlStr);
 								$('#output').scrollTop($('#output')[0].scrollHeight);
 								
