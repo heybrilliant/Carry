@@ -4,17 +4,18 @@ Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
 
-var myBarChart;
-function getBar(total, month){
-	if(window.myBarChart != undefined){
-		window.myBarChart.destroy();
-	} 
+var myBsrChart2;
+function getBaryear(total, year){
 
+	if(window.myBsrChart2 != undefined){
+		window.myBsrChart2.destroy();
+	} 
+	
 	var ctx = document.getElementById("myBarChart");
-	window.myBarChart = new Chart(ctx, {
+	windowmyBsrChart2 = new Chart(ctx, {
 	  type: 'bar',
 	  data: {
-	    labels: month,
+	    labels: year,
 	    datasets: [{
 	      label: "Revenue",
 	      backgroundColor: [
@@ -27,7 +28,6 @@ function getBar(total, month){
 	      		'#FF9DFF',
 	      		'#FF8C8C',
 	      		'#CBFF75'
-
 	      ],
 	      borderColor: "rgba(2,117,216,1)",
 	      data: total,
@@ -49,7 +49,7 @@ function getBar(total, month){
 	      yAxes: [{
 	        ticks: {
 	          min: 0,
-	          max: 20000000,
+	          max: 40000000,
 	          maxTicksLimit: 5
 	        },
 	        gridLines: {

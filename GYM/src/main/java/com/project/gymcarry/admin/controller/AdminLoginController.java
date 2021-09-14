@@ -47,7 +47,7 @@ public class AdminLoginController {
 				session.setAttribute("adminLoginSession", adminSessionDto);
 				System.out.println("관리자 로그인 완료 : 세션 저장");
 				
-				return "admin/dashboard";
+				return "redirect:/admin/dashboard";
 				
 			} else {
 				

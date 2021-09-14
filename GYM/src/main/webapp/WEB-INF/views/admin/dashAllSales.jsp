@@ -28,8 +28,10 @@
 				</ol>
 				<div class="card mb-4">
 					<div class="card-body">
-						GymCarry의 전체매출 그래프 입니다. 
-						<select name="month" id="select_month">
+						GymCarry의 전체매출 그래프 입니다. +
+						
+						<select name="month" id="select_month" class="dataTable-selector">
+							<option value="">선택</option>								
 							<option value="1">1월</option>								
 							<option value="2">2월</option>								
 							<option value="3">3월</option>								
@@ -43,41 +45,44 @@
 							<option value="11">11월</option>								
 							<option value="12">12월</option>								
 						</select>
+						<select name="year" id="select_year" class="dataTable-selector">
+							<option value="">선택</option>								
+							<option value="2020">2020년</option>								
+							<option value="2021">2021년</option>								
+						</select>
+						
 					</div>
 				</div>
 				<div class="card mb-4">
 					<div class="card-header">
-						<i class="fas fa-chart-area me-1"></i> Area Chart Example
+						<i class="fas fa-chart-area me-1"></i> 요일별 매출
 					</div>
 					<div class="card-body">
 						<canvas id="myAreaChart" width="100%" height="30"></canvas>
 					</div>
-					<div class="card-footer small text-muted">Updated yesterday
-						at 11:59 PM</div>
+					<div class="card-footer small text-muted day-num">날짜를 선택하세요.</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-bar me-1"></i> Bar Chart Example
+								<i class="fas fa-chart-bar me-1"></i> 월간 매출
 							</div>
 							<div class="card-body">
 								<canvas id="myBarChart" width="100%" height="50"></canvas>
 							</div>
-							<div class="card-footer small text-muted">Updated yesterday
-								at 11:59 PM</div>
+							<div class="card-footer small text-muted month-num">날짜를 선택하세요.</div>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="card mb-4">
 							<div class="card-header">
-								<i class="fas fa-chart-pie me-1"></i> Pie Chart Example
+								<i class="fas fa-chart-pie me-1"></i> 이번달 매출 1위 ~ 4위
 							</div>
 							<div class="card-body">
 								<canvas id="myPieChart" width="100%" height="50"></canvas>
 							</div>
-							<div class="card-footer small text-muted">Updated yesterday
-								at 11:59 PM</div>
+							<div class="card-footer small text-muted rank-num">날짜를 선택하세요.</div>
 						</div>
 					</div>
 				</div>
@@ -96,27 +101,51 @@
         <script src="/gym/js/assets/demo/chart-pie-demo.js"></script>
         
 <script>
-$('#select_month').change(function(){
+$('#select_month, #select_year').change(function(){
     var total = [];
     var crname = [];
     var month = [];
-    var select = $('#select_month').val();
+    var day = [];
+    var selectYear = $('#select_year').val();
+    var selectMonth = $('#select_month').val();
        $.ajax({
           type : 'get',
           url : '<c:url value="/admin/allSaleMan"/>',
           dataType : 'json',
           data : {
-             month : select
+             month : selectMonth,
+             year : selectYear
           },
           success : function(data){
-          $.each(data, function(index, item){
+          $.each(data.daySales, function(index, item){
+        	  console.log(item);
+        	  total.push(item.total);
+        	  day.push(item.day);
+          });
+          total.unshift(0);
+          day.unshift(0);
+          getArea(total, day);
+         
+          total = [];	  
+          $.each(data.kingSales, function(index, item){
              total.push(item.total);
              crname.push(item.crname);
              month.push(item.month);
-          }); 
-          $('#sb-nav').html();
+          });
           getPie(total, crname, month);
+          
+          total = [];
+          month = [];
+          $.each(data.monthSales, function(index, item){
+        	  total.push(item.total);
+        	  month.push(item.engmonth);
+          });
+          getBar(total, month);
+          $(".day-num").html(selectMonth + '월 요일 별 매출 입니다.');
+          $(".month-num").html(selectMonth + '월 월간 매출 입니다.');
+          $(".rank-num").html(selectMonth + '월  판매 왕! 입니다.');
           }
+          
        });
  });
 	
