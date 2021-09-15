@@ -11,8 +11,7 @@ import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.carry.CarryListDto;
 import com.project.gymcarry.dao.BoardDao;
 import com.project.gymcarry.dao.MypageDao;
-import com.project.gymcarry.mypage.MypageMemberDto;
-import com.project.gymcarry.mypage.MypagePaymentDto;
+import com.project.gymcarry.mypage.MypagepaymentDto;
 
 @Service
 public class MypageSubService {
@@ -22,14 +21,9 @@ public class MypageSubService {
 
 	private MypageDao dao;
 
-	public List<MypagePaymentDto> selectpayment(int i) {
+	public List<MypagepaymentDto> selectpayment(int i) {
 		dao = template.getMapper(MypageDao.class);
 		return dao.selectpayment(i);
-	}
-
-	public List<MypageMemberDto> selectmember(int i) {
-		dao = template.getMapper(MypageDao.class);
-		return dao.selectmember(i);
 	}
 
 	public List<CarryListDto> getMyCarryList(int i) {
@@ -43,14 +37,7 @@ public class MypageSubService {
 	}
 
 	public List<BoardDto> getBoardList(Pagination pagination) throws Exception {
-		
-		
 		dao = template.getMapper(MypageDao.class);
 		return dao.getBoardList(pagination);
-	}
-
-	public void memberUpdate(int i) {
-
-		dao.memberupdate(i);
 	}
 }
