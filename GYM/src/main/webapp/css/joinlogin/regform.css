@@ -48,7 +48,7 @@ h1 {
 
 .profile_form>.profileimg{
 	margin: auto;
-	/* background-color:gray; */
+	background-color:gray;
 	border-radius:50%;
 	overflow:hidden;
 	width: 150px;
