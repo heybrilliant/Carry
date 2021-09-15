@@ -8,26 +8,25 @@
 
 <link rel="stylesheet" href="/gym/css/mypage/style.css">
 <link rel="stylesheet" href="/gym/css/mypage/modify.css">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <title>캐리 정보 수정</title>
-<script src="js/includeHTML.js"></script>
-<script src="js/includeRouter.js"></script>
-</head>
 
+</head>
 <body>
+<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<div class="wrap  wd668">
+<!-- content S-->
+	<div class="wrap">
 		<div class="container">
 			<div class="form_txtInput">
-
 				<form action="<c:url value=""/>" method="post">
+					<!--캐리 프로필 영역-->
 					<h1 class="sub_tit_txt">캐리 정보 수정</h1>
 					<div class="edit_form">
 						<div class="profile_form">
-							<img src="image/icon/profile.png"><br> <a
-								href="<input type="file" name="carryphoto">">프로필 사진 등록</a>
+							<img src="<c:url value="/images/icon/profile2.png"/>" alt="img">
+							<a href="<input type="onclick="" name="carryphoto">프로필 사진 등록</a>
 						</div>
 
 						<table>
@@ -49,8 +48,7 @@
 									<td>
 										<div class="place">
 											<button type="submit">
-												<a href="#"><img src="image/icon/search_icon.png"
-													alt="search"></a>
+												<a href="#"><img src="<c:url value="/images/icon/search_icon.png"/>" alt="img"></a>
 											</button>
 											<input type="text" placeholder="">
 										</div>
@@ -69,9 +67,7 @@
 											</div>
 										</td>
 									</div>
-									<!-- <input type="radio" name="choice" value="헬스">헬스
-                                    <input type="radio" name="choice" value="필라테스">필라테스
-                                    <input type="radio" name="choice" value="요가">요가 -->
+
 								</tr>
 
 								<tr>
@@ -159,4 +155,5 @@
 	</div>
 	<!-- content E-->
 
-	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+<!-- footer -->
+<%@ include file="/WEB-INF/views/frame/footer.jsp" %>

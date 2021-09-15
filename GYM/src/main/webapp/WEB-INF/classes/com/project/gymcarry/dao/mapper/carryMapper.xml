@@ -125,6 +125,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from carry natural join crcertification natural join crprice natural join place 
 		where crgender='남자' and crfield='요가' and procount = 1;
 	</select>
-	
+
+
 
 </mapper>

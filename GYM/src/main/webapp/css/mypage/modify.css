@@ -1,14 +1,6 @@
 @charset "utf-8";
-* {
-    margin:0;
-    padding:0;
-}
-html {
-    height:auto;
-}
-body {
-    height:auto;
-}
+
+
 table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
     font-size:11pt; 
     color:#666;
@@ -31,6 +23,7 @@ img {
     min-width: 473px;
 }
 
+/*캐리 프로필 영역*/
 h1 {
     text-align: center;
     padding:0 0 0 0px;
@@ -39,23 +32,22 @@ h1 {
 .profile_form{
     margin-bottom: 20px;
     justify-content: center;
+    display: grid;
 }
 
 .profile_form>img {
     width: 150px;
     height: 150px;
     margin-bottom: 10px;
+    border-radius: 50%;
 }
 
 .wrap{
-    width: 60%;
+    width: 35%;
     height: auto;
     box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
     max-width:960px; 
-    margin: 140px auto 0;}
-
-.wrap.wd668{
-    width: 50%;
+    margin: 140px auto 0;
     min-width: 473px;
     text-align: center;
 }
