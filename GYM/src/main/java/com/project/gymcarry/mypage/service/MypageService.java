@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.dao.MypageDao;
 import com.project.gymcarry.mypage.MypageDto;
-import com.project.gymcarry.mypage.MypagepaymentDto;
+import com.project.gymcarry.mypage.MypagePaymentDto;
 
 @Service
 public class MypageService {

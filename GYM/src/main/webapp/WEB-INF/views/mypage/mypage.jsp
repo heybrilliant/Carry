@@ -117,7 +117,7 @@
 						<div class="my-info-develope">
 							<h3 class="info_title">My page</h3>
 							<ul class="info_contents">
-								<li data-tab="info" class="list_tab info_list" id="default"><a>내
+								<li data-tab="mymemo" class="list_tab info_list" id="default"><a>내
 										메모</a></li>
 
 								<li class="info_list"><a

@@ -36,91 +36,100 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	\
+
 
 	<div class="contents_main">
 		<div class="contents">
 
 			<div class="col">
 
-				<div class="my-info">
-					<img id="loadingimg" class="display_none"
-						src="/gym/images/icon/user.png">
-					<h3>사진 수정</h3>
-				</div>
+				<form action="<c:url value='/mypage/myinfoUpdate'/>" method="post">
 
-				<div class="col-2">
-					<div class="col-3">
-						<h3>이름</h3>
-					</div>
-					<div class="col-9" style="float: right;">
-						<input type="text" class="readonly" readonly>
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="col-3">
-						<h3>이메일 주소</h3>
-					</div>
-					<div class="col-9" style="float: right;">
-						<input type="text" class="readonly" readonly>
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="col-3">
-						<h3>비밀번호</h3>
-					</div>
-					<div class="col-9" style="float: right;">
-						<input type="text">
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="col-3">
-						<h3>비밀번호 확인</h3>
-					</div>
-					<div class="col-9" style="float: right;">
-						<input type="text">
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="col-3">
-						<h3>닉네임</h3>
-					</div>
-					<div class="col-9" style="float: right;">
-						<input type="text">
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="col-3">
-						<h3>핸드폰 번호</h3>
-					</div>
-					<div class="col-9" style="float: right;">
-						<input type="text">
-					</div>
-				</div>
-				<div class="col-2">
-					<div class="col-3">
-						<h3>생년월일</h3>
-					</div>
-					<div class="col-9" style="float: right;">
-						<input type="text" class="readonly" readonly>
-					</div>
-				</div>
-				<div class="col-2"
-					style="margin-top: 7%; width: 100%; display: flex;">
-					<div class="col-2" style="width: 50%; margin: auto;">
-						<div class="col-2"
-							style="width: 50%; /* margin: auto; */ /* padding: 10%; */ float: left;">
-							<button class="btn on" type="button" id="reg_submit">확인</button>
+					<c:forEach items="${memberList}" var="memberList">
+
+
+						<div class="my-info">
+							<img id="loadingimg" class="display_none"
+								src="/gym/images/icon/user.png">
+							<h3>사진 수정</h3>
+						</div>
+
+						<div class="col-2">
+							<div class="col-3">
+								<h3>이름</h3>
+							</div>
+							<div class="col-9" style="float: right;">
+								<input value="${memberList.MEMNAME}" type="text"
+									class="readonly" readonly />
+							</div>
+						</div>
+						<div class="col-2">
+							<div class="col-3">
+								<h3>이메일 주소</h3>
+							</div>
+							<div class="col-9" style="float: right;">
+								<input value="${memberList.MEMEMAIL}" type="text"
+									class="readonly" readonly>
+							</div>
+						</div>
+						<div class="col-2">
+							<div class="col-3">
+								<h3>비밀번호 수정</h3>
+							</div>
+							<div class="col-9" style="float: right;">
+								<input type="text">
+							</div>
+						</div>
+						<div class="col-2">
+							<div class="col-3">
+								<h3>비밀번호 수정 확인</h3>
+							</div>
+							<div class="col-9" style="float: right;">
+								<input type="text">
+							</div>
+						</div>
+						<div class="col-2">
+							<div class="col-3">
+								<h3>닉네임</h3>
+							</div>
+							<div class="col-9" style="float: right;">
+								<input value="${memberList.MEMNICK}" type="text">
+							</div>
+						</div>
+						<div class="col-2">
+							<div class="col-3">
+								<h3>핸드폰 번호</h3>
+							</div>
+							<div class="col-9" style="float: right;">
+								<input value="${memberList.MEMPHONE}" type="text">
+							</div>
+						</div>
+						<div class="col-2">
+							<div class="col-3">
+								<h3>생년월일</h3>
+							</div>
+							<div class="col-9" style="float: right;">
+								<input value="${memberList.MEMBIRTH}" type="text"
+									class="readonly" readonly>
+							</div>
 						</div>
 						<div class="col-2"
-							style="width: 50%; /* margin: auto; */ /* padding: 10%; */ float: right;">
-
-							<button class="btn off" type="button" id="reg_submit">취소</button>
-
+							style="margin-top: 7%; width: 100%; display: flex;">
+							<div class="col-2" style="width: 50%; margin: auto;">
+								<div class="col-2"
+									style="width: 50%; /* margin: auto; */ /* padding: 10%; */ float: left;">
+									<input value="수정" class="btn on" type="submit" id="reg_submit">
+								</div>
+								<div class="col-2"
+									style="width: 50%; /* margin: auto; */ /* padding: 10%; */ float: right;">
+									<a href="javascript:window.history.back();"> <input
+										value="취소" class="btn off" type="button" id="reg_submit">
+									</a>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-
+					</c:forEach>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -29,7 +29,8 @@
 	<div class="contents_main">
 		<div class="contents">
 			<h1 style="margin-bottom: 5%;" class="title">
-				<a style="" href="<c:url value="/community/boardList"/>">MY COMMUNITY</a>
+				<a style="" href="<c:url value="/community/boardList"/>">MY
+					COMMUNITY</a>
 			</h1>
 
 
@@ -155,7 +156,7 @@
         var page = ((range - 2) * rangeSize) + 1;
         var range = range - 1;
 
-        var url = "${pageContext.request.contextPath}/community/boardList";
+        var url = "${pageContext.request.contextPath}/mypage/mycommunity";
         url = url + "?page=" + page;
         url = url + "&range=" + range;
 
@@ -164,7 +165,7 @@
 
     //페이지 번호 클릭
     function fn_pagination(page, range, rangeSize, searchType, keyword) {
-        var url = "${pageContext.request.contextPath}/community/boardList";
+        var url = "${pageContext.request.contextPath}/mypage/mycommunity";
         url = url + "?page=" + page;
         url = url + "&range=" + range;
 
@@ -176,7 +177,7 @@
         var page = parseInt((range * rangeSize)) + 1;
         var range = parseInt(range) + 1;
 
-        var url = "${pageContext.request.contextPath}/community/boardList";
+        var url = "${pageContext.request.contextPath}/mypage/mycommunity";
         url = url + "?page=" + page;
         url = url + "&range=" + range;
 

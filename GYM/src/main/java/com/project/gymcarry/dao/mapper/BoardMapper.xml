@@ -26,8 +26,8 @@
 
 	<!-- 페이징 : 전체 글의 개수 읽어오기 -->
 	<select id="getBoardListCnt" resultType="int">
-
-		select count(*) as listCnt
+		select count(*) as
+		listCnt
 		from board
 	</select>
 
@@ -38,7 +38,8 @@
 		UPDATE board SET
 		postview = postview + 1
 		WHERE
-		postidx = #{postidx}
+		postidx =
+		#{postidx}
 	</update>
 
 
@@ -57,7 +58,8 @@
 		resultType="com.project.gymcarry.board.BoardDto">
 		select postidx, postname, postcontent, postnick, memidx,
 		uploadfile,
-		date_format(postdate, '%Y-%m-%d') as postdate, postview, postlike, boardcategory
+		date_format(postdate, '%Y-%m-%d') as postdate, postview,
+		postlike, boardcategory
 		from board where postidx = #{postidx}
 	</select>
 
@@ -74,9 +76,11 @@
 		parameterType="java.util.HashMap" useGeneratedKeys="true"
 		keyProperty="postidx">
 		update board
-		set postname = #{postname}, postcontent = #{postcontent}, boardcategory =
+		set postname = #{postname}, postcontent =
+		#{postcontent}, boardcategory =
 		#{boardcategory}
-		where postidx = #{postidx};
+		where postidx =
+		#{postidx};
 	</update>
 
 	<!-- 게시물 삭제 -->
