@@ -11,7 +11,7 @@
    <bean id="datasource"
 		  class="com.zaxxer.hikari.HikariDataSource"
 		  p:driverClassName="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
-		  p:jdbcUrl="jdbc:log4jdbc:mysql://mysql205.cszw5wiaeg6n.us-east-2.rds.amazonaws.com:3306/gymcarry?serverTimezone=UTC"
+		  p:jdbcUrl="jdbc:log4jdbc:mysql://mysql205.cszw5wiaeg6n.us-east-2.rds.amazonaws.com:3306/gymcarry?serverTimezone=Asia/Seoul"
 		  p:username="gym"
 		  p:password="gym"
 	>

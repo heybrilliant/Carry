@@ -79,9 +79,9 @@
 				<li class="kakao">
 					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>" onclick="kakaoLogin();">
 				</li>
-				<li onclick="kakaoLogout();"><a href="javascript:void(0)">
+				<!-- <li onclick="kakaoLogout();"><a href="javascript:void(0)">
 						<span>카카오 로그아웃</span>
-				</a></li>
+				</a></li> -->
 			</ul>
 
 
