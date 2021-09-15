@@ -121,7 +121,7 @@ public class PostContentController {
 		// JSON으로 담아도 되지만 편한 방법인 GSON으로 사용
 
 		// yyyy-MM-dd hh:mm:ss
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm").create();
 
 		return gson.toJson(commList);
 	}
