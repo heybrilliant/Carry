@@ -3,7 +3,9 @@ package com.project.gymcarry.board.service;
 import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.BoardWriteDto;
 import com.project.gymcarry.board.Pagination;
+import com.project.gymcarry.board.BoardLikeDto;
 import com.project.gymcarry.dao.BoardDao;
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -103,6 +105,34 @@ public class BoardServiceImpl implements BoardService {
     public int updateViewCnt(int postidx) throws Exception {
         dao = template.getMapper(BoardDao.class);
         return dao.updateViewCnt(postidx);
+    }
+
+    // 게시물 좋아요 여부 확인
+    @Override
+    public BoardLikeDto getBoardLike(@Param("postidx") int postidx, @Param("memidx") int memidx) throws Exception {
+        dao = template.getMapper(BoardDao.class);
+        return dao.selectBoardLike(postidx, memidx);
+    }
+
+    // 게시물 좋아요 on
+    @Override
+    public int getBoardLikeOn(Map<String, Object> map) throws Exception {
+        dao = template.getMapper(BoardDao.class);
+        return dao.insertBoardLike(map);
+    }
+
+    // 게시물 좋아요 off
+    @Override
+    public int getBoardLikeOff(Map<String, Object> map) throws Exception {
+        dao = template.getMapper(BoardDao.class);
+        return dao.deleteBoardLike(map);
+    }
+
+    // 게시물 좋아요 총 갯수
+    @Override
+    public List<BoardLikeDto> getBoardLikeLength(int postidx) throws Exception {
+        dao = template.getMapper(BoardDao.class);
+        return dao.selectBoardLikeLength(postidx);
     }
 
 

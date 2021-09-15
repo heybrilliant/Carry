@@ -3,6 +3,8 @@ package com.project.gymcarry.board.service;
 import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.BoardWriteDto;
 import com.project.gymcarry.board.Pagination;
+import com.project.gymcarry.board.BoardLikeDto;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -47,6 +49,18 @@ public interface BoardService {
 
     // 조회수
     public int updateViewCnt(int postidx) throws Exception;
+
+    // 게시물 좋아요 여부 확인
+    public BoardLikeDto getBoardLike(@Param("postidx") int postidx, @Param("memidx") int memidx) throws Exception;
+
+    // 게시물 좋아요 on
+    public int getBoardLikeOn(Map<String, Object> map) throws Exception;
+
+    // 게시물 좋아요 off
+    public int getBoardLikeOff(Map<String, Object> map) throws Exception;
+
+    // 게시물 좋아요 총 갯수
+    public List<BoardLikeDto> getBoardLikeLength(int postidx) throws Exception;
 
 
 

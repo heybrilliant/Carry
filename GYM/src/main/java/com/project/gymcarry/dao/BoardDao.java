@@ -6,6 +6,8 @@ import java.util.Map;
 import com.project.gymcarry.board.BoardDto;
 import com.project.gymcarry.board.BoardWriteDto;
 import com.project.gymcarry.board.Pagination;
+import com.project.gymcarry.board.BoardLikeDto;
+import org.apache.ibatis.annotations.Param;
 
 public interface BoardDao {
 
@@ -44,4 +46,16 @@ public interface BoardDao {
     
     // 게시물 삭제
     Integer deleteBoard(int postidx);
+
+    // 게시물 좋아요 여부 확인
+    BoardLikeDto selectBoardLike(@Param("postidx") int postidx, @Param("memidx") int memidx);
+
+    // 게시물 좋아요 on
+    Integer insertBoardLike(Map<String, Object> map);
+
+    // 게시물 좋아요 off
+    Integer deleteBoardLike(Map<String, Object> map);
+
+    // 게시물 좋아요 총 갯수
+    List<BoardLikeDto> selectBoardLikeLength(int postidx);
 }

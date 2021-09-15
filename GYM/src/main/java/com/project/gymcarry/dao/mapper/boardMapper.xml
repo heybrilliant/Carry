@@ -107,6 +107,30 @@
 	<delete id="deleteBoard">
 		delete from board where postidx = #{postidx};
 	</delete>
+
+	<!-- 좋아요 여부 -->
+	<select id="selectBoardLike" resultType="com.project.gymcarry.board.BoardLikeDto">
+		select * from bbslike where postidx = #{postidx} and memidx = #{memidx}
+	</select>
+
+	<!-- 게시물 좋아요 on -->
+	<insert id="insertBoardLike"
+			parameterType="java.util.HashMap"
+			useGeneratedKeys="true"
+			keyProperty="idx">
+		insert into bbslike (postidx, memidx) values (#{postidx},#{memidx})
+	</insert>
+
+
+	<!-- 게시물 좋아요 off -->
+	<delete id="deleteBoardLike">
+		delete from bbslike where postidx = #{postidx} and memidx = #{memidx};
+	</delete>
+
+	<!-- 게시물 좋아요 총 갯수 -->
+	<select id="selectBoardLikeLength" resultType="com.project.gymcarry.board.BoardLikeDto">
+		select * from bbslike where postidx = #{postidx};
+	</select>
 	
 
 
