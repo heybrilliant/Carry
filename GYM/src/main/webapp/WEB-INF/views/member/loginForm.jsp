@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 <link rel="stylesheet" href="/gym/css/joinlogin/loginform.css">
 
 </head>
@@ -73,6 +74,17 @@
 							찾기</a></li>
 				</ul>
 			</div>
+
+			<ul class="apiLogin">
+				<li class="kakao">
+					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>" onclick="kakaoLogin();">
+				</li>
+				<li onclick="kakaoLogout();"><a href="javascript:void(0)">
+						<span>카카오 로그아웃</span>
+				</a></li>
+			</ul>
+
+
 		</div>
 	</div>
 	<!-- content E-->
@@ -82,10 +94,53 @@
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>
 
+
+<!-- 카카오 로그인 API -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+	Kakao.init('0ecec0f1529ce019d44a9de3e0b3bb22'); //발급받은 키 중 javascript키를 사용해준다.
+	console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	//카카오 로그인
+	function kakaoLogin() {
+		Kakao.Auth.login({
+			success : function(response) {
+				Kakao.API.request({
+					url : '/v2/user/me',
+					success : function(response) {
+						console.log(response)
+					},
+					fail : function(error) {
+						console.log(error)
+					},
+				})
+			},
+			fail : function(error) {
+				console.log(error)
+			},
+		})
+	}
+	//카카오 로그아웃  
+	function kakaoLogout() {
+		if (Kakao.Auth.getAccessToken()) {
+			Kakao.API.request({
+				url : '/v1/user/unlink',
+				success : function(response) {
+					console.log(response)
+				},
+				fail : function(error) {
+					console.log(error)
+				},
+			})
+			Kakao.Auth.setAccessToken(undefined)
+		}
+	}
+</script>
+
+
 <script>
 // input = "userId"  // mememail
 // idsavecheck // rememberemail
-/* 
+
 $(document).ready(function(){
 	 
     // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
@@ -138,8 +193,6 @@ function getCookie(cookieName) {
     }
     return unescape(cookieValue);
 }
- */
-	
 	
 </script>
 

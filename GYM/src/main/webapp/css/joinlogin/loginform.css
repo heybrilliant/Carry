@@ -15,6 +15,15 @@ body {
     text-decoration: none;
 }
 
+.apiLogin {
+	margin: 40px 0;
+}
+
+.apiLogin .kakao {
+	cursor : pointer;
+}
+
+
 .sub_tit_txt{
     margin:0 auto 30px; 
     color: #2f2f2f; 
