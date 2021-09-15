@@ -16,7 +16,8 @@ public class BoardDto {
     private Date postdate;
     private int postview;
     private String boardcategory;
-    private int commentCnt;        //댓글 개수
+    private int commentCnt;         // 댓글 개수
+	private int likeCnt;			// 좋아요 개수
 
 
     public BoardDto() {
@@ -25,7 +26,7 @@ public class BoardDto {
 
 
 	public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx,
-			MultipartFile uploadfile, Date postdate, int postview, String boardcategory, int commentCnt) {
+			MultipartFile uploadfile, Date postdate, int postview, String boardcategory, int commentCnt, int likeCnt) {
 		super();
 		this.postidx = postidx;
 		this.postname = postname;
@@ -37,6 +38,7 @@ public class BoardDto {
 		this.postview = postview;
 		this.boardcategory = boardcategory;
 		this.commentCnt = commentCnt;
+		this.likeCnt = likeCnt;
 	}
 
 
@@ -139,14 +141,28 @@ public class BoardDto {
 		this.commentCnt = commentCnt;
 	}
 
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
 
 	@Override
 	public String toString() {
-		return "BoardDto [postidx=" + postidx + ", postname=" + postname + ", postcontent=" + postcontent
-				+ ", postnick=" + postnick + ", memidx=" + memidx + ", uploadfile=" + uploadfile + ", postdate="
-				+ postdate + ", postview=" + postview + ", boardcategory=" + boardcategory + ", commentCnt="
-				+ commentCnt + "]";
+		return "BoardDto{" +
+				"postidx=" + postidx +
+				", postname='" + postname + '\'' +
+				", postcontent='" + postcontent + '\'' +
+				", postnick='" + postnick + '\'' +
+				", memidx=" + memidx +
+				", uploadfile=" + uploadfile +
+				", postdate=" + postdate +
+				", postview=" + postview +
+				", boardcategory='" + boardcategory + '\'' +
+				", commentCnt=" + commentCnt +
+				", likeCnt=" + likeCnt +
+				'}';
 	}
-
-    
 }
