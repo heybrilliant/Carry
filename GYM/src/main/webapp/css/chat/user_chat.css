@@ -72,15 +72,18 @@
 }
 
 .chat_name {
-	width: 17%;
-	height: 50%;
-	padding-top: 20px;
+	width: 40%;
+    height: 50%;
+    padding-top: 20px;
+    margin-left: 10px;
+    text-align: left;
 }
 
 .chat_title {
 	float: left;
-	color: rgb(119, 117, 117);
-	margin-top: 22px;
+    color: rgb(119, 117, 117);
+    margin-top: 22px;
+    margin-left: -27%;
 }
 
 .chat_title_img {
@@ -141,6 +144,10 @@
 	justify-content: flex-end;
 }
 
+.waste_li2 {
+    margin-left: 650;
+}
+
 .chat_content span {
 	display: inline-block;
 	width: 200px;
@@ -173,6 +180,10 @@
 	list-style: none;
 	margin-top: 20px;
 	margin-right: 30px;
+}
+
+.btn_li {
+    margin-left: 390px;
 }
 
 #chatcontent_warp {

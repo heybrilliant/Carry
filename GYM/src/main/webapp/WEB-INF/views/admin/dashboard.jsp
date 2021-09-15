@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>DashBoard : GymCarry Admin</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <link rel="stylesheet" href="/gym/css/admin/adminStyle.css">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -122,6 +123,7 @@
 	
 	function thead(){
 		var	html= '<tr>'
+			html+=	'<th>순서</th>'
 			html+=	'<th>결제자 명</th>'
 			html+=	'<th>결제자 연락처</th>'
 			html+=	'<th>결제 수업횟수</th>'
@@ -261,28 +263,28 @@
 	        dataType : 'json',
 	        data : { year : num },
 	        success : function(data){
-	         	var html = '<thead>'
-	         		html += '<tr>'
-	           		html += '<th>월</th>'
-	           		html += '<th>캐리이름</th>'
-	           		html += '<th>총 결제 수업 횟수</th>'
-	           		html += '<th>전문 분야</th>'
-	           		html += '<th>성별</th>'
-	           		html += '<th>총 매출</th>'
-	           		html += '</tr>'
-	           		html += '</thead>'
+	         	var html = '<thead>';
+	         		html += '<tr>';
+	           		html += '<th>월</th>';
+	           		html += '<th>캐리이름</th>';
+	           		html += '<th>총 결제 수업 횟수</th>';
+	           		html += '<th>전문 분야</th>';
+	           		html += '<th>성별</th>';
+	           		html += '<th>총 매출</th>';
+	           		html += '</tr>';
+	           		html += '</thead>';
+	           		html += '<tbody class="addList">';
 	           	$.each(data.carrySales, function(index, item){
-	           		    html += '<tbody class="addList">'
-	           		    html += '<tr>'
-	           		    html += '<td>'+ item.month +'</td>'
-	           		    html += '<td>'+ item.crname +'</td>'
-	           		    html += '<td>'+ item.paynum +'</td>'
-	           		    html += '<td>'+ item.crfield +'</td>'
-	           		    html += '<td>'+ item.crgender +'</td>'
-	           		    html += '<td>₩ '+ item.total +'</td>'
-	           		    html += '</tr>'
-	           		    html += '</tbody>'
+	           		    html += '<tr>';
+	           		    html += '<td>'+ item.month +'</td>';
+	           		    html += '<td>'+ item.crname +'</td>';
+	           		    html += '<td>'+ item.paynum +'</td>';
+	           		    html += '<td>'+ item.crfield +'</td>';
+	           		    html += '<td>'+ item.crgender +'</td>';
+	           		    html += '<td>₩ '+ item.total +'</td>';
+	           		    html += '</tr>';
 	           	});
+	           		    html += '</tbody>'
 	         	
 	           	$("#datatablesSimple").html(html);
 	           	

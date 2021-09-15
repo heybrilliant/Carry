@@ -17,6 +17,7 @@ import com.project.gymcarry.carrylike.CarryLikeDto;
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
+import com.project.gymcarry.chatting.service.MatchingChatRoomServiceImpl;
 import com.project.gymcarry.member.SessionDto;
 
 @Controller

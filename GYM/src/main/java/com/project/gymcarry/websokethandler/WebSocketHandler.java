@@ -17,12 +17,12 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
 import com.project.gymcarry.chatting.MessageDto;
-import com.project.gymcarry.chatting.service.MatchingChatRoomService;
+import com.project.gymcarry.chatting.service.MatchingChatRoomServiceImpl;
 
 public class WebSocketHandler extends TextWebSocketHandler {
 
 	@Autowired
-	private MatchingChatRoomService matchingChatRoomService;
+	private MatchingChatRoomServiceImpl matchingChatRoomService;
 
 	private static final Logger logger = LoggerFactory.getLogger(WebSocketHandler.class);
 	// 방법 1 : 전체 채팅
@@ -84,7 +84,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
-
+		
 		int result = 0;
 		String to = messageDto.getTo();
 		WebSocketSession toSession = mapList.get(to);
@@ -96,11 +96,8 @@ public class WebSocketHandler extends TextWebSocketHandler {
 				// 방에 서로 있으면 메세지 보낼때 읽음 처리
 				matchingChatRoomService.getChatRead(messageDto.getChatidx());
 			}
-		} else {
+		} else if(toSession == null) {
 			session.sendMessage(sendMsg);
-		}
-
-		if (result == 0) {
 			matchingChatRoomService.insertChatContent(messageDto);
 		}
 		
@@ -109,12 +106,12 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	// 클로즈 될때.
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
-		System.out.println("3번" + session + ":" + status);
+		String chatNick = (String) session.getAttributes().get("chatSession");
 		list.remove(session);
 		mapList.remove(session.getId());
-		logger.info("{}연결 끊김", session.getId());
-		System.out.println("채팅방 퇴장한사람 : " + session.getPrincipal().getName());
-
+		logger.info("{}연결 끊김", session.getId() + chatNick);
+		System.out.println("채팅방 퇴장한사람 : " + chatNick);
+		
 	}
 
 }
