@@ -5,11 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>비밀번호 찾기</title>
+<title>아이디 찾기</title>
 
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/joinlogin/find.css">
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	$(function(){
+		$("#loginBtn").click(function(){
+			location.href='/gym/carry/login';
+		})
+	})
+</script>
 </head>
 <body>
 
@@ -23,23 +30,23 @@
 	<div class="wrap wd668">
 		<div class="container">
 			<ul class="tab">
-				<li><a class="sub_tit_txt" href="<c:url value="/find/findid"/>">회원 아이디
-						찾기</a></li>
 				<li class="active"><a class="sub_tit_txt"
-					href="<c:url value="/find/findpassword"/>">회원 비밀번호 찾기</a></li>
+					href="<c:url value="/find/findcarryid"/>">캐리 아이디 찾기</a></li>
+				<li><a class="sub_tit_txt"
+					href="<c:url value="/find/findcarrypassword"/>">캐리 비밀번호 찾기</a></li>
 			</ul>
 
-			<form action="<c:url value="/find/findpassword"/>" method="post">
+			<form action="<c:url value="/find/findcarryid"/>" method="post">
 				<div class="form_txtInput">
 					<div class="find_form">
 						<table>
 							<tr>
-								<td><input id="regname" name="memname" type="text" placeholder="가입시 등록하신 이름">
+								<td><input id="regname" name="crname" type="text" placeholder="가입시 등록하신 이름">
 								</td>
 							</tr>
 							<tr>
-								<td><input id="regemail" name="mememail" type="text"
-									placeholder="가입시 등록하신 이메일 주소"></td>
+								<td><input id="regphonenum" name="crphone" type="text"
+									placeholder="가입시 등록하신 휴대폰 번호 "></td>
 							</tr>
 						</table>
 						<div id="btnbox">
@@ -58,11 +65,10 @@
 	</div>
 
 
+
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 	
-	</body>
-	<script>
+</body>
 	
-	</script>
-	</html>
+</html>

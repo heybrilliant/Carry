@@ -21,7 +21,8 @@
 	<!-- Contents -->
 	<div class="wrap wd668">
 		<div class="container">
-			<form id="joinForm" action="<c:url value="/member/join"/>" method="post">
+			<form id="joinForm" action="<c:url value="/member/join"/>"
+				method="post" enctype="multipart/form-data">
 				<div class="form_txtInput">
 					<h1 class="sub_tit_txt">회원 회원가입</h1>
 					<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p>
@@ -29,8 +30,14 @@
 
 					<div class="join_form">
 						<div class="profile_form">
-							<img src="/gym/images/icon/profile.png"><br> <a
-								href="<input type=" file" name="memphoto">">프로필 사진 등록</a>
+							<div class="profileimg">
+								<img src="/gym/images/icon/profile.png"><br>
+							</div>
+							<input type="button" value="업로드" class="profilebtn" name="memphoto"
+								onclick=document.all.file.click();>
+							<input type="file" name="memphoto" id="file" class="profilebtn" style="display: none;" />
+							<!-- <input type="button" id="realinput" name="memphoto" accept="image/jpeg, image/jpg, image/png" onclick="document.all.file.click()">
+						<button class="profilebtn" type="submit">프로필 사진</button>위아래 margin값 주기 -->
 						</div>
 
 						<div class="form-box">
@@ -72,15 +79,16 @@
 						</div>
 
 						<div class="form-box">
-							<label id="cate">생년월일</label> <input type="text" name="membirth" id="membirth"
-								placeholder="8자리 형식의 숫자로만 입력해주세요.ex_19901010">
+							<label id="cate">생년월일</label> <input type="text" name="membirth"
+								id="membirth" placeholder="8자리 형식의 숫자로만 입력해주세요.ex_19901010">
 							<div class="check_font" id="birthcheck"></div>
 						</div>
 
 						<div class="selectbox">
-							<label id="cate">성별</label> 
-							<input type="radio" name="memgender" id="male" value="남자"> <label for="male" id="male_label">남자</label>
-							<input type="radio" name="memgender" id="female" value="여자"> <label for="female" id="female_label">여자</label>
+							<label id="cate">성별</label> <input type="radio" name="memgender"
+								id="male" value="남자"> <label for="male" id="male_label">남자</label>
+							<input type="radio" name="memgender" id="female" value="여자">
+							<label for="female" id="female_label">여자</label>
 							<div class="check_font" id="gendercheck"></div>
 						</div>
 
@@ -116,6 +124,15 @@
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 
 </body>
+
+<script>
+/* const profilebtn = document.querySelector('.profilebtn');
+const realInput = document.querySelector('#realinput');
+
+browseBtn.addEventListener('click',{
+	realInput.click();
+}); */
+</script>
 
 <script>
 
@@ -278,6 +295,7 @@
 		
 	
 </script>
+<!-- alert('입력해주신 이메일로 인증 메일이 발송되었습니다. 이메일 인증을 완료해주세요.') -->
 
 </html>
 

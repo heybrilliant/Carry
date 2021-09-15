@@ -5,13 +5,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>비밀번호 찾기</title>
+
+<title>캐리 아이디 찾기 결과</title>
 
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/joinlogin/find.css">
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	$(function(){
+		$("#loginBtn").click(function(){
+			location.href='/gym/carry/login';
+		})
+	})
+</script>
 </head>
 <body>
+
 
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
@@ -23,31 +32,21 @@
 	<div class="wrap wd668">
 		<div class="container">
 			<ul class="tab">
-				<li><a class="sub_tit_txt" href="<c:url value="/find/findid"/>">회원 아이디
-						찾기</a></li>
 				<li class="active"><a class="sub_tit_txt"
-					href="<c:url value="/find/findpassword"/>">회원 비밀번호 찾기</a></li>
+					href="<c:url value="/find/findcarryid"/>">캐리 아이디 찾기</a></li>
+				<li><a class="sub_tit_txt"
+					href="<c:url value="/find/findcarrypassword"/>">캐리 비밀번호 찾기</a></li>
 			</ul>
 
-			<form action="<c:url value="/find/findpassword"/>" method="post">
 				<div class="form_txtInput">
-					<div class="find_form">
-						<table>
-							<tr>
-								<td><input id="regname" name="memname" type="text" placeholder="가입시 등록하신 이름">
-								</td>
-							</tr>
-							<tr>
-								<td><input id="regemail" name="mememail" type="text"
-									placeholder="가입시 등록하신 이메일 주소"></td>
-							</tr>
-						</table>
+					<div class="findview">
+						<h2>멤버 아이디 찾기 검색결과</h2>
+						<div id="findview">
+							<h4>가입하신 이메일은  ${cremail} 입니다.</h4>
+						</div>
 						<div id="btnbox">
 							<div class="btn_wrap">
-									<button type="submit" value="찾기" id="findBtn">찾기</button>
-							</div>
-							<div class="btn_wrap2">
-								<a onclick="history.go(-1)">취소</a>
+								<button type="button" id="loginBtn" value="로그인">로그인</button>
 							</div>
 						</div>
 					</div>
@@ -58,11 +57,8 @@
 	</div>
 
 
+
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-	
 	</body>
-	<script>
-	
-	</script>
 	</html>

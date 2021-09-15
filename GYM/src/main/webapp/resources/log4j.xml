@@ -94,7 +94,7 @@
 
 
 
-    <logger name="jdbc.resultset" additivity="false">
+   <logger name="jdbc.resultset" additivity="false">
 
         <level value="warn" />
 
@@ -110,7 +110,7 @@
 
         <appender-ref ref="console"/>
 
-    </logger>
+    </logger> 
 
 
 

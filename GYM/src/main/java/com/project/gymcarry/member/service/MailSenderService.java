@@ -8,6 +8,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -16,6 +17,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.project.gymcarry.dao.MemberDao;
+import com.project.gymcarry.find.TempPWD;
 
 @Service
 public class MailSenderService {
@@ -46,8 +48,7 @@ public class MailSenderService {
 		return create_joinkey(size);
 	}
 
-	
-	// 회원한테 보내는 가입 인증 메일
+// 회원한테 보내는 가입 인증 메일
 	public String send_mail(String mememail, String memname) {
 
 		String joinkey = getJoinkey(false, 8);
@@ -91,8 +92,8 @@ public class MailSenderService {
 		}
 		return joinkey;
 	}
-	
-	// 캐리에게 보내는 가입 인증 메일 
+
+	// 캐리에게 보내는 가입 인증 메일
 	public String crsend_mail(String cremail, String crname) {
 
 		String joinkey = getJoinkey(false, 8);
@@ -132,12 +133,12 @@ public class MailSenderService {
 			System.out.println("메일센더 메일발송 + cremail = " + cremail);
 
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			System.out.println("메일발송 실패 : " + e);
 		}
 		return joinkey;
 	}
-	
-	// 멤버 이메일 인증시 인증값 변경 
+
+	// 멤버 이메일 인증시 인증값 변경
 	public void alterjoinkey(String mememail, String joinkey, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -154,8 +155,8 @@ public class MailSenderService {
 			out.close();
 		}
 	}
-	
-	// 캐리 이메일 인증시 인증값 변경 
+
+	// 캐리 이메일 인증시 인증값 변경
 	public void cr_alterjoinkey(String cremail, String joinkey, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
@@ -172,7 +173,6 @@ public class MailSenderService {
 			out.close();
 		}
 	}
-	
 
 	public int alterjoinkey_service(String mememail, String joinkey) {
 		int resultCnt = 0;
@@ -182,7 +182,7 @@ public class MailSenderService {
 
 		return resultCnt;
 	}
-	
+
 	public int cr_alterjoinkey_service(String cremail, String joinkey) {
 		int resultCnt = 0;
 
@@ -191,5 +191,15 @@ public class MailSenderService {
 
 		return resultCnt;
 	}
-	
+
+	public void mailSendWithPassword(String memname, String mememail, HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public MimeMessage createMimeMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

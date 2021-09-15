@@ -5,12 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>아이디 찾기 결과</title>
-
-
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/joinlogin/find.css">
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	$(function(){
+		$("#loginBtn").click(function(){
+			location.href='/gym/member/login';
+		})
+	})
+</script>
 </head>
 <body>
 
@@ -26,25 +32,20 @@
 		<div class="container">
 			<ul class="tab">
 				<li class="active"><a class="sub_tit_txt"
-					href="<c:url value="/find/findid"/>">아이디 찾기</a></li>
+					href="<c:url value="/find/findid"/>">회원 아이디 찾기</a></li>
 				<li><a class="sub_tit_txt"
-					href="<c:url value="/find/findpassword"/>">비밀번호 찾기</a></li>
+					href="<c:url value="/find/findpassword"/>">회원 비밀번호 찾기</a></li>
 			</ul>
 
-			<form action="<c:url value="/find/findId"/>" method="post">
 				<div class="form_txtInput">
-					<div class="find_form">
-						<table>
-							<tr>
-								<td><input id="regid" type="text" placeholder="가입시 등록하신 이름">
-								</td>
-							</tr>
-							<tr>
-								<td><input id="regphonenum" type="text"
-									placeholder="가입시 등록하신 휴대폰 번호 "></td>
-							</tr>
-						</table>
-						
+					<div class="findview">
+						<h2>멤버 아이디 찾기 검색결과</h2>
+						<div id="findview">
+							<h4>가입하신 이메일은  ${mememail} 입니다.</h4>
+						</div>
+						<div id="btnbox">
+							<button type="button" id="loginBtn" value="로그인">로그인</button>
+						</div>
 					</div>
 
 				</div>

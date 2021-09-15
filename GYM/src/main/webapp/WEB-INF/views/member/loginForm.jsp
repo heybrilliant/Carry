@@ -67,9 +67,9 @@
 			<div class="change">
 				<ul>
 					<li><a href="<c:url value="/member/join"/>">일반 회원가입</a></li>
-					<li class="tab2"><a href="<c:url value="/find/findid"/>">아이디
+					<li class="tab2"><a href="<c:url value="/find/findid"/>">회원 아이디
 							찾기</a></li>
-					<li class="tab2"><a href="<c:url value="/find/findpassword"/>">비밀번호
+					<li class="tab2"><a href="<c:url value="/find/findpassword"/>">회원 비밀번호
 							찾기</a></li>
 				</ul>
 			</div>
