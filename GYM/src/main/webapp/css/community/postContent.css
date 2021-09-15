@@ -325,3 +325,8 @@ input:focus {
     text-align: center;
     font-size: 14px;
 }
+
+.post_content * {
+	max-width:100% !important;
+	height:auto !important;
+}

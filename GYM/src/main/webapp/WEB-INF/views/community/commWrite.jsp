@@ -61,29 +61,22 @@
 
 <script>
     CKEDITOR.replace('postcontent', ckeditor_config);
+
+    CKEDITOR.on('dialogDefinition', function( ev ){
+        var dialogName = ev.data.name;
+        var dialogDefinition = ev.data.definition;
+     
+        switch (dialogName) {
+            case 'image': //Image Properties dialog
+                //dialogDefinition.removeContents('info');
+                dialogDefinition.removeContents('Link');
+                dialogDefinition.removeContents('advanced');
+                break;
+        }
+    });
 </script>
 
 
 <!-- footer -->
 <%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 
-<!--    <script>
-        var oEditors = [];
-
-        nhn.husky.EZCreator.createInIFrame({
-            oAppRef: oEditors,
-            elPlaceHolder: "postcontent",
-            sSkinURI: "/gym/smarteditor2/SmartEditor2Skin.html",
-            fCreator: "createSEditor2"
-        });
-
-        // 전송 버튼 클릭 이벤트
-        $("#writeBtn").click(function(){
-           // id가 contents인 textarea에 에디터에서 대입
-           oEditors.getById["postcontent"].exec("UPDATE_CONTENTS_FIELD", []);
-
-           // form submit
-           $("#writeForm").submit();
-        })
-
-    </script> -->
