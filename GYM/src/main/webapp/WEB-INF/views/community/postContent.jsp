@@ -267,7 +267,8 @@
                 data : {"postidx" : postidx},
                 dataType : "json", // javascriptObjectNation
                 success : function(commList){
-
+					
+                	
                     // $붙으면 이 변수를 대상으로 jquery 메소드를 사용가능
                     // 없으면 그냥 변수임
                     var $rArea = $(".comment_section");
@@ -284,6 +285,8 @@
                         $rArea.html(""); // 기존 댓글 목록 삭제
 
                         $.each(commList, function(i){
+                        	
+                        	
                             var html = '<li class="comment_wrap">';
                             html += '<div class="profile">';
                             html += '<div class="profile_img">';
