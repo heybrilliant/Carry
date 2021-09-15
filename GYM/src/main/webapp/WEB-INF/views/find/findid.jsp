@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,32 +21,32 @@
 
 	<!-- Contents -->
 	<!-- 혹시 윗간격 이상하면 container div 지우기 -->
+	<%-- <%@include file="/WEB-INF/views/" %> --%>
 	<div class="wrap wd668">
 		<div class="container">
 			<ul class="tab">
 				<li class="active"><a class="sub_tit_txt"
-					href="<c:url value="/find/findid"/>">아이디 찾기</a></li>
+					href="<c:url value="/find/findid"/>">회원 아이디 찾기</a></li>
 				<li><a class="sub_tit_txt"
-					href="<c:url value="/find/findpassword"/>">비밀번호 찾기</a></li>
+					href="<c:url value="/find/findpassword"/>">회원 비밀번호 찾기</a></li>
 			</ul>
 
-			<form action="<c:url value="/find/findId"/>" method="post">
+			<form action="<c:url value="/find/findid"/>" method="post">
 				<div class="form_txtInput">
 					<div class="find_form">
 						<table>
 							<tr>
-								<td><input id="regname" type="text" placeholder="가입시 등록하신 이름">
+								<td><input id="regname" name="memname" type="text" placeholder="가입시 등록하신 이름">
 								</td>
 							</tr>
 							<tr>
-								<td><input id="regphonenum" type="text"
+								<td><input id="regphonenum" name="memphone" type="text"
 									placeholder="가입시 등록하신 휴대폰 번호 "></td>
 							</tr>
 						</table>
 						<div id="btnbox">
 							<div class="btn_wrap">
-								<!-- <input type="submit" id="findBtn" value="찾기"> -->
-									<a href="<c:url value="/find/findid"/>">찾기(공갈)</a>
+									<button type="submit" value="찾기" id="findBtn">찾기</button>
 							</div>
 							<div class="btn_wrap2">
 								<a onclick="history.go(-1)">취소</a>
@@ -62,3 +63,8 @@
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	
+	
+</body>
+
+</html>

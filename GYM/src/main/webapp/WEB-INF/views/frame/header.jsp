@@ -3,9 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!-- 로그아웃 및 마이페이지 분리를 위한 은경이 만든 가라헤더 -->
-<!-- 로그아웃 및 마이페이지 분리를 위한 은경이 만든 가라헤더 -->
-<!-- 로그아웃 및 마이페이지 분리를 위한 은경이 만든 가라헤더 -->
 
 <header class="header">
 	<div class="logo">

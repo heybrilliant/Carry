@@ -104,5 +104,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{param2}
 	</update>
 
+	<!-- 멤버 아이디 찾기  -->
+ 	<select id="findmemberid" parameterType="com.project.gymcarry.dao.MemberDao" resultType="String">
+		select mememail from member where memname = #{memname} and memphone = #{memphone} 
+	</select> 
+	
+	<!-- 캐리 아이디 찾기 -->
+	<select id="findcarryid" parameterType="com.project.gymcarry.dao.MemberDao" resultType="String">
+		select cremail from carry where crname = #{crname} and crphone = #{crphone} 
+	</select>
+	
+	<!-- 멤버 임시 비밀번호 -->
+	<update id="searchPassword" parameterType="Map">
+		update member set mempw = #{mempw} where memname = #{memname} and mememail = #{mememail}
+	</update>
+	
 
 </mapper>

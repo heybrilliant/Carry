@@ -67,9 +67,9 @@
 			<div class="change">
 				<ul>
 					<li><a href="<c:url value="/carry/join"/>">캐리 회원가입</a></li>
-					<li class="tab2"><a href="<c:url value="/find/findid"/>">아이디
+					<li class="tab2"><a href="<c:url value="/find/findcarryid"/>">캐리 아이디
 							찾기</a></li>
-					<li class="tab2"><a href="<c:url value="/find/findpassword"/>">비밀번호
+					<li class="tab2"><a href="<c:url value="/find/findcarrypassword"/>">캐리 비밀번호
 							찾기</a></li>
 				</ul>
 			</div>

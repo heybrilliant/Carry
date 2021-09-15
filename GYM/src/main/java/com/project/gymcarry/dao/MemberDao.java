@@ -1,5 +1,7 @@
 package com.project.gymcarry.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.member.MemberDto;
@@ -37,5 +39,12 @@ public interface MemberDao {
 	public MemberDto memberjoinkeycheck(String id, String pw);
 	// 캐리 로그인시 joinkey_status 확인
 	public CarryDto carryjoinkeycheck(String id, String pw);
-
+	
+	// 멤버 아이디 찾기
+	public String findmemberid(@Param("memname") String memname, @Param("memphone") String memphone);
+	// 캐리 아이디 찾기
+	public String findcarryid(@Param("crname") String crname, @Param("crphone") String crphone);
+	
+	// 멤버 비밀번호 찾기(임시발급)
+	int searchPassword(String memname, String mememail);
 }
