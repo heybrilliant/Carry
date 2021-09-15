@@ -14,11 +14,13 @@ public class ChatListDto {
 	private int messageidx;
 	private int outcount;
 	private String outdate;
+	private String memphoto;
+	private String crphoto;
 	public ChatListDto() {
 	}
 	public ChatListDto(int chatidx, int cridx, int memidx, String crnick, String memnick, String placename,
-			String chatdate, String chatcontent, int chatread, int messageidx, int outcount, String outdate) {
-		super();
+			String chatdate, String chatcontent, int chatread, int messageidx, int outcount, String outdate,
+			String memphoto, String crphoto) {
 		this.chatidx = chatidx;
 		this.cridx = cridx;
 		this.memidx = memidx;
@@ -31,6 +33,8 @@ public class ChatListDto {
 		this.messageidx = messageidx;
 		this.outcount = outcount;
 		this.outdate = outdate;
+		this.memphoto = memphoto;
+		this.crphoto = crphoto;
 	}
 	public int getChatidx() {
 		return chatidx;
@@ -103,6 +107,18 @@ public class ChatListDto {
 	}
 	public void setOutdate(String outdate) {
 		this.outdate = outdate;
+	}
+	public String getMemphoto() {
+		return memphoto;
+	}
+	public void setMemphoto(String memphoto) {
+		this.memphoto = memphoto;
+	}
+	public String getCrphoto() {
+		return crphoto;
+	}
+	public void setCrphoto(String crphoto) {
+		this.crphoto = crphoto;
 	}
 	
 	

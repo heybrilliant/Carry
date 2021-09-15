@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
 		select l.chatidx, l.outcount, l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, p.placename,
-		m.memidx, m.memnick, r.chatread
+		m.memidx, m.memnick, r.chatread, c.crphoto
 		from member m
 		join chatlist l on l.memidx=m.memidx
 		join carry c on l.cridx=c.cridx
@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectCarryChatList"
 		resultType="com.project.gymcarry.chatting.ChatListDto">
 		select l.chatidx, l.outcount, l.outdate, r.chatcontent, r.chatdate, c.cridx, c.crnick, p.placename,
-		m.memidx, m.memnick, r.chatread
+		m.memidx, m.memnick, r.chatread, m.memphoto
 		from member m
 		join chatlist l on l.memidx=m.memidx
 		join carry c on l.cridx=c.cridx

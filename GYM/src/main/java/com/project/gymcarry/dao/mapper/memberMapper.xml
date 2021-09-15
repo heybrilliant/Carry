@@ -43,11 +43,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into
 		member(mememail, mempw,
 		memname, memnick, memphone, membirth,
-		memgender, joinkey,
+		memgender, memphoto ,joinkey,
 		joinkey_status)
 		values
-		(#{mememail},#{mempw},#{memname},#{memnick},#{memphone},#{membirth},#{memgender},#{joinkey},
-		'0')
+		(#{mememail},#{mempw},#{memname},#{memnick},#{memphone},#{membirth},#{memgender},#{memphoto},
+		#{joinkey},'0')
 	</insert>
 
 

@@ -69,7 +69,8 @@
 							location.href='javascript:chatList(${list.chatidx})'"
 							class="on_btn">
 							<div class="float_left">
-								<img src="<c:url value="/images/icon/profile2.png"/>">
+								<%-- <img src="<c:url value="/images/icon/profile2.png"/>"> --%>
+								<img src="<c:url value="/uploadfile/${list.memphoto}"/>">
 							</div>
 							<div class="float_left chat_name">
 								<h3>${list.memnick}</h3>
