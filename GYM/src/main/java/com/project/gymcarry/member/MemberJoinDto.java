@@ -1,7 +1,8 @@
 package com.project.gymcarry.member;
 
-public class MemberDto {
-	private int memidx;
+import org.springframework.web.multipart.MultipartFile;
+
+public class MemberJoinDto {
 	private String mememail;
 	private String mempw;
 	private String memname;
@@ -9,14 +10,11 @@ public class MemberDto {
 	private String memphone;
 	private int membirth;
 	private String memgender;
-	private String memphoto;
+	private MultipartFile memphoto;
 	private String joinkey;
 	private String joinkey_status;
-	public MemberDto() {
-	}
-	public MemberDto(int memidx, String mememail, String mempw, String memname, String memnick, String memphone,
-			int membirth, String memgender, String memphoto, String joinkey, String joinkey_status) {
-		this.memidx = memidx;
+	public MemberJoinDto(String mememail, String mempw, String memname, String memnick, String memphone, int membirth,
+			String memgender, MultipartFile memphoto, String joinkey, String joinkey_status) {
 		this.mememail = mememail;
 		this.mempw = mempw;
 		this.memname = memname;
@@ -27,12 +25,6 @@ public class MemberDto {
 		this.memphoto = memphoto;
 		this.joinkey = joinkey;
 		this.joinkey_status = joinkey_status;
-	}
-	public int getMemidx() {
-		return memidx;
-	}
-	public void setMemidx(int memidx) {
-		this.memidx = memidx;
 	}
 	public String getMememail() {
 		return mememail;
@@ -76,10 +68,10 @@ public class MemberDto {
 	public void setMemgender(String memgender) {
 		this.memgender = memgender;
 	}
-	public String getMemphoto() {
+	public MultipartFile getMemphoto() {
 		return memphoto;
 	}
-	public void setMemphoto(String memphoto) {
+	public void setMemphoto(MultipartFile memphoto) {
 		this.memphoto = memphoto;
 	}
 	public String getJoinkey() {
@@ -94,6 +86,7 @@ public class MemberDto {
 	public void setJoinkey_status(String joinkey_status) {
 		this.joinkey_status = joinkey_status;
 	}
-	
-	
+	public MemberDto getMemberDto() {
+		return new MemberDto(0, mememail, mempw, memname, memnick, memphone, membirth, memgender, memphoto.getOriginalFilename(), joinkey, joinkey_status);
+	}
 }
