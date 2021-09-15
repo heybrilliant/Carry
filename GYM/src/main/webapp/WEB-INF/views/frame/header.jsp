@@ -14,19 +14,18 @@
 			<li><a href="<c:url value="/carry/allList"/>">1:1MATCHING</a></li>
 			<li><a href="<c:url value="/place/all"/>">PLACE</a></li>
 			<li><a href="<c:url value="/community/boardList"/>">COMMUNITY</a></li>
-			<li><a href="<c:url value="/mypage/mypage"/>">MY BODY</a></li>
-			<%-- <c:choose>
-				<c:when test="${session eq carry}">
-					<li><a href="<c:url value="/mypage/carrymypage/carrymypage"/>">MY
-							BODY</a></li>
+			<%-- <li><a href="<c:url value="/mypage/mypage"/>">MY BODY</a></li> --%>
+			<c:choose>
+				<c:when test="${loginSession.crnick ne null}">
+					<li><a href="<c:url value="/mypage/carrymypage"/>">MY PAGE</a></li>
 				</c:when>
-				<c:when test="${session eq member}">
-					<li><a value="MY BODY" href="/mypage/mypage"/>MY BODY</a></li>
+				<c:when test="${loginSession.memnick ne null}">
+					<li><a href="<c:url value="/mypage/mypage"/>">MY BODY</a></li>
 				</c:when>
-				<c:when test="${session eq null}">
-					<li><a value="MY BODY" href="/member/login"/>MY BODY</a></li>
+				<c:when test="${loginSession eq null}">
+					<li><a href="<c:url value="/member/login"/>">MY BODY</a></li>
 				</c:when>
-			</c:choose> --%>
+			</c:choose>
 		</ul>
 	</nav>
 	<div class="sub_nav">
