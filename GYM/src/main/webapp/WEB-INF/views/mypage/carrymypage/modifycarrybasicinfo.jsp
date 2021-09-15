@@ -1,25 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="modify.css">
+<title>GYM CARRY : 기본 정보 수정</title>
+
+<%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+
+<link rel="stylesheet" href="/gym/css/mypage/style.css">
+<link rel="stylesheet" href="/gym/css/mypage/modify.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script src="js/index.js"></script>
 
 <title>캐리_내 정보 수정</title>
 <script src="js/includeHTML.js"></script>
 <script src="js/includeRouter.js"></script>
 
 </head>
-<style>
-</style>
 
 <body>
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
@@ -107,10 +102,4 @@
 	</div>
 	<!-- container E -->
 
-
-
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-
-</body>
-
-</html>
