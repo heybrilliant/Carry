@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="selectpayment"
-		resultType="com.project.gymcarry.mypage.MypagepaymentDto">
+		resultType="com.project.gymcarry.mypage.MypagePaymentDto">
 		SELECT payname , paynum , date_format(paydate,'%Y-%m-%d')
 		as paydate ,
 		payprice FROM gymcarry.payment where memidx= #{memidx}
@@ -42,15 +42,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getMyCarryList"
 		resultType="com.project.gymcarry.carry.CarryListDto">
+
 		select cridx, crnick, placeidx, placename, proprice,
-		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5
-		from carry natural
-		join crcertification natural join crprice natural join
+		crcerti1, crcerti2,
+		crcerti3, crcerti4, crcerti5, procount
+		from carry
+		natural
+		join
+		crcertification natural join crprice natural join
 		place
 		where
-		procount=1 AND CRIDX = (SELECT CRIDX FROM gymcarry.likelist
+		procount=1 and cridx in (SELECT cridx FROM gymcarry.likelist
 		where
-		memidx = ${memidx};
+		memidx = ${memidx});
 	</select>
 
 	<!-- 페이징 : 전체 글의 개수 읽어오기 -->
@@ -64,11 +68,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.project.gymcarry.board.BoardDto">
 		select *
 		from board
-		where memidx = 20
-		order by postidx desc, postdate desc
-		LIMIT #{startList},
-		#{listSize}
-
+		where memidx = ${memidx}
+		order by postidx
+		desc, postdate desc
+		LIMIT #{startList}, #{listSize}
 	</select>
+
+	<select id="selectmember"
+		resultType="com.project.gymcarry.mypage.MypageMemberDto">
+		select MEMIDX,MEMPHOTO,MEMNAME, MEMEMAIL, MEMPW, MEMNICK,
+		MEMPHONE,MEMBIRTH
+		from
+		member
+		where memidx = ${MEMIDX};
+	</select>
+
+
+	<update id="memberupdate">
+		update member set
+	
+		MEMNICK = "김테스트",
+		MEMPHONE = "01000000000"
+		where memidx = ${MEMIDX};
+	</update>
+
+
+
+
 
 </mapper>

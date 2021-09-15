@@ -4,26 +4,23 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
-
 public class BoardDto {
 
-    private int postidx;
-    private String postname;
-    private String postcontent;
-    private String postnick;
-    private int memidx;
-    private MultipartFile uploadfile;
-    private Date postdate;
-    private int postview;
-    private int postlike;
-    private  String boardcategory;
-    
-    
+	private int postidx;
+	private String postname;
+	private String postcontent;
+	private String postnick;
+	private int memidx;
+	private MultipartFile uploadfile;
+	private Date postdate;
+	private int postview;
+	private int postlike;
+	private String boardcategory;
+
 	public BoardDto() {
 
 	}
-    
-    
+
 	public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx,
 			MultipartFile uploadfile, Date postdate, int postview, int postlike, String boardcategory) {
 		super();
@@ -39,106 +36,85 @@ public class BoardDto {
 		this.boardcategory = boardcategory;
 	}
 
-
 	public int getPostidx() {
 		return postidx;
 	}
-
 
 	public void setPostidx(int postidx) {
 		this.postidx = postidx;
 	}
 
-
 	public String getPostname() {
 		return postname;
 	}
-
 
 	public void setPostname(String postname) {
 		this.postname = postname;
 	}
 
-
 	public String getPostcontent() {
 		return postcontent;
 	}
-
 
 	public void setPostcontent(String postcontent) {
 		this.postcontent = postcontent;
 	}
 
-
 	public String getPostnick() {
 		return postnick;
 	}
-
 
 	public void setPostnick(String postnick) {
 		this.postnick = postnick;
 	}
 
-
 	public int getMemidx() {
 		return memidx;
 	}
-
 
 	public void setMemidx(int memidx) {
 		this.memidx = memidx;
 	}
 
-
 	public MultipartFile getUploadfile() {
 		return uploadfile;
 	}
-
 
 	public void setUploadfile(MultipartFile uploadfile) {
 		this.uploadfile = uploadfile;
 	}
 
-
 	public Date getPostdate() {
 		return postdate;
 	}
-
 
 	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
 	}
 
-
 	public int getPostview() {
 		return postview;
 	}
-
 
 	public void setPostview(int postview) {
 		this.postview = postview;
 	}
 
-
 	public int getPostlike() {
 		return postlike;
 	}
-
 
 	public void setPostlike(int postlike) {
 		this.postlike = postlike;
 	}
 
-
 	public String getBoardcategory() {
 		return boardcategory;
 	}
 
-
 	public void setBoardcategory(String boardcategory) {
 		this.boardcategory = boardcategory;
 	}
-
 
 	@Override
 	public String toString() {
@@ -147,8 +123,5 @@ public class BoardDto {
 				+ postdate + ", postview=" + postview + ", postlike=" + postlike + ", boardcategory=" + boardcategory
 				+ "]";
 	}
-	
-	
-    
-    
+
 }

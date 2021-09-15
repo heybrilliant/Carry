@@ -1,9 +1,6 @@
 package com.project.gymcarry.mypage;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
-public class MypagepaymentDto {
+public class MypagePaymentDto {
 
 	private String payname;
 	private int paynum;
@@ -48,7 +45,7 @@ public class MypagepaymentDto {
 				+ payprice + "]";
 	}
 
-	public MypagepaymentDto() {
+	public MypagePaymentDto() {
 
 	}
 
