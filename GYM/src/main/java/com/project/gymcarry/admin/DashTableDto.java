@@ -2,11 +2,14 @@ package com.project.gymcarry.admin;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class DashTableDto {
 	private String payname;
 	private String payphone;
 	private int paynum;
 	private String crname;
+	@JsonFormat(pattern = "YYYY-HH-dd")
 	private Timestamp paydate;
 	private int payprice;
 	public DashTableDto() {

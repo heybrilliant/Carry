@@ -123,7 +123,6 @@
 	
 	function thead(){
 		var	html= '<tr>'
-			html+=	'<th>순서</th>'
 			html+=	'<th>결제자 명</th>'
 			html+=	'<th>결제자 연락처</th>'
 			html+=	'<th>결제 수업횟수</th>'
