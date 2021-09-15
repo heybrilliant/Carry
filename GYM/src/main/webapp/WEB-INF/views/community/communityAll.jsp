@@ -92,6 +92,7 @@
                                 <li>
                                     <a href="#">
                                         <img class="board_icon" img src="<c:url value="/images/icon/heart.png"/>" alt="img">
+                                            ${list.likeCnt}
                                     </a>
                                 </li>
                                 <li>
