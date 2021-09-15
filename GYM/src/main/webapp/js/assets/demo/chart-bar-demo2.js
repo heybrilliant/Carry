@@ -27,7 +27,10 @@ function getBaryear(total, year){
 	      		'rgba(255, 159, 64, 0.5)',
 	      		'#FF9DFF',
 	      		'#FF8C8C',
-	      		'#CBFF75'
+	      		'#CBFF75',
+	      		'#0000CD',
+	      		'#323232'
+	      		
 	      ],
 	      borderColor: "rgba(2,117,216,1)",
 	      data: total,
