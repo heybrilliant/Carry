@@ -42,32 +42,28 @@
 
 	function reviewList() {
 
-		$
-				.ajax({
-					url : '<c:url value="/myapge/select"/>',
-					type : 'POST',
-					datatype : 'JSON',
-					data : {
-						cridx : $("# EMPTY ").val()
-					},
-					success : function(data) {
-						var tag = '<div>'
-						$
-								.each(
-										data,
-										function(index, item) {
-										
-										});
-
-						$('#TEST').html(tag);
-					},
-
-					error : function() {
-						alert("error");
-
-					}
+		$.ajax({
+			url : '<c:url value="/myapge/select"/>',
+			type : 'POST',
+			datatype : 'JSON',
+			data : {
+				cridx : $("# EMPTY ").val()
+			},
+			success : function(data) {
+				var tag = '<div>'
+				$.each(data, function(index, item) {
 
 				});
+
+				$('#TEST').html(tag);
+			},
+
+			error : function() {
+				alert("error");
+
+			}
+
+		});
 
 	}
 </script>
@@ -133,7 +129,9 @@
 								<li data-tab="mycash" class="list_tab info_list"><a>내
 										결제 내역</a></li>
 
-								<li class="info_list"><a href="#">내가 찜한 캐리</a></li>
+								<li class="info_list"><a
+									href="<c:url value="/mypage/mycarry"/>">내가 찜한 캐리</a></li>
+
 							</ul>
 						</div>
 					</div>
@@ -177,6 +175,7 @@
 		});
 
 		$('#default').click();
+
 		$.datepicker.setDefaults({
 			dateFormat : 'yymmdd',
 			prevText : '이전 달',

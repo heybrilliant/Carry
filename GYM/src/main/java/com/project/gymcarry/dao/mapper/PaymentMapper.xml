@@ -14,4 +14,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{paydate}, #{memidx}, #{payname}, #{payphone}, #{cridx}, #{payprice}, #{paynum}, #{faceornot})
 	</insert>
 
+
 </mapper>

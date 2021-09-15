@@ -17,14 +17,58 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 
 	<update id="updateMemo">
-		update mypage set infocontent = #{infocontent} where memidx = #{memidx} and
-		infodate = #{infodate} and infotype = #{infotype}
+		update mypage set infocontent = #{infocontent} where
+		memidx = #{memidx} and
+		infodate = #{infodate} and infotype =
+		#{infotype}
 	</update>
 
 	<select id="selectMemo"
 		resultType="com.project.gymcarry.mypage.MypageDto">
 		select infocontent from mypage where memidx = #{arg0} and
 		infodate = #{arg1} and infotype = #{arg2}
+	</select>
+
+
+	<select id="selectpayment"
+		resultType="com.project.gymcarry.mypage.MypagepaymentDto">
+		SELECT payname , paynum , date_format(paydate,'%Y-%m-%d')
+		as paydate ,
+		payprice FROM gymcarry.payment where memidx= #{memidx}
+		ORDER BY
+		paydate
+		DESC ;
+	</select>
+
+	<select id="getMyCarryList"
+		resultType="com.project.gymcarry.carry.CarryListDto">
+		select cridx, crnick, placeidx, placename, proprice,
+		crcerti1, crcerti2, crcerti3, crcerti4, crcerti5
+		from carry natural
+		join crcertification natural join crprice natural join
+		place
+		where
+		procount=1 AND CRIDX = (SELECT CRIDX FROM gymcarry.likelist
+		where
+		memidx = ${memidx};
+	</select>
+
+	<!-- 페이징 : 전체 글의 개수 읽어오기 -->
+	<select id="getBoardListCnt" resultType="int">
+		select count(*) as
+		listCnt
+		from board where memidx = ${memidx};
+	</select>
+
+	<select id="getBoardList"
+		resultType="com.project.gymcarry.board.BoardDto">
+		select *
+		from board
+		where memidx = 20
+		order by postidx desc, postdate desc
+		LIMIT #{startList},
+		#{listSize}
+
 	</select>
 
 </mapper>

@@ -50,6 +50,9 @@
 		<a class="" data-toggle="modal" href="#registerModal2"
 			data-backdrop="static"><img onclick="printName()"
 			class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
+				<div class="memo-input-div">
+			<input class="memo-input" type="text" readonly="readonly">
+		</div>
 	</div>
 
 	<div class="col-right-right">
@@ -57,6 +60,9 @@
 		<a class="" data-toggle="modal" href="#registerModal3"
 			data-backdrop="static"> <img onclick="printName()"
 			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
+				<div class="memo-input-div">
+			<input class="memo-input" type="text" readonly="readonly">
+		</div>
 	</div>
 
 	<div class="col-right-right2">
@@ -64,6 +70,9 @@
 		<a class="" data-toggle="modal" href="#registerModal4"
 			data-backdrop="static"><img onclick="printName()"
 			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
+				<div class="memo-input-div">
+			<input class="memo-input" type="text" readonly="readonly">
+		</div>
 	</div>
 
 	<section>

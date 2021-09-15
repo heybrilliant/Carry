@@ -1,4 +1,4 @@
-package com.project.gymcarry.mypage;
+package com.project.gymcarry.mypage.controller;
 
 import java.util.List;
 
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.gymcarry.carry.CarryListDto;
 import com.project.gymcarry.carry.CarryReviewDto;
 import com.project.gymcarry.member.SessionDto;
+import com.project.gymcarry.mypage.MypageDto;
+import com.project.gymcarry.mypage.service.MypageService;
 
 @Controller
 @RequestMapping("/mypage/mypage")
@@ -26,14 +28,15 @@ public class MypageController {
 	private MypageService mypService;
 
 	@GetMapping
-	public String regFor(HttpSession session) {
+	public String regFor(HttpSession session,Model model) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-		session.setAttribute("name", sdt.getMemname());
+
 		session.setAttribute("memidx", sdt.getMemidx());
-
+		session.setAttribute("name", sdt.getMemname());
 		System.out.println("세션 -> " + sdt + "-> 마이페이지 진입");
-
+		
+		
 		return "/mypage/mypage";
 	}
 
