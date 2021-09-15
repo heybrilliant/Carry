@@ -55,6 +55,16 @@
 		</beans:property>
 	</beans:bean>
 	
+	<!-- 로그인 체크 인터셉터 등록 -->
+    <interceptors>
+       <interceptor>
+          <mapping path="/chatting/chatList/**"/>
+          <mapping path="/chatting/chatInquire/**"/>
+          <mapping path="/mypage/mypage/**"/>
+          <mapping path="/payment/pay/**"/>
+          <beans:bean class="com.project.gymcarry.member.intercepter.AuthCheckInterceptor"/>
+       </interceptor>
+    </interceptors>
 	
 	<context:component-scan base-package="com.project.gymcarry" />
 
