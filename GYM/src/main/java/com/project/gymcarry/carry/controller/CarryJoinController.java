@@ -1,10 +1,7 @@
 package com.project.gymcarry.carry.controller;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.crypto.EncryptedPrivateKeyInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,18 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.carry.CarryJoinDto;
+import com.project.gymcarry.carry.CarryToJoinDto;
 import com.project.gymcarry.member.service.JoinService;
 import com.project.gymcarry.member.service.MailSenderService;
 import com.project.gymcarry.member.service.memSha256;
 
 @Controller
-@RequestMapping
 public class CarryJoinController {
 
 	@Autowired
@@ -40,7 +35,7 @@ public class CarryJoinController {
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@PostMapping("carry/join")
-	public String carryJoin(@ModelAttribute  CarryJoinDto carryDto, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String carryJoin(@ModelAttribute CarryToJoinDto carryDto, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// 암호 확인
 		System.out.println("첫번째 암호 : " + carryDto.getCrpw());
@@ -51,7 +46,7 @@ public class CarryJoinController {
 
 		// 캐리 회원가입 성공
 		System.out.println("캐리정보 : " + carryDto.toString());
-		int result = joinservice.carryJoin(carryDto, response);
+		int result = joinservice.carryJoin(carryDto, response, request);
 		if (result == 1) {
 			System.out.println("캐리 회원가입 성공");
 		}
@@ -64,13 +59,6 @@ public class CarryJoinController {
 		}
 		
 		return "redirect:/index";
-	}
-	
-	// 이메일 중복 체크 컨트롤러 
-	@PostMapping("/carryemailCheck")
-	@ResponseBody
-	public int emailCheck(@RequestBody String cremail) throws Exception {
-		return joinservice.carryemailCheck(cremail);
 	}
 
 	@RequestMapping(value = "carry/join/cr_alterjoinkey", method = RequestMethod.POST)

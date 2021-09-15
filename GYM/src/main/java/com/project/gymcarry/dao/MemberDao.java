@@ -19,11 +19,14 @@ public interface MemberDao {
 	// 캐리회원가입
 	int insertCarry(CarryJoinDto carryDto);
 
-	// 멤버 회원가입시 이메일 중복 체크
+	// 멤버 회원가입시 이메일,닉네임 중복 체크
 	int memberemailCheck(String mememail);
-	// 캐리 회원가입시 이메일 중복 체크
-	int carryemailCheck(String cremail);
+	int memberNickCheck(String memnick);
 	
+	
+	// 캐리 회원가입시 이메일, 닉네임 중복 체크
+	int carryemailCheck(String cremail);
+	int carryNickCheck(String crNick);
 	
 	// 멤버 회원가입 이메일 인증
 	int GetJoinkey(String mememail, String joinkey_status);
@@ -46,5 +49,6 @@ public interface MemberDao {
 	public String findcarryid(@Param("crname") String crname, @Param("crphone") String crphone);
 	
 	// 멤버 비밀번호 찾기(임시발급)
-	int searchPassword(String memname, String mememail);
+	int searchPassword(String memname, String mememail);
+	
 }

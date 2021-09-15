@@ -62,6 +62,7 @@
 				<div class="chatid">
 					<h3>${loginSession.crnick}</h3>
 				</div>
+				<div class="chatList_scr">
 				<c:forEach items="${carryChatList}" var="list">
 					<div class="chatlist">
 						<button type="button" value="${list.crnick}"
@@ -93,6 +94,7 @@
 						</button>
 					</div>
 				</c:forEach>
+				</div>
 			</c:if>
 		</div>
 		<!-- 채팅방 리스트 끝 -->
@@ -424,6 +426,7 @@
 								} 
 								chattting();
 								$('.carry_message_warp').html(htmlStr);
+								
 								$('#output').scrollTop($('#output')[0].scrollHeight);
 							}
 					});

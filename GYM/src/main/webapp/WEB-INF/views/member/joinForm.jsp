@@ -50,6 +50,7 @@
 							<label id="cate">이메일</label> <input type="text" name="mememail"
 								id="mememail" placeholder="이메일 형식으로 입력해주세요. 로그인시 아이디로 사용됩니다."
 								required>
+								<span id="msg" class="display_none"></span>
 							<div class="check_font" id="emailcheck" style="float: left"></div>
 						</div>
 
@@ -67,7 +68,8 @@
 
 						<div class="form-box">
 							<label id="cate"><span>닉네임</span></label> <input type="text"
-								name="memnick" id="memnick" placeholder="">
+								name="memnick" id="memnick" placeholder="닉네임">
+								<span id="msg_nick" class="display_none"></span>
 							<div class="check_font" id="nickcheck"></div>
 						</div>
 
@@ -94,7 +96,7 @@
 
 
 						<div class="exform_txt">
-							<span>표시는 필수적으로 입력해주셔야 가입이 가능합니다.</span>
+							<span>필수 입력사항</span>
 						</div>
 					</div>
 					<!-- join_form E  -->
@@ -114,10 +116,6 @@
 				<!-- form_txtInput E -->
 			</form>
 		</div>
-		<!-- content E-->
-		</form>
-	</div>
-	<!-- container E -->
 	</div>
 
 
@@ -164,6 +162,27 @@ browseBtn.addEventListener('click',{
 		if (mailJ.test($('#mememail').val())) {
 				console.log(mailJ.test($('#mememail').val()));
 				$("#emailcheck").text('');
+		// 이메일 이맞으면 ajax 실행		
+		$.ajax({
+			type : 'POST',
+			url : '<c:url value="/member/emailCheck"/>',
+			data : { 
+				mememail : $(this).val()
+			},
+			success : function(data) {
+				if(data == 0){
+					$('#msg').html('사용가능');
+					$('#msg').addClass('color_blue');
+					$('#msg').removeClass('display_none');
+				} else {
+					$('#msg').html('사용 불가능');
+					$('#msg').addClass('color_red');
+					$('#msg').removeClass('display_none');
+					$('#mememail').val('');
+				}
+			}
+		});
+				
 		} else {
 			$('#emailcheck').text('이메일 형식으로 입력해주세요.');
 			$('#emailcheck').css('color', 'red');
@@ -291,11 +310,58 @@ browseBtn.addEventListener('click',{
 		}
 	});
 
+	var nickJ = /^[가-힣a-zA-Z]{2,6}$/;
+	$("#memnick").focusout(function() {
+		if (nickJ.test($('#memnick').val())) {
+				console.log(nickJ.test($('#memnick').val()));
+				$("#nickcheck").text('');
+				// 닉네임이맞으면 ajax 실행
+				$.ajax({
+					type : 'POST',
+					url : '<c:url value="/member/nickCheck"/>',
+					data : { 
+						memnick : $(this).val()
+					},
+					success : function(data) {
+						if(data == 0){
+							$('#msg_nick').html('사용가능');
+							$('#msg_nick').addClass('color_blue');
+							$('#msg_nick').removeClass('display_none');
+						} else {
+							$('#msg_nick').html('사용 불가능');
+							$('#msg_nick').addClass('color_red');
+							$('#msg_nick').removeClass('display_none');
+							$('#memnick').val('');
+						}
+						
+					}
+				});
+				
+		} else {
+			$('#nickcheck').text('2~6글자의 한글, 영어만 사용 가능합니다.');
+			$('#nickcheck').css('color', 'red');
+		}
+		error : console.log('닉 실패');
+	});	
 		
-		
-	
 </script>
 <!-- alert('입력해주신 이메일로 인증 메일이 발송되었습니다. 이메일 인증을 완료해주세요.') -->
+
+<!-- 회원가입 이메일,닉네임 중복체크 ajax -->
+<script>
+$('#mememail, #memnick').focusin(function() {
+	$('#msg').addClass('display_none');
+	$('#msg').removeClass('color_blue');
+	$('#msg').removeClass('color_red');
+	$('#msg').val('');
+	$('#msg_nick').addClass('display_none');
+	$('#msg_nick').removeClass('color_blue');
+	$('#msg_nick').removeClass('color_red');
+	$('#memnick').val('');
+});
+
+	
+</script>
 
 </html>
 
