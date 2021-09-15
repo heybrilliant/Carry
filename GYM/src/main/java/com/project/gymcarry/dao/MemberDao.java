@@ -53,5 +53,8 @@ public interface MemberDao {
 	// 멤버 비밀번호 찾기(임시발급)
 	int setpassword(String mempw, String memname, String mememail);
 
-	
+
+
+	
+
 }

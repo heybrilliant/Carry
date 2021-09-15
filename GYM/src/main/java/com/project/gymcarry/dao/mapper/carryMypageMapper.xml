@@ -6,7 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.gymcarry.dao.MypageDao">
 
 	<!-- 캐리 정보 수정  -->
-	<update id="updateCarryModify"
+	<update id="updateCarryModify">
+		update carry
+		set crintro = #{crintro},
+		    
+
+	</update>
 
 
 
