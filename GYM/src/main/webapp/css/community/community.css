@@ -58,6 +58,7 @@ body {
   border: none; /* assuming we don't want any borders */
   float: right;
   margin: 30px 0px 30px 0px;
+  cursor:pointer;
 }
 .board_write2 {
   background-color: transparent; /* make the button transparent */
