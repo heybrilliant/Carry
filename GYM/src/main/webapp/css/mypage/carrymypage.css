@@ -1,12 +1,7 @@
 @charset "UTF-8";
 
 
-/* body 스타일 */
-html, body {
-	overflow: scroll;
-	font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-	font-size: 14px;
-}
+
 
 /* 캘린더 위의 해더 스타일(날짜가 있는 부분) */
 .fc-header-toolbar {
