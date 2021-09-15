@@ -32,9 +32,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectpayment"
 		resultType="com.project.gymcarry.mypage.MypagePaymentDto">
-		SELECT payname , paynum , date_format(paydate,'%Y-%m-%d')
+		SELECT carry.CRNAME as crname , memidx, payname , paynum ,
+		date_format(paydate,'%Y-%m-%d')
 		as paydate ,
-		payprice FROM gymcarry.payment where memidx= #{memidx}
+		payprice FROM
+		gymcarry.payment join carry where memidx = ${memidx} and carry.cridx =
+		payment.cridx
 		ORDER BY
 		paydate
 		DESC ;
@@ -54,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where
 		procount=1 and cridx in (SELECT cridx FROM gymcarry.likelist
 		where
-		memidx = ${memidx});
+		memidx = ${memidx} and LIKECHECK = '1');
 	</select>
 
 	<!-- 페이징 : 전체 글의 개수 읽어오기 -->
@@ -86,9 +89,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="memberupdate">
 		update member set
-	
-		MEMNICK = "김테스트",
-		MEMPHONE = "01000000000"
+		MEMNICK = ${MEMNICK2},
+		MEMPHONE =
+		${MEMPHONE2}
 		where memidx = ${MEMIDX};
 	</update>
 
