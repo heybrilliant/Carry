@@ -44,6 +44,7 @@ public class CarryDetailController {
 		return "carry/carryDetail";
 	}
 
+	
 	// 캐리 리뷰 등록
 	@PostMapping("/carry/add")
 	@ResponseBody
