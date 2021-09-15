@@ -28,7 +28,7 @@ public class FindService {
 	@Autowired
 	private MailSenderService mailsender;
 	private MemberDao dao;
-
+	private String tempPWD;
 
 	// 캐리 아이디 찾기
 	public String findcarryid(HttpServletResponse response, String crname, String crphone) throws IOException {
@@ -78,37 +78,12 @@ public class FindService {
 		}
 	}
 	
-	// 패스워드 찾기 이메일 발송
-//		public void mailSendWithPassword(String memname, String mememail, HttpServletRequest request) {
-//			//이메일로 임시 비밀번호 보내주기
-//			String tempPWD = TempPWD.randomPw();
-//			System.out.println("생성된 임시 비밀번호 : "+tempPWD);
-//			
-//			dao = template.getMapper(MemberDao.class);
-//	
-//			// 회원 이름 꺼내는 코드
-//			MemberDto memberDto= dao.member(memname);
-//			String memname2 = memberDto.getMemname();
-//	
-//			MimeMessage mail = mailsender.createMimeMessage();
-//			String htmlStr = "<h2>안녕하세요 '"+ memname +"' 님</h2><br><br>" 
-//					+ "<p>비밀번호 찾기를 신청해주셔서 임시 비밀번호를 발급해드렸습니다.</p>"
-//					+ "<p>임시로 발급 드린 비밀번호는 <h2 style='color : blue'>'" + tempPWD +"'</h2>이며 로그인 후 마이페이지에서 비밀번호를 변경해주시면 됩니다.</p><br>"
-//					+ "<h3><a href='http://54.180.123.73/MS/'>로그인 바로가기</a></h3><br><br>"
-//					+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
-//			try {
-//				mail.setSubject("[MS :p] 임시 비밀번호가 발급되었습니다", "utf-8");
-//				mail.setText(htmlStr, "utf-8", "html");
-//				mail.addRecipient(RecipientType.TO, new InternetAddress(mememail));
-//				mailsender.send(mail);
-//			} catch (MessagingException e) { 
-//				e.printStackTrace();
-//			}
-//			// 비밀번호 암호화해주는 메서드
-//			tempPWD = memSha256.encrypt(tempPWD);
-//			// 데이터 베이스 값은 암호한 값으로 저장시킨다.
-//			dao.searchPassword(memname, mememail);
-//			
-//		}
-
+	// 패스워드 찾기 이메일 발송 
+		public String findPassword(HttpServletResponse response, String memname, String mememail) throws IOException {
+			dao = template.getMapper(MemberDao.class);
+			
+			return dao.findPassword(memname, mememail);
+		}
 }
+
+

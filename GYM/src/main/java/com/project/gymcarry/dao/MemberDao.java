@@ -45,6 +45,9 @@ public interface MemberDao {
 	// 캐리 아이디 찾기
 	public String findcarryid(@Param("crname") String crname, @Param("crphone") String crphone);
 	
+	// 멤버 비밀번호 찾기 
+	public String findPassword(@Param("memname") String memname,@Param("mememail") String mememail);
+	
 	// 멤버 비밀번호 찾기(임시발급)
-	int searchPassword(String memname, String mememail);
+	int setpassword(String mempw, String memname, String mememail);
 }

@@ -173,7 +173,37 @@ public class MailSenderService {
 			out.close();
 		}
 	}
-
+	
+// 멤버 임시비번 생성 및 비번 찾기 이메일 전송
+	public void send_pwemail(String memname, String mememail) {
+		//이메일로 임시 비밀번호 보내주기
+		String tempPWD = TempPWD.randomPw();
+		System.out.println("생성된 임시 비밀번호 : "+tempPWD);	
+		
+		MimeMessage mail = sender.createMimeMessage();
+		String htmlStr = "<h2>안녕하세요 '"+ memname +"' 회원님!</h2><br><br>" 
+				+ "<p>짐캐리에서 임시 비밀번호를 발급해드립니다.</p>"
+				+ "<p>임시로 발급 드린 비밀번호는 <h2 style='color : blue'>'" + tempPWD +"'</h2>입니다. 로그인 후 마이페이지에서 비밀번호를 변경 후 이용해주세요.</p><br>"
+				+ "감사합니다!";
+		
+		try {
+			mail.setSubject("짐캐리에서 임시 비밀번호를 보내드립니다:)", "utf-8");
+			mail.setText(htmlStr, "utf-8", "html");
+			mail.addRecipient(RecipientType.TO, new InternetAddress(mememail));
+			sender.send(mail);
+		} catch (MessagingException e) { 
+			e.printStackTrace();
+		}
+		// 비밀번호 암호화해주는 메서드
+		tempPWD = memSha256.encrypt(tempPWD);
+		// 데이터 베이스 값은 암호한 값으로 저장시킨다.
+		dao = template.getMapper(MemberDao.class);
+		dao.setpassword(tempPWD, memname, mememail);
+	}
+	
+	
+	
+	
 	public int alterjoinkey_service(String mememail, String joinkey) {
 		int resultCnt = 0;
 
@@ -195,11 +225,6 @@ public class MailSenderService {
 	public void mailSendWithPassword(String memname, String mememail, HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public MimeMessage createMimeMessage() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }
