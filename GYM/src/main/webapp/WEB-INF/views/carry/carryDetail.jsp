@@ -305,7 +305,7 @@
 					$.each(data, function(index, item) {
 							tag+=	'<div class="review_list_section">' 
 							tag+=		'<div class="member_profile_image">' 
-							tag+=			'<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">' 
+							tag+=			'<img class="profileImg" src="<c:url value="/uploadfile/' + item.memphoto + '"/>">' 
 							tag+=	    '</div>' 
 							tag+=			'<div class="review_content">' 
 							tag+=				'<span class="review_name">' + item.memnick + '</span>' 
