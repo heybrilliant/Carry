@@ -2,17 +2,23 @@ package com.project.gymcarry.mypage;
 
 public class MypagePaymentDto {
 
-	private String payname;
+	private String crname;
 	private int paynum;
 	private String paydate;
 	private int payprice;
 
-	public String getPayname() {
-		return payname;
+	@Override
+	public String toString() {
+		return "MypagePaymentDto [crname=" + crname + ", paynum=" + paynum + ", paydate=" + paydate + ", payprice="
+				+ payprice + "]";
 	}
 
-	public void setPayname(String payname) {
-		this.payname = payname;
+	public String getCrname() {
+		return crname;
+	}
+
+	public void setCrname(String crname) {
+		this.crname = crname;
 	}
 
 	public int getPaynum() {
@@ -37,12 +43,6 @@ public class MypagePaymentDto {
 
 	public void setPayprice(int payprice) {
 		this.payprice = payprice;
-	}
-
-	@Override
-	public String toString() {
-		return "MypagepaymentDto [payname=" + payname + ", paynum=" + paynum + ", paydate=" + paydate + ", payprice="
-				+ payprice + "]";
 	}
 
 	public MypagePaymentDto() {
