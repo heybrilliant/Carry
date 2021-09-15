@@ -58,6 +58,7 @@ body {
   border: none; /* assuming we don't want any borders */
   float: right;
   margin: 30px 0px 30px 0px;
+  cursor:pointer;
 }
 .board_write2 {
   background-color: transparent; /* make the button transparent */
@@ -160,7 +161,7 @@ body {
   height: 44px;
   overflow: hidden;
 
-  line-height: 20px; /* 한줄 높이와 같게 설정*/
+  line-height: 25px; /* 한줄 높이와 같게 설정*/
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

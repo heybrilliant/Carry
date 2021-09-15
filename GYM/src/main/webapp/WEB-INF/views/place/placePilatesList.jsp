@@ -91,9 +91,10 @@
                 map: map,
                 position: areaArr[i].latlng,
                 icon: {
+                    // 마커 이미지 설정
                     content: [
                         '<div style="padding-top:5px;padding-bottom:5px;padding-left:5px;padding-right:5px;">' +
-                        '<div> <img src="/gym/images/icon/gym_location1.png" style="width:40px; height:55px;"></div>' +
+                        '<div> <img src="/gym/images/icon/gym-location.png" style="width:42px; height:42px;"></div>' +
                         '</div>'
                     ].join(''),
                     size: new naver.maps.Size(50, 52),
