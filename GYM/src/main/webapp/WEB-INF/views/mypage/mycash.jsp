@@ -62,7 +62,7 @@
 					<c:forEach items="${paymentList}" var="paymentList">
 					<tr>
 						<td>
-							<h3>${paymentList.payname}</h3>
+							<h3>${paymentList.crname}</h3>
 						</td>
 						<td>
 							<h3>${paymentList.paynum}</h3>

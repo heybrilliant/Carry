@@ -48,7 +48,8 @@ public class MypageSubController {
 	}
 
 	@PostMapping(value = "/mypage/myinfoUpdate")
-	public String memberListchange(HttpSession session, MypageMemberDto memberList) {
+	public String memberListchange(HttpSession session, MypageMemberDto memberList
+			) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 		System.out.println("세션 변수" + sdt.getMemidx());

@@ -93,7 +93,7 @@
 								<h3>닉네임</h3>
 							</div>
 							<div class="col-9" style="float: right;">
-								<input value="${memberList.MEMNICK}" type="text">
+								<input name="${MEMNICK2}" value="${memberList.MEMNICK}" type="text">
 							</div>
 						</div>
 						<div class="col-2">
@@ -101,7 +101,7 @@
 								<h3>핸드폰 번호</h3>
 							</div>
 							<div class="col-9" style="float: right;">
-								<input value="${memberList.MEMPHONE}" type="text">
+								<input name="${MEMPHONE2}"  value="${memberList.MEMPHONE}" type="text">
 							</div>
 						</div>
 						<div class="col-2">
