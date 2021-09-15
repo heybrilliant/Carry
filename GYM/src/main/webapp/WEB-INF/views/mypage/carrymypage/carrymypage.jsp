@@ -53,13 +53,13 @@
 			<div class="modi-list">
 				<h3>My Page</h3>
 				<ul>
-					<li><a href="modifycarrybasicinfo.html">기본 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
+					<li><a href="<c:url value="/mypage/carrymypage/modify"/>">기본 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
 					</li>
 					<br>
-					<li><a href="modifycarryinfo.html">캐리 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
+					<li><a href="<c:url value="/mypage/carrymypage/carrymodify"/>">캐리 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
 					</li>
 					<br>
-					<li><a href="carry_mymemberlist.html">내 회원 리스트</a> <!-- <a href="<c:url value="/"/>"> -->
+					<li><a href="<c:url value="/mypage/carrymypage/mymember"/>">내 회원 리스트</a> <!-- <a href="<c:url value="/"/>"> -->
 					</li>
 					<br>
 				</ul>

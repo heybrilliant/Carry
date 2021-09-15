@@ -28,18 +28,24 @@ public class CarryMyPageController {
 
 	
 	// 캐리 정보 수정
-	@GetMapping("/modify")
+	@GetMapping("/carrymodify")
 	public String carryModify(Model model) {
 		return "/mypage/carrymypage/modifycarryinfo";
 	}
 
 	
 	// 캐리 기본 정보 수정
-	@GetMapping("/basicmodify")
+	@GetMapping("/modify")
 	public String carryBasicModify(Model model) {
 		return "/mypage/carrymypage/modifycarrybasicinfo";
 	}
 	
+	
+	// 내 회원 리스트
+	@GetMapping("/mymember")
+	public String myMemberList(Model model) {
+		return "/mypage/carrymypage/carry_mymemberlist";
+	}
 	
 
 }
