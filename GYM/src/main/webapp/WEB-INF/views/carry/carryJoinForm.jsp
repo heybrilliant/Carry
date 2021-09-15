@@ -21,7 +21,8 @@
 	<!-- Contents -->
 	<div class="wrap wd668">
 		<div class="container">
-			<form method="post" action="<c:url value="/carry/join"/>" enctype="multipart/form-data">
+			<form method="post" action="<c:url value="/carry/join"/>"
+				enctype="multipart/form-data">
 				<%-- <form action="<c:url value="/member/carryJoin"/>" method="post"
 					enctype="multipart/form-data"> --%>
 				<div class="form_txtInput">
@@ -34,9 +35,9 @@
 						<div class="profileimg">
 							<img src="/gym/images/icon/profile2.png"><br>
 						</div>
-						<input type="button" value="업로드" class="profilebtn"
-							name="crphoto" onclick=document.all.file.click();> <input
-							type="file" name="crphoto" id="file" class="profilebtn"
+						<input type="button" value="업로드" class="profilebtn" name="crphoto"
+							onclick=document.all.file.click();> <input type="file"
+							name="crphoto" id="file" class="profilebtn"
 							style="display: none;" />
 					</div>
 					<table>
@@ -47,16 +48,17 @@
 						<tbody>
 							<tr>
 								<th><span>이름</span></th>
-								<td><input type="text" name="crname" placeholder="이름" id="crname">
-								<div class="check_font" id="namecheck"></div>
-								</td>
-								
+								<td><input type="text" name="crname" placeholder="이름"
+									id="crname">
+									<div class="check_font" id="namecheck"></div></td>
+
 							</tr>
 
 							<tr class="email">
 								<th><span>이메일</span></th>
-								<td><input type="text" class="email" name="cremail" id="cremail"
-									placeholder="이메일 형식으로 입력해주세요. 로그인시 아이디로 사용됩니다."> <!-- <a href="javascript:;" class="btn_confirm">인증메일 발송</a> -->
+								<td><input type="text" class="email" name="cremail"
+									id="cremail" placeholder="이메일 형식으로 입력해주세요. 로그인시 아이디로 사용됩니다.">
+									<!-- <a href="javascript:;" class="btn_confirm">인증메일 발송</a> -->
 									<span id="msg" class="display_none"></span>
 									<div class="check_font" id="emailcheck" style="float: left"></div>
 								</td>
@@ -67,36 +69,35 @@
 								<td><input type="password" name="crpw" id="crpw"
 									placeholder="비밀번호를 입력해주세요.">
 									<div class="check_font" id="pwcheck"></div>
-									<div class="check_font" id="mempw2check"></div>
-								</td>
-									
+									<div class="check_font" id="mempw2check"></div></td>
+
 							</tr>
 							<tr>
 								<th><span>비밀번호 확인</span></th>
-								<td><input type="password" name="crpw2" placeholder="비밀번호를 확인해주세요." id="crpw2"></td>
+								<td><input type="password" name="crpw2"
+									placeholder="비밀번호를 확인해주세요." id="crpw2"></td>
 							</tr>
 
 							<tr>
 								<th><span>닉네임</span></th>
-								<td><input type="text" name="crnick" placeholder="닉네임" id="crnick">
-									<span id="msg_nick" class="display_none"></span>
-									<div class="check_font" id="nickcheck"></div>
-								</td>
+								<td><input type="text" name="crnick" placeholder="닉네임"
+									id="crnick"> <span id="msg_nick" class="display_none"></span>
+									<div class="check_font" id="nickcheck"></div></td>
 							</tr>
 
 							<tr>
 								<th><span>휴대폰 번호</span></th>
 								<td><input type="text" name="crphone" id="crphone"
 									placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요">
-									<div class="check_font" id="phonecheck"></div>
-								</td>
+									<div class="check_font" id="phonecheck"></div></td>
 							</tr>
 							<tr>
 								<th><span>성별</span></th>
 								<td>
 									<div class="selectbox">
-										<input type="radio" name="crgender" value="남자" id="male"> 남자 <input
-											type="radio" name="crgender" value="여자" id="female"> 여자
+										<input type="radio" name="crgender" value="남자" id="male">
+										남자 <input type="radio" name="crgender" value="여자" id="female">
+										여자
 									</div>
 									<div class="check_font" id="gendercheck"></div>
 								</td>
