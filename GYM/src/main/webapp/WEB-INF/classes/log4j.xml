@@ -93,7 +93,7 @@
     </logger>
 
 
-
+<!-- 
     <logger name="jdbc.resultset" additivity="false">
 
         <level value="warn" />
@@ -112,7 +112,7 @@
 
     </logger>
 
-
+ -->
 
     <!-- Root Logger -->
 
