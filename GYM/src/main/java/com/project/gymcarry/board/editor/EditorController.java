@@ -12,6 +12,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +25,13 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping
 public class EditorController {
 
-	@Resource(name="uploadPath") private String uploadPath;
+	// @Resource(name="uploadPath") private String uploadPath;
 
 	@RequestMapping(value = "/adm/fileupload", method = RequestMethod.POST)
 	@ResponseBody
-	public void photoUpload(HttpServletRequest req, HttpServletResponse res, @RequestParam MultipartFile upload) throws Exception {
+	public void photoUpload(HttpServletRequest req, HttpServletResponse res, @RequestParam MultipartFile upload, HttpSession session) throws Exception {
+		
+		String uploadPath = session.getServletContext().getRealPath("/resources/");
 		
 		// 랜덤 문자 생성
 		UUID uid = UUID.randomUUID(); 

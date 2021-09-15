@@ -166,13 +166,7 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.board_post * {
-	display:inline-block !important;
-	font-size:12px !important;
-	letter-spacing:1px !important;
-	color:#333 !important;
-	font-weight:400 !important;
-}
+
 
 /* 날짜 아이콘 영역 */
 .board_bottom {
@@ -343,4 +337,7 @@ nav {
 	font-style: normal !important;
 }
 
+.board_post img {
+	display:none !important;
+}
 

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"  %>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<title>Community</title>
+<title>내 주변 운동시설 찾아보기</title>
 <link rel="stylesheet" href="/gym/css/place/placeList.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
