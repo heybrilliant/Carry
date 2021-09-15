@@ -12,12 +12,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.member.service.LoginService;
 import com.project.gymcarry.member.service.memSha256;
+
+import lombok.Value;
 
 
 @Controller
@@ -110,7 +114,6 @@ public class LoginController {
 		System.out.println("로그아웃");
 		return "redirect:/index";
 	}
+	
 
 }
-
-

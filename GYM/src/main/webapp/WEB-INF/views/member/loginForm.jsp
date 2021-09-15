@@ -77,11 +77,11 @@
 
 			<ul class="apiLogin">
 				<li class="kakao">
-					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>" onclick="kakaoLogin();">
+					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>" onclick="kakaoLogin()">
 				</li>
-				<!-- <li onclick="kakaoLogout();"><a href="javascript:void(0)">
+				<li onclick="kakaoLogout()"><a href="javascript:void(0)">
 						<span>카카오 로그아웃</span>
-				</a></li> -->
+				</a></li>
 			</ul>
 
 
@@ -119,6 +119,35 @@
 			},
 		})
 	}
+	
+/* 	function kakaoLoginPro(response){
+		var data = {id:response.id,email:response.kakao_account.email}
+		$.ajax({
+			type : 'POST',
+			url : '/member/kakaologin',
+			data : data,
+			dataType : 'json',
+			success : function(data){
+				console.log(data)
+				if(data.JavaData == "YES"){
+					alert("로그인되었습니다.");
+					location.href = '/index'
+				}else if(data.JavaData == "register"){
+					$("#kakaoEmail").val(response.kakao_account.email);
+					$("#kakaoId").val(response.id);
+					$("#kakaoForm").submit();
+				}else{
+					alert("로그인에 실패했습니다");
+				}
+				
+			},
+			error: function(xhr, status, error){
+				alert("로그인에 실패했습니다."+error);
+			}
+		}); */
+	
+	
+	
 	//카카오 로그아웃  
 	function kakaoLogout() {
 		if (Kakao.Auth.getAccessToken()) {
@@ -136,7 +165,7 @@
 	}
 </script>
 
-
+<!-- 
 <script>
 // input = "userId"  // mememail
 // idsavecheck // rememberemail
@@ -195,6 +224,6 @@ function getCookie(cookieName) {
 }
 	
 </script>
-
+ -->
 
 </html>
