@@ -309,7 +309,7 @@
 							tag+=	    '</div>' 
 							tag+=			'<div class="review_content">' 
 							tag+=				'<span class="review_name">' + item.memnick + '</span>' 
-							tag+=				'<span czlass="review_date">' + item.reviewdate + '</span>' 
+							tag+=				'<span class="review_date">' + item.reviewdate + '</span>' 
 							tag+=				'<br>'
 							tag+=				'<span class="review_content_span">' + item.reviewcontent + '</span>' 
 							tag+=			'</div>'	
