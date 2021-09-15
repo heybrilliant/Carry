@@ -103,6 +103,7 @@
 	//카카오 로그인
 	function kakaoLogin() {
 		Kakao.Auth.login({
+			/* scope: 'profile, account_email,  gender',  */
 			success : function(response) {
 				Kakao.API.request({
 					url : '/v2/user/me',
