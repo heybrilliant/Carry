@@ -14,7 +14,7 @@ import com.project.gymcarry.member.SessionDto;
 public class CarryMyPageController {
 
 	@GetMapping
-	public String regFor(HttpSession session,Model model) {
+	public String carryMyPage(HttpSession session,Model model) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 
@@ -26,6 +26,20 @@ public class CarryMyPageController {
 		return "/mypage/carrymypage/carrymypage";
 	}
 
+	
+	// 캐리 정보 수정
+	@GetMapping("/modify")
+	public String carryModify(Model model) {
+		return "/mypage/carrymypage/modifycarryinfo";
+	}
+
+	
+	// 캐리 기본 정보 수정
+	@GetMapping("/basicmodify")
+	public String carryBasicModify(Model model) {
+		return "/mypage/carrymypage/modifycarrybasicinfo";
+	}
+	
 	
 
 }
