@@ -142,12 +142,12 @@
 
 		</div>
 	</div>
-</body>
 
-<footer>
+
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-</footer>
+
+
 <!-- 탭 ajax-->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -200,7 +200,4 @@
 
 	});
 </script>
-
-
-</html>
 
