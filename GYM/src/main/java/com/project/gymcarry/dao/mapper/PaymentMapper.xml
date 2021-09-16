@@ -10,8 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.project.gymcarry.payment.PaymentDto"
 		useGeneratedKeys="true"
 		keyProperty="payidx">
-		insert into payment (paydate, memidx, payname, payphone, cridx, payprice, paynum, faceornot)
-		values (#{paydate}, #{memidx}, #{payname}, #{payphone}, #{cridx}, #{payprice}, #{paynum}, #{faceornot})
+		insert into payment (paydate, memidx, payname, payphone, cridx, payprice, paynum)
+		values (#{paydate}, #{memidx}, #{payname}, #{payphone}, #{cridx}, #{payprice}, #{paynum})
 	</insert>
 
 
