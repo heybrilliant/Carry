@@ -167,7 +167,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<!-- 캐리 임시 비밀번호 업데이트 -->
-	<update id="setcarrypassword" parameterType="Map">
+	<update id="setCarrypassword" parameterType="Map">
 		update carry set
 		crpw =
 		#{param1} where crname = #{param2} and cremail = #{param3}
