@@ -11,6 +11,7 @@ public class CommentDto {
     private String commentnick;
     private String commentcontent;
     private Date commentdate;
+    private String memphoto;
     
     
 	public CommentDto() {
@@ -18,13 +19,15 @@ public class CommentDto {
 	}
 
 
-	public CommentDto(int commentidx, int postidx, String commentnick, String commentcontent, Date commentdate) {
+	public CommentDto(int commentidx, int postidx, String commentnick, String commentcontent, Date commentdate,
+			String memphoto) {
 		super();
 		this.commentidx = commentidx;
 		this.postidx = postidx;
 		this.commentnick = commentnick;
 		this.commentcontent = commentcontent;
 		this.commentdate = commentdate;
+		this.memphoto = memphoto;
 	}
 
 
@@ -78,11 +81,23 @@ public class CommentDto {
 	}
 
 
+	public String getMemphoto() {
+		return memphoto;
+	}
+
+
+	public void setMemphoto(String memphoto) {
+		this.memphoto = memphoto;
+	}
+
+
 	@Override
 	public String toString() {
 		return "CommentDto [commentidx=" + commentidx + ", postidx=" + postidx + ", commentnick=" + commentnick
-				+ ", commentcontent=" + commentcontent + ", commentdate=" + commentdate + "]";
+				+ ", commentcontent=" + commentcontent + ", commentdate=" + commentdate + ", memphoto=" + memphoto
+				+ "]";
 	}
+
 	    
 		
 	

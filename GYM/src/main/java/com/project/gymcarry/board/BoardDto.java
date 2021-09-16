@@ -1,6 +1,5 @@
 package com.project.gymcarry.board;
 
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -12,12 +11,12 @@ public class BoardDto {
     private String postcontent;
     private String postnick;
     private int memidx;
-    private MultipartFile uploadfile;
     private Date postdate;
     private int postview;
     private String boardcategory;
-    private int commentCnt;         // 댓글 개수
-	private int likeCnt;			// 좋아요 개수
+    private int commentCnt;        //댓글 개수
+    private int likeCnt;
+    private String memphoto;
 
 
     public BoardDto() {
@@ -25,20 +24,20 @@ public class BoardDto {
     }
 
 
-	public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx,
-			MultipartFile uploadfile, Date postdate, int postview, String boardcategory, int commentCnt, int likeCnt) {
+	public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx, Date postdate,
+			int postview, String boardcategory, int commentCnt, int likeCnt, String memphoto) {
 		super();
 		this.postidx = postidx;
 		this.postname = postname;
 		this.postcontent = postcontent;
 		this.postnick = postnick;
 		this.memidx = memidx;
-		this.uploadfile = uploadfile;
 		this.postdate = postdate;
 		this.postview = postview;
 		this.boardcategory = boardcategory;
 		this.commentCnt = commentCnt;
 		this.likeCnt = likeCnt;
+		this.memphoto = memphoto;
 	}
 
 
@@ -92,16 +91,6 @@ public class BoardDto {
 	}
 
 
-	public MultipartFile getUploadfile() {
-		return uploadfile;
-	}
-
-
-	public void setUploadfile(MultipartFile uploadfile) {
-		this.uploadfile = uploadfile;
-	}
-
-
 	public Date getPostdate() {
 		return postdate;
 	}
@@ -141,28 +130,38 @@ public class BoardDto {
 		this.commentCnt = commentCnt;
 	}
 
+
 	public int getLikeCnt() {
 		return likeCnt;
 	}
+
 
 	public void setLikeCnt(int likeCnt) {
 		this.likeCnt = likeCnt;
 	}
 
+
+	public String getMemphoto() {
+		return memphoto;
+	}
+
+
+	public void setMemphoto(String memphoto) {
+		this.memphoto = memphoto;
+	}
+
+
 	@Override
 	public String toString() {
-		return "BoardDto{" +
-				"postidx=" + postidx +
-				", postname='" + postname + '\'' +
-				", postcontent='" + postcontent + '\'' +
-				", postnick='" + postnick + '\'' +
-				", memidx=" + memidx +
-				", uploadfile=" + uploadfile +
-				", postdate=" + postdate +
-				", postview=" + postview +
-				", boardcategory='" + boardcategory + '\'' +
-				", commentCnt=" + commentCnt +
-				", likeCnt=" + likeCnt +
-				'}';
+		return "BoardDto [postidx=" + postidx + ", postname=" + postname + ", postcontent=" + postcontent
+				+ ", postnick=" + postnick + ", memidx=" + memidx + ", postdate=" + postdate + ", postview=" + postview
+				+ ", boardcategory=" + boardcategory + ", commentCnt=" + commentCnt + ", likeCnt=" + likeCnt
+				+ ", memphoto=" + memphoto + "]";
 	}
+
+
+
+
+
+    
 }
