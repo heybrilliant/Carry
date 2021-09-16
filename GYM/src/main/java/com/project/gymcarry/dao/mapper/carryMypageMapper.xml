@@ -18,7 +18,7 @@
 
     <!-- 캐리 가격 수정 -->
     <update id="updateCarryPrice"
-            parameterType="com.project.gymcarry.mypage.CarryPriceDto">
+            parameterType="com.project.gymcarry.carry.CarryPriceDto">
         update crprice
         set proprice =
                 case
