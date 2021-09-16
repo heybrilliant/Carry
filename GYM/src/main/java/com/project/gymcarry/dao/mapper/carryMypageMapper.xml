@@ -10,7 +10,7 @@
             parameterType="com.project.gymcarry.mypage.CarryMyPageDto">
         update carry a , crcertification c
         set
-            a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace}, a.crdepart = #{crdepart}
+            a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace}, a.crdepart = #{crdepart},
             c.crcerti1 = #{crcerti1}, c.crcerti2 = #{crcerti2}, c.crcerti3 = #{crcerti3}, c.crcerti4 = #{crcerti4}, c.crcerti5 = #{crcerti5}
         where
             a.cridx = #{cridx}

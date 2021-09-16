@@ -5,7 +5,6 @@
 
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp" %>
 
-<link rel="stylesheet" href="/gym/css/mypage/style.css">
 <link rel="stylesheet" href="/gym/css/mypage/modify.css">
 
 <title>캐리 정보 수정</title>
@@ -43,9 +42,6 @@
                             <th><span>소속플레이스</span></th>
                             <td>
                                 <div class="place">
-                                    <%--  <button type="submit">
-                                          <a href="#"><img src="<c:url value="/images/icon/search_icon.png"/>" alt="img"></a>
-                                      </button>--%>
                                     <input type="text" placeholder="" name="crplace">
                                 </div>
                             </td>
@@ -73,28 +69,28 @@
                             <th><span>전문 분야</span></th>
                             <td>
                                 <div class="selectbox">
-                                    <input type="radio" value="다이어트" id="diet">
+                                    <input type="radio" value="다이어트" id="diet" name="crdepart">
                                     <label for="diet"> 다이어트 </label>
 
-                                    <input type="radio" value="근력강화" id="dump">
+                                    <input type="radio" value="근력강화" id="dump" name="crdepart">
                                     <label for="dump">근력강화 </label>
 
-                                    <input type="radio" value="체중증가" id="weight_gain">
+                                    <input type="radio" value="체중증가" id="weight_gain" name="crdepart">
                                     <label for="weight_gain"> 체중증가 </label>
 
-                                    <input type="radio" value="체형교정" id="bodyfix">
+                                    <input type="radio" value="체형교정" id="bodyfix" name="crdepart">
                                     <label for="bodyfix"> 체형교정 </label>
 
-                                    <input type="radio" value="재활/통증케어" id="rehabilitation">
+                                    <input type="radio" value="재활/통증케어" id="rehabilitation" name="crdepart">
                                     <label for="rehabilitation"> 재활/통증케어 </label>
 
-                                    <input type="radio" value="바디프로필" id="body_profile">
+                                    <input type="radio" value="바디프로필" id="body_profile" name="crdepart">
                                     <label for="body_profile"> 바디프로필 </label>
 
-                                    <input type="radio" value="대회준비" id="competition">
+                                    <input type="radio" value="대회준비" id="competition" name="crdepart">
                                     <label for="competition"> 대회준비 </label>
 
-                                    <input type="radio" value="기타" id="etc">
+                                    <input type="radio" value="기타" id="etc" name="crdepart">
                                     <label for="etc"> 기타 </label>
                                 </div>
                             </td>

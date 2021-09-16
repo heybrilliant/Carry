@@ -149,10 +149,6 @@ h1 {
 }
 
 
-.edit_form table th{
-    text-align:left;
-}
-
 .edit_form table th span{
     color:#404040;
     font-size:14px; 
@@ -217,8 +213,7 @@ h1 {
     display: grid;
     justify-content : center;
     grid-template-columns: 50px 1fr;
-    grid-template-rows: repeat(minmax(50px, auto));
-   
+
 }
 
 .selectbox>label {
