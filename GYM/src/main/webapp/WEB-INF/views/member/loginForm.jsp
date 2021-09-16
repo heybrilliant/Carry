@@ -18,10 +18,8 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<!-- 은경 -->
 
 	<!-- Contents -->
-
 	<div class="wrap wd668">
 		<div class="form_txtInput">
 
@@ -88,7 +86,6 @@
 		</div>
 	</div>
 	<!-- content E-->
-
 
 
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
