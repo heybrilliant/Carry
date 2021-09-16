@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <title>GYM CARRY : 캐리 정보 수정</title>
@@ -26,11 +25,6 @@
                 <h1 class="sub_tit_txt">캐리 정보 수정</h1>
                 <div class="edit_form">
                     <input type="hidden" name="cridx" value="${cridx}">
-               <%--     <div class="profile_form">
-                        <img src="<c:url value="/images/icon/profile2.png"/>" alt="img">
-                        <a href="<input type=" onclick="" name="carryphoto">프로필 사진 등록</a>
-                    </div>--%>
-
                     <table>
                         <colgroup>
                             <col width="30%"/>
@@ -142,10 +136,8 @@
 
                                 <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
                                 <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)" name="proprice2">
-                                <input
-                                        type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3">
-                                <input
-                                        type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4"></td>
+                                <input type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3">
+                                <input type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4"></td>
 
                         </tr>
 
@@ -182,7 +174,7 @@
         </div>
     </div>
     <!-- form_txtInput E -->
-</div>
+</body>
 <!-- content E-->
 
 <!-- footer -->

@@ -44,16 +44,21 @@ public class CarryMyPageController {
 	}
 
 	@PostMapping("/mypage/update")
-	public String updateCarryModify(CarryMyPageDto2 carryDto, @RequestParam("proprice1") int proprice1
+	public String updateCarryModify(CarryMyPageDto2  carryDto, @RequestParam("proprice1") int proprice1
 			, @RequestParam("proprice2") int proprice2, @RequestParam("proprice3") int proprice3,
 									@RequestParam("proprice4") int proprice4,
-									@RequestParam("cridx") int cridx,
 									HttpSession session) throws Exception {
 
+		
+		System.out.println(carryDto);
+		
 		service.updateCarryModify(carryDto);
-		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4);
-		System.out.println(carryDto.getCridx());
-		return "/mypage/carrymypage";
+		
+		
+		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryDto.getCridx());
+		
+		
+		return "/mypage/carrymypage/carrymypage";
 	}
 
 	
