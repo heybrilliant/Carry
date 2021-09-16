@@ -97,31 +97,26 @@
                         </tr>
 
                         <tr>
-
                             <th><span>PT 이용금액 </span></th>
                             <td>
 
                                 <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
                                 <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)" name="proprice2">
                                 <input type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3">
-                                <input type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4"></td>
-
+                                <input type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4">
+                            </td>
                         </tr>
 
                         <tr>
                             <th><span>자격 및 경력<br>
-											<p>(최대 5개까지 입력 가능합니다)</p>
+                                <p>(최대 5개까지 입력 가능합니다)</p>
 									</span></th>
                             <td><input type="text" placeholder="자격 및 경력1" name="crcerti1">
-                                <input
-                                        type="text" placeholder="자격 및 경력2" name="crcerti2">
-                                <input type="text"
-                                       placeholder="자격 및 경력3" name="crcerti3">
-                                <input
-                                        type="text"
-                                        placeholder="자격 및 경력4" name="crcerti4">
-                                <input type="text"
-                                       placeholder="자격 및 경력5" name="crcerti5"></td>
+                                <input type="text" placeholder="자격 및 경력2" name="crcerti2">
+                                <input type="text" placeholder="자격 및 경력3" name="crcerti3">
+                                <input type="text" placeholder="자격 및 경력4" name="crcerti4">
+                                <input type="text" placeholder="자격 및 경력5" name="crcerti5">
+                            </td>
                         </tr>
                         <tr>
                             <th><span>바디프로필 업로드</span></th>
@@ -131,7 +126,12 @@
                         </tbody>
                     </table>
                 </div>
-                <input type="submit" value="수정">
+                <div class="btn_wrap2">
+                <input class="btn_update" type="submit" value="수정">
+                </div>
+                <div class="btn_wrap2">
+                    <a href="<c:url value="/mypage/carrymypage"/>">취소</a>
+                </div>
             </form>
         </div>
 
