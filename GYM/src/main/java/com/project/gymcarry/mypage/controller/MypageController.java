@@ -36,6 +36,9 @@ public class MypageController {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 
+		session.setAttribute("memidx", sdt.getMemidx());
+		session.setAttribute("name", sdt.getMemname());
+
 		// 현재 날짜 구하기
 		LocalDate now = LocalDate.now();
 		// 포맷 정의
@@ -43,16 +46,8 @@ public class MypageController {
 		// 포맷 적용
 		String formatedNow = now.format(formatter);
 
-		System.out.println(formatedNow);
-		System.out.println(sdt.getMemidx());
-
 		List<MypageDto2> list2 = mypService.loadMemo2(sdt.getMemidx(), formatedNow);
-
-		System.out.println(list2);
-		model.addAttribute("list2", list2);
-
-		session.setAttribute("memidx", sdt.getMemidx());
-		session.setAttribute("name", sdt.getMemname());
+		
 		System.out.println("세션 -> " + sdt + "-> 마이페이지 진입");
 
 		return "/mypage/mypage";

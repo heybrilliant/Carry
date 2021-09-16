@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <jsp:useBean id="now" class="java.util.Date" />
 
@@ -24,29 +24,22 @@
 	<div class="container">
 		<div class="carry_image swiper-container mySwiper">
 			<ul class="swiper-wrapper">
-				<li class="swiper-slide">
-					<img src="<c:url value="/images/review1.jpg"/>">
-				</li>
-				
-				<li class="swiper-slide">
-					<img src="<c:url value="/images/review2.jpg"/>">
-				</li>
 				<li class="swiper-slide"><img
-					src="<c:url value="/images/review3.jpg"/>">
-				</li>
-				
-				<li class="swiper-slide">
-					<img src="<c:url value="/images/review4.jpg"/>">
-				</li>
-				
-				<li class="swiper-slide">
-					<img src="<c:url value="/images/review1.jpg"/>">
-				</li>
-				
-				<li class="swiper-slide">
-				<img
-					src="<c:url value="/images/review2.jpg"/>">
-				</li>
+					src="<c:url value="/images/review1.jpg"/>"></li>
+
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review2.jpg"/>"></li>
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review3.jpg"/>"></li>
+
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review4.jpg"/>"></li>
+
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review1.jpg"/>"></li>
+
+				<li class="swiper-slide"><img
+					src="<c:url value="/images/review2.jpg"/>"></li>
 			</ul>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -64,7 +57,8 @@
 
 					<table class="carry_info_message" id="introduce">
 						<tr>
-							<td><span class="carry_name">${carryDetail.crname}</span><span class="carry_nick">${carryDetail.crnick}</span></td>
+							<td><span class="carry_name">${carryDetail.crname}</span><span
+								class="carry_nick">${carryDetail.crnick}</span></td>
 						</tr>
 
 						<tr>
@@ -101,30 +95,36 @@
 					<div class="review_write_wrap" id="review">
 						<div class="carry_review_title">
 							<h2>캐리 후기</h2>
-							<input type="button" value="후기작성" id="write_review_btn" onclick="loginChk();">
+							<input type="button" value="후기작성" id="write_review_btn"
+								onclick="loginChk();">
 						</div>
- 
+
 						<!-- 리뷰 작성 입력폼 -->
-						<form id="reviewForm" name="reviewForm" method="post" >
-							<div id="review_write" class="review_write display_none" class = "reviewForm">
+						<form id="reviewForm" name="reviewForm" method="post">
+							<div id="review_write" class="review_write display_none"
+								class="reviewForm">
 								<textarea class="review_input" rows="2" cols="30"
-									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요." required></textarea>
-								<input type="button" value="등록" class="write_btn" id="write_btn" onClick="fn_review('${result.code}')">
-						
-						
-								<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
-								<input type ="hidden" name="reviewdate" value="${now}">
-								<input type="hidden" id="cridx" name="cridx" value="${carryDetail.cridx}">
-								<input type="hidden" id="memidx" name="memidx" value="${loginSession.memidx}">
+									name="reviewcontent" id="review" placeholder="리뷰를 입력해주세요."
+									required></textarea>
+								<input type="button" value="등록" class="write_btn" id="write_btn"
+									onClick="fn_review('${result.code}')">
+
+
+								<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss"
+									var="now" />
+								<input type="hidden" name="reviewdate" value="${now}"> <input
+									type="hidden" id="cridx" name="cridx"
+									value="${carryDetail.cridx}"> <input type="hidden"
+									id="memidx" name="memidx" value="${loginSession.memidx}">
 							</div>
 						</form>
 					</div>
 
-				
+
 					<!-- 작성된 캐리 리뷰 리스트 -->
 					<%-- <c:forEach items="${carryReviewList}" var="carryReviewList"> --%>
-					<div class="review_list_wrap" id="review_sec">	
-				<%--	<div class="review_list_section">
+					<div class="review_list_wrap" id="review_sec">
+						<%--	<div class="review_list_section">
 							<div class="member_profile_image">
 								<img src="<c:url value="/images/icon/profile.png"/>" style="width: 50px">
 							</div>
@@ -138,7 +138,7 @@
 						</div>
 					</div> --%>
 
-				</div>
+					</div>
 				</div>
 				<!-- carry review section all wrap END -->
 
@@ -148,25 +148,25 @@
 					<h2>소속 플레이스</h2>
 					<div class="carry_place_content">
 						<!-- <img src="http://placehold.it/600x300"> -->
-						
-						<%-- <c:set var="carryPlaceInfo" value="${carryPlaceInfo}"/> --%>
-						<c:set var="imageLists" value="${carryPlaceInfo.placeimg}"/>
-							
-							<c:set var="mainimg" value="${fn:split(imageLists, ', ')}" />
-							<c:set var="mainImglength" value="${fn:length(mainimg[2])}" />
-							<c:set var="mainImage" value="${fn:substring(mainimg[2], 0, mainImglength)}" />
 
-							<c:if test="${empty mainImage}">
-								<img src="<c:url value="/images/nullPlaceImg.jpg"/>">
-							</c:if>
-							<c:if test="${!empty mainImage}">
-								<img src="<c:out value="${mainImage}"/>" class="place_main_img">
-							</c:if>
-						
-							<p>
-							<span>
-						<a href="<c:url value='/place/detail?placeidx=${carryPlaceInfo.placeidx}'/>">${carryPlaceInfo.placename}</a></span>		
-					
+						<%-- <c:set var="carryPlaceInfo" value="${carryPlaceInfo}"/> --%>
+						<c:set var="imageLists" value="${carryPlaceInfo.placeimg}" />
+
+						<c:set var="mainimg" value="${fn:split(imageLists, ', ')}" />
+						<c:set var="mainImglength" value="${fn:length(mainimg[2])}" />
+						<c:set var="mainImage"
+							value="${fn:substring(mainimg[2], 0, mainImglength)}" />
+
+						<c:if test="${empty mainImage}">
+							<img src="<c:url value="/images/nullPlaceImg.jpg"/>">
+						</c:if>
+						<c:if test="${!empty mainImage}">
+							<img src="<c:out value="${mainImage}"/>" class="place_main_img">
+						</c:if>
+
+						<p>
+							<span> <a
+								href="<c:url value='/place/detail?placeidx=${carryPlaceInfo.placeidx}'/>">${carryPlaceInfo.placename}</a></span>
 					</div>
 				</div>
 				<!-- 소속 플레이스 section all wrap END -->
@@ -179,12 +179,12 @@
 						<p>${carryPlaceInfo.placeaddress}</p>
 						<p>${carryPlaceInfo.placephone}</p>
 					</div>
-					<div id="map" style="width:100%;height:300px;"></div>
+					<div id="map" style="width: 100%; height: 300px;"></div>
 				</div>
-			
-		</div>
-		
-		<!-- 우측 배너 START -->
+
+			</div>
+
+			<!-- 우측 배너 START -->
 			<div class="right_banner">
 
 				<div id="c2" class="circle"></div>
@@ -193,38 +193,39 @@
 				<div class="program_all">
 
 					<c:forEach items="${price}" var="price" varStatus="status">
-					<form action="<c:url value='/payment/pay'/>" method="post">
-							
-					<input type="hidden" name="cridx" value="${price.cridx}">
-					<input type="hidden" name="paynum" value="${price.procount}">
-					<input type="hidden" name="payprice" value="${price.proprice}">
-						<div class="program">
-							<div class="program_info"> 
-								<span>수업 ${price.procount}회 이용권</span> <br>
-								<h4>
-									<fmt:formatNumber type="number" maxFractionDigits="3"
-										value="${price.proprice}"/>원
-								</h4>
+						<form action="<c:url value='/payment/pay'/>" method="post">
+
+							<input type="hidden" name="cridx" value="${price.cridx}">
+							<input type="hidden" name="paynum" value="${price.procount}">
+							<input type="hidden" name="payprice" value="${price.proprice}">
+							<div class="program">
+								<div class="program_info">
+									<span>수업 ${price.procount}회 이용권</span> <br>
+									<h4>
+										<fmt:formatNumber type="number" maxFractionDigits="3"
+											value="${price.proprice}" />
+										원
+									</h4>
+								</div>
+
+								<div id="purchase_btn">
+									<input type="submit" value="구매하기" class="button">
+								</div>
 							</div>
 
-							<div id="purchase_btn">
-								<input type="submit" value="구매하기" class="button">
-							</div>
-						</div>
-						
-				
-					
-					<input type="hidden" name="crname" value="${carryDetail.crname}">
-					</form>
+
+
+							<input type="hidden" name="crname" value="${carryDetail.crname}">
+						</form>
 					</c:forEach>
-					
+
 				</div>
-				
+
 			</div>
 			<!-- 우측 배너 END -->
-		
-		
-	</div>
+
+
+		</div>
 	</div>
 	<!-- Contents END -->
 
@@ -251,7 +252,8 @@
 
 
 	<!-- kakao map api -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2791d61cfcb1bc044154adc4c6bc431"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2791d61cfcb1bc044154adc4c6bc431"></script>
 	<script>
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
@@ -278,7 +280,7 @@
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-	
+
 	<script>
 
 	// 페이지 진입시 이벤트 발생

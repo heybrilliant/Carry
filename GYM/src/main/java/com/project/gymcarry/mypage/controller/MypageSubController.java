@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.board.service.BoardService;
@@ -57,33 +58,6 @@ public class MypageSubController {
 		return "/mypage/myinfo";
 	}
 
-	// 메모 등록
-	@PostMapping
-	public String addMembermemo(MypageDto mypdto, Model model) {
-
-		String arg0 = mypdto.getMemidx();
-		String arg1 = mypdto.getInfodate();
-		String arg2 = mypdto.getInfotype();
-
-		List<MypageDto> list1 = mypService2.selectMemo(arg0, arg1, arg2);
-
-		if (list1.isEmpty()) {
-			mypService2.memberMemo(mypdto);
-			System.out.println("인설트로 가쟈");
-			List<MypageDto> list2 = mypService2.loadMemo(arg0, arg1);
-			model.addAttribute("list2", list2);
-			return "mypage/mypage";
-
-		} else {
-			mypService2.updateMemo(mypdto);
-			System.out.println("업데이트 가쟈");
-			List<MypageDto> list2 = mypService2.loadMemo(arg0, arg1);
-			System.out.println(list2);
-			return "mypage/mypage";
-		}
-
-	}
-
 	@RequestMapping(value = "/mypage/myinfoUpdate", method = RequestMethod.POST)
 	public String memberListchange(HttpSession session, MypageMemberDto MDTO) {
 
@@ -102,6 +76,9 @@ public class MypageSubController {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 
+		session.setAttribute("memidx", sdt.getMemidx());
+		session.setAttribute("name", sdt.getMemname());
+
 		// 현재 날짜 구하기
 		LocalDate now = LocalDate.now();
 		// 포맷 정의
@@ -109,18 +86,48 @@ public class MypageSubController {
 		// 포맷 적용
 		String formatedNow = now.format(formatter);
 
-		System.out.println(formatedNow);
-		System.out.println(sdt.getMemidx());
-
 		List<MypageDto2> list2 = mypService2.loadMemo2(sdt.getMemidx(), formatedNow);
 
-		System.out.println(list2);
-		model.addAttribute("list2", list2);
+		if (list2.size() != 0) {
+
+			for (int i = 0; i < list2.size(); i++) {
+				if (list2.get(i).getInfotype().equals("food")) {
+					System.out.println(i + "번째 가 푸드다!");
+					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
+					model.addAttribute("list", list2.get(i).getInfocontent());
+				} else {
+					System.out.println("빈값");
+				}
+				if (list2.get(i).getInfotype().equals("memo")) {
+					System.out.println(i + "번째 가 메모다!");
+					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
+					model.addAttribute("list2", list2.get(i).getInfocontent());
+				} else {
+					System.out.println("빈값");
+				}
+				if (list2.get(i).getInfotype().equals("kg")) {
+					System.out.println(i + "번째 가 kg다!");
+					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
+					model.addAttribute("list3", list2.get(i).getInfocontent());
+				} else {
+					System.out.println("빈값");
+				}
+				if (list2.get(i).getInfotype().equals("photo")) {
+					System.out.println(i + "번째 가 사진이다!");
+					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
+					model.addAttribute("list4", list2.get(i).getInfocontent());
+					
+				} else {
+					System.out.println("빈값");
+					
+				}
+			}
+		}
 
 		return "/mypage/mymemo";
 	}
 
-	@GetMapping("/mypage/mycash")
+	@PostMapping("/mypage/mycash")
 	public String cash(HttpSession session, Model model) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");

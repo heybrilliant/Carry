@@ -39,32 +39,27 @@
 		infodate[2].value = name;
 		infodate[3].value = name;
 	}
+</script>
 
-	function memoselect() {
 
+<script>
+	function loginLog() {
+		printName()
 		$.ajax({
-			url : '<c:url value="/mypage/select"/>',
-			type : 'POST',
-			datatype : 'JSON',
+			url : "/mypage/mymemo",
+			type : "POST",
 			data : {
-				cridx : $("#EMPTY ").val()
+				memidx : $("#memidx").val(),
+				infodate : $("#infodate").val()
 			},
 			success : function(data) {
-				var tag = '<div>'
-				$.each(data, function(index, item) {
-
-				});
-
-				$('#TEST').html(tag);
+				alert("go");
+				
 			},
-
 			error : function() {
-				alert("error");
-
+				alert("err");
 			}
-
 		});
-
 	}
 </script>
 
@@ -73,6 +68,7 @@
 
 </head>
 <body style="padding-right: 0px">
+
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
@@ -81,10 +77,12 @@
 
 			<div class="col">
 
+
 				<div class="col-right-top">
 					<h2 style="float: none;">
 						<input type="text" id="alternate" class="datepick" size="30"
-							readonly>
+							readonly> <input name="infodate" id="infodate"> <input
+							name="memidx" id="memidx" value="${memidx}">
 					</h2>
 				</div>
 				<div class="col-flex">
@@ -106,12 +104,14 @@
 
 								</div>
 								<div style="text-align: left; width: 35%; padding-left: 2%">
-									<img class="edit_text2"
-										src="<c:url value="/images/icon/edit.png"/>">
+									<a href="<c:url value="/mypage/myinfo"/>"> <img
+										class="edit_text2"
+										src="<c:url value="/images/icon/edit.png"/>"></a>
 								</div>
 							</div>
 
-							<div id="datepicker" onclick="printName()"></div>
+							<div id="datepicker" onclick="loginLog()"></div>
+							<input type="hidden">
 						</div>
 
 						<div class="my-info-develope">
@@ -137,7 +137,7 @@
 					</div>
 
 					<div class="col-right"></div>
-					
+
 				</div>
 
 			</div>
@@ -203,3 +203,5 @@
 
 		});
 	</script>
+
+	
