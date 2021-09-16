@@ -3,6 +3,7 @@ package com.project.gymcarry.carry;
 import org.springframework.web.multipart.MultipartFile;
 
 public class CarryToJoinDto {
+	private int cridx;
 	private String cremail;
 	private String crpw;
 	private String crname;
@@ -16,8 +17,12 @@ public class CarryToJoinDto {
 	public CarryToJoinDto() {
 	}
 
-	public CarryToJoinDto(String cremail, String crpw, String crname, String crnick, String crgender, String crphone,
-			MultipartFile crphoto, String joinkey, String joinkey_status) {
+	
+
+	public CarryToJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender,
+			String crphone, MultipartFile crphoto, String joinkey, String joinkey_status) {
+		super();
+		this.cridx = cridx;
 		this.cremail = cremail;
 		this.crpw = crpw;
 		this.crname = crname;
@@ -28,11 +33,19 @@ public class CarryToJoinDto {
 		this.joinkey = joinkey;
 		this.joinkey_status = joinkey_status;
 	}
+	
+	public int getCridx() {
+		return cridx;
+	}
+
+	public void setCridx(int cridx) {
+		this.cridx = cridx;
+	}
 
 	public String getCremail() {
 		return cremail;
 	}
-
+	
 	public void setCremail(String cremail) {
 		this.cremail = cremail;
 	}

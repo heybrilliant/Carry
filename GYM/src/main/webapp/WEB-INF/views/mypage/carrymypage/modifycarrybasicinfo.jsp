@@ -28,9 +28,9 @@
 							<div class="profile_photo">
 								<img src="image/icon/profile.png">
 							</div>
-							<input type="button" value="사진업로드" class="profilebtn" name="crphoto"
+							<input type="button" value="사진업로드" class="profilebtn" name="file"
 							onclick=document.all.file.click();> <input type="file"
-							name="crphoto" id="file" class="profilebtn"
+							name="file" id="file" class="profilebtn"
 							style="display: none;" />
 						</div>
 
