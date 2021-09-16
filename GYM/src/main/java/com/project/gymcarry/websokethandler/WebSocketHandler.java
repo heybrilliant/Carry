@@ -81,10 +81,10 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			messageDto.setContenttype(++contenttype);
 			messageDto.setChatread(++chatRead);
 		}
-		
+
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
-		
+
 		int result = 0;
 		String to = messageDto.getTo();
 		WebSocketSession toSession = mapList.get(to);
@@ -96,11 +96,11 @@ public class WebSocketHandler extends TextWebSocketHandler {
 				// 방에 서로 있으면 메세지 보낼때 읽음 처리
 				matchingChatRoomService.getChatRead(messageDto.getChatidx());
 			}
-		} else if(toSession == null) {
+		} else {
 			session.sendMessage(sendMsg);
 			matchingChatRoomService.insertChatContent(messageDto);
 		}
-		
+
 	}
 
 	// 클로즈 될때.
@@ -111,7 +111,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		mapList.remove(session.getId());
 		logger.info("{}연결 끊김", session.getId() + chatNick);
 		System.out.println("채팅방 퇴장한사람 : " + chatNick);
-		
+
 	}
 
 }

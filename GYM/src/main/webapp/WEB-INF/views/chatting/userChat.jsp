@@ -108,7 +108,6 @@
 			</div>
 		</div>
 
-
 	</div>
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
@@ -218,7 +217,6 @@
 	<script>
 	
 	var socket = new SockJS("<c:url value='/echo'/>");
-	sock = socket;
 	// open - 커넥션이 제대로 만들어졌을 때 호출
 	socket.onopen = function() {
 		// 방오픈 됫는지 확인 메세지
@@ -275,13 +273,18 @@
 	// close - 커넥션이 종료되었을 때 호출
 	socket.onclose = function(event) {
 		console.log('connection closed.');
-		socket.onmessage;
+		/* setTimeout(function(){
+			<c:if test="${loginSession eq null}">
+				var socket = new SockJS("<c:url value='/echo'/>");
+			</c:if>
+		}, 100); */
 	};
 
 	// error - 에러가 생겼을 때 호출
 	socket.onerror = function(error) {
 		console.log('connection Error.')
 	};
+	
 	
 	// 객체를 json형태로 담아 보냄
 	function sendMessage(send) {
