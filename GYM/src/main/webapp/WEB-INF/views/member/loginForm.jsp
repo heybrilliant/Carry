@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>GYM CARRY : 로그인</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
@@ -18,10 +18,8 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<!-- 은경 -->
 
 	<!-- Contents -->
-
 	<div class="wrap wd668">
 		<div class="form_txtInput">
 
