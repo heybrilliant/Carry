@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.gymcarry.dao.BoardDao">
+
+    
+    <!-- 게시판 소통 카테고리 출력  -->
+    <select id="getListCommuni" resultType="com.project.gymcarry.board.BoardDto">
+        select *
+        from board
+        where boardcategory = '소통'
+    </select>
+
+    <!-- 페이징  -->
+    <select id="getBoardList" resultType="com.project.gymcarry.board.BoardDto">
+        select *
+        from board
+        order by postidx desc, postdate desc
+        LIMIT #{startList}, #{listSize}
+
+    </select>
+
+    <!-- 페이징 : 전체 글의 개수 읽어오기  -->
+    <select id="getBoardListCnt" resultType="int">
+
+        select count(*) as listCnt
+        from board
+    </select>
+
+
+    <!-- 조회수  -->
+    <update id="updateViewCnt" parameterType="com.project.gymcarry.board.BoardDto">
+        UPDATE board SET
+            postview = postview + 1
+        WHERE
+            postidx = #{postidx}
+    </update>
+	
+	
+	<!-- 글쓰기 -->
+	<insert id="insertBoardWrite"
+	parameterType="java.util.HashMap"
+	useGeneratedKeys="true"
+	keyProperty="postidx">
+		insert into board (postname, postcontent, postnick, memidx, boardcategory)
+		values (#{postname}, #{postcontent}, #{postnick}, #{memidx}, #{boardcategory})
+	</insert>
+	
+	
+	<!-- 게시글 상세 페이지 -->
+	<select id="selectBoardDetail" resultType="com.project.gymcarry.board.BoardDto">
+		select postidx, postname, postcontent, postnick, memidx, uploadfile, 
+			   date_format(postdate, '%Y-%m-%d') as postdate, postview, postlike, boardcategory
+			   from board where postidx = #{postidx}
+	</select>
+	
+	
+	<!-- 게시물 수정시 입력된 값 그대로 출력 -->
+	<select id="selectBoardUpdate"
+	resultType="com.project.gymcarry.board.BoardWriteDto">
+		select * from board where postidx = #{postidx}
+	</select>
+	
+	
+	<!-- 게시물 수정 -->
+	<update id="updateBoardContent"
+	parameterType="java.util.HashMap"
+	useGeneratedKeys="true"
+	keyProperty="postidx">
+		update board 
+		set postname = #{postname}, postcontent = #{postcontent}, boardcategory = #{boardcategory} 
+		where postidx = #{postidx};
+	</update>
+	
+	<!-- 게시물 삭제 -->
+	<delete id="deleteBoard">
+		delete from board where postidx = #{postidx};
+	</delete>
+	
+
+
+</mapper>
