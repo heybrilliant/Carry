@@ -7,15 +7,16 @@
 
     <!-- 캐리 정보 수정  -->
     <update id="updateCarryModify"
-            parameterType="com.project.gymcarry.mypage.CarryMyPageDto2">
+            parameterType="com.project.gymcarry.mypage.CarryMyPageDto">
         update carry a , crcertification c
         set
-            a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace},
+            a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace}, a.crdepart = #{crdepart}
             c.crcerti1 = #{crcerti1}, c.crcerti2 = #{crcerti2}, c.crcerti3 = #{crcerti3}, c.crcerti4 = #{crcerti4}, c.crcerti5 = #{crcerti5}
         where
             a.cridx = #{cridx}
     </update>
 
+    <!-- 캐리 가격 수정 -->
     <update id="updateCarryPrice"
             parameterType="com.project.gymcarry.mypage.CarryPriceDto">
         update crprice

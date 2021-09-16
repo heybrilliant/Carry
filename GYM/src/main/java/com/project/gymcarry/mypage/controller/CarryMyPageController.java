@@ -2,17 +2,14 @@ package com.project.gymcarry.mypage.controller;
 
 import javax.servlet.http.HttpSession;
 
-import com.project.gymcarry.carry.CarryDto;
-import com.project.gymcarry.dao.CarryMyPageDao;
+
 import com.project.gymcarry.mypage.CarryMyPageDto;
-import com.project.gymcarry.mypage.CarryMyPageDto2;
 import com.project.gymcarry.mypage.service.CarryMyPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.gymcarry.member.SessionDto;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,27 +33,23 @@ public class CarryMyPageController {
 		return "/mypage/carrymypage/carrymypage";
 	}
 
-	// 캐리 정보 수정
+	// 캐리 정보 수정 페이지
 	@GetMapping("/mypage/carrymodify")
 	public String updateCarryModifyView() throws Exception{
 
 		return "/mypage/carrymypage/modifycarryinfo";
 	}
 
+	// 캐리 정보 수정
 	@PostMapping("/mypage/update")
-	public String updateCarryModify(CarryMyPageDto2  carryDto, @RequestParam("proprice1") int proprice1
+	public String updateCarryModify(CarryMyPageDto carryDto, @RequestParam("proprice1") int proprice1
 			, @RequestParam("proprice2") int proprice2, @RequestParam("proprice3") int proprice3,
 									@RequestParam("proprice4") int proprice4,
 									HttpSession session) throws Exception {
 
-		
-		System.out.println(carryDto);
-		
+
 		service.updateCarryModify(carryDto);
-		
-		
 		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryDto.getCridx());
-		
 		
 		return "/mypage/carrymypage/carrymypage";
 	}
@@ -68,9 +61,6 @@ public class CarryMyPageController {
 		return "/mypage/carrymypage/modifycarrybasicinfo";
 	}
 
-
-
-	
 	
 	// 내 회원 리스트
 	@GetMapping("/mymember")
@@ -78,5 +68,4 @@ public class CarryMyPageController {
 		return "/mypage/carrymypage/carry_mymemberlist";
 	}
 	
-
 }

@@ -1,9 +1,7 @@
 package com.project.gymcarry.mypage.service;
 
-import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.dao.CarryMyPageDao;
 import com.project.gymcarry.mypage.CarryMyPageDto;
-import com.project.gymcarry.mypage.CarryMyPageDto2;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,9 +15,9 @@ public class CarryMyPageServiceImpl implements CarryMyPageService{
     private SqlSessionTemplate template;
 
     @Override
-    public int updateCarryModify(CarryMyPageDto2 carryMyPageDto2) throws Exception {
+    public int updateCarryModify(CarryMyPageDto carryMyPageDto) throws Exception {
         dao = template.getMapper(CarryMyPageDao.class);
-        return dao.updateCarryModify(carryMyPageDto2);
+        return dao.updateCarryModify(carryMyPageDto);
     }
 
     @Override
