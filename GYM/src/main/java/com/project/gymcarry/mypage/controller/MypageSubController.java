@@ -1,5 +1,7 @@
 package com.project.gymcarry.mypage.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +22,11 @@ import com.project.gymcarry.board.service.BoardService;
 import com.project.gymcarry.carry.CarryListDto;
 
 import com.project.gymcarry.member.SessionDto;
+import com.project.gymcarry.mypage.MypageDto;
+import com.project.gymcarry.mypage.MypageDto2;
 import com.project.gymcarry.mypage.MypageMemberDto;
 import com.project.gymcarry.mypage.MypagePaymentDto;
+import com.project.gymcarry.mypage.service.MypageService;
 import com.project.gymcarry.mypage.service.MypageSubService;
 
 @Controller
@@ -30,6 +35,9 @@ public class MypageSubController {
 
 	@Autowired
 	private MypageSubService mypService;
+
+	@Autowired
+	private MypageService mypService2;
 
 	@RequestMapping(value = "/mypage/myinfo")
 	public String memberList(HttpSession session, Model model) throws Exception {
@@ -42,29 +50,72 @@ public class MypageSubController {
 
 		model.addAttribute("memberList", memberList);
 
+		model.addAttribute("MDTO", mypService.selectmember(sdt.getMemidx()));
+
 		System.out.println("인포수정 페이지 진입");
 
 		return "/mypage/myinfo";
 	}
 
-	@PostMapping(value = "/mypage/myinfoUpdate")
-	public String memberListchange(HttpSession session, MypageMemberDto memberList
-			) {
+	// 메모 등록
+	@PostMapping
+	public String addMembermemo(MypageDto mypdto, Model model) {
+
+		String arg0 = mypdto.getMemidx();
+		String arg1 = mypdto.getInfodate();
+		String arg2 = mypdto.getInfotype();
+
+		List<MypageDto> list1 = mypService2.selectMemo(arg0, arg1, arg2);
+
+		if (list1.isEmpty()) {
+			mypService2.memberMemo(mypdto);
+			System.out.println("인설트로 가쟈");
+			List<MypageDto> list2 = mypService2.loadMemo(arg0, arg1);
+			model.addAttribute("list2", list2);
+			return "mypage/mypage";
+
+		} else {
+			mypService2.updateMemo(mypdto);
+			System.out.println("업데이트 가쟈");
+			List<MypageDto> list2 = mypService2.loadMemo(arg0, arg1);
+			System.out.println(list2);
+			return "mypage/mypage";
+		}
+
+	}
+
+	@RequestMapping(value = "/mypage/myinfoUpdate", method = RequestMethod.POST)
+	public String memberListchange(HttpSession session, MypageMemberDto MDTO) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 		System.out.println("세션 변수" + sdt.getMemidx());
 
-		mypService.memberUpdate(sdt.getMemidx());
+		mypService.memberUpdate(MDTO);
 
 		System.out.println("인포수정");
 
-		return "/mypage/myinfo";
+		return "redirect:/mypage/mypage";
 	}
 
-	@GetMapping("/mypage/mymemo")
-	public String info(HttpSession session, Model model) {
+	@PostMapping("/mypage/mymemo")
+	public String info(HttpSession session, Model model, MypageDto2 mypdto) {
 
-		System.out.println("/ 진입");
+		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
+
+		// 현재 날짜 구하기
+		LocalDate now = LocalDate.now();
+		// 포맷 정의
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
+		// 포맷 적용
+		String formatedNow = now.format(formatter);
+
+		System.out.println(formatedNow);
+		System.out.println(sdt.getMemidx());
+
+		List<MypageDto2> list2 = mypService2.loadMemo2(sdt.getMemidx(), formatedNow);
+
+		System.out.println(list2);
+		model.addAttribute("list2", list2);
 
 		return "/mypage/mymemo";
 	}
@@ -110,8 +161,8 @@ public class MypageSubController {
 		int memidx = sdt.getMemidx();
 		// Pagination 객체 생성
 		Pagination arg0 = new Pagination();
-		arg0.pageInfo2(page, range, listCnt,sdt.getMemidx());
-		
+		arg0.pageInfo2(page, range, listCnt, sdt.getMemidx());
+
 		System.out.println(arg0);
 		model.addAttribute("pagination", arg0);
 		model.addAttribute("boardList", mypService.getBoardList(arg0));

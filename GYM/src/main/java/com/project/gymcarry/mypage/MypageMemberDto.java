@@ -2,6 +2,7 @@ package com.project.gymcarry.mypage;
 
 public class MypageMemberDto {
 
+	private int MEMIDX;
 	private String MEMPHOTO;
 	private String MEMNAME;
 	private String MEMEMAIL;
@@ -9,6 +10,14 @@ public class MypageMemberDto {
 	private String MEMNICK;
 	private String MEMPHONE;
 	private String MEMBIRTH;
+
+	public int getMEMIDX() {
+		return MEMIDX;
+	}
+
+	public void setMEMIDX(int mEMIDX) {
+		MEMIDX = mEMIDX;
+	}
 
 	public String getMEMPHOTO() {
 		return MEMPHOTO;
@@ -68,20 +77,13 @@ public class MypageMemberDto {
 
 	@Override
 	public String toString() {
-		return "MypageMemberDto [MEMPHOTO=" + MEMPHOTO + ", MEMNAME=" + MEMNAME + ", MEMEMAIL=" + MEMEMAIL + ", MEMPW="
-				+ MEMPW + ", MEMNICK=" + MEMNICK + ", MEMPHONE=" + MEMPHONE + ", MEMBIRTH=" + MEMBIRTH + "]";
+		return "MypageMemberDto [MEMIDX=" + MEMIDX + ", MEMPHOTO=" + MEMPHOTO + ", MEMNAME=" + MEMNAME + ", MEMEMAIL="
+				+ MEMEMAIL + ", MEMPW=" + MEMPW + ", MEMNICK=" + MEMNICK + ", MEMPHONE=" + MEMPHONE + ", MEMBIRTH="
+				+ MEMBIRTH + "]";
 	}
 
-	public MypageMemberDto(String mEMPHOTO, String mEMNAME, String mEMEMAIL, String mEMPW, String mEMNICK,
-			String mEMPHONE, String mEMBIRTH) {
-		super();
-		MEMPHOTO = mEMPHOTO;
-		MEMNAME = mEMNAME;
-		MEMEMAIL = mEMEMAIL;
-		MEMPW = mEMPW;
-		MEMNICK = mEMNICK;
-		MEMPHONE = mEMPHONE;
-		MEMBIRTH = mEMBIRTH;
+	public MypageMemberDto() {
+
 	}
 
 }

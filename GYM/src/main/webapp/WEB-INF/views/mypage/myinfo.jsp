@@ -46,7 +46,8 @@
 				<form action="<c:url value='/mypage/myinfoUpdate'/>" method="post">
 
 					<c:forEach items="${memberList}" var="memberList">
-
+						<input type="hidden" name="MEMIDX" id="MEMIDX"
+							value="${memberList.MEMIDX}">
 
 						<div class="my-info">
 							<img id="loadingimg" class="display_none"
@@ -93,7 +94,8 @@
 								<h3>닉네임</h3>
 							</div>
 							<div class="col-9" style="float: right;">
-								<input name="${MEMNICK2}" value="${memberList.MEMNICK}" type="text">
+								<input name="MEMNICK" id="MEMNICK" value="${memberList.MEMNICK}"
+									type="text">
 							</div>
 						</div>
 						<div class="col-2">
@@ -101,7 +103,8 @@
 								<h3>핸드폰 번호</h3>
 							</div>
 							<div class="col-9" style="float: right;">
-								<input name="${MEMPHONE2}"  value="${memberList.MEMPHONE}" type="text">
+								<input name="MEMPHONE" id="MEMPHONE"
+									value="${memberList.MEMPHONE}" type="text">
 							</div>
 						</div>
 						<div class="col-2">

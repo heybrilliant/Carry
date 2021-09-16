@@ -1,18 +1,21 @@
 package com.project.gymcarry.mypage;
 
-public class MypageDto {
+public class MypageDto2 {
 
-	private int infoidx;
+	private String infoidx;
 	private String memidx;
 	private String infocontent;
 	private String infodate;
 	private String infotype;
 
-	public int getInfoidx() {
+	public MypageDto2() {
+	}
+
+	public String getInfoidx() {
 		return infoidx;
 	}
 
-	public void setInfoidx(int infoidx) {
+	public void setInfoidx(String infoidx) {
 		this.infoidx = infoidx;
 	}
 
@@ -52,10 +55,6 @@ public class MypageDto {
 	public String toString() {
 		return "MypageDto [infoidx=" + infoidx + ", memidx=" + memidx + ", infocontent=" + infocontent + ", infodate="
 				+ infodate + ", infotype=" + infotype + "]";
-	}
-
-	public MypageDto() {
-
 	}
 
 }

@@ -43,14 +43,14 @@ public class MypageSubService {
 	}
 
 	public List<BoardDto> getBoardList(Pagination pagination) throws Exception {
-		
-		
+
 		dao = template.getMapper(MypageDao.class);
 		return dao.getBoardList(pagination);
 	}
 
-	public void memberUpdate(int i) {
-
-		dao.memberupdate(i);
+	public int memberUpdate(MypageMemberDto mMdto) {
+		dao = template.getMapper(MypageDao.class);
+		return dao.memberupdate(mMdto);
 	}
+
 }

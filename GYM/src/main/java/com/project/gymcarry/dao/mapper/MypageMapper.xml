@@ -86,17 +86,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where memidx = ${MEMIDX};
 	</select>
 
-
 	<update id="memberupdate">
 		update member set
-		MEMNICK = ${MEMNICK2},
+		MEMNICK = #{MEMNICK},
 		MEMPHONE =
-		${MEMPHONE2}
-		where memidx = ${MEMIDX};
+		#{MEMPHONE}
+		where memidx = #{MEMIDX};
 	</update>
 
 
+	<select id="loadMemo"
+		resultType="com.project.gymcarry.mypage.MypageDto">
+		select infocontent from mypage where memidx = #{arg0} and
+		infodate = #{arg1} ORDER BY FIELD(infotype, 'photo','food',
+		'kg','memo') DESC, infotype ASC;
+	</select>
 
+	<select id="loadMemo2"
+		resultType="com.project.gymcarry.mypage.MypageDto2">
+		select infocontent from mypage where memidx = #{arg0} and
+		infodate = #{arg1} ORDER BY FIELD(infotype, 'photo','food',
+		'kg','memo') DESC, infotype ASC;
+	</select>
 
 
 </mapper>

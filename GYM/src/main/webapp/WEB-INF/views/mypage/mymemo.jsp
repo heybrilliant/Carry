@@ -32,201 +32,213 @@
 </head>
 <body>
 
+	
+		<div class="col-right-top-memo">
+		
+				<h3>일일 메모</h3>
 
-	<div class="col-right-top-memo">
-		<h3>일일 메모</h3>
-
-
-		<a class="" data-toggle="modal" href="#registerModal1"
-			data-backdrop="static"><img onclick="printName()"
-			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
-		<div class="memo-input-div">
-			<input class="memo-input" type="text" readonly="readonly">
-		</div>
-	</div>
-
-	<div class="col-right-left">
-		<h3>눈 바디</h3>
-		<a class="" data-toggle="modal" href="#registerModal2"
-			data-backdrop="static"><img onclick="printName()"
-			class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
+				<a class="" data-toggle="modal" href="#registerModal1"
+					data-backdrop="static"><img onclick="printName()"
+					class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
 				<div class="memo-input-div">
-			<input class="memo-input" type="text" readonly="readonly">
-		</div>
-	</div>
-
-	<div class="col-right-right">
-		<h3>몸무게</h3>
-		<a class="" data-toggle="modal" href="#registerModal3"
-			data-backdrop="static"> <img onclick="printName()"
-			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
-				<div class="memo-input-div">
-			<input class="memo-input" type="text" readonly="readonly">
-		</div>
-	</div>
-
-	<div class="col-right-right2">
-		<h3>식단</h3>
-		<a class="" data-toggle="modal" href="#registerModal4"
-			data-backdrop="static"><img onclick="printName()"
-			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
-				<div class="memo-input-div">
-			<input class="memo-input" type="text" readonly="readonly">
-		</div>
-	</div>
-
-	<section>
-		<div class="modal fade" id="registerModal1" tabindex="-1"
-			role="dialog" aria-labelledby="modal4" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-
-						<h3>일일 메모</h3>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="close">
-							<span aria-hidden="true"> X </span>
-						</button>
-
-					</div>
-					<form id="memoform" name="memoform" class="reg_form" method="post">
-						<div class="modal-body modal-mypage">
-							<div class="content">
-								<span class="left"></span> <span class="editor"> <textarea
-										class="form-control memo_input" name="infocontent"
-										id="infocontent" style="resize: none;"></textarea>
-								</span>
-							</div>
-							<div class="btn modal-submit-btn">
-
-								<button onClick="fn_review()" type="submit" class="btn"
-									type="button">확인</button>
-							</div>
-							<input type="hidden" name="infodate" /> <input type="hidden"
-								id="memidx" name="memidx" value="${memidx}" /> <input
-								type="hidden" name="infotype" id="infotype" value="memo" />
-						</div>
-					</form>
+					<input class="memo-input" type="text" value="${list2[0].infocontent}"
+						readonly="readonly">
 
 				</div>
+			
+		</div>
+
+
+		<div class="col-right-left">
+			<h3>눈 바디</h3>
+			<a class="" data-toggle="modal" href="#registerModal2"
+				data-backdrop="static"><img onclick="printName()"
+				class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
+			<div class="memo-input-div">
+				<input class="memo-input"  value="${list2[3].infocontent}" type="text" readonly="readonly">
+			</div>
+			
+		</div>
+
+		<div class="col-right-right">
+			<h3>몸무게</h3>
+			<a class="" data-toggle="modal" href="#registerModal3"
+				data-backdrop="static"> <img onclick="printName()"
+				class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
+			<div class="memo-input-div">
+				<input class="memo-input" type="text" 	value="${list2[1].infocontent}" readonly="readonly">
+			
+			
 			</div>
 		</div>
 
-		<div class="modal fade" id="registerModal2" tabindex="-1"
-			role="dialog" aria-labelledby="modal4" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
 
-						<h3>눈바디</h3>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="close">
-							<span aria-hidden="true"> X </span>
-						</button>
+		<div class="col-right-right2">
+			<h3>식단</h3>
+			<a class="" data-toggle="modal" href="#registerModal4"
+				data-backdrop="static"><img onclick="printName()"
+				class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
+			<div class="memo-input-div">
+				<input class="memo-input" type="text" value="${list2[2].infocontent}" readonly="readonly">
 
-					</div>
-					<form method="post">
-						<div class="modal-body modal-mypage">
 
-							<div class="content">
-								<span class="left"></span> <span class="editor"> <textarea
-										class="form-control memo_input" name="infocontent"
-										id="infocontent" style="resize: none;"></textarea>
-								</span>
-							</div>
-							<div class="btn modal-submit-btn">
-								<button onClick="fn_review()" type="submit" class="btn"
-									type="button">확인</button>
-							</div>
-							<input type="hidden" name="infodate" /> <input type="hidden"
-								id="memidx" name="memidx" value="${memidx}" /> <input
-								type="hidden" name="infotype" id="infotype" value="photo" />
 
-						</div>
-					</form>
-				</div>
 			</div>
 		</div>
+		<section>
+			<div class="modal fade" id="registerModal1" tabindex="-1"
+				role="dialog" aria-labelledby="modal4" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
 
-		<div class="modal fade" id="registerModal3" tabindex="-1"
-			role="dialog" aria-labelledby="modal4" aria-hidden="true">
-			<div class="modal-dialog modal-kg">
-				<div class="modal-content">
-					<div class="modal-header">
+							<h3>일일 메모</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="close">
+								<span aria-hidden="true"> X </span>
+							</button>
 
-						<h3>몸무게</h3>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="close">
-							<span aria-hidden="true"> X </span>
-						</button>
+						</div>
+						<form id="memoform" name="memoform" class="reg_form" method="post">
+							<div class="modal-body modal-mypage">
+								<div class="content">
+									<span class="left"></span> <span class="editor"> <textarea
+											class="form-control memo_input" name="infocontent"
+											id="infocontent" style="resize: none;"></textarea>
+									</span>
+								</div>
+								<div class="btn modal-submit-btn">
+
+									<button onClick="fn_review()" type="submit" class="btn"
+										type="button">확인</button>
+								</div>
+								<input type="hidden" name="infodate" /> <input type="hidden"
+									id="memidx" name="memidx" value="${memidx}" /> <input
+									type="hidden" name="infotype" id="infotype" value="memo" />
+							</div>
+						</form>
 
 					</div>
-					<form class="reg_form3" method="post">
-						<div class="modal-body modal-mypage">
+				</div>
+			</div>
 
-							<div class="content">
-								<span class="editor"> <textarea
-										class="form-control memo_input" name="infocontent"
-										id="infocontent" style="resize: none;"></textarea>
+			<div class="modal fade" id="registerModal2" tabindex="-1"
+				role="dialog" aria-labelledby="modal4" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
 
-								</span>
-								<div class="modal-kg-kg">
-									<h1>kg</h1>
+							<h3>눈바디</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="close">
+								<span aria-hidden="true"> X </span>
+							</button>
+
+						</div>
+						<form method="post">
+							<div class="modal-body modal-mypage">
+
+								<div class="content">
+									<span class="left"></span> <span class="editor"> <textarea
+											class="form-control memo_input" name="infocontent"
+											id="infocontent" style="resize: none;"></textarea>
+									</span>
+								</div>
+								<div class="btn modal-submit-btn">
+									<button onClick="fn_review()" type="submit" class="btn"
+										type="button">확인</button>
+								</div>
+								<input type="hidden" name="infodate" /> <input type="hidden"
+									id="memidx" name="memidx" value="${memidx}" /> <input
+									type="hidden" name="infotype" id="infotype" value="photo" />
+
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="registerModal3" tabindex="-1"
+				role="dialog" aria-labelledby="modal4" aria-hidden="true">
+				<div class="modal-dialog modal-kg">
+					<div class="modal-content">
+						<div class="modal-header">
+
+							<h3>몸무게</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="close">
+								<span aria-hidden="true"> X </span>
+							</button>
+
+						</div>
+						<form class="reg_form3" method="post">
+							<div class="modal-body modal-mypage">
+
+								<div class="content">
+									<span class="editor"> <textarea
+											class="form-control memo_input" name="infocontent"
+											id="infocontent" style="resize: none;"></textarea>
+
+									</span>
+									<div class="modal-kg-kg">
+										<h1>kg</h1>
+									</div>
+
+
 								</div>
 
+								<div class="btn modal-submit-btn">
+									<button onClick="fn_review()" type="submit" class="btn"
+										type="button">확인</button>
 
+								</div>
+								<input type="hidden" name="infodate" /> <input type="hidden"
+									id="memidx" name="memidx" value="${memidx}" /> <input
+									type="hidden" name="infotype" id="infotype" value="kg" />
 							</div>
-
-							<div class="btn modal-submit-btn">
-								<button onClick="fn_review()" type="submit" class="btn"
-									type="button">확인</button>
-
-							</div>
-							<input type="hidden" name="infodate" /> <input type="hidden"
-								id="memidx" name="memidx" value="${memidx}" /> <input
-								type="hidden" name="infotype" id="infotype" value="kg" />
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<div class="modal fade" id="registerModal4" tabindex="-1"
-			role="dialog" aria-labelledby="modal4" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-
-						<h3>식단</h3>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="close">
-							<span aria-hidden="true"> X </span>
-						</button>
-
+						</form>
 					</div>
-					<form class="reg_form4" method="post">
-						<div class="modal-body modal-mypage">
-
-							<div class="content">
-								<span class="left"></span> <span class="editor"> <textarea
-										class="form-control" name="infocontent" id="infocontent"
-										style="resize: none;"></textarea>
-								</span>
-							</div>
-							<div class="btn modal-submit-btn">
-								<button onClick="fn_review()" type="submit" class="btn"
-									type="button">확인</button>
-							</div>
-							<input type="hidden" name="infodate" /> <input type="hidden"
-								id="memidx" name="memidx" value="${memidx}" /> <input
-								type="hidden" name="infotype" id="infotype" value="food" />
-
-						</div>
-					</form>
 				</div>
 			</div>
-		</div>
-	</section>
+
+			<div class="modal fade" id="registerModal4" tabindex="-1"
+				role="dialog" aria-labelledby="modal4" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+
+							<h3>식단</h3>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="close">
+								<span aria-hidden="true"> X </span>
+							</button>
+
+						</div>
+						<form class="reg_form4" method="post">
+							<div class="modal-body modal-mypage">
+
+								<div class="content">
+									<span class="left"></span> <span class="editor"> <textarea
+											class="form-control" name="infocontent" id="infocontent"
+											style="resize: none;"></textarea>
+									</span>
+								</div>
+								<div class="btn modal-submit-btn">
+									<button onClick="fn_review()" type="submit" class="btn"
+										type="button">확인</button>
+								</div>
+								<input type="hidden" name="infodate" /> <input type="hidden"
+									id="memidx" name="memidx" value="${memidx}" /> <input
+									type="hidden" name="infotype" id="infotype" value="food" />
+
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	
+
 </body>
 
 

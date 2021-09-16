@@ -40,14 +40,14 @@
 		infodate[3].value = name;
 	}
 
-	function reviewList() {
+	function memoselect() {
 
 		$.ajax({
-			url : '<c:url value="/myapge/select"/>',
+			url : '<c:url value="/mypage/select"/>',
 			type : 'POST',
 			datatype : 'JSON',
 			data : {
-				cridx : $("# EMPTY ").val()
+				cridx : $("#EMPTY ").val()
 			},
 			success : function(data) {
 				var tag = '<div>'
@@ -135,7 +135,9 @@
 							</ul>
 						</div>
 					</div>
+
 					<div class="col-right"></div>
+					
 				</div>
 
 			</div>
@@ -148,56 +150,56 @@
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 
 
-<!-- 탭 ajax-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<script>
-	$(function() {
-		$('.list_tab').click(function() {
+	<!-- 탭 ajax-->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+	<script>
+		$(function() {
+			$('.list_tab').click(function() {
 
-			var activeTab = $(this).attr('data-tab');
-			$.ajax({
-				type : 'GET',
-				url : activeTab,
-				dataType : "html",
+				var activeTab = $(this).attr('data-tab');
+				$.ajax({
+					type : 'POST',
+					url : activeTab,
+					dataType : "html",
 
-				success : function(data) {
-					$('.col-right').html(data);
+					success : function(data) {
+						$('.col-right').html(data);
 
-				},
+					},
 
-				error : function() {
+					error : function() {
 
-					alert('나가 임마');
-				},
+						alert('나가 임마');
+					},
+
+				});
+			});
+
+			$('#default').click();
+
+			$.datepicker.setDefaults({
+				dateFormat : 'yymmdd',
+				prevText : '이전 달',
+				nextText : '다음 달',
+				monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+						'9월', '10월', '11월', '12월' ],
+				monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월',
+						'8월', '9월', '10월', '11월', '12월' ],
+				dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+				dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+				dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+				showMonthAfterYear : true,
+				yearSuffix : '년',
+				currentText : '오늘 날짜'
+			});
+
+			$("#datepicker").datepicker({
+				altField : "#alternate",
+				altFormat : "yy년 mm월 dd일"
 
 			});
-		});
-
-		$('#default').click();
-
-		$.datepicker.setDefaults({
-			dateFormat : 'yymmdd',
-			prevText : '이전 달',
-			nextText : '다음 달',
-			monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-					'9월', '10월', '11월', '12월' ],
-			monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-					'9월', '10월', '11월', '12월' ],
-			dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-			dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-			showMonthAfterYear : true,
-			yearSuffix : '년',
-			currentText : '오늘 날짜'
-		});
-
-		$("#datepicker").datepicker({
-			altField : "#alternate",
-			altFormat : "yy년 mm월 dd일"
 
 		});
-
-	});
-</script>
-
+	</script>
