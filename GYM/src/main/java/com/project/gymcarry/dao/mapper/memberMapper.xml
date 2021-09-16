@@ -45,9 +45,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from member where memnick = #{memnick}
 	</select>
 	
+	<!-- 멤버 회원가입시 핸드폰 중복 검사 -->
+	<select id="memberPhoneCheck" parameterType="String"
+		resultType="int">
+		select count(*) from member where memphone = #{memphone} 
+	</select>
 	
-
-
 	<!-- 캐리 회원가입시 이메일 중복 검사 -->
 	<select id="carryemailCheck" parameterType="String"
 		resultType="int">
@@ -60,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from carry where crnick = #{crnick}
 	</select>
 	
-	<!-- 캐리 회원가입시 핸드폰 중복 검사 : 은경 -->
+	<!-- 캐리 회원가입시 핸드폰 중복 검사 -->
 	<select id="carryPhoneCheck" parameterType="String"
 		resultType="int">
 		select count(*) from carry where crphone = #{crphone} 
