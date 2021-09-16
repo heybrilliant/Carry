@@ -84,6 +84,15 @@ public class FindService {
 			
 			return dao.findPassword(memname, mememail);
 		}
+		
+		
+	// 캐리 패스워드 찾기 이메일 발송
+		public String findCarryPassword(HttpServletResponse response, String crname, String cremail) throws IOException {
+			dao = template.getMapper(MemberDao.class);
+			
+			return dao.findCarryPassword(crname, cremail);
+		}
+		
 }
 
 

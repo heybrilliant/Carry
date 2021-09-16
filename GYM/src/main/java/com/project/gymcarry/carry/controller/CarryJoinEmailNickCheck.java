@@ -24,5 +24,11 @@ public class CarryJoinEmailNickCheck {
 	public int carryNickCheck(@RequestParam("crnick") String crNick) throws Exception {
 		return joinservice.carryNickCheck(crNick);
 	}
+	
+	// 캐리 핸드폰 번호 중복체크 ajax
+	@PostMapping("/carry/phoneCheck")
+	public int carryPhoneCheck(@RequestParam("crphone") String crphone) throws Exception {
+		return joinservice.carryPhoneCheck(crphone);
+	}
 
 }

@@ -40,7 +40,7 @@
 
 				<div class="form_txtInput">
 					<div class="findview">
-						<h2>멤버 아이디 찾기 검색결과</h2>
+						<h2>캐리 아이디 찾기 검색결과</h2>
 						<div id="findview">
 							<h4>가입하신 이메일은  ${cremail} 입니다.</h4>
 						</div>

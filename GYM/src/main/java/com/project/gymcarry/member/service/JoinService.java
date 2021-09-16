@@ -30,11 +30,17 @@ public class JoinService {
 		return dao.memberemailCheck(mememail);
 	}
 
-	// 닉네임 중복 검사
+	// 멤버 닉네임 중복 검사
 	public int memberNickCheck(String memNick) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.memberNickCheck(memNick);
 	}
+	
+	// 멤버 핸드폰번호 중복 검사
+		public int memberPhoneCheck(String memphone) {
+			dao = template.getMapper(MemberDao.class);
+			return dao.memberPhoneCheck(memphone);
+		}
 
 	// 캐리 이메일 중복 검사
 	public int carryemailCheck(String cremail) throws Exception {
@@ -42,10 +48,16 @@ public class JoinService {
 		return dao.carryemailCheck(cremail);
 	}
 
-	// 캐리 이메일 중복 검사
+	// 캐리 닉네임  중복 검사
 	public int carryNickCheck(String crNick) throws Exception {
 		dao = template.getMapper(MemberDao.class);
 		return dao.carryNickCheck(crNick);
+	}
+	
+	// 캐리 핸드폰번호 중복 검사
+	public int carryPhoneCheck(String crphone) {
+		dao = template.getMapper(MemberDao.class);
+		return dao.carryPhoneCheck(crphone);
 	}
 
 	// 멤버 회원가입

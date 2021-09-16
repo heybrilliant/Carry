@@ -10,43 +10,42 @@
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/joinlogin/loginform.css">
 
-</style>
 </head>
 <body>
 
+	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-
-	<!-- 은경 -->
-
+	<!-- Contents -->
 	<div class="wrap wd668">
 		<div class="form_txtInput">
 
 			<form action="<c:url value="/carry/carryLogin"/>" method="post">
 				<h1 class="sub_tit_txt">캐리 로그인</h1>
 				<div class="login_form">
-					<table>
-						<colgroup>
-							<col width="30%" />
-							<col width="auto" />
-						</colgroup>
-						<tbody>
-							<tr>
-								<th><span>아이디</span></th>
-								<td><input type="text" name="cremail"
-									value="${cookie.reid.value}"></td>
-							</tr>
-							<tr>
-								<th><span>비밀번호</span></th>
-								<td><input type="password" name="crpw"></td>
-							</tr>
-						</tbody>
-					</table>
+	
+					<div class="tb">
+						<div id="catebox">
+							<label id="cate"><grid>이메일</grid></label>
+						</div>
+						
+						<input type="text" id="into" name="cremail">
+						<div class="check_font" id="emailcheck" style=float:left></div>
+					</div>
+
+					<div class="tb">
+						<div id="catebox">
+							<label id="cate"><grid>비밀번호</grid></label>
+						</div>
+						
+						<input type="password" id="into" name="crpw">
+						<div class="check_font" id="pwcheck"></div>
+					</div>
 
 
 					<div class="selectbox">
 						<input type="checkbox" value="on" id="recremail"
-							${cookie.recremail ne null? 'checked' : ''}> 아이디 기억하기 <input
+							${cookie.recremail ne null? 'checked' : ''}> 이메일 기억하기 <input
 							type="hidden" name="redirectUri"
 							value="${redirectUri ne null ? redirectUri : ''}">
 					</div>

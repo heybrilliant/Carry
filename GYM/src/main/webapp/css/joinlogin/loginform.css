@@ -10,6 +10,12 @@ body {
     height:auto;
 }
 
+#alter {
+	font-weight : bold;
+	margin-bottom: 30px;
+}
+
+
  p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
     font-size:11pt; 
     text-decoration: none;
@@ -61,7 +67,7 @@ h1 {
     text-align: center;
     justify-content : center;
     padding: 30px;
-    margin-top : 120px;
+    margin-top : 170px;
 }
 
 .container{
@@ -78,15 +84,15 @@ h1 {
     margin: 30px 5px;
 }
 
-#loginbtn .btn_wrap2{
-	
+#loginbtn .btn_wrap2 {
     text-align:center;
     margin: 30px 5px;
 }
 
 #loginbtn.wide, .btn_wrap2 a.wide{
     width: 70px;
-    margin: 0 15px;}
+    margin: 0 15px;
+}
 
 #loginbtn{
 	border: 0;
@@ -98,7 +104,9 @@ h1 {
     width: 130px; 
     display: inline-block; 
     text-align: center;
-    margin: 0 auto;}
+    margin: 0 auto;
+    margin-bottom: -30px;
+}
 
 .btn_wrap2 a{
     color: #fff; 
