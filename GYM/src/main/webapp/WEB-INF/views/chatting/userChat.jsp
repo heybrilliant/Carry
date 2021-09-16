@@ -4,8 +4,10 @@
 <title>1:1Chatting</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/chat/user_chat.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </head>
 <body>
 	<!-- header -->
@@ -142,6 +144,7 @@
 			$("#asd").click(function(){
 				 $(location).attr('href', '<c:url value="/carry/detail?cridx='+num+'"/>');
 			});
+			
 		}
 		
 		var chatIdx, memidx, cridx, memnicks, crnicks, outcount;
@@ -196,6 +199,7 @@
 				}
 			});	
 			
+			
 			$('#msg').keypress(function(event){
 				if (event.keyCode == 13 && $('input#msg').val().trim().length >= 1) {
 					event.preventDefault();
@@ -211,9 +215,11 @@
 					// 메세지 입력창 내용 보내고 지우기.
 					$('#msg').val('');
 				}
-				
 			});	
 		}
+		
+		
+		
 	</script>
 
 	<script>
@@ -235,6 +241,7 @@
 		var jsonData = JSON.parse(data);
 		console.log(jsonData);
 		var currentuser_session = $('#messageId').val();
+		
 		if(chatIdx == jsonData.chatidx){
 			if (jsonData.chatNick == currentuser_session) {
 				var htmlStr = '	<div class="user_message_warp">'
@@ -313,8 +320,20 @@
 			success : function(data){
 				if(data == 0){
 					$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
+					
+						toastr.options.escapeHtml = true;
+						toastr.options.closeButton = true;
+						toastr.options.newestOnTop = false;
+						toastr.options.progressBar = true;
+						toastr.info('', '찜 취소 하셧네요.', {timeOut: 1000});
 				} else {
 					$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+					
+						toastr.options.escapeHtml = true;
+						toastr.options.closeButton = true;
+						toastr.options.newestOnTop = false;
+						toastr.options.progressBar = true;
+						toastr.info('', '캐리 찜하셧어요!!', {timeOut: 1000});
 				}
 			}
 		});
@@ -428,3 +447,9 @@
 		})
 	}
 	</script>
+	
+	
+
+		
+
+
