@@ -127,7 +127,7 @@
 			htmlNav += '<li class="back_button"><a href="#" onclick="history.go(0)"><img src="<c:url value="/images/icon/arrow.png"/>"</a></li>';
 			if(memsession != null && crsession == ''){
 			htmlNav += '<li class="imgButton btn_li"><a href="<c:url value="/carry/detail?cridx='+num+'"/>"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
-			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 30px;" class="onlike"></button></li>'
+			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart02.png"/>" class="onlike"></button></li>'
 			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
 			} else if(crsession != null && outcount == 1){
 				htmlNav += '<li class="imgButton waste_li2"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>'
@@ -312,9 +312,9 @@
 			},
 			success : function(data){
 				if(data == 0){
-					$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
+					$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
 				} else {
-					$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+					$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
 				}
 			}
 		});
@@ -393,9 +393,9 @@
 								$('#output').scrollTop($('#output')[0].scrollHeight);
 								
 								if(item.likecheck == 1){
-									$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+									$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
 								} else if(item.likecheck == 0)
-									$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
+									$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
 								
 							} else if(crnicks == crsession){
 								if(item.contenttype == 1 && item.chatcontent != null){
