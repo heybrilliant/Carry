@@ -119,6 +119,8 @@
 			});
 		});
 		
+			
+		
 		
 		function chatNav(num){
 			var num = num;
@@ -273,11 +275,6 @@
 	// close - 커넥션이 종료되었을 때 호출
 	socket.onclose = function(event) {
 		console.log('connection closed.');
-		/* setTimeout(function(){
-			<c:if test="${loginSession eq null}">
-				var socket = new SockJS("<c:url value='/echo'/>");
-			</c:if>
-		}, 100); */
 	};
 
 	// error - 에러가 생겼을 때 호출
@@ -355,85 +352,78 @@
 				},
 				success : function(data) {
 					$('.chatlist .active .chat_title_img').removeClass();
-					if (data == 0) {
+					if (data.memList == 0 || data.crList == 0) {
 						chattting();
 						chatNav();
 					} else {
 						var htmlStr = '<div class="carry_message_warp">';
-						$.each(data, function(index, item) {
-							if(memnicks == memsession){
-								if(item.contenttype == 1 && item.chatcontent != null && item.chatdate > item.outdate){
-									htmlStr += '<div class="carry_chat">'
-									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
-									htmlStr += '	<div class="message">'
-									htmlStr += '		<div class="message_color">'
-									htmlStr += '			<span>'+item.chatcontent+'</span>'
-									htmlStr += '		</div>'
-									htmlStr += '	</div>'
-									htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
-									htmlStr += '	</div>'
-									htmlStr += '</div>'
-									
-								}  
+						$.each(data.memList, function(index, item) {
+							if(item.contenttype == 1 && item.chatcontent != null){
+								htmlStr += '<div class="carry_chat">'
+								htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+								htmlStr += '	<div class="message">'
+								htmlStr += '		<div class="message_color">'
+								htmlStr += '			<span>'+item.chatcontent+'</span>'
+								htmlStr += '		</div>'
+								htmlStr += '	</div>'
+								htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
+								htmlStr += '	</div>'
+								htmlStr += '</div>'
 								
-								if(item.contenttype == 0 && item.chatcontent != null && item.chatdate > item.outdate){
-									console.log("나가기전" + item.chatdate + " == 나간후" + item.outdate);
-									htmlStr += '	<div class="user_message_warp">'
-									htmlStr += '		<div class="user_chat">'
-									htmlStr += '			<div class="user_message">'
-									htmlStr += '				<div>'
-									htmlStr += '					<span>'+item.chatcontent+'</span>'
-									htmlStr += '				</div>'
-									htmlStr += '			</div>'
-									htmlStr += '			<div class="time_line2">'
-									htmlStr += '				<span>'+item.chatdate+'</span>'
-									htmlStr += '			</div>'
-									htmlStr += '		</div>'
-									htmlStr += '	</div>'
-								}
-								chattting(item.cridx); 
-								$('.carry_message_warp').html(htmlStr);
-								$('#output').scrollTop($('#output')[0].scrollHeight);
-								
-								if(item.likecheck == 1){
-									$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
-								} else if(item.likecheck == 0)
-									$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
-								
-							} else if(crnicks == crsession){
-								if(item.contenttype == 1 && item.chatcontent != null){
-									htmlStr += '	<div class="user_message_warp">'
-									htmlStr += '		<div class="user_chat">'
-									htmlStr += '			<div class="user_message">'
-									htmlStr += '				<div>'
-									htmlStr += '					<span>'+item.chatcontent+'</span>'
-									htmlStr += '				</div>'
-									htmlStr += '			</div>'
-									htmlStr += '			<div class="time_line2">'
-									htmlStr += '				<span>'+item.chatdate+'</span>'
-									htmlStr += '			</div>'
-									htmlStr += '		</div>'
-									htmlStr += '	</div>'
-								} 
-								if(item.contenttype == 0 && item.chatcontent != null){
- 									htmlStr += '<div class="carry_chat">'
-									htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
-									htmlStr += '	<div class="message">'
-									htmlStr += '		<div class="message_color">'
-									htmlStr += '			<span>'+item.chatcontent+'</span>'
-									htmlStr += '		</div>'
-									htmlStr += '	</div>'
-									htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
-									htmlStr += '	</div>'
-									htmlStr += '</div>'
-								} 
-								chattting();
-								$('.carry_message_warp').html(htmlStr);
-								
-								$('#output').scrollTop($('#output')[0].scrollHeight);
+							} else if (item.contenttype == 0 && item.chatcontent != null){
+								htmlStr += '	<div class="user_message_warp">'
+								htmlStr += '		<div class="user_chat">'
+								htmlStr += '			<div class="user_message">'
+								htmlStr += '				<div>'
+								htmlStr += '					<span>'+item.chatcontent+'</span>'
+								htmlStr += '				</div>'
+								htmlStr += '			</div>'
+								htmlStr += '			<div class="time_line2">'
+								htmlStr += '				<span>'+item.chatdate+'</span>'
+								htmlStr += '			</div>'
+								htmlStr += '		</div>'
+								htmlStr += '	</div>'
 							}
-					});
-				}
+							chattting(item.cridx); 
+							$('.carry_message_warp').html(htmlStr);
+							if(item.likecheck == 1){
+								$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+							} else if(item.likecheck == 0)
+								$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
+						});
+						
+						$.each(data.crList, function(index, item) {
+							if(item.contenttype == 1 && item.chatcontent != null){
+								htmlStr += '	<div class="user_message_warp">'
+								htmlStr += '		<div class="user_chat">'
+								htmlStr += '			<div class="user_message">'
+								htmlStr += '				<div>'
+								htmlStr += '					<span>'+item.chatcontent+'</span>'
+								htmlStr += '				</div>'
+								htmlStr += '			</div>'
+								htmlStr += '			<div class="time_line2">'
+								htmlStr += '				<span>'+item.chatdate+'</span>'
+								htmlStr += '			</div>'
+								htmlStr += '		</div>'
+								htmlStr += '	</div>'
+							} else if (item.contenttype == 0 && item.chatcontent != null){
+								htmlStr += '<div class="carry_chat">'
+								htmlStr += '	<div class="carry_line"><img src="<c:url value="/images/icon/profile2.png"/>"></div>'
+								htmlStr += '	<div class="message">'
+								htmlStr += '		<div class="message_color">'
+								htmlStr += '			<span>'+item.chatcontent+'</span>'
+								htmlStr += '		</div>'
+								htmlStr += '	</div>'
+								htmlStr += '	<div class="time_line"><span>'+item.chatdate+'</span></div>'
+								htmlStr += '	</div>'
+								htmlStr += '</div>'
+							} 
+							chattting();
+							$('.carry_message_warp').html(htmlStr);
+						});
+						$('#output').scrollTop($('#output')[0].scrollHeight);
+					}
+					
 			}
 		})
 	}

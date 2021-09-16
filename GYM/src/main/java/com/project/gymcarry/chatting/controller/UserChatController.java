@@ -1,6 +1,8 @@
 package com.project.gymcarry.chatting.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,7 +19,6 @@ import com.project.gymcarry.carrylike.CarryLikeDto;
 import com.project.gymcarry.chatting.ChatListDto;
 import com.project.gymcarry.chatting.ChatRoomDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomService;
-import com.project.gymcarry.chatting.service.MatchingChatRoomServiceImpl;
 import com.project.gymcarry.member.SessionDto;
 
 @Controller
@@ -70,10 +71,18 @@ public class UserChatController {
 	// 채팅 대화리스트
 	@PostMapping("chatting/dochat")
 	@ResponseBody
-	public List<ChatRoomDto> chatList(@RequestParam("chatidx") int chatidx) {
-		List<ChatRoomDto> chatList = matchingChatRoomService.getChatIdx(chatidx);
-		matchingChatRoomService.getChatRead(chatidx);
-		return chatList;
+	public Map<String, Object> chatList(@RequestParam("chatidx") int chatidx,HttpSession session) {
+		SessionDto dto = (SessionDto) session.getAttribute("loginSession");
+		Map<String, Object> mapList = new HashMap<String, Object>();
+		List<ChatRoomDto> chatList = null; 
+		if(dto.getMemidx() != 0) {
+			chatList = matchingChatRoomService.getMemberMessage(chatidx);
+			mapList.put("memList", chatList);
+		} else if(dto.getCridx() != 0) {
+			chatList = matchingChatRoomService.getChatIdx(chatidx);
+			mapList.put("crList", chatList);
+		}
+		return mapList;
 	}
 
 	@GetMapping("chatting/like")

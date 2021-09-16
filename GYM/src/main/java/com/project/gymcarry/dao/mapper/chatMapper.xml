@@ -5,16 +5,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.project.gymcarry.dao.MatchingDao">
 
-	<!-- 대화방 메세지 + like -->
+	<!-- 캐리 대화방 메세지 -->
 	<select id="selectChattingList"
 		resultType="com.project.gymcarry.chatting.ChatRoomDto">
 		select *
 		from chatlist l
 		left outer join chatroom r on
 		l.chatidx=r.chatidx
+		where l.chatidx=#{chatidx};
+	</select>
+	
+	<!-- 멤버 대화방 메세지 + like -->
+	<select id="selectMemberMessageList"
+		resultType="com.project.gymcarry.chatting.ChatRoomDto">
+		select *
+		from chatlist l
+		left outer join chatroom r on
+		l.chatidx=r.chatidx 
 		left outer join likelist k on k.memidx=l.memidx and
 		k.cridx=l.cridx
-		where l.chatidx=#{chatidx};
+        where l.outdate <![CDATA[ < ]]> r.chatdate and l.chatidx=#{chatidx}
 	</select>
 
 	<!-- 멤버 채팅방  리스트 -->
