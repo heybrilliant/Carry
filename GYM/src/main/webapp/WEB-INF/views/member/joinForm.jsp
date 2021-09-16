@@ -30,15 +30,13 @@
 
 					<div class="join_form">
 						<div class="profile_form">
-							<div class="profileimg">
-								<img src="/gym/images/icon/profile.png"><br>
+							<div class="profileimg" id="image_container">
+								<img src="/gym/images/icon/profile2.png"><br>
 							</div>
-							<input type="button" value="업로드" class="profilebtn"
+							<input type="button" value="사진업로드" class="profilebtn"
 								name="memphoto" onclick=document.all.file.click();> <input
 								type="file" name="memphoto" id="file" class="profilebtn"
 								style="display: none;" />
-							<!-- <input type="button" id="realinput" name="memphoto" accept="image/jpeg, image/jpg, image/png" onclick="document.all.file.click()">
-						<button class="profilebtn" type="submit">프로필 사진</button>위아래 margin값 주기 -->
 						</div>
 						<table>
 							<colgroup>
@@ -148,6 +146,23 @@ browseBtn.addEventListener('click',{
 </script>
 
 <script>
+
+	//등록 이미지 등록 미리보기
+	function readInputFile(input) {
+	    if(input.files && input.files[0]) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+	            $('#image_container').html("<img src="+ e.target.result +">");
+	        }
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
+	 
+	$(".profilebtn").on('change', function(){
+	    readInputFile(this);
+	});
+
+
 
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
