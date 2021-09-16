@@ -25,23 +25,23 @@
 			<form action="<c:url value="/carry/carryLogin"/>" method="post">
 				<h1 class="sub_tit_txt">캐리 로그인</h1>
 				<div class="login_form">
-					<table>
-						<colgroup>
-							<col width="30%" />
-							<col width="auto" />
-						</colgroup>
-						<tbody>
-							<tr>
-								<th><span>아이디</span></th>
-								<td><input type="text" name="cremail"
-									value="${cookie.reid.value}"></td>
-							</tr>
-							<tr>
-								<th><span>비밀번호</span></th>
-								<td><input type="password" name="crpw"></td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="tb">
+						<div id="catebox">
+							<label id="cate"><grid>이메일</grid></label>
+						</div>
+						
+						<input type="text" id="into" name="cremail">
+						<div class="check_font" id="emailcheck" style=float:left></div>
+					</div>
+
+					<div class="tb">
+						<div id="catebox">
+							<label id="cate"><grid>비밀번호</grid></label>
+						</div>
+						
+						<input type="password" id="into" name="crpw">
+						<div class="check_font" id="pwcheck"></div>
+					</div>
 
 
 					<div class="selectbox">
@@ -57,7 +57,6 @@
 							<input type="submit" id="loginbtn" value="로그인">
 						</div>
 						<a id="alter" href="<c:url value="/member/login"/>">멤버로그인</a><br>
-						<!-- 언더라인, 캐리로그인 변환 링크 -->
 					</div>
 				</div>
 				<!-- login_form E  -->
