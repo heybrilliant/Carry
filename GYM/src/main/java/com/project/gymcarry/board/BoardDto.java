@@ -15,6 +15,7 @@ public class BoardDto {
     private int postview;
     private String boardcategory;
     private int commentCnt;        //댓글 개수
+    private int likeCnt;
     private String memphoto;
 
 
@@ -24,7 +25,7 @@ public class BoardDto {
 
 
 	public BoardDto(int postidx, String postname, String postcontent, String postnick, int memidx, Date postdate,
-			int postview, String boardcategory, int commentCnt, String memphoto) {
+			int postview, String boardcategory, int commentCnt, int likeCnt, String memphoto) {
 		super();
 		this.postidx = postidx;
 		this.postname = postname;
@@ -35,6 +36,7 @@ public class BoardDto {
 		this.postview = postview;
 		this.boardcategory = boardcategory;
 		this.commentCnt = commentCnt;
+		this.likeCnt = likeCnt;
 		this.memphoto = memphoto;
 	}
 
@@ -129,6 +131,16 @@ public class BoardDto {
 	}
 
 
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+
+
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
+
+
 	public String getMemphoto() {
 		return memphoto;
 	}
@@ -143,8 +155,11 @@ public class BoardDto {
 	public String toString() {
 		return "BoardDto [postidx=" + postidx + ", postname=" + postname + ", postcontent=" + postcontent
 				+ ", postnick=" + postnick + ", memidx=" + memidx + ", postdate=" + postdate + ", postview=" + postview
-				+ ", boardcategory=" + boardcategory + ", commentCnt=" + commentCnt + ", memphoto=" + memphoto + "]";
+				+ ", boardcategory=" + boardcategory + ", commentCnt=" + commentCnt + ", likeCnt=" + likeCnt
+				+ ", memphoto=" + memphoto + "]";
 	}
+
+
 
 
 

@@ -12,7 +12,8 @@
 		<![CDATA[
         select *,
 		(SELECT count(*) FROM boardcomment comment WHERE comment.postidx = board.postidx) AS commentCnt,
-		(Select memphoto from gymcarry.member m where m.memidx = board.memidx) as memphoto
+		(Select memphoto from gymcarry.member m where m.memidx = board.memidx) as memphoto,
+		(SELECT count(*) FROM bbslike WHERE bbslike.postidx = board.postidx) AS likeCnt
         from board
         order by postidx desc, postdate desc
         LIMIT #{startList}, #{listSize}
@@ -23,7 +24,9 @@
 	<select id="getBoardComm" resultType="com.project.gymcarry.board.BoardDto">
 		<![CDATA[
 		select *,
-			   (SELECT count(*) FROM boardcomment comment WHERE comment.postidx = board.postidx) AS commentCnt
+		(SELECT count(*) FROM boardcomment comment WHERE comment.postidx = board.postidx) AS commentCnt,
+		(Select memphoto from gymcarry.member m where m.memidx = board.memidx) as memphoto,
+		(SELECT count(*) FROM bbslike WHERE bbslike.postidx = board.postidx) AS likeCnt
 		from board
 		where boardcategory = '소통'
 		order by postidx desc, postdate desc
@@ -35,7 +38,9 @@
 	<select id="getBoardQnA" resultType="com.project.gymcarry.board.BoardDto">
 		<![CDATA[
 		select *,
-			   (SELECT count(*) FROM boardcomment comment WHERE comment.postidx = board.postidx) AS commentCnt
+	    (SELECT count(*) FROM boardcomment comment WHERE comment.postidx = board.postidx) AS commentCnt,
+		(Select memphoto from gymcarry.member m where m.memidx = board.memidx) as memphoto,
+		(SELECT count(*) FROM bbslike WHERE bbslike.postidx = board.postidx) AS likeCnt
 		from board
 		where boardcategory = '질문/답변'
 		order by postidx desc, postdate desc
