@@ -41,7 +41,7 @@
             </div>
             <div class="profile">
                 <div class="profile_img">
-                    <img alt="" src="/gym/images/icon/profile.png">
+                    <img alt="" src="<c:url value="/uploadFile/${boardDetail.memphoto}"/>">
                     <div id="nickname">${boardDetail.postnick}</div>
                 </div>
                 <ul class="profile_right">
@@ -290,7 +290,7 @@
                             var html = '<li class="comment_wrap">';
                             html += '<div class="profile">';
                             html += '<div class="profile_img">';
-                            html += '<img src="/gym/images/icon/profile2.png" alt="img">';
+                            html += '<img src="<c:url value="/uploadFile/"/>' + commList[i].memphoto + '" alt="img">';
                             html += '</div>';
                             html += '<div class="profile_left">';
                             html += '<div id="nickname">' + commList[i].commentnick + '</div>';
