@@ -102,7 +102,6 @@ public class FindController {
 		}
 
 		// 3. 메일 성공 시, 난수로 비밀 번호 업데이트 
-//		md.addAttribute();
 		System.out.println("컨트롤러 : 비밀번호 찾기 페이지 진입");
 		System.out.println("memname : " + memname);
 		System.out.println("mememail : " + mememail);
@@ -110,6 +109,46 @@ public class FindController {
 		return "/find/findpassword";
 	}
 	
+	// 멤버 비밀번호 찾기 컨트롤러
+		@GetMapping("/findcarrypassword")
+		public String findcarrypassword() {
+			return "find/findcarrypassword";
+		}
+		
+		@RequestMapping(value="/findcarrypassword", method = RequestMethod.POST)
+		public String findCarryPassword(
+				HttpServletResponse response, 
+				@RequestParam("crname") String crname,
+				@RequestParam("cremail") String cremail
+				) throws IOException {
+			// 1. 이름 핸드폰번호로 조회
+			String email = service.findCarryPassword(response, crname, cremail);
+			
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			if (email == null) {
+				out.println("<script>");
+				out.println("alert('가입된 계정이 없습니다.');");
+				out.println("history.go(-1);");
+				out.println("</script>");
+				out.close();
+			} else {
+				// 2. 난수 생성 후 존재하는 데이터 있으면 메일 보냄
+				mailsender.send_Crpwemail(crname, cremail);
+				
+				out.println("<script>");
+				out.println("alert('가입하신 이메일로 임시 비밀번호가 전송되었습니다.');");
+				out.println("</script>");
+				out.close();
+			}
+
+			// 3. 메일 성공 시, 난수로 비밀 번호 업데이트 
+			System.out.println("컨트롤러 : 비밀번호 찾기 페이지 진입");
+			System.out.println("crname : " + crname);
+			System.out.println("cremail : " + cremail);
+			
+			return "/find/findcarrypassword";
+		}
 	
 	
 	

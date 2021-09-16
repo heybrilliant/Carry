@@ -34,18 +34,17 @@
 					<div class="find_form">
 						<table>
 							<tr>
-								<td><input id="regid" type="text" placeholder="가입시 등록하신 이름">
+								<td><input id="regname" name="crname" type="text" placeholder="가입시 등록하신 이름">
 								</td>
 							</tr>
 							<tr>
-								<td><input id="regemail" type="text"
+								<td><input id="regemail" name="cremail" type="text"
 									placeholder="가입시 등록하신 이메일 주소"></td>
 							</tr>
 						</table>
 						<div id="btnbox">
 							<div class="btn_wrap">
-								<!-- 	<a type="submit" id="findBtn">찾기</a> -->
-								<button id="searchbtn" type="button" onclick="idsearch_click()">찾기</button>
+									<button type="submit" value="찾기" id="findBtn">찾기</button>
 							</div>
 							<div class="btn_wrap2">
 								<a onclick="history.go(-1)">취소</a>

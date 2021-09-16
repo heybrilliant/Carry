@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="int">
 		select count(*) from member where mememail = #{mememail}
 	</select>
-	
+
 	<!-- 멤버 회원가입시 닉네임 중복 검사 -->
 	<select id="memberNickCheck" parameterType="String"
 		resultType="int">
@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="int">
 		select count(*) from carry where cremail = #{cremail}
 	</select>
-	
+
 	<!-- 캐리 회원가입시 닉네임 중복 검사 -->
 	<select id="carryNickCheck" parameterType="String"
 		resultType="int">
@@ -141,24 +141,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{mememail}
 	</select>
 
-	<!-- 멤버 임시 비밀번호 업데이트 -->
-	<update id="setpassword" parameterType="Map">
-		update member set mempw =
-		#{param1} where memname = #{param2} and mememail = #{param3}
-	</update>
-
 	<!-- 캐리 비밀번호 찾기 -->
 	<select id="findCarryPassword"
 		parameterType="com.project.gymcarry.dao.MemberDao" resultType="String">
 		select
 		cremail from carry where crname = #{crname} and cremail = #{cremail}
 	</select>
-	
+
+	<!-- 멤버 임시 비밀번호 업데이트 -->
+	<update id="setpassword" parameterType="Map">
+		update member set mempw =
+		#{param1} where memname = #{param2} and mememail = #{param3}
+	</update>
+
 	<!-- 캐리 임시 비밀번호 업데이트 -->
 	<update id="setcarrypassword" parameterType="Map">
-		update carry set crpw =
+		update carry set
+		crpw =
 		#{param1} where crname = #{param2} and cremail = #{param3}
 	</update>
-	
+
 
 </mapper>
