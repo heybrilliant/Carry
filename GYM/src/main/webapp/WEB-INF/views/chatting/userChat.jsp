@@ -310,6 +310,7 @@
 	</script>
 
 	<script>
+	
 	// 하트~ 조아요
 	function chatLike(){
 		$.ajax({
@@ -343,40 +344,30 @@
 	
 	// 채팅방 나가기~
 	function chatdelete(){
-		
 		Swal.fire({
-			  title: '나가시겠습니까?',
-			  text: "채팅방을 나가시면 메세지가 모두 삭제 됩니다.",
-			  icon: 'warning',
-			  showCancelButton: true,
-			  confirmButtonColor: 'red',
-			  cancelButtonColor: 'cornflowerblue',
-			  confirmButtonText: '삭제',
-			  cancelButtonText: '취소'
-			}).then((result) => {
-			  if (result.value) {
-			  $.ajax({
-					type : 'GET',
-					url : '<c:url value="/chatting/delete"/>',
-					dataType : 'json',
-					data : {
-						chatidx : chatIdx
-					},
-					success : function(data){
-						location.reload(true);
-					}
-				});
-			  }
-			})
-		
-		
-		/* var result = confirm('메세지가 모두 삭제 됩니다. 그래도 나가시겠습니까?');
-		if(result == true){
-			alert('채티방을 삭제하셨습니다.');
-			
-		} else {
-			return false;
-		} */
+		  title: '나가시겠습니까?',
+		  text: "채팅방을 나가시면 메세지가 모두 삭제 됩니다.",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: 'red',
+		  cancelButtonColor: 'cornflowerblue',
+		  confirmButtonText: '삭제',
+		  cancelButtonText: '취소'
+		}).then((result) => {
+		  if (result.value) {
+		  $.ajax({
+				type : 'GET',
+				url : '<c:url value="/chatting/delete"/>',
+				dataType : 'json',
+				data : {
+					chatidx : chatIdx
+				},
+				success : function(data){
+					location.reload(true);
+				}
+			});
+		  }
+		})
 	};	
 	
 	// 채팅방 대화내용 리스트

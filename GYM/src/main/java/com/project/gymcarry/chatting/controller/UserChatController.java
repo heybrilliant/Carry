@@ -82,6 +82,7 @@ public class UserChatController {
 			chatList = matchingChatRoomService.getChatIdx(chatidx);
 			mapList.put("crList", chatList);
 		}
+		matchingChatRoomService.getChatRead(chatidx);
 		return mapList;
 	}
 
