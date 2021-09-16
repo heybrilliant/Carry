@@ -19,13 +19,15 @@ public interface MemberDao {
 	// 캐리회원가입
 	int insertCarry(CarryJoinDto carryDto);
 
-	// 멤버 회원가입시 이메일,닉네임 중복 체크
+	// 멤버 회원가입시 이메일,닉네임,핸드폰 번호 중복 체크 + 은경- 핸드폰 추가함
 	int memberemailCheck(String mememail);
 	int memberNickCheck(String memnick);
+	int memberPhoneCheck(String memphone);
 
-	// 캐리 회원가입시 이메일, 닉네임 중복 체크
+	// 캐리 회원가입시 이메일,닉네임,핸드폰 번호 중복 체크 + 은경- 핸드폰 추가함
 	int carryemailCheck(String cremail);
 	int carryNickCheck(String crNick);
+	int carryPhoneCheck(String crphone);
 	
 	// 멤버 회원가입 이메일 인증
 	int GetJoinkey(String mememail, String joinkey_status);
