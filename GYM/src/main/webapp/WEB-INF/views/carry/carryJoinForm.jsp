@@ -89,6 +89,7 @@
 								<th><span>휴대폰 번호</span></th>
 								<td><input type="text" name="crphone" id="crphone"
 									placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요">
+									<span id="msg_phone" class="display_none"></span>
 									<div class="check_font" id="phonecheck"></div></td>
 							</tr>
 							<tr>
@@ -236,6 +237,27 @@
 		if(phoneJ.test($('#crphone').val())){
 			console.log(phoneJ.test($('#crphone').val()));
 			$("#phonecheck").text('');
+			// 번호가 맞으면 ajax 실행
+			$.ajax({
+				type : 'POST',
+				url : '<c:url value="/carry/phoneCheck"/>',
+				data : { 
+					crphone : $(this).val()
+				},
+				success : function(data) {
+					if(data == 0){
+						$('#msg_phone').html('사용가능');
+						$('#msg_phone').addClass('color_blue');
+						$('#msg_phone').removeClass('display_none');
+					} else {
+						$('#msg_phone').html('사용 불가능');
+						$('#msg_phone').addClass('color_red');
+						$('#msg_phone').removeClass('display_none');
+						$('#crphone').val('');
+					}
+				}
+			});
+			
 		} else {
 			$('#phonecheck').text('휴대폰번호를 확인해주세요.');
 			$('#phonecheck').css('color', 'red');
@@ -295,9 +317,9 @@
 </script>
 <!-- alert('입력해주신 이메일로 인증 메일이 발송되었습니다. 이메일 인증을 완료해주세요.') -->
 
-<!-- 회원가입 이메일,닉네임 중복체크 ajax -->
+<!-- 회원가입 이메일,닉네임,핸드폰 중복체크 ajax -->
 <script>
-$('#cremail, #crnick').focusin(function() {
+$('#cremail, #crnick, #crphone').focusin(function() {
 	$('#msg').addClass('display_none');
 	$('#msg').removeClass('color_blue');
 	$('#msg').removeClass('color_red');
@@ -305,7 +327,10 @@ $('#cremail, #crnick').focusin(function() {
 	$('#msg_nick').addClass('display_none');
 	$('#msg_nick').removeClass('color_blue');
 	$('#msg_nick').removeClass('color_red');
-	$('#memnick').val('');
+	$('#crnick').val('');
+	$('#msg_phone').addClass('display_none');
+	$('#msg_phone').removeClass('color_blue');
+	$('#msg_phone').removeClass('color_red');
 });
 	
 </script>

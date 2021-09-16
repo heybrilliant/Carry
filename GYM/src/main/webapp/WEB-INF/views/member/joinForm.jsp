@@ -85,6 +85,7 @@
 									<th><span>휴대폰 번호</span></th>
 									<td><input type="text" name="memphone" id="memphone"
 										placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요.">
+										<span id="msg_phone" class="display_none"></span>
 										<div class="check_font" id="phonecheck"></div></td>
 								</tr>
 
@@ -255,6 +256,26 @@ browseBtn.addEventListener('click',{
 		if(phoneJ.test($('#memphone').val())){
 			console.log(phoneJ.test($('#memphone').val()));
 			$("#phonecheck").text('');
+			// 번호가 맞으면 ajax 실행
+			$.ajax({
+				type : 'POST',
+				url : '<c:url value="/member/phoneCheck"/>',
+				data : { 
+					memphone : $(this).val()
+				},
+				success : function(data) {
+					if(data == 0){
+						$('#msg_phone').html('사용가능');
+						$('#msg_phone').addClass('color_blue');
+						$('#msg_phone').removeClass('display_none');
+					} else {
+						$('#msg_phone').html('사용 불가능');
+						$('#msg_phone').addClass('color_red');
+						$('#msg_phone').removeClass('display_none');
+						$('#memphone').val('');
+					}
+				}
+			});
 		} else {
 			$('#phonecheck').text('휴대폰번호를 확인해주세요.');
 			$('#phonecheck').css('color', 'red');
@@ -279,22 +300,22 @@ browseBtn.addEventListener('click',{
 			// 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환
 		    if (1900 > year || year > yearNow){
 		    	
-		    	$('#birthcheck').text('8자리 숫자형식으로 정확하게 입력해주세요.');
+		    	$('#birthcheck').text('태어난 연도를 정확하게 입력해주세요.');
 				$('#birthcheck').css('color', 'red');
 		    	
 		    }else if (month < 1 || month > 12) {
 		    		
-		    	$('#birthcheck').text('8자리 숫자형식으로 정확하게 입력해주세요.');
+		    	$('#birthcheck').text('태어난 월을 정확하게 입력해주세요.');
 				$('#birthcheck').css('color', 'red'); 
 		    
 		    }else if (day < 1 || day > 31) {
 		    	
-		    	$('#birthcheck').text('8자리 숫자형식으로 정확하게 입력해주세요.');
+		    	$('#birthcheck').text('태어난 날짜를 정확하게 입력해주세요.');
 				$('#birthcheck').css('color', 'red'); 
 		    	
 		    }else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
 		    	 
-		    	$('#birthcheck').text('8자리 숫자형식으로 정확하게 입력해주세요.');
+		    	$('#birthcheck').text('생년월일을 정확하게 입력해주세요.');
 				$('#birthcheck').css('color', 'red'); 
 		    	 
 		    }else if (month == 2) {
@@ -303,7 +324,7 @@ browseBtn.addEventListener('click',{
 		       	
 		     	if (day>29 || (day==29 && !isleap)) {
 		     		
-		     		$('#birthcheck').text('8자리 숫자형식으로 정확하게 입력해주세요.');
+		     		$('#birthcheck').text('생년월일을 정확하게 입력해주세요.');
 					$('#birthcheck').css('color', 'red'); 
 		    	
 				}else{
@@ -377,9 +398,9 @@ browseBtn.addEventListener('click',{
 </script>
 <!-- alert('입력해주신 이메일로 인증 메일이 발송되었습니다. 이메일 인증을 완료해주세요.') -->
 
-<!-- 회원가입 이메일,닉네임 중복체크 ajax -->
+<!-- 회원가입 이메일,닉네임,핸드폰 중복체크 ajax -->
 <script>
-$('#mememail, #memnick').focusin(function() {
+$('#mememail, #memnick, #memphone').focusin(function() {
 	$('#msg').addClass('display_none');
 	$('#msg').removeClass('color_blue');
 	$('#msg').removeClass('color_red');
@@ -388,8 +409,10 @@ $('#mememail, #memnick').focusin(function() {
 	$('#msg_nick').removeClass('color_blue');
 	$('#msg_nick').removeClass('color_red');
 	$('#memnick').val('');
+	$('#msg_phone').addClass('display_none');
+	$('#msg_phone').removeClass('color_blue');
+	$('#msg_phone').removeClass('color_red');
 });
-
 	
 </script>
 

@@ -25,4 +25,9 @@ public class JoinEmailNickCheck {
 		return joinservice.memberNickCheck(memNick);
 	}
 
+	// 멤버 핸드폰 번호 중복ajax
+	@PostMapping("/member/phoneCheck")
+	public int phoneCheck(@RequestParam("memphone") String memphone) throws Exception {
+		return joinservice.memberPhoneCheck(memphone);
+	}
 }
