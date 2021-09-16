@@ -120,7 +120,10 @@
                         </tr>
                         <tr>
                             <th><span>바디프로필 업로드</span></th>
-                            <td><input type="file" id="userphoto" value="업로드">
+                            <td>
+                                <form action="">
+                                <input type="file" id="userphoto" value="바디프로필" name="">
+                                </form>
                             </td>
                         </tr>
                         </tbody>
@@ -130,7 +133,7 @@
                 <input class="btn_update" type="submit" value="수정">
                 </div>
                 <div class="btn_wrap2">
-                    <a href="<c:url value="/mypage/carrymypage"/>">취소</a>
+                    <a href="javascript:window.history.back();">취소</a>
                 </div>
             </form>
         </div>
