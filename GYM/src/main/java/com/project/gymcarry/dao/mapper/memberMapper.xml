@@ -45,11 +45,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from member where memnick = #{memnick}
 	</select>
 
-	<!-- 멤버 회원가입시 닉네임 중복 검사 -->
-	<select id="memberNickCheck" parameterType="String"
-		resultType="int">
-		select count(*) from member where memnick = #{memnick}
-	</select>
 
 	<!-- 캐리 회원가입시 이메일 중복 검사 -->
 	<select id="carryemailCheck" parameterType="String"
@@ -63,11 +58,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from carry where crnick = #{crnick}
 	</select>
 
-	<!-- 캐리 회원가입시 닉네임 중복 검사 -->
-	<select id="carryNickCheck" parameterType="String"
-		resultType="int">
-		select count(*) from carry where crnick = #{crnick}
-	</select>
 
 	<!-- 멤버로그인 -->
 	<!-- 로그인값은 멤버 캐리 상관없이 SessionDto로 받아오기 -->
