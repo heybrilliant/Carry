@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <title>GYM CARRY : 캐리 정보 수정</title>
 
@@ -43,9 +43,9 @@
                             <th><span>소속플레이스</span></th>
                             <td>
                                 <div class="place">
-                                  <%--  <button type="submit">
-                                        <a href="#"><img src="<c:url value="/images/icon/search_icon.png"/>" alt="img"></a>
-                                    </button>--%>
+                                    <%--  <button type="submit">
+                                          <a href="#"><img src="<c:url value="/images/icon/search_icon.png"/>" alt="img"></a>
+                                      </button>--%>
                                     <input type="text" placeholder="" name="crplace">
                                 </div>
                             </td>
@@ -56,78 +56,49 @@
                                 <td>
                                     <div class="selectbox">
                                         <input type="radio" value="헬스" id="health" name="crfield">
-                                        <label
-                                                for="health">헬스
-                                        </label>
-                                        <input type="radio" name="crfield"
-                                               value="필라테스" id="pilates">
-                                        <label
-                                                for="pilates">필라테스
-                                        </label>
+                                        <label for="health">헬스 </label>
+
+                                        <input type="radio" name="crfield" value="필라테스" id="pilates">
+                                        <label for="pilates">필라테스 </label>
+
                                         <input type="radio" name="crfield" value="요가" id="yoga">
-                                        <label
-                                                for="yoga">요가
-                                        </label>
+                                        <label for="yoga">요가 </label>
                                     </div>
                                 </td>
                             </div>
 
                         </tr>
 
-                        <%--<tr>
-                            <th><span>전문 분야<br>
-											<p>(중복선택 가능)</p>
-									</span></th>
+                        <tr>
+                            <th><span>전문 분야</span></th>
                             <td>
                                 <div class="selectbox">
-                                    <input type="checkbox" value="다이어트" id="diet">
-                                    <label
-                                            for="diet"> 다이어트
-                                    </label>
-                                    <input type="checkbox"
-                                           value="근력강화" id="diet">
-                                    <label for="dump">
-                                        근력강화 </label>
-                                    <input type="checkbox" value="체중증가" id="diet">
-                                    <label
-                                            for="diet"> 체중증가
-                                    </label>
-                                    <input type="checkbox"
-                                           value="체형교정" id="diet">
-                                    <label for="diet">
-                                        체형교정
-                                    </label>
-                                    <input type="checkbox" value="재활/통증케어" id="diet">
-                                    <label
-                                            for="diet"> 재활/통증케어
-                                    </label>
-                                    <input type="checkbox"
-                                           value="바디프로필" id="diet">
-                                    <label for="diet">
-                                        바디프로필
-                                    </label>
-                                    <input type="checkbox" value="대회준비" id="diet">
-                                    <label
-                                            for="diet"> 대회준비
-                                    </label>
-                                    <input type="checkbox" value="기타"
-                                           id="diet">
-                                    <label for="diet"> 기타
-                                    </label>
+                                    <input type="radio" value="다이어트" id="diet">
+                                    <label for="diet"> 다이어트 </label>
 
-                                    <!-- <input type="checkbox" value="다이어트">
-                                다이어트 <input type="checkbox" value="근력 강화"> 근력
-                                강화
-                                <input type="checkbox" value="체중 증가"> 체중 증가 <input type="checkbox"
-                                    value="체형 교정">
-                                체형 교정
-                                <input type="checkbox" value="재활/통증 케어">
-                                재활/통증 케어 <input type="checkbox" value="바디프로필">
-                                바디프로필 <input type="checkbox" value="대회 준비">
-                                대회 준비 <input type="checkbox" value="기타"> 기타 -->
+                                    <input type="radio" value="근력강화" id="dump">
+                                    <label for="dump">근력강화 </label>
+
+                                    <input type="radio" value="체중증가" id="weight_gain">
+                                    <label for="weight_gain"> 체중증가 </label>
+
+                                    <input type="radio" value="체형교정" id="bodyfix">
+                                    <label for="bodyfix"> 체형교정 </label>
+
+                                    <input type="radio" value="재활/통증케어" id="rehabilitation">
+                                    <label for="rehabilitation"> 재활/통증케어 </label>
+
+                                    <input type="radio" value="바디프로필" id="body_profile">
+                                    <label for="body_profile"> 바디프로필 </label>
+
+                                    <input type="radio" value="대회준비" id="competition">
+                                    <label for="competition"> 대회준비 </label>
+
+                                    <input type="radio" value="기타" id="etc">
+                                    <label for="etc"> 기타 </label>
                                 </div>
                             </td>
-                        </tr>--%>
+                        </tr>
 
                         <tr>
 
@@ -169,11 +140,9 @@
         </div>
 
 
-
-
-        </div>
     </div>
-    <!-- form_txtInput E -->
+</div>
+<!-- form_txtInput E -->
 </body>
 <!-- content E-->
 
