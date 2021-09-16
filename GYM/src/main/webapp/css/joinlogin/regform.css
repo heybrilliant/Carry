@@ -62,7 +62,6 @@ h1 {
 .profile_form>.profileimg{
 	margin: auto;
 	border-radius:50%;
-	object-fit: cover;
 	overflow:hidden;
 	width: 150px;
     height: 150px;
@@ -89,7 +88,6 @@ input[type=file]{
     width: 150px;
     height: 150px;
     margin-bottom: 10px;
-    object-fit: cover;
 }
 
 ul, li { list-style:none;}
