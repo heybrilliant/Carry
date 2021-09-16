@@ -48,7 +48,7 @@ public class CarryMyPageController {
 			HttpSession session) throws Exception {
 
 		service.updateCarryModify(carryDto);
-		service.updateCarryMoney(proprice1, proprice2, proprice3, proprice4);
+		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4);
 		System.out.println(carryDto.getCridx());
 		return "/mypage/carrymypage";
 	}

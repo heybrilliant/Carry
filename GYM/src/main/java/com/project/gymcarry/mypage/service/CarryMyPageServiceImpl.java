@@ -21,8 +21,9 @@ public class CarryMyPageServiceImpl implements CarryMyPageService{
     }
 
     @Override
-    public int updateCarryMoney(int proprice1, int proprice2, int proprice3, int proprice4) {
+    public int updateCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4) {
         dao = template.getMapper(CarryMyPageDao.class);
-        return dao.udpateCarryPrice(proprice1,proprice2,proprice3,proprice4);
+        return dao.updateCarryPrice(proprice1,proprice2,proprice3,proprice4);
     }
+
 }

@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 캐리 정보 수정  -->
 	<update id="updateCarryModify"
-		parameterType="com.project.gymcarry.mypage.MypageMemberDto">
+		parameterType="com.project.gymcarry.mypage.CarryMyPageDto">
 		update carry a , crcertification c
 		set
 		a.crphoto = #{crphoto}, a.crintro = #{crintro}, a.crfield = #{crfield}, a.crdepart = #{crdepart}, a.crplace = #{crplace}, a.crbfphoto = #{crbfphoto},
