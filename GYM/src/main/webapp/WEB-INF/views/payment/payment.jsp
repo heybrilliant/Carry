@@ -80,15 +80,12 @@
 					</div>
 				</div>
 				
-				
 				<div class="btn_wrap">
 					<input type="button" value="결제하기" onclick="requestPay();" class="pay_btn">
 					<input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
 				</div>
 				</form>
-				
 		</div>
-		
 
 	</div>
 
