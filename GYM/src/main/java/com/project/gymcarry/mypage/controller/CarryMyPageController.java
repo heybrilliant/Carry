@@ -4,6 +4,8 @@ import javax.servlet.http.HttpSession;
 
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.dao.CarryMyPageDao;
+import com.project.gymcarry.mypage.CarryMyPageDto;
+import com.project.gymcarry.mypage.CarryMyPageDto2;
 import com.project.gymcarry.mypage.service.CarryMyPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,10 +44,11 @@ public class CarryMyPageController {
 	}
 
 	@PostMapping("/mypage/update")
-	public String updateCarryModify(CarryDto carryDto, @RequestParam("proprice1") int proprice1
+	public String updateCarryModify(CarryMyPageDto2 carryDto, @RequestParam("proprice1") int proprice1
 			, @RequestParam("proprice2") int proprice2, @RequestParam("proprice3") int proprice3,
 									@RequestParam("proprice4") int proprice4,
-			HttpSession session) throws Exception {
+									@RequestParam("cridx") int cridx,
+									HttpSession session) throws Exception {
 
 		service.updateCarryModify(carryDto);
 		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4);

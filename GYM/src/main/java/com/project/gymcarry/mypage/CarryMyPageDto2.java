@@ -1,12 +1,10 @@
 package com.project.gymcarry.mypage;
 
-public class CarryMyPageDto {
-    private String crphoto;
+public class CarryMyPageDto2 {
+
     private String crintro;
     private String crfield;
-    private String crdepart;
     private String crplace;
-    private String crbfphoto;
     private String crcerti1;
     private String crcerti2;
     private String crcerti3;
@@ -14,16 +12,16 @@ public class CarryMyPageDto {
     private String crcerti5;
     private int cridx;
 
-    public CarryMyPageDto() {
+    public CarryMyPageDto2() {
     }
 
-    public CarryMyPageDto(String crphoto, String crintro, String crfield, String crdepart, String crplace, String crbfphoto, String crcerti1, String crcerti2, String crcerti3, String crcerti4, String crcerti5, int cridx) {
-        this.crphoto = crphoto;
+    public CarryMyPageDto2( String crintro, String crfield, String crplace,  String crcerti1, String crcerti2, String crcerti3, String crcerti4, String crcerti5, int cridx) {
+
         this.crintro = crintro;
         this.crfield = crfield;
-        this.crdepart = crdepart;
+
         this.crplace = crplace;
-        this.crbfphoto = crbfphoto;
+
         this.crcerti1 = crcerti1;
         this.crcerti2 = crcerti2;
         this.crcerti3 = crcerti3;
@@ -32,13 +30,7 @@ public class CarryMyPageDto {
         this.cridx = cridx;
     }
 
-    public String getCrphoto() {
-        return crphoto;
-    }
 
-    public void setCrphoto(String crphoto) {
-        this.crphoto = crphoto;
-    }
 
     public String getCrintro() {
         return crintro;
@@ -56,13 +48,7 @@ public class CarryMyPageDto {
         this.crfield = crfield;
     }
 
-    public String getCrdepart() {
-        return crdepart;
-    }
 
-    public void setCrdepart(String crdepart) {
-        this.crdepart = crdepart;
-    }
 
     public String getCrplace() {
         return crplace;
@@ -72,13 +58,7 @@ public class CarryMyPageDto {
         this.crplace = crplace;
     }
 
-    public String getCrbfphoto() {
-        return crbfphoto;
-    }
 
-    public void setCrbfphoto(String crbfphoto) {
-        this.crbfphoto = crbfphoto;
-    }
 
     public String getCrcerti1() {
         return crcerti1;
@@ -128,21 +108,5 @@ public class CarryMyPageDto {
         this.cridx = cridx;
     }
 
-    @Override
-    public String toString() {
-        return "CarryMyPageDto{" +
-                "crphoto='" + crphoto + '\'' +
-                ", crintro='" + crintro + '\'' +
-                ", crfield='" + crfield + '\'' +
-                ", crdepart='" + crdepart + '\'' +
-                ", crplace='" + crplace + '\'' +
-                ", crbfphoto='" + crbfphoto + '\'' +
-                ", crcerti1='" + crcerti1 + '\'' +
-                ", crcerti2='" + crcerti2 + '\'' +
-                ", crcerti3='" + crcerti3 + '\'' +
-                ", crcerti4='" + crcerti4 + '\'' +
-                ", crcerti5='" + crcerti5 + '\'' +
-                ", cridx=" + cridx +
-                '}';
-    }
+
 }

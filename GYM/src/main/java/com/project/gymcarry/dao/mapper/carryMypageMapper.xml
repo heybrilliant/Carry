@@ -3,17 +3,23 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.project.gymcarry.dao.MypageDao">
+<mapper namespace="com.project.gymcarry.dao.CarryMyPageDao">
 
 	<!-- 캐리 정보 수정  -->
 	<update id="updateCarryModify"
-		parameterType="com.project.gymcarry.mypage.CarryMyPageDto">
-		update carry a , crcertification c
+		parameterType="com.project.gymcarry.mypage.CarryMyPageDto2">
+	/*	update carry a , crcertification c
 		set
 		a.crphoto = #{crphoto}, a.crintro = #{crintro}, a.crfield = #{crfield}, a.crdepart = #{crdepart}, a.crplace = #{crplace}, a.crbfphoto = #{crbfphoto},
 		c.crcerti1 = #{crcerti1}, c.crcerti2 = #{crcerti2}, c.crcerti3 = #{crcerti3}, c.crcerti4 = #{crcerti4}, c.crcerti5 = #{crcerti5}
 		where
-		cridx = #{cridx}
+		cridx = #{cridx}*/
+	update carry a , crcertification c
+set
+a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace},
+c.crcerti1 = #{crcerti1}, c.crcerti2 = #{crcerti2}, c.crcerti3 = #{crcerti3}, c.crcerti4 = #{crcerti4}, c.crcerti5 = #{crcerti5}
+where
+cridx = #{cridx}
 	</update>
 
 	<update id="updateCarryPrice"

@@ -25,6 +25,7 @@
                 <!--캐리 프로필 영역-->
                 <h1 class="sub_tit_txt">캐리 정보 수정</h1>
                 <div class="edit_form">
+                    <input type="hidden" name="cridx" value="${cridx}">
                <%--     <div class="profile_form">
                         <img src="<c:url value="/images/icon/profile2.png"/>" alt="img">
                         <a href="<input type=" onclick="" name="carryphoto">프로필 사진 등록</a>
