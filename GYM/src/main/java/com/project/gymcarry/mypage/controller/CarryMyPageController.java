@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.gymcarry.member.SessionDto;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/mypage/carrymypage")
 public class CarryMyPageController {
 
 	@Autowired
 	private CarryMyPageService service;
 
-	@GetMapping
+	@GetMapping("/mypage/carrymypage")
 	public String carryMyPage(HttpSession session,Model model) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
@@ -35,20 +35,21 @@ public class CarryMyPageController {
 	}
 
 	// 캐리 정보 수정
-	@GetMapping("/carrymodify")
+	@GetMapping("/mypage/carrymodify")
 	public String updateCarryModifyView() throws Exception{
 
 		return "/mypage/carrymypage/modifycarryinfo";
 	}
 
-	@PostMapping("/carrymodify")
-	public String updateCarryModify(CarryDto carryDto, HttpSession session) throws Exception {
-
-		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-		System.out.println("세션 변수" + sdt.getMemidx());
+	@PostMapping("/mypage/update")
+	public String updateCarryModify(CarryDto carryDto, @RequestParam("proprice1") int proprice1
+			, @RequestParam("proprice2") int proprice2, @RequestParam("proprice3") int proprice3,
+									@RequestParam("proprice4") int proprice4,
+			HttpSession session) throws Exception {
 
 		service.updateCarryModify(carryDto);
-
+		service.updateCarryMoney(proprice1, proprice2, proprice3, proprice4);
+		System.out.println(carryDto.getCridx());
 		return "/mypage/carrymypage";
 	}
 

@@ -7,7 +7,6 @@ public class CarryMyPageDto {
     private String crdepart;
     private String crplace;
     private String crbfphoto;
-    private int proprice;
     private String crcerti1;
     private String crcerti2;
     private String crcerti3;
@@ -17,14 +16,13 @@ public class CarryMyPageDto {
     public CarryMyPageDto() {
     }
 
-    public CarryMyPageDto(String crphoto, String crintro, String crfield, String crdepart, String crplace, String crbfphoto, int proprice, String crcerti1, String crcerti2, String crcerti3, String crcerti4, String crcerti5) {
+    public CarryMyPageDto(String crphoto, String crintro, String crfield, String crdepart, String crplace, String crbfphoto, String crcerti1, String crcerti2, String crcerti3, String crcerti4, String crcerti5) {
         this.crphoto = crphoto;
         this.crintro = crintro;
         this.crfield = crfield;
         this.crdepart = crdepart;
         this.crplace = crplace;
         this.crbfphoto = crbfphoto;
-        this.proprice = proprice;
         this.crcerti1 = crcerti1;
         this.crcerti2 = crcerti2;
         this.crcerti3 = crcerti3;
@@ -80,14 +78,6 @@ public class CarryMyPageDto {
         this.crbfphoto = crbfphoto;
     }
 
-    public int getProprice() {
-        return proprice;
-    }
-
-    public void setProprice(int proprice) {
-        this.proprice = proprice;
-    }
-
     public String getCrcerti1() {
         return crcerti1;
     }
@@ -137,7 +127,6 @@ public class CarryMyPageDto {
                 ", crdepart='" + crdepart + '\'' +
                 ", crplace='" + crplace + '\'' +
                 ", crbfphoto='" + crbfphoto + '\'' +
-                ", proprice=" + proprice +
                 ", crcerti1='" + crcerti1 + '\'' +
                 ", crcerti2='" + crcerti2 + '\'' +
                 ", crcerti3='" + crcerti3 + '\'' +

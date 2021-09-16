@@ -20,14 +20,15 @@
 <div class="wrap">
     <div class="container">
         <div class="form_txtInput">
-            <form action="<c:url value=""/>" method="post">
+
+            <form action="<c:url value="/mypage/update"/>" method="post">
                 <!--캐리 프로필 영역-->
                 <h1 class="sub_tit_txt">캐리 정보 수정</h1>
                 <div class="edit_form">
-                    <div class="profile_form">
+               <%--     <div class="profile_form">
                         <img src="<c:url value="/images/icon/profile2.png"/>" alt="img">
                         <a href="<input type=" onclick="" name="carryphoto">프로필 사진 등록</a>
-                    </div>
+                    </div>--%>
 
                     <table>
                         <colgroup>
@@ -39,7 +40,7 @@
                             <th><span>캐리 소개</span></th>
                             <td>
                                 <form>
-                                    <input id="introduce" type="text">
+                                    <input id="introduce" type="text" name="crintro">
                                 </form>
                             </td>
                         </tr>
@@ -47,10 +48,10 @@
                             <th><span>소속플레이스</span></th>
                             <td>
                                 <div class="place">
-                                    <button type="submit">
+                                  <%--  <button type="submit">
                                         <a href="#"><img src="<c:url value="/images/icon/search_icon.png"/>" alt="img"></a>
-                                    </button>
-                                    <input type="text" placeholder="">
+                                    </button>--%>
+                                    <input type="text" placeholder="" name="crplace">
                                 </div>
                             </td>
                         </tr>
@@ -59,16 +60,16 @@
                             <div class="selectbox">
                                 <td>
                                     <div class="selectbox">
-                                        <input type="radio" name="subject" value="헬스" id="health">
+                                        <input type="radio" value="헬스" id="health" name="crfield">
                                         <label
                                                 for="health">헬스
                                         </label>
-                                        <input type="radio" name="subject"
+                                        <input type="radio" name="crfield"
                                                value="필라테스" id="pilates">
                                         <label
                                                 for="pilates">필라테스
                                         </label>
-                                        <input type="radio" name="subject" value="요가" id="yoga">
+                                        <input type="radio" name="crfield" value="요가" id="yoga">
                                         <label
                                                 for="yoga">요가
                                         </label>
@@ -78,7 +79,7 @@
 
                         </tr>
 
-                        <tr>
+                        <%--<tr>
                             <th><span>전문 분야<br>
 											<p>(중복선택 가능)</p>
 									</span></th>
@@ -131,16 +132,19 @@
                                 대회 준비 <input type="checkbox" value="기타"> 기타 -->
                                 </div>
                             </td>
-                        </tr>
+                        </tr>--%>
 
                         <tr>
+
                             <th><span>PT 이용금액 </span></th>
-                            <td><input type="text" placeholder="1회 금액 (숫자만 입력해주세요)">
-                                <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)">
+                            <td>
+
+                                <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
+                                <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)" name="proprice2">
                                 <input
-                                        type="text" placeholder="10회 금액 (숫자만 입력해주세요)">
+                                        type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3">
                                 <input
-                                        type="text" placeholder="20회 금액 (숫자만 입력해주세요)"></td>
+                                        type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4"></td>
 
                         </tr>
 
@@ -148,16 +152,16 @@
                             <th><span>자격 및 경력<br>
 											<p>(최대 5개까지 입력 가능합니다)</p>
 									</span></th>
-                            <td><input type="text" placeholder="자격 및 경력1">
+                            <td><input type="text" placeholder="자격 및 경력1" name="crcerti1">
                                 <input
-                                        type="text" placeholder="자격 및 경력2">
+                                        type="text" placeholder="자격 및 경력2" name="crcerti2">
                                 <input type="text"
-                                       placeholder="자격 및 경력3">
+                                       placeholder="자격 및 경력3" name="crcerti3">
                                 <input
                                         type="text"
-                                        placeholder="자격 및 경력4">
+                                        placeholder="자격 및 경력4" name="crcerti4">
                                 <input type="text"
-                                       placeholder="자격 및 경력5"></td>
+                                       placeholder="자격 및 경력5" name="crcerti5"></td>
                         </tr>
                         <tr>
                             <th><span>바디프로필 업로드</span></th>
@@ -168,13 +172,9 @@
                     </table>
                 </div>
         </div>
-        <div id="btnbox">
-            <div class="btn_wrap">
-                <a href="javascript:;">수정</a>
-            </div>
-            <div class="btn_wrap2">
-                <a href="javascript:;">취소</a>
-            </div>
+
+                <input type="submit" value="수정">
+
             </form>
         </div>
     </div>
