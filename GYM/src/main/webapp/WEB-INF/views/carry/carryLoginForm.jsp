@@ -77,6 +77,6 @@
 	</div>
 	<!-- content E-->
 
-	<%@ include file="/WEB-INF/views/frame/                     footer.jsp"%>
+	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>
 </html>
