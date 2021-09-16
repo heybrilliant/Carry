@@ -7,7 +7,10 @@
 
 	<!-- 댓글조회 -->
 	<select id="selectCommList" resultType="com.project.gymcarry.board.comment.CommentDto">
-		select * from boardcomment where postidx = #{postidx} ORDER BY commentidx DESC;
+		select *, (select memphoto from member m where m.memnick = boardcomment.COMMENTNICK) as memphoto 
+		from boardcomment
+		where postidx = #{postidx} 
+		ORDER BY commentidx DESC;
 	</select>
 	
 	<!-- 댓글 작성 -->
