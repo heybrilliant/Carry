@@ -32,10 +32,10 @@
 
 				<div class="join_form">
 					<div class="profile_form">
-						<div class="profileimg">
+						<div class="profileimg" id="image_container">
 							<img src="/gym/images/icon/profile2.png"><br>
 						</div>
-						<input type="button" value="업로드" class="profilebtn" name="crphoto"
+						<input type="button" value="사진업로드" class="profilebtn" name="crphoto"
 							onclick=document.all.file.click();> <input type="file"
 							name="crphoto" id="file" class="profilebtn"
 							style="display: none;" />
@@ -130,7 +130,22 @@
 </body>
 
 <script>
-
+	
+	//등록 이미지 등록 미리보기
+	function readInputFile(input) {
+	    if(input.files && input.files[0]) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+	            $('#image_container').html("<img src="+ e.target.result +">");
+	        }
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
+	 
+	$(".profilebtn").on('change', function(){
+	    readInputFile(this);
+	});
+	
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
 
