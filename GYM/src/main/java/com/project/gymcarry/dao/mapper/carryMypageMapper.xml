@@ -28,8 +28,22 @@
                     when procount = 20 then #{param4}
                     end
         where cridx = #{param5};
-
-
     </update>
-
+    
+    
+    <!-- 캐리 기본 정보 수정에 필요한 데이터 값 출력 -->
+   <select id="selectCarryBasicInfo" resultType="com.project.gymcarry.carry.CarryDto">
+      select * from carry where cridx = #{cridx}
+   </select>
+   
+   <!-- 캐리 기본 정보 수정 -->
+   <update id="updateCarryBasicInfo"
+      parameterType="com.project.gymcarry.carry.CarryJoinDto"
+   >
+      update carry
+      set 
+      crpw = #{crpw}, crnick = #{crnick}, crphone = #{crphone}, crgender = #{crgender}, crphoto = #{crphoto}
+      where cridx = #{cridx}
+   </update>
+    
 </mapper>

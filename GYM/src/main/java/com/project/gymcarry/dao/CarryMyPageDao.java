@@ -1,14 +1,8 @@
 package com.project.gymcarry.dao;
 
-import com.project.gymcarry.board.BoardDto;
-import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.carry.CarryDto;
-import com.project.gymcarry.carry.CarryListDto;
-import com.project.gymcarry.mypage.*;
-
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
+import com.project.gymcarry.carry.CarryJoinDto;
+import com.project.gymcarry.mypage.CarryMyPageDto;
 
 public interface CarryMyPageDao {
 
@@ -17,4 +11,12 @@ public interface CarryMyPageDao {
 
 	// 캐리 가격 수정
     int updateCarryPrice(int proprice1,int proprice2,int proprice3,int proprice4,int cridx);
+    
+    // 캐리 기본 정보 수정에 필요한 값 출력
+    CarryDto selectCarryBasicInfo(int cridx) throws Exception;
+    
+    // 캐리 기본 정보 수정 완료
+    Integer updateCarryBasicInfo(CarryJoinDto carryJoinDto) throws Exception;
+    
+    
 }
