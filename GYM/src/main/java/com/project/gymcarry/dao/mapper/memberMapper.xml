@@ -178,6 +178,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{mememail},#{memnick}, 1)
 	</insert>
 	
+	<select id="selectKakaoLoginCheck" parameterType="String"
+		resultType="com.project.gymcarry.member.SessionDto">
+		select * from member where memnick = #{param}
+	</select>
 	
 
 

@@ -114,16 +114,15 @@ public class LoginController {
 	
 	@PostMapping("/member/kakaologin")
 	@ResponseBody
-	public int memberKakaoLogin(MemberDto memberDto) {
-		System.out.println(memberDto);
-		
-		
-		
+	public int memberKakaoLogin(MemberDto memberDto, HttpSession session) {
+		SessionDto sessionDto = loginService.memberLoginCheck(memberDto.getMemnick());
+		String chatNick = sessionDto.getMemnick();
 		int result = 0;
-		if(result == 0) {
+		if(sessionDto.getMemnick() == null) {
 			result = loginService.insertKaKaoJoin(memberDto);
-		}
-		
+		} 
+		session.setAttribute("loginSession", sessionDto);
+		session.setAttribute("chatSession", chatNick);
 		return result;
 	}
 	

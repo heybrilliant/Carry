@@ -59,4 +59,10 @@ public class LoginService {
 		dao = template.getMapper(MemberDao.class);
 		return dao.insertKaKaoJoin(memberDto);
 	}
+	
+	// 카카오 로그인 체크용
+	public SessionDto memberLoginCheck(String memnick) {
+		dao = template.getMapper(MemberDao.class);
+		return dao.selectKakaoLoginCheck(memnick);
+	}
 }
