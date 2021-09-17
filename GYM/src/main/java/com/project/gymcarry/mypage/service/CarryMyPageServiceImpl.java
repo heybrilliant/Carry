@@ -67,10 +67,7 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
             carryJoinDto.setCrphoto(newFileName);
             System.out.println("파일 정상적으로 들어옴");
         } else {
-            System.out.println("파일 비정상");
-            carryJoinDto.setCrphoto(carryToJoinDto.getCrphoto().getOriginalFilename());
-            System.out.println("test12" + carryToJoinDto.getCrphoto());
-            System.out.println("test" + carryToJoinDto.getCrphoto().getOriginalFilename());
+            carryJoinDto.setCrphoto(request.getParameter("oldcrphoto"));
         }
         System.out.println("서비스에서 출력하는 tostring = " + carryJoinDto.toString());
 

@@ -90,6 +90,7 @@
 						</tr>
 						</tbody>
 						<input type="hidden" name="cridx" id="cridx" value="${carry.cridx}">
+						<input type="hidden" name="oldcrphoto" value="${carry.crphoto}">
 					</table>
 				</div>
 				<!-- edit_form E  -->
