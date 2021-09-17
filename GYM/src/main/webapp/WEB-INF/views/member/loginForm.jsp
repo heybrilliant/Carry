@@ -121,6 +121,8 @@
 									window.location.href = "<c:url value='/index'/>";
 								} else if(data == 1){
 									
+								} else if(data == 2){
+									
 								}
 							}
 						});

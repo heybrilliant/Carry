@@ -118,9 +118,11 @@ public class LoginController {
 		SessionDto sessionDto = loginService.memberLoginCheck(memberDto.getMemnick());
 		String chatNick = sessionDto.getMemnick();
 		int result = 0;
-		if(sessionDto.getMemnick() == null) {
+		if(!sessionDto.getMemnick().equals(memberDto.getMemnick())) {
 			result = loginService.insertKaKaoJoin(memberDto);
-		} 
+		} else {
+			result = 2;
+		}
 		session.setAttribute("loginSession", sessionDto);
 		session.setAttribute("chatSession", chatNick);
 		return result;
