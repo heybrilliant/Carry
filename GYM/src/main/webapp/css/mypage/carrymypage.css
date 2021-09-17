@@ -35,6 +35,7 @@
 } */
 
 .container>.main>.nameline {
+	display: flex;
 	list-style-type: none;
 	text-align: center;
 	margin: 0;
