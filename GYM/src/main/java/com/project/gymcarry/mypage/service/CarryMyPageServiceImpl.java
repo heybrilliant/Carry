@@ -5,14 +5,12 @@ import java.io.File;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.project.gymcarry.carry.*;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.project.gymcarry.carry.CarryDto;
-import com.project.gymcarry.carry.CarryJoinDto;
-import com.project.gymcarry.carry.CarryToJoinDto;
 import com.project.gymcarry.dao.CarryMyPageDao;
 
 @Service
@@ -26,12 +24,37 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
 
     // 캐리 정보 수정
     @Override
-    public int updateCarryModify(CarryDto carryMyPageDto) throws Exception {
+    public int updateCarryModify(CarryToInfoDto carryToInfoDto, HttpServletResponse response, HttpServletRequest request) throws Exception {
         dao = template.getMapper(CarryMyPageDao.class);
-        return dao.updateCarryModify(carryMyPageDto);
+
+        File newFile = null;
+        CarryInfoDto carryInfoDto = carryToInfoDto.getCarryInfoDto();
+        if (carryToInfoDto.getCrbfphoto() != null && !carryToInfoDto.getCrbfphoto().isEmpty()) {
+
+            // 파일객체에 경로 지정!
+            File newDir = new File(request.getSession().getServletContext().getRealPath("/uploadfile"));
+            if (!newDir.exists()) {
+                newDir.mkdir();
+            }
+            // db에 저장할 파일이름 !!!!!!!!
+            String newFileName = carryToInfoDto.getCridx() + System.currentTimeMillis() + "."
+                    + chkFileType(carryToInfoDto.getCrbfphoto());
+            // 파일객체에 경로와 중복제거한 이름 저장(newDir:경로 , newFileName:저장파일이름)!!!!
+            newFile = new File(newDir, newFileName);
+            // 파일 joinDto 저장
+            carryToInfoDto.getCrbfphoto().transferTo(newFile);
+            // 파일 이름을 memberDto 저장!
+            carryInfoDto.setCrbfphoto(newFileName);
+            System.out.println("파일 정상적으로 들어옴");
+        } else {
+            carryInfoDto.setCrbfphoto(request.getParameter("oldcrphoto"));
+        }
+        System.out.println("서비스에서 출력하는 tostring = " + carryInfoDto.toString());
+
+        return dao.updateCarryModify(carryInfoDto);
     }
 
-    // 캐리 정보 가격 수정 
+    // 캐리 정보 가격 수정
     @Override
     public int updateCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx) {
         dao = template.getMapper(CarryMyPageDao.class);
@@ -94,7 +117,7 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
         extension = nameTokens[nameTokens.length - 1].toLowerCase();
         // 이미지 파일 이외의 파일 업로드 금지
         // 파일 확장자 체크
-        if (!(extension.equals("jpg") || extension.equals("png") || extension.equals("gif"))) {
+        if (!(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif"))) {
             throw new Exception("허용하지 않는 파일 확장자 타입 : " + contentType);
         }
         return extension;

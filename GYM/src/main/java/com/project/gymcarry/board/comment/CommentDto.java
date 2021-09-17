@@ -10,7 +10,7 @@ public class CommentDto {
     private int postidx;
     private String commentnick;
     private String commentcontent;
-    private Date commentdate;
+    private String commentdate;
     private String memphoto;
     
     
@@ -18,10 +18,7 @@ public class CommentDto {
 
 	}
 
-
-	public CommentDto(int commentidx, int postidx, String commentnick, String commentcontent, Date commentdate,
-			String memphoto) {
-		super();
+	public CommentDto(int commentidx, int postidx, String commentnick, String commentcontent, String commentdate, String memphoto) {
 		this.commentidx = commentidx;
 		this.postidx = postidx;
 		this.commentnick = commentnick;
@@ -29,78 +26,64 @@ public class CommentDto {
 		this.commentdate = commentdate;
 		this.memphoto = memphoto;
 	}
-
 
 	public int getCommentidx() {
 		return commentidx;
 	}
 
-
 	public void setCommentidx(int commentidx) {
 		this.commentidx = commentidx;
 	}
-
 
 	public int getPostidx() {
 		return postidx;
 	}
 
-
 	public void setPostidx(int postidx) {
 		this.postidx = postidx;
 	}
-
 
 	public String getCommentnick() {
 		return commentnick;
 	}
 
-
 	public void setCommentnick(String commentnick) {
 		this.commentnick = commentnick;
 	}
-
 
 	public String getCommentcontent() {
 		return commentcontent;
 	}
 
-
 	public void setCommentcontent(String commentcontent) {
 		this.commentcontent = commentcontent;
 	}
 
-
-	public Date getCommentdate() {
+	public String getCommentdate() {
 		return commentdate;
 	}
 
-
-	public void setCommentdate(Date commentdate) {
+	public void setCommentdate(String commentdate) {
 		this.commentdate = commentdate;
 	}
-
 
 	public String getMemphoto() {
 		return memphoto;
 	}
 
-
 	public void setMemphoto(String memphoto) {
 		this.memphoto = memphoto;
 	}
 
-
 	@Override
 	public String toString() {
-		return "CommentDto [commentidx=" + commentidx + ", postidx=" + postidx + ", commentnick=" + commentnick
-				+ ", commentcontent=" + commentcontent + ", commentdate=" + commentdate + ", memphoto=" + memphoto
-				+ "]";
+		return "CommentDto{" +
+				"commentidx=" + commentidx +
+				", postidx=" + postidx +
+				", commentnick='" + commentnick + '\'' +
+				", commentcontent='" + commentcontent + '\'' +
+				", commentdate='" + commentdate + '\'' +
+				", memphoto='" + memphoto + '\'' +
+				'}';
 	}
-
-	    
-		
-	
-    
-    
 }
