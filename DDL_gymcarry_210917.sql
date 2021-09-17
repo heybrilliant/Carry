@@ -331,3 +331,16 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2021-09-06 14:54:18
+
+
+CREATE TABLE `carrycalendar` (
+  `crscheidx` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `allday` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `start` date DEFAULT NULL,
+  `end` date DEFAULT NULL,
+  `cridx` int NOT NULL,
+  PRIMARY KEY (`crscheidx`),
+  KEY `FK_CARRY_TO_carrycalendar` (`cridx`),
+  CONSTRAINT `FK_CARRY_TO_carrycalendar` FOREIGN KEY (`cridx`) REFERENCES `carry` (`CRIDX`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
