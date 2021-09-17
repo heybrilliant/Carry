@@ -25,14 +25,16 @@ public class WebSocketHandler extends TextWebSocketHandler {
 	private MatchingChatRoomServiceImpl matchingChatRoomService;
 
 	private static final Logger logger = LoggerFactory.getLogger(WebSocketHandler.class);
-	// 방법 1 : 전체 채팅
 	// 웹 소켓 세션을 저장할 리스트
 	private List<WebSocketSession> list = new ArrayList<>();
 
-	// 방법2 : 1:1 채팅
 	// 사용자와 세션 저장할 맵
 	private Map<String, WebSocketSession> mapList = new HashMap<String, WebSocketSession>();
-
+	// room session 저장 상대방이 방에 나갓는지 있는지 체크
+	private Map<WebSocketSession, String> roomList = new HashMap<WebSocketSession, String>();
+	// 룸번호 저장
+	private Map<Integer, Object> roomIdx = new HashMap<Integer, Object>();
+	
 	// 커넥션이 연결되었을때
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
@@ -44,7 +46,8 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		// 로그인햇으면 닉네임이고 - 로그인이안되있으면 세션아이디
 		// chatNick:닉네임저장 - session:웹소켓세션저장
 		mapList.put(chatNick, session);
-
+		roomList.put(session, chatNick);
+		
 		// 웹소켓 세션을 저장
 		// map, list 둘중 하나만 해도된다.
 		list.add(session);
@@ -69,7 +72,7 @@ public class WebSocketHandler extends TextWebSocketHandler {
 		String chatNick = (String) session.getAttributes().get("chatSession");
 		logger.info("{}로 부터 {}를 전달 받았습니다.", chatNick, message.getPayload());
 
-		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss a");
+		SimpleDateFormat format = new SimpleDateFormat("h:mm a");
 		Date time = new Date();
 		String date = format.format(time);
 
@@ -81,14 +84,15 @@ public class WebSocketHandler extends TextWebSocketHandler {
 			messageDto.setContenttype(++contenttype);
 			messageDto.setChatread(++chatRead);
 		}
-		
+
 		// 뷰딴에 보낼 메세지
 		TextMessage sendMsg = new TextMessage(gson.toJson(messageDto));
-		
+
 		int result = 0;
 		String to = messageDto.getTo();
 		WebSocketSession toSession = mapList.get(to);
-		if (toSession != null) {
+		
+		if (toSession != null && roomList.size() >= 2) {
 			toSession.sendMessage(sendMsg);
 			session.sendMessage(sendMsg);
 			result = matchingChatRoomService.insertChatContent(messageDto);
@@ -96,21 +100,22 @@ public class WebSocketHandler extends TextWebSocketHandler {
 				// 방에 서로 있으면 메세지 보낼때 읽음 처리
 				matchingChatRoomService.getChatRead(messageDto.getChatidx());
 			}
-		} else if(toSession == null) {
+		} else {
 			session.sendMessage(sendMsg);
 			matchingChatRoomService.insertChatContent(messageDto);
 		}
-		
 	}
 
 	// 클로즈 될때.
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		String chatNick = (String) session.getAttributes().get("chatSession");
+		
 		list.remove(session);
 		mapList.remove(session.getId());
+		roomList.remove(session);
 		logger.info("{}연결 끊김", session.getId() + chatNick);
-		System.out.println("채팅방 퇴장한사람 : " + chatNick);
+		System.out.println("채팅방 퇴장한사람 : " + session.getId() + chatNick);
 		
 	}
 

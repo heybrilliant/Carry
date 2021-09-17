@@ -37,6 +37,12 @@ public class MatchingChatRoomServiceImpl implements MatchingChatRoomService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.selectChattingList(chatidx);
 	}
+	
+	// 멤버 대화 리스트
+	public List<ChatRoomDto> getMemberMessage(int chatidx) {
+		dao = template.getMapper(MatchingDao.class);
+		return dao.selectMemberMessageList(chatidx);
+	}
 
 	// 채팅방 생성
 	public int getAddChatRoom(int cridx, int memidx) {
@@ -120,5 +126,6 @@ public class MatchingChatRoomServiceImpl implements MatchingChatRoomService {
 		dao = template.getMapper(MatchingDao.class);
 		return dao.selectRoomCount(chatidx);
 	}
+
 	
 }

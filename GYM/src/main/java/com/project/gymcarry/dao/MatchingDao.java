@@ -12,9 +12,12 @@ import com.project.gymcarry.chatting.MessageDto;
 // matching DAO
 public interface MatchingDao {
 
-	// 채팅 리스트
+	// 캐리 채팅 메세지 리스트
 	List<ChatRoomDto> selectChattingList(int chatidx);
-
+	
+	// 멤버 채팅 메세지 리스트
+	List<ChatRoomDto> selectMemberMessageList(int chatidx);
+	
 	// 유저 채팅방 리스트
 	List<ChatListDto> selectChatList(int memidx);
 
@@ -59,5 +62,7 @@ public interface MatchingDao {
 
 	// 방count 가져옴
 	ChatListDto selectRoomCount(int chatidx);
+
+	
 
 }

@@ -53,7 +53,8 @@
 
 .float_left img {
 	width: 85px;
-	padding: 15px;
+	padding: 12px;
+	border-radius: 50%;
 }
 
 .chatlist button {
@@ -303,7 +304,7 @@
 	position: absolute;
 	bottom: 20px;
 	right: 0;
-	margin-right: -3px;
+	margin-right:20px;
 }
 
 .time_line span {
@@ -377,7 +378,7 @@
 .time_line2 {
 	position: absolute;
 	bottom: 20px;
-	left: -82px;
+	left:-57px;
 }
 
 .user_chat {
