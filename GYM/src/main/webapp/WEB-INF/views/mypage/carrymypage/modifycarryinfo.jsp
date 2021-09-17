@@ -34,7 +34,7 @@
                             <th><span>캐리 소개</span></th>
                             <td>
                                 <form>
-                                    <input id="introduce" type="text" name="crintro">
+                                    <textarea id="introduce" type="text" name="crintro"></textarea>
                                 </form>
                             </td>
                         </tr>
@@ -141,8 +141,8 @@
                                 }
                             });
                         </script>
+
                     </div>
-                </div>
                 <div class="btn_wrap2">
                 <input class="btn_update" type="submit" value="수정">
                 </div>
