@@ -406,7 +406,6 @@ $('#mememail, #memnick, #memphone').focusin(function() {
 	$('#msg_nick').addClass('display_none');
 	$('#msg_nick').removeClass('color_blue');
 	$('#msg_nick').removeClass('color_red');
-	$('#memnick').val('');
 	$('#msg_phone').addClass('display_none');
 	$('#msg_phone').removeClass('color_blue');
 	$('#msg_phone').removeClass('color_red');

@@ -22,7 +22,7 @@
 	<div class="wrap wd668">
 		<div class="container">
 			<form method="post" action="<c:url value="/carry/join"/>"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return joinsubmit();">
 				<%-- <form action="<c:url value="/member/carryJoin"/>" method="post"
 					enctype="multipart/form-data"> --%>
 				<div class="form_txtInput">
