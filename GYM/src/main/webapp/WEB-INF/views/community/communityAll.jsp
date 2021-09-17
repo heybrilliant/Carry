@@ -81,14 +81,11 @@
                                     <c:set var="date" value="${list.postdate}"/>
                                     <c:set var="onlydate" value="${fn:substring(date, 0, 16)}" />
                                         ${onlydate}
-
                                 </li>
                                 <li>
                                     <img class="left_board_icon2"
                                          img src="<c:url value="/images/icon/board.png"/>" alt="img">
-                                    <c:set var="date" value="${list.postdate}"/>
-                                    <c:set var="onlydate" value="${fn:substring(date, 0, 16)}" />
-                                        ${onlydate}
+                                        ${list.postview}
                                 </li>
                             </div>
                             <ul class="board_btn">

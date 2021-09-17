@@ -2,6 +2,9 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/community/postContent.css">
@@ -47,7 +50,9 @@
                 <ul class="profile_right">
                     <li class="profile_left">
                         <img class="left_board_icon" img src="<c:url value="/images/icon/time.png"/>" alt="img">
-                        <div id="write_date"><c:out value="${boardDetail.postdate}"/></div>
+                        <c:set var="date" value="${boardDetail.postdate}"/>
+                        <c:set var="onlydate" value="${fn:substring(date, 0, 16)}" />
+                        <div id="write_date"><c:out value="${onlydate}"/></div>
                     </li>
                     <li class="profile_viewcnt">
                         <img class="left_board_icon2" img src="<c:url value="/images/icon/board.png"/>" alt="img">
