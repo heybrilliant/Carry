@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.board.Pagination;
 import com.project.gymcarry.board.service.BoardService;
@@ -90,41 +89,69 @@ public class MypageSubController {
 
 		if (list2.size() != 0) {
 
-			for (int i = 0; i < list2.size(); i++) {
+			for (int i = 0; i < 4; i++) {
 				if (list2.get(i).getInfotype().equals("food")) {
 					System.out.println(i + "번째 가 푸드다!");
 					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
 					model.addAttribute("list", list2.get(i).getInfocontent());
-				} else {
-					System.out.println("빈값");
 				}
 				if (list2.get(i).getInfotype().equals("memo")) {
 					System.out.println(i + "번째 가 메모다!");
 					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
 					model.addAttribute("list2", list2.get(i).getInfocontent());
-				} else {
-					System.out.println("빈값");
 				}
 				if (list2.get(i).getInfotype().equals("kg")) {
 					System.out.println(i + "번째 가 kg다!");
 					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
 					model.addAttribute("list3", list2.get(i).getInfocontent());
-				} else {
-					System.out.println("빈값");
 				}
 				if (list2.get(i).getInfotype().equals("photo")) {
 					System.out.println(i + "번째 가 사진이다!");
 					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
 					model.addAttribute("list4", list2.get(i).getInfocontent());
-					
-				} else {
-					System.out.println("빈값");
-					
 				}
 			}
 		}
 
 		return "/mypage/mymemo";
+	}
+
+	@PostMapping("/mypage/mypass")
+	public String infopass(HttpSession session, Model model, MypageDto2 mypdto, @RequestParam("memidx") int memidx,
+			@RequestParam("infodate") String infodate) {
+
+		List<MypageDto2> list2 = mypService2.loadMemo2(memidx, infodate);
+		System.out.println(list2);
+		System.out.println(memidx);
+		System.out.println(infodate);
+
+		if (list2.size() != 0) {
+
+			for (int i = 0; i < 4; i++) {
+				if (list2.get(i).getInfotype().equals("food")) {
+					System.out.println(i + "번째 가 푸드다!");
+					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
+					model.addAttribute("list", list2.get(i).getInfocontent());
+				}
+				if (list2.get(i).getInfotype().equals("memo")) {
+					System.out.println(i + "번째 가 메모다!");
+					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
+					model.addAttribute("list2", list2.get(i).getInfocontent());
+				}
+				if (list2.get(i).getInfotype().equals("kg")) {
+					System.out.println(i + "번째 가 kg다!");
+					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
+					model.addAttribute("list3", list2.get(i).getInfocontent());
+				}
+				if (list2.get(i).getInfotype().equals("photo")) {
+					System.out.println(i + "번째 가 사진이다!");
+					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
+					model.addAttribute("list4", list2.get(i).getInfocontent());
+				}
+			}
+		}
+
+		return "jsonView";
 	}
 
 	@PostMapping("/mypage/mycash")

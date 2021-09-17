@@ -46,15 +46,16 @@
 	function loginLog() {
 		printName()
 		$.ajax({
-			url : "/mypage/mymemo",
+			url : '<c:url value="/mypage/mypass"/>',
 			type : "POST",
+			dataType : "json",
 			data : {
 				memidx : $("#memidx").val(),
 				infodate : $("#infodate").val()
 			},
 			success : function(data) {
 				alert("go");
-				
+
 			},
 			error : function() {
 				alert("err");
@@ -68,7 +69,6 @@
 
 </head>
 <body style="padding-right: 0px">
-
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
@@ -203,5 +203,3 @@
 
 		});
 	</script>
-
-	
