@@ -12,7 +12,7 @@
 
 </head>
 <body>
-
+  
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
