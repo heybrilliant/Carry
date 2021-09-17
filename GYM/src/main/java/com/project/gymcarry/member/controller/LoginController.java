@@ -111,7 +111,6 @@ public class LoginController {
 		System.out.println("로그아웃");
 		return "redirect:/index";
 	}
-<<<<<<< Updated upstream
 	
 	@PostMapping("/member/kakaologin")
 	@ResponseBody
@@ -130,9 +129,6 @@ public class LoginController {
 	}
 	
 	
-	
-	
-=======
 
 	/*
 	 * @PostMapping("/member/kakaologin")
@@ -148,12 +144,6 @@ public class LoginController {
 	 * return result; }
 	 */
 	
-	@GetMapping("member/snsjoin")
-	public String snsjoin(){
-		return "member/SNSjoinForm";
-	}
 	
-	
->>>>>>> Stashed changes
 
 }
