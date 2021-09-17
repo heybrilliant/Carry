@@ -26,25 +26,14 @@
 					<div class="survey_ul">
 						<ul>
 							<li><label class="box-radio-input"> <input
-									type="hidden" checked="checked"> <span></span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="hidden" checked="checked"> <span></span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
 									type="radio" name="sv3" value = "남자" checked="checked"> <span>남자</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="sv3" value = "여자" checked="checked"> <span>여자</span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="hidden" checked="checked"> <span></span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="hidden" checked="checked"> <span></span></label>
+									type="radio" name="sv3" value = "여자"> <span>여자</span></label>
 							</li>
 						</ul>
 						<div class="next_btn">
+							<a href="javascript:window.history.back();">이전</a>
 							<input type="submit" value="다음">
 						</div>
 					</div>

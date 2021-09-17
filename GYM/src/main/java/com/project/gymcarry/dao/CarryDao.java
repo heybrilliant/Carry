@@ -45,5 +45,8 @@ public interface CarryDao {
 	List<CarryListDto> selectCarryListMY();
 
 	
+	// 캐리 리뷰 전체 출력(index)
+	List<CarryReviewDto> selectCarryReviewListAll();
+	
 	
 }

@@ -23,7 +23,7 @@
 						<h1>운동 목적은 무엇인가요?</h1>
 					</div>
 
-					<form action="<c:url value='/survey/survey3'/>" method="post">
+					<form action="<c:url value='/survey/survey3'/>" method="post" id="form">
 					<div class="survey_ul">
 					
 						<ul>
@@ -35,42 +35,43 @@
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv2" value="근력강화" id="rd2" checked="checked">
+								<input type="radio" name="sv2" value="근력강화" id="rd2" >
 								<span>근력강화</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv2" value="체중증가" id="rd3" checked="checked">
+								<input type="radio" name="sv2" value="체중증가" id="rd3" >
 								<span>체중증가</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv2" value="체형교정" id="rd4" checked="checked">
+								<input type="radio" name="sv2" value="체형교정" id="rd4" >
 								<span>체형교정</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv2" value="재활/통증 케어" id="rd5" checked="checked">
+								<input type="radio" name="sv2" value="재활/통증 케어" id="rd5" >
 								<span>재활/통증 케어</span></label>
 							</li>
 							
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv2" value="바디프로필" id="rd6" checked="checked">
+								<input type="radio" name="sv2" value="바디프로필" id="rd6" >
 								<span>바디프로필</span></label>
 							</li>
 						
 							<li>
 								<label class="box-radio-input">
-								<input type="radio" name="sv2" value="대회준비" id="rd7" checked="checked">
+								<input type="radio" name="sv2" value="대회준비" id="rd7" >
 								<span>대회준비</span></label>
 							</li>
 						</ul>
 						<input type="hidden" value="${sv1}" name="sv1">
 						<div class="next_btn">
+							<a href="javascript:window.history.back();">이전</a>
 							<input type="submit" value="다음">
 						</div>
 					</div>
@@ -82,3 +83,4 @@
 
 	<!-- footer -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	

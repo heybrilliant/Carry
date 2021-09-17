@@ -29,22 +29,23 @@
 									type="radio" name="cp_item" checked="checked"> <span>월</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>화</span></label>
+									type="radio" name="cp_item" > <span>화</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>수</span></label>
+									type="radio" name="cp_item" > <span>수</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>목</span></label>
+									type="radio" name="cp_item" > <span>목</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>금</span></label>
+									type="radio" name="cp_item"> <span>금</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
 									type="radio" name="cp_item" checked="checked"> <span>토</span></label>
 							</li>
 						</ul>
 						<div class="next_btn">
+							<a href="javascript:window.history.back();">이전</a>
 							<input type="submit" value="결과보기">
 						</div>
 					</div>

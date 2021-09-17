@@ -31,55 +31,17 @@
 		<section class="review_section container_fix swiper-container">
 			<h1 class="title">Carry Review</h1>
 			<div class="review_contaier swiper-wrapper">
-				<div class="review_content swiper-slide" onclick="location.href='<c:url value = "/carry/detail?cridx=1"/>'">
-					<div class="review_img">
-						<img src="<c:url value="/images/review1.jpg"/>" alt="img">
+				<c:forEach var="list" items="${review}" begin="0" end="10">
+					<div class="review_content swiper-slide" onclick="location.href='<c:url value = "/carry/detail?cridx=${list.cridx}"/>'">
+						<div class="review_img">
+							<img src="<c:url value="/uploadfile/${list.crphoto }"/>" alt="img">
+						</div>
+						<div class="review">
+							<h2 class="title">${list.crname }</h2>
+							<p>${list.reviewcontent }</p>
+						</div>
 					</div>
-					<div class="review">
-						<h2 class="title">트레이너 이름</h2>
-						<p>리뷰 내용입니다 최대 60자까지 노출 리뷰 내용입니다 최대 60자까지 노출리뷰 내용입니다 최대 60자까지
-							노출</p>
-					</div>
-				</div>
-				<div class="review_content swiper-slide">
-					<div class="review_img">
-						<img src="<c:url value="/images/review2.jpg"/>" alt="img">
-					</div>
-					<div class="review">
-						<h2 class="title">트레이너 이름</h2>
-						<p>리뷰 내용입니다 최대 60자까지 노출 리뷰 내용입니다 최대 60자까지 노출리뷰 내용입니다 최대 60자까지
-							노출</p>
-					</div>
-				</div>
-				<div class="review_content swiper-slide">
-					<div class="review_img">
-						<img src="<c:url value="/images/review3.jpg"/>" alt="img">
-					</div>
-					<div class="review">
-						<h2 class="title">트레이너 이름</h2>
-						<p>리뷰 내용입니다</p>
-					</div>
-				</div>
-				<div class="review_content swiper-slide">
-					<div class="review_img">
-						<img src="<c:url value="/images/review4.jpg"/>" alt="img">
-					</div>
-					<div class="review">
-						<h2 class="title">트레이너 이름</h2>
-						<p>리뷰 내용입니다 최대 60자까지 노출 리뷰 내용입니다 최대 60자까지 노출리뷰 내용입니다 최대 60자까지
-							노출</p>
-					</div>
-				</div>
-				<div class="review_content swiper-slide">
-					<div class="review_img">
-						<img src="<c:url value="/images/review1.jpg"/>" alt="img">
-					</div>
-					<div class="review">
-						<h2 class="title">트레이너 이름</h2>
-						<p>리뷰 내용입니다 최대 60자까지 노출 리뷰 내용입니다 최대 60자까지 노출리뷰 내용입니다 최대 60자까지
-							노출</p>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
