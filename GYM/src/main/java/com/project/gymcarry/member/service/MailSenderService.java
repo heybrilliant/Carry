@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.project.gymcarry.carry.service.carrySha256;
 import com.project.gymcarry.dao.MemberDao;
 import com.project.gymcarry.find.TempPWD;
 
@@ -224,10 +225,10 @@ public class MailSenderService {
 				e.printStackTrace();
 			}
 			// 비밀번호 암호화해주는 메서드
-			tempPWD = memSha256.encrypt(tempPWD);
+			tempPWD = carrySha256.encrypt(tempPWD);
 			// 데이터 베이스 값은 암호한 값으로 저장시킨다.
 			dao = template.getMapper(MemberDao.class);
-			dao.setpassword(tempPWD, crname, cremail);
+			dao.setCarrypassword(tempPWD, crname, cremail);
 		}
 	
 	
