@@ -47,7 +47,7 @@
                 <ul class="profile_right">
                     <li class="profile_left">
                         <img class="left_board_icon" img src="<c:url value="/images/icon/time.png"/>" alt="img">
-                        <fmt:formatDate var="dateFmt" pattern="yyyy-MM-dd HH:mm" value="${boardDetail.postdate}"/>
+                        ${boardDetail.postdate}
                         <div id="write_date"><c:out value="${dateFmt}"/></div>
                     </li>
                     <li class="profile_viewcnt">

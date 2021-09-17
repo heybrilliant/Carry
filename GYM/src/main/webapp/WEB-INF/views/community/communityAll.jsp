@@ -79,7 +79,7 @@
                                     <img class="left_board_icon" img src="<c:url value="/images/icon/time.png"/>"
                                          alt="img">
                                         <%--시간 데이터 포맷 변경--%>
-                                    <fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${list.postdate}"/>
+                                    ${list.postdate}
                                 </li>
                                 <li>
                                     <img class="left_board_icon2"
