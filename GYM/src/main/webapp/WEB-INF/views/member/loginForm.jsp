@@ -75,13 +75,10 @@
 
 			<ul class="apiLogin">
 				<li class="kakao">
-					<button  onclick="kakaoLogin()">
+					<button  onclick="kakaoLogin()" class="kaka_btn">
 					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>">
 					</button>
 				</li>
-				<li onclick="kakaoLogout()"><a href="javascript:void(0)">
-						<span>카카오 로그아웃</span>
-				</a></li>
 			</ul>
 
 
@@ -101,14 +98,13 @@
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
 	//카카오 로그인
 	function kakaoLogin() {
-		console.log('111111');
 		Kakao.Auth.login({
 			/* scope: 'profile, account_email,  gender',  */
 			success : function(response) {
 				Kakao.API.request({
 					url : '/v2/user/me',
 					success : function(response) {
-						console.log('222222222');
+						console.log('11111')
 						var memnick = response.properties.nickname;
 						var mememail = response.kakao_account.email;
 						
@@ -121,7 +117,13 @@
 								},
 							dataType : 'json',
 							success : function(data){
-								console.log('성공쓰~')
+								if(data == 0){
+									window.location.href = "<c:url value='/index'/>";
+								} else if(data == 1){
+									
+								} else if(data == 2){
+									
+								}
 							}
 						});
 								
