@@ -9,6 +9,7 @@
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" href="/gym/css/joinlogin/regform.css">
+<link rel="stylesheet" href="/gym/css/payment/payment.css">
 
 </head>
 <body>
@@ -16,53 +17,52 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	<!-- Contents -->
-	<div class="container_fix container payment_wrap">
-		<h1>SNS 회원가입</h1>
-		
-		<!-- Form 시작 -->
-		<form action = <c:url value="" /> method="post">
+	   <!-- Contents -->
+   <div class="container_fix container payment_wrap">
+      <h1>SNS 회원가입</h1>
+      
+      <!-- Form 시작 -->
+      <form action = <c:url value="" /> method="post">
 
-				<div>
-					<h3>이메일</h3>
-					<p>
-						이메일 <span style="color: blue">*</span>
-					</p>
-					<input type="text" class="input_box" placeholder="이메일을 입력해주세요."
-						name="mememail" id = "mememail" required>
-					
-					
-					<h3>연락처</h3>
-					<p>
-						연락처 <span style="color: blue">*</span>
-					</p>
-					<input type="text" class="input_box" placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요."
-						name="payphone" id="memphone" required> <br> <br> <br> <br>
-					
-					
-					<h3>닉네임</h3>
-					<p>
-						닉네임 <span style="color: blue">*</span>
-					</p>
-					<input type="text" class="input_box" placeholder="닉네임을 입력해주세요."
-						name="memnick" id = "memnick" required>
-					
-				<br>
-				
-				<div class="btn_wrap">
-					<input type="submit" value="회원가입">
-					<input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
-				</div>
-		</div>
-		
-		</form>
-		<!-- Form 끝 -->
-		
-		
-	</div>
+            <div>
+               <h3>이메일</h3>
+               <p>
+                  이메일 <span style="color: blue">*</span>
+               </p>
+               <input type="text" class="input_box" placeholder="이메일을 입력해주세요."
+                  name="mememail" id = "mememail" required>
+               
+               
+               <h3>연락처</h3>
+               <p>
+                  연락처 <span style="color: blue">*</span>
+               </p>
+               <input type="text" class="input_box" placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요."
+                  name="payphone" id="memphone" required> <br> <br> <br> <br>
+               
+               
+               <h3>닉네임</h3>
+               <p>
+                  닉네임 <span style="color: blue">*</span>
+               </p>
+               <input type="text" class="input_box" placeholder="닉네임을 입력해주세요."
+                  name="memnick" id = "memnick" required>
+               
+            <br>
+            
+            <div class="btn_wrap">
+               <input type="submit" value="회원가입">
+               <input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
+            </div>
+      </div>
+      
+      </form>
+      <!-- Form 끝 -->
+      
+      
+   </div>
 
-	<!-- Contents end -->
-
+   <!-- Contents end -->
 
 
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
