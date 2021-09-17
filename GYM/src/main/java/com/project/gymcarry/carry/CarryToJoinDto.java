@@ -17,10 +17,10 @@ public class CarryToJoinDto {
 	public CarryToJoinDto() {
 	}
 
-	
+
 
 	public CarryToJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender,
-			String crphone, MultipartFile crphoto, String joinkey, String joinkey_status) {
+						  String crphone, MultipartFile crphoto, String joinkey, String joinkey_status) {
 		super();
 		this.cridx = cridx;
 		this.cremail = cremail;
@@ -33,7 +33,7 @@ public class CarryToJoinDto {
 		this.joinkey = joinkey;
 		this.joinkey_status = joinkey_status;
 	}
-	
+
 	public int getCridx() {
 		return cridx;
 	}
@@ -45,7 +45,7 @@ public class CarryToJoinDto {
 	public String getCremail() {
 		return cremail;
 	}
-	
+
 	public void setCremail(String cremail) {
 		this.cremail = cremail;
 	}
@@ -115,8 +115,19 @@ public class CarryToJoinDto {
 	}
 
 	public CarryJoinDto getCarryJoinDto() {
-		return new CarryJoinDto(0, cremail, crpw, crname, crnick, crgender, crphone, crphoto.getOriginalFilename(), joinkey, joinkey_status);
+		return new CarryJoinDto(cridx, cremail, crpw, crname, crnick, crgender, crphone, crphoto.getOriginalFilename(), joinkey, joinkey_status);
 	}
-	
-	
+
+
+
+	@Override
+	public String toString() {
+		return "CarryToJoinDto [cridx=" + cridx + ", cremail=" + cremail + ", crpw=" + crpw + ", crname=" + crname
+				+ ", crnick=" + crnick + ", crgender=" + crgender + ", crphone=" + crphone + ", crphoto=" + crphoto
+				+ ", joinkey=" + joinkey + ", joinkey_status=" + joinkey_status + "]";
+	}
+
+
+
+
 }

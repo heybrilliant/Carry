@@ -32,7 +32,7 @@
     
     
     <!-- 캐리 기본 정보 수정에 필요한 데이터 값 출력 -->
-   <select id="selectCarryBasicInfo" resultType="com.project.gymcarry.carry.CarryDto">
+   <select id="selectCarryBasicInfo" resultType="com.project.gymcarry.carry.CarryJoinDto">
       select * from carry where cridx = #{cridx}
    </select>
    

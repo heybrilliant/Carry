@@ -1,105 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>GYM CARRY : 캐리 마이페이지</title>
+	<meta charset="UTF-8">
+	<title>GYM CARRY : 캐리 마이페이지</title>
 
-<%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
-<link rel="stylesheet" href="/gym/css/mypage/carrymypage.css">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!-- 캘린더 -->
-<!-- jquery CDN -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- fullcalendar CDN -->
-<link
-	href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css'
-	rel='stylesheet' />
-<script
-	src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-<!-- fullcalendar 언어 CDN -->
-<script
-	src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+	<%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
+	<link rel="stylesheet" href="/gym/css/mypage/carrymypage.css">
+	<link rel="stylesheet"
+		  href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<!-- 캘린더 -->
+	<!-- jquery CDN -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- fullcalendar CDN -->
+	<link
+			href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css'
+			rel='stylesheet' />
+	<script
+			src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+	<!-- fullcalendar 언어 CDN -->
+	<script
+			src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
-<style>
- #allsave{
- width:130px;height:40px; background-color: #2C3E50; color:white;cursor:pointer;border-radius:15%; margin: auto 10px;}
-  
-</style>
+	<style>
+		#allsave{
+			width:130px;height:40px; background-color: #2C3E50; color:white;cursor:pointer;border-radius:15%; margin: auto 10px;}
+
+	</style>
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
+<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
 
-	<div class="container">
-		<div class="main">
-			<!-- <p>바탕색은 구분을 위한 임시배경색입니다</p> -->
-			<!-- <img src="/images/icon/profile.png"><br> -->
-			<img src="<c:url value="/images/icon/profile.png"/>" class="profile"
-				onclick="#">
-			<div class="nameline">
-				<!-- 정렬을 위해 왼쪽에 숨겨둘 것 -->
-				<button class="edit1" type="button" onclick></button>
-				<!-- 여기까지 -->
-				<h3 class="title">이름${crname}</h3>
-				<a href="modifycarrybasicinfo.html"> <img
+<div class="container">
+	<div class="main">
+		<!-- <p>바탕색은 구분을 위한 임시배경색입니다</p> -->
+		<!-- <img src="/images/icon/profile.png"><br> -->
+		<img src="<c:url value="/images/icon/profile.png"/>" class="profile"
+			 onclick="#">
+		<div class="nameline">
+			<!-- 정렬을 위해 왼쪽에 숨겨둘 것 -->
+			<button class="edit1" type="button" onclick></button>
+			<!-- 여기까지 -->
+			<h3 class="title">이름${crname}</h3>
+			<a href="modifycarrybasicinfo.html"> <img
 					src="<c:url value="/images/icon/edit.png"/>" class="edit2">
-				</a>
-				<!-- 달력 DB 저장 버튼 -->
-					<button id="allsave" onclick="javascript:allSave();">달력 일정 저장하기</button>
-			</div>
-			<!-- calendar 태그 -->
-			<div id="calendar_container">
-				<div id="calendar"></div>
-			</div>
-
+			</a>
+			<!-- 달력 DB 저장 버튼 -->
+			<button id="allsave" onclick="javascript:allSave();">달력 일정 저장하기</button>
+		</div>
+		<!-- calendar 태그 -->
+		<div id="calendar_container">
+			<div id="calendar"></div>
 		</div>
 
+	</div>
 
-		<div class="second-line">
-			<div class="modi-list">
-				<h3>My Page</h3>
-				<ul>
-<<<<<<< HEAD
-					<li><a href="<c:url value="/carry/modify"/>">기본 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
-					</li>
-=======
-					<li><a href="<c:url value="/mypage/carrymypage/modify"/>">기본
-							정보 수정</a> <!-- <a href="<c:url value="/"/>"> --></li>
->>>>>>> E17
-					<br>
-					<li><a href="<c:url value="/mypage/carrymodify"/>">캐리 정보
-							수정</a> <!-- <a href="<c:url value="/"/>"> --></li>
-					<br>
-					<li><a href="<c:url value="/mypage/carrymypage/mymember"/>">내
-							회원 리스트</a> <!-- <a href="<c:url value="/"/>"> --></li>
-					<br>
-				</ul>
-			</div>
 
-			<div class="today-schedule">
-				<li>
-					<h3>오늘의 일정</h3> <a class="insert" href="#"><img
-						src="<c:url value="/images/icon/edit.png"/>"></a>
+	<div class="second-line">
+		<div class="modi-list">
+			<h3>My Page</h3>
+			<ul>
+				<li><a href="<c:url value="/carry/modify"/>">기본 정보 수정</a> <!-- <a href="<c:url value="/"/>"> -->
 				</li>
-			</div>
+				<br>
+				<li><a href="<c:url value="/mypage/carrymodify"/>">캐리 정보
+					수정</a> <!-- <a href="<c:url value="/"/>"> --></li>
+				<br>
+				<li><a href="<c:url value="/mypage/carrymypage/mymember"/>">내
+					회원 리스트</a> <!-- <a href="<c:url value="/"/>"> --></li>
+				<br>
+			</ul>
+		</div>
+
+		<div class="today-schedule">
+			<li>
+				<h3>오늘의 일정</h3> <a class="insert" href="#"><img
+					src="<c:url value="/images/icon/edit.png"/>"></a>
+			</li>
 		</div>
 	</div>
-	<!-- Contents end -->
+</div>
+<!-- Contents end -->
 
 
-	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-	<script>
-crname = $("#crname");
+<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+<script>
+	crname = $("#crname");
 </script>
 
-	<script>
+<script>
 	var calendarEl = null;
 	var calendar = null;
-	
+
 	(function() {
 		$(function() {
 			// calendar element 취득
@@ -124,7 +119,7 @@ crname = $("#crname");
 				dayMaxEvents : true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
 				locale : 'ko', // 한국어 설정
 				Boolean: true,
-			
+
 				eventAdd : function(obj) { // 이벤트가 추가되면 발생하는 이벤트
 					console.log(obj);
 				},
@@ -149,42 +144,42 @@ crname = $("#crname");
 					}
 					calendar.unselect()
 				},
-			// 이벤트 
-			
+				// 이벤트
+
 			});
 			// 캘린더 랜더링
 			calendar.render();
 		});
-		
+
 	})();
 
 	// 1. 전체 이벤트 데이터 추출하기
 	// 2. 추출된 데이터를 ajax로 서버에 전송 -> DB에 저장
 	function allSave(){
-		
+
 		//calendar.getEventSourceById( id )
-		
+
 		var allEvent = calendar.getEvents();
 		console.log(allEvent);
-		
+
 		var events = new Array();
 		for(var i=0; i < allEvent.length; i++){
-			
+
 			var obj = new Object();
-			
-			obj.title = allEvent[i]._def.title; // 일정 명칭 
+
+			obj.title = allEvent[i]._def.title; // 일정 명칭
 			obj.allday = allEvent[i]._def.allDay; // 일정 기간이 하루종일 or 시간제인지 boolean 타입(true/false)
 			obj.start = allEvent[i]._instance.range.start; // 일정 시작 날짜 및 시간
 			obj.end = allEvent[i]._instance.range.end; // 일정 종료 날짜 및 시간
-			
+
 			events.push(obj);
 		}
 		var jsondata = JSON.stringify(events);
 		console.log(jsondata);
-		
+
 		savedata(jsondata);
 	}
-	
+
 	function savedata(jsondata){
 		$.ajax({
 			type : 'POST',
@@ -193,26 +188,25 @@ crname = $("#crname");
 			dataType :'text',
 			async : false
 		})
-		.done(function(result){
-			
-		}) // 성공했을 때 실행
-		.fail(function(request, states, error{
-			alert("에러가 발생했습니다 : " + error);
-		})) // 실패했을 때 실행
-		
+				.done(function(result){
+
+				}) // 성공했을 때 실행
+		/* .fail(function(request, states, error{
+           alert("에러가 발생했습니다 : " + error);
+        })) // 실패했을 때 실행 */
+
 	}
 
 </script>
 
-	<!-- <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		var calendarEl = document.getElementById('fullcalendar2_wannausing');
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			initialView : 'dayGridMonth'
-		});
-		calendar.render();
-	});
-		/* 	$('#calendar').fullCalendar({ events: "json-events.php",    }); */
+<!-- <script>
+document.addEventListener('DOMContentLoaded', function() {
+   var calendarEl = document.getElementById('fullcalendar2_wannausing');
+   var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView : 'dayGridMonth'
+   });
+   calendar.render();
+});
+   /*    $('#calendar').fullCalendar({ events: "json-events.php",    }); */
 </script> -->
 
-	

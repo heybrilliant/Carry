@@ -12,10 +12,12 @@ public interface CarryMyPageDao {
     int updateCarryPrice(int proprice1,int proprice2,int proprice3,int proprice4,int cridx);
     
     // 캐리 기본 정보 수정에 필요한 값 출력
-    CarryDto selectCarryBasicInfo(int cridx) throws Exception;
+    CarryJoinDto selectCarryBasicInfo(int cridx) throws Exception;
     
     // 캐리 기본 정보 수정 완료
-    Integer updateCarryBasicInfo(CarryJoinDto carryJoinDto) throws Exception;
+    int updateCarryBasicInfo(CarryJoinDto carryJoinDto) throws Exception;
+
+
     
     
 }
