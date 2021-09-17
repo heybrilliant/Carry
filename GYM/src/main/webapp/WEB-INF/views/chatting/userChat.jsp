@@ -132,7 +132,7 @@
 			htmlNav += '<li class="back_button"><a href="#" onclick="history.go(0)"><img src="<c:url value="/images/icon/arrow.png"/>"</a></li>';
 			if(memsession != null && crsession == ''){
 			htmlNav += '<li class="imgButton btn_li"><a href="<c:url value="/carry/detail?cridx='+num+'"/>"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
-			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart2.png"/>" style="width: 30px;" class="onlike"></button></li>'
+			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart02.png"/>" style="width: 30px;" class="onlike"></button></li>'
 			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
 			} else if(crsession != null && outcount == 1){
 				htmlNav += '<li class="imgButton waste_li2"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>'
@@ -323,7 +323,7 @@
 			},
 			success : function(data){
 				if(data == 0){
-					$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
+					$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
 					
 						toastr.options.escapeHtml = true;
 						toastr.options.closeButton = true;
@@ -331,7 +331,7 @@
 						toastr.options.progressBar = true;
 						toastr.info('', '찜 취소 하셧네요.', {timeOut: 1000});
 				} else {
-					$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+					$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
 					
 						toastr.options.escapeHtml = true;
 						toastr.options.closeButton = true;
@@ -417,9 +417,9 @@
 							chattting(item.cridx); 
 							$('.carry_message_warp').html(htmlStr);
 							if(item.likecheck == 1){
-								$('.onlike').attr('src','<c:url value="/images/icon/heart.png"/>');
+								$('.onlike').attr('src','<c:url value="/images/icon/heart01.png"/>');
 							} else if(item.likecheck == 0)
-								$('.onlike').attr('src','<c:url value="/images/icon/heart2.png"/>');
+								$('.onlike').attr('src','<c:url value="/images/icon/heart02.png"/>');
 						});
 						
 						$.each(data.crList, function(index, item) {
