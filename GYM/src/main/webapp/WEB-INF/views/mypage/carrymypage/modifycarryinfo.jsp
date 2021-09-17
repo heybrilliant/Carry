@@ -118,14 +118,30 @@
                             </td>
                         </tr>
                         <tr>
-                            <th><span>바디프로필 업로드</span></th>
+                            <th>
+                                <label for="crbfphoto">바디프로필 업로드</label>
+                            </th>
                             <td>
-                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto"
+                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto"
                                        onclick=document.all.file.click();>
                             </td>
                         </tr>
                         </tbody>
                     </table>
+                    <div class="select_img"><img src="" /></div>
+
+                        <script>
+                            $("#crbfphoto").change(function(){
+                                if(this.files && this.files[0]) {
+                                    var reader = new FileReader;
+                                    reader.onload = function(data) {
+                                        $(".select_img img").attr("src", data.target.result).width(400);
+                                    }
+                                    reader.readAsDataURL(this.files[0]);
+                                }
+                            });
+                        </script>
+                    </div>
                 </div>
                 <div class="btn_wrap2">
                 <input class="btn_update" type="submit" value="수정">
