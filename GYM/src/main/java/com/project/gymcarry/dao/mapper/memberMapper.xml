@@ -171,6 +171,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		crpw =
 		#{param1} where crname = #{param2} and cremail = #{param3}
 	</update>
+	
+	<insert id="insertKaKaoJoin"
+		parameterType="com.project.gymcarry.member.MemberJoinDto">
+		insert into member(mememail, memnick, joinkey_status) 
+		values (#{mememail},#{memnick}, 1)
+	</insert>
+	
+	
 
 
 </mapper>
