@@ -19,7 +19,7 @@
     <div class="container">
         <div class="form_txtInput">
 
-            <form action="<c:url value="/mypage/update"/>" method="post">
+            <form action="<c:url value="/mypage/update"/>" method="post" enctype="multipart/form-data">
                 <!--캐리 프로필 영역-->
                 <h1 class="sub_tit_txt">캐리 정보 수정</h1>
                 <div class="edit_form">
@@ -99,7 +99,6 @@
                         <tr>
                             <th><span>PT 이용금액 </span></th>
                             <td>
-
                                 <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
                                 <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)" name="proprice2">
                                 <input type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3">
@@ -109,8 +108,8 @@
 
                         <tr>
                             <th><span>자격 및 경력<br>
-                                <p>(최대 5개까지 입력 가능합니다)</p>
-									</span></th>
+                                <p>(최대 5개까지 입력 가능합니다)</p></span>
+                            </th>
                             <td><input type="text" placeholder="자격 및 경력1" name="crcerti1">
                                 <input type="text" placeholder="자격 및 경력2" name="crcerti2">
                                 <input type="text" placeholder="자격 및 경력3" name="crcerti3">
@@ -121,9 +120,8 @@
                         <tr>
                             <th><span>바디프로필 업로드</span></th>
                             <td>
-                                <form action="">
-                                <input type="file" id="userphoto" value="바디프로필" name="">
-                                </form>
+                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto"
+                                       onclick=document.all.file.click();>
                             </td>
                         </tr>
                         </tbody>

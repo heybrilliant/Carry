@@ -5,12 +5,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
-import com.project.gymcarry.mypage.CarryMyPageDto;
 
 
 public interface CarryMyPageService {
 
-    public int updateCarryModify(CarryMyPageDto carryMyPageDto) throws Exception;
+    public int updateCarryModify(CarryDto carryMyPageDto) throws Exception;
 
     int updateCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx);
 

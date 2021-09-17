@@ -16,7 +16,6 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.member.service.memSha256;
-import com.project.gymcarry.mypage.CarryMyPageDto;
 import com.project.gymcarry.mypage.service.CarryMyPageService;
 
 @Controller
@@ -47,7 +46,7 @@ public class CarryMyPageController {
 
 	// 캐리 정보 수정
 	@PostMapping("/mypage/update")
-	public String updateCarryModify(CarryMyPageDto carryDto, @RequestParam("proprice1") int proprice1
+	public String updateCarryModify(CarryDto carryDto, @RequestParam("proprice1") int proprice1
 			, @RequestParam("proprice2") int proprice2, @RequestParam("proprice3") int proprice3,
 									@RequestParam("proprice4") int proprice4,
 									HttpSession session) throws Exception {

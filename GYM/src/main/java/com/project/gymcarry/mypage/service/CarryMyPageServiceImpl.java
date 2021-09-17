@@ -14,7 +14,6 @@ import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
 import com.project.gymcarry.dao.CarryMyPageDao;
-import com.project.gymcarry.mypage.CarryMyPageDto;
 
 @Service
 public class CarryMyPageServiceImpl implements CarryMyPageService{
@@ -25,7 +24,7 @@ public class CarryMyPageServiceImpl implements CarryMyPageService{
     private SqlSessionTemplate template;
 
     @Override
-    public int updateCarryModify(CarryMyPageDto carryMyPageDto) throws Exception {
+    public int updateCarryModify(CarryDto carryMyPageDto) throws Exception {
         dao = template.getMapper(CarryMyPageDao.class);
         return dao.updateCarryModify(carryMyPageDto);
     }
