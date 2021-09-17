@@ -47,8 +47,7 @@
                 <ul class="profile_right">
                     <li class="profile_left">
                         <img class="left_board_icon" img src="<c:url value="/images/icon/time.png"/>" alt="img">
-                        ${boardDetail.postdate}
-                        <div id="write_date"><c:out value="${dateFmt}"/></div>
+                        <div id="write_date"><c:out value="${boardDetail.postdate}"/></div>
                     </li>
                     <li class="profile_viewcnt">
                         <img class="left_board_icon2" img src="<c:url value="/images/icon/board.png"/>" alt="img">
