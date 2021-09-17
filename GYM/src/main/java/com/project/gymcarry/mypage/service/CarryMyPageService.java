@@ -3,14 +3,15 @@ package com.project.gymcarry.mypage.service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryJoinDto;
+import com.project.gymcarry.carry.CarryToInfoDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
 
 
 public interface CarryMyPageService {
 
-    public int updateCarryModify(CarryDto carryMyPageDto) throws Exception;
+    // 캐리 정보 수정
+    public int updateCarryModify(CarryToInfoDto carryToInfoDto, HttpServletResponse response, HttpServletRequest request) throws Exception;
 
     int updateCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx);
 
