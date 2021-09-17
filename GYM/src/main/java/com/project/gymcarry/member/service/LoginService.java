@@ -54,4 +54,9 @@ public class LoginService {
 		System.out.println("캐리 LoginService 내부 조인키 : " + dao.carryjoinkeycheck(id, pw));
 		return dao.carryjoinkeycheck(id, pw);
 	}
+
+	public int insertKaKaoJoin(MemberDto memberDto) {
+		dao = template.getMapper(MemberDao.class);
+		return dao.insertKaKaoJoin(memberDto);
+	}
 }
