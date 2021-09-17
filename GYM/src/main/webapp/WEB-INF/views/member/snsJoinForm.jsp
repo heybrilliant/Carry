@@ -9,110 +9,57 @@
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" href="/gym/css/joinlogin/regform.css">
-<link rel="stylesheet" href="/gym/css/payment/payment.css">
 
 </head>
 <body>
-
+  
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
 	<!-- Contents -->
-	<div class="container_fix container join_wrap">
+	<div class="container_fix container payment_wrap">
 		<h1>SNS 회원가입</h1>
-		<form id="paymentForm" name="paymentForm" method="post">
-		<div>
-			<h3>이메일</h3>
-				<div class="order_info">
-					<span>${crname} 캐리 : ${paynum}회 이용권</span> <br>
-					<h4>
-						${paynum}회
-						<fmt:formatNumber type="number" maxFractionDigits="3"
-										value="${payprice}" />
-						원
-					</h4>
-				</div>
+		
+		<!-- Form 시작 -->
+		<form action = <c:url value="" /> method="post">
 
-			<br> <br>
-			
-				
 				<div>
-					<span class="noticemsg">** 추가적으로 입력해주시면 회원가입이 정상적으로 완료됩니다. **</span>
-					
-					<div class="nickForm">
+					<h3>이메일</h3>
 					<p>
-						닉네임 <span style="color: blue">*</span>
+						이메일 <span style="color: blue">*</span>
 					</p>
-<<<<<<< Updated upstream
-					<input type="text" class="input_box" placeholder="이름을 입력해주세요"
-						name="payname" required>
-=======
-					<input type="text" class="input_box" placeholder="닉네임을 입력해주세요."
-						name="memnick" id = "memnick" required>
-					</div>	
-						
-					<div class="phoneForm">
->>>>>>> Stashed changes
+					<input type="text" class="input_box" placeholder="이메일을 입력해주세요."
+						name="mememail" id = "mememail" required>
+					
+					
+					<h3>연락처</h3>
 					<p>
 						연락처 <span style="color: blue">*</span>
 					</p>
 					<input type="text" class="input_box" placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요."
-<<<<<<< Updated upstream
-						name="payphone" required> <br> <br> <br> <br>
-					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
-					<%-- <c:out value="${now}" /> --%>
-					<input type ="hidden" name="paydate" value="${now}">
-					<input type ="hidden" name="cridx" value ="${cridx}">
-					<input type ="hidden" name="memidx" value="${loginSession.memidx}">
-					<input type ="hidden" name="payprice" value="${payprice}">
-					<input type ="hidden" name="paynum" value="${paynum}">
-					<!-- <h3>대면 / 비대면 여부</h3>
-					<div class="faceornot_selectbox">
-						<input type="radio" name="faceornot" value="1" id="rd1" checked="checked">
-						<label for="rd1" class="label">대면</label>
-						<br>
-						<input type="radio" name="faceornot" value="2" id="rd2" checked="checked">
-						<label for="rd2" class="label">비대면</label>
-					</div> -->
-					
-					<br> <br>
-
-					<h3>최종 결제 금액</h3>
-					<div class="pricebox">
-						<ul>
-							${paynum}회 이용권
-							<li><fmt:formatNumber type="number" maxFractionDigits="3"
-									value="${payprice}" />원</li>
-						</ul>
-					</div>
-				</div>
-				
-				<div class="btn_wrap">
-					<input type="button" value="결제하기" onclick="requestPay();" class="pay_btn">
-=======
 						name="payphone" id="memphone" required> <br> <br> <br> <br>
-					</div>
+					
+					
+					<h3>닉네임</h3>
+					<p>
+						닉네임 <span style="color: blue">*</span>
+					</p>
+					<input type="text" class="input_box" placeholder="닉네임을 입력해주세요."
+						name="memnick" id = "memnick" required>
 					
 				<br>
 				
-				<div class="btn_wrap2">
-					<input type="submit" class= "submit_btn" value="회원가입">
->>>>>>> Stashed changes
+				<div class="btn_wrap">
+					<input type="submit" value="회원가입">
 					<input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
 				</div>
 		</div>
+		
 		</form>
-<<<<<<< Updated upstream
-		</div>
-
-
-=======
 		<!-- Form 끝 -->
 		
 		
 	</div>
-</div>
->>>>>>> Stashed changes
 
 	<!-- Contents end -->
 
@@ -122,39 +69,29 @@
 
 </body>
 
-<script>
-/* const profilebtn = document.querySelector('.profilebtn');
-const realInput = document.querySelector('#realinput');
-
-browseBtn.addEventListener('click',{
-	realInput.click();
-}); */
-</script>
 
 <script>
-
-	//등록 이미지 등록 미리보기
-	function readInputFile(input) {
-	    if(input.files && input.files[0]) {
-	        var reader = new FileReader();
-	        reader.onload = function (e) {
-	            $('#image_container').html("<img src="+ e.target.result +">");
-	        }
-	        reader.readAsDataURL(input.files[0]);
-	    }
-	}
-	 
-	$(".profilebtn").on('change', function(){
-	    readInputFile(this);
-	});
-
 
 
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
 
-	// 이메일, 닉네임, 휴대폰 번호, 생일, 성별 순
-
+	// 이름, 이메일, 비밀번호, 비밀번호 확인, 닉네임, 휴대폰 번호, 생일, 성별 순
+	
+	// 이름에 특수문자 들어가지 않도록 설정
+	console.log('이름 도달');
+	// 이름 정규식 : 영어, 한글로만 2~6글자 이내 
+	var nameJ = /^[가-힣a-zA-Z]{2,6}$/;
+	$("#memname").focusout(function() {
+		if (nameJ.test($('#memname').val())) {
+				console.log(nameJ.test($('#memname').val()));
+				$("#namecheck").text('');
+		} else {
+			$('#namecheck').text('2~6글자의 한글, 영어만 사용 가능합니다.');
+			$('#namecheck').css('color', 'red');
+		}
+		error : console.log('이름 실패');
+	});
 	
 	// 이메일 -> DB다녀와야함 
 	console.log('이메일 도달');
@@ -193,6 +130,32 @@ browseBtn.addEventListener('click',{
 	});
 	
 	
+	// 비밀번호 
+	console.log('비번 도달');
+	// 비밀번호 정규식 : 영어 대소문자, 숫자로 4~15글자 이내 
+	var pwJ = /^[A-Za-z0-9]{4,15}$/;
+	$("#mempw").focusout(function() {
+		if (pwJ.test($('#mempw').val())) {
+				console.log(pwJ.test($('#mempw').val()));
+				$("#pwcheck").text('');
+		} else {
+			$('#pwcheck').text('영어 대, 소문자, 숫자로  4~15글자로 작성해주세요 .');
+			$('#pwcheck').css('color', 'red');
+		}
+		error : console.log('비밀번호 실패');
+	});
+	
+	// 비밀번호 확인 
+	$("#mempw2").focusout(function() {
+		if ($('#mempw2').val() != $('#mempw').val()) {
+				console.log($('#mempw2').val(),$('#mempw').val());
+				$("#pwcheck").text('비밀번호가 다릅니다. 다시 입력해주세요.');
+				$('#pwcheck').css('color', 'red');
+		} else {
+			$('#pwcheck').text('');
+		} 
+		error : console.log('비밀번호 확인 실패');
+	});
 	
 	// 휴대폰 번호
 	// 휴대폰 번호 정규식 : 010(필수)+ 숫자로만 8글자
@@ -229,7 +192,82 @@ browseBtn.addEventListener('click',{
 	});
 	
 	
-
+	// 생년월일
+	// 생일 정규식 : 숫자로만 8글자 
+	var birthJ = /^[0-9]{8}$/;
+	$('#membirth').focusout(function(){
+		var dateStr = $('#membirth').val();		
+	    var year = Number(dateStr.substr(0,4)); // 입력한 값의 0~4자리까지 (연)
+	    var month = Number(dateStr.substr(4,2)); // 입력한 값의 4번째 자리부터 2자리 숫자 (월)
+	    var day = Number(dateStr.substr(6,2)); // 입력한 값 6번째 자리부터 2자리 숫자 (일)
+	    var today = new Date(); // 날짜 변수 선언
+	    var yearNow = today.getFullYear(); // 올해 연도 가져옴
+	    
+	    if (dateStr.length <=8) {
+	    	
+			// 연도의 경우 1900 보다 작거나 yearNow 보다 크다면 false를 반환
+		    if (1900 > year || year > yearNow){
+		    	
+		    	$('#birthcheck').text('태어난 연도를 정확하게 입력해주세요.');
+				$('#birthcheck').css('color', 'red');
+		    	
+		    }else if (month < 1 || month > 12) {
+		    		
+		    	$('#birthcheck').text('태어난 월을 정확하게 입력해주세요.');
+				$('#birthcheck').css('color', 'red'); 
+		    
+		    }else if (day < 1 || day > 31) {
+		    	
+		    	$('#birthcheck').text('태어난 날짜를 정확하게 입력해주세요.');
+				$('#birthcheck').css('color', 'red'); 
+		    	
+		    }else if ((month==4 || month==6 || month==9 || month==11) && day==31) {
+		    	 
+		    	$('#birthcheck').text('생년월일을 정확하게 입력해주세요.');
+				$('#birthcheck').css('color', 'red'); 
+		    	 
+		    }else if (month == 2) {
+		    	 
+		       	var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+		       	
+		     	if (day>29 || (day==29 && !isleap)) {
+		     		
+		     		$('#birthcheck').text('생년월일을 정확하게 입력해주세요.');
+					$('#birthcheck').css('color', 'red'); 
+		    	
+				}else{
+					$('#birthcheck').text('');
+					birthJ = true;
+				}//end of if (day>29 || (day==29 && !isleap))
+		     	
+		    }else{
+		    	
+		    	$('#birthcheck').text(''); 
+				birthJ = true;
+			}//end of if
+			
+			}else{
+				//1.입력된 생년월일이 8자 초과할때 :  auth:false
+				$('#birthcheck').text('8자리 숫자형식으로 정확하게 입력해주세요.');
+				$('#birthcheck').css('color', 'red');  
+			}
+	    
+		}); //End of method /*
+	
+	// 성별 
+	$(document).ready(function(){
+		$('#gendercheck').focusout(function(){
+			invalidItem();
+		});
+		function invalidItem(){
+			if($("input[name=memgender]:radio:checked").length < 1){
+				$('#gendercheck').text('성별을 선택해주세요.');
+				$('#gendercheck').css('color', 'red');  
+			} else {
+				$('#gendercheck').text('');
+			}
+		}
+	});
 
 	var nickJ = /^[가-힣a-zA-Z]{2,6}$/;
 	$("#memnick").focusout(function() {
