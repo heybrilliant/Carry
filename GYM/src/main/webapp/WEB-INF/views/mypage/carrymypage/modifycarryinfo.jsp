@@ -23,7 +23,7 @@
                 <!--캐리 프로필 영역-->
                 <h1 class="sub_tit_txt">캐리 정보 수정</h1>
                 <div class="edit_form">
-                    <input type="hidden" name="cridx" value="${cridx}">
+
                     <table>
                         <colgroup>
                             <col width="30%"/>
@@ -122,12 +122,15 @@
                                 <label for="crbfphoto">바디프로필 업로드</label>
                             </th>
                             <td>
-                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto"
-                                       onclick=document.all.file.click();>
+                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto" onclick=document.all.file.click();>
                             </td>
                         </tr>
                         </tbody>
+                        <input type="hidden" name="cridx" id="cridx" value="${cridx}">
+                        <input type="hidden" name="oldcrbfphoto" value="${crbfphoto}">
+
                     </table>
+                    <%=request.getRealPath("/") %>
                     <div class="select_img"><img src="" /></div>
 
                         <script>
@@ -141,6 +144,7 @@
                                 }
                             });
                         </script>
+
 
                     </div>
                 <div class="btn_wrap2">

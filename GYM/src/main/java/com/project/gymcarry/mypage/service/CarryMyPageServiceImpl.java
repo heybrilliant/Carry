@@ -23,12 +23,15 @@ public class CarryMyPageServiceImpl implements CarryMyPageService {
     @Autowired
     private SqlSessionTemplate template;
 
+
+    // 캐리 정보 수정
     @Override
     public int updateCarryModify(CarryDto carryMyPageDto) throws Exception {
         dao = template.getMapper(CarryMyPageDao.class);
         return dao.updateCarryModify(carryMyPageDto);
     }
 
+    // 캐리 정보 가격 수정 
     @Override
     public int updateCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx) {
         dao = template.getMapper(CarryMyPageDao.class);
