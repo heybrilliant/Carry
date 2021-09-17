@@ -17,118 +17,76 @@
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
 	<!-- Contents -->
-	<div class="wrap wd668">
-		<div class="container">
-			<form id="joinForm" action="<c:url value="/member/join"/>"
-				method="post" enctype="multipart/form-data">
-				<div class="form_txtInput">
-					<h1 class="sub_tit_txt">회원 회원가입</h1>
-					<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p>
+	<div class="container_fix container payment_wrap">
+		<h1>SNS 회원가입</h1>
+		<form id="paymentForm" name="paymentForm" method="post">
+		<div>
+			<h3>이메일</h3>
+				<div class="order_info">
+					<span>${crname} 캐리 : ${paynum}회 이용권</span> <br>
+					<h4>
+						${paynum}회
+						<fmt:formatNumber type="number" maxFractionDigits="3"
+										value="${payprice}" />
+						원
+					</h4>
+				</div>
 
+			<br> <br>
+			
+				
+				<div>
+					<h3>이메일</h3>
+					<p>
+						이메일 <span style="color: blue">*</span>
+					</p>
+					<input type="text" class="input_box" placeholder="이름을 입력해주세요"
+						name="payname" required>
+					<p>
+						연락처 <span style="color: blue">*</span>
+					</p>
+					<input type="text" class="input_box" placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요."
+						name="payphone" required> <br> <br> <br> <br>
+					<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="now" />
+					<%-- <c:out value="${now}" /> --%>
+					<input type ="hidden" name="paydate" value="${now}">
+					<input type ="hidden" name="cridx" value ="${cridx}">
+					<input type ="hidden" name="memidx" value="${loginSession.memidx}">
+					<input type ="hidden" name="payprice" value="${payprice}">
+					<input type ="hidden" name="paynum" value="${paynum}">
+					<!-- <h3>대면 / 비대면 여부</h3>
+					<div class="faceornot_selectbox">
+						<input type="radio" name="faceornot" value="1" id="rd1" checked="checked">
+						<label for="rd1" class="label">대면</label>
+						<br>
+						<input type="radio" name="faceornot" value="2" id="rd2" checked="checked">
+						<label for="rd2" class="label">비대면</label>
+					</div> -->
+					
+					<br> <br>
 
-					<div class="join_form">
-						<div class="profile_form">
-							<div class="profileimg" id="image_container">
-								<img src="/gym/images/icon/profile2.png"><br>
-							</div>
-							<input type="button" value="사진업로드" class="profilebtn"
-								name="memphoto" onclick=document.all.file.click();> <input
-								type="file" name="memphoto" id="file" class="profilebtn"
-								style="display: none;" />
-						</div>
-						<table>
-							<colgroup>
-								<col width="30%" />
-								<col width="auto" />
-							</colgroup>
-							<tbody>
-								<tr>
-									<th><span>이름</span></th>
-									<td><input type="text" name="memname" id="memname"
-										placeholder="이름" required />
-										<div class="check_font" id="namecheck"></div></td>
-								</tr>
-
-								<tr class="email">
-									<th><span>이메일</span></th>
-									<td><input type="text" name="mememail" id="mememail"
-										placeholder="이메일 형식으로 입력해주세요. 로그인시 아이디로 사용됩니다." required>
-										<span id="msg" class="display_none"></span>
-										<div class="check_font" id="emailcheck" style="float: left"></div>
-									</td>
-								</tr>
-								<tr>
-									<th><span>비밀번호</span></th>
-									<td><input type="password" name="mempw" id="mempw"
-										placeholder="비밀번호를 입력해주세요.">
-										<div class="check_font" id="pwcheck"></div></td>
-								</tr>
-
-								<tr>
-									<th><span>비밀번호 확인</span></th>
-									<td><input type="password" name="mempw2" id="mempw2"
-										placeholder="비밀번호를 확인해주세요.">
-										<div class="check_font" id="mempw2check"></div></td>
-								</tr>
-
-								<tr>
-									<th><span>닉네임</span></th>
-									<td><input type="text" name="memnick" id="memnick"
-										placeholder="닉네임"> <span id="msg_nick"
-										class="display_none"></span>
-										<div class="check_font" id="nickcheck"></div></td>
-								</tr>
-
-								<tr>
-									<th><span>휴대폰 번호</span></th>
-									<td><input type="text" name="memphone" id="memphone"
-										placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요.">
-										<span id="msg_phone" class="display_none"></span>
-										<div class="check_font" id="phonecheck"></div></td>
-								</tr>
-
-								<tr>
-									<th><span>생년월일</span></th>
-									<td><input type="text" name="membirth" id="membirth"
-										placeholder="8자리 형식의 숫자로만 입력해주세요.ex_19901010">
-										<div class="check_font" id="birthcheck"></div></td>
-								</tr>
-
-								<tr>
-									<th><span>성별</span></th>
-									<td>
-										<div class="selectbox">
-									<input type="radio" name="memgender" id="male"
-										value="남자"> <label for="male" id="male_label">남자</label>
-										<input type="radio" name="memgender" id="female" value="여자">
-										<label for="female" id="female_label">여자</label>
-										</div>
-										<div class="check_font" id="gendercheck"></div></td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="exform_txt">
-							<span>필수 입력사항</span>
-						</div>
-					</div>
-					<!-- join_form E  -->
-
-
-
-					<div id="btnbox">
-						<div class="btn_wrap">
-							<!-- 회원가입 -> DB 저장 // 취소 -> 취소되었습니다! 알림 후 index 수정하기 -->
-							<input type="submit" id="joinsubmit" value="회원가입">
-						</div>
-						<div class="btn_wrap2">
-							<a href="javascript:history.back()">취소</a>
-						</div>
+					<h3>최종 결제 금액</h3>
+					<div class="pricebox">
+						<ul>
+							${paynum}회 이용권
+							<li><fmt:formatNumber type="number" maxFractionDigits="3"
+									value="${payprice}" />원</li>
+						</ul>
 					</div>
 				</div>
-				<!-- form_txtInput E -->
-			</form>
+				
+				<div class="btn_wrap">
+					<input type="button" value="결제하기" onclick="requestPay();" class="pay_btn">
+					<input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
+				</div>
 		</div>
-	</div>
+		</form>
+		</div>
+
+
+
+	<!-- Contents end -->
+
 
 
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
