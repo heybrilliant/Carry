@@ -1,28 +1,23 @@
 package com.project.gymcarry.chatting;
 
-
-import java.sql.Timestamp;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class ChatRoomDto {
-	
+public class MemberMessageListDto {
 	private int messageidx; 		//메세지번호
 	private int chatidx;			//채팅방번호
 	private String chatcontent;		//대화내용
 	@JsonFormat(pattern = "h:mm a")
-	private Timestamp chatdate;		//대화시간
+	private String chatdate;		//대화시간
 	private int cridx;				//캐리번호
 	private int memidx;				//회원번호
 	private int contenttype;		//유저,캐리 대화내용 비교
 	private int chatread;			//읽음 안읽음 여부
 	private int likecheck;			//하트여부	
-	@JsonFormat(pattern = "h:mm")
-	private Timestamp outdate;		//나간시점
-	public ChatRoomDto() {
+	private String outdate;		//나간시점
+	public MemberMessageListDto() {
 	}
-	public ChatRoomDto(int messageidx, int chatidx, String chatcontent, Timestamp chatdate, int cridx, int memidx,
-			int contenttype, int chatread, int likecheck, Timestamp outdate) {
+	public MemberMessageListDto(int messageidx, int chatidx, String chatcontent, String chatdate, int cridx, int memidx,
+			int contenttype, int chatread, int likecheck, String outdate) {
 		super();
 		this.messageidx = messageidx;
 		this.chatidx = chatidx;
@@ -53,10 +48,10 @@ public class ChatRoomDto {
 	public void setChatcontent(String chatcontent) {
 		this.chatcontent = chatcontent;
 	}
-	public Timestamp getChatdate() {
+	public String getChatdate() {
 		return chatdate;
 	}
-	public void setChatdate(Timestamp chatdate) {
+	public void setChatdate(String chatdate) {
 		this.chatdate = chatdate;
 	}
 	public int getCridx() {
@@ -89,10 +84,10 @@ public class ChatRoomDto {
 	public void setLikecheck(int likecheck) {
 		this.likecheck = likecheck;
 	}
-	public Timestamp getOutdate() {
+	public String getOutdate() {
 		return outdate;
 	}
-	public void setOutdate(Timestamp outdate) {
+	public void setOutdate(String outdate) {
 		this.outdate = outdate;
 	}
 	@Override
@@ -101,5 +96,4 @@ public class ChatRoomDto {
 				+ ", chatdate=" + chatdate + ", cridx=" + cridx + ", memidx=" + memidx + ", contenttype=" + contenttype
 				+ ", chatread=" + chatread + ", likecheck=" + likecheck + ", outdate=" + outdate + "]";
 	}
-	
 }

@@ -73,10 +73,16 @@ button.profilebtn{
 
 .profilebtn[type="button"]{
 	width: 80px;
-    padding: 2px;
-    background-color: aliceblue;
+    background-color: white;
     margin-top: 9px;
-    border: 1px solid #bbb;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px -1px rgb(0 0 0 / 20%), 0 2px 2px -1px rgb(0 0 0 / 20%);
+    border: none;
+    text-align: center;
+    padding: 5px
+}
+.profilebtn[type="button"]:hover{
+	cursor: pointer;
 }
 
 
@@ -88,6 +94,7 @@ input[type=file]{
     width: 150px;
     height: 150px;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 
 ul, li { list-style:none;}
@@ -192,6 +199,7 @@ ul{list-style:none; }
 
 .join_form{
     width:100%;
+    margin: 0px auto;
 }
 
 .join_form table {

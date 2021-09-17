@@ -113,7 +113,7 @@ public class JoinService {
 			newFile = new File(newDir, newFileName);
 			// 파일 joinDto 저장
 			carryToJoinDto.getCrphoto().transferTo(newFile);
-			// 파일 이름을 memberDto 저장!
+			// 파일 이름을 carryDto 저장!
 			carryJoinDto.setCrphoto(newFileName);
 		} else {
 			carryJoinDto.setCrphoto("profile2.png");
