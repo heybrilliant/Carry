@@ -301,7 +301,7 @@
 							$('#msg_nick').html('사용 불가능');
 							$('#msg_nick').addClass('color_red');
 							$('#msg_nick').removeClass('display_none');
-							$('#memnick').val('');
+							$('#crnick').val('');
 						}
 						
 					}
@@ -327,7 +327,7 @@ $('#cremail, #crnick, #crphone').focusin(function() {
 	$('#msg_nick').addClass('display_none');
 	$('#msg_nick').removeClass('color_blue');
 	$('#msg_nick').removeClass('color_red');
-	$('#crnick').val('');
+	//$('#crnick').val('');
 	$('#msg_phone').addClass('display_none');
 	$('#msg_phone').removeClass('color_blue');
 	$('#msg_phone').removeClass('color_red');
