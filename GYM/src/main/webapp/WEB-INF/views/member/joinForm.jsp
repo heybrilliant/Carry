@@ -122,7 +122,7 @@
 							<input type="submit" id="joinsubmit" value="회원가입">
 						</div>
 						<div class="btn_wrap2">
-							<a href="<c:url value="/index"/>">취소</a>
+							<a href="javascript:history.back()">취소</a>
 						</div>
 					</div>
 				</div>

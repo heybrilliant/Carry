@@ -284,6 +284,7 @@
 	// close - 커넥션이 종료되었을 때 호출
 	socket.onclose = function(event) {
 		console.log('connection closed.');
+		console.log(event);
 	};
 
 	// error - 에러가 생겼을 때 호출
