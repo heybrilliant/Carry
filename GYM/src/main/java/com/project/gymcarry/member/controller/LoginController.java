@@ -111,6 +111,7 @@ public class LoginController {
 		System.out.println("로그아웃");
 		return "redirect:/index";
 	}
+<<<<<<< Updated upstream
 	
 	@PostMapping("/member/kakaologin")
 	@ResponseBody
@@ -130,5 +131,28 @@ public class LoginController {
 	
 	
 	
+=======
+
+	/*
+	 * @PostMapping("/member/kakaologin")
+	 * 
+	 * @ResponseBody public int memberKakaoLogin(MemberDto memberDto) {
+	 * System.out.println(memberDto);
+	 * 
+	 * 
+	 * 
+	 * int result = 0; if(result == 0) { result =
+	 * loginService.insertKaKaoJoin(memberDto); }
+	 * 
+	 * return result; }
+	 */
+	
+	@GetMapping("member/snsjoin")
+	public String snsjoin(){
+		return "member/SNSjoinForm";
+	}
+	
+	
+>>>>>>> Stashed changes
 
 }

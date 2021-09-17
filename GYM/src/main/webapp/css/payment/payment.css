@@ -4,9 +4,28 @@
 	max-width: 750px;
 }
 
+.nickForm,
+.phonForm {
+	margin : 60px 0;
+}
+
+.noticemsg {
+	text-align : center;
+	float : center;
+	margin: 10px auto;
+	display: block;
+	margin-bottom : 80px;
+}
+
+.join_wrap {
+	margin-top: 140px;
+	display: block;
+	max-width: 500px;
+}
+
 h1 {
 	font-size: 30px;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 h3 {
@@ -111,7 +130,14 @@ input[type="text"]:hover {
 	text-align: center;
 }
 
-.pay_btn {
+.btn_wrap2 {
+	margin: 20px auto 0;
+	text-align: center;
+	display: block;
+}
+
+
+.pay_btn, .submit_btn {
 	background-position-x: 50%;
 	width: 120px;
 	height: 50px;
@@ -126,7 +152,8 @@ input[type="text"]:hover {
 	transition: 0.3s;
 }
 
-.pay_btn:hover {
+.pay_btn:hover,
+.submit_btn:hover {
 	border: 1px solid #CCC;
 	background-color: white;
 	padding: 7px 10px;
@@ -135,6 +162,29 @@ input[type="text"]:hover {
 	cursor: pointer;
 }
 
+.btn_wrap2 input:nth-child(2) {
+	background-position-x: 50%;
+	width: 120px;
+	height: 50px;
+	border: 1px solid #CCC;
+	background-color: white;
+	color: black;
+	padding: 7px 10px;
+	text-align: center;
+	font-size: 15px;
+	border-radius: 6px;
+	margin: 0 20px;
+	transition: 0.3s;
+}
+
+.btn_wrap2 input:nth-child(2):hover {
+	border: 1px solid #CCC;
+	padding: 7px 10px;
+	background-color: black;
+	color: white;
+	transition: .3s all ease;
+	cursor: pointer;
+}
 
 .btn_wrap input:nth-child(2) {
 	background-position-x: 50%;
