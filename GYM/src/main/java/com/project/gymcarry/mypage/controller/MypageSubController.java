@@ -89,7 +89,7 @@ public class MypageSubController {
 
 		if (list2.size() != 0) {
 
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < list2.size(); i++) {
 				if (list2.get(i).getInfotype().equals("food")) {
 					System.out.println(i + "번째 가 푸드다!");
 					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
@@ -127,7 +127,7 @@ public class MypageSubController {
 
 		if (list2.size() != 0) {
 
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < list2.size(); i++) {
 				if (list2.get(i).getInfotype().equals("food")) {
 					System.out.println(i + "번째 가 푸드다!");
 					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
