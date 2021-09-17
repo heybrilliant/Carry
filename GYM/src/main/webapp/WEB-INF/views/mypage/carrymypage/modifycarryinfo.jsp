@@ -99,8 +99,8 @@
                         <tr>
                             <th><span>PT 이용금액 </span></th>
                             <td>
-                                <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
                                 <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)" name="proprice2">
+                                <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
                                 <input type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3">
                                 <input type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4">
                             </td>
@@ -122,7 +122,7 @@
                                 <label for="crbfphoto">바디프로필 업로드</label>
                             </th>
                             <td>
-                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto" onclick=document.all.file.click();>
+                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto" >
                             </td>
                         </tr>
                         </tbody>
@@ -138,7 +138,7 @@
                                 if(this.files && this.files[0]) {
                                     var reader = new FileReader;
                                     reader.onload = function(data) {
-                                        $(".select_img img").attr("src", data.target.result).width(400);
+                                        $(".select_img img").attr("src", data.target.result).width(500);
                                     }
                                     reader.readAsDataURL(this.files[0]);
                                 }
