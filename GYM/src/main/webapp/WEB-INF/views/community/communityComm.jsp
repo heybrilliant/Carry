@@ -59,7 +59,7 @@
                 <div class="card">
                     <div class="board_sidebar">
                         <img class="profile_image"
-                             src="<c:url value="/uploadFile/${list.memphoto}"/>" alt="img">
+                             src="<c:url value="/uploadfile/${list.memphoto}"/>" alt="img">
                         <div class="nickname">${list.postnick}</div>
 
                     </div>
