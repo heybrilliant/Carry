@@ -1,5 +1,7 @@
 package com.project.gymcarry.member.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,15 +56,20 @@ public class LoginService {
 		System.out.println("캐리 LoginService 내부 조인키 : " + dao.carryjoinkeycheck(id, pw));
 		return dao.carryjoinkeycheck(id, pw);
 	}
-
-	public int insertKaKaoJoin(MemberDto memberDto) {
+	
+	// 카카오 로그인(중복닉네임있을경우가입)
+	public int insertKaKaoJoinOne(MemberDto memberDto) {
 		dao = template.getMapper(MemberDao.class);
-		return dao.insertKaKaoJoin(memberDto);
+		return dao.insertKaKaoJoinOne(memberDto);
 	}
 	
 	// 카카오 로그인 체크용
-	public SessionDto memberLoginCheck(String memnick) {
+	public SessionDto memberLoginCheck(String joinkey_status) {
 		dao = template.getMapper(MemberDao.class);
-		return dao.selectKakaoLoginCheck(memnick);
+		return dao.selectKakaoLoginCheck(joinkey_status);
 	}
+	
+
+
+	
 }

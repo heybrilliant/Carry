@@ -92,7 +92,6 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <!-- 카카오 로그인 API -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 	Kakao.init('0ecec0f1529ce019d44a9de3e0b3bb22'); //발급받은 키 중 javascript키를 사용해준다.
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -104,25 +103,28 @@
 				Kakao.API.request({
 					url : '/v2/user/me',
 					success : function(response) {
-						console.log('11111')
-						var memnick = response.properties.nickname;
-						var mememail = response.kakao_account.email;
+						console.log(response);
+						var nick = response.properties.nickname;
+						var email = response.kakao_account.email;
+						var id = response.id;
 						
 						$.ajax({
 							type : 'POST',
 							url : '<c:url value="/member/kakaologin"/>',
 							data : { 
-									mememail : mememail,
-									memnick : memnick
+									joinkey_status : id,
+									mememail : email,
+									memnick : nick
 								},
 							dataType : 'json',
 							success : function(data){
+								console.log(data);
 								if(data == 0){
-									window.location.href = "<c:url value='/index'/>";
+									window.location.href = "<c:url value='/member/kakaojoin?joinkey_status="+id+"'/>";
 								} else if(data == 1){
-									
+									window.location.href = "<c:url value='/member/kakaojoin?joinkey_status="+id+"'/>";
 								} else if(data == 2){
-									
+									window.location.href = "<c:url value='/index'/>";
 								}
 							}
 						});
@@ -168,21 +170,7 @@
 	
 	
 	
-	//카카오 로그아웃  
-	function kakaoLogout() {
-		if (Kakao.Auth.getAccessToken()) {
-			Kakao.API.request({
-				url : '/v1/user/unlink',
-				success : function(response) {
-					console.log(response)
-				},
-				fail : function(error) {
-					console.log(error)
-				},
-			})
-			Kakao.Auth.setAccessToken(undefined)
-		}
-	}
+	
 </script>
 
 <script>

@@ -23,14 +23,16 @@
       
       <!-- Form 시작 -->
       <form action = <c:url value="" /> method="post">
-
+		
             <div>
+			<c:if test="${email eq null}">
                <h3>이메일</h3>
                <p>
-                  이메일 <span style="color: blue">*</span>
+                  	이메일 <span style="color: blue">*</span>
                </p>
                <input type="text" class="input_box" placeholder="이메일을 입력해주세요."
                   name="mememail" id = "mememail" required>
+			</c:if>	
                
                
                <h3>연락처</h3>
@@ -52,7 +54,7 @@
             
             <div class="btn_wrap">
                <input type="submit" value="회원가입">
-               <input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
+               <input type="button" value="취소" onclick="kakaoLogout()" id="btn">
             </div>
       </div>
       
@@ -71,7 +73,6 @@
 
 
 <script>
-
 
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
