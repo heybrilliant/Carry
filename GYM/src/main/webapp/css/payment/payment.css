@@ -186,6 +186,11 @@ input[type="text"]:hover {
    cursor: pointer;
 }
 
+.check_font {
+	margin: 10px;
+}
+
+
 .btn_wrap input:nth-child(2) {
    background-position-x: 50%;
    width: 120px;
