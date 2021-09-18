@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name ="google-signin-client_id" content="884370396168-lvivvhk8sibtnjq5ns48nug9qrgcuj6h.apps.googleusercontent.com">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -77,6 +78,8 @@
 				<li class="kakao">
 					<button  onclick="kakaoLogin()" class="kaka_btn">
 					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>">
+					
+					<div class="g-signin2" data-onsuccess="onSignIn"></div>
 					</button>
 				</li>
 			</ul>
@@ -141,6 +144,8 @@
 		})
 	}
 	
+	
+	
 /* 	function kakaoLoginPro(response){
 		var data = {id:response.id,email:response.kakao_account.email}
 		$.ajax({
@@ -185,6 +190,11 @@
 		}
 	}
 </script>
+
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
 
 <script>
 $(document).ready(function(){
