@@ -117,12 +117,13 @@
 								},
 							dataType : 'json',
 							success : function(data){
+								console.log('33');
 								if(data == 0){
-									window.location.href = "<c:url value='/index'/>";
+									location.href = "<c:url value='/index'/>";
 								} else if(data == 1){
 									
 								} else if(data == 2){
-									
+									location.href = "<c:url value='/member/snsjoin' />";
 								}
 							}
 						});

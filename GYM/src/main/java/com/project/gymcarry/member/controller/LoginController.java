@@ -112,7 +112,8 @@ public class LoginController {
 		return "redirect:/index";
 	}
 	
-	@PostMapping("/member/kakaologin")
+	
+	@PostMapping("member/kakaologin")
 	@ResponseBody
 	public int memberKakaoLogin(MemberDto memberDto, HttpSession session) {
 		SessionDto sessionDto = loginService.memberLoginCheck(memberDto.getMemnick());
@@ -128,22 +129,10 @@ public class LoginController {
 		return result;
 	}
 	
-	
+	@GetMapping("member/snsjoin")
+	public String snsJoinForm() {
+		return "member/SNSjoinForm";
+	}
 
-	/*
-	 * @PostMapping("/member/kakaologin")
-	 * 
-	 * @ResponseBody public int memberKakaoLogin(MemberDto memberDto) {
-	 * System.out.println(memberDto);
-	 * 
-	 * 
-	 * 
-	 * int result = 0; if(result == 0) { result =
-	 * loginService.insertKaKaoJoin(memberDto); }
-	 * 
-	 * return result; }
-	 */
-	
-	
 
 }

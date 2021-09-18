@@ -17,7 +17,7 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
-	   <!-- Contents -->
+	      <!-- Contents -->
    <div class="container_fix container payment_wrap">
       <h1>SNS 회원가입</h1>
       

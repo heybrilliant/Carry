@@ -55,6 +55,7 @@ public class LoginService {
 		return dao.carryjoinkeycheck(id, pw);
 	}
 
+	// 카카오 로그인 회원 - 회원가입 처리
 	public int insertKaKaoJoin(MemberDto memberDto) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.insertKaKaoJoin(memberDto);
