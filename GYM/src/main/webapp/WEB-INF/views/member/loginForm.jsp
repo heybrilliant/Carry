@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name ="google-signin-client_id" content="884370396168-lvivvhk8sibtnjq5ns48nug9qrgcuj6h.apps.googleusercontent.com">
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -78,8 +77,6 @@
 				<li class="kakao">
 					<button  onclick="kakaoLogin()" class="kaka_btn">
 					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>">
-					
-					<div class="g-signin2" data-onsuccess="onSignIn"></div>
 					</button>
 				</li>
 			</ul>
@@ -95,7 +92,6 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <!-- 카카오 로그인 API -->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
 	Kakao.init('0ecec0f1529ce019d44a9de3e0b3bb22'); //발급받은 키 중 javascript키를 사용해준다.
 	console.log(Kakao.isInitialized()); // sdk초기화여부판단
@@ -107,26 +103,28 @@
 				Kakao.API.request({
 					url : '/v2/user/me',
 					success : function(response) {
-						console.log('11111')
-						var memnick = response.properties.nickname;
-						var mememail = response.kakao_account.email;
+						console.log(response);
+						var nick = response.properties.nickname;
+						var email = response.kakao_account.email;
+						var id = response.id;
 						
 						$.ajax({
 							type : 'POST',
 							url : '<c:url value="/member/kakaologin"/>',
 							data : { 
-									mememail : mememail,
-									memnick : memnick
+									joinkey_status : id,
+									mememail : email,
+									memnick : nick
 								},
 							dataType : 'json',
 							success : function(data){
-								console.log('33');
+								console.log(data);
 								if(data == 0){
-									location.href = "<c:url value='/index'/>";
+									window.location.href = "<c:url value='/member/kakaojoin?joinkey_status="+id+"'/>";
 								} else if(data == 1){
-									
+									window.location.href = "<c:url value='/member/kakaojoin?joinkey_status="+id+"'/>";
 								} else if(data == 2){
-									location.href = "<c:url value='/member/snsjoin' />";
+									window.location.href = "<c:url value='/index'/>";
 								}
 							}
 						});
@@ -143,8 +141,6 @@
 			},
 		})
 	}
-	
-	
 	
 /* 	function kakaoLoginPro(response){
 		var data = {id:response.id,email:response.kakao_account.email}
@@ -174,27 +170,8 @@
 	
 	
 	
-	//카카오 로그아웃  
-	function kakaoLogout() {
-		if (Kakao.Auth.getAccessToken()) {
-			Kakao.API.request({
-				url : '/v1/user/unlink',
-				success : function(response) {
-					console.log(response)
-				},
-				fail : function(error) {
-					console.log(error)
-				},
-			})
-			Kakao.Auth.setAccessToken(undefined)
-		}
-	}
+	
 </script>
-
-
-<script src="https://apis.google.com/js/platform.js" async defer></script>
-
-
 
 <script>
 $(document).ready(function(){

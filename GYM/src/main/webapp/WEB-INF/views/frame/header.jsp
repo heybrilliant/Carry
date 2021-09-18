@@ -41,3 +41,24 @@
 		</c:if>
 	</div>
 </header>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+	Kakao.init('0ecec0f1529ce019d44a9de3e0b3bb22');
+	//카카오 로그아웃  
+	function kakaoLogout() {
+		if (Kakao.Auth.getAccessToken()) {
+			Kakao.API.request({
+				url : '/v1/user/unlink',
+				success : function(response) {
+					console.log(response)
+					history.back();
+				},
+				fail : function(error) {
+					console.log(error)
+				},
+			})
+			Kakao.Auth.setAccessToken(undefined)
+		}
+	}
+</script>

@@ -18,26 +18,31 @@ public class AdminDashBoardServiceImpl implements AdminDashBoardService {
 	private SqlSessionTemplate template;
 	private AdminDashBordDao dao;
 	
+	@Override
 	public List<AllSalesDto> getAllSales(int month, long year) {
 		dao = template.getMapper(AdminDashBordDao.class);
 		return dao.selectAllSales(month, year);
 	}
-
+	
+	@Override
 	public List<AllSalesDto> getMonthSales(long year) {
 		dao = template.getMapper(AdminDashBordDao.class);
 		return dao.selectMonthSales(year);
 	}
-
+	
+	@Override
 	public List<AllSalesDto> getDaySales(int month, long year) {
 		dao = template.getMapper(AdminDashBordDao.class);
 		return dao.selectDaySales(month, year);
 	}
-
+	
+	@Override
 	public List<AllSalesDto> getMonthRank(long year) {
 		dao = template.getMapper(AdminDashBordDao.class);
 		return dao.selectMonthRank(year);
 	}
-
+	
+	@Override
 	public List<DashTableDto> getAllDasghTable() {
 		dao = template.getMapper(AdminDashBordDao.class);
 		return dao.selectAllDashTable();

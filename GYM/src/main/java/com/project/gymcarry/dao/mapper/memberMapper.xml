@@ -173,19 +173,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	
-	<!-- 카카오 로그인 회원 - 회원가입 처리 -->
-	<insert id="insertKaKaoJoin"
+	<!-- 카카오 로그인 중복닉네임있을때 insert -->
+	<insert id="insertKaKaoJoinOne"
 		parameterType="com.project.gymcarry.member.MemberJoinDto">
-		insert into member(mememail, memnick, joinkey_status) 
-		values (#{mememail},#{memnick}, 1)
+		insert into member(joinkey_status,mememail) 
+		values (#{joinkey_status},#{mememail})
 	</insert>
 	
-	<!-- 카카오 로그인 회원 체크 -->
+	<!-- 카카오 로그인 -->
 	<select id="selectKakaoLoginCheck" parameterType="String"
 		resultType="com.project.gymcarry.member.SessionDto">
-		select * from member where memnick = #{param}
+		select * from member where joinkey_status = #{param}
 	</select>
 	
-
-
+	
 </mapper>
