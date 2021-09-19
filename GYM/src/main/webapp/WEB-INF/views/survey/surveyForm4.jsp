@@ -30,22 +30,23 @@
 									type="radio" name="cp_item" checked="checked"> <span>15~19세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>20~24세</span></label>
+									type="radio" name="cp_item"> <span>20~24세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>25~29세</span></label>
+									type="radio" name="cp_item"> <span>25~29세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>30~34세</span></label>
+									type="radio" name="cp_item"> <span>30~34세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>35~39세</span></label>
+									type="radio" name="cp_item" > <span>35~39세</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="cp_item" checked="checked"> <span>40~50세</span></label>
+									type="radio" name="cp_item" > <span>40~50세</span></label>
 							</li>
 						</ul>
 						<div class="next_btn">
+							<a href="javascript:window.history.back();">이전</a>
 							<input type="submit" value="다음">
 						</div>
 					</div>

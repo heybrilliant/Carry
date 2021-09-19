@@ -58,6 +58,12 @@ public interface MemberDao {
 	int setpassword(String mempw, String memname, String mememail);
 	// 캐리 비밀번호 찾기(임시발급)
 	int setCarrypassword(String crpw, String crname, String cremail);
+	
+	// 카카오 로그인(가입)
+	int insertKaKaoJoin(MemberDto memberDto);
+	
+	// 카카오 로그인체크용(세션도 저장)
+	SessionDto selectKakaoLoginCheck(String memnick);
 
 
 

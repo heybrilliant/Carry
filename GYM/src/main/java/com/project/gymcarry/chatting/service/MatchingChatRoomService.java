@@ -36,4 +36,6 @@ public interface MatchingChatRoomService {
 
 	int deleteChatRoom(int chatidx);
 
+	List<ChatRoomDto> getMemberMessage(int chatidx);
+
 }

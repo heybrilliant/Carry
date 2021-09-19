@@ -4,6 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.project.gymcarry.carry.CarryInfoDto;
+import com.project.gymcarry.carry.CarryJoinDto;
+import com.project.gymcarry.carry.CarryToInfoDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.gymcarry.carry.CarryDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
 import com.project.gymcarry.member.SessionDto;
 import com.project.gymcarry.member.service.memSha256;
-import com.project.gymcarry.mypage.CarryMyPageDto;
 import com.project.gymcarry.mypage.service.CarryMyPageService;
 
 @Controller
@@ -47,51 +48,55 @@ public class CarryMyPageController {
 
 	// 캐리 정보 수정
 	@PostMapping("/mypage/update")
-	public String updateCarryModify(CarryMyPageDto carryDto, @RequestParam("proprice1") int proprice1
-			, @RequestParam("proprice2") int proprice2, @RequestParam("proprice3") int proprice3,
-									@RequestParam("proprice4") int proprice4,
-									HttpSession session) throws Exception {
+	public String updateCarryModify(CarryToInfoDto carryToInfoDto,
+									@RequestParam("proprice1") int proprice1, @RequestParam("proprice2") int proprice2,
+									@RequestParam("proprice3") int proprice3, @RequestParam("proprice4") int proprice4,
+									HttpSession session, HttpServletRequest request, HttpServletResponse respons) throws Exception {
 
 
-		service.updateCarryModify(carryDto);
-		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryDto.getCridx());
+		service.updateCarryModify(carryToInfoDto,respons,request);
+		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryToInfoDto.getCridx());
 		
 		return "/mypage/carrymypage/carrymypage";
 	}
 
-	
+
 	// 캐리 기본 정보 수정
 	@GetMapping("/carry/modify")
 	public String carryBasicModify(HttpServletRequest request ,Model model) throws Exception {
-	      
-	      HttpSession session = request.getSession();
-	      int cridx = (int) session.getAttribute("cridx");
-	      
-	      CarryDto carry = service.selectCarryBasicInfo(cridx);
-	      model.addAttribute("carry", carry);
-	      
-	      return "/mypage/carrymypage/modifycarrybasicinfo";
-	   }
-	
-	
+
+		HttpSession session = request.getSession();
+		int cridx = (int) session.getAttribute("cridx");
+
+		CarryJoinDto carry = service.selectCarryBasicInfo(cridx);
+		model.addAttribute("carry", carry);
+		System.out.println(carry.toString());
+		return "/mypage/carrymypage/modifycarrybasicinfo";
+	}
+
+
 	// 캐리 기본 정보 수정 내용 전송
 	@PostMapping("/carry/modify")
 	public String carryBasicInfoUpdate(@ModelAttribute CarryToJoinDto carryDto, HttpServletRequest request, HttpServletResponse response) throws Exception {
-	      
-	      // 암호 확인
-	      System.out.println("첫번째 암호 : " + carryDto.getCrpw());
-	      // 비밀번호 암호화(SHA256)
-	      String encryPassword = memSha256.encrypt(carryDto.getCrpw());
-	      carryDto.setCrpw(encryPassword);
-	      System.out.println("두번째:" + carryDto.getCrpw());
 
-	      int result = service.updateCarryBasicInfo(carryDto, response, request);
-	      if (result == 1) {
-	         System.out.println("캐리 회원가입 성공");
-	      }
-	      
-	      return "/mypage/carrymypage/carrymypage";
-	   }
+		// 암호 확인
+		System.out.println("첫번째 암호 : " + carryDto.getCrpw());
+		// 비밀번호 암호화(SHA256)
+		String encryPassword = memSha256.encrypt(carryDto.getCrpw());
+		carryDto.setCrpw(encryPassword);
+		System.out.println("두번째:" + carryDto.getCrpw());
+
+		int result = service.updateCarryBasicInfo(carryDto, response, request);
+		System.out.println(carryDto.toString());
+		System.out.println("result = " + result);
+		if (result == 1) {
+			System.out.println("캐리 회원가입 성공");
+		} else {
+			System.out.println("실패");
+		}
+
+		return "/mypage/carrymypage/carrymypage";
+	}
 
 	
 	// 내 회원 리스트

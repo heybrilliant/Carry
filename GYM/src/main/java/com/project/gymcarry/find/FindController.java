@@ -88,7 +88,6 @@ public class FindController {
 		if (email == null) {
 			out.println("<script>");
 			out.println("alert('가입된 계정이 없습니다.');");
-			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
 		} else {
@@ -96,7 +95,7 @@ public class FindController {
 			mailsender.send_pwemail(memname, mememail);
 			
 			out.println("<script>");
-			out.println("alert('가입하신 이메일로 임시 비밀번호가 전송되었습니다.');");
+			out.println("alert('가입하신 이메일로 임시 비밀번호가 전송되었습니다.'); location.href='/gym/member/login';");
 			out.println("</script>");
 			out.close();
 		}
@@ -109,7 +108,7 @@ public class FindController {
 		return "/find/findpassword";
 	}
 	
-	// 멤버 비밀번호 찾기 컨트롤러
+	// 캐리 비밀번호 찾기 컨트롤러
 		@GetMapping("/findcarrypassword")
 		public String findcarrypassword() {
 			return "find/findcarrypassword";
@@ -137,7 +136,7 @@ public class FindController {
 				mailsender.send_Crpwemail(crname, cremail);
 				
 				out.println("<script>");
-				out.println("alert('가입하신 이메일로 임시 비밀번호가 전송되었습니다.');");
+				out.println("alert('가입하신 이메일로 임시 비밀번호가 전송되었습니다.'); location.href='/gym/carry/login';");
 				out.println("</script>");
 				out.close();
 			}

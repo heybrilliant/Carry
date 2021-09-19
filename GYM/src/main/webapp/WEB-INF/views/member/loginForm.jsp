@@ -10,6 +10,7 @@
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
+
 <link rel="stylesheet" href="/gym/css/joinlogin/loginform.css">
 
 </head>
@@ -74,11 +75,10 @@
 
 			<ul class="apiLogin">
 				<li class="kakao">
-					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>" onclick="kakaoLogin()">
+					<button  onclick="kakaoLogin()" class="kaka_btn">
+					<img src="<c:url value="/images/icon/kakao_login_medium_btn.png"/>">
+					</button>
 				</li>
-				<li onclick="kakaoLogout()"><a href="javascript:void(0)">
-						<span>카카오 로그아웃</span>
-				</a></li>
 			</ul>
 
 
@@ -89,7 +89,7 @@
 
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>
-
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 <!-- 카카오 로그인 API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -104,7 +104,31 @@
 				Kakao.API.request({
 					url : '/v2/user/me',
 					success : function(response) {
-						console.log(response)
+						console.log('11111')
+						var memnick = response.properties.nickname;
+						var mememail = response.kakao_account.email;
+						
+						$.ajax({
+							type : 'POST',
+							url : '<c:url value="/member/kakaologin"/>',
+							data : { 
+									mememail : mememail,
+									memnick : memnick
+								},
+							dataType : 'json',
+							success : function(data){
+								console.log('33');
+								if(data == 0){
+									location.href = "<c:url value='/index'/>";
+								} else if(data == 1){
+									
+								} else if(data == 2){
+									location.href = "<c:url value='/member/snsjoin' />";
+								}
+							}
+						});
+								
+						
 					},
 					fail : function(error) {
 						console.log(error)

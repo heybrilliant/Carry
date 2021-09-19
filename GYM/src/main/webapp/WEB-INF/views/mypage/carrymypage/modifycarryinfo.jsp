@@ -19,11 +19,11 @@
     <div class="container">
         <div class="form_txtInput">
 
-            <form action="<c:url value="/mypage/update"/>" method="post">
+            <form action="<c:url value="/mypage/update"/>" method="post" enctype="multipart/form-data">
                 <!--캐리 프로필 영역-->
                 <h1 class="sub_tit_txt">캐리 정보 수정</h1>
                 <div class="edit_form">
-                    <input type="hidden" name="cridx" value="${cridx}">
+
                     <table>
                         <colgroup>
                             <col width="30%"/>
@@ -34,7 +34,7 @@
                             <th><span>캐리 소개</span></th>
                             <td>
                                 <form>
-                                    <input id="introduce" type="text" name="crintro">
+                                    <textarea id="introduce" type="text" name="crintro"></textarea>
                                 </form>
                             </td>
                         </tr>
@@ -99,9 +99,8 @@
                         <tr>
                             <th><span>PT 이용금액 </span></th>
                             <td>
-
-                                <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
                                 <input type="text" placeholder="5회 금액 (숫자만 입력해주세요)" name="proprice2">
+                                <input type="text" placeholder="1회 금액 (숫자만 입력해주세요)" name="proprice1">
                                 <input type="text" placeholder="10회 금액 (숫자만 입력해주세요)" name="proprice3">
                                 <input type="text" placeholder="20회 금액 (숫자만 입력해주세요)" name="proprice4">
                             </td>
@@ -109,8 +108,8 @@
 
                         <tr>
                             <th><span>자격 및 경력<br>
-                                <p>(최대 5개까지 입력 가능합니다)</p>
-									</span></th>
+                                <p>(최대 5개까지 입력 가능합니다)</p></span>
+                            </th>
                             <td><input type="text" placeholder="자격 및 경력1" name="crcerti1">
                                 <input type="text" placeholder="자격 및 경력2" name="crcerti2">
                                 <input type="text" placeholder="자격 및 경력3" name="crcerti3">
@@ -119,16 +118,35 @@
                             </td>
                         </tr>
                         <tr>
-                            <th><span>바디프로필 업로드</span></th>
+                            <th>
+                                <label for="crbfphoto">바디프로필 업로드</label>
+                            </th>
                             <td>
-                                <form action="">
-                                <input type="file" id="userphoto" value="바디프로필" name="">
-                                </form>
+                                <input type="file" value="사진업로드" class="profilebtn" name="crbfphoto" id="crbfphoto" >
                             </td>
                         </tr>
                         </tbody>
+                        <input type="hidden" name="cridx" id="cridx" value="${cridx}">
+                        <input type="hidden" name="oldcrbfphoto" value="${crbfphoto}">
+
                     </table>
-                </div>
+                    <%=request.getRealPath("/") %>
+                    <div class="select_img"><img src="" /></div>
+
+                        <script>
+                            $("#crbfphoto").change(function(){
+                                if(this.files && this.files[0]) {
+                                    var reader = new FileReader;
+                                    reader.onload = function(data) {
+                                        $(".select_img img").attr("src", data.target.result).width(500);
+                                    }
+                                    reader.readAsDataURL(this.files[0]);
+                                }
+                            });
+                        </script>
+
+
+                    </div>
                 <div class="btn_wrap2">
                 <input class="btn_update" type="submit" value="수정">
                 </div>

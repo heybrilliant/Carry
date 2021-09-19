@@ -166,11 +166,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<!-- 캐리 임시 비밀번호 업데이트 -->
-	<update id="setcarrypassword" parameterType="Map">
+	<update id="setCarrypassword" parameterType="Map">
 		update carry set
 		crpw =
 		#{param1} where crname = #{param2} and cremail = #{param3}
 	</update>
+	
+	
+	<!-- 카카오 로그인 회원 - 회원가입 처리 -->
+	<insert id="insertKaKaoJoin"
+		parameterType="com.project.gymcarry.member.MemberJoinDto">
+		insert into member(mememail, memnick, joinkey_status) 
+		values (#{mememail},#{memnick}, 1)
+	</insert>
+	
+	<!-- 카카오 로그인 회원 체크 -->
+	<select id="selectKakaoLoginCheck" parameterType="String"
+		resultType="com.project.gymcarry.member.SessionDto">
+		select * from member where memnick = #{param}
+	</select>
+	
 
 
 </mapper>

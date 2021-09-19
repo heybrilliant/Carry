@@ -1,7 +1,7 @@
 package com.project.gymcarry.carry;
 
 public class CarryJoinDto {
-	
+
 	private int cridx;
 	private String cremail;
 	private String crpw;
@@ -15,7 +15,7 @@ public class CarryJoinDto {
 	public CarryJoinDto() {
 	}
 	public CarryJoinDto(int cridx, String cremail, String crpw, String crname, String crnick, String crgender,
-			String crphone, String crphoto, String joinkey, String joinkey_status) {
+						String crphone, String crphoto, String joinkey, String joinkey_status) {
 		this.cridx = cridx;
 		this.cremail = cremail;
 		this.crpw = crpw;
@@ -87,7 +87,13 @@ public class CarryJoinDto {
 	public void setJoinkey_status(String joinkey_status) {
 		this.joinkey_status = joinkey_status;
 	}
-	
-	
-	
+	@Override
+	public String toString() {
+		return "CarryJoinDto [cridx=" + cridx + ", cremail=" + cremail + ", crpw=" + crpw + ", crname=" + crname
+				+ ", crnick=" + crnick + ", crgender=" + crgender + ", crphone=" + crphone + ", crphoto=" + crphoto
+				+ ", joinkey=" + joinkey + ", joinkey_status=" + joinkey_status + "]";
+	}
+
+
+
 }

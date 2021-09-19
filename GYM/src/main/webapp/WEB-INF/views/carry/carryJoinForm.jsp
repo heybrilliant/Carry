@@ -22,7 +22,7 @@
 	<div class="wrap wd668">
 		<div class="container">
 			<form method="post" action="<c:url value="/carry/join"/>"
-				enctype="multipart/form-data">
+				enctype="multipart/form-data" onsubmit="return joinsubmit();">
 				<%-- <form action="<c:url value="/member/carryJoin"/>" method="post"
 					enctype="multipart/form-data"> --%>
 				<div class="form_txtInput">
@@ -119,7 +119,7 @@
 						<input type="submit" id="joinsubmit" value="회원가입">
 					</div>
 					<div class="btn_wrap2">
-						<a href="<c:url value="/index"/>">취소</a>
+						<a href="javascript:history.back()">취소</a>
 					</div>
 				</div>
 			</form>
@@ -301,7 +301,7 @@
 							$('#msg_nick').html('사용 불가능');
 							$('#msg_nick').addClass('color_red');
 							$('#msg_nick').removeClass('display_none');
-							$('#memnick').val('');
+							$('#crnick').val('');
 						}
 						
 					}
@@ -327,7 +327,7 @@ $('#cremail, #crnick, #crphone').focusin(function() {
 	$('#msg_nick').addClass('display_none');
 	$('#msg_nick').removeClass('color_blue');
 	$('#msg_nick').removeClass('color_red');
-	$('#crnick').val('');
+	//$('#crnick').val('');
 	$('#msg_phone').addClass('display_none');
 	$('#msg_phone').removeClass('color_blue');
 	$('#msg_phone').removeClass('color_red');

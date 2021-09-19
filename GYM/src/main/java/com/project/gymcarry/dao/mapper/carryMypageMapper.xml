@@ -7,13 +7,13 @@
 
     <!-- 캐리 정보 수정  -->
     <update id="updateCarryModify"
-            parameterType="com.project.gymcarry.mypage.CarryMyPageDto">
+            parameterType="com.project.gymcarry.carry.CarryInfoDto">
         update carry a , crcertification c
         set
-            a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace}, a.crdepart = #{crdepart},
+            a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace}, a.crdepart = #{crdepart}, a.crbfphoto = #{crbfphoto},
             c.crcerti1 = #{crcerti1}, c.crcerti2 = #{crcerti2}, c.crcerti3 = #{crcerti3}, c.crcerti4 = #{crcerti4}, c.crcerti5 = #{crcerti5}
         where
-            a.cridx = #{cridx}
+            a.cridx=c.cridx and a.cridx = #{cridx}
     </update>
 
     <!-- 캐리 가격 수정 -->
@@ -32,7 +32,7 @@
     
     
     <!-- 캐리 기본 정보 수정에 필요한 데이터 값 출력 -->
-   <select id="selectCarryBasicInfo" resultType="com.project.gymcarry.carry.CarryDto">
+   <select id="selectCarryBasicInfo" resultType="com.project.gymcarry.carry.CarryJoinDto">
       select * from carry where cridx = #{cridx}
    </select>
    

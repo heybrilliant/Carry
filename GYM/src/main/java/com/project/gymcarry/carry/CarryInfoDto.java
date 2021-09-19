@@ -1,24 +1,18 @@
 package com.project.gymcarry.carry;
 
-import org.springframework.web.multipart.MultipartFile;
 
-public class CarryDto {
-
+public class CarryInfoDto {
 	private int cridx;
 	private String joinkey_status;
 	private String joinkey;
-	private MultipartFile crphoto;
-	private MultipartFile crbfphoto;
+	private String crbfphoto;
 	private String cremail;
-	private String crpw;
 	private String crname;
 	private String crnick;
 	private String crgender;
-	private String crphone;
 	private String crintro;
 	private String crdepart;
 	private String crfield;
-	private int faceornot;
 	private int placeidx;
 	private String crplace;
 	private String crcerti1;
@@ -27,28 +21,23 @@ public class CarryDto {
 	private String crcerti4;
 	private String crcerti5;
 
-
-
 	// 기본 생성자
-	public CarryDto() {}
+	public CarryInfoDto() {}
 
-
-	public CarryDto(int cridx, String joinkey_status, String joinkey, MultipartFile crphoto, MultipartFile crbfphoto, String cremail, String crpw, String crname, String crnick, String crgender, String crphone, String crintro, String crdepart, String crfield, int faceornot, int placeidx, String crplace, String crcerti1, String crcerti2, String crcerti3, String crcerti4, String crcerti5) {
+	public CarryInfoDto(int cridx, String joinkey_status, String joinkey, String crbfphoto, String cremail, String crname,
+						String crnick, String crgender, String crintro, String crdepart, String crfield, int placeidx, String crplace,
+						String crcerti1, String crcerti2, String crcerti3, String crcerti4, String crcerti5) {
 		this.cridx = cridx;
 		this.joinkey_status = joinkey_status;
 		this.joinkey = joinkey;
-		this.crphoto = crphoto;
 		this.crbfphoto = crbfphoto;
 		this.cremail = cremail;
-		this.crpw = crpw;
 		this.crname = crname;
 		this.crnick = crnick;
 		this.crgender = crgender;
-		this.crphone = crphone;
 		this.crintro = crintro;
 		this.crdepart = crdepart;
 		this.crfield = crfield;
-		this.faceornot = faceornot;
 		this.placeidx = placeidx;
 		this.crplace = crplace;
 		this.crcerti1 = crcerti1;
@@ -82,19 +71,11 @@ public class CarryDto {
 		this.joinkey = joinkey;
 	}
 
-	public MultipartFile getCrphoto() {
-		return crphoto;
-	}
-
-	public void setCrphoto(MultipartFile crphoto) {
-		this.crphoto = crphoto;
-	}
-
-	public MultipartFile getCrbfphoto() {
+	public String getCrbfphoto() {
 		return crbfphoto;
 	}
 
-	public void setCrbfphoto(MultipartFile crbfphoto) {
+	public void setCrbfphoto(String crbfphoto) {
 		this.crbfphoto = crbfphoto;
 	}
 
@@ -104,14 +85,6 @@ public class CarryDto {
 
 	public void setCremail(String cremail) {
 		this.cremail = cremail;
-	}
-
-	public String getCrpw() {
-		return crpw;
-	}
-
-	public void setCrpw(String crpw) {
-		this.crpw = crpw;
 	}
 
 	public String getCrname() {
@@ -138,14 +111,6 @@ public class CarryDto {
 		this.crgender = crgender;
 	}
 
-	public String getCrphone() {
-		return crphone;
-	}
-
-	public void setCrphone(String crphone) {
-		this.crphone = crphone;
-	}
-
 	public String getCrintro() {
 		return crintro;
 	}
@@ -168,14 +133,6 @@ public class CarryDto {
 
 	public void setCrfield(String crfield) {
 		this.crfield = crfield;
-	}
-
-	public int getFaceornot() {
-		return faceornot;
-	}
-
-	public void setFaceornot(int faceornot) {
-		this.faceornot = faceornot;
 	}
 
 	public int getPlaceidx() {
@@ -236,22 +193,18 @@ public class CarryDto {
 
 	@Override
 	public String toString() {
-		return "CarryDto{" +
+		return "CarryInfoDto{" +
 				"cridx=" + cridx +
 				", joinkey_status='" + joinkey_status + '\'' +
 				", joinkey='" + joinkey + '\'' +
-				", crphoto=" + crphoto +
-				", crbfphoto=" + crbfphoto +
+				", crbfphoto='" + crbfphoto + '\'' +
 				", cremail='" + cremail + '\'' +
-				", crpw='" + crpw + '\'' +
 				", crname='" + crname + '\'' +
 				", crnick='" + crnick + '\'' +
 				", crgender='" + crgender + '\'' +
-				", crphone='" + crphone + '\'' +
 				", crintro='" + crintro + '\'' +
 				", crdepart='" + crdepart + '\'' +
 				", crfield='" + crfield + '\'' +
-				", faceornot=" + faceornot +
 				", placeidx=" + placeidx +
 				", crplace='" + crplace + '\'' +
 				", crcerti1='" + crcerti1 + '\'' +
@@ -262,3 +215,4 @@ public class CarryDto {
 				'}';
 	}
 }
+

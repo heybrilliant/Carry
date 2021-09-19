@@ -26,23 +26,17 @@
 					<div class="survey_ul">
 						<ul>
 							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
+									type="radio" name="sv1" value = "헬스" checked="checked"><span>헬스</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="sv1" value = "헬스" checked="checked"> <span>헬스</span></label>
+									type="radio" name="sv1" value = "필라테스"><span>필라테스</span></label>
 							</li>
 							<li><label class="box-radio-input"> <input
-									type="radio" name="sv1" value = "필라테스" checked="checked"> <span>필라테스</span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="radio" name="sv1" value = "요가" checked="checked"> <span>요가</span></label>
-							</li>
-							<li><label class="box-radio-input"> <input
-									type="hidden" name="cp_item" checked="checked"> <span></span></label>
+									type="radio" name="sv1" value = "요가"><span>요가</span></label>
 							</li>
 						</ul>
 						<div class="next_btn">
-							<input type="submit" value="다음">
+							<input type="submit" value="다음" onclick="check()">
 						</div>
 					</div>
 					</form>
