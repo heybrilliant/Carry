@@ -52,7 +52,6 @@
 				url : '/v1/user/unlink',
 				success : function(response) {
 					console.log(response)
-					history.back();
 				},
 				fail : function(error) {
 					console.log(error)
