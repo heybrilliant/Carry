@@ -28,8 +28,8 @@
 
 	<!-- Contents -->
 	<!-- 혹시 윗간격 이상하면 container div 지우기 -->
-	<div class="wrap wd668">
-		<div class="container">
+	<div class="container">
+		<div class="wrap wd668">
 			<ul class="tab">
 				<li class="active"><a class="sub_tit_txt"
 					href="<c:url value="/find/findid"/>">회원 아이디 찾기</a></li>

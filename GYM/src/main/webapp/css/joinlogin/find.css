@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	height: auto;
+	background:#f7f7f7
 }
 
 table, tr, td, th, div, p, em, ol, ul, li, dl, dt, dd, a, address, img,
@@ -30,22 +30,26 @@ h1 {
 .wrap {
 	width: 40%;
 	box-shadow: 0 0 3em rgba(0, 0, 0, 0.15);
-	margin: 140px auto;
+	margin: 0 auto;
 }
 
 .wrap.wd668 {
 	width: 40%;
 	min-width: 40%;
 	text-align: center;
+	border-radius:5px;
+	overflow:hidden;
 }
 
 .container {
 	width: 100%;
+	height:calc(100vh - 396px);
+	padding-top:150px;
 }
 
 .sub_tit_txt {
 	color: #2f2f2f;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 #btnbox {	
@@ -95,25 +99,27 @@ button#loginBtn:hover{
 	border: 0;
 	color: #fff;
 	background-color: #4380ce;
-	font-weight: bold;
 	height: 40px;
 	line-height: 40px;
 	width: 130px;
 	display: inline-block;
 	text-align: center;
 	margin: 30px 10px;
+	cursor:pointer;
+	font-size:14px;
 }
 
 .btn_wrap2 a {
 	color: #fff;
 	background-color: #ccc;
-	font-weight: bold;
 	height: 40px;
 	line-height: 40px;
 	width: 130px;
 	display: inline-block;
 	text-align: center;
 	margin: 0 auto;
+	cursor:pointer;
+	font-size:14px;
 }
 
 #findBtn:hover {
@@ -141,7 +147,7 @@ button#loginBtn:hover{
 .find_form table td {
 	width: 100%;
 	display: inline-block;
-	padding: 6px 0;
+	padding: 10px 0;
 	position: relative;
 }
 
@@ -184,24 +190,19 @@ button#loginBtn:hover{
 	line-height: 60px;
 	display: block;
 	text-decoration: none;
-	border-radius: 4px 4px 0 0;
-	background: #ccc;
 	color: #000;
+	background: #fff;
 	cursor: pointer;
-	border: 0px solid #ccc;
+	transition:0.2s;
+	box-shadow:0px 2px 5px rgb(13 12 41 / 12%);
 }
 
 .tab>li>a:hover {
-	background: #fff;
+	background: #d2d2d2;
 }
 
 .tab>li.active>a {
-	border-bottom-color: transparent;
 	cursor: default;
-	background-color: #fff;
-	color: #000;
-}
-
-.tab>li.active>a:hover {
-	background: #fff;
+	background-color: #000;
+	color: #fff;
 }

@@ -39,7 +39,7 @@
                 <li>
                     <a href="<c:url value="/community/boardComm"/>">소통</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="<c:url value="/community/boardQnA"/>">질문답변</a>
                 </li>
 
@@ -68,9 +68,9 @@
                         <h2 class="board_title">
                             <a href="<c:url value="/community/postContent?postidx=${list.postidx}"/>">${list.postname}</a>
                         </h2>
-                        <div class="board_post">
+                        <a class="board_post" href="<c:url value="/community/postContent?postidx=${list.postidx}"/>">
                                 ${list.postcontent}
-                        </div>
+                        </a>
                             <%--날짜, 조회수--%>
                         <div class="board_bottom">
                             <div class="write_date">
@@ -91,16 +91,12 @@
                             <ul class="board_btn">
 
                                 <li>
-                                    <a href="#">
-                                        <img class="board_icon" img src="<c:url value="/images/icon/heart.png"/>"
-                                             alt="img">${list.likeCnt}
-                                    </a>
+	                                <img class="board_icon" src="<c:url value="/images/icon/heart.png"/>" alt="img">
+	                                ${list.likeCnt}
                                 </li>
                                 <li>
-                                    <a href="#"><img class="board_icon" img
-                                                     src="<c:url value="/images/icon/speech-bubble.png"/>" alt="img">
-                                            ${list.commentCnt}
-                                    </a>
+                                    <img class="board_icon" src="<c:url value="/images/icon/speech-bubble.png"/>" alt="img">
+                                    ${list.commentCnt}
                                 </li>
                             </ul>
                         </div>

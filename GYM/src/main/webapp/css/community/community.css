@@ -41,6 +41,11 @@ body {
   display: inline-block;
   padding: 0px 20px 0px 20px;
   margin: 30px 0px 30px 0px;
+  line-height:1;
+}
+
+.community_nav ul li.active a {
+	font-weight:600;
 }
 .community_nav ul li:first-child {
   border-left: none;
@@ -119,24 +124,18 @@ body {
 .title_btn {
   padding: 0.3rem 0.7rem;
   margin: 5px 0 0;
-
+  cursor:default;
   font-size: 13px;
   font-weight: 400;
   text-align: center;
   text-decoration: none;
   color: rgb(94, 94, 94);
-
   display: inline-block;
   width: auto;
-
   border: none;
   border-radius: 18px;
-
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
   0 2px 4px -1px rgba(0, 0, 0, 0.06);
-
-  cursor: pointer;
-
   transition: 0.5s;
 }
 
@@ -338,6 +337,10 @@ nav {
 }
 
 .board_post img {
+	display:none !important;
+}
+
+.board_post br {
 	display:none !important;
 }
 

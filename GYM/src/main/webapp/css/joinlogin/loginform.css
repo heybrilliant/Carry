@@ -7,7 +7,7 @@ html {
     height:auto;
 }
 body {
-    height:auto;
+	background:#f7f7f7
 }
 
 #alter {
@@ -113,6 +113,7 @@ h1 {
     text-align: center;
     margin: 0 auto;
     margin-bottom: -30px;
+    cursor:pointer;
 }
 
 .btn_wrap2 a{

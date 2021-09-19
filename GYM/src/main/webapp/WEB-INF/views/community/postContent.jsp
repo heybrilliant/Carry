@@ -39,8 +39,8 @@
         <!-- Profile -->
         <div class="space_between">
             <div class="btn_right">
-                <button class="title_btn" type="button" onclick="">${boardDetail.boardcategory}</button>
-                <h2 class="board_title"><a href="#">${boardDetail.postname}</a></h2>
+                <button class="title_btn" type="button">${boardDetail.boardcategory}</button>
+                <h2 class="board_title">${boardDetail.postname}</h2>
             </div>
             <div class="profile">
                 <div class="profile_img">

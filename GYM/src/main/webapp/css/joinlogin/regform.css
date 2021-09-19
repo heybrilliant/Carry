@@ -7,7 +7,7 @@ html {
     height:auto;
 }
 body {
-    height:auto;
+	background:#f7f7f7
 }
  div, p, em, ol, ul, li, dl, dt, dd, a, address, img, h2, h3, h4, h5, h6 {
     font-size:11pt; 
@@ -74,15 +74,20 @@ button.profilebtn{
 .profilebtn[type="button"]{
 	width: 80px;
     background-color: white;
-    margin-top: 9px;
-    border-radius: 10px;
-    box-shadow: 0 4px 4px -1px rgb(0 0 0 / 20%), 0 2px 2px -1px rgb(0 0 0 / 20%);
-    border: none;
+    margin-top: 15px;
+    /* box-shadow: 0 4px 4px -1px rgb(0 0 0 / 20%), 0 2px 2px -1px rgb(0 0 0 / 20%); */
+    border:1px solid #ddd;
     text-align: center;
-    padding: 5px
+    padding: 7px;
+    font-size:11px;
+    border-radius:5px;
+    transition:0.2s;
 }
 .profilebtn[type="button"]:hover{
 	cursor: pointer;
+	border:1px solid #333;
+	background:#333;
+	color:#fff;
 }
 
 
@@ -189,6 +194,7 @@ ul{list-style:none; }
 #joinsubmit:hover{
     background: #0094ff;
     color: #fff;
+    cursor:pointer;
 }
 
 .btn_wrap2 a:hover{
@@ -224,9 +230,8 @@ ul{list-style:none; }
     text-indent:20px;}
 
 .selectbox{
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    grid-template-rows: repeat(minmax(50px, auto));
+   display: flex;
+   align-items:center;
 }
 
 
@@ -239,6 +244,13 @@ ul{list-style:none; }
     padding:10px; 
     width:100%; 
     float:left;
+}
+
+.join_form table .selectbox input {
+	margin:0 10px;
+}
+.join_form table .selectbox label {
+	margin-right:20px;
 }
 
 .join_form #btnbox{
