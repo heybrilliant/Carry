@@ -6,7 +6,7 @@ public class MemberMessageListDto {
 	private int messageidx; 		//메세지번호
 	private int chatidx;			//채팅방번호
 	private String chatcontent;		//대화내용
-	@JsonFormat(pattern = "h:mm a")
+	@JsonFormat(pattern = "h:mm a", timezone = "Asia/Seoul")
 	private String chatdate;		//대화시간
 	private int cridx;				//캐리번호
 	private int memidx;				//회원번호
