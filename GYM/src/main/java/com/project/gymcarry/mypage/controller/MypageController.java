@@ -47,7 +47,7 @@ public class MypageController {
 		String formatedNow = now.format(formatter);
 
 		List<MypageDto2> list2 = mypService.loadMemo2(sdt.getMemidx(), formatedNow);
-		
+
 		System.out.println("세션 -> " + sdt + "-> 마이페이지 진입");
 
 		return "/mypage/mypage";

@@ -1,119 +1,120 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <title>Community</title>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <link rel="stylesheet" href="/gym/css/community/postContent.css">
 <script src="/gym/smarteditor2/js/HuskyEZCreator.js" charset="utf-8"></script>
 </head>
 <body>
-<!-- header -->
-<%@ include file="/WEB-INF/views/frame/header.jsp"%>
-53233
+	<!-- header -->
+	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
+	53233
 
-<!-- Contents -->
-<div class="contents_wrap">
-    <div class="contents container_fix">
+	<!-- Contents -->
+	<div class="contents_wrap">
+		<div class="contents container_fix">
 
-        <!-- Nav -->
-        <div class="post_back">
-            <a class="post_back_link" href="<c:url value="/community/boardList"/>">
-                <img class="arrow_img" src="/gym/images/icon/arrow.png"> 글 목록
-            </a>
-            <div class="content_right off">
-                <ul>
-                    <li>
-                        <a class="con_edit" href="<c:url value="/community/update?postidx=${boardDetail.postidx }"/>">수정 </a>
-                    </li>
-                    <li>
-                        <a class="con_delete">삭제</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+			<!-- Nav -->
+			<div class="post_back">
+				<a class="post_back_link"
+					href="<c:url value="/community/boardList"/>"> <img
+					class="arrow_img" src="/gym/images/icon/arrow.png"> 글 목록
+				</a>
+				<div class="content_right off">
+					<ul>
+						<li><a class="con_edit"
+							href="<c:url value="/community/update?postidx=${boardDetail.postidx }"/>">수정
+						</a></li>
+						<li><a class="con_delete">삭제</a></li>
+					</ul>
+				</div>
+			</div>
 
-        <!-- Profile -->
-        <div class="space_between">
-            <div class="btn_right">
-                <button class="title_btn" type="button" onclick="">${boardDetail.boardcategory}</button>
-                <h2 class="board_title"><a href="#">${boardDetail.postname}</a></h2>
-            </div>
-            <div class="profile">
-                <div class="profile_img">
-                    <img alt="" src="<c:url value="/uploadFile/${boardDetail.memphoto}"/>">
-                    <div id="nickname">${boardDetail.postnick}</div>
-                </div>
-                <ul class="profile_right">
-                    <li class="profile_left">
-                        <img class="left_board_icon" img src="<c:url value="/images/icon/time.png"/>" alt="img">
-                        <fmt:formatDate var="dateFmt" pattern="yyyy-MM-dd HH:mm" value="${boardDetail.postdate}"/>
-                        <div id="write_date"><c:out value="${dateFmt}"/></div>
-                    </li>
-                    <li class="profile_viewcnt">
-                        <img class="left_board_icon2" img src="<c:url value="/images/icon/board.png"/>" alt="img">
-                        ${boardDetail.postview}
-                    </li>
-                </ul>
-            </div>
+			<!-- Profile -->
+			<div class="space_between">
+				<div class="btn_right">
+					<button class="title_btn" type="button" onclick="">${boardDetail.boardcategory}</button>
+					<h2 class="board_title">
+						<a href="#">${boardDetail.postname}</a>
+					</h2>
+				</div>
+				<div class="profile">
+					<div class="profile_img">
+						<img alt=""
+							src="<c:url value="/uploadFile/${boardDetail.memphoto}"/>">
+						<div id="nickname">${boardDetail.postnick}</div>
+					</div>
+					<ul class="profile_right">
+						<li class="profile_left"><img class="left_board_icon" img
+							src="<c:url value="/images/icon/time.png"/>" alt="img"> <fmt:formatDate
+								var="dateFmt" pattern="yyyy-MM-dd HH:mm"
+								value="${boardDetail.postdate}" />
+							<div id="write_date">
+								<c:out value="${dateFmt}" />
+							</div></li>
+						<li class="profile_viewcnt"><img class="left_board_icon2" img
+							src="<c:url value="/images/icon/board.png"/>" alt="img">
+							${boardDetail.postview}</li>
+					</ul>
+				</div>
 
-        </div>
-        <!-- /Profile -->
-        <!-- /Nav-->
+			</div>
+			<!-- /Profile -->
+			<!-- /Nav-->
 
-        <!-- Content -->
-        <div class="content_wrap">
-            <div class="post_content">
-                ${boardDetail.postcontent}
-            </div>
-        </div>
-        <div class="postbtn_wrap">
-            <div class="post_btn">
-                <c:if test="${checkResult == 1}">
-                <div class="like_btn on">
-                    <img class="post_icon" src="/gym/images/icon/heart.png">
-                    </c:if>
-                    <c:if test="${checkResult == 0}">
-                    <div class="like_btn off">
-                        <img class="post_icon" src="/gym/images/icon/heart_off.png">
-                        </c:if>
-                        <span>${likeLength}</span>
-                    </div>
-                    <div class="comm_length">
-                        <img class="post_icon" src="/gym/images/icon/speech-bubble.png">
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <!-- /Content -->
+			<!-- Content -->
+			<div class="content_wrap">
+				<div class="post_content">${boardDetail.postcontent}</div>
+			</div>
+			<div class="postbtn_wrap">
+				<div class="post_btn">
+					<c:if test="${checkResult == 1}">
+						<div class="like_btn on">
+							<img class="post_icon" src="/gym/images/icon/heart.png">
+					</c:if>
+					<c:if test="${checkResult == 0}">
+						<div class="like_btn off">
+							<img class="post_icon" src="/gym/images/icon/heart_off.png">
+					</c:if>
+					<span>${likeLength}</span>
+				</div>
+				<div class="comm_length">
+					<img class="post_icon" src="/gym/images/icon/speech-bubble.png">
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<!-- /Content -->
 
-            <!-- Comment -->
-            <ul class="comment_section">
+		<!-- Comment -->
+		<ul class="comment_section">
 
-            </ul>
-            <!-- /Comment -->
+		</ul>
+		<!-- /Comment -->
 
-            <!-- Comment Input -->
-            <div class="comment_input_wrap">
-                <div class="search_wrap search_wrap_6">
-                    <div class="search_box">
-                        <input type="text" class="comm_input" placeholder="댓글을 작성해주세요.">
-                        <label name="btn_input" class="btn_input">
-                            <input type="submit" name="btn_input" class="btn">
-                            <img src="/gym/images/icon/input_icon.png" alt="icon">
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <!-- /Comment Input -->
-        </div>
-        <!-- /Content -->
-    </div>
-    <!-- /Contents -->
+		<!-- Comment Input -->
+		<div class="comment_input_wrap">
+			<div class="search_wrap search_wrap_6">
+				<div class="search_box">
+					<input type="text" class="comm_input" placeholder="댓글을 작성해주세요.">
+					<label name="btn_input" class="btn_input"> <input
+						type="submit" name="btn_input" class="btn"> <img
+						src="/gym/images/icon/input_icon.png" alt="icon">
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- /Comment Input -->
+	</div>
+	<!-- /Content -->
+	</div>
+	<!-- /Contents -->
 
-    <!-- footer -->
-    <%@ include file="/WEB-INF/views/frame/footer.jsp"%>
-    <script>
+	<!-- footer -->
+	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
+	<script>
         // 좋아요 버튼 클릭
         $('.like_btn').click(function(){
 
@@ -191,7 +192,7 @@
 
     </script>
 
-    <script>
+	<script>
         // 수정/삭제 버튼 노출 여부
         $(function(){
             var memidx = ${boardDetail.memidx};
@@ -203,7 +204,7 @@
         });
     </script>
 
-    <script>
+	<script>
         // 댓글 등록
         $(".btn_input .btn").on("click", function(){
             var memberidx; // 회원 번호
@@ -267,7 +268,7 @@
                 data : {"postidx" : postidx},
                 dataType : "json", // javascriptObjectNation
                 success : function(commList){
-					
+					console.log(commList);
                 	
                     // $붙으면 이 변수를 대상으로 jquery 메소드를 사용가능
                     // 없으면 그냥 변수임
@@ -294,7 +295,7 @@
                             html += '</div>';
                             html += '<div class="profile_left">';
                             html += '<div id="nickname">' + commList[i].commentnick + '</div>';
-                            html += '<div id="write_date">' + commList[i].commentdate + '</div>';
+                            html += '<div id	="write_date">' + commList[i].commentdate + '</div>';
                             html += '</div>';
                             html += '</div>';
                             html += '<div class="text_wrap">';
@@ -329,7 +330,7 @@
 
     </script>
 
-    <script>
+	<script>
         // 게시물 삭제
         $(function(){
             var form = $("<form></form>");
@@ -341,4 +342,3 @@
             });
         })
     </script>
-

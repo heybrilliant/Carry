@@ -30,37 +30,97 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp"%>
 <script>
-	function printName() {
-		const name = document.getElementById('alternate').value;
-		var infodate = document.getElementsByName("infodate")
-
-		infodate[0].value = name;
-		infodate[1].value = name;
-		infodate[2].value = name;
-		infodate[3].value = name;
-	}
+	
 </script>
 
 
 <script>
+	function printName() {
+		const name = document.getElementById('alternate').value;
+		var infodate = document.getElementsByName("infodate")
+		infodate[0].value = name;
+		infodate[1].value = name;
+		infodate[2].value = name;
+		infodate[3].value = name;
+
+	}
+	window.onload = function() {
+		loginLog()
+	}
+
+	function StartPrintName() {
+		const name = document.getElementById('alternate').value;
+		var infodate = document.getElementsByName("infodate")
+		infodate[0].value = name;
+	}
+
 	function loginLog() {
-		printName()
+		StartPrintName()
 		$.ajax({
-			url : '<c:url value="/mypage/mypass"/>',
 			type : "POST",
-			dataType : "json",
+			url : '<c:url value="/mypage/mypass.do"/>',
+			dataType : 'JSON',
+
 			data : {
-				memidx : $("#memidx").val(),
-				infodate : $("#infodate").val()
+				arg0 : $("#memidx").val(),
+				arg1 : $("#infodate").val()
 			},
-			success : function(data) {
-				alert("go");
+
+			success : function(map) {
+
+				list = map;
+
+				if (map.list == undefined) {
+					var moop = map.list
+					moop = " "
+					var list = moop;
+					$('#memo-input-food').val(list);
+				} else {
+
+					var list = map.list;
+					$('#memo-input-food').val(list);
+				}
+
+				if (map.list2 == undefined) {
+					var moop = map.list2
+					moop = " "
+					var list2 = map.list2;
+					$('#memo-input-memo').val(list2);
+				} else {
+					var list2 = map.list2;
+					$('#memo-input-memo').val(list2);
+				}
+
+				if (map.list3 == undefined) {
+					var moop = map.list3
+					moop = " "
+					var list3 = map.list3;
+					$('#memo-input-kg').val(list3);
+				} else {
+					var list3 = map.list3;
+					$('#memo-input-kg').val(list3);
+				}
+
+				if (map.list4 == undefined) {
+					var moop = map.list4
+					moop = " "
+					var list4 = map.list4;
+					$('#memo-input-photo').val(list4);
+				} else {
+					var list4 = map.list4;
+					$('#memo-input-photo').val(list4);
+				}
 
 			},
-			error : function() {
-				alert("err");
+			error : function(request, status, error) {
+				alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
 			}
-		});
+
+		})
+
+		;
+
 	}
 </script>
 
@@ -136,7 +196,7 @@
 						</div>
 					</div>
 
-					<div class="col-right"></div>
+					<div class="col-right" id="col-right" name="col-right"></div>
 
 				</div>
 
