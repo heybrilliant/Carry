@@ -52,6 +52,7 @@
 				url : '/v1/user/unlink',
 				success : function(response) {
 					console.log(response)
+					window.location.href='<c:url value="/member/login"/>';
 				},
 				fail : function(error) {
 					console.log(error)

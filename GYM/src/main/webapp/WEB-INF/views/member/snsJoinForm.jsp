@@ -52,7 +52,7 @@
 				
 				<div class="btn_wrap2">
 					<input type="submit" class= "submit_btn" value="회원가입">
-					<input type="button" value="취소" onclick="kakaoLogout() location.href='<c:url value="/member/login"/>'">
+					<input type="button" id="btns" value="취소" onclick="kakaoLogout();">
 				</div>
 		</div>
 		
@@ -72,7 +72,9 @@
 
 
 <script>
-
+	$("").click(function(){
+		
+	});
 
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;

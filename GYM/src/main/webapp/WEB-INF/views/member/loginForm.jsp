@@ -142,35 +142,6 @@
 		})
 	}
 	
-/* 	function kakaoLoginPro(response){
-		var data = {id:response.id,email:response.kakao_account.email}
-		$.ajax({
-			type : 'POST',
-			url : '/member/kakaologin',
-			data : data,
-			dataType : 'json',
-			success : function(data){
-				console.log(data)
-				if(data.JavaData == "YES"){
-					alert("로그인되었습니다.");
-					location.href = '/index'
-				}else if(data.JavaData == "register"){
-					$("#kakaoEmail").val(response.kakao_account.email);
-					$("#kakaoId").val(response.id);
-					$("#kakaoForm").submit();
-				}else{
-					alert("로그인에 실패했습니다");
-				}
-				
-			},
-			error: function(xhr, status, error){
-				alert("로그인에 실패했습니다."+error);
-			}
-		}); */
-	
-	
-	
-	
 </script>
 
 <script>
