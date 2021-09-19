@@ -24,7 +24,6 @@
 	line-height: 40px;
 	border: 2px solid #aaa;
 	border-left: none;
-	margin-bottom: 2px;
 }
 
 .chatid h3 {
@@ -35,13 +34,12 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	width: 100%;
-	height: 605px;
+	height: calc(100% - 90px);
 }
 
 .chatlist {
 	width: 415px;
 	height: 100px;
-	border: 2px solid #ddd;
 	box-shadow: 0 0 20px rgb(0 0 0/ 20%);
 	margin-bottom: 2px;
 }
@@ -73,7 +71,7 @@
 }
 
 .chat_name {
-	width: 40%;
+	width: 25%;
     height: 50%;
     padding-top: 20px;
     margin-left: 10px;
@@ -81,10 +79,10 @@
 }
 
 .chat_title {
-	float: left;
+	float: right;
     color: rgb(119, 117, 117);
     margin-top: 22px;
-    margin-left: -27%;
+    margin-right:20px;
 }
 
 .chat_title_img {
@@ -175,17 +173,18 @@
 	border: 2px solid #aaa;
 	float: right;
 }
-
+.message_warp li:first-child {
+	position:absolute;
+	left:0;
+}
 .message_warp li {
-	float: left;
+	float: right;
 	list-style: none;
 	margin-top: 20px;
 	margin-right: 30px;
 }
 
-.btn_li {
-    margin-left: 390px;
-}
+
 
 #chatcontent_warp {
 	width: 840px;
@@ -244,22 +243,21 @@
 }
 
 .order_button input[type="button"] {
-	background-color: cornflowerblue;
+	background-color: #000;
 	border: none;
 	color: white;
-	padding: 15px 32px;
+	padding: 12px 20px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: 14px;
 	border-radius: 5px;
+	transition:0.2s;
 }
 
 .back_button:hover input, .order_button:hover input {
 	cursor: pointer;
-	color: #AFFFEE;
-	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0
-		rgba(0, 0, 0, 0.19);
+	background:#3075f1
 }
 
 .carry_message {
@@ -268,7 +266,6 @@
 }
 
 .carry_line {
-	float: left;
 	padding: 20px;
 }
 
@@ -280,6 +277,8 @@
 	position: relative;
 	margin-right: 70px;
 	width: 60%;
+	display:flex;
+	justify-content:flex-start;
 }
 
 .carry_message span {
@@ -300,11 +299,17 @@
 	border-bottom: 2px solid #aaa;
 }
 
+.message_warp ul {
+	display:flex;
+	position:relative;
+	width:100%;
+	justify-content:flex-end;
+}
+
 .time_line {
 	position: absolute;
 	bottom: 20px;
 	right: 0;
-	margin-right:20px;
 }
 
 .time_line span {
@@ -318,7 +323,7 @@
 .message {
 	position: relative;
 	margin: 20px 5px;
-	width: 60%;
+	width: calc(100% - 190px);
 	height: auto;
 	background: #333333;
 	border-radius: 10px;
@@ -430,7 +435,8 @@
 }
 
 .not_message h3 {
-	color: cornflowerblue;
+	color: #3075f1;
+	margin-top:40px
 }
 
 .chatlist .on_btn.active {

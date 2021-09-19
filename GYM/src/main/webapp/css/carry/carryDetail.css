@@ -30,10 +30,11 @@
 	border: 1px solid #CCC;
 	background-color: white;
 	padding: 7px 10px;
+	transition:0.2s;
 }
 
 .button:hover {
-	border: 1px solid #CCC;
+	border: 1px solid #000;
 	color: white;
 	background-color: black;
 	padding: 7px 10px;
@@ -197,7 +198,7 @@
 
 #write_review_btn:hover {
 	float: right;
-	border: 1px solid #CCC;
+	border: 1px solid #ccc;
 	background-color: white;
 	color: black;
 	padding: 7px 10px;
@@ -207,7 +208,7 @@
 
 #write_review_btn {
 	float: right;
-	border: 1px solid #CCC;
+	border: 1px solid #000;
 	background-color: black;
 	color: white;
 	padding: 7px 10px;

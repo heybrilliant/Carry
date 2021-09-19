@@ -80,11 +80,21 @@
 				<div class="carry_carrer" id="certi">
 					<h3>자격 및 경력</h3>
 					<ul>
-						<li>${carryCerti.crcerti1}</li>
-						<li>${carryCerti.crcerti2}</li>
-						<li>${carryCerti.crcerti3}</li>
-						<li>${carryCerti.crcerti4}</li>
-						<li>${carryCerti.crcerti5}</li>
+						<c:if test="${!empty carryCerti.crcerti1}">					
+							<li>${carryCerti.crcerti1}</li>
+						</c:if>
+						<c:if test="${!empty carryCerti.crcerti2}">
+							<li>${carryCerti.crcerti2}</li>
+						</c:if>
+						<c:if test="${!empty carryCerti.crcerti3}">
+							<li>${carryCerti.crcerti3}</li>
+						</c:if>
+						<c:if test="${!empty carryCerti.crcerti4}">
+							<li>${carryCerti.crcerti4}</li>
+						</c:if>
+						<c:if test="${!empty carryCerti.crcerti5}">
+							<li>${carryCerti.crcerti5}</li>
+						</c:if>
 					</ul>
 				</div>
 
@@ -244,10 +254,7 @@
     };
 	
 	</script>
-
-
-
-
+	
 
 
 
