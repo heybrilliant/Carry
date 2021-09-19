@@ -12,10 +12,11 @@ public class MemberDto {
 	private String memphoto;
 	private String joinkey;
 	private String joinkey_status;
+	private String snsjoinid;
 	public MemberDto() {
 	}
 	public MemberDto(int memidx, String mememail, String mempw, String memname, String memnick, String memphone,
-			int membirth, String memgender, String memphoto, String joinkey, String joinkey_status) {
+			int membirth, String memgender, String memphoto, String joinkey, String joinkey_status, String snsjoinid) {
 		this.memidx = memidx;
 		this.mememail = mememail;
 		this.mempw = mempw;
@@ -27,6 +28,7 @@ public class MemberDto {
 		this.memphoto = memphoto;
 		this.joinkey = joinkey;
 		this.joinkey_status = joinkey_status;
+		this.snsjoinid = snsjoinid;
 	}
 	public int getMemidx() {
 		return memidx;
@@ -94,6 +96,11 @@ public class MemberDto {
 	public void setJoinkey_status(String joinkey_status) {
 		this.joinkey_status = joinkey_status;
 	}
-	
+	public String getSnsjoinid() {
+		return snsjoinid;
+	}
+	public void setSnsjoinid(String snsjoinid) {
+		this.snsjoinid = snsjoinid;
+	}
 	
 }

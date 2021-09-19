@@ -13,8 +13,12 @@ public class MemberJoinDto {
 	private MultipartFile memphoto;
 	private String joinkey;
 	private String joinkey_status;
+	private String snsjoinid;
+	public MemberJoinDto() {
+	}
 	public MemberJoinDto(String mememail, String mempw, String memname, String memnick, String memphone, int membirth,
-			String memgender, MultipartFile memphoto, String joinkey, String joinkey_status) {
+			String memgender, MultipartFile memphoto, String joinkey, String joinkey_status, String snsjoinid) {
+		super();
 		this.mememail = mememail;
 		this.mempw = mempw;
 		this.memname = memname;
@@ -25,6 +29,7 @@ public class MemberJoinDto {
 		this.memphoto = memphoto;
 		this.joinkey = joinkey;
 		this.joinkey_status = joinkey_status;
+		this.snsjoinid = snsjoinid;
 	}
 	public String getMememail() {
 		return mememail;
@@ -86,7 +91,13 @@ public class MemberJoinDto {
 	public void setJoinkey_status(String joinkey_status) {
 		this.joinkey_status = joinkey_status;
 	}
+	public String getSnsjoinid() {
+		return snsjoinid;
+	}
+	public void setSnsjoinid(String snsjoinid) {
+		this.snsjoinid = snsjoinid;
+	}
 	public MemberDto getMemberDto() {
-		return new MemberDto(0, mememail, mempw, memname, memnick, memphone, membirth, memgender, memphoto.getOriginalFilename(), joinkey, joinkey_status);
+		return new MemberDto(0, mememail, mempw, memname, memnick, memphone, membirth, memgender, memphoto.getOriginalFilename(), joinkey, joinkey_status, snsjoinid);
 	}
 }

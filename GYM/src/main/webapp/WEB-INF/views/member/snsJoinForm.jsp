@@ -1,4 +1,3 @@
-@@ -0,0 +1,213 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -23,8 +22,8 @@
 		<h1>SNS 회원가입</h1>
 		
 		<!-- Form 시작 -->
-		<form action = <c:url value="" /> method="post">
-
+		<form action = <c:url value="/member/kakaojoininput"/> method="post">
+		<input type="hidden" name="snsjoinid" value="${snsjoinid}">
 				<div>
 					<span class="noticemsg">** 추가적으로 입력해주시면 회원가입이 정상적으로 완료됩니다. **</span>
 					
@@ -33,7 +32,9 @@
 						닉네임 <span style="color: blue">*</span>
 					</p>
 					<input type="text" class="input_box" placeholder="닉네임을 입력해주세요."
-						name="memnick" id = "memnick" required>
+						name="memnick" id ="memnick" required>
+						<span id="msg_nick" class="display_none"></span>
+						<div class="check_font" id="nickcheck"></div>
 					</div>	
 						
 					<div class="phoneForm">
@@ -41,14 +42,17 @@
 						연락처 <span style="color: blue">*</span>
 					</p>
 					<input type="text" class="input_box" placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요."
-						name="payphone" id="memphone" required> <br> <br> <br> <br>
+						name="memphone" id="memphone" required>
+						<span id="msg_phone" class="display_none"></span>
+						<div class="check_font" id="phonecheck"></div>
+						 <br> <br> <br> <br>
 					</div>
 					
 				<br>
 				
 				<div class="btn_wrap2">
 					<input type="submit" class= "submit_btn" value="회원가입">
-					<input type="button" value="취소" onclick="location.href='javascript:window.history.back();'">
+					<input type="button" value="취소" onclick="kakaoLogout()">
 				</div>
 		</div>
 		
@@ -57,7 +61,6 @@
 		
 		
 	</div>
-</div>
 
 	<!-- Contents end -->
 
@@ -74,47 +77,6 @@
 	//모든 공백 체크 정규식
 	var empJ = /\s/g;
 
-	// 이메일, 닉네임, 휴대폰 번호, 생일, 성별 순
-
-	
-	// 이메일 -> DB다녀와야함 
-	console.log('이메일 도달');
-	// 이메일 검사 정규식 : 이메일 형식(ㅇㅇㅇ@ㅇㅇㅇ.ㅇㅇ)
-	var mailJ = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	$("#mememail").focusout(function() {
-		if (mailJ.test($('#mememail').val())) {
-				console.log(mailJ.test($('#mememail').val()));
-				$("#emailcheck").text('');
-		// 이메일 이맞으면 ajax 실행		
-		$.ajax({
-			type : 'POST',
-			url : '<c:url value="/member/emailCheck"/>',
-			data : { 
-				mememail : $(this).val()
-			},
-			success : function(data) {
-				if(data == 0){
-					$('#msg').html('사용가능');
-					$('#msg').addClass('color_blue');
-					$('#msg').removeClass('display_none');
-				} else {
-					$('#msg').html('사용 불가능');
-					$('#msg').addClass('color_red');
-					$('#msg').removeClass('display_none');
-					$('#mememail').val('');
-				}
-			}
-		});
-				
-		} else {
-			$('#emailcheck').text('이메일 형식으로 입력해주세요.');
-			$('#emailcheck').css('color', 'red');
-		}
-		error : console.log('이메일 실패');
-	});
-	
-	
-	
 	// 휴대폰 번호
 	// 휴대폰 번호 정규식 : 010(필수)+ 숫자로만 8글자
 	var phoneJ = /^010([0-9]{8})$/;

@@ -61,18 +61,13 @@ public interface MemberDao {
 	// 캐리 비밀번호 찾기(임시발급)
 	int setCarrypassword(String crpw, String crname, String cremail);
 	
-	// 카카오 로그인(가입)
-	int insertKaKaoJoin(MemberDto memberDto);
-	// 카카오 로그인(중복닉네임있을경우가입)
+	// 카카오 로그인
 	int insertKaKaoJoinOne(MemberDto memberDto);
 	// 카카오 로그인체크용(세션도 저장)
-	SessionDto selectKakaoLoginCheck(String joinkey_status);
+	SessionDto selectKakaoLoginCheck(String snsjoinid);
+	// sns조인
+	int updateKakaoJoin(MemberDto memberDto);
 	
-	// 카카오 가입된사용자 카카오에서 닉네임 변경한사람 로그인시 닉네임 자동변경.
-	int updateKaKaoNick(String memnick, String joinkey_status);
-	
-	// 카카오 닉네임 중복체크
-	SessionDto selectNickCheck(String memnick);
 	
 	
 

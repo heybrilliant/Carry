@@ -112,7 +112,7 @@
 							type : 'POST',
 							url : '<c:url value="/member/kakaologin"/>',
 							data : { 
-									joinkey_status : id,
+									snsjoinid : id,
 									mememail : email,
 									memnick : nick
 								},
@@ -120,9 +120,9 @@
 							success : function(data){
 								console.log(data);
 								if(data == 0){
-									window.location.href = "<c:url value='/member/kakaojoin?joinkey_status="+id+"'/>";
+									window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
 								} else if(data == 1){
-									window.location.href = "<c:url value='/member/kakaojoin?joinkey_status="+id+"'/>";
+									window.location.href = "<c:url value='/member/kakaojoin?snsjoinid="+id+"'/>";
 								} else if(data == 2){
 									window.location.href = "<c:url value='/index'/>";
 								}

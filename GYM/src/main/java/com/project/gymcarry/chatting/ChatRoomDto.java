@@ -10,14 +10,14 @@ public class ChatRoomDto {
 	private int messageidx; 		//메세지번호
 	private int chatidx;			//채팅방번호
 	private String chatcontent;		//대화내용
-	@JsonFormat(pattern = "h:mm a")
+	@JsonFormat(pattern = "h:mm a", timezone = "Asia/Seoul")
 	private Timestamp chatdate;		//대화시간
 	private int cridx;				//캐리번호
 	private int memidx;				//회원번호
 	private int contenttype;		//유저,캐리 대화내용 비교
 	private int chatread;			//읽음 안읽음 여부
 	private int likecheck;			//하트여부	
-	@JsonFormat(pattern = "h:mm")
+	@JsonFormat(pattern = "h:mm", timezone = "Asia/Seoul")
 	private Timestamp outdate;		//나간시점
 	public ChatRoomDto() {
 	}
