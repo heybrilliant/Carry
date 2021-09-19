@@ -52,18 +52,27 @@
 						<tr>
 							<th><span>비밀번호</span></th>
 							<td><input type="password" id="pw" name="crpw" required></td>
+						</tr>
+						<tr>
+							<td></td>
 							<td class="check"><div class="check_font" id="pwcheck"></div></td>
 						</tr>
 
 						<tr>
 							<th><span>비밀번호 확인</span></th>
 							<td><input type="password" id="repw" required></td>
+						</tr>
+						<tr>
+							<td></td>
 							<td class="check"><div class="check_font" id="repwcheck"></div></td>
 						</tr>
 
 						<tr>
 							<th><span>닉네임</span></th>
 							<td><input type="text" id="nickname" name="crnick" value="${carry.crnick}" required></td>
+						</tr>
+						<tr>
+							<td></td>
 							<td class="check"><div class="check_font" id="nickcheck"></div></td>
 						</tr>
 
@@ -78,12 +87,20 @@
 							<td>
 								<div class="selectbox">
 									<c:if test="${carry.crgender eq '남자'}">
-										<input type="radio" name="crgender" value="남자" checked> 남자
-										<input type="radio" name="crgender" value="여자"> 여자
+										<label for="male">
+											<input type="radio" name="crgender" value="남자" id="male" checked> 남자
+										</label>
+										<label for="female">
+											<input type="radio" name="crgender" id="female" value="여자"> 여자
+										</label>	
 									</c:if>
 									<c:if test="${carry.crgender eq '여자'}">
-										<input type="radio" name="crgender" value="남자"> 남자
-										<input type="radio" name="crgender" value="여자"checked> 여자
+										<label for="male">
+											<input type="radio" name="crgender" value="남자" id="male"> 남자
+										</label>
+										<label for="female">
+											<input type="radio" name="crgender" value="여자"checked id="female"> 여자
+										</label>
 									</c:if>
 								</div>
 							</td>
@@ -99,7 +116,7 @@
 						<input type="submit" value="수정 완료">
 					</div>
 					<div class="btn_wrap2">
-						<a href="jjavascript:window.history.back();">취소</a>
+						<a href="javascript:window.history.back();">취소</a>
 					</div>
 				</div>
 			</form>

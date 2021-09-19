@@ -45,6 +45,23 @@ h1 {
 	width:100%;
 	height:100%;
 }
+.profile_form input {
+	width: 80px;
+    background-color: white;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 7px;
+    font-size: 11px;
+    border-radius: 5px;
+    transition: 0.2s;
+    margin:15px auto 0;
+}
+.profile_form input:hover {
+cursor: pointer;
+    border: 1px solid #333;
+    background: #333;
+    color: #fff;
+}
 .wrap{
     width: 50%;
     height: auto;
@@ -88,7 +105,7 @@ h1 {
     width: fit-content;
     justify-content: center;
     text-align: center;
-    margin: auto auto 20px;
+    margin: 30px auto 20px;
 }
 
 .btn_wrap, .btn_wrap2 {
@@ -96,6 +113,24 @@ h1 {
     width: fit-content;
     text-align:center;
     margin: 30px 5px;
+}
+.btn_wrap input {
+	border: 0;
+    color: #fff; 
+    background-color: #4380ce; 
+    height: 40px; 
+    line-height: 40px; 
+    width: 130px; 
+    display: inline-block; 
+    text-align: center;
+    margin: 0 auto;
+    font-size:14px;
+    cursor:pointer;
+}
+.btn_wrap input:hover {
+	background: #0094ff;
+    color: #fff;
+    cursor: pointer;
 }
 
 .btn_wrap .wide, .btn_wrap2 a.wide{
@@ -105,7 +140,6 @@ h1 {
 .btn_update {
     color: #fff; 
     background-color: #4380ce; 
-    font-weight: bold; 
     height: 40px; 
     line-height: 40px; 
     width: 130px; 
@@ -114,18 +148,19 @@ h1 {
     margin: 0 auto;
     cursor: pointer;
     border: none;
+    font-size:14px;
 }
 
 .btn_wrap2 a{
     color: #fff; 
     background-color: #ccc; 
-    font-weight: bold; 
     height: 40px; 
     line-height: 40px; 
     width: 130px; 
     display: inline-block; 
     text-align: center;
     margin: 0 auto;
+    font-size:14px;
 }
 
 .btn_update:hover{
@@ -164,6 +199,8 @@ h1 {
     padding:6px 0;
     position: relative;
 }
+.edit_form table td.check {
+}
 
 .edit_form table input, textarea{
     border:1px solid #ececec;
@@ -198,12 +235,10 @@ h1 {
 } */
 
 .edit_form table input[type="radio"]{
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    grid-template-rows: repeat(4, minmax(50px, auto));
+    width: fit-content;
     height: 20px;
     flex-wrap: nowrap;
-    justify-content : center;
+    margin:0 10px;
 }
 
 .edit_form table input[type="checkbox"]{
@@ -218,15 +253,24 @@ h1 {
 }
 
 .selectbox{
-    display: grid;
-    justify-content : center;
-    grid-template-columns: 50px 1fr;
+   	display: flex;
+    justify-content: flex-start;
+    flex-flow: wrap;
 
 }
 
 .selectbox>label {
-    text-align: center;
-  }
-  .form {
+    margin: 5px 0;
+    width: 130px;
+    text-align: left;
+}
+.form {
     margin-left: 10px;
-  }
+}
+.select_img {
+	margin:30px 0;
+}
+
+#crbfphoto {
+	padding:7px 0;
+}

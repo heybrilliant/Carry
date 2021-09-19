@@ -51,14 +51,15 @@
                             <div class="selectbox">
                                 <td>
                                     <div class="selectbox">
-                                        <input type="radio" value="헬스" id="health" name="crfield">
-                                        <label for="health">헬스 </label>
-
-                                        <input type="radio" name="crfield" value="필라테스" id="pilates">
-                                        <label for="pilates">필라테스 </label>
-
-                                        <input type="radio" name="crfield" value="요가" id="yoga">
-                                        <label for="yoga">요가 </label>
+                                    	<label for="health">헬스 
+                                        	<input type="radio" value="헬스" id="health" name="crfield">
+                                        </label>
+										<label for="pilates">필라테스 
+                                       		<input type="radio" name="crfield" value="필라테스" id="pilates">
+                                        </label>
+                                        <label for="yoga">요가 
+                                      		<input type="radio" name="crfield" value="요가" id="yoga">
+                                        </label>
                                     </div>
                                 </td>
                             </div>
@@ -69,29 +70,30 @@
                             <th><span>전문 분야</span></th>
                             <td>
                                 <div class="selectbox">
-                                    <input type="radio" value="다이어트" id="diet" name="crdepart">
-                                    <label for="diet"> 다이어트 </label>
-
-                                    <input type="radio" value="근력강화" id="dump" name="crdepart">
-                                    <label for="dump">근력강화 </label>
-
-                                    <input type="radio" value="체중증가" id="weight_gain" name="crdepart">
-                                    <label for="weight_gain"> 체중증가 </label>
-
-                                    <input type="radio" value="체형교정" id="bodyfix" name="crdepart">
-                                    <label for="bodyfix"> 체형교정 </label>
-
-                                    <input type="radio" value="재활/통증케어" id="rehabilitation" name="crdepart">
-                                    <label for="rehabilitation"> 재활/통증케어 </label>
-
-                                    <input type="radio" value="바디프로필" id="body_profile" name="crdepart">
-                                    <label for="body_profile"> 바디프로필 </label>
-
-                                    <input type="radio" value="대회준비" id="competition" name="crdepart">
-                                    <label for="competition"> 대회준비 </label>
-
-                                    <input type="radio" value="기타" id="etc" name="crdepart">
-                                    <label for="etc"> 기타 </label>
+                                	<label for="diet">다이어트 
+                                    	<input type="radio" value="다이어트" id="diet" name="crdepart">
+                                  	</label>
+									<label for="dump">근력강화 
+                                    	<input type="radio" value="근력강화" id="dump" name="crdepart">
+                                    </label>
+ 									<label for="weight_gain"> 체중증가 
+                                    	<input type="radio" value="체중증가" id="weight_gain" name="crdepart">
+                                   	</label>
+									<label for="bodyfix"> 체형교정 
+                                    	<input type="radio" value="체형교정" id="bodyfix" name="crdepart">
+                                    </label>
+									<label for="rehabilitation"> 재활/통증케어
+                                    	<input type="radio" value="재활/통증케어" id="rehabilitation" name="crdepart">
+                                    </label>
+									<label for="body_profile"> 바디프로필 
+                                    	<input type="radio" value="바디프로필" id="body_profile" name="crdepart">
+                                    </label>
+									<label for="competition"> 대회준비 
+                                    	<input type="radio" value="대회준비" id="competition" name="crdepart">
+                                    </label>
+									<label for="etc"> 기타 
+                                    	<input type="radio" value="기타" id="etc" name="crdepart">
+                                    </label>
                                 </div>
                             </td>
                         </tr>
@@ -130,7 +132,6 @@
                         <input type="hidden" name="oldcrbfphoto" value="${crbfphoto}">
 
                     </table>
-                    <%=request.getRealPath("/") %>
                     <div class="select_img"><img src="" /></div>
 
                         <script>

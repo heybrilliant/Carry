@@ -171,24 +171,25 @@ ul{list-style:none; }
 	border: 0;
     color: #fff; 
     background-color: #4380ce; 
-    font-weight: bold; 
-    height: 40px; 
-    line-height: 40px; 
-    width: 130px; 
-    display: inline-block; 
-    text-align: center;
-    margin: 0 auto;}
-
-.btn_wrap2 a{
-    color: #fff; 
-    background-color: #ccc; 
-    font-weight: bold; 
     height: 40px; 
     line-height: 40px; 
     width: 130px; 
     display: inline-block; 
     text-align: center;
     margin: 0 auto;
+    font-size:14px;
+}
+
+.btn_wrap2 a{
+    color: #fff; 
+    background-color: #ccc; 
+    height: 40px; 
+    line-height: 40px; 
+    width: 130px; 
+    display: inline-block; 
+    text-align: center;
+    margin: 0 auto;
+    font-size:14px;
 }
 
 #joinsubmit:hover{
