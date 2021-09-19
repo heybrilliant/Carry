@@ -60,6 +60,7 @@
 	width: 100%;
 	height: 100%;
 	border: none;
+	transition:0.2s;
 }
 
 .chatlist button:hover {
@@ -184,6 +185,9 @@
 	margin-right: 30px;
 }
 
+.message_warp li a {
+	display:block;
+}
 
 
 #chatcontent_warp {
@@ -440,7 +444,11 @@
 }
 
 .chatlist .on_btn.active {
-	background: #eee;
+	background: #333;
+}
+
+.chatlist .on_btn.active * {
+	color:#fff;
 }
 
 
