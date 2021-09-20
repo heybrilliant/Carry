@@ -54,7 +54,7 @@ public class PostContentController {
 
 		int checkResult = 0;
 		// 로그인 된 상태
-		if(dto != null) {
+		if (dto != null) {
 			int memidx = dto.getMemidx();
 
 			System.out.println("memidx = " + memidx);
@@ -64,7 +64,7 @@ public class PostContentController {
 			BoardLikeDto myCheck = boardService.getBoardLike(postidx, memidx);
 
 			// null이 아니면 좋아요 체크한 상태
-			if(myCheck != null) {
+			if (myCheck != null) {
 				checkResult = 1;
 			}
 		}
@@ -72,7 +72,7 @@ public class PostContentController {
 		model.addAttribute("checkResult", checkResult);
 
 		// 게시물 좋아요 갯수 출력
-		List<BoardLikeDto>likeLength = boardService.getBoardLikeLength(postidx);
+		List<BoardLikeDto> likeLength = boardService.getBoardLikeLength(postidx);
 		model.addAttribute("likeLength", likeLength.size());
 
 		return "community/postContent";
@@ -163,10 +163,9 @@ public class PostContentController {
 	@ResponseBody
 	public int selectLikeLength(int postidx) throws Exception {
 
-		List<BoardLikeDto>likeLength = boardService.getBoardLikeLength(postidx);
+		List<BoardLikeDto> likeLength = boardService.getBoardLikeLength(postidx);
 
 		return likeLength.size();
 	}
-
 
 }

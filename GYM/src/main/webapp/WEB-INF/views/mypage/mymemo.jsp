@@ -41,7 +41,8 @@
 			data-backdrop="static"><img onclick="printName()"
 			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
 		<div class="memo-input-div">
-			<textarea class="memo-input" type="text" readonly="readonly">${list2}</textarea>
+			<textarea class="memo-input" id="memo-input-memo" type="text"
+				readonly="readonly"></textarea>
 		</div>
 
 	</div>
@@ -53,7 +54,9 @@
 			data-backdrop="static"><img onclick="printName()"
 			class="edit_text" src="<c:url value="/images/icon/upload.png"/>"></a>
 		<div class="memo-input-div">
-			<input class="memo-input" value="${list4}" type="text"
+
+
+			<input class="memo-input" id="memo-input-photo" type="text"
 				readonly="readonly">
 		</div>
 
@@ -65,8 +68,9 @@
 			data-backdrop="static"> <img onclick="printName()"
 			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
 		<div class="memo-input-div">
-			<input class="input-kg" type="text" value="${list3} kg "
-				readonly="readonly">
+			<input class="input-kg" id="memo-input-kg" type="text"
+				readonly="readonly"> <input class="input-kg-left"
+				type="text" readonly="readonly" value="kg">
 
 
 		</div>
@@ -79,7 +83,7 @@
 			data-backdrop="static"><img onclick="printName()"
 			class="edit_text" src="<c:url value="/images/icon/edit.png"/>"></a>
 		<div class="memo-input-div">
-			<input class="memo-input" type="text" value="${list}"
+			<input class="memo-input" id="memo-input-food" type="text"
 				readonly="readonly">
 
 
