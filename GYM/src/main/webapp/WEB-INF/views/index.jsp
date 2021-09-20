@@ -20,7 +20,7 @@
 	<div class="container">
 		<section class="video_section">
 			<div class="video">
-				<video src="<c:url value="/video/video3.mp4"/>" autoplay muted loop></video>
+				<video src="<c:url value="/video/main3.mov"/>" autoplay muted loop></video>
 			</div>
 			<div class="survey">
 				<h3>혼자 하는 운동이 막막하고 어려우신가요?</h3>
