@@ -16,8 +16,8 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public class S3Util {
-	private String accessKey = " "; // 엑세스 키
-	private String secretKey = " "; // 보안 엑세스 키
+	private String accessKey = "AKIA6LSOEWYEDQ3CE3FM"; // 엑세스 키
+	private String secretKey = "kPiczvBKgMnRGlmob6/MQ4rOmzcIO3kuw3mivjo+"; // 보안 엑세스 키
 
 	private AmazonS3 conn;
 
