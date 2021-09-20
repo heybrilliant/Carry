@@ -1,13 +1,11 @@
 package com.project.gymcarry.mypage.controller;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.gymcarry.board.Pagination;
-import com.project.gymcarry.board.service.BoardService;
+
 import com.project.gymcarry.carry.CarryListDto;
 
 import com.project.gymcarry.member.SessionDto;
-import com.project.gymcarry.mypage.MypageDto;
+
 import com.project.gymcarry.mypage.MypageDto2;
 import com.project.gymcarry.mypage.MypageMemberDto;
 import com.project.gymcarry.mypage.MypagePaymentDto;
@@ -78,80 +77,55 @@ public class MypageSubController {
 		session.setAttribute("memidx", sdt.getMemidx());
 		session.setAttribute("name", sdt.getMemname());
 
-		// 현재 날짜 구하기
-		LocalDate now = LocalDate.now();
-		// 포맷 정의
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");
-		// 포맷 적용
-		String formatedNow = now.format(formatter);
-
-		List<MypageDto2> list2 = mypService2.loadMemo2(sdt.getMemidx(), formatedNow);
-
-		if (list2.size() != 0) {
-
-			for (int i = 0; i < list2.size(); i++) {
-				if (list2.get(i).getInfotype().equals("food")) {
-					System.out.println(i + "번째 가 푸드다!");
-					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
-					model.addAttribute("list", list2.get(i).getInfocontent());
-				}
-				if (list2.get(i).getInfotype().equals("memo")) {
-					System.out.println(i + "번째 가 메모다!");
-					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
-					model.addAttribute("list2", list2.get(i).getInfocontent());
-				}
-				if (list2.get(i).getInfotype().equals("kg")) {
-					System.out.println(i + "번째 가 kg다!");
-					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
-					model.addAttribute("list3", list2.get(i).getInfocontent());
-				}
-				if (list2.get(i).getInfotype().equals("photo")) {
-					System.out.println(i + "번째 가 사진이다!");
-					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
-					model.addAttribute("list4", list2.get(i).getInfocontent());
-				}
-			}
-		}
-
 		return "/mypage/mymemo";
 	}
 
-	@PostMapping("/mypage/mypass")
-	public String infopass(HttpSession session, Model model, MypageDto2 mypdto, @RequestParam("memidx") int memidx,
-			@RequestParam("infodate") String infodate) {
+	@RequestMapping(value = "/mypage/mypass", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> infopass(HttpSession session, Model model, MypageDto2 mypdto,
+			@RequestParam("arg0") int arg0, @RequestParam("arg1") String arg1) {
 
-		List<MypageDto2> list2 = mypService2.loadMemo2(memidx, infodate);
-		System.out.println(list2);
-		System.out.println(memidx);
-		System.out.println(infodate);
+		List<MypageDto2> list2 = mypService2.loadMemo2(arg0, arg1);
+		model.addAttribute("list5", list2);
+		System.out.println(list2 + "동작은하나?");
+		System.out.println("마이 패스");
+
+		Map<String, Object> map = new HashMap<String, Object>();
 
 		if (list2.size() != 0) {
 
 			for (int i = 0; i < list2.size(); i++) {
+
 				if (list2.get(i).getInfotype().equals("food")) {
-					System.out.println(i + "번째 가 푸드다!");
-					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
-					model.addAttribute("list", list2.get(i).getInfocontent());
+
+					map.put("list", list2.get(i).getInfocontent());
 				}
+
 				if (list2.get(i).getInfotype().equals("memo")) {
-					System.out.println(i + "번째 가 메모다!");
-					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
-					model.addAttribute("list2", list2.get(i).getInfocontent());
+
+					map.put("list2", list2.get(i).getInfocontent());
 				}
+
 				if (list2.get(i).getInfotype().equals("kg")) {
-					System.out.println(i + "번째 가 kg다!");
-					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
-					model.addAttribute("list3", list2.get(i).getInfocontent());
+
+					map.put("list3", list2.get(i).getInfocontent());
 				}
+
 				if (list2.get(i).getInfotype().equals("photo")) {
-					System.out.println(i + "번째 가 사진이다!");
-					System.out.println(list2.get(i).getInfocontent() + " 이거다 ! 이걸  모델에 !");
-					model.addAttribute("list4", list2.get(i).getInfocontent());
+
+					map.put("list4", list2.get(i).getInfocontent());
 				}
 			}
+
+		} else {
+			map.put("list", "");
+			map.put("list2", "");
+			map.put("list3", "");
+			map.put("list4", "");
 		}
 
-		return "jsonView";
+		return map;
+
 	}
 
 	@PostMapping("/mypage/mycash")

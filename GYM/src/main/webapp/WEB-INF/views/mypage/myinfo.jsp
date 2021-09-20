@@ -36,6 +36,30 @@
 	<!-- header -->
 	<%@ include file="/WEB-INF/views/frame/header.jsp"%>
 
+	<script>
+		function loginLog() {
+			printName()
+			$.ajax({
+				type : "POST",
+				url : '<c:url value="/mypage/mypass"/>',
+				dataType : 'JSON',
+
+				data : {
+					arg0 : $("#memidx").val(),
+					arg1 : $("#infodate").val()
+				},
+
+				success : function(data) {
+					console.log(data);
+				},
+				error : function() {
+
+					alert("error");
+
+				}
+			});
+		}
+	</script>
 
 
 	<div class="contents_main">
