@@ -141,8 +141,9 @@
 				<div class="col-right-top">
 					<h2 style="float: none;">
 						<input type="text" id="alternate" class="datepick" size="30"
-							readonly> <input name="infodate" id="infodate"> <input
-							name="memidx" id="memidx" value="${memidx}">
+							readonly> <input type="hidden" name="infodate"
+							id="infodate"> <input name="memidx" type="hidden"
+							id="memidx" value="${memidx}">
 					</h2>
 				</div>
 				<div class="col-flex">
