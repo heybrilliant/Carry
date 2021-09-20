@@ -7,9 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.gymcarry.aws.S3Util;
+import com.project.gymcarry.aws.UploadFileUtils;
 import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
 import com.project.gymcarry.dao.MemberDao;
@@ -23,6 +28,9 @@ public class JoinService {
 	private SqlSessionTemplate template;
 
 	private MemberDao dao;
+	S3Util s3 = new S3Util();
+	String bucketName = "gymcarrybucket";
+	
 
 	// 멤버 이메일 중복 검사
 	public int memberemailCheck(String mememail) throws Exception {
@@ -61,6 +69,8 @@ public class JoinService {
 	}
 
 	// 멤버 회원가입
+	// 파일을 업로드, 데이터베이스 저장
+	@Transactional
 	public int memberJoin(MemberJoinDto memberJoinDto, HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
 		dao = template.getMapper(MemberDao.class);
@@ -69,19 +79,25 @@ public class JoinService {
 		MemberDto meberDto = memberJoinDto.getMemberDto();
 
 		if (memberJoinDto.getMemphoto() != null && !memberJoinDto.getMemphoto().isEmpty()) {
-			// 파일객체에 경로 지정!
-			File newDir = new File(request.getSession().getServletContext().getRealPath("/uploadfile"));
-			if (!newDir.exists()) {
-				newDir.mkdir();
-			}
-
-			// db에 저장할 파일이름 !!!!!!!!
-			String newFileName = memberJoinDto.getMememail() + System.currentTimeMillis() + "."
+			
+			// 웹 경로
+			String uploadPath = "/fileupload/member";
+			// 시스템의 실제 경로
+			String saveDirPath = request.getSession().getServletContext().getRealPath(uploadPath);
+			// 새로운 파일 이름
+			String newFileName = memberJoinDto.getMememail() + System.currentTimeMillis()+ "."
 					+ chkFileType(memberJoinDto.getMemphoto());
 
 			// 파일객체에 경로와 중복제거한 이름 저장(newDir:경로 , newFileName:저장파일이름)!!!!
-			newFile = new File(newDir, newFileName);
-
+			newFile = new File(saveDirPath, newFileName);
+			
+			// 파일 저장 
+			ResponseEntity<String> img_path = new ResponseEntity<>(
+					UploadFileUtils.uploadFile(uploadPath, memberJoinDto.getMemphoto().getOriginalFilename(), memberJoinDto.getMemphoto().getBytes()),
+					HttpStatus.CREATED);
+			
+			String user_imgPath = (String) img_path.getBody();
+			
 			// 파일 joinDto 저장
 			memberJoinDto.getMemphoto().transferTo(newFile);
 

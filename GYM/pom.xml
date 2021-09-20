@@ -303,8 +303,12 @@
 			<version>2.0.1</version>
 		</dependency>
 
-
-
+		<!-- 아마존 S3 버킷 사용 / aws-java-sdk -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-s3</artifactId>
+		    <version>1.11.1001</version>
+		</dependency>
 
 
 	</dependencies>
