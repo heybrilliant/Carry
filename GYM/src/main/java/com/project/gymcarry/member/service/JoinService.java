@@ -7,9 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.gymcarry.aws.S3Util;
+import com.project.gymcarry.aws.UploadFileUtils;
 import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
 import com.project.gymcarry.dao.MemberDao;
@@ -19,10 +24,13 @@ import com.project.gymcarry.member.MemberJoinDto;
 @Service
 public class JoinService {
 
+	private MemberDao dao;
+	S3Util s3 = new S3Util();
+	UploadFileUtils uploadFileUtils = new UploadFileUtils();
+	String bucketName = "gymcarrybucket";
+	
 	@Autowired
 	private SqlSessionTemplate template;
-
-	private MemberDao dao;
 
 	// 멤버 이메일 중복 검사
 	public int memberemailCheck(String mememail) throws Exception {
@@ -37,7 +45,7 @@ public class JoinService {
 	}
 	
 	// 멤버 핸드폰번호 중복 검사
-		public int memberPhoneCheck(String memphone) {
+	public int memberPhoneCheck(String memphone) {
 			dao = template.getMapper(MemberDao.class);
 			return dao.memberPhoneCheck(memphone);
 		}
@@ -61,23 +69,38 @@ public class JoinService {
 	}
 
 	// 멤버 회원가입
+	// 파일을 업로드, 데이터베이스 저장
+	@Transactional
 	public int memberJoin(MemberJoinDto memberJoinDto, HttpServletResponse response, HttpServletRequest request)
 			throws Exception {
+		
 		dao = template.getMapper(MemberDao.class);
+		
 		File newFile = null;
 
 		MemberDto meberDto = memberJoinDto.getMemberDto();
 
 		if (memberJoinDto.getMemphoto() != null && !memberJoinDto.getMemphoto().isEmpty()) {
+			
+			// 웹 경로
+			String uploadPath = "/fileupload/member";
+			
 			// 파일객체에 경로 지정!
-			File newDir = new File(request.getSession().getServletContext().getRealPath("/uploadfile"));
+			File newDir = new File(request.getSession().getServletContext().getRealPath(uploadPath));
 			if (!newDir.exists()) {
 				newDir.mkdir();
 			}
 
+			// 파일 저장 
 			// db에 저장할 파일이름 !!!!!!!!
 			String newFileName = memberJoinDto.getMememail() + System.currentTimeMillis() + "."
 					+ chkFileType(memberJoinDto.getMemphoto());
+			
+			ResponseEntity<String> img_path = new ResponseEntity<>(
+					UploadFileUtils.uploadFile(uploadPath, memberJoinDto.getMemphoto().getOriginalFilename(), memberJoinDto.getMemphoto().getBytes()),
+					HttpStatus.CREATED);
+			
+			String user_imgPath = (String) img_path.getBody();
 
 			// 파일객체에 경로와 중복제거한 이름 저장(newDir:경로 , newFileName:저장파일이름)!!!!
 			newFile = new File(newDir, newFileName);
@@ -86,7 +109,7 @@ public class JoinService {
 			memberJoinDto.getMemphoto().transferTo(newFile);
 
 			// 파일 이름을 memberDto 저장!
-			meberDto.setMemphoto(newFileName);
+			meberDto.setMemphoto(uploadFileUtils.uploadFile(uploadPath, newFileName, null));
 
 		} else {
 			meberDto.setMemphoto("profile2.png");
@@ -143,7 +166,7 @@ public class JoinService {
 		extension = nameTokens[nameTokens.length - 1].toLowerCase();
 		// 이미지 파일 이외의 파일 업로드 금지
 		// 파일 확장자 체크
-		if (!(extension.equals("jpg") || extension.equals("png") || extension.equals("gif"))) {
+		if (!(extension.equals("jpg") || extension.equals("jpeg") || extension.equals("png") || extension.equals("gif"))) {
 			throw new Exception("허용하지 않는 파일 확장자 타입 : " + contentType);
 		}
 		return extension;
