@@ -135,6 +135,12 @@
 .likeBtn:hover{
 	cursor: pointer;
 }
+
+.videoChat{
+	width: 27px;
+    margin-top: 9px;
+}
+
 .waste{
 	width: 27px;
     margin-top: 9px;
@@ -191,7 +197,7 @@
 }
 
 .btn_li {
-    margin-left: 390px;
+    margin-left: 340px;
 }
 
 #chatcontent_warp {

@@ -130,7 +130,8 @@
 			if(memsession != null && crsession == ''){
 			htmlNav += '<li class="imgButton btn_li"><a href="<c:url value="/carry/detail?cridx='+num+'"/>"><img src="<c:url value="/images/icon/ellipsis-h-solid.svg"/>" class="dot"></a></li>'
 			htmlNav += '<li><button class="likeBtn" onclick="chatLike()" value="0"><img src="<c:url value="/images/icon/heart02.png"/>" style="width: 30px;" class="onlike"></button></li>'
-			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();" id="waste_btn"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'
+			htmlNav += '<li class="imgButton"><a href="https://heybrilliant.github.io/remon-devguide-quickstart/simplevideocall-tutorial.html" id="videoChat_btn"><img src="<c:url value="/images/icon/movie.png"/>" class="videoChat"></a></li>'
+			htmlNav += '<li class="imgButton"><a href="#" onclick="chatdelete();" id="waste_btn"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste"></a></li>'		
 			} else if(crsession != null && outcount == 1){
 				htmlNav += '<li class="imgButton waste_li2"><a href="#" onclick="chatdelete();"><img src="<c:url value="/images/icon/garbage.png"/>" class="waste2"></a></li>'
 			}
