@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.gymcarry.carry.CarryInfoDto;
 import com.project.gymcarry.carry.CarryJoinDto;
+import com.project.gymcarry.carry.CarryToInfoDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
 import com.project.gymcarry.dao.MemberDao;
 import com.project.gymcarry.member.MemberDto;
@@ -37,9 +39,9 @@ public class JoinService {
 	}
 	
 	// 멤버 핸드폰번호 중복 검사
-		public int memberPhoneCheck(String memphone) {
-			dao = template.getMapper(MemberDao.class);
-			return dao.memberPhoneCheck(memphone);
+	public int memberPhoneCheck(String memphone) {
+		dao = template.getMapper(MemberDao.class);
+		return dao.memberPhoneCheck(memphone);
 		}
 
 	// 캐리 이메일 중복 검사
@@ -121,6 +123,29 @@ public class JoinService {
 		return dao.insertCarry(carryJoinDto);
 	}
 
+	
+	// 캐리 추가입력 사항 insert
+	public int insertCarryInfo(CarryToInfoDto carryToInfoDto) {
+		dao = template.getMapper(MemberDao.class);
+		return dao.insertCarryInfo(carryToInfoDto);
+	}
+
+    // 캐리 가격 정보 insert
+    public int insertCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx) {
+    	dao = template.getMapper(MemberDao.class);
+    	return dao.insertCarryPrice(proprice1, proprice2, proprice3, proprice4, cridx);
+    }
+
+    // 캐리 자격 및 경력 insert
+    public int insertCarryCerti(CarryInfoDto carryInfoDto) {
+    	dao = template.getMapper(MemberDao.class);
+    	return dao.insertCarryCerti(carryInfoDto);
+    }
+	
+    
+    
+	
+	
 	public int alterjoinkey(MemberDto memberDto) {
 		return template.update("alterjoinkey");
 	}

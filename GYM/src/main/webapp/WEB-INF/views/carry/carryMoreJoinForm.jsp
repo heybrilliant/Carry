@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<title>GYM CARRY : 캐리 정보 수정</title>
+<title>GYM CARRY : 캐리 추가정보 입력</title>
 
 <%@ include file="/WEB-INF/views/frame/metaheader.jsp" %>
 
@@ -22,9 +22,10 @@
     <div class="container">
         <div class="form_txtInput">
 
-            <form action="<c:url value="/mypage/update"/>" method="post" enctype="multipart/form-data">
+            <form id="carryMoreInfo"method="post" enctype="multipart/form-data">
                 <!--캐리 프로필 영역-->
-                <h1 class="sub_tit_txt">캐리 정보 수정</h1>
+                <h1 class="sub_tit_txt">캐리 추가 정보 입력</h1>
+                <span>** 추가 정보를 입력해주셔야 전체 서비스 이용이 가능합니다. **</span>
                 <div class="edit_form">
 
                     <table>
@@ -157,10 +158,10 @@
                     </table>
                 </div>
                 <div class="btn_wrap2">
-                    <input class="btn_update" type="submit" value="수정">
+                    <input class="btn_update" type="button" onclick="insertCarryInfo('${result.code}')" value="회원가입">
                 </div>
                 <div class="btn_wrap2">
-                    <a href="javascript:window.history.back();">취소</a>
+                    <a href="javascript:window.history.back();">건너뛰기</a>
                 </div>
             </form>
         </div>
@@ -168,6 +169,30 @@
 
     </div>
 </div>
+
+	<script>
+				
+		function insertCarryInfo(code) {
+
+			$.ajax({
+				type : 'POST',
+				url : "<c:url value='/carry/join2'/>",
+				data : $("#carryMoreInfo").serialize(),
+				success : function() {
+					alert('회원가입이 완료되었습니다.\n인증메일 확인하여 회원가입을 완료해주세요.');
+					location.href = "/gym/index";
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:"
+							+ error);
+				}
+
+			});
+		}
+				
+	</script>
+
 
 <script>
 

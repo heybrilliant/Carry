@@ -70,6 +70,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
+
+
+	<!-- 캐리 추가정보 입력  -->
+    <update id="insertCarryInfo"
+            parameterType="com.project.gymcarry.carry.CarryInfoDto">
+        update carry a
+        set
+            a.crintro = #{crintro}, a.crfield = #{crfield}, a.crplace = #{crplace}, a.crdepart = #{crdepart}, a.crbfphoto = #{crbfphoto}, a.placeidx = #{placeidx},
+        where
+            a.cridx = #{cridx}
+    </update>
+    
+    <!-- 캐리 자격 및 경력  입력  -->
+    <insert id="insertCarryCerti" parameterType="com.project.gymcarry.carry.CarryInfoDto">
+        insert into crcertification
+            (cridx, crcerti1, crcerti2, crcerti3 , crcerti4 , crcerti5 )
+        values
+            (#{cridx}, #{crcerti1}, #{crcerti2}, #{crcerti3}, #{crcerti4} , #{crcerti5})
+            on duplicate key update cridx=#{cridx};
+    </insert>
+	
+	
+    <!-- 캐리 가격 수정 -->
+    <update id="insertCarryPrice"
+            parameterType="com.project.gymcarry.carry.CarryPriceDto">
+        update crprice
+        set proprice =
+                case
+                    when procount = 1 then #{param1}
+                    when procount = 5 then #{param2}
+                    when procount = 10 then #{param3}
+                    when procount = 20 then #{param4}
+                    end
+        where cridx = #{param5};
+    </update>
+	
+
+
+
+
 	<!-- 멤버로그인 -->
 	<!-- 로그인값은 멤버 캐리 상관없이 SessionDto로 받아오기 -->
 	<select id="memberLogin" parameterType="String"

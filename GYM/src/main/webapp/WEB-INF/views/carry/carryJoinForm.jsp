@@ -19,10 +19,7 @@
 	<!-- Contents -->
 	<div class="wrap wd668">
 		<div class="container">
-			<form method="post" action="<c:url value="/carry/join"/>"
-				enctype="multipart/form-data" onsubmit="return joinsubmit();">
-				<%-- <form action="<c:url value="/member/carryJoin"/>" method="post"
-					enctype="multipart/form-data"> --%>
+			<form method="post" id="carryJoinForm" enctype="multipart/form-data">
 				<div class="form_txtInput">
 					<h1 class="sub_tit_txt">캐리 회원가입</h1>
 					<p class="exTxt">회원가입시 이메일 인증을 반드시 진행하셔야 합니다.</p>
@@ -47,7 +44,7 @@
 							<tr>
 								<th><span>이름</span></th>
 								<td><input type="text" name="crname" placeholder="이름"
-									id="crname">
+									id="crname" required>
 									<div class="check_font" id="namecheck"></div></td>
 
 							</tr>
@@ -55,7 +52,7 @@
 							<tr class="email">
 								<th><span>이메일</span></th>
 								<td><input type="text" class="email" name="cremail"
-									id="cremail" placeholder="이메일 형식으로 입력해주세요. 로그인시 아이디로 사용됩니다.">
+									id="cremail" placeholder="이메일 형식으로 입력해주세요. 로그인시 아이디로 사용됩니다." required>
 									<!-- <a href="javascript:;" class="btn_confirm">인증메일 발송</a> -->
 									<span id="msg" class="display_none"></span>
 									<div class="check_font" id="emailcheck" style="float: left"></div>
@@ -65,7 +62,7 @@
 							<tr>
 								<th><span>비밀번호</span></th>
 								<td><input type="password" name="crpw" id="crpw"
-									placeholder="비밀번호를 입력해주세요.">
+									placeholder="비밀번호를 입력해주세요." required>
 									<div class="check_font" id="pwcheck"></div>
 									<div class="check_font" id="mempw2check"></div></td>
 
@@ -73,20 +70,20 @@
 							<tr>
 								<th><span>비밀번호 확인</span></th>
 								<td><input type="password" name="crpw2"
-									placeholder="비밀번호를 확인해주세요." id="crpw2"></td>
+									placeholder="비밀번호를 확인해주세요." id="crpw2" required></td>
 							</tr>
 
 							<tr>
 								<th><span>닉네임</span></th>
 								<td><input type="text" name="crnick" placeholder="닉네임"
-									id="crnick"> <span id="msg_nick" class="display_none"></span>
+									id="crnick" required> <span id="msg_nick" class="display_none"></span>
 									<div class="check_font" id="nickcheck"></div></td>
 							</tr>
 
 							<tr>
 								<th><span>휴대폰 번호</span></th>
 								<td><input type="text" name="crphone" id="crphone"
-									placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요">
+									placeholder="'-'없이 번호만 11자리 형식으로 입력해주세요" required>
 									<span id="msg_phone" class="display_none"></span>
 									<div class="check_font" id="phonecheck"></div></td>
 							</tr>
@@ -114,7 +111,7 @@
 				<div id="btnbox">
 					<div class="btn_wrap">
 						<!-- 회원가입 -> DB 저장 // 취소 -> 취소되었습니다! 알림 후 index 수정하기 -->
-						<input type="submit" id="joinsubmit" value="다음">
+						<input type="button" onclick="CarryJoin('${cridx}')" value="다음">
 					</div>
 					<div class="btn_wrap2">
 						<a href="javascript:history.back()">취소</a>
@@ -127,6 +124,31 @@
 	<!-- Contents end -->
 	<%@ include file="/WEB-INF/views/frame/footer.jsp"%>
 </body>
+
+<script>
+				
+		function CarryJoin(cridx) {
+
+			$.ajax({
+				type : 'POST',
+				url : "<c:url value='/carry/join'/>",
+				data : $("#carryJoinForm").serialize(),
+				success : function() {
+					alert('입력하신 이메일로 인증메일을 발송하였습니다.\n인증메일을 확인하여 회원가입을 완료해주세요.');
+					location.href= "join2?cridx=" + cridx;
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:"
+							+ error);
+				}
+
+			});
+		}
+				
+	</script>
+
+
 
 <script>
 	

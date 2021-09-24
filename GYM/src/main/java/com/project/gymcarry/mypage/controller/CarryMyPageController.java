@@ -74,10 +74,10 @@ public class CarryMyPageController {
 									CarryInfoDto carryInfoDto,
 									@RequestParam("proprice1") int proprice1, @RequestParam("proprice2") int proprice2,
 									@RequestParam("proprice3") int proprice3, @RequestParam("proprice4") int proprice4,
-									HttpSession session, HttpServletRequest request, HttpServletResponse respons) throws Exception {
+									HttpSession session, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 
-		service.updateCarryModify(carryToInfoDto,respons,request);
+		service.updateCarryModify(carryToInfoDto,response,request);
 		service.updateCarryPrice(proprice1, proprice2, proprice3, proprice4, carryToInfoDto.getCridx());
 		service.upsetCarryCerti(carryInfoDto);
 		

@@ -1,11 +1,11 @@
 package com.project.gymcarry.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
 
 import com.project.gymcarry.carry.CarryDto;
+import com.project.gymcarry.carry.CarryInfoDto;
 import com.project.gymcarry.carry.CarryJoinDto;
+import com.project.gymcarry.carry.CarryToInfoDto;
 import com.project.gymcarry.member.MemberDto;
 import com.project.gymcarry.member.SessionDto;
 
@@ -21,6 +21,15 @@ public interface MemberDao {
 	// 캐리회원가입
 	int insertCarry(CarryJoinDto carryDto);
 
+	// 캐리 추가 정보 입력 insert
+	int insertCarryInfo(CarryToInfoDto carryToInfoDto);
+	// 캐리 추가 자격 및 경력 정보 insert
+	int insertCarryPrice(int proprice1, int proprice2, int proprice3, int proprice4, int cridx);
+	// 캐리 추가 가격 정보 insert
+	int insertCarryCerti(CarryInfoDto carryInfoDto);
+	
+	
+	
 	// 멤버 회원가입시 이메일,닉네임,핸드폰 번호 중복 체크 + 은경- 핸드폰 추가함
 	int memberemailCheck(String mememail);
 	int memberNickCheck(String memnick);
@@ -30,6 +39,7 @@ public interface MemberDao {
 	int carryemailCheck(String cremail);
 	int carryNickCheck(String crNick);
 	int carryPhoneCheck(String crphone);
+	
 	
 	// 멤버 회원가입 이메일 인증
 	int GetJoinkey(String mememail, String joinkey_status);
