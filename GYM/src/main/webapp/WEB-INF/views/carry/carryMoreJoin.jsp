@@ -24,6 +24,8 @@
 
             <form action="<c:url value="/mypage/update"/>" method="post" enctype="multipart/form-data">
                 <!--캐리 프로필 영역-->
+                
+                <h3>dfdf ${crnick}</h3>
                 <h1 class="sub_tit_txt">캐리 정보 수정</h1>
                 <div class="edit_form">
 

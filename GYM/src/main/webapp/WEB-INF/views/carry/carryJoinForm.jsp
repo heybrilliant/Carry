@@ -75,7 +75,6 @@
 								<td><input type="password" name="crpw2"
 									placeholder="비밀번호를 확인해주세요." id="crpw2"></td>
 							</tr>
-
 							<tr>
 								<th><span>닉네임</span></th>
 								<td><input type="text" name="crnick" placeholder="닉네임"

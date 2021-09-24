@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.gymcarry.carry.CarryJoinDto;
 import com.project.gymcarry.carry.CarryToJoinDto;
@@ -64,15 +66,16 @@ public class CarryJoinController {
 		}
 
 		out.println("<script>");
-		out.println("alert('회원가입이 완료되었습니다. 인증메일을 확인해주세요!'); location.href='/gym/carry/join2';");
+		out.println("alert('회원가입이 완료되었습니다. 인증메일을 확인해주세요!');");
 		out.println("</script>");
 		out.close();
 		
-		return "carry/CarryPlusJoinForm";
+		return "carry/carryMoreJoin";
 	}
 
-	@GetMapping("carry/join2")
-	public String carryJoinForm2() {
+	@PostMapping("carry/join2")
+	public String carryJoinForm2(@RequestParam("crnick") String crnick, Model model) {
+		model.addAttribute("crnick", crnick);
 		return "carry/carryMoreJoin";
 	}
 	
