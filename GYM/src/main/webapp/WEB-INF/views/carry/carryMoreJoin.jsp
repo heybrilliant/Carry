@@ -38,7 +38,7 @@
                             <td>
                                 <form>
                                     <textarea class="crintro" id="introduce" type="text" name="crintro"
-                                              required></textarea>
+                                              required>${carry.crintro}</textarea>
                                 </form>
                             </td>
                         </tr>
@@ -46,8 +46,9 @@
                             <th><span>소속플레이스</span></th>
                             <td>
                                 <div class="place">
-                                    <input type="text" placeholder="" name="crplace" id="search" required>
-                                    <input type="hidden" name="placeidx" id="placeidx">
+                                    <input type="text" placeholder="" name="crplace" value="${carry.crplace}"
+                                           id="search" required>
+                                    <input type="hidden" name="placeidx" id="placeidx" value="${carry.placeidx}">
                                 </div>
                             </td>
                         </tr>
@@ -127,11 +128,16 @@
                             <th><span>자격 및 경력<br>
                                 <p>(최대 5개까지 입력 가능합니다)</p></span>
                             </th>
-                            <td><input type="text" placeholder="자격 및 경력1" name="crcerti1">
-                                <input type="text" placeholder="자격 및 경력2" name="crcerti2">
-                                <input type="text" placeholder="자격 및 경력3" name="crcerti3">
-                                <input type="text" placeholder="자격 및 경력4" name="crcerti4">
-                                <input type="text" placeholder="자격 및 경력5" name="crcerti5">
+                            <td><input type="text" placeholder="자격 및 경력1" name="crcerti1"
+                                       value="${carryCerti.crcerti1}">
+                                <input type="text" placeholder="자격 및 경력2" name="crcerti2"
+                                       value="${carryCerti.crcerti2}">
+                                <input type="text" placeholder="자격 및 경력3" name="crcerti3"
+                                       value="${carryCerti.crcerti3}">
+                                <input type="text" placeholder="자격 및 경력4" name="crcerti4"
+                                       value="${carryCerti.crcerti4}">
+                                <input type="text" placeholder="자격 및 경력5" name="crcerti5"
+                                       value="${carryCerti.crcerti5}">
                             </td>
                         </tr>
                         <tr>

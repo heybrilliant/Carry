@@ -64,13 +64,19 @@ public class CarryJoinController {
 		}
 
 		out.println("<script>");
-		out.println("alert('회원가입이 완료되었습니다. 인증메일을 확인해주세요!'); location.href='/gym/index';");
+		out.println("alert('회원가입이 완료되었습니다. 인증메일을 확인해주세요!'); location.href='/gym/carry/join2';");
 		out.println("</script>");
 		out.close();
 		
 		return "carry/CarryPlusJoinForm";
 	}
 
+	@GetMapping("carry/join2")
+	public String carryJoinForm2() {
+		return "carry/carryMoreJoin";
+	}
+	
+	
 	@RequestMapping(value = "carry/join/cr_alterjoinkey", method = RequestMethod.POST)
 	public String cr_alterjoinkey_Check(@ModelAttribute CarryJoinDto carryjoinDto) {
 		mailsenderservice.cr_alterjoinkey_service(carryjoinDto.getCremail(), carryjoinDto.getJoinkey());
