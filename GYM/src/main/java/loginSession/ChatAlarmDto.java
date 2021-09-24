@@ -1,4 +1,4 @@
-package com.project.gymcarry.chatting;
+package loginSession;
 
 public class ChatAlarmDto {
 	private String chatNick;

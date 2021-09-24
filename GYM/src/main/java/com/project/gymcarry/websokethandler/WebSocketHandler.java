@@ -17,9 +17,10 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import com.google.gson.Gson;
-import com.project.gymcarry.chatting.ChatAlarmDto;
 import com.project.gymcarry.chatting.MessageDto;
 import com.project.gymcarry.chatting.service.MatchingChatRoomServiceImpl;
+
+import loginSession.ChatAlarmDto;
 
 public class WebSocketHandler extends TextWebSocketHandler {
 
