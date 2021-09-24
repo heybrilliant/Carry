@@ -35,6 +35,7 @@ import com.project.gymcarry.mypage.service.MypageService;
 import com.project.gymcarry.mypage.service.MypageSubService;
 
 @Controller
+
 public class MypageSubController {
 
 	@Autowired
@@ -89,9 +90,6 @@ public class MypageSubController {
 		MDTO.setMempw(encryPassword);
 		System.out.println("두번째:" + MDTO.getMempw());
 
-		System.out.println(MDTO + "MDTO");
-		
-		
 		int result = mypService.updateMemberBasicInfo(MDTO, response, request);
 		System.out.println(MDTO.toString());
 		System.out.println("result = " + result);
@@ -120,7 +118,7 @@ public class MypageSubController {
 			@RequestParam("arg0") int arg0, @RequestParam("arg1") String arg1) {
 
 		List<MypageDto2> list2 = mypService2.loadMemo2(arg0, arg1);
-		System.out.println("AJAX 발동 끌어오기!" + list2);
+		System.out.println(list2 + "동작은하나?");
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		// 출력부
@@ -148,7 +146,7 @@ public class MypageSubController {
 			map.put("list3", "");
 			map.put("list4", "");
 		}
-		System.out.println(map);
+
 		return map;
 
 	}

@@ -5,15 +5,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,12 +23,11 @@ import com.project.gymcarry.member.SessionDto;
 
 import com.project.gymcarry.mypage.MypageDto2;
 import com.project.gymcarry.mypage.MypageMemberDto;
-import com.project.gymcarry.mypage.MypagePhotoDto;
 import com.project.gymcarry.mypage.service.MypageService;
 import com.project.gymcarry.mypage.service.MypageSubService;
 
 @Controller
-
+@RequestMapping("/mypage/mypage")
 public class MypageController {
 
 	@Autowired
@@ -39,7 +35,7 @@ public class MypageController {
 	@Autowired
 	private MypageSubService mypService2;
 
-	@RequestMapping("/mypage/mypage")
+	@GetMapping
 	public String regFor(HttpSession session, Model model, MypageDto2 mypdto) {
 
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
@@ -62,66 +58,32 @@ public class MypageController {
 		return "/mypage/mypage";
 	}
 
-	@RequestMapping("/mypage/mypage4")
-	public String addMembermemo(@ModelAttribute MypagePhotoDto MPdto, Model model, HttpSession session,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		System.out.println("테스트");
-		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
-		String arg0 = MPdto.getMemidx();
-		String arg1 = MPdto.getInfodate();
-		String arg2 = MPdto.getInfotype();
-
-		List<MypageMemberDto> memberList = mypService2.selectmember(sdt.getMemidx());
-		model.addAttribute("memberList", memberList);
-		List<MypageDto2> list1 = mypService.selectMemo(arg0, arg1, arg2);
-
-		System.out.println(MPdto + "mypdto");
-		System.out.println(list1);
-
-		System.out.println(MPdto.getInfocontent());
-		if (list1.isEmpty()) { //
-			mypService2.insertMemberPhoto(MPdto, response, request);
-			System.out.println("인설트로 가쟈 " + MPdto);
-		} else {
-			mypService2.updateMemberPhoto(MPdto, response, request);
-			System.out.println("업데이트 가쟈" + MPdto);
-		}
-
-		return "mypage/mypage";
-	}
-
 	// 메모 등록
-	@RequestMapping("/mypage/mypage3")
-	public String addMembermemo(MypageDto2 mypdto, Model model, HttpSession session, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+	@PostMapping
+	public String addMembermemo(MypageDto2 mypdto, Model model, HttpSession session) {
 
-		MypagePhotoDto MPdto = new MypagePhotoDto();
-
-		System.out.println("테스트");
 		SessionDto sdt = (SessionDto) session.getAttribute("loginSession");
 		String arg0 = mypdto.getMemidx();
 		String arg1 = mypdto.getInfodate();
 		String arg2 = mypdto.getInfotype();
 
 		List<MypageMemberDto> memberList = mypService2.selectmember(sdt.getMemidx());
-		model.addAttribute("memberList", memberList);
 		List<MypageDto2> list1 = mypService.selectMemo(arg0, arg1, arg2);
 
-		System.out.println(mypdto + "mypdto");
-
-		System.out.println(MPdto + "엠피디티오");
-
-		System.out.println(list1);
-
-		if (list1.isEmpty()) { //
+		if (list1.isEmpty()) {
 			mypService.memberMemo(mypdto);
 			System.out.println("인설트로 가쟈 " + mypdto);
+			model.addAttribute("memberList", memberList);
+			return "mypage/mypage";
+
 		} else {
 			mypService.updateMemo(mypdto);
 			System.out.println("업데이트 가쟈" + mypdto);
+			model.addAttribute("memberList", memberList);
+			return "mypage/mypage";
+
 		}
 
-		return "mypage/mypage";
 	}
+
 }

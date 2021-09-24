@@ -98,8 +98,7 @@
 						</button>
 
 					</div>
-					<form id="memoform" name="memoform" class="reg_form" method="post"
-						action="<c:url value='/mypage/mypage3'/>">
+					<form id="memoform" name="memoform" class="reg_form" method="post">
 						<div class="modal-body modal-mypage">
 							<div class="content">
 								<span class="left"></span> <span class="editor"> <textarea
@@ -135,9 +134,7 @@
 						</button>
 
 					</div>
-					<form method="post" class="modal-photo"
-						action="<c:url value='/mypage/mypage4'/>"
-						enctype="multipart/form-data">
+					<form method="post" class="modal-photo">
 						<div class="modal-body modal-mypage modal-photo">
 
 							<!-- 	<div class="my-info profile_form"> -->
@@ -179,8 +176,7 @@
 						</button>
 
 					</div>
-					<form class="reg_form3" method="post"
-						action="<c:url value='/mypage/mypage3'/>">
+					<form class="reg_form3" method="post">
 						<div class="modal-body modal-mypage">
 
 							<div class="content">
@@ -223,8 +219,7 @@
 						</button>
 
 					</div>
-					<form class="reg_form4" method="post"
-						action="<c:url value='/mypage/mypage3'/>">
+					<form class="reg_form4" method="post">
 						<div class="modal-body modal-mypage">
 
 							<div class="content">

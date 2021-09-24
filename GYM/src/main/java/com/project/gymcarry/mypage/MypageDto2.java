@@ -57,13 +57,4 @@ public class MypageDto2 {
 				+ infodate + ", infotype=" + infotype + "]";
 	}
 
-	public MypageDto2(String infoidx, String memidx, String infocontent, String infodate, String infotype) {
-		super();
-		this.infoidx = infoidx;
-		this.memidx = memidx;
-		this.infocontent = infocontent;
-		this.infodate = infodate;
-		this.infotype = infotype;
-	}
-
 }
